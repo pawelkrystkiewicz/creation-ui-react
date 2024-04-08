@@ -23,7 +23,7 @@ interface ColorsSelectorProps extends BaseComponentProps {
 }
 
 const elementClasses = cva(
-  ['relative', 'transform', 'h-6', 'w-6', 'rounded', 'cursor-pointer', 'transition-all', 'hover:scale-125'],
+  ['relative', 'transform', 'size-6', 'rounded', 'cursor-pointer', 'transition-all', 'hover:scale-125'],
   {
     variants: {
       selected: {

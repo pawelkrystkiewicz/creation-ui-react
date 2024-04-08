@@ -6,8 +6,8 @@ export const headerClasses = twix(
   // '!text-lg',
   'font-semibold',
   'capitalize ',
-  'text-primary-900',
-  'dark:text-primary-200'
+  'text-primary',
+  'dark:text-primary'
 )
 
 export const calendarClasses = {
@@ -15,8 +15,8 @@ export const calendarClasses = {
     [
       microInteractions,
       'bg-white',
-      'dark:bg-primary-800',
-      'dark:border-primary-700',
+      'dark:bg-primary',
+      'dark:border-primary',
       'border',
       'p-4',
       'rounded-md',
@@ -52,7 +52,7 @@ export const calendarDaysViewClasses = {
       'text-center',
       'relative',
       'rounded-md',
-      'hover:bg-primary-300',
+      'hover:bg-primary',
     ],
     {
       variants: {
@@ -63,7 +63,7 @@ export const calendarDaysViewClasses = {
         isInRange: {
           true: [
             //
-            'bg-primary-50/50',
+            'bg-primary/50',
             'rounded-none',
             'first:rounded-l-md',
             'last:rounded-r-md',
@@ -73,10 +73,10 @@ export const calendarDaysViewClasses = {
         isSelected: {
           true: [
             '!text-info-100',
-            '!bg-primary-500',
-            'hover:bg-primary-600',
-            'hover:text-primary-300',
-            'focus:bg-primary-600',
+            '!bg-primary',
+            'hover:bg-primary',
+            'hover:text-primary',
+            'focus:bg-primary',
           ],
         },
         isStart: {

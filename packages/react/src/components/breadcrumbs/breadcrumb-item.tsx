@@ -24,7 +24,7 @@ export const BreadcrumbItem: FC<BreadcrumbItemProps> = memo(
           <div className='flex items-center capitalize'>
             <a
               href={href}
-              className='text-gray-700 hover:text-gray-900 text-sm font-medium'
+              className='text-text-primary hover:text-primary text-sm font-medium'
             >
               {label}
             </a>

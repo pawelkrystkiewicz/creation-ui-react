@@ -25,8 +25,8 @@ const TableRow = ({
     <tr
       id={name}
       className={clsx(
-        'transition-colors duration-1000 ease-in-out',
-        highlight ? ['bg-primary-50/50', 'dark:bg-primary-50/40'] : '',
+        'transition-colors duration-1000 ease-in-out !text-text-primary',
+        highlight ? ['bg-primary/50', 'dark:bg-primary/40'] : '',
       )}
     >
       <td className='prose dark:prose-invert prose-sm py-3 pl-4 align-baseline sm:pl-0 '>
@@ -37,7 +37,7 @@ const TableRow = ({
           {defaultValue ? (
             <code dangerouslySetInnerHTML={{ __html: defaultValue?.toString() }} />
           ) : (
-            <span className='text-gray-400'>—</span>
+            <span className='text-text-secondary'>—</span>
           )}
         </span>
       </td>
@@ -55,7 +55,7 @@ const TableRow = ({
             </p>
           )}
           {experimental && (
-            <p className='text-red-500'>
+            <p className='text-error'>
               <em>This feature is experimental and might not work correctly.</em>
             </p>
           )}
@@ -106,8 +106,8 @@ const PropsTable = ({ properties, name, description }: PropsTableProps) => {
       <div className='mt-6 mb-12'>
         <div className='-mx-4 overflow-x-auto sm:mx-0'>
           <div className='inline-block min-w-full'>
-            <table className='w- w-full min-w-[540px] border-b border-gray-700 text-left sm:min-w-full'>
-              <tbody className='divide-y divide-gray-700'>
+            <table className='w- w-full min-w-[540px] border-b text-left sm:min-w-full'>
+              <tbody className='divide-y divide-border'>
                 <TableHeader />
                 <>
                   {properties?.map?.(prop => (

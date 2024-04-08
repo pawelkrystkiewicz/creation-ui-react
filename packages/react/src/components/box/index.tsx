@@ -21,7 +21,7 @@ const box = cva([], {
         'shadow-lg',
         'bg-gray-50',
         'dark:bg-gray-800',
-        'dark:text-gray-50',
+        'dark:text-info-50',
       ],
     },
     border: {

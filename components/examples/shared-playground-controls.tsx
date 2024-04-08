@@ -45,11 +45,11 @@ const VARIANTS_BASE = [
 ]
 
 const COLORS: GenericColorDefinition[] = [
-  { value: 'primary', label: 'primary', className: 'bg-primary-500' },
-  { value: 'success', label: 'success', className: 'bg-success-500' },
-  { value: 'warning', label: 'warning', className: 'bg-warning-500' },
-  { value: 'error', label: 'error', className: 'bg-error-500' },
-  { value: 'info', label: 'info', className: 'bg-info-500' },
+  { value: 'primary', label: 'primary', className: 'bg-primary' },
+  { value: 'success', label: 'success', className: 'bg-success' },
+  { value: 'warning', label: 'warning', className: 'bg-warning' },
+  { value: 'error', label: 'error', className: 'bg-error' },
+  { value: 'info', label: 'info', className: 'bg-info' },
 ]
 
 const ICON = [

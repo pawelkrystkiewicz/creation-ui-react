@@ -13,3 +13,68 @@
 .h-screen-nextra-last {
   height: calc(100vh - var(--nextra-navbar-height) - theme('spacing.10'));
 }
+
+.contrasting-text {
+  color: transparent;
+  filter: invert(100%) contrast(999) grayscale(100%);
+  -webkit-filter: invert(100%) contrast(999) grayscale(100%);
+}
+
+@layer base {
+  :root {
+    /* text */
+    --text-primary: #030303;
+    --text-secondary: #424242;
+
+    /* background */
+    --background-primary: #fafafa;
+    --background-secondary: #f8f8f8;
+
+    --border: #e4e7eb;
+
+    /* main colors */
+    --primary: #007dff;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --success: #10b981;
+    --info: #8c8c8c;
+
+    /* other */
+    --radius: 0.5rem;
+  }
+  .dark {
+    /* text */
+    --text-primary: #f8f8f8;
+    --text-secondary: #cbcbcb;
+
+    /* background */
+    --background-primary: #030303;
+    --background-secondary: #121212;
+
+    --border: #767676;
+
+    /* main colors */
+    --primary: #2992ff;
+    --warning: #fbbf24;
+    --error: #e53e3e;
+    --success: #10b981;
+    --info: #8c8c8c;
+
+    /* other */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    text-rendering: optimizeLegibility;
+  }
+}

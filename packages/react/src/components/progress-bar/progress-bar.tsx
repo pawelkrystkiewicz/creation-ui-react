@@ -6,13 +6,7 @@ import { cva } from 'class-variance-authority'
 const INVERT_THRESHOLD = 52
 
 const classes = {
-  container: [
-    'w-full',
-    'bg-info-200',
-    'rounded-full',
-    'dark:bg-info-700',
-    'relative',
-  ],
+  container: ['w-full', 'rounded-full', 'relative'],
 }
 
 const progressValue = cva(
@@ -24,17 +18,18 @@ const progressValue = cva(
     '-translate-x-1/2',
     '-translate-y-1/2',
     'text-xs',
+    'contrasting-text',
   ],
   {
     variants: {
       invert: {
-        true: ['text-info-50'],
-        false: ['text-info-800'],
+        false: [],
+        true: [],
       },
       size: {
-        sm: ['!top-0', '!-translate-y-full', 'pb-2', '!text-info-800'],
+        sm: ['!top-0', '!-translate-y-full', 'pb-2'],
         md: [],
-        lg: ['!text-base'],
+        lg: [],
       },
     },
   }
@@ -60,11 +55,11 @@ const progressBar = cva(
         false: ['!bg-transparent'],
       },
       status: {
-        primary: ['bg-primary-500'],
-        success: ['bg-success-500'],
-        warning: ['bg-warning-500'],
-        error: ['bg-error-500'],
-        info: ['bg-info-500'],
+        primary: ['bg-primary'],
+        success: ['bg-success'],
+        warning: ['bg-warning'],
+        error: ['bg-error'],
+        info: ['bg-info'],
       },
     },
     defaultVariants: {
@@ -98,7 +93,7 @@ const ProgressBar = (props: ProgressBarProps) => {
       <div
         className={progressBar({ size, value: value !== 0, status })}
         style={{ width }}
-      ></div>
+      />
       <span className={progressValue({ invert, size })}>
         {showValue && formattedValue}
       </span>
