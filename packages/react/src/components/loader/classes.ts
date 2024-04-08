@@ -27,8 +27,8 @@ export const loaderIconClasses = cva(['animate-spin'], {
   variants: {
     size,
     white: {
-      true: ['text-info-300', 'fill-white'],
-      false: ['text-info-200', 'fill-primary-500'],
+      true: ['text-white/20', 'fill-white'],
+      false: ['text-primary/20', 'fill-primary'],
     },
   },
   defaultVariants: {

@@ -13,21 +13,26 @@ const config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Plus Jakarta Pro', 'sans-serif'],
+        serif: ['Plus Jakarta Pro', 'serif'],
+        mono: ['Fira Code', 'monospace'],
+      },
       colors: {
         text: {
-          primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
+          primary: 'hsl(var(--text-primary) / <alpha-value>)',
+          secondary: 'hsl(var(--text-secondary) / <alpha-value>)',
         },
         background: {
-          primary: 'var(--background-primary)',
-          secondary: 'var(--background-secondary)',
+          primary: 'hsl(var(--background-primary) / <alpha-value>)',
+          secondary: 'hsl(var(--background-secondary) / <alpha-value>)',
         },
-        border: 'var(--border)',
-        primary: 'var(--primary)',
-        warning: 'var(--warning)',
-        error: 'var(--error)',
-        success: 'var(--success)',
-        info: 'var(--info)',
+        border: 'hsl(var(--border) / <alpha-value>)',
+        primary: 'hsl(var(--primary) / <alpha-value>)',
+        warning: 'hsl(var(--warning) / <alpha-value>)',
+        error: 'hsl(var(--error) / <alpha-value>)',
+        success: 'hsl(var(--success) / <alpha-value>)',
+        info: 'hsl(var(--info) / <alpha-value>)',
       },
       borderRadius: {
         lg: `var(--radius)`,

@@ -21,9 +21,9 @@ const calloutClasses = cva(
     variants: {
       status: {
         primary: [
-          'bg-primary-50',
-          'text-primary-500',
-          'border-primary-500',
+          'bg-primary/50',
+          'text-primary',
+          'border-primary',
           'bg-opacity-25',
         ],
         error: ['bg-error-50', 'text-error-500', 'border-error-500'],

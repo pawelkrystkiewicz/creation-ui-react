@@ -193,7 +193,7 @@ export const TableExample = () => {
   const totalPages = table.getPageCount()
   const resultsCount = table.getPrePaginationRowModel().rows.length
   const enablePagination = state === 'DATA'
-  const borderColors = 'border-info-300 dark:border-info-800'
+
   return (
     <div>
       <Flex gap={3} items='center' className='mb-3'>
@@ -213,11 +213,11 @@ export const TableExample = () => {
         />
       </Flex>
       <Theme theme={{ variant }}>
-        <Table className={clsx('rounded-md', borderColors)}>
+        <Table className={clsx('rounded-md')}>
           <LoadingOverlay active={state === 'LOADING'} />
           <TableHeader>
             {table.getHeaderGroups().map(headerGroup => (
-              <TableRow className={borderColors} key={headerGroup.id}>
+              <TableRow key={headerGroup.id}>
                 <For each={headerGroup.headers}>
                   {header => (
                     <TableHead key={header.id}>
@@ -231,14 +231,14 @@ export const TableExample = () => {
           <TableBody>
             <ShowFirstMatching>
               <Show when={state === 'NO_DATA'}>
-                <TableRow className={borderColors}>
+                <TableRow>
                   <TableCell colSpan={columns.length} className='h-[50vh] text-center'>
                     No results
                   </TableCell>
                 </TableRow>
               </Show>
               <Show when={state === 'ERROR'}>
-                <TableRow className={borderColors}>
+                <TableRow>
                   <TableCell colSpan={columns.length} className='h-[50vh] text-center text-error-500 font-medium '>
                     An error occurred
                   </TableCell>
@@ -247,7 +247,7 @@ export const TableExample = () => {
               <Show when={['DATA', 'LOADING'].includes(state)}>
                 <For each={table?.getRowModel().rows}>
                   {row => (
-                    <TableRow className={borderColors} key={row.id} data-state={row.getIsSelected() && 'selected'}>
+                    <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                       {row.getVisibleCells().map(cell => (
                         <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                       ))}
@@ -257,9 +257,9 @@ export const TableExample = () => {
               </Show>
             </ShowFirstMatching>
           </TableBody>
-          <TableFooter className={borderColors}>
+          <TableFooter>
             {table.getFooterGroups().map(group => (
-              <TableRow className={borderColors} key={group.id}>
+              <TableRow key={group.id}>
                 <For each={group.headers}>
                   {header => (
                     <TableHead key={header.id}>

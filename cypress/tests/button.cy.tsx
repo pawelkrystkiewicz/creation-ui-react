@@ -35,22 +35,22 @@ const modeVariantStatusExpectedClasses = {
   light: {
     contained: {
       //TODO: might want to add all other classes like hover, focus, active, etc
-      primary: ['bg-primary-500', 'text-white'],
+      primary: ['bg-primary', 'text-white'],
       success: ['bg-success-500', 'text-white'],
       warning: ['bg-warning-500', 'text-white'],
       error: ['bg-error-500', 'text-white'],
-      info: ['bg-info-500', 'text-white'],
+      info: ['bg-info', 'text-white'],
     },
 
     outlined: {
-      primary: ['border-primary-500', 'text-primary-500'],
+      primary: ['border-primary', 'text-primary'],
       success: ['border-success-500', 'text-success-500'],
       warning: ['border-warning-500', 'text-warning-500'],
       error: ['border-error-500', 'text-error-500'],
-      info: ['border-info-500', 'text-info-500'],
+      info: ['border-info', 'text-info'],
     },
     text: {
-      primary: ['bg-transparent', 'text-primary-500'],
+      primary: ['bg-transparent', 'text-primary'],
       success: ['bg-transparent', 'text-success-500'],
       warning: ['bg-transparent', 'text-warning-500'],
       error: ['bg-transparent', 'text-error-500'],
@@ -59,21 +59,21 @@ const modeVariantStatusExpectedClasses = {
   },
   dark: {
     contained: {
-      primary: ['bg-primary-500', 'text-white'],
+      primary: ['bg-primary', 'text-white'],
       success: ['bg-success-500', 'text-white'],
       warning: ['bg-warning-500', 'text-white'],
       error: ['bg-error-500', 'text-white'],
-      info: ['bg-info-500', 'text-white'],
+      info: ['bg-info', 'text-white'],
     },
     outlined: {
-      primary: ['border-primary-500', 'text-primary-500'],
+      primary: ['border-primary', 'text-primary'],
       success: ['border-success-500', 'text-success-500'],
       warning: ['border-warning-500', 'text-warning-500'],
       error: ['border-error-500', 'text-error-500'],
-      info: ['border-info-500', 'text-info-500'],
+      info: ['border-info', 'text-info'],
     },
     text: {
-      primary: ['bg-transparent', 'text-primary-500'],
+      primary: ['bg-transparent', 'text-primary'],
       success: ['bg-transparent', 'text-success-500'],
       warning: ['bg-transparent', 'text-warning-500'],
       error: ['bg-transparent', 'text-error-500'],

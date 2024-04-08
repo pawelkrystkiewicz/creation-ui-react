@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const avatar = {
-  img: cva(['inline-block', 'ring-2', 'ring-white', '!object-cover'], {
+  img: cva(['inline-block', 'ring-2', 'ring-background-secondary', '!object-cover'], {
     variants: {
       variant: {
         circle: ['rounded-full'],
@@ -17,9 +17,8 @@ export const avatar = {
           'flex-col',
           'items-center',
           'justify-center',
-          'text-white',
-          'bg-info-500',
-          'dark:bg-info-400',
+          'text-text-primary',
+          'bg-background-secondary',
         ],
       },
     },

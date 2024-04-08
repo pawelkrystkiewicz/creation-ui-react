@@ -23,58 +23,54 @@
 @layer base {
   :root {
     /* text */
-    --text-primary: #030303;
-    --text-secondary: #424242;
-
+    --text-primary: 0 0% 1%;
+    --text-secondary: 0 0% 26%;
     /* background */
-    --background-primary: #fafafa;
-    --background-secondary: #f8f8f8;
-
-    --border: #e4e7eb;
-
+    --background-primary: 0 0% 98%;
+    --background-secondary: 0 0% 97%;
     /* main colors */
-    --primary: #007dff;
-    --warning: #f59e0b;
-    --error: #ef4444;
-    --success: #10b981;
-    --info: #8c8c8c;
-
+    --primary: 211 100% 50%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+    --success: 160 84% 39%;
+    --info: 0 0% 55%;
     /* other */
+    --border: 214 15% 91%;
     --radius: 0.5rem;
   }
   .dark {
     /* text */
-    --text-primary: #f8f8f8;
-    --text-secondary: #cbcbcb;
-
+    --text-primary: 0 0% 97%;
+    --text-secondary: 0 0% 80%;
     /* background */
-    --background-primary: #030303;
-    --background-secondary: #121212;
-
-    --border: #767676;
-
+    --background-primary: 0 0% 1%;
+    --background-secondary: 0 0% 7%;
     /* main colors */
-    --primary: #2992ff;
-    --warning: #fbbf24;
-    --error: #e53e3e;
-    --success: #10b981;
-    --info: #8c8c8c;
-
+    --primary: 211 100% 58%;
+    --warning: 43 96% 56%;
+    --error: 0 76% 57%;
+    --success: 160 84% 39%;
+    --info: 0 0% 55%;
     /* other */
+    --border: 192 0% 15%;
     --radius: 0.5rem;
   }
 }
 
 @layer base {
   * {
-    border-color: var(--border);
+    @apply border-border;
   }
   html {
     @apply scroll-smooth;
   }
   body {
-    background-color: var(--background-primary);
-    color: var(--text-primary);
+    @apply !bg-background-primary text-text-primary;
+    @apply outline-2 outline-offset-2 focus-visible:outline-primary;
     text-rendering: optimizeLegibility;
   }
+}
+
+.micro-interactions {
+  @apply transition-all duration-300 ease-in-out;
 }

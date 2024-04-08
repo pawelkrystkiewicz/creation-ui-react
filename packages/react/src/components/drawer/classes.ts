@@ -1,13 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const drawerAnimation = {
-  animation: [
-    //
-    'transition',
-    'ease-in-out',
-    'duration-300',
-    'transform',
-  ],
+  animation: ['micro-interactions'],
   enter: {
     top: ['-translate-y-full'],
     bottom: ['translate-y-full'],
@@ -23,8 +17,7 @@ export const drawerAnimation = {
 }
 
 export const child = [
-  'bg-white',
-  'dark:bg-info-900',
+  'bg-background-primary',
   'w-full',
   'overflow-hidden',
   'text-left',

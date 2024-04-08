@@ -27,8 +27,8 @@ const elementClasses = cva(
   {
     variants: {
       selected: {
-        true: ['scale-125'],
-        false: ['scale-100'],
+        true: [],
+        false: [],
       },
       undef: {
         true: 'border',
@@ -90,7 +90,7 @@ const ColorOption: FC<ColorOptionProps> = ({ option, onClick, selected }) => {
         className: className,
       })}
     >
-      {undef && !selected && <Icon path={mdiClose} className='text-info-500' size={0.9} />}
+      {undef && !selected && <Icon path={mdiClose} className='text-info' size={0.9} />}
       {selected && (
         <Icon
           path={mdiCircle}

@@ -7,7 +7,7 @@ export const TableCaption = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}
-    className={clsx('mt-4 text-sm text-info-500', className)}
+    className={clsx('mt-4 text-sm text-info', className)}
     {...props}
   />
 ))

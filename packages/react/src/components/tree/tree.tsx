@@ -55,7 +55,7 @@ export const Tree: FC<TreeProps> = ({
               <Show when={!value}>
                 <span
                   className={twMerge(
-                    'text-info-500',
+                    'text-info',
                     'flex-shrink',
                     cx?.placeholder
                   )}

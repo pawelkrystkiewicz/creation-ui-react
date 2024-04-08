@@ -8,7 +8,7 @@ import {
   text,
 } from '@creation-ui/core'
 import clsx from 'clsx'
-import { forwardRef, type FC } from 'react'
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
@@ -69,7 +69,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
       error: hasError,
       interactionsDisabled,
       // @ts-ignore
-      className: cx?.input,
+      className: [cx?.input, 'bg-background-secondary'],
       // @ts-expect-error
       type,
     })

@@ -1,37 +1,29 @@
+import { sharedReadOnlyCVA } from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
-import {
-  microInteractions,
-  classes,
-  sharedReadOnlyCVA,
-} from '@creation-ui/core'
 
 export const switchClasses = cva(
   [
-    ...classes.input,
-    microInteractions,
-    'checked:border-transparent',
-    'dark:checked:bg-primary-500',
+    'micro-interactions',
     'cursor-pointer',
     'peer',
     'relative',
     'inline-flex',
     'shrink-0',
-    'border-2',
-    '!bg-info-300',
-    '!dark:bg-info-700',
     '!rounded-full',
     'h-fit',
+    'border',
+    // 'bg-background-primary',
   ],
   {
     variants: {
       size: {
-        sm: ['w-8', 'p-0'],
-        md: ['w-12', 'p-0.5'],
-        lg: ['w-14', 'p-0.5'],
+        sm: ['w-[35px]', 'p-0.5'],
+        md: ['w-[47px]', 'p-0.5'],
+        lg: ['w-[55px]', 'p-0.5'],
       },
       checked: {
-        true: ['!bg-primary-500', '!border-primary-500'],
-        false: ['!border-transparent'],
+        true: ['bg-primary'],
+        false: [],
       },
       readOnly: sharedReadOnlyCVA,
     },
@@ -42,7 +34,7 @@ export const switchClasses = cva(
 )
 export const switchCircle = cva(
   [
-    microInteractions,
+    'micro-interactions',
     'transform',
     'transition-all',
     'rounded-full',
@@ -53,9 +45,9 @@ export const switchCircle = cva(
   {
     variants: {
       size: {
-        sm: ['h-3', 'w-3'],
-        md: ['h-4', 'w-4'],
-        lg: ['h-5', 'w-5'],
+        sm: ['size-3'],
+        md: ['size-4'],
+        lg: ['size-5'],
       },
       checked: {
         true: null,

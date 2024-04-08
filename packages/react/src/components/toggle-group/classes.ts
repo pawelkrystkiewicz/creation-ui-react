@@ -1,13 +1,9 @@
+import { sharedDisabledCVA, sharedSizeClassesCVA } from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
-import {
-  microInteractions,
-  sharedDisabledCVA,
-  sharedSizeClassesCVA,
-} from '@creation-ui/core'
 
 export const toggleGroup = {
   container: [
-    microInteractions,
+    'micro-interactions',
     'relative',
     'inline-flex',
     'shadow-sm',
@@ -15,33 +11,18 @@ export const toggleGroup = {
   ],
   button: cva(
     [
-      microInteractions,
-      'z-0',
-      'bg-white',
-      'border-info-400',
+      'micro-interactions',
       'border-y',
-      'dark:bg-info-900',
-      'dark:border-info-700',
-      'dark:hover:bg-info-800',
-      'dark:text-info-200',
-      'focus:border-primary-300',
-      'focus:dark:border-primary-400',
-      'focus:dark:ring-primary-300',
-      'focus:invalid:border-error-500',
-      'focus:invalid:ring-error-200',
-      'focus:ring-offset-0',
-      'focus:ring-opacity-50',
-      'focus:ring-primary-200',
-      'focus:ring',
+      'cursor-pointer',
       'focus:z-10',
       'font-medium',
-      'hover:bg-info-100',
+      'hover:bg-primary/10',
       'inline-flex',
       'items-center',
       'relative',
-      'text-info-700',
       'text-sm',
-      'cursor-pointer',
+      'text-text-primary',
+      'z-0',
     ],
     {
       variants: {
@@ -51,8 +32,13 @@ export const toggleGroup = {
           last: ['rounded-r-md', 'border-r'],
         },
         checked: {
-          true: ['!bg-primary-500', 'text-white', 'font-bold'],
-          false: ['bg-info-50', 'text-info-900', 'hover:bg-info-100'],
+          true: [
+            'bg-primary',
+            'hover:bg-primary/75',
+            'text-white',
+            'font-bold',
+          ],
+          false: ['hover:bg-primary/10'],
         },
         disabled: sharedDisabledCVA,
         size: sharedSizeClassesCVA,

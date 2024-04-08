@@ -6,8 +6,7 @@ import type { IconProps } from '../icon'
 import { Icon } from '../icon'
 
 const classes = cva([
-  'hover:fill-error-500',
-  'dark:hover:fill-error-500',
+  'hover:fill-error',
   'cursor-pointer',
   'select-none',
 ])
