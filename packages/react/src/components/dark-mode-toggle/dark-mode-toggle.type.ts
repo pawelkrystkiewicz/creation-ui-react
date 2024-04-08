@@ -1,4 +1,4 @@
-import { ElementTheme } from '@creation-ui/react'
+import { ElementTheme } from '../../types'
 
 export interface Circle {
   r: number

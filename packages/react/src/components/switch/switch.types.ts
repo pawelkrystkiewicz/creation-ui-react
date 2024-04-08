@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '@creation-ui/react'
+import type { BaseComponentProps } from '../../types'
 
 export interface SwitchProps extends BaseComponentProps {
   checked?: boolean

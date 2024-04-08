@@ -1,6 +1,6 @@
 import { RadioGroup } from '@headlessui/react'
 import { twMerge } from 'tailwind-merge'
-import { getElementPosition } from '@creation-ui/react'
+import { getElementPosition } from '../../utils'
 import { useInputBase } from '../input-base/input-base.context'
 import { toggleGroup } from './classes'
 import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'

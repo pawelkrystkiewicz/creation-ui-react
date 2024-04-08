@@ -1,4 +1,4 @@
-import type { ClassName } from '@creation-ui/react'
+import type { ClassName } from '../../types'
 
 export interface BoxProps {
   children?: React.ReactNode

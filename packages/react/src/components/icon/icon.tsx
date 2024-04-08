@@ -1,4 +1,4 @@
-import { sharedSizeSquareCVA } from '@creation-ui/react'
+import { sharedSizeSquareCVA } from '../../classes'
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'

@@ -1,4 +1,3 @@
-import { noop, isBrowser } from '@creation-ui/react'
 import {
   Dispatch,
   SetStateAction,
@@ -7,6 +6,7 @@ import {
   useRef,
   useLayoutEffect,
 } from 'react'
+import { isBrowser, noop } from '../utils'
 
 type parserOptions<T> = {
   raw: boolean

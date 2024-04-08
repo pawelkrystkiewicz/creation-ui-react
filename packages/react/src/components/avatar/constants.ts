@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/react'
+import { ElementSize } from '../../types'
 import { CSSProperties } from 'react'
 
 export const AVATAR_SIZE_MAP: Record<ElementSize, number> = {

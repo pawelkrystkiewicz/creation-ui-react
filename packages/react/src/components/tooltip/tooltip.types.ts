@@ -1,4 +1,4 @@
-import type { ClassName, ElementPosition } from '@creation-ui/react'
+import type { ClassName, ElementPosition } from '../../types'
 
 export interface TooltipProps {
   className?: ClassName

@@ -1,19 +1,14 @@
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import {
-  errorClasses,
-  inputClassesCVA,
-  inputContainer,
-  label,
-  text,
-} from '@creation-ui/react'
+import { errorClasses, inputContainer, label, text } from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { InputBaseProps } from '@creation-ui/react'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { Description } from '../typography'
 import { InputBaseContext } from './input-base.context'
+import { InputBaseProps } from '../../types'
+import { inputClassesCVA } from './classes'
 
 const InputBaseInline: FC<InputBaseProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -79,7 +74,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
               children={props.label}
               aria-label={props.label?.toString()}
             />
-            {loading && <Loader size={size === 'lg' ? 'md' : 'sm'} />}
+            <Loader size={size === 'lg' ? 'md' : 'sm'} active={loading} />
           </div>
           <Description
             size={size}

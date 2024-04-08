@@ -1,4 +1,4 @@
-import type { ClassName, ElementSize, ElementStatus } from '@creation-ui/react'
+import type { ClassName, ElementSize, ElementStatus } from '../../types'
 
 export interface ProgressBarProps {
   /**

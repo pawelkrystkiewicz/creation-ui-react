@@ -3,7 +3,7 @@ import type {
   ElementSize,
   ElementStatus,
   ElementVariant,
-} from '@creation-ui/react'
+} from '../../types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**

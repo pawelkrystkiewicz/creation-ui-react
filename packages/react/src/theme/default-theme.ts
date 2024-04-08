@@ -1,6 +1,6 @@
 import type { ThemeProps } from './types'
 
-const theme: ThemeProps = {
+export const defaultTheme: ThemeProps = {
   theme: 'light',
   dir: 'ltr',
   focusRing: true,
@@ -124,5 +124,3 @@ const theme: ThemeProps = {
     getLimitText: more => `+${more}`,
   },
 }
-
-export default theme

@@ -1,26 +1,26 @@
+import clsx from 'clsx'
+import { forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 import {
-  InputBaseProps,
   errorClasses,
   inputContainer,
   inputIcon,
   label,
   text,
-} from '@creation-ui/react'
-import clsx from 'clsx'
-import { forwardRef } from 'react'
-import { twMerge } from 'tailwind-merge'
+} from '../../classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import type { InputBaseProps } from '../../types'
 import { ClearButton } from '../clear-button'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
 import { Show } from '../show'
 import { Description } from '../typography'
 import { Adornment } from './adornment'
+import { inputClassesCVA } from './classes'
 import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
-import { inputClassesCVA } from './classes'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()

@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '@creation-ui/react'
+import type { BaseComponentProps } from '../../types'
 
 export interface CheckboxProps
   extends Omit<React.ComponentProps<'input'>, 'size'>,

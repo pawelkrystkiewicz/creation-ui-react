@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/react'
+import type { ElementSize } from '../../types'
 
 export type RawElement = {
   id: number | string

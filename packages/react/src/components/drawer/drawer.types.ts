@@ -1,4 +1,4 @@
-import type { ElementPosition } from '@creation-ui/react'
+import type { ElementPosition } from '../../types'
 
 export interface DrawerProps {
   /**

@@ -1,9 +1,9 @@
+import { cva } from 'class-variance-authority'
 import {
   sharedTextSizesBase,
   sharedTextSizesDescription,
   sharedTextSizesHeading,
-} from '@creation-ui/react'
-import { cva } from 'class-variance-authority'
+} from '../../classes'
 
 export const popoverCloseClasses = cva([], {
   variants: {

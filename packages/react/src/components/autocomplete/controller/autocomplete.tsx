@@ -1,4 +1,3 @@
-import { getFlatOptions, selectOptionClasses } from '@creation-ui/react'
 import {
   autoUpdate,
   flip,
@@ -29,6 +28,8 @@ import {
 import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
 import { createFilterOptions } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
+import { getFlatOptions } from '../../../utils'
+import { selectOptionClasses } from '../../../classes'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()

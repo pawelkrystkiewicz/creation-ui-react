@@ -345,6 +345,7 @@ const forms = plugin.withOptions(function (
         .map(rule => {
           if (rule[strategy] === null) return null
 
+          // @ts-ignore
           return { [rule[strategy]]: rule.styles }
         })
         .filter(Boolean)

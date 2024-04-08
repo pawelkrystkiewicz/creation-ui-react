@@ -1,8 +1,8 @@
 import React from 'react'
-import type { ElementTypography } from '@creation-ui/react'
+import type { ElementTypography } from '../../types'
 import { useTheme } from '../../theme'
 import { useTypography } from './use-typography'
-import { TypographyProps } from './types'
+import type { TypographyProps } from './types'
 
 export const createTypographyComponent = (variant: ElementTypography) => {
   return React.forwardRef<HTMLElement, TypographyProps>((props, ref) => {

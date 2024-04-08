@@ -1,7 +1,7 @@
-const { withTailwindConfig } = require('./packages/react/src/utils/with-tw-config')
+const { withTailwindConfig } = require('./packages/react/src')
 
 /** @type {import('tailwindcss').Config} */
-const config = withTailwindConfig({
+const config = {
   content: [
     //
     './packages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,6 +16,6 @@ const config = withTailwindConfig({
     },
   },
   plugins: [require('@tailwindcss/typography')],
-})
+}
 
 module.exports = config

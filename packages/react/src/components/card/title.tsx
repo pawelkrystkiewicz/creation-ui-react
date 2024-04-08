@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { twix } from '@creation-ui/react'
+import { twix } from '../../utils'
 
 const classes = twix('leading-none tracking-tight text-sm font-medium')
 

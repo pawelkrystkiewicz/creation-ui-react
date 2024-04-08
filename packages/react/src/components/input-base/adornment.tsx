@@ -1,6 +1,7 @@
-import { type HTMLInputType, inputIcon } from '@creation-ui/react'
+import type { HTMLInputType } from '../../types'
 import type { FC } from 'react'
 import { Show } from '../show'
+import { inputIcon } from '../../classes'
 
 interface AdornmentProps {
   adornment?: React.ReactNode

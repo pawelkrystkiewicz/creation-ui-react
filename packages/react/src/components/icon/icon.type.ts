@@ -1,4 +1,4 @@
-import type { ClassName, ElementSize } from '@creation-ui/react'
+import type { ClassName, ElementSize } from '../../types'
 import type { SVGProps } from 'react'
 
 export const icons = [

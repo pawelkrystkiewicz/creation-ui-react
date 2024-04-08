@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { twix } from '@creation-ui/react'
+import { twix } from '../../utils'
 
 const classes = twix('flex items-center p-6 pt-0')
 

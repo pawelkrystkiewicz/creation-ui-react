@@ -1,4 +1,4 @@
-import type { ElementTheme } from '@creation-ui/react'
+import type { ElementTheme } from '../../types'
 import { FC, useEffect, useMemo } from 'react'
 import { animated, useSpring } from 'react-spring'
 import { useLocalStorage } from '../../hooks'

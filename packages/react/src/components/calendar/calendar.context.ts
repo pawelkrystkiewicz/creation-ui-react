@@ -1,5 +1,4 @@
 import { createContext, useContext } from 'react'
-import { ElementSize } from '@creation-ui/react'
 import {
   CalendarDateValue,
   CalendarMode,
@@ -7,6 +6,7 @@ import {
   DateRange,
   WeekDayIndex,
 } from './calendar.types'
+import { ElementSize } from '../../types'
 
 export interface CalendarContextValue {
   viewDate: Date

@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 import { memo } from 'react'
-import type { BreadcrumbLink } from '@creation-ui/react'
+import type { BreadcrumbLink } from '../../types'
 
 interface BreadcrumbItemProps {
   link: BreadcrumbLink

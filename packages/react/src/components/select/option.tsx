@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
-import { OptionProps } from '@creation-ui/react'
-import { selectOptionClasses } from '@creation-ui/react'
+import { OptionProps } from '../../types'
+import { selectOptionClasses } from '../../classes'
 
 export const Option = forwardRef<
   HTMLLIElement,
