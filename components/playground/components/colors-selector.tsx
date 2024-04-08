@@ -1,6 +1,6 @@
 import Icon from '@components/icon'
-import type { BaseComponentProps, ElementSize } from '@creation-ui/core'
-import { inputContainer, label as labelClasses,  text } from '@creation-ui/core'
+import type { BaseComponentProps, ElementSize } from '@creation-ui/react'
+import { inputContainer, label as labelClasses,  text } from '@creation-ui/react'
 import { useTheme } from '@creation-ui/react/theme'
 import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'

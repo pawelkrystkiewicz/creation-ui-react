@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { twix } from '@creation-ui/core'
+import { twix } from '@creation-ui/react'
 
 export const headerClasses = twix(
   // '!text-lg',

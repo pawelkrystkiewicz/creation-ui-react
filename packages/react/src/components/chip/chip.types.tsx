@@ -4,7 +4,7 @@ import type {
   ElementBaseVariant,
   ElementStatus,
   InputClassNamesAPI,
-} from '@creation-ui/core'
+} from '@creation-ui/react'
 
 export interface ChipProps
   extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {

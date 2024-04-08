@@ -1,4 +1,4 @@
-import type { ClassName, ElementSize } from '@creation-ui/core'
+import type { ClassName, ElementSize } from '@creation-ui/react'
 import type React from 'react'
 import { ReactNode } from 'react'
 

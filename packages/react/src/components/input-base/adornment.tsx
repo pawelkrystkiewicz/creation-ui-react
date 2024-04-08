@@ -1,4 +1,4 @@
-import { type HTMLInputType, inputIcon } from '@creation-ui/core'
+import { type HTMLInputType, inputIcon } from '@creation-ui/react'
 import type { FC } from 'react'
 import { Show } from '../show'
 

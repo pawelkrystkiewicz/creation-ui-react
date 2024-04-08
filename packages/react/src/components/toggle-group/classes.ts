@@ -1,4 +1,4 @@
-import { sharedDisabledCVA, sharedSizeClassesCVA } from '@creation-ui/core'
+import { sharedDisabledCVA, sharedSizeClassesCVA } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 
 export const toggleGroup = {

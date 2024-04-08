@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react'
 import { forwardRef } from 'react'
-import { ElementSize } from '@creation-ui/core'
+import { ElementSize } from '@creation-ui/react'
 import { popoverCloseClasses } from './classes'
 import { usePopoverContext } from './context'
 

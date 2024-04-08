@@ -2,7 +2,7 @@ import {
   sharedTextSizesBase,
   sharedTextSizesDescription,
   sharedTextSizesHeading,
-} from '@creation-ui/core'
+} from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 
 export const popoverCloseClasses = cva([], {

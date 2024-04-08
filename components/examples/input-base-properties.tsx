@@ -1,4 +1,4 @@
-import { ELEMENT_SIZES } from '@creation-ui/core'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import type { DocumentedProperty } from 'models/system'
 import { ListOrTypes } from 'utils/list-or-types'
 import { iconProp, variantProp } from './shared-props'

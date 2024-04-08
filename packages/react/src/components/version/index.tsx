@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import type { CommitInfo } from '@creation-ui/core'
+import type { CommitInfo } from '@creation-ui/react'
 
 interface VersionProps {
   classNameOverride?: string

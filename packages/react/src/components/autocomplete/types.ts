@@ -1,4 +1,4 @@
-import { DropdownMaxHeight, InputBaseProps } from '@creation-ui/core'
+import { DropdownMaxHeight, InputBaseProps } from '@creation-ui/react'
 import { ChipProps } from '../chip'
 
 export type AutocompleteOptionDefault =

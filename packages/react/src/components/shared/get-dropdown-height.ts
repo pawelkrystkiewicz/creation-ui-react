@@ -1,4 +1,4 @@
-import { DropdownMaxHeight } from '@creation-ui/core'
+import { DropdownMaxHeight } from '@creation-ui/react'
 
 const asPx = (value: number | string): string => `${value}px`
 

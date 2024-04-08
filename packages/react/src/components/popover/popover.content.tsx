@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import { ElementSize } from '@creation-ui/react'
 import {
   FloatingFocusManager,
   FloatingPortal,

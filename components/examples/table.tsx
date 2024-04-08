@@ -1,4 +1,4 @@
-import { type ElementVariant } from '@creation-ui/core'
+import { type ElementVariant } from '@creation-ui/react'
 import {
   Avatar,
   Button,

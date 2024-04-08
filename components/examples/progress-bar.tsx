@@ -1,5 +1,5 @@
 import { Container } from '@components/container'
-import { ELEMENT_SIZES } from '@creation-ui/core'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Button, ProgressBar } from '@creation-ui/react'
 import type { DocumentedProperty } from 'models/system'
 import { useEffect, useState } from 'react'

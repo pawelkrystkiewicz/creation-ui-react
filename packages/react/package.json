@@ -25,11 +25,9 @@
     "build:rollup": "pnpm build:version && pnpm tsc && pnpm build:rm && rollup -c",
     "build:rm": "rm -rf build",
     "ci:publish": "pnpm publish -r",
-    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true",
-    "core": "pnpm i @creation-ui/core@latest"
+    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true"
   },
   "dependencies": {
-    "@creation-ui/core": "^0.6.0",
     "@floating-ui/react": "^0.25.1",
     "@floating-ui/react-dom": "^2.0.1",
     "@headlessui/react": "^1.7.13",
@@ -59,7 +57,6 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@creation-ui/core": "latest",
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18",
     "react-input-mask": "^2",

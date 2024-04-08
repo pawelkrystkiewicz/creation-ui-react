@@ -1,4 +1,4 @@
-import { HTMLInputType } from '@creation-ui/core'
+import { HTMLInputType } from '@creation-ui/react'
 
 export const UNSTYLED_TYPES: HTMLInputType[] = [
   'file',

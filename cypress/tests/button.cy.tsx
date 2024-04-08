@@ -1,5 +1,5 @@
 'use strict'
-import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/core'
+import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/react'
 import { Button } from '@root/packages/react/src'
 import clsx from 'clsx'
 

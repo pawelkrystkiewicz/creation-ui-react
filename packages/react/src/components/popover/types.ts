@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/react'
-import { ElementSize } from '@creation-ui/core'
+import { ElementSize } from '@creation-ui/react'
 
 export interface PopoverOptions {
   initialOpen?: boolean

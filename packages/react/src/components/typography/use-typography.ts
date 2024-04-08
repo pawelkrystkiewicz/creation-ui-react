@@ -3,7 +3,7 @@ import {
   ElementTypography,
   ThemeTypography,
   TypographyConfig,
-} from '@creation-ui/core'
+} from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 import merge from 'lodash.merge'
 import values from 'lodash.values'

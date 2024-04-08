@@ -5,7 +5,7 @@ import {
   inputIcon,
   label,
   text,
-} from '@creation-ui/core'
+} from '@creation-ui/react'
 import clsx from 'clsx'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'

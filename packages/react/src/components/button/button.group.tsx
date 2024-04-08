@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge'
-import { getElementPosition } from '@creation-ui/core'
+import { getElementPosition } from '@creation-ui/react'
 import { toggleGroup } from '../toggle-group/classes'
 import type { ButtonGroupProps } from './button.types'
 

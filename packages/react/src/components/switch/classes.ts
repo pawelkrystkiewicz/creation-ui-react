@@ -1,4 +1,4 @@
-import { sharedReadOnlyCVA } from '@creation-ui/core'
+import { sharedReadOnlyCVA } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 
 export const switchClasses = cva(

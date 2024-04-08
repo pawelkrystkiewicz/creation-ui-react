@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import { ElementSize } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'

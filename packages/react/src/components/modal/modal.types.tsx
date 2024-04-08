@@ -1,4 +1,4 @@
-import type { ClassName } from '@creation-ui/core'
+import type { ClassName } from '@creation-ui/react'
 import type React from 'react'
 
 export type ModalProps = {

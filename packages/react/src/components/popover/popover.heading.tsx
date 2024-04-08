@@ -1,7 +1,7 @@
 import { useId } from '@floating-ui/react'
 import type { HTMLProps } from 'react'
 import { forwardRef, useLayoutEffect } from 'react'
-import { ElementSize } from '@creation-ui/core'
+import { ElementSize } from '@creation-ui/react'
 import { popoverHeadingClasses } from './classes'
 import { usePopoverContext } from './context'
 interface PopoverHeadingProps

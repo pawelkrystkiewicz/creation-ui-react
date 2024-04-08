@@ -1,4 +1,4 @@
-import { getFlatOptions, selectOptionClasses } from '@creation-ui/core'
+import { getFlatOptions, selectOptionClasses } from '@creation-ui/react'
 import {
   autoUpdate,
   flip,

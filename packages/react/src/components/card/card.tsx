@@ -1,6 +1,6 @@
 import { forwardRef, type HTMLAttributes } from 'react'
 
-import { twix } from '@creation-ui/core'
+import { twix } from '@creation-ui/react'
 
 const cardClasses = twix(
   'border',

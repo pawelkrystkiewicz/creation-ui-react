@@ -1,8 +1,8 @@
 import { cva } from 'class-variance-authority'
 import { useTheme } from '../../theme'
 import type { CalloutProps } from './types'
-import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/core'
-import { validateEnumProp } from '@creation-ui/core'
+import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/react'
+import { validateEnumProp } from '@creation-ui/react'
 import clsx from 'clsx'
 import { ClearButton } from '../clear-button'
 

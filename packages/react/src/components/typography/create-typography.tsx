@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ElementTypography } from '@creation-ui/core'
+import type { ElementTypography } from '@creation-ui/react'
 import { useTheme } from '../../theme'
 import { useTypography } from './use-typography'
 import { TypographyProps } from './types'

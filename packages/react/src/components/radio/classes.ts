@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
-import { classes } from '@creation-ui/core'
+import { classes } from '@creation-ui/react'
 
 export const radio = cva(
   [twMerge([classes.input, classes.checkable, 'rounded-full'])],

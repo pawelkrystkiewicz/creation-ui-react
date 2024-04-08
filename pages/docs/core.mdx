@@ -3,7 +3,7 @@ import { SCRIPTS_TABS } from '@root/constants'
 
 # Core
 
-> @creation-ui/core
+> @creation-ui/react
 
 This packages contains sharable theme config, styles and utilities.
 It can also be used as standalone for your vanilla JS projects or other not yet supported frameworks.
@@ -30,18 +30,18 @@ To install Creation UI, run command below:
   <Tab>
 
     ```bash copy
-     yarn add @creation-ui/core
+     yarn add @creation-ui/react
      ```
 
   </Tab>
   <Tab>
     ```bash copy
-     npm i add @creation-ui/core
+     npm i add @creation-ui/react
      ```
      </Tab>
   <Tab>
     ```bash copy
-     pnpm i add @creation-ui/core
+     pnpm i add @creation-ui/react
      ```
      </Tab>
 </Tabs>
@@ -51,7 +51,7 @@ To install Creation UI, run command below:
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
 
 ```js copy
-const { withTailwindConfig } = require('@creation-ui/core')
+const { withTailwindConfig } = require('@creation-ui/react')
 
 /** @type {import('tailwindcss').Config} */
 const config = withTailwindConfig({
@@ -75,14 +75,14 @@ You can extend all properties [as usual](https://tailwindcss.com/docs/configurat
    If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import '@creation-ui/core/index.css'
+import '@creation-ui/react/index.css'
 ```
 
 3. Start using it!
    Here an example of using included colors like `primary`, `success` and `info`:
 
 ```jsx copy
-import { twix } from '@creation-ui/core'
+import { twix } from '@creation-ui/react'
 
 const buttonClasses = twix(
   'bg-primary',

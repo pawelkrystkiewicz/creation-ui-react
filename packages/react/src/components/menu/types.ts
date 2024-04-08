@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import { ElementSize } from '@creation-ui/react'
 import type { HTMLAttributes, ReactNode } from 'react'
 
 export interface MenuProps extends HTMLAttributes<HTMLButtonElement> {
