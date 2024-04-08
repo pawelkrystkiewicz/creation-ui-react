@@ -14,7 +14,7 @@ Creation UI is working with your app's Tailwind CSS and you need to have Tailwin
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18",
-    "tailwindcss": "^3.0"
+    "tailwindcss": "^3.4"
   },
 ```
 

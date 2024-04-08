@@ -1,13 +1,13 @@
 const { withTailwindConfig } = require('./packages/react/src')
 
 /** @type {import('tailwindcss').Config} */
-const config = {
+const config = withTailwindConfig({
   content: [
     //
     './packages/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    '!node_modules',
+    // '!node_modules',
     './**/*.css',
   ],
   extend: {
@@ -16,6 +16,6 @@ const config = {
     },
   },
   plugins: [require('@tailwindcss/typography')],
-}
+})
 
 module.exports = config

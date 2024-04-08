@@ -52,7 +52,7 @@
     "react-spring": "^9.7.1",
     "resize-observer-polyfill": "^1.5.1",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "tailwindcss-debug-screens": "^2.2.1",
     "uuid": "^9.0.0"
   },
@@ -60,7 +60,7 @@
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18",
     "react-input-mask": "^2",
-    "tailwindcss": "^3.0"
+    "tailwindcss": "^3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -88,7 +88,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.21",
-    "prettier": "^2.8.6",
+    "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "rollup": "^3.20.0",
     "rollup-plugin-copy": "^3.4.0",
