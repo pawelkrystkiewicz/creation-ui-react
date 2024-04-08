@@ -50,7 +50,7 @@
     "pages/_app.msx",
     "scripts/generate-docs.js",
     "@creation-ui/react",
-    "@creation-ui/core"
+    "./packages/react/src/*"
   ],
   "exclude": ["node_modules", "**/build"]
 }

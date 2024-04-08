@@ -1,1 +1,7 @@
+export { default as defaultTheme } from './default-theme'
+export * from './base/breakpoints'
+export * from './base/colors'
+export * from './base/shadows'
+export * from './base/typography'
 export * from './theme'
+export * from './types'

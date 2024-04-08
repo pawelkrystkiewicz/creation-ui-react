@@ -1,4 +1,3 @@
-import { microInteractions } from '@creation-ui/core'
 import { cva } from 'class-variance-authority'
 import { twix } from '@creation-ui/core'
 
@@ -13,7 +12,7 @@ export const headerClasses = twix(
 export const calendarClasses = {
   container: cva(
     [
-      microInteractions,
+      'micro-interactions',
       'bg-white',
       'dark:bg-primary',
       'dark:border-primary',
@@ -40,7 +39,7 @@ export const calendarDaysViewClasses = {
   day: cva(
     [
       //
-      microInteractions,
+      'micro-interactions',
       'cursor-pointer',
       'select-none',
       'justify-self-center',

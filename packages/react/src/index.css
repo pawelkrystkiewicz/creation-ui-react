@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+* {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply outline-2 outline-offset-2 focus-visible:outline-primary;
+}
+
+.micro-interactions {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.reset-input,
+.reset-input:focus-visible {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.form-color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.form-color::-webkit-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+
+.form-color::-moz-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+
+.reset-select select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.remove-ring[tabindex]:not([tabindex='-1']):focus-visible {
+  box-shadow: none !important;
+}
+
+.contrasting-text {
+  color: transparent;
+  filter: invert(100%) contrast(999) grayscale(100%);
+  -webkit-filter: invert(100%) contrast(999) grayscale(100%);
+}
+
+:root {
+  /* text */
+  --text-primary: 0 0% 1%;
+  --text-secondary: 0 0% 26%;
+  /* background */
+  --background-primary: 0 0% 98%;
+  --background-secondary: 0 0% 97%;
+  --background-input: 0 0% 95%;
+  /* main colors */
+  --primary: 211 100% 50%;
+  --warning: 38 92% 50%;
+  --error: 0 84% 60%;
+  --success: 160 84% 39%;
+  --info: 0 0% 55%;
+  /* other */
+  --border: 214 15% 91%;
+  --radius: 0.5rem;
+}
+.dark {
+  /* text */
+  --text-primary: 0 0% 97%;
+  --text-secondary: 0 0% 80%;
+  /* background */
+  --background-primary: 0 0% 1%;
+  --background-secondary: 0 0% 7%;
+  --background-input: 0 0% 25%;
+  /* main colors */
+  --primary: 211 100% 58%;
+  --warning: 43 96% 56%;
+  --error: 0 76% 57%;
+  --success: 160 84% 39%;
+  --info: 0 0% 55%;
+  /* other */
+  --border: 192 0% 26%;
+  --radius: 0.5rem;
+}

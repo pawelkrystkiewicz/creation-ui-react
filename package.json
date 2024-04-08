@@ -30,7 +30,6 @@
     "override-version": "sh ./override-version.sh",
     "generate:docs": "node ./scripts/generate-docs.js",
     "prettify": "prettier --write .",
-    "core": "pnpm -r add @creation-ui/core@latest",
     "update:tailwind": "pnpm -r add @headlessui/tailwindcss@latest @tailwindcss/aspect-ratio@latest @tailwindcss/typography@latest tailwind-merge@latest tailwindcss-debug-screens@latest prettier-plugin-tailwindcss@latest tailwindcss@latest",
     "init:component": "cd packages/react && ./init-component.sh",
     "knip": "knip"

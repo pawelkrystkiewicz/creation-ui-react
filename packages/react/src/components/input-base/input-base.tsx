@@ -1,7 +1,6 @@
 import {
   InputBaseProps,
   errorClasses,
-  inputClassesCVA,
   inputContainer,
   inputIcon,
   label,
@@ -21,6 +20,7 @@ import { Adornment } from './adornment'
 import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
+import { inputClassesCVA } from './classes'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
@@ -69,7 +69,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
       error: hasError,
       interactionsDisabled,
       // @ts-ignore
-      className: [cx?.input, 'bg-background-secondary'],
+      className: [cx?.input],
       // @ts-expect-error
       type,
     })

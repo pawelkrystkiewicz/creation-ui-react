@@ -1,6 +1,5 @@
 import { Playground } from '@components/playground'
 import { Content, Description, H1, H2, H3, H4, H5, H6 } from '@creation-ui/react'
-import { microInteractions } from '@creation-ui/core'
 import { DocumentedProperty } from 'models/system'
 import { sizeControl } from './shared-playground-controls'
 import { childrenProp, sizeProp } from './shared-props'
@@ -8,7 +7,7 @@ import { childrenProp, sizeProp } from './shared-props'
 export const TypographyExample = ({ ...props }) => {
   const state = {
     ...props,
-    className: microInteractions,
+    className: 'micro-interactions',
   }
 
   return (

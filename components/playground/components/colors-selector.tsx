@@ -1,6 +1,6 @@
 import Icon from '@components/icon'
 import type { BaseComponentProps, ElementSize } from '@creation-ui/core'
-import { inputContainer, label as labelClasses, microInteractions, text } from '@creation-ui/core'
+import { inputContainer, label as labelClasses,  text } from '@creation-ui/core'
 import { useTheme } from '@creation-ui/react/theme'
 import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'
@@ -44,7 +44,7 @@ export const ColorsSelector = ({ options, onClick, label, value, ...props }: Col
   const { size = defaultSize, required, readOnly, error } = props
 
   const disabled = props.disabled || readOnly
-  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), text({ size }), microInteractions)
+  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), text({ size }), 'micro-interactions')
 
   return (
     <div className={containerClasses}>

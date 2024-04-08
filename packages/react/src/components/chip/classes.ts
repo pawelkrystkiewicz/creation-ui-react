@@ -1,5 +1,4 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions } from '@creation-ui/core'
 
 export const chipClasses = cva(
   [
@@ -17,7 +16,7 @@ export const chipClasses = cva(
     '!bg-opacity-10',
     '!hover:bg-opacity-15',
     '!focus:bg-opacity-5',
-    microInteractions,
+    'micro-interactions',
   ],
   {
     variants: {
