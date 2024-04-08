@@ -5,11 +5,7 @@ import { twMerge } from 'tailwind-merge'
 import type { IconProps } from '../icon'
 import { Icon } from '../icon'
 
-const classes = cva([
-  'hover:fill-error',
-  'cursor-pointer',
-  'select-none',
-])
+const classes = cva(['hover:fill-error', 'cursor-pointer', 'select-none'])
 
 export interface ClearButtonProps extends Omit<IconProps, 'icon' | 'size'> {
   size?: ElementSize

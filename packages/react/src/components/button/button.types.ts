@@ -1,9 +1,5 @@
 import type React from 'react'
-import type {
-  ElementSize,
-  ElementStatus,
-  ElementVariant,
-} from '../../types'
+import type { ElementSize, ElementStatus, ElementVariant } from '../../types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**

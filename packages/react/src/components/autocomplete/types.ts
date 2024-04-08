@@ -1,4 +1,4 @@
-import { DropdownMaxHeight, InputBaseProps } from '../../types';
+import { DropdownMaxHeight, InputBaseProps } from '../../types'
 import { ChipProps } from '../chip'
 
 export type AutocompleteOptionDefault =

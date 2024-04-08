@@ -27,11 +27,7 @@ export const button = cva(
         lg: [...sharedSizeClassesCVA.lg, 'px-6'],
       },
       variant: {
-        contained: [
-          'hover:bg-opacity-75',
-          'bg-opacity-100',
-          '!text-white',
-        ],
+        contained: ['hover:bg-opacity-75', 'bg-opacity-100', '!text-white'],
         outlined: ['hover:bg-opacity-10', 'bg-opacity-0', 'border'],
         text: ['hover:text-text-primary', 'bg-opacity-0', 'border-transparent'],
       },

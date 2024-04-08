@@ -25,7 +25,8 @@
     "build:rollup": "pnpm build:version && pnpm tsc && pnpm build:rm && rollup -c",
     "build:rm": "rm -rf build",
     "ci:publish": "pnpm publish -r",
-    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true"
+    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true",
+    "nuke": "rm -rf node_modules pnpm-lock.yaml .next && pnpm install"
   },
   "dependencies": {
     "@floating-ui/react": "^0.25.1",
