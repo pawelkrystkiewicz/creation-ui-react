@@ -5,7 +5,7 @@ import type { ButtonProps } from './button.types'
 import { button } from './classes'
 import { text } from '../../classes'
 import { InteractiveContainer } from '../interactive-container'
-import { LoadingOverlay } from '../loading-overlay'
+import { LoadingOverlay } from '../loading-overlay/LoadingOverlay'
 import { Loader } from '../loader'
 import { twMerge } from 'tailwind-merge'
 

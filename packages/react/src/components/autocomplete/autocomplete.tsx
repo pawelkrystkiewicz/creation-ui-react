@@ -11,25 +11,25 @@ import {
 } from '@floating-ui/react'
 import Keyboard from 'keyboard-key'
 import React, { useEffect, useRef, useState } from 'react'
-import { Chip } from '../../chip'
-import { Theme, useTheme } from '../../../theme'
-import { DropdownChevron } from '../../dropdown-chevron'
-import { InputBase } from '../../input-base'
-import { dropdownInitialProps } from '../../select/constants'
-import { getDropdownHeight } from '../../shared'
-import { AUTOCOMPLETE_MARGIN } from '../constants'
-import { AutocompleteContext } from '../context'
+import { selectOptionClasses } from '../../classes'
+import { Theme, useTheme } from '../../theme'
+import { getFlatOptions } from '../../utils'
+import { Chip } from '../chip'
+import { DropdownChevron } from '../dropdown-chevron'
+import { InputBase } from '../input-base'
+import { dropdownInitialProps } from '../select/constants'
+import { getDropdownHeight } from '../shared'
+import { AUTOCOMPLETE_MARGIN } from './constants'
+import { AutocompleteContext } from './context'
 import {
   AutocompleteInnerInputProps,
   AutocompleteOptionProps,
   AutocompleteProps,
   GetItemPropsReturnType,
-} from '../types'
-import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
-import { createFilterOptions } from '../utils/utils'
-import { AutocompleteView } from '../view/autocomplete.view'
-import { getFlatOptions } from '../../../utils'
-import { selectOptionClasses } from '../../../classes'
+} from './types'
+import { _isOptionEqualToValue } from './utils/is-equal-to-value'
+import { createFilterOptions } from './utils/utils'
+import { AutocompleteView } from './view/autocomplete.view'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()

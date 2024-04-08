@@ -1,6 +1,12 @@
 import { Loader } from '../loader'
 import { Overlay } from '../overlay'
-import type { LoadingOverlayProps } from './loading-overlay.types'
+import { ElementSize } from '../../types'
+import type { LoaderProps } from '../loader/loader.types'
+import type { OverlayProps } from '../overlay/overlay.types'
+
+export interface LoadingOverlayProps extends LoaderProps, OverlayProps {
+  size?: ElementSize
+}
 
 export const LoadingOverlay = ({
   className,
