@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { type FC, type ReactNode } from 'react'
 
 interface ContainerProps {
-  children?: React.ReactNode
+  children?: ReactNode
   className?: string
   variant?: ContainerVariants
 }
@@ -16,7 +16,7 @@ const classes: Record<ContainerVariants | 'base' | 'centered', string[]> = {
   centered: ['justify-center', 'place-items-center', 'gap-5'],
 }
 
-export const Container = ({ children, className, variant = 'row', ...props }: ContainerProps) => (
+export const Container: FC<ContainerProps> = ({ children, className, variant = 'row', ...props }) => (
   <div className={clsx(classes.base, classes[variant], className)} {...props}>
     {children}
   </div>

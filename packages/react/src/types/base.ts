@@ -1,4 +1,6 @@
-export type JSXNode = any
+import { ReactNode } from 'react'
+
+export type JSXNode = ReactNode
 
 export type FunctionalComponent<P = {}> = (props: P) => JSXNode
 export type ForwardedComponent<P = {}> = {

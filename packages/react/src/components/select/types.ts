@@ -131,7 +131,7 @@ export interface SelectProps<T = SelectOptionDefault>
    * Callback function that is called when the value changes.
    * @param { T | null } value - The new value(s). Returns an array of selected values. If !multiple, will return an array with one value.
    */
-  onChange?: (value: T | null) => void
+  onChange?: (value: T | null | undefined) => void
 
   /**
    * onClear callback

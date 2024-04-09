@@ -6,7 +6,7 @@ import { AVATAR_CONTAINER_PROPS, AVATAR_SIZE_MAP } from './constants'
 import { pick } from '../utils'
 import { useTheme } from '../../theme'
 
-const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const theme = useTheme()
   const {
     variant = 'circle',
@@ -48,8 +48,5 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   )
 })
 
-Avatar.defaultProps = {
-  size: 'md',
-}
 
-export default Avatar
+

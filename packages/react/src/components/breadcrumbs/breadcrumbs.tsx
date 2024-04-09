@@ -2,7 +2,7 @@ import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
 import { BreadcrumbLink, ElementSize } from '../../types'
 import { BreadcrumbItem } from './breadcrumb-item'
-import { separators } from './seperators'
+import { Separator, separators, separatorsMap } from './seperators'
 import { Icon } from '../icon'
 import { cva } from 'class-variance-authority'
 
@@ -14,7 +14,7 @@ export interface BreadcrumbsProps extends React.HTMLProps<HTMLElement> {
   /**
    * You can provide a custom separator
    */
-  separator?: ReactNode | 'chevron' | 'slash' | 'dot'
+  separator?: ReactNode | Separator
   /**
    * first will be treated as home path
    */
@@ -47,8 +47,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
     })
   }, [links])
 
-  const separatingIcon =
-    typeof separator === 'string' ? separators[separator] : separator
+  const separatingIcon = separators.includes(separator as any)
+    ? separatorsMap[separator as Separator]
+    : separator
 
   return (
     <nav className='flex' {...props}>

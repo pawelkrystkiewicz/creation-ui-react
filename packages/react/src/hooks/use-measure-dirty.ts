@@ -1,6 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
-import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.global'
-// import ResizeObserver from 'resize-observer-polyfill';
+import ResizeObserver from 'resize-observer-polyfill'
 
 export interface ContentRect {
   width: number

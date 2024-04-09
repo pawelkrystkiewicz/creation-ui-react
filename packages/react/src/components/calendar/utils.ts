@@ -1,6 +1,14 @@
-import { CalendarDateValue, CalendarView, DateRange } from './calendar.types'
+import {
+  CalendarDateValue,
+  CalendarView,
+  DateRange,
+  WeekDayIndex,
+} from './calendar.types'
 
-export const getFirstDayOfWeek = (date, weekStartsOn) => {
+export const getFirstDayOfWeek = (
+  date: Date,
+  weekStartsOn: WeekDayIndex
+) => {
   const day = new Date(date).getDay()
   const daysToShift = (7 + day - weekStartsOn + 1) % 7
   return new Date(

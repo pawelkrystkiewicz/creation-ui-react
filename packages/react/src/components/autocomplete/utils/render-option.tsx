@@ -1,3 +1,4 @@
+import { Show, ShowFirstMatching } from '../../show'
 import { useAutocomplete } from '../context'
 import { AutocompleteOptionDefault, AutocompleteProps } from '../types'
 import Highlighter from 'react-highlight-words'
@@ -20,15 +21,16 @@ export const _renderOption: AutocompleteProps['renderOption'] = (
 
   return (
     <li {...props}>
-      {autoHighlight ? (
-        <Highlighter
-          searchWords={[props.query]}
-          autoEscape={true}
-          textToHighlight={label}
-        />
-      ) : (
-        label
-      )}
+      <ShowFirstMatching>
+        <Show when={autoHighlight}>
+          <Highlighter
+            searchWords={[props.query]}
+            autoEscape={true}
+            textToHighlight={label}
+          />
+        </Show>
+        <Show when={autoHighlight}>{label}</Show>
+      </ShowFirstMatching>
     </li>
   )
 }

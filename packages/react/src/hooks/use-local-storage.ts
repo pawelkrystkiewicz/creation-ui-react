@@ -27,7 +27,7 @@ const useLocalStorage = <T>(
   }
 
   const deserializer = options?.raw
-    ? value => value
+    ? (value: string | null) => value
     : options?.deserializer || JSON.parse
 
   // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -1,11 +1,11 @@
-import { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
+import InputMask from 'react-input-mask'
 import { useTheme } from '../../theme'
 import { Input } from '../input'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover'
 import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
 import { formatTime, sanitizeTime } from './utils'
-import InputMask from 'react-input-mask'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -31,16 +31,16 @@ export const TimePicker: FC<TimePickerProps> = props => {
 
   const inputValue = useMemo(
     () => (_value ? formatTime(_value) : '__:__'),
-    [_value, value]
+    [_value, value],
   )
   console.table({ inputValue, value, _value })
 
   const handleClick = () => setOpen(true)
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const [h, m] = event.target.value.split(':')
+    const [h = '0', m = '0'] = event.target.value.split(':')
 
-    const hours = sanitizeTime(h)
-    const minutes = sanitizeTime(m)
+    const hours = h ? sanitizeTime(h) : 0
+    const minutes = m ? sanitizeTime(m) : 0
     if (isNaN(hours) || isNaN(minutes)) return
 
     setValue({ hours, minutes })
@@ -55,13 +55,13 @@ export const TimePicker: FC<TimePickerProps> = props => {
 
     if (!cursorPosition) return
 
-    const [h, m] = event.currentTarget.value.split(':')
+    const [h = '0', m = '0'] = event.currentTarget.value.split(':')
 
     let hours = sanitizeTime(h)
     let minutes = sanitizeTime(m)
     console.log(
       event.currentTarget.selectionStart,
-      event.currentTarget.selectionEnd
+      event.currentTarget.selectionEnd,
     )
     if (isNaN(hours)) {
       hours = 0

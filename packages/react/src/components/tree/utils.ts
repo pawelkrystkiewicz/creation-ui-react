@@ -11,7 +11,8 @@ export const buildTree = (entries: RawElement[]): TreeType => {
     if (entry.parentId) {
       const parentBranch = entryMap[entry.parentId]
       if (parentBranch) {
-        parentBranch?.children?.push(entryMap[entry.id])
+        const e = entryMap[entry.id]
+        e && parentBranch?.children?.push(e)
       }
     }
   })

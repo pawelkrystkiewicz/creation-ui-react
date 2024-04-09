@@ -1,6 +1,5 @@
 export * from './capitalize'
 export * from './css-to-arrays'
-export * from './find-match'
 export * from './format-option-value'
 export { default as forms } from './forms'
 export * from './functions'

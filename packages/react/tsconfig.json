@@ -1,29 +1,34 @@
 {
   "compilerOptions": {
-    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2021",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "incremental": false,
     "isolatedModules": true,
     "allowJs": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "ES2015",
     "target": "es5",
-    "strict": false,
+    "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "noUncheckedIndexedAccess": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "build",
     "declarationMap": true,
-    "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["src"],
+  "include": [
+    "./src"
+  ],
   "exclude": [
-    "node_modules",
     "build",
+    "**/build",
     "**/tests",
     "**/*.cy.tsx",
     "**/*.spec.tsx",

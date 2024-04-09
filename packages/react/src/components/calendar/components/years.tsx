@@ -13,7 +13,7 @@ export const CalendarYearsView = () => {
   const startYear = Math.floor(currentDate.getFullYear() / 10) * 10 - 1
   const years = Array.from({ length: 12 }, (_, i) => startYear + i)
 
-  const handleYearClick = year => {
+  const handleYearClick = (year: number) => {
     setCurrentDate(new Date(year, currentDate.getMonth()))
     setView('months')
   }

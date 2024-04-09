@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react'
 import type { ClassName, ElementPosition } from '../../types'
 
 export interface TooltipProps {
   className?: ClassName
-  children?: React.ReactNode
-  content?: React.ReactNode
+  children?: ReactNode
+  content?: ReactNode
   position?: ElementPosition
 }

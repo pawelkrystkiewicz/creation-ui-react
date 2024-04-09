@@ -31,7 +31,7 @@ import { _isOptionEqualToValue } from './utils/is-equal-to-value'
 import { createFilterOptions } from './utils/utils'
 import { AutocompleteView } from './view/autocomplete.view'
 
-export function Autocomplete<T>(props: AutocompleteProps<T>) {
+function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()
   const {
     id,
@@ -88,7 +88,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     return optionLabel
   }
 
-  const _renderTags = (selected: T[], handleRemoveSelected) => {
+  const _renderTags = (
+    selected: T[],
+    handleRemoveSelected: (option: T) => void
+  ) => {
     return selected?.map(option => {
       const label = getOptionLabel(option)
       const onDelete = () => handleRemoveSelected(option)
@@ -208,7 +211,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const toggleOpen = () => setOpen(!open)
 
-  const handleSelect = option => {
+  const handleSelect = (option: T) => {
     if (multiple) {
       clearSearch()
       const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
@@ -221,7 +224,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     }
   }
 
-  const handleRemoveSelected = option => {
+  const handleRemoveSelected = (option: T) => {
     if (multiple) {
       // @ts-expect-error
       const newValue = value?.filter((o: any) => o.id !== option.id)
@@ -268,7 +271,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       switch (event.key) {
         case 'Enter':
           if (activeIndex != null && filteredOptions[activeIndex]) {
-            handleSelect(filteredOptions[activeIndex])
+            // beware the [!]
+            handleSelect(filteredOptions[activeIndex]!)
           } else {
             createCallback()
           }
@@ -438,3 +442,5 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 }
 
 Autocomplete.defaultProps = dropdownInitialProps
+
+export default Autocomplete

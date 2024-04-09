@@ -15,7 +15,7 @@ const [baseFontSize, { lineHeight: baseLineHeight }] =
   defaultTheme.fontSize.base
 const { spacing, borderWidth, borderRadius } = defaultTheme
 
-function resolveColor(color, opacityVariableName) {
+function resolveColor(color: string, opacityVariableName: string) {
   return color.replace('<alpha-value>', `var(${opacityVariableName}, 1)`)
 }
 

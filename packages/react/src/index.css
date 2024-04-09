@@ -84,6 +84,7 @@ body {
   --border: 214 15% 91%;
   --radius: 0.5rem;
 }
+
 .dark {
   /* text */
   --text-primary: 0 0% 97%;
