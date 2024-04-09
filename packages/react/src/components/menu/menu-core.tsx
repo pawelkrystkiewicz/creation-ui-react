@@ -33,7 +33,7 @@ import { CONSISTENT_ITEM_MARGIN } from './constants'
 export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
   (
     { children, label, renderInput, level = 0, cx, size, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const [isOpen, setIsOpen] = React.useState(false)
     const [hasFocusInside, setHasFocusInside] = React.useState(false)
@@ -51,7 +51,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
     const isNested = parentId != null
     const Chevron = useMemo(
       () => (!isNested ? DropdownChevron : TreeChevron),
-      [isNested]
+      [isNested],
     )
 
     const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
@@ -133,7 +133,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                     setHasFocusInside(false),
                     parent.setHasFocusInside(true)
                 },
-              })
+              }),
             )}
           >
             <ShowFirstMatching>
@@ -206,5 +206,5 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
         </div>
       </FloatingNode>
     )
-  }
+  },
 )

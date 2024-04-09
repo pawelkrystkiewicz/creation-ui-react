@@ -108,7 +108,7 @@ const Calendar: FC<CalendarProps> = props => {
       mode,
       numberOfMonths,
     }),
-    [size, viewDate, selectedDates, weekStartsOn]
+    [size, viewDate, selectedDates, weekStartsOn],
   )
 
   const hasSecondView = useMemo(() => numberOfMonths === 2, [numberOfMonths])

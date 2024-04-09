@@ -31,7 +31,7 @@ import { _isOptionEqualToValue } from './utils/is-equal-to-value'
 import { createFilterOptions } from './utils/utils'
 import { AutocompleteView } from './view/autocomplete.view'
 
-function Autocomplete<T>(props: AutocompleteProps<T>) {
+export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const { size: defaultSize } = useTheme()
   const {
     id,
@@ -77,8 +77,8 @@ function Autocomplete<T>(props: AutocompleteProps<T>) {
 
         console.error(
           `CUI: The \`getOptionLabel\` method of [Autocomplete:${id}] returned ${erroneousReturn} instead of a string for ${JSON.stringify(
-            option
-          )}.`
+            option,
+          )}.`,
         )
       }
 
@@ -90,7 +90,7 @@ function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const _renderTags = (
     selected: T[],
-    handleRemoveSelected: (option: T) => void
+    handleRemoveSelected: (option: T) => void,
   ) => {
     return selected?.map(option => {
       const label = getOptionLabel(option)
@@ -171,7 +171,7 @@ function Autocomplete<T>(props: AutocompleteProps<T>) {
   })
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [role, dismiss, listNav]
+    [role, dismiss, listNav],
   )
 
   function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -196,7 +196,7 @@ function Autocomplete<T>(props: AutocompleteProps<T>) {
     ? options.filter(option => {
         if (
           ((multiple ? value : [value]) as T[]).some(v =>
-            isOptionEqualToValue(option, v)
+            isOptionEqualToValue(option, v),
           )
         ) {
           return false
@@ -289,7 +289,7 @@ function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const getOptionProps = (
     option: T,
-    index: number
+    index: number,
   ): AutocompleteOptionProps => {
     const active = activeIndex === index
     const selected = isOptionEqualToValue(option, value)
@@ -442,5 +442,3 @@ function Autocomplete<T>(props: AutocompleteProps<T>) {
 }
 
 Autocomplete.defaultProps = dropdownInitialProps
-
-export default Autocomplete

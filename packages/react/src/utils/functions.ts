@@ -9,7 +9,7 @@ export function on<T extends Window | Document | HTMLElement | EventTarget>(
 ): void {
   if (obj && obj.addEventListener) {
     obj.addEventListener(
-      ...(args as Parameters<HTMLElement['addEventListener']>)
+      ...(args as Parameters<HTMLElement['addEventListener']>),
     )
   }
 }
@@ -22,7 +22,7 @@ export function off<T extends Window | Document | HTMLElement | EventTarget>(
 ): void {
   if (obj && obj.removeEventListener) {
     obj.removeEventListener(
-      ...(args as Parameters<HTMLElement['removeEventListener']>)
+      ...(args as Parameters<HTMLElement['removeEventListener']>),
     )
   }
 }

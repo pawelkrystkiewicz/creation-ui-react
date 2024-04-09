@@ -31,7 +31,7 @@ export const dropdownMenuClasses = cva(
         bottom: ['!mt-0'],
       },
     },
-  }
+  },
 )
 
 export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
@@ -45,5 +45,5 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
         {children}
       </ul>
     )
-  }
+  },
 )

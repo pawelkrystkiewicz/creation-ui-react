@@ -32,12 +32,12 @@ export const Tree: FC<TreeProps> = ({
 
   const hasClearButton = useMemo(
     () => !!onClear && !!value && !disabled && !readOnly && !loading,
-    [onClear, value, disabled, readOnly, loading]
+    [onClear, value, disabled, readOnly, loading],
   )
 
   const hasDropdown = useMemo(
     () => !disabled && !readOnly,
-    [disabled, readOnly]
+    [disabled, readOnly],
   )
 
   return (
@@ -57,7 +57,7 @@ export const Tree: FC<TreeProps> = ({
                   className={twMerge(
                     'text-info',
                     'flex-shrink',
-                    cx?.placeholder
+                    cx?.placeholder,
                   )}
                 >
                   {placeholder}

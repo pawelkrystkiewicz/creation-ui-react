@@ -1,10 +1,10 @@
 import { forwardRef, useMemo } from 'react'
+import { useTheme } from '../../theme'
 import { Show, ShowFirstMatching } from '../show'
+import { pick } from '../utils'
 import type AvatarProps from './avatar.types'
 import { avatar } from './classes'
 import { AVATAR_CONTAINER_PROPS, AVATAR_SIZE_MAP } from './constants'
-import { pick } from '../utils'
-import { useTheme } from '../../theme'
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const theme = useTheme()
@@ -47,6 +47,3 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     </div>
   )
 })
-
-
-

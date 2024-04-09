@@ -29,7 +29,7 @@ export const formClassesMap = {
 }
 
 export const getAllValuesFromObject = (
-  obj: Record<string, string[] | string>
+  obj: Record<string, string[] | string>,
 ) => clsx(values(obj))
 
 export const sharedDisabledCVA = {
@@ -84,7 +84,7 @@ export const loaderClasses = cva(
     defaultVariants: {
       loading: false,
     },
-  }
+  },
 )
 
 export const invalid = {
@@ -208,7 +208,7 @@ export const inputIcon = cva(
         className: ['right-5'],
       },
     ],
-  }
+  },
 )
 
 export const optionListClasses = cva(
@@ -233,7 +233,7 @@ export const optionListClasses = cva(
         bottom: ['mt-1'],
       },
     },
-  }
+  },
 )
 
 export const selectedOptionClasses = cva(
@@ -252,7 +252,7 @@ export const selectedOptionClasses = cva(
   ],
   {
     variants: {},
-  }
+  },
 )
 
 export const selectOptionClasses = cva(
@@ -301,7 +301,7 @@ export const selectOptionClasses = cva(
         className: ['!bg-primary-100', '!dark:bg-primary-100/60'],
       },
     ],
-  }
+  },
 )
 
 export const selectOptionIconClasses = cva(['font-extrabold', 'text-xl'], {

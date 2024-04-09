@@ -22,7 +22,7 @@ export const DarkModeToggle: FC<DarkModeToggleProps> = ({
   const [lsTheme, setLSTheme, _clearLS] = useLocalStorage<ElementTheme>(
     localStorageKey,
     defaultTheme,
-    { raw: true }
+    { raw: true },
   )
   const properties = useMemo(() => {
     if (animationProperties !== darkModeToggleDefaultProperties) {

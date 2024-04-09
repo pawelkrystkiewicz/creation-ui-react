@@ -19,7 +19,7 @@ const chevron = cva(
         true: ['rotate-180'],
       },
     },
-  }
+  },
 )
 
 const DropdownChevron = ({

@@ -68,5 +68,5 @@ export const tooltip = cva(
     defaultVariants: {
       position: 'top',
     },
-  }
+  },
 )

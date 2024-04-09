@@ -3,7 +3,7 @@ import { SelectOptionDefault, SelectProps } from './types'
 
 export const renderOptionInternalContainer = (
   option: SelectOptionDefault,
-  index: number
+  index: number,
 ) => {
   const { renderOption = _renderOption, getOptionProps } = useSelect()
   const props = getOptionProps(option, index)

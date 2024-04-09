@@ -33,7 +33,7 @@ export const Overlay = ({
         className={twMerge(
           overlay({ cursorWait }),
           zIndex?.overlays,
-          className
+          className,
         )}
         onClick={onClick}
       >

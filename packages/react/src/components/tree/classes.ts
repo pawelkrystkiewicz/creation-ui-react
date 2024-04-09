@@ -41,5 +41,5 @@ export const titleClasses = cva(
         0: ['font-bold'],
       },
     },
-  }
+  },
 )

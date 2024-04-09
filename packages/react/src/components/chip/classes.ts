@@ -106,5 +106,5 @@ export const chipClasses = cva(
         className: ['bg-info'],
       },
     ],
-  }
+  },
 )

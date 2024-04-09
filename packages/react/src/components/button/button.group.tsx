@@ -14,7 +14,7 @@ const ButtonGroup = ({ options, size = 'md', className }: ButtonGroupProps) => (
             disabled: button.disabled,
             element: getElementPosition(options, index),
           }),
-          button.className
+          button.className,
         )}
         onClick={button.onClick}
       >

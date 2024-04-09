@@ -66,8 +66,8 @@ export function Select<T>(props: SelectProps<T>) {
 
         console.error(
           `CUI: The \`getOptionLabel\` method of [Select:${id}] returned ${erroneousReturn} instead of a string for ${JSON.stringify(
-            option
-          )}.`
+            option,
+          )}.`,
         )
       }
 
@@ -141,7 +141,7 @@ export function Select<T>(props: SelectProps<T>) {
   })
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [dismiss, role, listNav, typeahead, click]
+    [dismiss, role, listNav, typeahead, click],
   )
 
   const handleSelect = (index: number) => {

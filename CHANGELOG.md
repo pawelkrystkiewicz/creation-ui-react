@@ -2,59 +2,52 @@
 
 ## [13.8.0](https://github.com/creation-ui/react/compare/v13.7.1...v13.8.0) (2024-03-20)
 
-
 ### Miscellaneous Chores
 
-* release 13.8.0 ([e718552](https://github.com/creation-ui/react/commit/e718552af75e4cf777091df5f5b1d9cee7b01d19))
+- release 13.8.0 ([e718552](https://github.com/creation-ui/react/commit/e718552af75e4cf777091df5f5b1d9cee7b01d19))
 
 ## [13.7.1](https://github.com/creation-ui/react/compare/v13.7.0...v13.7.1) (2024-03-03)
 
-
 ### Bug Fixes
 
-* Add size prop to Tree component and fix consistent item margin in MenuItem component ([c9487af](https://github.com/creation-ui/react/commit/c9487afb7b70e2ab7c1ad9909fda6bd686221ad6))
-* add zIndex to tree ([516b905](https://github.com/creation-ui/react/commit/516b90510745cf31e6b584a4ec3b1c801072dc01))
-* build errors ([c6972fb](https://github.com/creation-ui/react/commit/c6972fb76e561df49d3bb6abaf787bb56cb6eb9e))
-* rename parent_id to parentId ([2c96d59](https://github.com/creation-ui/react/commit/2c96d59df8c1a8729188894889cdbfdf554a6c20))
-* renderTags ([43f6aea](https://github.com/creation-ui/react/commit/43f6aea9051c493eed7bb21f7830c6d5ffc2cf02))
-* renderTags function call in MultipleSelections component ([f7327e2](https://github.com/creation-ui/react/commit/f7327e256c9bd651be95a8dce87b3a344284426d))
+- Add size prop to Tree component and fix consistent item margin in MenuItem component ([c9487af](https://github.com/creation-ui/react/commit/c9487afb7b70e2ab7c1ad9909fda6bd686221ad6))
+- add zIndex to tree ([516b905](https://github.com/creation-ui/react/commit/516b90510745cf31e6b584a4ec3b1c801072dc01))
+- build errors ([c6972fb](https://github.com/creation-ui/react/commit/c6972fb76e561df49d3bb6abaf787bb56cb6eb9e))
+- rename parent_id to parentId ([2c96d59](https://github.com/creation-ui/react/commit/2c96d59df8c1a8729188894889cdbfdf554a6c20))
+- renderTags ([43f6aea](https://github.com/creation-ui/react/commit/43f6aea9051c493eed7bb21f7830c6d5ffc2cf02))
+- renderTags function call in MultipleSelections component ([f7327e2](https://github.com/creation-ui/react/commit/f7327e256c9bd651be95a8dce87b3a344284426d))
 
 ## [13.7.0](https://github.com/creation-ui/react/compare/v13.6.2...v13.7.0) (2024-02-26)
 
-
 ### Features
 
-* AutocompleteExampleCustomMultiselect ([4b83ef6](https://github.com/creation-ui/react/commit/4b83ef67c0bbca019254ccfd54a4c8fceec3a86c))
+- AutocompleteExampleCustomMultiselect ([4b83ef6](https://github.com/creation-ui/react/commit/4b83ef67c0bbca019254ccfd54a4c8fceec3a86c))
 
 ## [13.6.2](https://github.com/creation-ui/react/compare/v13.6.1...v13.6.2) (2024-02-26)
 
-
 ### Bug Fixes
 
-* export useAutocomplete ([057c338](https://github.com/creation-ui/react/commit/057c338e2e46ddd2e371d6fa6aeecb95ac9ae553))
+- export useAutocomplete ([057c338](https://github.com/creation-ui/react/commit/057c338e2e46ddd2e371d6fa6aeecb95ac9ae553))
 
 ## [13.6.1](https://github.com/creation-ui/react/compare/v13.6.0...v13.6.1) (2024-02-06)
 
-
 ### Bug Fixes
 
-* autocomplete ref is not passed down, input ref is now accessible ([ae8a4c7](https://github.com/creation-ui/react/commit/ae8a4c76d19f3fb6392644d739e08473fd49e246))
-* autocomplete: check if props.onCreate exists to set allowCreate to true and show "Create XXXX" prompt ([d7542ca](https://github.com/creation-ui/react/commit/d7542ca7bd910bdc1ec1f586de8451761f1badd6))
-* tree:  loading was always visible, add size and useTheme ([f1d6cac](https://github.com/creation-ui/react/commit/f1d6cac69edd090bb481f334bde71eec4bab1bcd))
+- autocomplete ref is not passed down, input ref is now accessible ([ae8a4c7](https://github.com/creation-ui/react/commit/ae8a4c76d19f3fb6392644d739e08473fd49e246))
+- autocomplete: check if props.onCreate exists to set allowCreate to true and show "Create XXXX" prompt ([d7542ca](https://github.com/creation-ui/react/commit/d7542ca7bd910bdc1ec1f586de8451761f1badd6))
+- tree: loading was always visible, add size and useTheme ([f1d6cac](https://github.com/creation-ui/react/commit/f1d6cac69edd090bb481f334bde71eec4bab1bcd))
 
 ## [13.6.0](https://github.com/creation-ui/react/compare/v13.5.0...v13.6.0) (2024-02-04)
 
-
 ### Features
 
-* add For component, finalise Tree component, fix TS issues ([57745e7](https://github.com/creation-ui/react/commit/57745e716648ebcb48c6b8de01331b5e429806f4))
-* add tree stub component, add flex component, add script for stubbing new components ([b19b5bb](https://github.com/creation-ui/react/commit/b19b5bb67be6156c793ac1b5f847f4db2db5cf15))
-* create first version of tree component ([dcee5ae](https://github.com/creation-ui/react/commit/dcee5aeb59fb70ba83f842480b7828db625280ec))
-
+- add For component, finalise Tree component, fix TS issues ([57745e7](https://github.com/creation-ui/react/commit/57745e716648ebcb48c6b8de01331b5e429806f4))
+- add tree stub component, add flex component, add script for stubbing new components ([b19b5bb](https://github.com/creation-ui/react/commit/b19b5bb67be6156c793ac1b5f847f4db2db5cf15))
+- create first version of tree component ([dcee5ae](https://github.com/creation-ui/react/commit/dcee5aeb59fb70ba83f842480b7828db625280ec))
 
 ### Bug Fixes
 
-* tree node type ([86d3cb7](https://github.com/creation-ui/react/commit/86d3cb747bb9279d6f3e87045825b1badc7fa1a9))
+- tree node type ([86d3cb7](https://github.com/creation-ui/react/commit/86d3cb747bb9279d6f3e87045825b1badc7fa1a9))
 
 ## [13.5.0](https://github.com/creation-ui/react/compare/v13.4.0...v13.5.0) (2024-01-29)
 

@@ -27,5 +27,5 @@ export const TextAreaView = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {...props}
       />
     )
-  }
+  },
 )

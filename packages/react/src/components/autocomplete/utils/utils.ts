@@ -23,7 +23,7 @@ export const stripDiacritics = (text: string) => {
 }
 
 export function createFilterOptions<T>(
-  config?: AutocompleteFilterOptionsConfig<T>
+  config?: AutocompleteFilterOptionsConfig<T>,
 ) {
   const {
     ignoreAccents = true,
@@ -36,7 +36,7 @@ export function createFilterOptions<T>(
 
   return (
     options: T[],
-    { query = '', getOptionLabel }: AutocompleteFilterOptions<T>
+    { query = '', getOptionLabel }: AutocompleteFilterOptions<T>,
   ) => {
     let input = trim ? query.trim() : query
     if (ignoreCase) {

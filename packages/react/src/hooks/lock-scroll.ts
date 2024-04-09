@@ -2,7 +2,7 @@ import { RefObject, useEffect, useRef } from 'react'
 import { isBrowser, off, on } from '../utils'
 
 export function getClosestBody(
-  el: Element | HTMLElement | HTMLIFrameElement | null
+  el: Element | HTMLElement | HTMLIFrameElement | null,
 ): HTMLElement | null {
   if (!el) {
     return null
@@ -50,11 +50,11 @@ let documentListenerAdded = false
 export default !doc
   ? function useLockBodyMock(
       _locked: boolean = true,
-      _elementRef?: RefObject<HTMLElement>
+      _elementRef?: RefObject<HTMLElement>,
     ) {}
   : function useLockBody(
       locked: boolean = true,
-      elementRef?: RefObject<HTMLElement>
+      elementRef?: RefObject<HTMLElement>,
     ) {
       const bodyRef = useRef(doc!.body)
       elementRef = elementRef || bodyRef

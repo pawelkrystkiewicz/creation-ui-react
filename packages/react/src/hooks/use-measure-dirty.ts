@@ -35,7 +35,7 @@ const useMeasureDirty = (ref: RefObject<HTMLElement>): ContentRect => {
             }
           })
         }
-      })
+      }),
   )
 
   useEffect(() => {

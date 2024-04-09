@@ -7,10 +7,10 @@ export const getComponentCode = (name: string, stateAsProps: string, children?: 
 
     export const Example = () =>
       <${name} ${stateAsProps}${
-    children
-      ? `>
+        children
+          ? `>
             ${children}
           </${name}>`
-      : ' />'
-  }
+          : ' />'
+      }
   `

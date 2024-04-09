@@ -35,7 +35,7 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    */
   renderTags?: (
     selected: T[],
-    removeSelected: (option: T) => void
+    removeSelected: (option: T) => void,
   ) => React.ReactNode
   /**
    * Text to display when the tags are truncated (limitTags).
@@ -49,7 +49,7 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
    */
   filterOptions?: (
     options: T[],
-    filterOptions: AutocompleteFilterOptions
+    filterOptions: AutocompleteFilterOptions,
   ) => T[]
   /**
    * List options
@@ -130,7 +130,7 @@ export interface AutocompleteProps<T = AutocompleteOptionDefault>
 }
 
 export interface AutocompleteFilterOptionsConfig<
-  T = AutocompleteOptionDefault
+  T = AutocompleteOptionDefault,
 > {
   ignoreAccents?: boolean
   ignoreCase?: boolean

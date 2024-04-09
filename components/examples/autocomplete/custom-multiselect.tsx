@@ -8,12 +8,7 @@ import users from './users.json'
 const renderTags = (selected: Character[], handleRemoveSelected: (option: any) => void) => {
   return selected?.map(option => {
     return (
-      <Flex
-        key={option.id}
-        items={'center'}
-        gap={2}
-        className='size-fit border rounded-full border-info p-1 text-xs'
-      >
+      <Flex key={option.id} items={'center'} gap={2} className='size-fit border rounded-full border-info p-1 text-xs'>
         <Avatar size={16} src={option.image} className={'size-fit object-cover'} />
         <span className='font-medium'>{option.name}</span>
         <ClearButton onClick={() => handleRemoveSelected(option as any)} />

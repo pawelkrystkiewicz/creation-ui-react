@@ -9,9 +9,9 @@ export const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
       ref={ref}
       className={clsx(
         'h-12 px-4 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0',
-        className
+        className,
       )}
       {...props}
     />
-  )
+  ),
 )

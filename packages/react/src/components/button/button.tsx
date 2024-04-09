@@ -12,7 +12,7 @@ import { twMerge } from 'tailwind-merge'
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { children, loading, iconLeft, iconRight, className, id, ...props },
-    ref
+    ref,
   ) => {
     const componentId = useId(id)
     const theme = useTheme()
@@ -37,7 +37,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled,
         uppercase,
         className: [theme.roundness, className, text({ size })],
-      })
+      }),
     )
 
     const centerSpinner: boolean = Boolean(loading && circle)
@@ -64,7 +64,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         </button>
       </InteractiveContainer>
     )
-  }
+  },
 )
 
 Button.displayName = 'Button'

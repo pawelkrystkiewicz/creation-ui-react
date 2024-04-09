@@ -5,7 +5,7 @@ import Highlighter from 'react-highlight-words'
 
 export const renderOptionInternalContainer = (
   option: AutocompleteOptionDefault,
-  index: number
+  index: number,
 ) => {
   const { renderOption = _renderOption, getOptionProps } = useAutocomplete()
   const props = getOptionProps(option, index)
@@ -14,7 +14,7 @@ export const renderOptionInternalContainer = (
 
 export const _renderOption: AutocompleteProps['renderOption'] = (
   props,
-  option
+  option,
 ) => {
   const { getOptionLabel, autoHighlight } = useAutocomplete()
   const label = getOptionLabel!(option)

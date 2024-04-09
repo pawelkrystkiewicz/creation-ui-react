@@ -62,5 +62,5 @@ export const inputClassesCVA = cva(
         className: ['!h-10', '!w-10'],
       },
     ],
-  }
+  },
 )

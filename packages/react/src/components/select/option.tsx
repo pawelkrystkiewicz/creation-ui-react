@@ -8,7 +8,7 @@ export const Option = forwardRef<
 >(
   (
     { option, multiple, active, selected, size, children, className, ...rest },
-    ref
+    ref,
   ) => {
     return (
       <li
@@ -27,5 +27,5 @@ export const Option = forwardRef<
         {children ? children : option.label}
       </li>
     )
-  }
+  },
 )

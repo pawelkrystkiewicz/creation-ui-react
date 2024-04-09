@@ -64,7 +64,7 @@ export const Version = ({ classNameOverride, gitHash }: VersionProps) => {
         className={clsx(
           classNames,
           'hover:bg-orange-100',
-          'hover:ring-orange-200'
+          'hover:ring-orange-200',
         )}
       >
         {shortHash}

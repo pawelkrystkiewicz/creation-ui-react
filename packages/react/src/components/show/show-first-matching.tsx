@@ -16,7 +16,7 @@ export const ShowFirstMatching: React.FC<ShowFirstMatchingProps> = ({
         }
         return null
       }),
-    [children]
+    [children],
   )
 
   return <>{matchFound ? renderChildren : fallback}</>

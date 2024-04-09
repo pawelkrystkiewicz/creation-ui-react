@@ -61,13 +61,14 @@ To install Creation UI, run the command below:
 - [x] [Breadcrumbs](/docs/components/breadcrumbs)
 
 ### Reusable helpers
+
 - [x] [Dropdown Chevron](/docs/components/autocomplete)
 - [x] [Clear Button](/docs/components/autocomplete)
 - [x] [Error Text](/docs/components/autocomplete)
 - [x] [Select Option](/docs/components/SelectOption)
 
-
 ### In development
+
 - [ ] [Timeline](/docs/components/timeline)
 - [ ] [Schedule](/docs/components/schedule)
 

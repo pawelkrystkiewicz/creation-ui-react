@@ -4,10 +4,10 @@ const { withTailwindConfig } = require('./packages/react/src')
 const config = withTailwindConfig({
   content: [
     //
+    // '!node_modules',
     './packages/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    // '!node_modules',
     './**/*.css',
   ],
   extend: {

@@ -27,7 +27,7 @@ export const avatar = {
       defaultVariants: {
         variant: 'circle',
       },
-    }
+    },
   ),
   container: ['relative', 'w-fit'],
 }

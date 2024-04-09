@@ -5,6 +5,7 @@ import { classes } from './classes'
 import { usePlayground } from './context/context'
 import { getComponentCode } from './utils/get-component-code'
 import { objectToPropsText } from './utils/object-to-props-text'
+import { useEffect, useState } from 'react'
 
 export const PlaygroundCode = ({ visible }) => {
   const {
@@ -12,15 +13,20 @@ export const PlaygroundCode = ({ visible }) => {
     name,
   } = usePlayground()
 
+  const [formatted, setFormatted] = useState('')
   if (!visible) return null
 
   const stateAsProps = objectToPropsText(state).join('\n')
   const code = getComponentCode(name, stateAsProps, children)
 
+  useEffect(() => {
+    formatCode(code).then(formattedCode => setFormatted(formattedCode))
+  }, [code])
+
   return (
     <div className={clsx(classes.code)}>
       <CopyBlock
-        text={formatCode(code)}
+        text={formatted}
         language={'jsx'}
         showLineNumbers={true}
         theme={vs2015}
@@ -28,8 +34,8 @@ export const PlaygroundCode = ({ visible }) => {
           fontSize: '0.875rem',
           lineHeight: '1.25rem',
           padding: '1rem',
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
+          borderTopLeftRadius: '0px',
+          borderTopRightRadius: '0px',
         }}
       />
     </div>

@@ -47,7 +47,7 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
             drawer({
               className: [zIndex?.modals, finalSize, cx?.container?.outer],
               position,
-            })
+            }),
           )}
         >
           <div className={clsx(child, 'h-full', cx?.container?.inner)}>

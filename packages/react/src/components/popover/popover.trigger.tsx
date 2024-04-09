@@ -16,7 +16,7 @@ interface PopoverTriggerProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
 export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
   function PopoverTrigger(
     { children, asChild = false, size, className, ...props },
-    propRef
+    propRef,
   ) {
     const ctx = usePopoverContext()
     const childrenRef = (children as any).ref
@@ -32,7 +32,7 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
           ...props,
           ...children.props,
           'data-state': ctx.open ? 'open' : 'closed',
-        })
+        }),
       )
     }
 
@@ -46,5 +46,5 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
         {children}
       </div>
     )
-  }
+  },
 )

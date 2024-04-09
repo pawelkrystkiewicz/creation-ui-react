@@ -30,7 +30,7 @@ export const switchClasses = cva(
     defaultVariants: {
       size: 'md',
     },
-  }
+  },
 )
 export const switchCircle = cva(
   [
@@ -71,5 +71,5 @@ export const switchCircle = cva(
         className: ['translate-x-7'],
       },
     ],
-  }
+  },
 )

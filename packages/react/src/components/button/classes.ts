@@ -89,5 +89,5 @@ export const button = cva(
         className: ['px-1', 'size-20', '!rounded-full'],
       },
     ],
-  }
+  },
 )

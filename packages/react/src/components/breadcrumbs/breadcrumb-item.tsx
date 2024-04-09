@@ -32,5 +32,5 @@ export const BreadcrumbItem: FC<BreadcrumbItemProps> = memo(
         </li>
       </>
     )
-  }
+  },
 )

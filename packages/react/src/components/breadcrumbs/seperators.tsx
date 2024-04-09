@@ -6,6 +6,5 @@ export const separatorsMap = {
   slash: <Icon icon='slash' />,
 }
 
-
 export const separators = ['chevron', 'dot', 'slash'] as const
-export type Separator = typeof separators[number]
+export type Separator = (typeof separators)[number]

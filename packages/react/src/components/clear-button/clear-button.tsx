@@ -22,7 +22,7 @@ const ClearButton = forwardRef<any, ClearButtonProps>(
       aria-hidden='true'
       {...props}
     />
-  )
+  ),
 )
 
 ClearButton.displayName = 'ClearButton'

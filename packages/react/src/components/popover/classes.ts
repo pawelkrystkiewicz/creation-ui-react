@@ -16,7 +16,7 @@ export const popoverContentClasses = cva(
     variants: {
       size: sharedTextSizesBase,
     },
-  }
+  },
 )
 export const popoverDescriptionClasses = cva(['text-sm', 'leading-5'], {
   variants: {

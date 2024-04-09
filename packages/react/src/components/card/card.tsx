@@ -10,7 +10,7 @@ const cardClasses = twix(
   'rounded-xl',
   'p-6',
   'shadow',
-  'border-global'
+  'border-global',
 )
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -28,5 +28,5 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         children
       )}
     </div>
-  )
+  ),
 )

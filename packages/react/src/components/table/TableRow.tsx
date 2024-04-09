@@ -21,7 +21,7 @@ const rowClasses = cva(
         false: '',
       },
     },
-  }
+  },
 )
 
 export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
@@ -39,5 +39,5 @@ export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
         {...props}
       />
     )
-  }
+  },
 )

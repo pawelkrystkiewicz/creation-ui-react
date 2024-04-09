@@ -68,7 +68,7 @@ export const AutocompleteView: FC = () => {
                   <li
                     className={clsx(
                       'py-2 px-3 w-full',
-                      allowCreate ? 'cursor-pointer' : 'text-center'
+                      allowCreate ? 'cursor-pointer' : 'text-center',
                     )}
                   >
                     <ShowFirstMatching>

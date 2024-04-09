@@ -17,7 +17,7 @@ const cellClasses = cva(
         false: '',
       },
     },
-  }
+  },
 )
 
 const columnClasses = clsx('overflow-y-scroll', 'h-48')
@@ -39,7 +39,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       const minutes = minute ?? value?.minutes ?? 0
       onSelect({ hours, minutes })
     },
-    [onSelect]
+    [onSelect],
   )
 
   const hourRef = useRef<HTMLDivElement[]>([])
@@ -66,12 +66,13 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
     <div
       className={clsx(
         'bg-white dark:bg-info-800 dark:border-info-700 border rounded-md',
-        'grid grid-cols-2 gap-2'
+        'grid grid-cols-2 gap-2',
       )}
     >
       <div className={columnClasses}>
         {HOURS.map(hour => (
           <div
+            // @ts-ignore
             ref={el => ((hourRef as any).current[hour] = el)}
             key={hour}
             onClick={() => handleSelect({ hour })}
@@ -86,6 +87,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
       <div className={columnClasses}>
         {MINUTES.map(minute => (
           <div
+            // @ts-ignore
             ref={el => ((minuteRef as any).current[minute] = el)}
             key={minute}
             onClick={() => handleSelect({ minute })}

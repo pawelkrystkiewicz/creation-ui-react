@@ -37,5 +37,5 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
         />
       </div>
     )
-  }
+  },
 )

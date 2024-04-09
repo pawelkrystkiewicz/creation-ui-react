@@ -5,23 +5,20 @@ import {
   WeekDayIndex,
 } from './calendar.types'
 
-export const getFirstDayOfWeek = (
-  date: Date,
-  weekStartsOn: WeekDayIndex
-) => {
+export const getFirstDayOfWeek = (date: Date, weekStartsOn: WeekDayIndex) => {
   const day = new Date(date).getDay()
   const daysToShift = (7 + day - weekStartsOn + 1) % 7
   return new Date(
     date.getFullYear(),
     date.getMonth(),
-    date.getDate() - daysToShift
+    date.getDate() - daysToShift,
   )
 }
 
 export const changeCalendarView = (
   date: Date,
   view: CalendarView,
-  direction: 'next' | 'prev'
+  direction: 'next' | 'prev',
 ) => {
   const sign = direction === 'next' ? 1 : -1
 
@@ -45,7 +42,7 @@ export const changeCalendarView = (
 }
 
 export const getCalendarInitialValue = (
-  value: DateRange | CalendarDateValue
+  value: DateRange | CalendarDateValue,
 ): DateRange => {
   if (!value) return [null, null]
 

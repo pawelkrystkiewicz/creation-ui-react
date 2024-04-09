@@ -35,7 +35,7 @@ export const PopoverDescription = forwardRef<
       ref={ref}
       id={id}
       className={clsx(
-        popoverDescriptionClasses({ size: finalSize, className })
+        popoverDescriptionClasses({ size: finalSize, className }),
       )}
     >
       {children}

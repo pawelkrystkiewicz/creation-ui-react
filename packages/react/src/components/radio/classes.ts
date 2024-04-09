@@ -12,5 +12,5 @@ export const radio = cva(
         lg: ['h-6', 'w-6'],
       },
     },
-  }
+  },
 )

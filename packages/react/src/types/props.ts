@@ -243,7 +243,7 @@ export interface DropdownProps extends BaseComponentProps {
    * Filter options function
    */
   filterOptions?: (
-    query?: string
+    query?: string,
   ) => (option: DropdownOptionType | any) => string
   /**
    * onChange callback. Will return array of selected values. If !multiple, will return array with one value.

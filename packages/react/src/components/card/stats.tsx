@@ -8,7 +8,7 @@ const classes = twix(
   'lg:text-3xl',
   'xl:text-4xl',
   'font-bold',
-  'my-1.5'
+  'my-1.5',
 )
 
 export const CardStats = forwardRef<

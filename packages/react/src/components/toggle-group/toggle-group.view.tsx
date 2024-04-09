@@ -39,7 +39,7 @@ export const ToggleGroupView = ({
           >
             <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
           </RadioGroup.Option>
-        )
+        ),
       )}
     </RadioGroup>
   )

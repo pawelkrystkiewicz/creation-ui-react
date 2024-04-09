@@ -26,5 +26,5 @@ export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(
         }}
       />
     )
-  }
+  },
 )

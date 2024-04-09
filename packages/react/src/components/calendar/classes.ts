@@ -6,7 +6,7 @@ export const headerClasses = twix(
   'font-semibold',
   'capitalize ',
   'text-primary',
-  'dark:text-primary'
+  'dark:text-primary',
 )
 
 export const calendarClasses = {
@@ -31,7 +31,7 @@ export const calendarClasses = {
           true: ['!min-w-fit'],
         },
       },
-    }
+    },
   ),
 }
 
@@ -114,7 +114,7 @@ export const calendarDaysViewClasses = {
           className: '!text-info-100',
         },
       ],
-    }
+    },
   ),
 }
 
@@ -148,6 +148,6 @@ export const calendarDaysViewTitleClasses = {
           1: ['md:grid', 'hidden'],
         },
       },
-    }
+    },
   ),
 }

@@ -37,7 +37,7 @@ const iconClasses = cva(
     variants: {
       size: sharedSizeSquareCVA,
     },
-  }
+  },
 )
 
 const Icon = ({ icon, title, className, ...props }: IconProps) => {

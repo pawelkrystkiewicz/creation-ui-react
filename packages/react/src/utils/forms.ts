@@ -26,7 +26,7 @@ interface FormsOptions {
 }
 
 const forms = plugin.withOptions(function (
-  options: FormsOptions = { strategy: undefined }
+  options: FormsOptions = { strategy: undefined },
 ) {
   return function ({ addBase, addComponents, theme }) {
     const strategy =
@@ -62,7 +62,7 @@ const forms = plugin.withOptions(function (
           'background-color': '#fff',
           'border-color': resolveColor(
             theme('colors.gray.500', colors.gray[500]),
-            '--tw-border-opacity'
+            '--tw-border-opacity',
           ),
           'border-width': borderWidth['DEFAULT'],
           'border-radius': borderRadius.none,
@@ -81,14 +81,14 @@ const forms = plugin.withOptions(function (
             '--tw-ring-offset-color': '#fff',
             '--tw-ring-color': resolveColor(
               theme('colors.blue.600', colors.blue[600]),
-              '--tw-ring-opacity'
+              '--tw-ring-opacity',
             ),
             '--tw-ring-offset-shadow': `var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)`,
             '--tw-ring-shadow': `var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)`,
             'box-shadow': `var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)`,
             'border-color': resolveColor(
               theme('colors.blue.600', colors.blue[600]),
-              '--tw-border-opacity'
+              '--tw-border-opacity',
             ),
           },
         },
@@ -99,7 +99,7 @@ const forms = plugin.withOptions(function (
         styles: {
           color: resolveColor(
             theme('colors.gray.500', colors.gray[500]),
-            '--tw-text-opacity'
+            '--tw-text-opacity',
           ),
           opacity: '1',
         },
@@ -159,8 +159,8 @@ const forms = plugin.withOptions(function (
           'background-image': `url("${svgToDataUri(
             `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="${resolveColor(
               theme('colors.gray.500', colors.gray[500]),
-              '--tw-stroke-opacity'
-            )}" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>`
+              '--tw-stroke-opacity',
+            )}" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>`,
           )}")`,
           'background-position': `right ${spacing[2]} center`,
           'background-repeat': `no-repeat`,
@@ -197,12 +197,12 @@ const forms = plugin.withOptions(function (
           width: spacing[4],
           color: resolveColor(
             theme('colors.blue.600', colors.blue[600]),
-            '--tw-text-opacity'
+            '--tw-text-opacity',
           ),
           'background-color': '#fff',
           'border-color': resolveColor(
             theme('colors.gray.500', colors.gray[500]),
-            '--tw-border-opacity'
+            '--tw-border-opacity',
           ),
           'border-width': borderWidth['DEFAULT'],
           '--tw-shadow': '0 0 #0000',
@@ -233,7 +233,7 @@ const forms = plugin.withOptions(function (
           '--tw-ring-offset-color': '#fff',
           '--tw-ring-color': resolveColor(
             theme('colors.blue.600', colors.blue[600]),
-            '--tw-ring-opacity'
+            '--tw-ring-opacity',
           ),
           '--tw-ring-offset-shadow': `var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)`,
           '--tw-ring-shadow': `var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)`,
@@ -256,7 +256,7 @@ const forms = plugin.withOptions(function (
         class: ['.form-checkbox:checked'],
         styles: {
           'background-image': `url("${svgToDataUri(
-            `<svg viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`
+            `<svg viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"/></svg>`,
           )}")`,
         },
       },
@@ -265,7 +265,7 @@ const forms = plugin.withOptions(function (
         class: ['.form-radio:checked'],
         styles: {
           'background-image': `url("${svgToDataUri(
-            `<svg viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`
+            `<svg viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3"/></svg>`,
           )}")`,
         },
       },
@@ -292,7 +292,7 @@ const forms = plugin.withOptions(function (
         class: ['.form-checkbox:indeterminate'],
         styles: {
           'background-image': `url("${svgToDataUri(
-            `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h8"/></svg>`
+            `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h8"/></svg>`,
           )}")`,
           'border-color': `transparent`,
           'background-color': `currentColor`,

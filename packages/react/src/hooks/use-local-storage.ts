@@ -17,7 +17,7 @@ type parserOptions<T> = {
 const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
-  options?: parserOptions<T>
+  options?: parserOptions<T>,
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
   if (!isBrowser) {
     return [initialValue as T, noop, noop]
@@ -54,7 +54,7 @@ const useLocalStorage = <T>(
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T | undefined>(() =>
-    initializer.current(key)
+    initializer.current(key),
   )
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -87,7 +87,7 @@ const useLocalStorage = <T>(
         // localStorage can throw. Also JSON.stringify can throw.
       }
     },
-    [key, setState]
+    [key, setState],
   )
 
   // eslint-disable-next-line react-hooks/rules-of-hooks

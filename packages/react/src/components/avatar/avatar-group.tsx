@@ -9,8 +9,8 @@ import {
 } from 'react'
 import { useTheme } from '../../theme'
 import { Show } from '../show'
-import Avatar from './avatar'
-import AvatarProps, { AvatarGroupProps } from './avatar.types'
+import { Avatar } from './avatar'
+import { AvatarGroupProps } from './avatar.types'
 import { AVATAR_GROUP_OFFSET_MOD, AVATAR_SIZE_MAP } from './constants'
 
 export const _renderAvatarGroupSurplus = (count: number) => (

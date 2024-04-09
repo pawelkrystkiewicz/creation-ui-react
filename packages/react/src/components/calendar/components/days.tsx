@@ -32,8 +32,8 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
 
   const dayNames = Array.from({ length: 7 }, (_, i) =>
     new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(
-      new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1))
-    )
+      new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1)),
+    ),
   )
 
   const month = viewDate.getMonth()
@@ -44,12 +44,12 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
 
   const startDate = new Date(
     monthStart.setDate(
-      monthStart.getDate() - ((7 + monthStart.getDay() - weekStartsOn) % 7)
-    )
+      monthStart.getDate() - ((7 + monthStart.getDay() - weekStartsOn) % 7),
+    ),
   )
 
   const endDate = new Date(
-    monthEnd.setDate(monthEnd.getDate() + (6 - monthEnd.getDay()))
+    monthEnd.setDate(monthEnd.getDate() + (6 - monthEnd.getDay())),
   )
 
   const isDateSelected = useCallback(
@@ -59,7 +59,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
       const dateString = date.toDateString()
       return first === dateString || second === dateString
     },
-    [selectedDates]
+    [selectedDates],
   )
 
   const isDateInRange = (date: Date) => {
@@ -120,7 +120,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
           })}
         >
           {date.getDate().toString()}
-        </button>
+        </button>,
       )
 
       date.setDate(date.getDate() + 1)
@@ -129,7 +129,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     rows.push(
       <div key={`week-${date.toString()}`} className={dayRowClasses()}>
         {days}
-      </div>
+      </div>,
     )
   }
 

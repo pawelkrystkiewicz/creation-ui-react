@@ -10,9 +10,9 @@ interface CodeBoxProps {
 export default function CodeBox({ code, language, wrapperClassName }: CodeBoxProps) {
   return (
     <div className={twMerge('p-10 rounded-lg bg-yellow-400', wrapperClassName)}>
-      <div className='code-block'>
+      <div className='code-block p-4 text-sm'>
         <CopyBlock
-          className='p-4 text-sm'
+          // className='p-4 text-sm'
           text={code}
           language={language}
           showLineNumbers={false}

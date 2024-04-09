@@ -15,7 +15,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <TextAreaView {...rest} ref={ref} />
       </InputBase>
     )
-  }
+  },
 )
 
 TextArea.displayName = 'TextArea'

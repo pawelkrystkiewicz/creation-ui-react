@@ -4,7 +4,7 @@ const asPx = (value: number | string): string => `${value}px`
 
 export const getDropdownHeight = (
   maxHeight: DropdownMaxHeight = 500,
-  availableHeight: number
+  availableHeight: number,
 ): string => {
   if (typeof maxHeight === 'number') {
     return maxHeight >= availableHeight

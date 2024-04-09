@@ -3,7 +3,7 @@ import { formatOptionValue } from './format-option-value'
 
 export const getTruncatedMultipleValues = (
   values: DropdownOptionType[],
-  limit: number
+  limit: number,
 ): MultipleEllipsisFormatter => {
   if (!values) return { value: '', hidden: 0, total: 0 }
   if (values.length <= limit) {

@@ -24,8 +24,8 @@ export const useTypography = ({
 }: GetDetailsArgs) => {
   const { fontSize, ...textClasses } = merge(
     typography?.[variant],
-    // @ts-expect-error
-    config?.[variant]
+    // @ts-ignore
+    config?.[variant],
   )
 
   const classesValues = values(textClasses)

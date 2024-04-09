@@ -23,5 +23,5 @@ export const RadioView = forwardRef<HTMLInputElement, RadioProps>(
         </div>
       </>
     )
-  }
+  },
 )

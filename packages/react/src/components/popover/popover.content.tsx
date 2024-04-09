@@ -46,5 +46,5 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
         </FloatingFocusManager>
       </FloatingPortal>
     )
-  }
+  },
 )

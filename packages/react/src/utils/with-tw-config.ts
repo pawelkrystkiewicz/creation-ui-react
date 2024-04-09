@@ -7,7 +7,7 @@ const deprecated = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
 
 Object.keys(twColors).forEach(key => {
   if (deprecated.includes(key)) {
-    // @ts-expect-error
+    // @ts-ignore
     delete twColors[key]
   }
 })

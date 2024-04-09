@@ -1,7 +1,7 @@
 import { DropdownOptionType, DropdownValueType } from '../types'
 
 export const normalizeOptions = (
-  options: string[] | DropdownOptionType[] | null
+  options: string[] | DropdownOptionType[] | null,
 ): DropdownOptionType[] => {
   switch (Array.isArray(options) && typeof options[0] === 'string') {
     case true:
@@ -15,7 +15,7 @@ export const normalizeOptions = (
 }
 
 export const normalizeValue = (
-  value?: DropdownValueType | null
+  value?: DropdownValueType | null,
 ): DropdownOptionType | DropdownOptionType[] | null => {
   if (!value) return null
 
@@ -36,7 +36,7 @@ export const normalizeValue = (
 }
 
 export const getFlatOptions = (
-  options: DropdownOptionType[] | DropdownOptionType | null
+  options: DropdownOptionType[] | DropdownOptionType | null,
 ): string[] => {
   switch (Array.isArray(options)) {
     case true:

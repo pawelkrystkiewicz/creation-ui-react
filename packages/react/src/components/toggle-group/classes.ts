@@ -43,6 +43,6 @@ export const toggleGroup = {
         disabled: sharedDisabledCVA,
         size: sharedSizeClassesCVA,
       },
-    }
+    },
   ),
 }

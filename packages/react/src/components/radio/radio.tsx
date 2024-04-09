@@ -14,7 +14,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <RadioView {...rest} size={size} ref={ref} />
       </InputBaseInline>
     )
-  }
+  },
 )
 
 Radio.displayName = 'Radio'
