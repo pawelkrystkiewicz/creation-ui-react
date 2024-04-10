@@ -8,7 +8,7 @@
     "email": "pawelkrystkiewicz@outlook.com"
   },
   "scripts": {
-    "start": "npx kill-port 3005 && next -p 3005",
+    "dev": "next dev -p 3005",
     "build": "pnpm import-check && next build",
     "preview": "next start",
     "lint": "next lint",

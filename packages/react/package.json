@@ -14,12 +14,12 @@
     "LICENSE",
     ".npmrc",
     ".npmignore"
-
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
+    "dev": "pnpm build",
     "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
     "prettier:check": "prettier -c .",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
@@ -29,6 +29,7 @@
     "build": "pnpm build:rm && pnpm build:cjs && pnpm build:dts && pnpm build:version",
     "build:cjs": "swc ./src -d ./dist --config-file ./.swcrc",
     "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
+    "build:watch": "pnpm build:rm && pnpm build:cjs -w",
     "build:version": "echo $(cat ./package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')",
     "build:rm": "rm -rf dist",
     "ci:publish": "pnpm publish -r",
@@ -91,6 +92,7 @@
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "autoprefixer": "^10.4.14",
+    "chokidar": "^3.6.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
