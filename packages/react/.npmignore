@@ -8,7 +8,6 @@ webpack.config.js
 /test
 .DS_Store
 /node_modules
-build/*
 .npm-*
 /dist/index.html
 *.log

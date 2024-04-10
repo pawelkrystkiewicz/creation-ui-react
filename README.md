@@ -82,21 +82,21 @@ In development
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
 
 ```js copy
-const { withTailwindConfig } = require('@creation-ui/core')
+const { withTailwindConfig } = require("@creation-ui/core");
 
 /** @type {import('tailwindcss').Config} */
 const config = withTailwindConfig({
   content: [
     //
-    './packages/**/*.{js,ts,jsx,tsx,mdx}',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './**/*.css',
+    "./packages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./**/*.css",
   ],
-  plugins: [require('@tailwindcss/typography')],
-})
+  plugins: [require("@tailwindcss/typography")],
+});
 
-module.exports = config
+module.exports = config;
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
@@ -106,15 +106,15 @@ You can extend all properties [as usual](https://tailwindcss.com/docs/configurat
    If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import '@creation-ui/core/index.css'
+import "@creation-ui/core/index.css";
 ```
 
 3. Start using it!
 
 ```jsx copy
-import { Button } from '@creation-ui/react'
+import { Button } from "@creation-ui/react";
 
 export default function App() {
-  return <Button>Click me</Button>
+  return <Button>Click me</Button>;
 }
 ```

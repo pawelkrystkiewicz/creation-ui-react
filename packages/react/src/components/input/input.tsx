@@ -14,8 +14,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   } = props
 
   return (
-    <InputBase {...rest} size={size} type={type} variant={variant} >
-      <InputView {...rest} variant={variant} ref={ref}/>
+    <InputBase {...rest} size={size} type={type} variant={variant}>
+      <InputView {...rest} variant={variant} ref={ref} />
     </InputBase>
   )
 })

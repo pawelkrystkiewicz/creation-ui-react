@@ -5,25 +5,32 @@
   "description": "@creation-ui/react is an easy-to-use components library for ReactJS & Tailwind CSS.",
   "repository": "https://github.com/creation-ui/react.git",
   "license": "MIT",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    ".npmrc",
+    ".npmignore"
+
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "copy": "cp ./package.json ./README.md ./LICENSE ./.npmrc ./.npmignore ./build",
     "lint:check": "eslint . --ext js,jsx,ts,tsx --max-warnings=0 --config .eslintrc.json --no-eslintrc",
     "prettier:check": "prettier -c .",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
-    "_publish": "cd build && npm publish --registry https://registry.npmjs.org --access public",
+    "_publish": "npm publish --registry https://registry.npmjs.org --access public",
     "release": "pnpm build && pnpm _publish",
     "amend": "git commit --amend --no-edit",
-    "build": "pnpm build:rm && pnpm build:cjs && pnpm build:dts && pnpm copy && pnpm build:version",
-    "build:cjs": "swc ./src -d ./build --only ./src/**/*.ts --config-file .swcrc",
+    "build": "pnpm build:rm && pnpm build:cjs && pnpm build:dts && pnpm build:version",
+    "build:cjs": "swc ./src -d ./dist --config-file ./.swcrc",
     "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
-    "build:version": "echo $(cat ./build/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')",
-    "build:rollup": "pnpm build:version && pnpm tsc && pnpm build:rm && rollup -c",
-    "build:rm": "rm -rf build",
+    "build:version": "echo $(cat ./package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')",
+    "build:rm": "rm -rf dist",
     "ci:publish": "pnpm publish -r",
     "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true",
     "core": "pnpm i @creation-ui/core@latest"

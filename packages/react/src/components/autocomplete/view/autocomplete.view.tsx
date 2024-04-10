@@ -1,7 +1,7 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import clsx from 'clsx'
 import { FC, useCallback } from 'react'
-import { Show, ShowFirstMatching } from '../../../components/show'
+import { Show, ShowFirstMatching } from '../../show'
 import { useInputBase } from '../../input-base/input-base.context'
 import { DropdownMenu } from '../../shared/DropdownMenu'
 import { useAutocomplete } from '../context'

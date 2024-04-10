@@ -1,7 +1,7 @@
 import Icon from '@components/icon'
 import type { BaseComponentProps, ElementSize } from '@creation-ui/core'
 import { inputContainer, label as labelClasses, microInteractions, text } from '@creation-ui/core'
-import { useTheme } from '@creation-ui/react/theme'
+import { useTheme } from '@creation-ui/react'
 import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'
 import { cva } from 'class-variance-authority'

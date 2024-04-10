@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -15,20 +16,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["react/next", "react-dom/next", "mdx"],
-    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./components/*"],
       "@components": ["./components/"],
-      "@creation-ui/react/*": ["./packages/react/src/*"],
-      "@creation-ui/react": ["./packages/react/src"],
       "@examples/*": ["./components/examples/*"],
       "@examples": ["./components/examples/"],
-      "@pages/*": ["pages/*"],
-      "@pages": ["pages"],
-      "@utils/*": ["utils/*"],
-      "@utils": ["utils"],
+      "@pages/*": ["./pages/*"],
+      "@pages": ["./pages"],
+      "@utils/*": ["./utils/*"],
+      "@utils": ["./utils"],
       "@models/*": ["./models/*"],
       "@models": ["./models"],
       "@root/*": ["./*"],
@@ -48,9 +45,7 @@
     "pages/index.tsx",
     ".next/types/**/*.ts",
     "pages/_app.msx",
-    "scripts/generate-docs.js",
-    "@creation-ui/react",
-    "@creation-ui/core"
+    "scripts/generate-docs.js"
   ],
-  "exclude": ["node_modules", "**/build"]
+  "exclude": ["node_modules", "build"]
 }
