@@ -22,16 +22,16 @@ const calloutClasses = cva(
       status: {
         primary: [
           'bg-primary-50',
-          'text-primary-500',
-          'border-primary-500',
+          'text-primary',
+          'border-primary',
           'bg-opacity-25',
         ],
-        error: ['bg-error-50', 'text-error-500', 'border-error-500'],
-        success: ['bg-success-50', 'text-success-600', 'border-success-500'],
+        error: ['bg-error-50', 'text-error', 'border-error'],
+        success: ['bg-success-50', 'text-success', 'border-success'],
         warning: [
-          'bg-warning-100',
-          'text-warning-600',
-          'border-warning-500',
+          'bg-warning',
+          'text-warning',
+          'border-warning',
           'bg-opacity-25',
         ],
         info: ['bg-neutral-100', 'text-neutral-500', 'border-neutral-500'],
@@ -51,7 +51,7 @@ const calloutClasses = cva(
       {
         status: 'error',
         variant: 'outlined',
-        className: '!bg-error-200',
+        className: '!bg-error',
       },
     ],
   }

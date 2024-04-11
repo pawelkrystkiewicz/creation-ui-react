@@ -37,7 +37,7 @@ const modal = {
     'overflow-hidden',
     'rounded-xl',
     'bg-info-50',
-    'dark:bg-info-900',
+    'dark:bg-info',
     'p-6',
     'text-left',
     'align-middle',

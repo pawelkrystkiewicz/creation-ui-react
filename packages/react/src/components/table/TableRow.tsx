@@ -10,8 +10,8 @@ const rowClasses = cva(
   [
     //
     'transition-colors',
-    'hover:bg-info-950/50',
-    'data-[state=selected]:bg-info-800/50',
+    'hover:bg-info/50',
+    'data-[state=selected]:bg-info/50',
   ],
   {
     variants: {

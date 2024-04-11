@@ -1,7 +1,5 @@
 import Icon from '@components/icon'
-import type { BaseComponentProps, ElementSize } from '@creation-ui/react'
-import { inputContainer, label as labelClasses, microInteractions, text } from '@creation-ui/react'
-import { useTheme } from '@creation-ui/react'
+import { BaseComponentProps, ElementSize, inputContainer, label as labelClasses, useTheme } from '@creation-ui/react'
 import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'
 import { cva } from 'class-variance-authority'
@@ -44,7 +42,7 @@ export const ColorsSelector = ({ options, onClick, label, value, ...props }: Col
   const { size = defaultSize, required, readOnly, error } = props
 
   const disabled = props.disabled || readOnly
-  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), text({ size }), microInteractions)
+  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), `text-${size}`, 'micro-interactions')
 
   return (
     <div className={containerClasses}>
@@ -90,7 +88,7 @@ const ColorOption: FC<ColorOptionProps> = ({ option, onClick, selected }) => {
         className: className,
       })}
     >
-      {undef && !selected && <Icon path={mdiClose} className='text-info-500' size={0.9} />}
+      {undef && !selected && <Icon path={mdiClose} className='text-info' size={0.9} />}
       {selected && (
         <Icon
           path={mdiCircle}

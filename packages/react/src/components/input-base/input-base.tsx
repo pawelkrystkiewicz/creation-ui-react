@@ -1,10 +1,8 @@
 import {
   errorClasses,
-  inputClassesCVA,
   inputContainer,
   inputIcon,
-  label,
-  text
+  label
 } from '@root/classes'
 import clsx from 'clsx'
 import { forwardRef } from 'react'
@@ -21,6 +19,7 @@ import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
 import { InputBaseProps } from '@types'
+import { inputClassesCVA } from './classes'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
@@ -49,7 +48,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
 
   const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
-    text({ size }),
+    `text-${size}`,
     cx?.container?.outer
   )
 

@@ -97,7 +97,7 @@ export const defaultTheme: ThemeProps = {
       lineHeight: 'leading-normal',
     },
     description: {
-      color: 'text-info-500 dark:text-info-300',
+      color: 'text-info dark:text-info',
       display: 'inline',
       fontFamily: 'font-sans',
       fontSize: {

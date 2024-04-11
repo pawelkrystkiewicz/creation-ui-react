@@ -193,7 +193,7 @@ export const TableExample = () => {
   const totalPages = table.getPageCount()
   const resultsCount = table.getPrePaginationRowModel().rows.length
   const enablePagination = state === 'DATA'
-  const borderColors = 'border-info-300 dark:border-info-800'
+  const borderColors = 'border-info dark:border-info'
   return (
     <div>
       <Flex gap={3} items='center' className='mb-3'>
@@ -239,7 +239,7 @@ export const TableExample = () => {
               </Show>
               <Show when={state === 'ERROR'}>
                 <TableRow className={borderColors}>
-                  <TableCell colSpan={columns.length} className='h-[50vh] text-center text-error-500 font-medium '>
+                  <TableCell colSpan={columns.length} className='h-[50vh] text-center text-error font-medium '>
                     An error occurred
                   </TableCell>
                 </TableRow>

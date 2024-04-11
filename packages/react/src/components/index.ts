@@ -1,6 +1,5 @@
 export * from './autocomplete'
 export * from './avatar'
-export * from './box'
 export * from './breadcrumbs'
 export * from './buggy'
 export * from './button'

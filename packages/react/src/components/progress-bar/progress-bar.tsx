@@ -8,9 +8,9 @@ const INVERT_THRESHOLD = 52
 const classes = {
   container: [
     'w-full',
-    'bg-info-200',
+    'bg-info',
     'rounded-full',
-    'dark:bg-info-700',
+    'dark:bg-info',
     'relative',
   ],
 }
@@ -29,10 +29,10 @@ const progressValue = cva(
     variants: {
       invert: {
         true: ['text-info-50'],
-        false: ['text-info-800'],
+        false: ['text-info'],
       },
       size: {
-        sm: ['!top-0', '!-translate-y-full', 'pb-2', '!text-info-800'],
+        sm: ['!top-0', '!-translate-y-full', 'pb-2', '!text-info'],
         md: [],
         lg: ['!text-base'],
       },
@@ -60,11 +60,11 @@ const progressBar = cva(
         false: ['!bg-transparent'],
       },
       status: {
-        primary: ['bg-primary-500'],
-        success: ['bg-success-500'],
-        warning: ['bg-warning-500'],
-        error: ['bg-error-500'],
-        info: ['bg-info-500'],
+        primary: ['bg-primary'],
+        success: ['bg-success'],
+        warning: ['bg-warning'],
+        error: ['bg-error'],
+        info: ['bg-info'],
       },
     },
     defaultVariants: {

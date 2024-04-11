@@ -2,18 +2,17 @@ import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import {
   errorClasses,
-  inputClassesCVA,
   inputContainer,
-  label,
-  text
+  label
 } from '@root/classes'
 import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
+import { useTheme } from '@theme'
 import { InputBaseProps } from '@types'
-import { InteractiveContainer } from '../interactive-container'
-import { Loader } from '../loader'
+import { InteractiveContainer } from '@components'
+import { Loader } from '@components'
 import { Description } from '@components'
 import { InputBaseContext } from './input-base.context'
+import { inputClassesCVA } from './classes'
 
 const InputBaseInline: FC<InputBaseProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -37,7 +36,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
 
   const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
-    text({ size }),
+    `text-${size}`,
     cx?.container?.inner
   )
 

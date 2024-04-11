@@ -27,7 +27,7 @@ export const AutocompleteExternalSearchValueExample = () => {
         onInputChange={onInputChange}
         getOptionLabel={(option: PersonOnListType) => option?.label}
       />
-      <div className='w-64 border border-info-300 rounded-md p-5 mt-3'>
+      <div className='w-64 border border-info rounded-md p-5 mt-3'>
         <span className='uppercase text-sm'>Search query</span>
         <pre className='whitespace-pre-wrap'>{query}</pre>
       </div>

@@ -45,7 +45,7 @@ export const Chip = (props: ChipProps) => {
       <span className={cx?.container?.inner}>{label ?? status}</span>
       <Show when={!!endAdornment}>{endAdornment}</Show>
       <Show when={removable}>
-        <div className='bg-info-50 dark:bg-info-500/50 rounded-full'>
+        <div className='bg-info-50 dark:bg-info/50 rounded-full'>
           <ClearButton onClick={onDelete} />
         </div>
       </Show>

@@ -1,4 +1,4 @@
-export const borderColor = 'border-info-200 dark:border-info-800'
+export const borderColor = 'border-info dark:border-info'
 
 export const classes = {
   container: [borderColor, 'grid', 'grid-cols-3', 'border', 'rounded-lg'],

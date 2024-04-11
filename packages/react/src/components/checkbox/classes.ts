@@ -15,7 +15,7 @@ export const checkboxClasses = cva(base, {
   variants: {
     size: sharedSizeSquareCVA,
     error: {
-      true: [sharedErrorClasses, '!checked:bg-error-500'],
+      true: [sharedErrorClasses, '!checked:bg-error'],
       false: null,
     },
     readOnly: sharedReadOnlyCVA,

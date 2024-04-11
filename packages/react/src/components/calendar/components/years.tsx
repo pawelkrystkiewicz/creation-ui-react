@@ -25,7 +25,7 @@ export const CalendarYearsView = () => {
       size={size}
       key={year}
       variant={year === currentYear ? 'outlined' : 'text'}
-      className='w-14 h-14 text-info-900 dark:text-info-100'
+      className='w-14 h-14 text-info dark:text-info'
       onClick={() => handleYearClick(year)}
     >
       {year}

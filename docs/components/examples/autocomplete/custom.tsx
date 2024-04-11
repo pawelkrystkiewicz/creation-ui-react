@@ -1,5 +1,4 @@
-import { Autocomplete, Avatar } from '@creation-ui/react'
-import { AutocompleteOptionProps } from '@creation-ui/react/components/autocomplete/types'
+import { AutocompleteOptionProps, Autocomplete, Avatar } from '@creation-ui/react'
 import clsx from 'clsx'
 import { useState } from 'react'
 import { Character } from './types'
@@ -12,7 +11,7 @@ export const renderOption = (props: AutocompleteOptionProps, option: Character) 
       <Avatar size='sm' src={option.image} />
       <div className='flex flex-col'>
         <span className='font-medium'>{option.name}</span>
-        <span className='text-info-500 text-xs'>{option.species}</span>
+        <span className='text-xs'>{option.species}</span>
       </div>
     </div>
   </div>
@@ -24,7 +23,7 @@ const renderSelection = (option: Character) => (
       <Avatar size='sm' src={option.image} />
       <div className='flex flex-col'>
         <span className='font-medium'>{option.name}</span>
-        <span className='text-info-500 text-xs'>{option.species}</span>
+        <span className='text-xs'>{option.species}</span>
       </div>
     </div>
   </div>

@@ -28,7 +28,7 @@ export const popoverContentClasses = cva(
 export const popoverDescriptionClasses = cva(
   [
     //
-    'text-info-500',
+    'text-info',
     'text-sm',
     'leading-5',
   ],

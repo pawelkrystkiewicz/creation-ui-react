@@ -1,21 +1,13 @@
 import { cva } from 'class-variance-authority'
 import { twix } from '@utils'
 
-export const headerClasses = twix(
-  // '!text-lg',
-  'font-semibold',
-  'capitalize ',
-  'text-primary-900',
-  'dark:text-primary-200'
-)
+export const headerClasses = twix('font-semibold', 'capitalize ')
 
 export const calendarClasses = {
   container: cva(
     [
       'micro-interactions',
-      'bg-white',
-      'dark:bg-primary-800',
-      'dark:border-primary-700',
+      'bg-background-secondary',
       'border',
       'p-4',
       'rounded-md',
@@ -51,7 +43,7 @@ export const calendarDaysViewClasses = {
       'text-center',
       'relative',
       'rounded-md',
-      'hover:bg-primary-300',
+      'hover:bg-primary',
     ],
     {
       variants: {
@@ -71,11 +63,11 @@ export const calendarDaysViewClasses = {
         },
         isSelected: {
           true: [
-            '!text-info-100',
-            '!bg-primary-500',
-            'hover:bg-primary-600',
-            'hover:text-primary-300',
-            'focus:bg-primary-600',
+            '!text-info',
+            '!bg-primary',
+            'hover:bg-primary',
+            'hover:text-primary',
+            'focus:bg-primary',
           ],
         },
         isStart: {
@@ -87,8 +79,8 @@ export const calendarDaysViewClasses = {
           false: '',
         },
         isCurrentMonth: {
-          true: ['text-info-900', 'dark:text-info-100'],
-          false: ['text-info-400', 'dark:text-info-600'],
+          true: ['text-info', 'dark:text-info'],
+          false: ['text-info', 'dark:text-info'],
         },
         size: {
           sm: ['w-full', 'h-8', 'text-sm'],
@@ -96,7 +88,7 @@ export const calendarDaysViewClasses = {
           lg: ['w-full', 'h-12'],
         },
         isWeekend: {
-          true: '!text-error-500',
+          true: '!text-error',
           false: '',
         },
       },
@@ -111,7 +103,7 @@ export const calendarDaysViewClasses = {
           isSelected: true,
           isWeekend: true,
           isCurrentMonth: true,
-          className: '!text-info-100',
+          className: '!text-info',
         },
       ],
     }
@@ -127,7 +119,7 @@ export const calendarDaysViewTitleClasses = {
         false: '',
       },
       isWeekend: {
-        true: '!text-error-500',
+        true: '!text-error',
         false: '',
       },
     },

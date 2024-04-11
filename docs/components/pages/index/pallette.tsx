@@ -7,7 +7,6 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { ColorBox } from '../../page-elements/pallette/color-box'
-import { ColorShades } from '../../page-elements/pallette/colors-list'
 
 const colors = ELEMENT_STATUS
 
@@ -33,11 +32,6 @@ export const Pallette = () => {
         >
           {state ? state : 'Pick a color'}
         </div>
-
-        <div className={clsx(!state && '!opacity-20 blur-md')}>
-          <ColorShades color={state ?? 'info'} />
-        </div>
-
         <div className='text-center flex flex-col items-center'>
           You wanted different? No worries, just
           <a

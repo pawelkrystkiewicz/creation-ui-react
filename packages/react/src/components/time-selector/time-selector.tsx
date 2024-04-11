@@ -10,9 +10,9 @@ const cellClasses = cva(
       selected: {
         true: [
           //
-          'bg-primary-100',
-          'dark:bg-primary-100',
-          'dark:text-info-700',
+          'bg-primary',
+          'dark:bg-primary',
+          'dark:text-info',
         ],
         false: '',
       },
@@ -65,7 +65,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
   return (
     <div
       className={clsx(
-        'bg-white dark:bg-info-800 dark:border-info-700 border rounded-md',
+        'bg-white dark:bg-info dark:border-info border rounded-md',
         'grid grid-cols-2 gap-2'
       )}
     >

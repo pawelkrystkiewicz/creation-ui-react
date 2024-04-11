@@ -1,13 +1,12 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
+import { InteractiveContainer } from '../interactive-container'
+import { Loader } from '../loader'
+import { LoadingOverlay } from '../loading-overlay'
 import type { ButtonProps } from './button.types'
 import { button } from './classes'
-import { text } from '@root/classes'
-import { InteractiveContainer } from '../interactive-container'
-import { LoadingOverlay } from '../loading-overlay'
-import { Loader } from '../loader'
-import { twMerge } from 'tailwind-merge'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -36,7 +35,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         variant,
         disabled,
         uppercase,
-        className: [theme.roundness, className, text({ size })],
+        className: [theme.roundness, className, `text-${size}`],
       })
     )
 

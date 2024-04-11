@@ -16,13 +16,13 @@ export const ToolContainer = (props: ToolContainerProps) => {
 
   const { size = defaultSize, label } = props
 
-  const containerClasses = clsx(inputContainer(), text({ size }))
+  const containerClasses = clsx(inputContainer(), `text-${size}`)
   return (
     <div className={containerClasses}>
       <label htmlFor={componentId} className={labelClasses({ size })} aria-label={label?.toString()}>
         {label}
       </label>
-      <div className='flex gap-3 w-fit'>{props.children}</div>
+      <div className="flex gap-3 w-fit">{props.children}</div>
     </div>
   )
 }

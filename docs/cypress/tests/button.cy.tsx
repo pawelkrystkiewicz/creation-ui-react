@@ -35,49 +35,49 @@ const modeVariantStatusExpectedClasses = {
   light: {
     contained: {
       //TODO: might want to add all other classes like hover, focus, active, etc
-      primary: ['bg-primary-500', 'text-white'],
-      success: ['bg-success-500', 'text-white'],
-      warning: ['bg-warning-500', 'text-white'],
-      error: ['bg-error-500', 'text-white'],
-      info: ['bg-info-500', 'text-white']
+      primary: ['bg-primary', 'text-white'],
+      success: ['bg-success', 'text-white'],
+      warning: ['bg-warning', 'text-white'],
+      error: ['bg-error', 'text-white'],
+      info: ['bg-info', 'text-white']
     },
 
     outlined: {
-      primary: ['border-primary-500', 'text-primary-500'],
-      success: ['border-success-500', 'text-success-500'],
-      warning: ['border-warning-500', 'text-warning-500'],
-      error: ['border-error-500', 'text-error-500'],
-      info: ['border-info-500', 'text-info-500']
+      primary: ['border-primary', 'text-primary'],
+      success: ['border-success', 'text-success'],
+      warning: ['border-warning', 'text-warning'],
+      error: ['border-error', 'text-error'],
+      info: ['border-info', 'text-info']
     },
     text: {
-      primary: ['bg-transparent', 'text-primary-500'],
-      success: ['bg-transparent', 'text-success-500'],
-      warning: ['bg-transparent', 'text-warning-500'],
-      error: ['bg-transparent', 'text-error-500'],
-      info: ['bg-transparent', 'text-info-700']
+      primary: ['bg-transparent', 'text-primary'],
+      success: ['bg-transparent', 'text-success'],
+      warning: ['bg-transparent', 'text-warning'],
+      error: ['bg-transparent', 'text-error'],
+      info: ['bg-transparent', 'text-info']
     }
   },
   dark: {
     contained: {
-      primary: ['bg-primary-500', 'text-white'],
-      success: ['bg-success-500', 'text-white'],
-      warning: ['bg-warning-500', 'text-white'],
-      error: ['bg-error-500', 'text-white'],
-      info: ['bg-info-500', 'text-white']
+      primary: ['bg-primary', 'text-white'],
+      success: ['bg-success', 'text-white'],
+      warning: ['bg-warning', 'text-white'],
+      error: ['bg-error', 'text-white'],
+      info: ['bg-info', 'text-white']
     },
     outlined: {
-      primary: ['border-primary-500', 'text-primary-500'],
-      success: ['border-success-500', 'text-success-500'],
-      warning: ['border-warning-500', 'text-warning-500'],
-      error: ['border-error-500', 'text-error-500'],
-      info: ['border-info-500', 'text-info-500']
+      primary: ['border-primary', 'text-primary'],
+      success: ['border-success', 'text-success'],
+      warning: ['border-warning', 'text-warning'],
+      error: ['border-error', 'text-error'],
+      info: ['border-info', 'text-info']
     },
     text: {
-      primary: ['bg-transparent', 'text-primary-500'],
-      success: ['bg-transparent', 'text-success-500'],
-      warning: ['bg-transparent', 'text-warning-500'],
-      error: ['bg-transparent', 'text-error-500'],
-      info: ['bg-transparent', 'text-info-700']
+      primary: ['bg-transparent', 'text-primary'],
+      success: ['bg-transparent', 'text-success'],
+      warning: ['bg-transparent', 'text-warning'],
+      error: ['bg-transparent', 'text-error'],
+      info: ['bg-transparent', 'text-info']
     }
   }
 }

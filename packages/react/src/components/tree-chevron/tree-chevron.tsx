@@ -6,10 +6,10 @@ interface TreeChevronProps extends Omit<IconProps, 'icon'> {
 }
 
 const classes = [
-  'text-info-400',
+  'text-info',
   'ease-in-out',
   'duration-300',
-  'hover:text-info-800',
+  'hover:text-info',
   'cursor-pointer',
 ]
 

@@ -9,19 +9,19 @@ interface ColorBoxProps {
 }
 
 const bg: Record<ElementStatus, any> = {
-  primary: 'bg-primary-500',
-  success: 'bg-success-500',
-  warning: 'bg-warning-500',
-  error: 'bg-error-500',
-  info: 'bg-info-500',
+  primary: 'bg-primary',
+  success: 'bg-success',
+  warning: 'bg-warning',
+  error: 'bg-error',
+  info: 'bg-info',
 }
 
 const ring: Record<ElementStatus, any> = {
-  primary: 'ring-primary-500',
-  success: 'ring-success-500',
-  warning: 'ring-warning-500',
-  error: 'ring-error-500',
-  info: 'ring-info-500',
+  primary: 'ring-primary',
+  success: 'ring-success',
+  warning: 'ring-warning',
+  error: 'ring-error',
+  info: 'ring-info',
 }
 
 export const ColorBox = ({ onClick, color, selected }: ColorBoxProps) => (

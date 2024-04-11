@@ -31,7 +31,7 @@ export const CalendarMonthsView = () => {
       size={size}
       key={monthName}
       variant={currentMonth === index ? 'outlined' : 'text'}
-      className='w-14 h-14 text-info-900 dark:text-info-100'
+      className='w-14 h-14 text-info dark:text-info'
       onClick={() => handleMonthClick(index)}
     >
       {monthName}

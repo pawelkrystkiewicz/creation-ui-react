@@ -1,4 +1,3 @@
-import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 import values from 'lodash.values'
@@ -41,34 +40,28 @@ export const roundness = {
   input: 'rounded-md',
 }
 
-export const sharedTextSizesBase = {
-  sm: ['text-sm', 'sm:text-base'],
-  md: ['text-base', 'sm:text-lg'],
-  lg: ['text-lg', 'sm:text-xl'],
-}
-
 export const sharedTextSizesHeading = {
-  sm: ['text-base', 'sm:text-lg'],
-  md: ['text-lg', 'sm:text-xl'],
-  lg: ['text-xl', 'sm:text-xl'],
+  sm: ['heading-size-sm'],
+  md: ['heading-size-md'],
+  lg: ['heading-size-lg'],
 }
 
 export const sharedTextSizesDescription = {
-  sm: ['text-[13px]', 'sm:text-xs'],
-  md: ['text-xs', 'sm:text-sm'],
-  lg: ['text-sm', 'sm:text-base'],
+  sm: ['description-size-sm'],
+  md: ['description-size-md'],
+  lg: ['description-size-lg'],
 }
 
 export const sharedSizeClassesCVA = {
-  sm: ['h-7', 'px-2', ...sharedTextSizesBase.sm],
-  md: ['h-8', 'px-3', ...sharedTextSizesBase.md],
-  lg: ['h-10', 'px-4', ...sharedTextSizesBase.lg],
+  sm: ['size-sm', 'text-size-sm'],
+  md: ['size-md', 'text-size-md'],
+  lg: ['size-lg', 'text-size-lg'],
 }
 
 export const sharedSizeSquareCVA = {
-  sm: ['h-4', 'w-4', ...sharedTextSizesBase.sm],
-  md: ['h-5', 'w-5', ...sharedTextSizesBase.md],
-  lg: ['h-6', 'w-6', ...sharedTextSizesBase.lg],
+  sm: ['size-square-sm', 'text-size-sm'],
+  md: ['size-square-md', 'text-size-md'],
+  lg: ['size-square-lg', 'text-size-lg'],
 }
 
 export const sharedReadOnlyCVA = {
@@ -92,145 +85,42 @@ export const loaderClasses = cva(
 )
 
 export const invalid = {
-  text: ['dark:invalid:text-error-400', 'invalid:text-error-600'],
+  text: ['dark:invalid:text-error', 'invalid:text-error'],
   border: [
-    '!dark:invalid:border-error-400',
-    '!invalid:border-error-500',
-    '!focus:invalid:border-error-500',
+    '!dark:invalid:border-error',
+    '!invalid:border-error',
+    '!focus:invalid:border-error',
   ],
 }
 export const errorClasses = {
-  text: ['!dark:text-error-400', '!text-error-600'],
-  border: [
-    '!dark:border-error-400',
-    '!border-error-500',
-    '!focus:border-error-500',
-  ],
+  text: ['!dark:text-error', '!text-error'],
+  border: ['!border-error', '!focus:border-error'],
 }
 
 export const sharedErrorClasses = getAllValuesFromObject(errorClasses)
 
 export const classes = {
-  required: ["after:content-['*']", 'after:ml-0.5', 'after:text-error-500'],
+  required: ["after:content-['*']", 'after:ml-0.5', 'after:text-error'],
   label: ['select-none', 'block'],
   loaderInputPosition: loaderClasses,
   input: [
     // 'micro-interactions',
     'border',
-    'border-info-400',
-    'dark:bg-info-900',
-    'dark:border-info-700',
-    'focus:border-primary-300',
-    'focus:dark:border-primary-400',
-    'bg-white',
-    getAllValuesFromObject(roundness),
+    'bg-background-primary',
+    'rounded-md',
     getAllValuesFromObject(invalid),
   ],
   checkable: [
     'micro-interactions',
     formClassesMap.checkbox,
-    'text-primary-500',
+    'text-primary',
     'checked:border-none',
-    'dark:checked:bg-primary-500',
-    'checked:bg-primary-500',
-    'indeterminate:bg-primary-500',
+    'checked:bg-primary',
+    'indeterminate:bg-primary',
     'cursor-pointer',
     'peer',
   ],
 }
-
-export const inputClassesCVA = cva(
-  [
-    getAllValuesFromObject(roundness),
-    'peer',
-    'block',
-    'w-full',
-    'disabled:pointer-events-none',
-  ],
-  {
-    variants: {
-      clearable: { true: 'pl-10', false: [] },
-      interactionsDisabled: {
-        true: ['pointer-events-none'],
-        false: null,
-      },
-      variant: {
-        contained: [
-          classes.input,
-          'bg-info-100',
-          'border-transparent',
-          // 'focus:border-info-500',
-          'focus:bg-info-50',
-          // 'focus:ring-0',
-        ],
-        outlined: [classes.input],
-        text: [
-          classes.input,
-          'border-0',
-          'border-b',
-          'rounded-none',
-          'border-gray-200',
-          'focus:ring-0',
-          // 'focus:border-black',
-        ],
-        unstyled: [],
-      },
-      size: sharedSizeClassesCVA,
-      startAdornment: { true: 'pl-10', false: 'pl-3' },
-      endAdornment: { true: 'pr-10', false: 'pr-3' },
-      error: {
-        true: sharedErrorClasses,
-        false: null,
-      },
-      type: {
-        ...formClassesMap,
-        select: [formClassesMap.select],
-        file: ['!h-8', '!p-0'],
-        color: [formClassesMap.color, '!p-0'],
-        checkbox: [formClassesMap.checkbox, '!px-0'],
-      },
-    },
-    defaultVariants: {
-      size: 'md',
-      variant: 'outlined',
-    },
-    compoundVariants: [
-      {
-        clearable: true,
-        endAdornment: true,
-        className: ['pr-16'],
-      },
-      {
-        type: 'color',
-        size: 'sm',
-        className: ['!h-7', '!w-7'],
-      },
-      {
-        type: 'color',
-        size: 'md',
-        className: ['!h-8', '!w-8'],
-      },
-      {
-        type: 'color',
-        size: 'lg',
-        className: ['!h-10', '!w-10'],
-      },
-    ],
-  }
-)
-
-export const text = cva('micro-interactions', {
-  variants: {
-    size: {
-      sm: ['sm:text-sm', 'text-base'],
-      md: ['sm:text-base', 'text-lg'],
-      lg: ['sm:text-lg', 'text-xl'],
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-})
 
 export const inputContainer = cva(['micro-interactions', 'flex'], {
   variants: {
@@ -301,7 +191,7 @@ export const inputIcon = cva(
 
 export const optionListClasses = cva(
   [
-    'bg-white',
+    'bg-background-secondary',
     'shadow-md',
     'w-fit',
     'border',
@@ -310,8 +200,6 @@ export const optionListClasses = cva(
     'flex-col',
     'gap-1',
     'p-1',
-    'dark:bg-info-800',
-    'dark:border-info-700',
   ],
   {
     variants: {
@@ -327,16 +215,13 @@ export const optionListClasses = cva(
 export const selectedOptionClasses = cva(
   [
     'rounded-full',
-    'text-info-800',
-    'bg-info-100',
-    'dark:text-info-300',
-    'dark:bg-info-700',
     'px-1.5',
     'text-sm',
     'inline-flex',
     'gap-1',
     'items-center',
     'select-none',
+    'bg-primary',
   ],
   {
     variants: {},
@@ -345,12 +230,10 @@ export const selectedOptionClasses = cva(
 
 export const selectOptionClasses = cva(
   [
-    'dark:text-info-100',
     'font-normal',
     'relative',
     'cursor-pointer',
     'select-none',
-    'text-info-800',
     'rounded-md',
     'group',
     'w-full',
@@ -361,15 +244,15 @@ export const selectOptionClasses = cva(
     variants: {
       selected: {
         true: [
-          'bg-primary-100/60',
-          'dark:bg-primary-100/50',
-          'hover:bg-primary-100',
-          'hover:dark:bg-primary-100/60',
+          'bg-primary/60',
+          'dark:bg-primary/50',
+          'hover:bg-primary/10',
+          'hover:dark:bg-primary/60',
         ],
         false: [],
       },
       active: {
-        true: ['bg-info-100', 'dark:bg-primary-100/25'],
+        true: ['bg-info', 'dark:bg-primary/25'],
         false: [],
       },
       disabled: {
@@ -386,7 +269,7 @@ export const selectOptionClasses = cva(
       {
         selected: true,
         active: true,
-        className: ['!bg-primary-100', '!dark:bg-primary-100/60'],
+        className: ['!bg-primary', '!dark:bg-primary/60'],
       },
     ],
   }
@@ -395,34 +278,9 @@ export const selectOptionClasses = cva(
 export const selectOptionIconClasses = cva(['font-extrabold', 'text-xl'], {
   variants: {
     selected: {
-      true: ['opacity-100', '!text-primary-500', '!fill-primary-500'],
+      true: ['opacity-100', '!text-primary', '!fill-primary'],
       false: ['opacity-0'],
     },
     active: { true: ['opacity-50'] },
   },
 })
-
-const debugClassesCVA = cva(['ring-1'], {
-  variants: {
-    color: {
-      red: 'ring-red-500',
-      green: 'ring-green-500',
-      blue: 'ring-blue-500',
-      yellow: 'ring-yellow-500',
-      purple: 'ring-purple-500',
-      pink: 'ring-pink-500',
-      indigo: 'ring-indigo-500',
-      gray: 'ring-gray-500',
-      black: 'ring-black',
-      white: 'ring-white',
-    },
-  },
-  defaultVariants: {
-    color: 'red',
-  },
-})
-
-type ClassesArgs = VariantProps<typeof debugClassesCVA>
-
-export const debugClasses = (color?: ClassesArgs['color']) =>
-  debugClassesCVA({ color })

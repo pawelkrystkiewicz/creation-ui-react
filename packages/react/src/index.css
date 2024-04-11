@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
-* {
-    @apply scroll-smooth;
-}
-
 .reset-input,
 .reset-input:focus-visible {
     -webkit-appearance: none;
@@ -98,7 +94,7 @@
 
 
 * {
-    border-color: var(--border);
+    @apply border-border;
 }
 
 html {
@@ -113,4 +109,74 @@ body {
 
 .micro-interactions {
     @apply duration-300 transition-all ease-in-out;
+}
+
+.text-size- {
+    .sm {
+        @apply text-sm sm:text-base;
+    }
+
+    .md {
+        @apply text-base sm:text-lg;
+    }
+
+    .lg {
+        @apply text-lg sm:text-xl;
+    }
+}
+
+.heading-size- {
+    .sm {
+        @apply text-base sm:text-lg;
+    }
+
+    .md {
+        @apply text-lg sm:text-xl;
+    }
+
+    .lg {
+        @apply text-xl sm:text-2xl;
+    }
+}
+
+.description-size- {
+    .sm {
+        @apply text-[13px] sm:text-xs;
+    }
+
+    .md {
+        @apply text-xs sm:text-sm;
+    }
+
+    .lg {
+        @apply text-sm sm:text-base;
+    }
+}
+
+.size- {
+    .sm {
+        @apply h-7 px-2;
+    }
+
+    .md {
+        @apply h-8 px-3;
+    }
+
+    .lg {
+        @apply h-10 px-4;
+    }
+}
+
+.size-square- {
+    .sm {
+        @apply size-4;
+    }
+
+    .md {
+        @apply size-5;
+    }
+
+    .lg {
+        @apply size-6;
+    }
 }

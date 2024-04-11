@@ -19,8 +19,8 @@ export const dropdownMenuClasses = cva(
     'text-left',
     'gap-1',
     'p-1',
-    'dark:bg-info-800',
-    'dark:border-info-700',
+    'dark:bg-info',
+    'dark:border-info',
     'remove-ring',
   ],
   {

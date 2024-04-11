@@ -26,10 +26,10 @@ const iconPathMap: Record<IconType, string> = {
 const iconClasses = cva(
   [
     //
-    'fill-info-500',
-    'dark:fill-info-100',
-    'hover:fill-primary-500',
-    'dark:hover:fill-primary-500',
+    'fill-info',
+    'dark:fill-info',
+    'hover:fill-primary',
+    'dark:hover:fill-primary',
     'size-4',
     'flex-shrink-0',
   ],
