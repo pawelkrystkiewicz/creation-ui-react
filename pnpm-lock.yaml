@@ -7,7 +7,20 @@ settings:
 importers:
 
   .:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@types/react':
+        specifier: ^18.2.75
+        version: 18.2.75
+      '@types/react-dom':
+        specifier: ^18.2.24
+        version: 18.2.24
       eslint:
         specifier: 8.29.0
         version: 8.29.0
@@ -86,12 +99,6 @@ importers:
       '@types/node':
         specifier: 18.11.10
         version: 18.11.10
-      '@types/react':
-        specifier: 18.0.26
-        version: 18.0.26
-      '@types/react-dom':
-        specifier: 18.0.9
-        version: 18.0.9
       '@types/react-highlight-words':
         specifier: ^0.16.4
         version: 0.16.7
@@ -143,9 +150,6 @@ importers:
       prettier:
         specifier: ^2.8.7
         version: 2.8.8
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
       react-code-blocks:
         specifier: 0.0.9-0
         version: 0.0.9-0(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
@@ -155,9 +159,6 @@ importers:
       react-datepicker:
         specifier: ^4.10.0
         version: 4.25.0(react-dom@18.2.0)(react@18.2.0)
-      react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
       react-highlight-words:
         specifier: ^0.20.0
         version: 0.20.0(react@18.2.0)
@@ -370,10 +371,10 @@ importers:
         specifier: ^1.4.4
         version: 1.4.4
       react:
-        specifier: ^18.2.0
+        specifier: ^16 || ^17 || ^18
         version: 18.2.0
       react-dom:
-        specifier: ^18.2.0
+        specifier: ^16 || ^17 || ^18
         version: 18.2.0(react@18.2.0)
       react-highlight-words:
         specifier: ^0.20.0
@@ -436,12 +437,6 @@ importers:
       '@types/node':
         specifier: ^18.15.5
         version: 18.19.31
-      '@types/react':
-        specifier: ^18.0.28
-        version: 18.2.75
-      '@types/react-dom':
-        specifier: ^18.0.11
-        version: 18.2.24
       '@types/react-input-mask':
         specifier: ^3.0.5
         version: 3.0.5
@@ -4195,12 +4190,6 @@ packages:
       - react-dom
     dev: true
 
-  /@types/react-dom@18.0.9:
-    resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
-    dependencies:
-      '@types/react': 18.2.75
-    dev: false
-
   /@types/react-dom@18.2.24:
     resolution: {integrity: sha512-cN6upcKd8zkGy4HU9F1+/s98Hrp6D4MOcippK4PoE8OZRngohHZpbJn1GsaDLz87MqvHNoT13nHvNqM9ocRHZg==}
     dependencies:
@@ -4231,14 +4220,6 @@ packages:
       '@types/react': 18.2.75
     dev: false
 
-  /@types/react@18.0.26:
-    resolution: {integrity: sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==}
-    dependencies:
-      '@types/prop-types': 15.7.12
-      '@types/scheduler': 0.23.0
-      csstype: 3.1.3
-    dev: false
-
   /@types/react@18.2.75:
     resolution: {integrity: sha512-+DNnF7yc5y0bHkBTiLKqXFe+L4B3nvOphiMY3tuA5X10esmjqk7smyBZzbGTy2vsiy/Bnzj8yFIBL8xhRacoOg==}
     dependencies:
@@ -4254,10 +4235,6 @@ packages:
     dependencies:
       '@types/node': 18.19.31
     dev: true
-
-  /@types/scheduler@0.23.0:
-    resolution: {integrity: sha512-YIoDCTH3Af6XM5VuwGG/QL/CJqga1Zm3NkU3HZ4ZHK2fRMPYP1VczsTUqtsf43PH/iJNVlPHAo2oWX7BSdB2Hw==}
-    dev: false
 
   /@types/semver@7.5.8:
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}

@@ -14,7 +14,7 @@ Object.keys(twColors).forEach(key => {
 
 const creationUiConfig = {
   darkMode: 'class',
-  content: ['node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx}'],
+  content: ['node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx,css}'],
   theme: {
     colors: {
       ...twColors,
@@ -50,5 +50,5 @@ const creationUiConfig = {
  * @param {object} userConfig - Tailwind config object
  * @return {object} new config object
  */
-export const withTailwindConfig = (userConfig = {}) =>
+export const withTailwindConfig = (userConfig: object = {}): object =>
   merge(creationUiConfig, { ...userConfig })
