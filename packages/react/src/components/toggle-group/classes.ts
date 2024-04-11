@@ -1,13 +1,9 @@
 import { cva } from 'class-variance-authority'
-import {
-  microInteractions,
-  sharedDisabledCVA,
-  sharedSizeClassesCVA,
-} from '@creation-ui/core'
+import { sharedDisabledCVA, sharedSizeClassesCVA } from '@root/classes'
 
 export const toggleGroup = {
   container: [
-    microInteractions,
+    'micro-interactions',
     'relative',
     'inline-flex',
     'shadow-sm',
@@ -15,7 +11,7 @@ export const toggleGroup = {
   ],
   button: cva(
     [
-      microInteractions,
+      'micro-interactions',
       'z-0',
       'bg-white',
       'border-info-400',

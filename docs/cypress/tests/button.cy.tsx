@@ -1,6 +1,6 @@
 'use strict'
-import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/core'
-import { Button } from '@root/packages/react/src'
+import { ELEMENT_STATUS, ELEMENT_VARIANTS } from '@creation-ui/react'
+import { Button } from '@creation-ui/react'
 import clsx from 'clsx'
 
 // tabIndex attributes set
@@ -39,7 +39,7 @@ const modeVariantStatusExpectedClasses = {
       success: ['bg-success-500', 'text-white'],
       warning: ['bg-warning-500', 'text-white'],
       error: ['bg-error-500', 'text-white'],
-      info: ['bg-info-500', 'text-white'],
+      info: ['bg-info-500', 'text-white']
     },
 
     outlined: {
@@ -47,15 +47,15 @@ const modeVariantStatusExpectedClasses = {
       success: ['border-success-500', 'text-success-500'],
       warning: ['border-warning-500', 'text-warning-500'],
       error: ['border-error-500', 'text-error-500'],
-      info: ['border-info-500', 'text-info-500'],
+      info: ['border-info-500', 'text-info-500']
     },
     text: {
       primary: ['bg-transparent', 'text-primary-500'],
       success: ['bg-transparent', 'text-success-500'],
       warning: ['bg-transparent', 'text-warning-500'],
       error: ['bg-transparent', 'text-error-500'],
-      info: ['bg-transparent', 'text-info-700'],
-    },
+      info: ['bg-transparent', 'text-info-700']
+    }
   },
   dark: {
     contained: {
@@ -63,23 +63,23 @@ const modeVariantStatusExpectedClasses = {
       success: ['bg-success-500', 'text-white'],
       warning: ['bg-warning-500', 'text-white'],
       error: ['bg-error-500', 'text-white'],
-      info: ['bg-info-500', 'text-white'],
+      info: ['bg-info-500', 'text-white']
     },
     outlined: {
       primary: ['border-primary-500', 'text-primary-500'],
       success: ['border-success-500', 'text-success-500'],
       warning: ['border-warning-500', 'text-warning-500'],
       error: ['border-error-500', 'text-error-500'],
-      info: ['border-info-500', 'text-info-500'],
+      info: ['border-info-500', 'text-info-500']
     },
     text: {
       primary: ['bg-transparent', 'text-primary-500'],
       success: ['bg-transparent', 'text-success-500'],
       warning: ['bg-transparent', 'text-warning-500'],
       error: ['bg-transparent', 'text-error-500'],
-      info: ['bg-transparent', 'text-info-700'],
-    },
-  },
+      info: ['bg-transparent', 'text-info-700']
+    }
+  }
 }
 
 describe('Button', () => {
@@ -88,13 +88,13 @@ describe('Button', () => {
 
     cy.mount(
       <Button
-        id='button-1-test'
+        id="button-1-test"
         onClick={() => {
           clicked = true
         }}
       >
         Click me
-      </Button>,
+      </Button>
     )
     const button = cy.get('button')
 
@@ -115,9 +115,9 @@ describe('Button', () => {
 
   it('should handle hover events and prevent interactions when disabled', () => {
     cy.mount(
-      <Button id='button-1-test' disabled>
+      <Button id="button-1-test" disabled>
         Click me
-      </Button>,
+      </Button>
     )
     const button = cy.get('button')
 
@@ -128,8 +128,8 @@ describe('Button', () => {
       .should('have.attr', 'id', 'button-1-test')
       .should('have.class', 'pointer-events-none')
 
-    cy.get("[data-testid='cui-interactive-container']").should('have.class', 'cursor-not-allowed')
-    cy.mount(<Button id='button-1-test'>Click me</Button>)
+    cy.get('[data-testid=\'cui-interactive-container\']').should('have.class', 'cursor-not-allowed')
+    cy.mount(<Button id="button-1-test">Click me</Button>)
 
     cy.get('button')
       .should('exist')
@@ -159,7 +159,7 @@ describe('Button', () => {
     cy.mount(
       <Button circle loading>
         +
-      </Button>,
+      </Button>
     )
     cy.get('[data-testid="cui-loader"]').should('be.visible')
   })
@@ -175,7 +175,7 @@ describe('Button', () => {
                     <Button status={status} variant={variant}>
                       {status}
                     </Button>
-                  </div>,
+                  </div>
                 )
 
                 const button = cy.get('button')
@@ -191,6 +191,6 @@ describe('Button', () => {
           })
         })
       })
-    }),
+    })
   )
 })

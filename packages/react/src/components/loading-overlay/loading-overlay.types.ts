@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import type { ElementSize } from '@types'
 import type { LoaderProps } from '../loader/loader.types'
 import type { OverlayProps } from '../overlay/overlay.types'
 

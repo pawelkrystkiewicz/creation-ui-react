@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
-import { BreadcrumbLink, ElementSize } from '@creation-ui/core'
+import { BreadcrumbLink, ElementSize } from '@types'
 import { BreadcrumbItem } from './breadcrumb-item'
 import { separators } from './seperators'
 import { Icon } from '../icon'

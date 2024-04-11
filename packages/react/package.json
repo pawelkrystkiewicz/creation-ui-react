@@ -26,18 +26,17 @@
     "_publish": "npm publish --registry https://registry.npmjs.org --access public",
     "release": "pnpm build && pnpm _publish",
     "amend": "git commit --amend --no-edit",
-    "build": "pnpm build:rm && pnpm build:cjs && pnpm build:dts && pnpm build:version",
+    "build": "pnpm build:rm && pnpm build:cjs && pnpm build:dts && pnpm build:copy && pnpm build:version",
+    "build:copy": "cp src/index.css ./dist",
     "build:cjs": "swc ./src -d ./dist --config-file ./.swcrc",
     "build:dts": "tsc --declaration --declarationMap --emitDeclarationOnly",
     "build:watch": "pnpm build:rm && pnpm build:cjs -w",
     "build:version": "echo $(cat ./package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')",
     "build:rm": "rm -rf dist",
     "ci:publish": "pnpm publish -r",
-    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true",
-    "core": "pnpm i @creation-ui/core@latest"
+    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags) || true"
   },
   "dependencies": {
-    "@creation-ui/core": "^0.6.0",
     "@floating-ui/react": "^0.25.1",
     "@floating-ui/react-dom": "^2.0.1",
     "@headlessui/react": "^1.7.13",
@@ -67,7 +66,6 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@creation-ui/core": "latest",
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18",
     "react-input-mask": "^2",

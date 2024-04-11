@@ -5,7 +5,7 @@ import {
   sharedErrorClasses,
   sharedReadOnlyCVA,
   sharedSizeSquareCVA,
-} from '@creation-ui/core'
+} from '@root/classes'
 
 const { input, checkable } = classes
 

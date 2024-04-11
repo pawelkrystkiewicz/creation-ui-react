@@ -1,5 +1,5 @@
 import type { ElementType } from 'react'
-import type { ElementTypography } from '@creation-ui/core'
+import type { ElementTypography } from '@types'
 
 export const getElementType = (
   variant: ElementTypography = 'content'

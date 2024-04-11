@@ -1,7 +1,7 @@
 import { docsMicroInteractions } from '@components/classes'
 import Icon from '@components/icon'
 import { HeaderSubbed } from '@components/page-elements/header-subbed'
-import { ElementStatus, ELEMENT_STATUS } from '@creation-ui/core'
+import { ElementStatus, ELEMENT_STATUS } from '@creation-ui/react'
 import { mdiOpenInNew } from '@mdi/js'
 import clsx from 'clsx'
 import { useState } from 'react'

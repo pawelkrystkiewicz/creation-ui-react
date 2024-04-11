@@ -1,6 +1,6 @@
 import { Playground } from '@components/playground'
 import { Content, Description, H1, H2, H3, H4, H5, H6 } from '@creation-ui/react'
-import { microInteractions } from '@creation-ui/core'
+import { microInteractions } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
 import { sizeControl } from './shared-playground-controls'
 import { childrenProp, sizeProp } from './shared-props'

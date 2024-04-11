@@ -1,5 +1,5 @@
-import type { ThemeProps, ThemeProviderProps } from '@creation-ui/core'
-import { defaultTheme } from '@creation-ui/core'
+import type { ThemeProps, ThemeProviderProps } from './types'
+import { defaultTheme } from './defaultTheme'
 import { createContext, useContext } from 'react'
 
 export const ThemeCtx = createContext<Partial<ThemeProps>>(defaultTheme)

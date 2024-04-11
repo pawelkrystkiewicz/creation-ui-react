@@ -8,7 +8,6 @@
     "email": "pawelkrystkiewicz@outlook.com"
   },
   "scripts": {
-    "dev": "pnpm --recursive --parallel --stream run dev",
     "build:cui": "cd packages/react && pnpm build",
     "docs": "pnpm --filter docs",
     "cui": "pnpm --filter packages/react",

@@ -3,7 +3,7 @@ import {
   ElementSize,
   ElementVariant,
   InputBaseProps,
-} from '@creation-ui/core'
+} from '@types'
 import { ChipProps } from '../chip'
 
 export type SelectOptionDefault = string | { label: string; disabled?: boolean }

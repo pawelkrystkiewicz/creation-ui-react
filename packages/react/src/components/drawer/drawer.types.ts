@@ -1,4 +1,4 @@
-import type { ElementPosition } from '@creation-ui/core'
+import type { ElementPosition } from '@types'
 
 export interface DrawerProps {
   /**

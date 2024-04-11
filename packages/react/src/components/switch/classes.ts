@@ -1,14 +1,10 @@
+import { classes, sharedReadOnlyCVA } from '@root/classes'
 import { cva } from 'class-variance-authority'
-import {
-  microInteractions,
-  classes,
-  sharedReadOnlyCVA,
-} from '@creation-ui/core'
 
 export const switchClasses = cva(
   [
     ...classes.input,
-    microInteractions,
+    'micro-interactions',
     'checked:border-transparent',
     'dark:checked:bg-primary-500',
     'cursor-pointer',
@@ -42,7 +38,7 @@ export const switchClasses = cva(
 )
 export const switchCircle = cva(
   [
-    microInteractions,
+    'micro-interactions',
     'transform',
     'transition-all',
     'rounded-full',

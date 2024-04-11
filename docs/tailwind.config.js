@@ -1,4 +1,4 @@
-const { withTailwindConfig } = require('@creation-ui/core')
+const { withTailwindConfig } = require('@creation-ui/react')
 
 /** @type {import('tailwindcss').Config} */
 const config = withTailwindConfig({
@@ -7,9 +7,8 @@ const config = withTailwindConfig({
     '../packages/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    '!node_modules',
-    'node_modules/@creation-ui/core/**/*.{js,ts,jsx,tsx,mdx}',
     './**/*.css',
+    '../**/*.css',
   ],
   extend: {
     transitionDelay: {

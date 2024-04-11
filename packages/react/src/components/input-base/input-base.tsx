@@ -1,26 +1,26 @@
 import {
-  InputBaseProps,
   errorClasses,
   inputClassesCVA,
   inputContainer,
   inputIcon,
   label,
-  text,
-} from '@creation-ui/core'
+  text
+} from '@root/classes'
 import clsx from 'clsx'
-import { forwardRef, type FC } from 'react'
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
+import { useTheme } from '@theme'
 import { ClearButton } from '../clear-button'
-import { InteractiveContainer } from '../interactive-container'
+import { InteractiveContainer } from '@components'
 import { Loader } from '../loader'
 import { Show } from '../show'
-import { Description } from '../typography'
+import { Description } from '@components'
 import { Adornment } from './adornment'
 import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
+import { InputBaseProps } from '@types'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
@@ -39,7 +39,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     variant = defaultVariant,
     layout = 'column',
     interactionsDisabled,
-    onClear,
+    onClear
   } = props
   const componentId = useId(id)
 
@@ -71,7 +71,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
       // @ts-ignore
       className: cx?.input,
       // @ts-expect-error
-      type,
+      type
     })
   )
 
@@ -84,7 +84,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
           disabled,
           readOnly,
           error: !!error,
-          type,
+          type
         }}
       >
         <div className={outerContainerClasses}>
@@ -93,27 +93,23 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
             className={label({
               size,
               required: props.required,
-              className: cx?.label,
+              className: cx?.label
             })}
             aria-label={props.label?.toString()}
           >
             {props.label}
           </label>
           <InputBaseContainerInner className={cx?.container?.inner} ref={ref}>
-            <Adornment position='left' type={type} adornment={startAdornment} />
+            <Adornment position="left" type={type} adornment={startAdornment} />
             {children}
             {loading ? (
               <Loader
-                className={inputIcon({
-                  position: 'right',
-                  // @ts-expect-error
-                  type,
-                })}
+                className={inputIcon({ position: 'right', type: type as any })}
                 size={size === 'lg' ? 'md' : 'sm'}
               />
             ) : (
               <Adornment
-                position='right'
+                position="right"
                 type={type}
                 adornment={
                   <>

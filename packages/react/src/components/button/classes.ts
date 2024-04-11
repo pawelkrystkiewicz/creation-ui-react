@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import { sharedDisabledCVA, sharedSizeClassesCVA } from '@creation-ui/core'
+import { sharedDisabledCVA, sharedSizeClassesCVA } from '@root/classes'
 
 export const button = cva(
   [

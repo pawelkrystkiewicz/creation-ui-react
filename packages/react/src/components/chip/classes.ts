@@ -1,5 +1,4 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions } from '@creation-ui/core'
 
 export const chipClasses = cva(
   [
@@ -15,7 +14,7 @@ export const chipClasses = cva(
     'flex-row',
     'gap-1',
     'py-0.5',
-    microInteractions,
+    'micro-interactions',
   ],
   {
     variants: {

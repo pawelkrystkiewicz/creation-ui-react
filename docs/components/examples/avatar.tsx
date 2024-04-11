@@ -1,6 +1,6 @@
 import { Container } from '@components/container'
 import { Playground } from '@components/playground'
-import { ELEMENT_SIZES } from '@creation-ui/core'
+import { ELEMENT_SIZES } from '@creation-ui/react'
 import { Avatar, AVATAR_VARIANTS, AvatarGroup, AvatarGroupProps } from '@creation-ui/react'
 import { mdiCircleOutline, mdiSquareOutline, mdiSquareRoundedOutline } from '@mdi/js'
 import Icon from '@mdi/react'

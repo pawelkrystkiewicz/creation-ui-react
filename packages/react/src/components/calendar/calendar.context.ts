@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { ElementSize } from '@creation-ui/core'
+import type { ElementSize } from '@types'
 import {
   CalendarDateValue,
   CalendarMode,

@@ -1,4 +1,4 @@
-import type { ElementStatus, ElementVariant } from '@creation-ui/core'
+import type { ElementStatus, ElementVariant } from '@types'
 
 export interface CalloutProps {
   content: React.ReactNode

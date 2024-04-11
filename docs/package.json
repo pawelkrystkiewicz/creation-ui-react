@@ -8,7 +8,7 @@
     "email": "pawelkrystkiewicz@outlook.com"
   },
   "scripts": {
-    "dev": "next dev -p 3005",
+    "start": "next dev -p 3005",
     "build": "pnpm import-check && next build",
     "preview": "next start",
     "lint": "next lint",
@@ -30,14 +30,12 @@
     "override-version": "sh ./override-version.sh",
     "generate:docs": "node ./scripts/generate-docs.js",
     "prettify": "prettier --write .",
-    "core": "pnpm -r add @creation-ui/core@latest",
     "update:tailwind": "pnpm -r add @headlessui/tailwindcss@latest @tailwindcss/aspect-ratio@latest @tailwindcss/typography@latest tailwind-merge@latest tailwindcss-debug-screens@latest prettier-plugin-tailwindcss@latest tailwindcss@latest",
     "init:component": "cd packages/react && ./init-component.sh"
   },
   "dependencies": {
     "@creation-ui/react": "workspace:*",
     "@babel/parser": "^7.21.4",
-    "@creation-ui/core": "^0.6.0",
     "@floating-ui/react": "^0.25.1",
     "@floating-ui/react-dom": "^2.0.1",
     "@headlessui/react": "^1.7.13",

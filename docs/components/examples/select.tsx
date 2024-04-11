@@ -1,6 +1,6 @@
 import { Playground } from '@components/playground'
 import { usePlayground } from '@components/playground/context/context'
-import { DropdownProps } from '@creation-ui/core'
+import { DropdownProps } from '@creation-ui/react'
 import { Select } from '@creation-ui/react'
 import { pick } from 'lodash'
 import { DocumentedProperty } from 'models/system'

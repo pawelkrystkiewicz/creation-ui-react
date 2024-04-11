@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '@creation-ui/core'
+import type { BaseComponentProps } from '@types'
 
 export type CalendarDateValue = Date | null | undefined
 export type CalendarMode = 'single' | 'range'

@@ -1,5 +1,4 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions } from '@creation-ui/core'
 
 const size = {
   sm: ['w-4', 'h-4'],
@@ -8,7 +7,13 @@ const size = {
 }
 
 export const loaderClasses = cva(
-  ['flex', 'justify-center', 'items-center', 'select-none', microInteractions],
+  [
+    'flex',
+    'justify-center',
+    'items-center',
+    'select-none',
+    'micro-interactions',
+  ],
   {
     variants: {
       size,

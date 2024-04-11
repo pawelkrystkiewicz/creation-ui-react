@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import type { ElementSize } from '@types'
 import {
   FloatingFocusManager,
   FloatingPortal,

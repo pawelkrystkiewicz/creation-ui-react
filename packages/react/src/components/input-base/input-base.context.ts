@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { HTMLInputType } from '@creation-ui/core'
+import { HTMLInputType } from '@types'
 
 interface InputBaseContextValue {
   componentId: string

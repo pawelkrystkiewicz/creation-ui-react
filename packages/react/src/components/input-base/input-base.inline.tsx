@@ -5,14 +5,14 @@ import {
   inputClassesCVA,
   inputContainer,
   label,
-  text,
-} from '@creation-ui/core'
+  text
+} from '@root/classes'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
-import { InputBaseProps } from '@creation-ui/core'
+import { InputBaseProps } from '@types'
 import { InteractiveContainer } from '../interactive-container'
 import { Loader } from '../loader'
-import { Description } from '../typography'
+import { Description } from '@components'
 import { InputBaseContext } from './input-base.context'
 
 const InputBaseInline: FC<InputBaseProps> = props => {
@@ -27,7 +27,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
     id,
     children,
     variant,
-    layout = 'row',
+    layout = 'row'
     // onClear,
   } = props
   const componentId = useId(id)
@@ -47,7 +47,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
       variant,
       // @ts-ignore
       className: cx?.input,
-      error: !!error,
+      error: !!error
     })
   )
 
@@ -58,12 +58,12 @@ const InputBaseInline: FC<InputBaseProps> = props => {
           componentId,
           classes: {
             input: inputClasses,
-            container: outerContainerClasses,
+            container: outerContainerClasses
           },
           disabled,
           readOnly,
           error: !!error,
-          type,
+          type
         }}
       >
         <div className={cx?.container?.outer}>
@@ -74,7 +74,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
               className={label({
                 size,
                 required: props.required,
-                className: cx?.label,
+                className: cx?.label
               })}
               children={props.label}
               aria-label={props.label?.toString()}

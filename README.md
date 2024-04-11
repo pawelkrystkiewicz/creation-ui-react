@@ -9,7 +9,7 @@ and it's fully customizable. It's a great starting point for your next project.
 ## Prerequisites
 
 Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation/using-postcss).
-Also @creation-ui/core package is required for the React packages to work. It contains sharable theme config, styles and utilities.
+Also @creation-ui/react package is required for the React packages to work. It contains sharable theme config, styles and utilities.
 
 ```
   "peerDependencies": {
@@ -24,15 +24,15 @@ Also @creation-ui/core package is required for the React packages to work. It co
 To install Creation UI, run the command below:
 
     ```bash copy
-     yarn add @creation-ui/core @creation-ui/react
+     yarn add  @creation-ui/react
      ```
 
     ```bash copy
-     npm i @creation-ui/core @creation-ui/react
+     npm i  @creation-ui/react
      ```
 
     ```bash copy
-     pnpm i @creation-ui/core @creation-ui/react
+     pnpm i  @creation-ui/react
      ```
 
 ## Components
@@ -82,7 +82,7 @@ In development
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
 
 ```js copy
-const { withTailwindConfig } = require("@creation-ui/core");
+const { withTailwindConfig } = require("@creation-ui/react");
 
 /** @type {import('tailwindcss').Config} */
 const config = withTailwindConfig({
@@ -106,7 +106,7 @@ You can extend all properties [as usual](https://tailwindcss.com/docs/configurat
    If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import "@creation-ui/core/index.css";
+import "@creation-ui/react/index.css";
 ```
 
 3. Start using it!

@@ -1,5 +1,5 @@
-import { passThrough } from '@creation-ui/core'
-import { DropdownProps } from '@creation-ui/core'
+import { passThrough } from '@utils'
+import { DropdownProps } from '@types'
 
 export const DROPDOWN_MARGIN = 4
 

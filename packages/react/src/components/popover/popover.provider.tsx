@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { useTheme } from '../../theme'
+import { useTheme } from '@theme'
 import { PopoverContext } from './context'
 import { PopoverOptions } from './types'
 import { usePopover } from './use-popover'
