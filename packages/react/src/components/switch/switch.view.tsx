@@ -18,7 +18,7 @@ export const SwitchView = ({
         id={componentId}
         disabled={disabled}
         aria-required={required}
-        className={switchClasses({ size, checked, readOnly })}
+        className={switchClasses({ size, checked, readOnly, className:[size] })}
       >
         <span aria-hidden='true' className={switchCircle({ size, checked })} />
       </HSwitch>

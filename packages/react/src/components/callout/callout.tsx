@@ -21,20 +21,20 @@ const calloutClasses = cva(
     variants: {
       status: {
         primary: [
-          'bg-primary-50',
+          'bg-primary',
           'text-primary',
           'border-primary',
           'bg-opacity-25',
         ],
-        error: ['bg-error-50', 'text-error', 'border-error'],
-        success: ['bg-success-50', 'text-success', 'border-success'],
+        error: ['bg-error', 'text-error', 'border-error'],
+        success: ['bg-success', 'text-success', 'border-success'],
         warning: [
           'bg-warning',
           'text-warning',
           'border-warning',
           'bg-opacity-25',
         ],
-        info: ['bg-neutral-100', 'text-neutral-500', 'border-neutral-500'],
+        info: ['bg-background-input'],
       },
       variant: {
         contained: [],

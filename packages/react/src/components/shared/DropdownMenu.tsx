@@ -8,19 +8,17 @@ interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
 
 export const dropdownMenuClasses = cva(
   [
-    'bg-white',
+    'bg-background-input',
     'shadow-md',
     'w-fit',
-    'border',
-    'rounded-md',
+    // 'border',
+    'rounded',
     'flex',
     'flex-col',
     'items-start',
     'text-left',
     'gap-1',
     'p-1',
-    'dark:bg-info',
-    'dark:border-info',
     'remove-ring',
   ],
   {

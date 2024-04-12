@@ -6,6 +6,7 @@ import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
 import { formatTime, sanitizeTime } from './utils'
 import InputMask from 'react-input-mask'
+import { Show } from '../show'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -59,16 +60,13 @@ export const TimePicker: FC<TimePickerProps> = props => {
 
     let hours = sanitizeTime(h)
     let minutes = sanitizeTime(m)
-    console.log(
-      event.currentTarget.selectionStart,
-      event.currentTarget.selectionEnd
-    )
-    if (isNaN(hours)) {
-      hours = 0
-    }
-    if (isNaN(minutes)) {
-      minutes = 0
-    }
+
+    // if (isNaN(hours)) {
+    //   hours = 0
+    // }
+    // if (isNaN(minutes)) {
+    //   minutes = 0
+    // }
 
     switch (event.key) {
       case 'ArrowUp':
@@ -118,10 +116,13 @@ export const TimePicker: FC<TimePickerProps> = props => {
           {inputProps => <Input {...inputProps} size={size} />}
         </InputMask>
       </PopoverTrigger>
-      <PopoverContent className='!p-0 !bg-transparent' zIndex={zIndex?.popover}>
-        {open && (
+      <PopoverContent
+        className='!p-0 !m-0 !bg-transparent'
+        zIndex={zIndex?.popover}
+      >
+        <Show when={open}>
           <TimeSelector value={value} onSelect={setValue} format={format} />
-        )}
+        </Show>
       </PopoverContent>
     </Popover>
   )

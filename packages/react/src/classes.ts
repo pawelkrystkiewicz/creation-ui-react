@@ -72,9 +72,10 @@ export const classes = {
   label: ['select-none', 'block'],
   loaderInputPosition: loaderClasses,
   input: [
-    // 'micro-interactions',
+    'micro-interactions',
+    'bg-background-input',
     'border',
-    'bg-background-primary',
+    'border-border',
     'rounded',
     getAllValuesFromObject(invalid),
   ],
@@ -90,21 +91,24 @@ export const classes = {
   ],
 }
 
-export const inputContainer = cva(['micro-interactions', 'flex'], {
-  variants: {
-    layout: {
-      column: ['flex-col', 'gap-1', 'items-start'],
-      row: ['flex-row', 'gap-2', 'items-center'],
+export const inputContainer = cva(
+  ['border-border', 'micro-interactions', 'flex'],
+  {
+    variants: {
+      layout: {
+        column: ['flex-col', 'gap-1', 'items-start'],
+        row: ['flex-row', 'gap-2', 'items-center'],
+      },
+      disabled: sharedDisabledCVA,
+      error: {
+        true: errorClasses.text,
+      },
     },
-    disabled: sharedDisabledCVA,
-    error: {
-      true: errorClasses.text,
+    defaultVariants: {
+      layout: 'column',
     },
-  },
-  defaultVariants: {
-    layout: 'column',
-  },
-})
+  }
+)
 
 export const label = cva([...classes.label], {
   variants: {

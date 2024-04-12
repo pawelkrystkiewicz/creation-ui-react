@@ -12,7 +12,7 @@ export const switchClasses = cva(
     '!rounded-full',
     'h-fit',
     'border',
-    // 'bg-background-primary',
+    'bg-background-input',
   ],
   {
     variants: {
@@ -36,7 +36,6 @@ export const switchCircle = cva(
   [
     'micro-interactions',
     'transform',
-    'transition-all',
     'rounded-full',
     'bg-white',
     'shadow-lg',

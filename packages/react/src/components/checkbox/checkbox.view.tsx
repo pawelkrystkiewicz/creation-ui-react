@@ -12,8 +12,7 @@ export const CheckboxView = ({
   const ref = useRef<HTMLInputElement>(null)
   const { componentId, error, readOnly, disabled } = useInputBase()
   const checkboxClassNames = checkboxClasses({
-    size,
-    className,
+    className: [className, size],
     error: !!error,
     readOnly,
   })

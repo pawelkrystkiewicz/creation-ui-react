@@ -106,7 +106,7 @@ const PropsTable = ({ properties, name, description }: PropsTableProps) => {
       <div className='mt-6 mb-12'>
         <div className='-mx-4 overflow-x-auto sm:mx-0'>
           <div className='inline-block min-w-full'>
-            <table className='w- w-full min-w-[540px] border-b border-gray-700 text-left sm:min-w-full'>
+            <table className='w- w-full min-w-[540px] border-b text-left sm:min-w-full'>
               <tbody className='divide-y divide-gray-700'>
                 <TableHeader />
                 <>

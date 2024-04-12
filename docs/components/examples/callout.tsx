@@ -1,5 +1,5 @@
 import { Playground } from '@components/playground'
-import { Callout } from '@creation-ui/react/index'
+import { Callout } from '@creation-ui/react'
 import { mdiCheckCircle, mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
 import { Icon } from '@mdi/react'
 import { DocumentedProperty } from 'models/system'

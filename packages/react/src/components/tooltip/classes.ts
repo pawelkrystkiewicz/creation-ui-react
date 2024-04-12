@@ -8,11 +8,9 @@ export const tooltip = cva(
     'absolute',
     'whitespace-nowrap',
     'rounded',
-    'bg-info',
-    'dark:bg-info',
+    'bg-background-input',
     'px-2',
     'py-1',
-    'text-white',
     'opacity-0',
     'transition',
     'before:absolute',
@@ -25,11 +23,11 @@ export const tooltip = cva(
     variants: {
       position: {
         top: [
+
           'before:top-full',
           '-top-10',
           'left-1/2',
-          'before:border-t-info',
-          'dark:before:border-t-info',
+          'before:border-t-border',
           '-translate-x-1/2',
           'before:left-1/2',
           'before:-translate-x-1/2',
@@ -42,8 +40,7 @@ export const tooltip = cva(
           'before:bottom-full',
           'before:left-1/2',
           'before:-translate-x-1/2',
-          'before:border-b-info',
-          'dark:before:border-b-info',
+          'before:border-b-border',
         ],
         left: [
           'right-full',
@@ -53,8 +50,7 @@ export const tooltip = cva(
           'before:left-full',
           'before:top-1/2',
           'before:-translate-y-1/2',
-          'before:border-l-info',
-          'dark:before:border-l-info',
+          'before:border-l-border',
         ],
         right: [
           'ml-2',
@@ -64,8 +60,7 @@ export const tooltip = cva(
           'before:right-full',
           'before:top-1/2',
           'before:-translate-y-1/2',
-          'before:border-r-info',
-          'dark:before:border-r-info',
+          'before:border-r-border',
         ],
       },
     },

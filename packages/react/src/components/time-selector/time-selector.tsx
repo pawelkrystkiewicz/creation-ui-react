@@ -4,17 +4,12 @@ import { FC, useCallback, useEffect, useRef } from 'react'
 import { OnTimeSliderSelectArgs, TimeSelectorProps } from './types'
 
 const cellClasses = cva(
-  ['cursor-pointer', 'px-2', 'py-1', 'hover:bg-primary-50/50'],
+  ['cursor-pointer', 'px-2', 'py-1', 'hover:bg-primary/50', 'rounded'],
   {
     variants: {
       selected: {
-        true: [
-          //
-          'bg-primary',
-          'dark:bg-primary',
-          'dark:text-info',
-        ],
-        false: '',
+        true: ['bg-primary', 'text-white'],
+        false: [],
       },
     },
   }
@@ -65,7 +60,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
   return (
     <div
       className={clsx(
-        'bg-white dark:bg-info dark:border-info border rounded-md',
+        'bg-background-input border rounded',
         'grid grid-cols-2 gap-2'
       )}
     >
