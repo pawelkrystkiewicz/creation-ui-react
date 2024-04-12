@@ -1,10 +1,8 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
-import { InteractiveContainer } from '../interactive-container'
-import { Loader } from '../loader'
-import { LoadingOverlay } from '../loading-overlay'
+import { useId } from '@hooks'
+import { useTheme } from '@theme'
+import { InteractiveContainer, Loader, LoadingOverlay } from '@components'
 import type { ButtonProps } from './button.types'
 import { button } from './classes'
 
@@ -21,7 +19,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = theme.size,
       variant = 'contained',
       status = 'primary',
-      uppercase,
+      uppercase
     } = props
 
     const isLoaderWhite = variant === 'contained'
@@ -35,8 +33,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         variant,
         disabled,
         uppercase,
-        className: [theme.roundness, className, `text-${size}`],
-      })
+        className
+      }), size
     )
 
     const centerSpinner: boolean = Boolean(loading && circle)
@@ -49,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ref={ref}
           disabled={Boolean(disabled)}
           aria-disabled={Boolean(disabled)}
-          type='button'
+          type="button"
           {...props}
           className={classes}
         >

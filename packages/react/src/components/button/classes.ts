@@ -1,8 +1,9 @@
+import { sharedDisabledCVA } from '@root/classes'
 import { cva } from 'class-variance-authority'
-import { sharedDisabledCVA, sharedSizeClassesCVA } from '@root/classes'
 
 export const button = cva(
   [
+    'text-size', 'size',
     'gap-2',
     'inline-flex',
     'flex-nowrap',
@@ -22,9 +23,9 @@ export const button = cva(
         false: null
       },
       size: {
-        sm: [...sharedSizeClassesCVA.sm, 'px-3'],
-        md: [...sharedSizeClassesCVA.md, 'px-5'],
-        lg: [...sharedSizeClassesCVA.lg, 'px-6']
+        sm: ['px-3'],
+        md: ['px-5'],
+        lg: ['px-6']
       },
       variant: {
         contained: ['hover:bg-opacity-75', 'bg-opacity-100', '!text-white'],

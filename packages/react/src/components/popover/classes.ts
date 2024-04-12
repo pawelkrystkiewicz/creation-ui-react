@@ -1,56 +1,22 @@
-import {
-  sharedTextSizesBase,
-  sharedTextSizesDescription,
-  sharedTextSizesHeading,
-} from '@root/classes'
-import { cva } from 'class-variance-authority'
+import clsx from 'clsx'
 
-export const popoverCloseClasses = cva([], {
-  variants: {
-    size: sharedTextSizesBase,
-  },
-})
-export const popoverContentClasses = cva(
-  [
-    //
-    'bg-white',
-    'shadow-lg',
-    'rounded',
-    'py-2',
-    'px-3',
-  ],
-  {
-    variants: {
-      size: sharedTextSizesBase,
-    },
-  }
+export const popoverCloseClasses = clsx('size', 'text-size')
+export const popoverContentClasses = clsx(
+  'bg-white',
+  'shadow-lg',
+  'rounded',
+  'py-2',
+  'px-3',
+  'size',
+  'text-size'
 )
-export const popoverDescriptionClasses = cva(
-  [
-    //
-    'text-info',
-    'text-sm',
-    'leading-5',
-  ],
-  {
-    variants: {
-      size: sharedTextSizesDescription,
-    },
-  }
+export const popoverDescriptionClasses = clsx(
+  'text-info',
+  'text-sm',
+  'leading-5',
+  'description-size',
+  'size'
 )
-export const popoverHeadingClasses = cva(['font-bold'], {
-  variants: {
-    size: sharedTextSizesHeading,
-  },
-})
-export const popoverTriggerClasses = cva(
-  [
-    //
-    'cursor-pointer',
-  ],
-  {
-    variants: {
-      size: sharedTextSizesBase,
-    },
-  }
-)
+
+export const popoverHeadingClasses = clsx('font-bold', 'size', 'heading-size')
+export const popoverTriggerClasses = clsx('cursor-pointer', 'size', 'text-size')

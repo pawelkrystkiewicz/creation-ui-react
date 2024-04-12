@@ -1,6 +1,4 @@
-import { useTheme } from '@creation-ui/react'
-import { ElementSize, inputContainer, label as labelClasses, text } from '@creation-ui/react'
-import clsx from 'clsx'
+import { ElementSize, inputContainer, label as labelClasses, useTheme } from '@creation-ui/react'
 import { ReactNode, useId } from 'react'
 
 interface ToolContainerProps {
@@ -16,13 +14,12 @@ export const ToolContainer = (props: ToolContainerProps) => {
 
   const { size = defaultSize, label } = props
 
-  const containerClasses = clsx(inputContainer(), `text-${size}`)
   return (
-    <div className={containerClasses}>
+    <div className={inputContainer({ className: [size] })}>
       <label htmlFor={componentId} className={labelClasses({ size })} aria-label={label?.toString()}>
         {label}
       </label>
-      <div className="flex gap-3 w-fit">{props.children}</div>
+      <div className='flex gap-3 w-fit'>{props.children}</div>
     </div>
   )
 }

@@ -1,40 +1,36 @@
-import { classes, sharedReadOnlyCVA } from '@root/classes'
+import { sharedReadOnlyCVA } from '../../classes'
 import { cva } from 'class-variance-authority'
 
 export const switchClasses = cva(
   [
-    ...classes.input,
     'micro-interactions',
-    'checked:border-transparent',
-    'dark:checked:bg-primary',
     'cursor-pointer',
     'peer',
     'relative',
     'inline-flex',
     'shrink-0',
-    'border-2',
-    '!bg-info',
-    '!dark:bg-info',
     '!rounded-full',
     'h-fit',
+    'border',
+    // 'bg-background-primary',
   ],
   {
     variants: {
       size: {
-        sm: ['w-8', 'p-0'],
-        md: ['w-12', 'p-0.5'],
-        lg: ['w-14', 'p-0.5'],
+        sm: ['w-[35px]', 'p-0.5'],
+        md: ['w-[47px]', 'p-0.5'],
+        lg: ['w-[55px]', 'p-0.5'],
       },
       checked: {
-        true: ['!bg-primary', '!border-primary'],
-        false: ['!border-transparent'],
+        true: ['bg-primary'],
+        false: [],
       },
       readOnly: sharedReadOnlyCVA,
     },
     defaultVariants: {
       size: 'md',
     },
-  }
+  },
 )
 export const switchCircle = cva(
   [
@@ -49,9 +45,9 @@ export const switchCircle = cva(
   {
     variants: {
       size: {
-        sm: ['h-3', 'w-3'],
-        md: ['h-4', 'w-4'],
-        lg: ['h-5', 'w-5'],
+        sm: ['size-3'],
+        md: ['size-4'],
+        lg: ['size-5'],
       },
       checked: {
         true: null,
@@ -75,5 +71,5 @@ export const switchCircle = cva(
         className: ['translate-x-7'],
       },
     ],
-  }
+  },
 )

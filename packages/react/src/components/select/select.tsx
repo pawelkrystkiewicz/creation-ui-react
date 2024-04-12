@@ -206,10 +206,9 @@ export function Select<T>(props: SelectProps<T>) {
       className: selectOptionClasses({
         active,
         selected,
-        size,
         disabled,
         truncate,
-        className: [truncate ? `!w-[${width}px]` : '', 'remove-ring'],
+        className: [truncate ? `!w-[${width}px]` : '', 'remove-ring', size],
       }),
       ref: node => {
         listRef.current[idx] = node

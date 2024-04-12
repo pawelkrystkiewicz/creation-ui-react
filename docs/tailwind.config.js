@@ -4,7 +4,8 @@ const { withTailwindConfig } = require('@creation-ui/react')
 const config = withTailwindConfig({
   content: [
     '!node_modules',
-    '../packages/react/**/*.{js,ts,jsx,tsx,mdx,css}',
+    '../packages/react/src/index.css',
+    '../packages/react/dist/**/*.{js,ts,jsx,tsx,mdx,css}',
     './components/**/*.{js,ts,jsx,tsx,mdx,css}',
     './pages/**/*.{js,ts,jsx,tsx,mdx,css}',
     './public/**/*.{js,ts,jsx,tsx,mdx,css}',

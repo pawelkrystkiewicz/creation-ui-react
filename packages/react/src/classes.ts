@@ -36,34 +36,6 @@ export const sharedDisabledCVA = {
   false: null,
 }
 
-export const roundness = {
-  input: 'rounded-md',
-}
-
-export const sharedTextSizesHeading = {
-  sm: ['heading-size-sm'],
-  md: ['heading-size-md'],
-  lg: ['heading-size-lg'],
-}
-
-export const sharedTextSizesDescription = {
-  sm: ['description-size-sm'],
-  md: ['description-size-md'],
-  lg: ['description-size-lg'],
-}
-
-export const sharedSizeClassesCVA = {
-  sm: ['size-sm', 'text-size-sm'],
-  md: ['size-md', 'text-size-md'],
-  lg: ['size-lg', 'text-size-lg'],
-}
-
-export const sharedSizeSquareCVA = {
-  sm: ['size-square-sm', 'text-size-sm'],
-  md: ['size-square-md', 'text-size-md'],
-  lg: ['size-square-lg', 'text-size-lg'],
-}
-
 export const sharedReadOnlyCVA = {
   true: 'pointer-events-none',
   false: 'pointer-events-auto',
@@ -85,15 +57,11 @@ export const loaderClasses = cva(
 )
 
 export const invalid = {
-  text: ['dark:invalid:text-error', 'invalid:text-error'],
-  border: [
-    '!dark:invalid:border-error',
-    '!invalid:border-error',
-    '!focus:invalid:border-error',
-  ],
+  text: ['invalid:text-error'],
+  border: ['!invalid:border-error', '!focus:invalid:border-error'],
 }
 export const errorClasses = {
-  text: ['!dark:text-error', '!text-error'],
+  text: ['!text-error'],
   border: ['!border-error', '!focus:border-error'],
 }
 
@@ -107,7 +75,7 @@ export const classes = {
     // 'micro-interactions',
     'border',
     'bg-background-primary',
-    'rounded-md',
+    'rounded',
     getAllValuesFromObject(invalid),
   ],
   checkable: [
@@ -239,6 +207,8 @@ export const selectOptionClasses = cva(
     'w-full',
     'flex',
     'items-center',
+    'size',
+    'text-size',
   ],
   {
     variants: {
@@ -260,7 +230,7 @@ export const selectOptionClasses = cva(
         false: [],
       },
       multiple: { true: ['flex', 'gap-2'], false: [] },
-      size: sharedSizeClassesCVA,
+
       truncate: {
         true: ['truncate', 'whitespace-nowrap'],
       },

@@ -6,11 +6,11 @@ import { toggleGroup } from './classes'
 import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
 
 export const ToggleGroupView = ({
-  size,
-  className,
-  options,
-  ...rest
-}: ToggleGroupProps) => {
+                                  size,
+                                  className,
+                                  options,
+                                  ...rest
+                                }: ToggleGroupProps) => {
   const { componentId, readOnly, disabled } = useInputBase()
 
   return (
@@ -32,12 +32,12 @@ export const ToggleGroupView = ({
                 checked,
                 // @ts-ignore
                 disabled,
-                size,
                 element: getElementPosition(array, index),
+                className: [size]
               })
             }
           >
-            <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
+            <RadioGroup.Label as="span">{label}</RadioGroup.Label>
           </RadioGroup.Option>
         )
       )}

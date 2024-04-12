@@ -48,7 +48,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
 
   const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
-    `text-${size}`,
+    `text-size-${size}`,
     cx?.container?.outer
   )
 
@@ -71,7 +71,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
       className: cx?.input,
       // @ts-expect-error
       type
-    })
+    }), size
   )
 
   return (

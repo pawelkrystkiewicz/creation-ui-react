@@ -42,7 +42,7 @@ export const ColorsSelector = ({ options, onClick, label, value, ...props }: Col
   const { size = defaultSize, required, readOnly, error } = props
 
   const disabled = props.disabled || readOnly
-  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), `text-${size}`, 'micro-interactions')
+  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), `text-size-${size}`, 'micro-interactions')
 
   return (
     <div className={containerClasses}>

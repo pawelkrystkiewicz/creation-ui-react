@@ -4,6 +4,7 @@ import { forwardRef, useLayoutEffect } from 'react'
 import type { ElementSize } from '@types'
 import { popoverHeadingClasses } from './classes'
 import { usePopoverContext } from './context'
+import clsx from 'clsx'
 interface PopoverHeadingProps
   extends Omit<HTMLProps<HTMLHeadingElement>, 'size'> {
   size?: ElementSize
@@ -30,7 +31,7 @@ export const PopoverHeading = forwardRef<
       {...props}
       ref={ref}
       id={id}
-      className={popoverHeadingClasses({ size: finalSize, className })}
+      className={clsx(finalSize, className, popoverHeadingClasses)}
     >
       {children}
     </h2>

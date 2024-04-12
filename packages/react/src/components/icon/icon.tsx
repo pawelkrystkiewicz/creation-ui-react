@@ -1,5 +1,3 @@
-import { sharedSizeSquareCVA } from '@root/classes'
-import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
 import type { IconProps, IconType } from './icon.type'
@@ -23,22 +21,16 @@ const iconPathMap: Record<IconType, string> = {
   minus: 'M19,13H5V11H19V13Z',
 }
 
-const iconClasses = cva(
-  [
-    //
-    'fill-info',
-    'dark:fill-info',
-    'hover:fill-primary',
-    'dark:hover:fill-primary',
-    'size-4',
-    'flex-shrink-0',
-  ],
-  {
-    variants: {
-      size: sharedSizeSquareCVA,
-    },
-  }
-)
+const iconClasses = [
+  'fill-info',
+  'dark:fill-info',
+  'hover:fill-primary',
+  'dark:hover:fill-primary',
+  'size-4',
+  'flex-shrink-0',
+  'size-square',
+  'text-size',
+]
 
 const Icon = ({ icon, title, className, ...props }: IconProps) => {
   const { size: defaultSize } = useTheme()
@@ -48,7 +40,7 @@ const Icon = ({ icon, title, className, ...props }: IconProps) => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
-      className={twMerge(iconClasses({ size }), className)}
+      className={twMerge(iconClasses, size, className)}
       {...props}
     >
       <title>{title}</title>

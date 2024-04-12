@@ -347,9 +347,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       className: selectOptionClasses({
         active,
         selected,
-        size,
         disabled,
         truncate,
+        className: [size],
       }),
       index,
       query,

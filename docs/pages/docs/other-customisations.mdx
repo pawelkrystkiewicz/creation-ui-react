@@ -1,0 +1,41 @@
+# Other customisations
+
+Creation UI library is shipped with a few CSS utility classes that can be customized as needed.
+
+-  [Micro interactions](#micro-interactions)
+
+## Micro interactions
+
+Micro-interactions are small, focused animations or effects that occur as a result of user action or system status. They provide feedback to users by visually indicating that their actions have been recognized and processed. These interactions enhance the user experience by making the digital environment more intuitive and engaging.
+
+Purpose of Micro-Interactions:
+
+* Feedback: They inform users about the result of an action or the state of an application.
+* Visual Interest: Add a level of detail that makes the user experience feel more polished and alive.
+* Usability: Improve the overall usability of a product by preventing user errors and reducing cognitive load.
+
+Examples in UI:
+* Changing the color of a button when it is clicked.
+* Displaying a small animation when a user hovers over a tooltip.
+* Animating a progress bar as a file uploads.
+
+Micro-interactions are a vital aspect of modern UI/UX design, making digital interactions feel more human and connected.
+
+
+### In context of this library
+CUI comes with `.micro-interactions` class, which is designed to enhance user interface elements within a React application through subtle animations, making the interaction feel more dynamic and responsive. This class utilizes Tailwind CSS to apply smooth transitions to elements such as buttons, inputs, and other interactive components.
+
+CSS Definition:
+
+```css copy
+.micro-interactions {
+  @apply duration-300 transition-all ease-in-out;
+}
+```
+You can change this behaviour by e.g. changing timing, animation curve.
+
+To use this class in your own components, simply add `.micro-interactions` to the class list of any React component that you want to animate.
+
+```jsx Copy
+<button className="micro-interactions">Click me</button>
+```

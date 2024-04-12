@@ -3,6 +3,7 @@ import { forwardRef } from 'react'
 import type { ElementSize } from '@types'
 import { popoverCloseClasses } from './classes'
 import { usePopoverContext } from './context'
+import clsx from 'clsx'
 
 interface PopoverCloseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ElementSize
@@ -19,7 +20,7 @@ export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(
         type='button'
         ref={ref}
         {...props}
-        className={popoverCloseClasses({ className, size: finalSize })}
+        className={clsx(popoverCloseClasses, finalSize, className)}
         onClick={event => {
           props.onClick?.(event)
           setOpen(false)

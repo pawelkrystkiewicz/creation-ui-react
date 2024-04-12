@@ -36,7 +36,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
 
   const outerContainerClasses = twMerge(
     inputContainer({ disabled, error: !!error, layout }),
-    `text-${size}`,
+    `text-size-${size}`,
     cx?.container?.inner
   )
 

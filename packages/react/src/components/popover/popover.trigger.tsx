@@ -1,11 +1,10 @@
 import { useMergeRefs } from '@floating-ui/react'
+import type { ElementSize } from '@types'
 import clsx from 'clsx'
 import type { HTMLProps, ReactNode } from 'react'
 import React, { forwardRef } from 'react'
-import type { ElementSize } from '@types'
 import { popoverTriggerClasses } from './classes'
 import { usePopoverContext } from './context'
-import { usePopover } from './use-popover'
 
 interface PopoverTriggerProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
   children: ReactNode
@@ -41,7 +40,7 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
         ref={ref}
         data-state={ctx.open ? 'open' : 'closed'}
         {...ctx.getReferenceProps(props)}
-        className={clsx(popoverTriggerClasses({ className, size: finalSize }))}
+        className={clsx(className, finalSize, popoverTriggerClasses)}
       >
         {children}
       </div>

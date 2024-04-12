@@ -16,8 +16,7 @@ export const Option = forwardRef<
           active,
           selected,
           multiple,
-          size,
-          className,
+          className: [size],
         })}
         ref={ref}
         role='option'

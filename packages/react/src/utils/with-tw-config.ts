@@ -32,12 +32,7 @@ const creationUiConfig = {
       warning: 'hsl(var(--warning) / <alpha-value>)',
       error: 'hsl(var(--error) / <alpha-value>)',
       success: 'hsl(var(--success) / <alpha-value>)',
-      info: 'hsl(var(--info) / <alpha-value>)',
-      borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: 'calc(var(--radius) - 4px)'
-      }
+      info: 'hsl(var(--info) / <alpha-value>)'
     },
     fontFamily: typography,
     screens: breakpoints

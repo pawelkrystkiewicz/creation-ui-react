@@ -1,5 +1,5 @@
+import { sharedDisabledCVA } from '@root/classes'
 import { cva } from 'class-variance-authority'
-import { sharedDisabledCVA, sharedSizeClassesCVA } from '@root/classes'
 
 export const toggleGroup = {
   container: [
@@ -11,33 +11,21 @@ export const toggleGroup = {
   ],
   button: cva(
     [
+      'size',
+      'text-size',
       'micro-interactions',
-      'z-0',
-      'bg-white',
-      'border-info',
       'border-y',
-      'dark:bg-info',
-      'dark:border-info',
-      'dark:hover:bg-info',
-      'dark:text-info',
-      'focus:border-primary',
-      'focus:dark:border-primary',
-      'focus:dark:ring-primary',
-      'focus:invalid:border-error',
-      'focus:invalid:ring-error',
-      'focus:ring-offset-0',
-      'focus:ring-opacity-50',
-      'focus:ring-primary',
-      'focus:ring',
+      'cursor-pointer',
       'focus:z-10',
       'font-medium',
-      'hover:bg-info',
+      'hover:bg-primary/10',
       'inline-flex',
       'items-center',
       'relative',
-      'text-info',
       'text-sm',
-      'cursor-pointer',
+      'text-text-primary',
+      'z-0',
+      'px-3',
     ],
     {
       variants: {
@@ -47,11 +35,15 @@ export const toggleGroup = {
           last: ['rounded-r-md', 'border-r'],
         },
         checked: {
-          true: ['!bg-primary', 'text-white', 'font-bold'],
-          false: ['bg-info-50', 'text-info', 'hover:bg-info'],
+          true: [
+            'bg-primary',
+            'hover:bg-primary/75',
+            'text-white',
+            'font-bold',
+          ],
+          false: ['hover:bg-primary/10'],
         },
         disabled: sharedDisabledCVA,
-        size: sharedSizeClassesCVA,
       },
     }
   ),

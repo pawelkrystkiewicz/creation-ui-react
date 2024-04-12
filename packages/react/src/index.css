@@ -49,9 +49,13 @@
 }
 
 .contrasting-text {
-    color: transparent;
-    filter: invert(100%) contrast(999) grayscale(100%);
-    -webkit-filter: invert(100%) contrast(999) grayscale(100%);
+    background: inherit;
+    background-clip: text;
+    filter: invert(1);
+
+    &.noinvert {
+        filter: none;
+    }
 }
 
 :root {
@@ -70,7 +74,6 @@
     --info: 0 0% 55%;
     /* other */
     --border: 214 15% 91%;
-    --radius: 0.5rem;
 }
 
 .dark {
@@ -89,7 +92,6 @@
     --info: 0 0% 55%;
     /* other */
     --border: 192 0% 26%;
-    --radius: 0.5rem;
 }
 
 
@@ -111,72 +113,70 @@ body {
     @apply duration-300 transition-all ease-in-out;
 }
 
-.text-size- {
-    .sm {
+
+.sm {
+    &.text-size {
         @apply text-sm sm:text-base;
     }
 
-    .md {
+    &.heading-size {
         @apply text-base sm:text-lg;
     }
 
-    .lg {
-        @apply text-lg sm:text-xl;
-    }
-}
+    &.description-size {
 
-.heading-size- {
-    .sm {
-        @apply text-base sm:text-lg;
-    }
-
-    .md {
-        @apply text-lg sm:text-xl;
-    }
-
-    .lg {
-        @apply text-xl sm:text-2xl;
-    }
-}
-
-.description-size- {
-    .sm {
         @apply text-[13px] sm:text-xs;
     }
 
-    .md {
+    &.size {
+        @apply h-7;
+    }
+
+    &.size-square {
+        @apply size-4;
+    }
+}
+
+.md {
+    &.text-size {
+        @apply text-base sm:text-lg;
+    }
+
+    &.heading-size {
+        @apply text-lg sm:text-xl;
+    }
+
+    &.description-size {
         @apply text-xs sm:text-sm;
     }
 
-    .lg {
-        @apply text-sm sm:text-base;
-    }
-}
-
-.size- {
-    .sm {
-        @apply h-7 px-2;
+    &.size {
+        @apply h-8;
     }
 
-    .md {
-        @apply h-8 px-3;
-    }
-
-    .lg {
-        @apply h-10 px-4;
-    }
-}
-
-.size-square- {
-    .sm {
-        @apply size-4;
-    }
-
-    .md {
+    &.size-square {
         @apply size-5;
     }
+}
 
-    .lg {
+.lg {
+    &.text-size {
+        @apply text-lg sm:text-xl;
+    }
+
+    &.heading-size {
+        @apply text-xl sm:text-2xl;
+    }
+
+    &.description-size {
+        @apply text-sm sm:text-base;
+    }
+
+    &.size {
+        @apply h-10;
+    }
+
+    &.size-square {
         @apply size-6;
     }
 }

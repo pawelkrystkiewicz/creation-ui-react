@@ -4,7 +4,6 @@ export const defaultTheme: ThemeProps = {
   theme: 'light',
   dir: 'ltr',
   focusRing: true,
-  roundness: 'rounded-md',
   variant: 'outlined',
   size: 'md',
   font: {

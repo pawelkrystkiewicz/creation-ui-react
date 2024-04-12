@@ -80,7 +80,6 @@ export type ThemeProps = {
   typography: ThemeTypography
   helpers: ThemeHelpers
   respectReducedMotion: boolean
-  roundness: string
   size: ElementSize
   variant: ElementVariant
   texts: ThemeTexts
