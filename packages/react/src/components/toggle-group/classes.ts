@@ -1,4 +1,3 @@
-import { sharedDisabledCVA } from '@root/classes'
 import { cva } from 'class-variance-authority'
 
 export const toggleGroup = {
@@ -43,7 +42,7 @@ export const toggleGroup = {
           ],
           false: ['hover:bg-primary/10'],
         },
-        disabled: sharedDisabledCVA,
+        disabled: { true:'cui-disabled' },
       },
     }
   ),

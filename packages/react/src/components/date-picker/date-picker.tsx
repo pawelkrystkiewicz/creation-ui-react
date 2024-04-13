@@ -62,7 +62,7 @@ export const DatePicker: FC<DatePickerProps> = props => {
       >
         {/* @ts-expect-error */}
         <Calendar
-          size={size}
+          size={'sm'}
           onChange={handleDateSelect}
           value={value}
           mode='single'

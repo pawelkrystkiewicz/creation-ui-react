@@ -1,4 +1,3 @@
-import { sharedDisabledCVA } from '@root/classes'
 import { cva } from 'class-variance-authority'
 
 export const button = cva(
@@ -13,11 +12,11 @@ export const button = cva(
     'select-none',
     'justify-center',
     'overflow-hidden',
-    'micro-interactions'
+    'cui-element'
   ],
   {
     variants: {
-      disabled: sharedDisabledCVA,
+      disabled: { true: 'cui-disabled' },
       uppercase: {
         true: ['uppercase'],
         false: null
@@ -28,9 +27,9 @@ export const button = cva(
         lg: ['px-6']
       },
       variant: {
-        contained: ['hover:bg-opacity-75', 'bg-opacity-100', '!text-white'],
-        outlined: ['hover:bg-opacity-10', 'bg-opacity-0', 'border'],
-        text: ['hover:text-text-primary', 'bg-opacity-0', 'border-transparent']
+        contained: ['border'],
+        outlined: ['border'],
+        text: ['border-transparent']
       },
       status: {
         primary: [

@@ -3,177 +3,207 @@
 
 .reset-input,
 .reset-input:focus-visible {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  border: none;
-  background: transparent;
-  font-size: inherit;
-  font-family: inherit;
-  color: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-  width: auto;
-  box-shadow: none;
-  border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    box-shadow: none;
+    border-radius: 0;
 }
 
 .form-color {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .form-color::-webkit-color-swatch {
-  @apply rounded-md;
-  border: none;
+    @apply rounded-md;
+    border: none;
 }
 
 .form-color::-moz-color-swatch {
-  @apply rounded-md;
-  border: none;
+    @apply rounded-md;
+    border: none;
 }
 
 .reset-select select {
-  appearance: none !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
 }
 
 .remove-ring[tabindex]:not([tabindex='-1']):focus-visible {
-  box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 .contrasting-text {
-  background: inherit;
-  background-clip: text;
-  filter: invert(1);
+    background: inherit;
+    background-clip: text;
+    filter: invert(1);
 
-  &.noinvert {
-    filter: none;
-  }
+    &.noinvert {
+        filter: none;
+    }
 }
 
 :root {
-  /* text */
-  --text-primary: 0 0% 1%;
-  --text-secondary: 0 0% 26%;
-  /* background */
-  --background-primary: 0 0% 98%;
-  --background-secondary: 0 0% 97%;
-  --background-input: 0 0% 95%;
-  /* main colors */
-  --primary: 211 100% 50%;
-  --warning: 38 92% 50%;
-  --error: 0 84% 60%;
-  --success: 160 84% 39%;
-  --info: 0 0% 55%;
-  /* other */
-  --border: 214 15% 91%;
+    /* text */
+    --text-primary: 0 0% 1%;
+    --text-secondary: 0 0% 26%;
+    /* background */
+    --background-primary: 0 0% 98%;
+    --background-secondary: 0 0% 97%;
+    --background-input: 0 0% 95%;
+    /* main colors */
+    --primary: 211 100% 50%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+    --success: 160 84% 39%;
+    --info: 0 0% 55%;
+    /* other */
+    --border: 214 15% 91%;
 }
 
 .dark {
-  /* text */
-  --text-primary: 0 0% 97%;
-  --text-secondary: 0 0% 80%;
-  /* background */
-  --background-primary: 0 0% 1%;
-  --background-secondary: 0 0% 7%;
-  --background-input: 0 0% 25%;
-  /* main colors */
-  --primary: 211 100% 58%;
-  --warning: 43 96% 56%;
-  --error: 0 76% 57%;
-  --success: 160 84% 39%;
-  --info: 0 0% 55%;
-  /* other */
-  --border: 0 0% 14%;
+    /* text */
+    --text-primary: 0 0% 97%;
+    --text-secondary: 0 0% 80%;
+    /* background */
+    --background-primary: 0 0% 1%;
+    --background-secondary: 0 0% 7%;
+    --background-input: 0 0% 25%;
+    /* main colors */
+    --primary: 211 100% 58%;
+    --warning: 43 96% 56%;
+    --error: 0 76% 57%;
+    --success: 160 84% 39%;
+    --info: 0 0% 55%;
+    /* other */
+    --border: 0 0% 14%;
 }
 
 *,
 *::before,
 *::after {
-  @apply border-border;
+    @apply border-border;
 }
 
 html {
-  @apply scroll-smooth;
+    @apply scroll-smooth;
 }
 
 body {
-  @apply bg-background-primary text-text-primary font-sans antialiased;
+    @apply bg-background-primary text-text-primary font-sans antialiased;
 }
 
 .micro-interactions {
-  @apply duration-300 transition-all ease-in-out;
+    @apply duration-300 transition-all ease-in-out;
 }
 
 .sm {
-  &.text-size {
-    @apply text-sm sm:text-base;
-  }
+    &.text-size {
+        @apply text-sm sm:text-base;
+    }
 
-  &.heading-size {
-    @apply text-base sm:text-lg;
-  }
+    &.heading-size {
+        @apply text-base sm:text-lg;
+    }
 
-  &.description-size {
-    @apply text-[13px] sm:text-xs;
-  }
+    &.description-size {
+        @apply text-[13px] sm:text-xs;
+    }
 
-  &.size {
-    @apply h-7;
-  }
+    &.size {
+        @apply h-7;
+    }
 
-  &.size-square {
-    @apply size-4;
-  }
+    &.size-square {
+        @apply size-4;
+    }
 }
 
 .md {
-  &.text-size {
-    @apply text-base sm:text-lg;
-  }
+    &.text-size {
+        @apply text-base sm:text-lg;
+    }
 
-  &.heading-size {
-    @apply text-lg sm:text-xl;
-  }
+    &.heading-size {
+        @apply text-lg sm:text-xl;
+    }
 
-  &.description-size {
-    @apply text-xs sm:text-sm;
-  }
+    &.description-size {
+        @apply text-xs sm:text-sm;
+    }
 
-  &.size {
-    @apply h-8;
-  }
+    &.size {
+        @apply h-8;
+    }
 
-  &.size-square {
-    @apply size-5;
-  }
+    &.size-square {
+        @apply size-5;
+    }
 }
 
 .lg {
-  &.text-size {
-    @apply text-lg sm:text-xl;
-  }
+    &.text-size {
+        @apply text-lg sm:text-xl;
+    }
 
-  &.heading-size {
-    @apply text-xl sm:text-2xl;
-  }
+    &.heading-size {
+        @apply text-xl sm:text-2xl;
+    }
 
-  &.description-size {
-    @apply text-sm sm:text-base;
-  }
+    &.description-size {
+        @apply text-sm sm:text-base;
+    }
 
-  &.size {
-    @apply h-10;
-  }
+    &.size {
+        @apply h-10;
+    }
 
-  &.size-square {
-    @apply size-6;
-  }
+    &.size-square {
+        @apply size-6;
+    }
 }
+
+.cui-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.cui-element {
+    /*elements have their own background set up*/
+    @apply micro-interactions cursor-pointer;
+
+    &.contained {
+        @apply hover:opacity-75 hover:text-white text-white opacity-100;
+    }
+
+    &.outlined {
+        @apply hover:bg-opacity-10 bg-opacity-0;
+    }
+
+    &.text {
+        @apply hover:text-opacity-65 bg-opacity-0 ;
+    }
+
+
+}
+
+.cui-selected {
+    @apply bg-primary text-white micro-interactions hover:bg-primary/75;
+}
+
+

@@ -1,5 +1,5 @@
 import Icon from '@components/icon'
-import { Breadcrumbs, BreadcrumbsProps } from '@creation-ui/react/components'
+import { Breadcrumbs, BreadcrumbsProps } from '@creation-ui/react'
 import { mdiAlphabetAurebesh, mdiArrowRightThin } from '@mdi/js'
 import { DocumentedProperty } from '@models/system'
 import { classNameProps, sizeProp } from './shared-props'

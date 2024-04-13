@@ -34,7 +34,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled,
         uppercase,
         className
-      }), size
+      }), size, variant
     )
 
     const centerSpinner: boolean = Boolean(loading && circle)

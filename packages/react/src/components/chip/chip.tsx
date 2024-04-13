@@ -7,26 +7,26 @@ import { chipClasses } from './classes'
 export const Chip = (props: ChipProps) => {
   const {
     //
-    size: defaultSize,
+    size: defaultSize
   } = useTheme()
 
   const {
     //
     label,
-    status = 'info',
+    status = 'primary',
     size = defaultSize,
-    variant,
+    variant = 'outlined',
     onDelete,
     onClick,
     startAdornment = null,
     endAdornment = null,
     uppercase,
     cx,
-    style,
+    style
   } = props
 
-  const interactive = !!onClick
   const removable = !!onDelete
+  const interactive = !!onClick || removable
 
   return (
     <div
@@ -37,7 +37,7 @@ export const Chip = (props: ChipProps) => {
         variant,
         uppercase,
         interactive,
-        className: cx?.container?.outer,
+        className: [cx?.container?.outer, size, variant]
       })}
       onClick={onClick}
     >
@@ -45,7 +45,7 @@ export const Chip = (props: ChipProps) => {
       <span className={cx?.container?.inner}>{label ?? status}</span>
       <Show when={!!endAdornment}>{endAdornment}</Show>
       <Show when={removable}>
-        <div className='bg-info-50 dark:bg-info/50 rounded-full'>
+        <div className="rounded-full">
           <ClearButton onClick={onDelete} />
         </div>
       </Show>
