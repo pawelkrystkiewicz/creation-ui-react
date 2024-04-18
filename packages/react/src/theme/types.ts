@@ -5,20 +5,7 @@ import type {
   ElementTypography,
   ElementVariant,
   JSXNode,
-  TailwindColorSet,
 } from '../types'
-
-type ThemeColors = {
-  inherit: string
-  current: string
-  transparent: string
-  black: string
-  white: string
-  primary: TailwindColorSet | string
-  success: TailwindColorSet | string
-  warning: TailwindColorSet | string
-  error: TailwindColorSet | string
-}
 
 type ThemeDrawers = {
   /**
@@ -34,12 +21,6 @@ type ThemeDrawers = {
    * `right` | `left` | `top` | `bottom`
    */
   position: ElementPosition
-}
-
-type ThemeFont = {
-  leading: string
-  fontFamily: string
-  fontFamilyMonospace: string
 }
 
 export type TypographyConfig = {
@@ -73,21 +54,55 @@ type ThemeHelpers = {
 type ThemeDisplayDirection = 'ltr' | 'rtl'
 
 export type ThemeProps = {
-  dir: ThemeDisplayDirection
-  drawers: ThemeDrawers
-  focusRing: boolean
-  font: ThemeFont
-  typography: ThemeTypography
   helpers: ThemeHelpers
-  respectReducedMotion: boolean
   size: ElementSize
   variant: ElementVariant
-  texts: ThemeTexts
   theme: ElementTheme
   zIndex: ThemeZIndex
+  styles: ThemeStyles
+  // TODO:
+  texts: ThemeTexts
+  respectReducedMotion: boolean
+  dir: ThemeDisplayDirection
+}
+
+export type ThemeStyles = {
+  animations: { microInteractions: string[] }
+  selected: string[]
+  disabled: string[]
+  invalid: StyleTextBorder
+  error: StyleTextBorder
+  readOnly: string[]
+  triggers: Record<ElementVariant, string[]>
+  inputs: ThemeStyleInputs
+  size: Record<ElementSize, ThemeSize>
+  drawers: ThemeDrawers
+  typography: ThemeTypography
+}
+
+type ThemeSize = {
+  height: string
+  square: string
+  padding: string
+  fontSize: string
+}
+
+type StyleTextBorder = {
+  border: string[]
+  text: string[]
+}
+
+type ThemeStyleInputs = {
+  base: string[]
+  checkable: string[]
+  variants: Record<ElementVariant | 'unstyled', string[]>
 }
 
 export interface ThemeProviderProps {
   children?: JSXNode
   theme?: Partial<ThemeProps>
+}
+
+export interface ThemePreloadedClasses extends ThemeStyles {
+  base?: string[] | string
 }

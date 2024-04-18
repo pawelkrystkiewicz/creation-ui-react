@@ -2,16 +2,20 @@ import { useEffect, useRef } from 'react'
 import { useInputBase } from '../input-base/input-base.context'
 import { CheckboxProps } from './checkbox.types'
 import { checkboxClasses } from './classes'
+import { useTheme } from '@root/theme'
 
 export const CheckboxView = ({
-  size,
   className,
   indeterminate,
   ...props
 }: CheckboxProps) => {
   const ref = useRef<HTMLInputElement>(null)
   const { componentId, error, readOnly, disabled } = useInputBase()
-  const checkboxClassNames = checkboxClasses({
+  const { styles, size: defaultSize } = useTheme()
+
+  const { size = defaultSize, ...rest } = props
+
+  const checkboxClassNames = checkboxClasses(styles)({
     className: [className, size],
     error: !!error,
     readOnly,
@@ -35,7 +39,7 @@ export const CheckboxView = ({
   return (
     <input
       ref={ref}
-      {...props}
+      {...rest}
       onChange={_onChange}
       disabled={disabled}
       readOnly={readOnly}

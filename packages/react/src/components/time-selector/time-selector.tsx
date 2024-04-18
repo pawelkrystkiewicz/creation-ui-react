@@ -1,40 +1,45 @@
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
-import { FC, useCallback, useEffect, useRef } from 'react'
+import React, { FC, useCallback, useEffect, useRef } from 'react'
 import { OnTimeSliderSelectArgs, TimeSelectorProps } from './types'
+import { ensureNumber } from '@utils'
 
 const cellClasses = cva(
-  ['cursor-pointer', 'px-2', 'py-1', 'hover:bg-primary/50', 'rounded'],
+  ['px-1.5', 'py-1', 'rounded', 'cui-element'],
   {
     variants: {
       selected: {
-        true: ['bg-primary', 'text-white'],
-        false: [],
-      },
-    },
+        true: ['bg-primary', 'cui-selected'],
+        false: ['bg-primary', 'outlined']
+      }
+    }, defaultVariants: {
+      selected: false
+    }
   }
 )
 
-const columnClasses = clsx('overflow-y-scroll', 'h-48')
+
+const columnClasses = clsx(['overflow-y-auto', 'h-48', 'hide-scrollbar', 'flex', 'flex-col', 'gap-1'])
 
 const MINUTES = Array.from({ length: 60 }, (_, i) => i)
 const HOURS_12 = Array.from({ length: 12 }, (_, i) => i)
 const HOURS_24 = Array.from({ length: 24 }, (_, i) => i)
 
 export const TimeSelector: FC<TimeSelectorProps> = ({
-  value,
-  onSelect,
-  format = 24,
-}) => {
+                                                      value,
+                                                      onSelect,
+                                                      format = 24
+                                                    }) => {
   const HOURS = format === 12 ? HOURS_12 : HOURS_24
 
   const handleSelect = useCallback(
     ({ hour, minute }: OnTimeSliderSelectArgs) => {
-      const hours = hour ?? value?.hours ?? 0
-      const minutes = minute ?? value?.minutes ?? 0
+
+      const hours = ensureNumber(hour, value?.hours)
+      const minutes = ensureNumber(minute, value?.minutes)
       onSelect({ hours, minutes })
     },
-    [onSelect]
+    [onSelect, value]
   )
 
   const hourRef = useRef<HTMLDivElement[]>([])
@@ -45,23 +50,22 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
     const m = value?.minutes
 
     h &&
-      hourRef.current[h]?.scrollIntoView({
-        block: 'nearest',
-        behavior: 'smooth',
-      })
+    hourRef.current[h]?.scrollIntoView({
+      block: 'nearest',
+      behavior: 'smooth'
+    })
 
     m &&
-      minuteRef.current[m]?.scrollIntoView({
-        block: 'nearest',
-        behavior: 'smooth',
-      })
+    minuteRef.current[m]?.scrollIntoView({
+      block: 'nearest',
+      behavior: 'smooth'
+    })
   }, [value])
 
   return (
     <div
       className={clsx(
-        'bg-background-input border rounded',
-        'grid grid-cols-2 gap-2'
+        'bg-background-input', 'rounded', 'flex', 'justify-evenly', 'px-1','gap-1'
       )}
     >
       <div className={columnClasses}>
@@ -71,7 +75,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
             key={hour}
             onClick={() => handleSelect({ hour })}
             className={cellClasses({
-              selected: value?.hours === hour,
+              selected: Boolean(value?.hours === hour)
             })}
           >
             {hour.toString().padStart(2, '0')}
@@ -85,7 +89,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
             key={minute}
             onClick={() => handleSelect({ minute })}
             className={cellClasses({
-              selected: value?.minutes === minute,
+              selected: Boolean(value?.minutes === minute)
             })}
           >
             {minute.toString().padStart(2, '0')}

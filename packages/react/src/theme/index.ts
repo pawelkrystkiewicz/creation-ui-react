@@ -1,5 +1,5 @@
 export * from './types'
 export * from './theme'
-export * from './defaultTheme'
+export * from './default-theme'
 export * from './base/breakpoints'
 export * from './base/typography'

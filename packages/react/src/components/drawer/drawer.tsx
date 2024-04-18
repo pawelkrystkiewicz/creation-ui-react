@@ -10,7 +10,10 @@ import merge from 'lodash.merge'
 import get from 'lodash.get'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
-  const { drawers, zIndex } = useTheme()
+  const {
+    styles: { drawers },
+    zIndex,
+  } = useTheme()
   const { position = drawers?.position || 'right', onClose = () => {} } = props
 
   const cx = merge({}, props.cx, {

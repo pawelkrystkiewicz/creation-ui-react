@@ -1,5 +1,5 @@
 import Icon from '@components/icon'
-import { BaseComponentProps, ElementSize, inputContainer, label as labelClasses, useTheme } from '@creation-ui/react'
+import { BaseComponentProps, ElementSize, inputContainer, Label, useTheme } from '@creation-ui/react'
 import { mdiCircle, mdiClose } from '@mdi/js'
 import { capitalize } from '@utils/list-or-types'
 import { cva } from 'class-variance-authority'
@@ -38,21 +38,21 @@ const elementClasses = cva(
 export const ColorsSelector = ({ options, onClick, label, value, ...props }: ColorsSelectorProps) => {
   const componentId = useId()
 
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, styles } = useTheme()
   const { size = defaultSize, required, readOnly, error } = props
 
   const disabled = props.disabled || readOnly
-  const containerClasses = clsx(inputContainer({ disabled, error: !!error }), `text-size-${size}`, 'micro-interactions')
+  const containerClasses = clsx(
+    inputContainer(styles!)({ disabled, error: !!error }),
+    `text-size-${size}`,
+    'micro-interactions',
+  )
 
   return (
     <div className={containerClasses}>
-      <label
-        htmlFor={componentId}
-        className={labelClasses({ size, required: props.required })}
-        aria-label={label?.toString()}
-      >
+      <Label htmlFor={componentId} aria-label={label?.toString()}>
         {label}
-      </label>
+      </Label>
       <div className='flex flex-wrap gap-3 w-fit' aria-required={required}>
         {options.map(option => (
           <ColorOption

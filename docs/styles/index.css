@@ -14,3 +14,8 @@
     height: calc(100vh - var(--nextra-navbar-height) - theme('spacing.10'));
 }
 
+:is([tabindex]:not([tabindex="-1"]):focus-visible) {
+    --tw-ring-opacity: 0 !important;
+    --tw-ring-color: transparent !important;
+    --tw-ring-offset-color: transparent !important;
+}

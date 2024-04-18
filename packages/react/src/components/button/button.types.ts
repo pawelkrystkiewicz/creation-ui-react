@@ -34,6 +34,10 @@ export type ButtonProps = React.ComponentProps<'button'> & {
    * Is button text to be uppercase
    */
   uppercase?: boolean
+  /**
+   * Should loader be colored in the same manner as current button's `status`. Default `true`
+   */
+  loaderInheritsColor?: boolean
 }
 
 export type ButtonGroupProps = {

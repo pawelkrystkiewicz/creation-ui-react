@@ -1,18 +1,22 @@
-import { useTheme } from '../../theme'
+import { useTheme } from '@theme'
 import { loaderClasses, loaderIconClasses } from './classes'
 import type { LoaderProps } from './loader.types'
+import { twMerge } from 'tailwind-merge'
 
 export const Loader = (props: LoaderProps) => {
-  const { size: defaultSize } = useTheme()
-  const { size = defaultSize, className, white, active } = props
+  const { size: defaultSize, styles } = useTheme()
+  const { size = defaultSize, className, white } = props
 
   return (
-    <div className={loaderClasses({ size, className, active })}>
+    <div className={twMerge(loaderClasses, className)}>
       <svg
         aria-hidden='true'
         data-testid='cui-loader'
-        className={loaderIconClasses({ size, white })}
-        viewBox='0 0 100 101'
+        className={loaderIconClasses({
+          className: [styles.size[size].square],
+          white,
+        })}
+        viewBox='0 0 100 100'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >

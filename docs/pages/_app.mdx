@@ -1,12 +1,15 @@
 import '@creation-ui/react/src/index.css'
+import { Theme } from '@creation-ui/react'
 import '../styles/index.css'
 import { Analytics } from '@vercel/analytics/react'
 
 export default function App({ Component, pageProps }) {
   return (
-    <div className='debug-screens'>
-      <Component {...pageProps} />
-      <Analytics />
-    </div>
+    <Theme>
+      <div className='debug-screens'>
+        <Component {...pageProps} />
+        <Analytics />
+      </div>
+    </Theme>
   )
 }

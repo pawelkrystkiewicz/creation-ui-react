@@ -40,16 +40,21 @@ export const AutocompleteView: FC = () => {
     <div className={clsx(classes.input, 'relative h-auto py-1')}>
       <div className={clsx('flex flex-col gap-1')}>
         <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
-          {multiple && <MultipleSelections />}
-          {customRenderValue ? (
-            <>{renderSelection(selected as AutocompleteOptionDefault)}</>
-          ) : (
-            <input
-              {...propsInput}
-              id={componentId}
-              className={clsx('reset-input h-fit', propsInput.className)}
-            />
-          )}
+          <Show when={multiple}>
+            <MultipleSelections />
+          </Show>
+          <ShowFirstMatching>
+            <Show when={!!customRenderValue}>
+              {renderSelection?.(selected as AutocompleteOptionDefault)}
+            </Show>
+            <Show when={true}>
+              <input
+                {...propsInput}
+                id={componentId}
+                className={clsx('reset-input h-fit', propsInput.className)}
+              />
+            </Show>
+          </ShowFirstMatching>
         </div>
       </div>
       <Show when={open}>

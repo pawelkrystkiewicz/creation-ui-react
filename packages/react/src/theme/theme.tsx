@@ -1,5 +1,5 @@
 import type { ThemeProps, ThemeProviderProps } from './types'
-import { defaultTheme } from './defaultTheme'
+import { defaultTheme } from './'
 import { createContext, useContext } from 'react'
 
 export const ThemeCtx = createContext<Partial<ThemeProps>>(defaultTheme)

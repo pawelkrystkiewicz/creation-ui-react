@@ -1,12 +1,9 @@
-import { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { useTheme } from '../../theme'
-import { Input } from '../input'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover'
-import { TimeSelector } from '../time-selector'
+import { Input, Popover, PopoverContent, PopoverTrigger, Show, TimeSelector } from '@components'
+import { useTheme } from '@theme'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+import InputMask from 'react-input-mask'
 import { TimePickerProps, TimePickerValue } from './types'
 import { formatTime, sanitizeTime } from './utils'
-import InputMask from 'react-input-mask'
-import { Show } from '../show'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { size: defaultSize } = useTheme()
@@ -34,7 +31,6 @@ export const TimePicker: FC<TimePickerProps> = props => {
     () => (_value ? formatTime(_value) : '__:__'),
     [_value, value]
   )
-  console.table({ inputValue, value, _value })
 
   const handleClick = () => setOpen(true)
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,12 +57,6 @@ export const TimePicker: FC<TimePickerProps> = props => {
     let hours = sanitizeTime(h)
     let minutes = sanitizeTime(m)
 
-    // if (isNaN(hours)) {
-    //   hours = 0
-    // }
-    // if (isNaN(minutes)) {
-    //   minutes = 0
-    // }
 
     switch (event.key) {
       case 'ArrowUp':
@@ -99,12 +89,12 @@ export const TimePicker: FC<TimePickerProps> = props => {
   }, [_value])
 
   return (
-    <Popover open={open} onOpenChange={setOpen} placement='bottom-start'>
+    <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
       <PopoverTrigger>
         <InputMask
           {...rest}
-          mask='99:99'
-          maskChar='_'
+          mask="99:99"
+          maskChar="_"
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
@@ -117,7 +107,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
         </InputMask>
       </PopoverTrigger>
       <PopoverContent
-        className='!p-0 !m-0 !bg-transparent'
+        className="!p-0 !bg-transparent shadow"
         zIndex={zIndex?.popover}
       >
         <Show when={open}>

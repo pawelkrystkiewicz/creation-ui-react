@@ -2,8 +2,9 @@ import clsx from 'clsx'
 
 export const popoverCloseClasses = clsx('size', 'text-size')
 export const popoverContentClasses = clsx(
-  'bg-white',
-  'shadow-lg',
+  'bg-background-input',
+  // TODO: bg-background-portal
+  '!shadow-lg',
   'rounded',
   'py-2',
   'px-3',

@@ -1,15 +1,16 @@
 import { Loader } from '../loader'
 import { Overlay } from '../overlay'
 import type { LoadingOverlayProps } from './loading-overlay.types'
+import clsx from 'clsx'
 
 export const LoadingOverlay = ({
-  className,
-  ...props
-}: LoadingOverlayProps) => {
+                                 cx,
+                                 ...props
+                               }: LoadingOverlayProps) => {
   const { size, white, ...rest } = props
   return (
-    <Overlay {...rest} cursorWait>
-      <Loader size={size} white={white} active={props.active} />
+    <Overlay {...rest} cursorWait className={clsx(cx?.overlay)}>
+      <Loader size={size} white className={clsx(cx?.loader)} />
     </Overlay>
   )
 }

@@ -73,6 +73,7 @@ export const DarkModeToggle: FC<DarkModeToggleProps> = ({
       strokeLinejoin='round'
       stroke='currentColor'
       onClick={toggle}
+      className={'hover:opacity-75 cursor-pointer'}
       style={{
         cursor: 'pointer',
         // mixBlendMode: 'difference',

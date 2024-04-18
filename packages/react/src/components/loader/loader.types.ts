@@ -6,8 +6,4 @@ export interface LoaderProps
    * Use white loader
    */
   white?: boolean
-  /**
-   * Is visible? Default true
-   */
-  active?: boolean
 }

@@ -1,5 +1,5 @@
-import { useTheme } from '../../theme'
-import { InputBaseInline } from '../input-base'
+import { useTheme } from '@theme'
+import { InputBaseInline } from '@components'
 import type { SwitchProps } from './switch.types'
 import { SwitchView } from './switch.view'
 

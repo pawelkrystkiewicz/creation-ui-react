@@ -1,18 +1,24 @@
+import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
 
-export const toggleGroup = {
-  container: [
-    'micro-interactions',
-    'relative',
-    'inline-flex',
-    'shadow-sm',
-    'rounded-md',
-  ],
-  button: cva(
+export const toggleGroupContainer = [
+  'relative',
+  'inline-flex',
+  'shadow-sm',
+  'rounded-md',
+]
+
+export const toggleGroupButton = ({
+  disabled,
+  animations,
+  size,
+}: ThemePreloadedClasses) =>
+  cva(
     [
-      'size',
-      'text-size',
-      'micro-interactions',
+      animations.microInteractions,
+      'border-border',
+      // 'size',
+      // 'text-size',
       'border-y',
       'cursor-pointer',
       'focus:z-10',
@@ -42,8 +48,13 @@ export const toggleGroup = {
           ],
           false: ['hover:bg-primary/10'],
         },
-        disabled: { true:'cui-disabled' },
+        size: {
+          sm: [size.sm.fontSize, size.sm.height],
+          md: [size.md.fontSize, size.md.height],
+          lg: [size.lg.fontSize, size.lg.height],
+        },
+
+        disabled: { true: disabled },
       },
     }
-  ),
-}
+  )

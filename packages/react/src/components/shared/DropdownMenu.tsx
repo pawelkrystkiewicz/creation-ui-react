@@ -11,7 +11,6 @@ export const dropdownMenuClasses = cva(
     'bg-background-input',
     'shadow-md',
     'w-fit',
-    // 'border',
     'rounded',
     'flex',
     'flex-col',
@@ -19,21 +18,21 @@ export const dropdownMenuClasses = cva(
     'text-left',
     'gap-1',
     'p-1',
-    'remove-ring',
   ],
   {
     variants: {
       open: { true: 'block', false: 'hidden' },
       placement: {
         top: ['!mb-1'],
-        bottom: ['!mt-0'],
-      },
-    },
+        bottom: ['!mt-0']
+      }
+    }
   }
 )
 
 export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
   ({ children, open, className, placement, ...props }, ref) => {
+
     return (
       <ul
         ref={ref}

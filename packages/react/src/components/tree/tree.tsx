@@ -70,7 +70,9 @@ export const Tree: FC<TreeProps> = ({
               </Show>
             </ShowFirstMatching>
           </div>
-          <Loader active={!!loading} size={size} />
+          <Show when={loading}>
+            <Loader size={size} />
+          </Show>
           <Show when={hasClearButton}>
             &nbsp;
             <ClearButton onClick={onClear} size={size} />

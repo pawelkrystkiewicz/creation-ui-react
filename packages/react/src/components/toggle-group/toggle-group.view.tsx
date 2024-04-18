@@ -1,26 +1,30 @@
 import { RadioGroup } from '@headlessui/react'
 import { twMerge } from 'tailwind-merge'
 import { getElementPosition } from '@utils'
-import { useInputBase } from '../input-base/input-base.context'
-import { toggleGroup } from './classes'
+import { useInputBase } from '@components'
+import { toggleGroupButton, toggleGroupContainer } from './classes'
 import type { ToggleGroupOption, ToggleGroupProps } from './toggle-group.types'
+import { useTheme } from '@root/theme'
+import { useMemo } from 'react'
 
 export const ToggleGroupView = ({
-                                  size,
-                                  className,
-                                  options,
-                                  ...rest
-                                }: ToggleGroupProps) => {
+  className,
+  options,
+  ...props
+}: ToggleGroupProps) => {
   const { componentId, readOnly, disabled } = useInputBase()
+  const { styles, size: defaultSize } = useTheme()
+  const { size = defaultSize, ...rest } = props
+  const withThemeButton = useMemo(() => toggleGroupButton(styles), [styles])
 
   return (
     <RadioGroup
       {...rest}
       id={componentId}
-      className={twMerge(toggleGroup.container, className)}
+      className={twMerge(toggleGroupContainer, className)}
       disabled={disabled || readOnly}
     >
-      {options.map(
+      {options?.map(
         ({ label, value, disabled }: ToggleGroupOption, index, array) => (
           <RadioGroup.Option
             key={value}
@@ -28,16 +32,16 @@ export const ToggleGroupView = ({
             title={value}
             disabled={disabled}
             className={({ checked, disabled }) =>
-              toggleGroup.button({
+              withThemeButton({
+                size,
                 checked,
-                // @ts-ignore
                 disabled,
                 element: getElementPosition(array, index),
-                className: [size]
+                className: [size],
               })
             }
           >
-            <RadioGroup.Label as="span">{label}</RadioGroup.Label>
+            <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
           </RadioGroup.Option>
         )
       )}

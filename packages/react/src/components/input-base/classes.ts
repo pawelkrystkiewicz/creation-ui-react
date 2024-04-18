@@ -1,42 +1,30 @@
-import { classes, formClassesMap, sharedErrorClasses } from '@root/classes'
+import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
 
-export const inputClassesCVA = cva(
-  [
-    'rounded',
-    'peer',
-    'block',
-    'w-full',
-    'disabled:pointer-events-none',
-    'text-size',
-    'size',
-  ],
-  {
+export const inputClasses = ({ inputs, error, size }: ThemePreloadedClasses) =>
+  cva(['rounded', 'peer', 'block', 'w-full', inputs.base], {
     variants: {
-      clearable: { true: 'pl-10', false: [] },
+      clearable: { true: 'pl-10' },
       interactionsDisabled: {
         true: ['pointer-events-none'],
         false: null,
       },
-      variant: {
-        contained: [classes.input, 'bg-background-input', 'border-transparent'],
-        outlined: [classes.input],
-        text: [classes.input, 'border-0', 'border-b', 'rounded-b-none'],
-        unstyled: [],
+      variant: inputs.variants,
+      size: {
+        sm: [size.sm.fontSize, size.sm.height],
+        md: [size.md.fontSize, size.md.height],
+        lg: [size.lg.fontSize, size.lg.height],
       },
-      size: { sm: [], md: [], lg: [] },
       startAdornment: { true: 'pl-10', false: 'pl-3' },
       endAdornment: { true: 'pr-10', false: 'pr-3' },
       error: {
-        true: sharedErrorClasses,
-        false: null,
+        true: [error.text, error.border],
       },
       type: {
-        ...formClassesMap,
-        select: [formClassesMap.select],
+        select: [],
         file: ['!h-8', '!p-0'],
-        color: [formClassesMap.color, '!p-0'],
-        checkbox: [formClassesMap.checkbox, '!px-0'],
+        color: ['!p-0'],
+        checkbox: [inputs.checkable, '!px-0'],
       },
     },
     defaultVariants: {
@@ -63,6 +51,35 @@ export const inputClassesCVA = cva(
         type: 'color',
         size: 'lg',
         className: ['!size-10'],
+      },
+    ],
+  })
+
+export const inputIcon = cva(
+  [
+    'absolute',
+    'bottom-1/2',
+    'transform',
+    'translate-y-1/2',
+    'inline-flex',
+    'items-center',
+    'w-fit',
+  ],
+  {
+    variants: {
+      position: {
+        left: ['left-3'],
+        right: ['right-3'],
+      },
+      type: {
+        select: [],
+      },
+    },
+    compoundVariants: [
+      {
+        type: 'select',
+        position: 'right',
+        className: ['right-5'],
       },
     ],
   }

@@ -1,46 +1,46 @@
-import { sharedReadOnlyCVA } from '../../classes'
+import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
 
-export const switchClasses = cva(
-  [
-    'micro-interactions',
-    'cursor-pointer',
-    'peer',
-    'relative',
-    'inline-flex',
-    'shrink-0',
-    '!rounded-full',
-    'h-fit',
-    'border',
-    'bg-background-input',
-  ],
-  {
-    variants: {
-      size: {
-        sm: ['w-[35px]', 'p-0.5'],
-        md: ['w-[47px]', 'p-0.5'],
-        lg: ['w-[55px]', 'p-0.5'],
+export const switchClasses = ({
+  animations,
+  readOnly,
+  triggers,
+}: ThemePreloadedClasses) =>
+  cva(
+    [
+      animations.microInteractions,
+      'border-border',
+      'micro-interactions',
+      'cursor-pointer',
+      'peer',
+      'relative',
+      'inline-flex',
+      'shrink-0',
+      '!rounded-full',
+      'h-fit',
+      'border',
+      'bg-background-input',
+    ],
+    {
+      variants: {
+        size: {
+          sm: ['w-[35px]', 'p-0.5'],
+          md: ['w-[47px]', 'p-0.5'],
+          lg: ['w-[55px]', 'p-0.5'],
+        },
+        checked: {
+          true: ['bg-primary'],
+          false: ['hover:bg-white/25'],
+        },
+        readOnly: { true: readOnly },
       },
-      checked: {
-        true: ['bg-primary'],
-        false: [],
+      defaultVariants: {
+        size: 'md',
       },
-      readOnly: sharedReadOnlyCVA,
-    },
-    defaultVariants: {
-      size: 'md',
-    },
-  },
-)
+    }
+  )
 export const switchCircle = cva(
-  [
-    'micro-interactions',
-    'transform',
-    'rounded-full',
-    'bg-white',
-    'shadow-lg',
-    'ring-0',
-  ],
+  ['transform', 'rounded-full', 'bg-white', 'shadow-lg'],
   {
     variants: {
       size: {
@@ -70,5 +70,5 @@ export const switchCircle = cva(
         className: ['translate-x-7'],
       },
     ],
-  },
+  }
 )

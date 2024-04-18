@@ -19,7 +19,7 @@ import {
   useTypeahead,
 } from '@floating-ui/react'
 
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { selectOptionClasses } from '@root/classes'
 import { DropdownChevron } from '../dropdown-chevron'
 import { getDropdownHeight } from '../shared'
@@ -28,7 +28,7 @@ import { SelectContext } from './context'
 import { SelectView } from './select.view'
 
 export function Select<T>(props: SelectProps<T>) {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, styles } = useTheme()
   const {
     id,
     textEmpty = 'No options',
@@ -84,6 +84,11 @@ export function Select<T>(props: SelectProps<T>) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const [width, setWidth] = useState<number | undefined>(undefined)
+
+  const withThemeOptionStyle = useMemo(
+    () => selectOptionClasses(styles),
+    [styles]
+  )
 
   // @ts-ignore
   const { refs, floatingStyles, context } = useFloating({
@@ -203,12 +208,11 @@ export function Select<T>(props: SelectProps<T>) {
       selected,
       disabled,
       label,
-      className: selectOptionClasses({
-        active,
+      className: withThemeOptionStyle({
         selected,
         disabled,
         truncate,
-        className: [truncate ? `!w-[${width}px]` : '', 'remove-ring', size],
+        className: [truncate ? `!w-[${width}px]` : '', size],
       }),
       ref: node => {
         listRef.current[idx] = node

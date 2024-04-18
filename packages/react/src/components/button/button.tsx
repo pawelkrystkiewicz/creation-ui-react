@@ -1,41 +1,73 @@
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import {
+  InteractiveContainer,
+  Loader,
+  LoadingOverlay,
+  Show,
+  ShowFirstMatching,
+} from '@components'
 import { useId } from '@hooks'
+import { getBaseFromTheme } from '@root/theme/utils'
 import { useTheme } from '@theme'
-import { InteractiveContainer, Loader, LoadingOverlay } from '@components'
+import React, { useMemo } from 'react'
 import type { ButtonProps } from './button.types'
-import { button } from './classes'
+import { buttonClasses } from './classes'
+import {
+  CONTRASTING_VARIANT,
+  loaderColorClasses,
+  themeDependantBase,
+} from './constants'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { children, loading, iconLeft, iconRight, className, id, ...props },
+    {
+      children,
+      loading,
+      iconLeft,
+      iconRight,
+      className,
+      id,
+      loaderInheritsColor = true,
+      ...props
+    },
     ref
   ) => {
     const componentId = useId(id)
-    const theme = useTheme()
+    const { styles, ...theme } = useTheme()
 
     const {
       circle,
       size = theme.size,
       variant = 'contained',
       status = 'primary',
-      uppercase
+      uppercase,
     } = props
 
-    const isLoaderWhite = variant === 'contained'
-    const disabled = loading || props.disabled
-
-    const classes = twMerge(
-      button({
-        size,
-        status,
-        circle,
-        variant,
-        disabled,
-        uppercase,
-        className
-      }), size, variant
+    const base = getBaseFromTheme<ButtonProps>(
+      { size, variant },
+      styles,
+      themeDependantBase
     )
+
+    const themeClasses = useMemo(
+      () => buttonClasses(styles),
+      [styles, variant, size]
+    )
+
+    const isContrastReq = CONTRASTING_VARIANT.includes(variant)
+    const disabled = loading || props.disabled
+    const loaderClasses =
+      !isContrastReq && loaderInheritsColor
+        ? loaderColorClasses[status]
+        : undefined
+
+    const classes = themeClasses({
+      size,
+      status,
+      circle,
+      disabled,
+      uppercase,
+      className: [className, base],
+    })
 
     const centerSpinner: boolean = Boolean(loading && circle)
     const leftSpinner: boolean = Boolean(loading && !circle)
@@ -47,14 +79,28 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ref={ref}
           disabled={Boolean(disabled)}
           aria-disabled={Boolean(disabled)}
-          type="button"
+          type='button'
           {...props}
           className={classes}
         >
-          {leftSpinner && (
-            <Loader size={'sm'} active={leftSpinner} white={isLoaderWhite} />
-          )}
-          <LoadingOverlay active={centerSpinner} white={isLoaderWhite} />
+          <ShowFirstMatching>
+            <Show when={leftSpinner}>
+              <Loader
+                size={size}
+                white={isContrastReq}
+                className={loaderClasses}
+              />
+            </Show>
+            <Show when={centerSpinner}>
+              <LoadingOverlay
+                active
+                white={isContrastReq}
+                cx={{
+                  loader: loaderClasses,
+                }}
+              />
+            </Show>
+          </ShowFirstMatching>
           <>{iconLeft}</>
           <span>{children}</span>
           <>{iconRight}</>

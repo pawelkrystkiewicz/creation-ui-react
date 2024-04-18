@@ -1,5 +1,5 @@
-import {  inputIcon } from '@root/classes'
-import type{  HTMLInputType, } from '@types'
+import { inputIcon } from './classes'
+import type { HTMLInputType } from '@types'
 import type { FC } from 'react'
 import { Show } from '../show'
 

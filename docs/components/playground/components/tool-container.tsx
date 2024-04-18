@@ -9,14 +9,19 @@ interface ToolContainerProps {
 
 export const ToolContainer = (props: ToolContainerProps) => {
   const componentId = useId()
-
-  const { size: defaultSize } = useTheme()
-
+  const { size: defaultSize, styles } = useTheme()
   const { size = defaultSize, label } = props
-
   return (
-    <div className={inputContainer({ className: [size] })}>
-      <label htmlFor={componentId} className={labelClasses({ size })} aria-label={label?.toString()}>
+    // @ts-ignore
+    <div className={inputContainer(styles)({ className: [size] })}>
+      <label
+        htmlFor={componentId}
+        className={labelClasses({
+          // @ts-ignore
+          size,
+        })}
+        aria-label={label?.toString()}
+      >
         {label}
       </label>
       <div className='flex gap-3 w-fit'>{props.children}</div>
