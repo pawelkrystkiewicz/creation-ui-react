@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useTheme } from '../../theme'
 import { ClearButton } from '../clear-button'
 import { Show } from '../show'
@@ -5,11 +6,7 @@ import type { ChipProps } from './chip.types'
 import { chipClasses } from './classes'
 
 export const Chip = (props: ChipProps) => {
-  const {
-    //
-    size: defaultSize
-  } = useTheme()
-
+  const { size: defaultSize, styles } = useTheme()
   const {
     //
     label,
@@ -22,22 +19,24 @@ export const Chip = (props: ChipProps) => {
     endAdornment = null,
     uppercase,
     cx,
-    style
+    style,
   } = props
 
   const removable = !!onDelete
   const interactive = !!onClick || removable
 
+  const withTheme = useMemo(() => chipClasses(styles), [styles])
+
   return (
     <div
       style={style}
-      className={chipClasses({
+      className={withTheme({
         size,
         status: style ? undefined : status,
         variant,
         uppercase,
         interactive,
-        className: [cx?.container?.outer, size, variant]
+        className: [cx?.container?.outer, size, variant],
       })}
       onClick={onClick}
     >
@@ -45,7 +44,7 @@ export const Chip = (props: ChipProps) => {
       <span className={cx?.container?.inner}>{label ?? status}</span>
       <Show when={!!endAdornment}>{endAdornment}</Show>
       <Show when={removable}>
-        <div className="rounded-full">
+        <div className='rounded-full'>
           <ClearButton onClick={onDelete} />
         </div>
       </Show>
