@@ -23,33 +23,23 @@ export const drawerAnimation = {
 }
 
 export const child = [
-  'bg-white',
-  'dark:bg-info',
   'w-full',
   'overflow-hidden',
   'text-left',
   'shadow-xl',
+  'bg-background-portal',
 ]
 
-export const drawer = cva(
-  [
-    //
-    'fixed',
-    'overflow-hidden',
-    'w-full',
-    'h-full',
-  ],
-  {
-    variants: {
-      position: {
-        bottom: ['inset-x-0', 'bottom-0'],
-        top: ['inset-x-0', 'top-0'],
-        right: ['inset-y-0', 'right-0'],
-        left: ['inset-y-0', 'left-0'],
-      },
+export const drawer = cva(['fixed', 'overflow-hidden', 'w-full', 'h-full'], {
+  variants: {
+    position: {
+      bottom: ['inset-x-0', 'bottom-0'],
+      top: ['inset-x-0', 'top-0'],
+      right: ['inset-y-0', 'right-0'],
+      left: ['inset-y-0', 'left-0'],
     },
-    defaultVariants: {
-      position: 'right',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    position: 'right',
+  },
+})

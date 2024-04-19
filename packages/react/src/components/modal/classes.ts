@@ -1,5 +1,3 @@
-export const MODAL_PADDING = 'p-2'
-
 export const modalClasses = {
   base: ['relative'],
   layer: {
@@ -9,14 +7,14 @@ export const modalClasses = {
   title: ['text-lg', 'font-medium', 'leading-6'],
   panel: [
     'align-middle',
-    'bg-background-primary',
     'rounded-lg',
     'shadow-xl',
     'text-left',
     'transform',
     'transition-all',
+    'bg-background-portal',
   ],
-  children: [MODAL_PADDING],
+  children: [],
 }
 
 export const transitionProps = {

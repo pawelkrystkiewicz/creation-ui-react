@@ -25,7 +25,8 @@ const creationUiConfig = {
       background: {
         primary: 'hsl(var(--background-primary) / <alpha-value>)',
         secondary: 'hsl(var(--background-secondary) / <alpha-value>)',
-        input: 'hsl(var(--background-input) / <alpha-value>)'
+        input: 'hsl(var(--background-input) / <alpha-value>)',
+        portal: 'hsl(var(--background-portal) / <alpha-value>)'
       },
       border: 'hsl(var(--border) / <alpha-value>)',
       primary: 'hsl(var(--primary) / <alpha-value>)',

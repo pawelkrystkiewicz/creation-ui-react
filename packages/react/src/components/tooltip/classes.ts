@@ -8,7 +8,7 @@ export const tooltip = cva(
     'absolute',
     'whitespace-nowrap',
     'rounded',
-    'bg-background-input',
+    'bg-background-portal',
     'px-2',
     'py-1',
     'opacity-0',
@@ -18,12 +18,14 @@ export const tooltip = cva(
     'before:border-transparent',
     "before:content-['']",
     'group-hover:opacity-100',
+    'border',
+    'border-border',
+    'shadow-lg',
   ],
   {
     variants: {
       position: {
         top: [
-
           'before:top-full',
           '-top-10',
           'left-1/2',
