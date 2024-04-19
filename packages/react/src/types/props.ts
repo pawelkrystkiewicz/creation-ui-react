@@ -41,12 +41,22 @@ export interface MultipleEllipsisFormatter {
   total: number
 }
 
-export interface BaseComponentProps {
+export interface UIElement {
+  /**
+   * Children
+   */
+  children?: JSXNode
+  /**
+   * CSS classes API
+   */
   className?: string
   /**
    * HTML id of element
    */
   id?: string
+}
+
+export interface BaseComponentProps extends Omit<UIElement, 'children'> {
   /**
    * Is element required?
    */

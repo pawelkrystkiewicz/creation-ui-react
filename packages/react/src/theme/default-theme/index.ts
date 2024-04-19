@@ -66,7 +66,7 @@ export const defaultTheme: ThemeProps = {
         'bg-background-input',
         'border',
         'border-border',
-        'rounded',
+        'rounded-md',
       ],
       checkable: [
         ...animations.microInteractions,
@@ -88,22 +88,22 @@ export const defaultTheme: ThemeProps = {
     },
     size: {
       sm: {
-        height: 'h-8',
+        height: 'h-7',
         square: 'size-4',
         padding: 'px-2',
-        fontSize: 'text-sm',
+        fontSize: 'text-xs',  // zmniejszone dla lepszego dopasowania
       },
       md: {
-        height: 'h-10',
+        height: 'h-9',
         square: 'size-5',
         padding: 'px-3',
-        fontSize: 'text-base',
+        fontSize: 'text-sm',  // dopasowane do średniego rozmiaru
       },
       lg: {
         height: 'h-12',
         square: 'size-6',
         padding: 'px-4',
-        fontSize: 'text-lg',
+        fontSize: 'text-base',  // nieco większe dla lepszej czytelności
       },
     },
     drawers: themeDrawers,

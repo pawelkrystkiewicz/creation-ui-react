@@ -1,8 +1,0 @@
-{
-  "autocomplete": { "title": "Autocomplete" },
-  "avatar": { "title": "Avatar" },
-  "button": { "title": "Button" },
-  "checkbox": { "title": "Checkbox" },
-  "drawer": { "title": "Drawer" },
-  "input": { "title": "Input" }
-}
