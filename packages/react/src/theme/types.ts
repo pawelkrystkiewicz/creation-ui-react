@@ -82,6 +82,7 @@ export type ThemeStyles = {
 
 type ThemeSize = {
   height: string
+  width: string
   square: string
   padding: string
   fontSize: string

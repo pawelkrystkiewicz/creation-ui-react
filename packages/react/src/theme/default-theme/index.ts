@@ -89,18 +89,21 @@ export const defaultTheme: ThemeProps = {
     size: {
       sm: {
         height: 'h-7',
+        width: 'w-7',
         square: 'size-4',
         padding: 'px-2',
         fontSize: 'text-xs',
       },
       md: {
         height: 'h-9',
+        width: 'w-9',
         square: 'size-5',
         padding: 'px-3',
         fontSize: 'text-sm',
       },
       lg: {
         height: 'h-12',
+        width: 'w-12',
         square: 'size-6',
         padding: 'px-4',
         fontSize: 'text-base',

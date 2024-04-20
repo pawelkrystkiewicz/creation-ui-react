@@ -1,37 +1,44 @@
 import { cva } from 'class-variance-authority'
 import { twix } from '@utils'
+import { ThemePreloadedClasses } from '@root/theme'
 
 export const headerClasses = twix('font-semibold', 'capitalize ')
 
 export const calendarClasses = {
   container: cva(
-    ['relative',
+    [
+      'relative',
       'micro-interactions',
       'bg-background-primary',
       'border',
       'p-4',
-      'rounded-md'
+      'rounded-md',
     ],
     {
       variants: {
         size: {
           sm: ['w-72'],
           md: ['w-96'],
-          lg: ['w-[406px]']
+          lg: ['w-[406px]'],
         },
         hasSecondView: {
-          true: ['!min-w-fit']
-        }
-      }
+          true: ['!min-w-fit'],
+        },
+      },
     }
-  )
+  ),
 }
 
-export const calendarDaysViewClasses = {
-  day: cva(
+export const calendarDaysViewClasses = ({
+  animations,
+  triggers,
+  selected,
+  size,
+}: ThemePreloadedClasses) =>
+  cva(
     [
       //
-      'micro-interactions',
+      animations.microInteractions,
       'cursor-pointer',
       'select-none',
       'justify-self-center',
@@ -41,69 +48,54 @@ export const calendarDaysViewClasses = {
       'text-center',
       'relative',
       'rounded-md',
-      'cui-element',
       'border-transparent',
-      'bg-primary'
+      'bg-primary',
     ],
     {
       variants: {
         isToday: {
           true: ['font-bold'],
-          false: ''
         },
         isInRange: {
           true: [
             'rounded-none',
             'first:rounded-l-md',
             'last:rounded-r-md',
-            'border-t',
-            'border-b',
-            '!border-primary',
-            'first:border-l',
-            'last:border-r'
+            'bg-opacity-20',
           ],
-          false: ''
         },
         isSelected: {
-          true: [
-            'cui-selected',
-            'contained',
-            '!text-white',
-            '!border-none'
-          ],
-          false: ['outlined']
+          true: [selected, triggers.contained, '!bg-opacity-100'],
+          false: [triggers.outlined],
         },
         isStart: {
           true: ['rounded-l-md'],
-          false: ''
         },
         isEnd: {
           true: ['rounded-r-md'],
-          false: ''
         },
         isCurrentMonth: {
           true: [],
-          false: ['text-opacity-75']
+          false: ['text-opacity-75'],
         },
         size: {
           sm: ['size-8', 'text-sm'],
           md: ['size-10', 'text-sm'],
-          lg: ['size-12']
+          lg: ['size-12'],
         },
         isWeekend: {
           true: ['text-error'],
-          false: []
-        }
+          false: [],
+        },
       },
       defaultVariants: {
         isSelected: false,
         isToday: false,
         isCurrentMonth: true,
-        isWeekend: true
+        isWeekend: true,
       },
     }
   )
-}
 
 export const dayRowClasses = twix('grid', 'grid-cols-7')
 export const calendarDaysViewTitleClasses = {
@@ -111,30 +103,23 @@ export const calendarDaysViewTitleClasses = {
     variants: {
       isToday: {
         true: '',
-        false: ''
+        false: '',
       },
       isWeekend: {
         true: 'text-error',
-        false: ''
-      }
-    }
+        false: '',
+      },
+    },
   }),
   row: cva(
-    [
-      //
-      dayRowClasses(),
-      'py-2',
-      'text-xs',
-      'font-semibold',
-      'capitalize'
-    ],
+    [dayRowClasses(), 'py-2', 'text-xs', 'font-semibold', 'capitalize'],
     {
       variants: {
         offsetMonth: {
           0: '',
-          1: ['md:grid', 'hidden']
-        }
-      }
+          1: ['md:grid', 'hidden'],
+        },
+      },
     }
-  )
+  ),
 }

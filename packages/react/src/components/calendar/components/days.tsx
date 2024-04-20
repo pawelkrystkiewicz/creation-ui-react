@@ -1,18 +1,23 @@
-import { useCallback, type ReactNode, FC } from 'react'
+import { useCallback, type ReactNode, FC, useMemo } from 'react'
 import { useCalendar } from '../calendar.context'
 import {
   calendarDaysViewClasses,
   calendarDaysViewTitleClasses,
   dayRowClasses,
 } from '../classes'
-import { getFirstDayOfWeek } from '../utils'
+import { getFirstDayOfWeek, isDateInDisplayedMonth } from '../utils'
+import { useTheme } from '@root/theme'
 
 interface CalendarDaysViewProps {
   offsetMonth?: 0 | 1
+  multipleCalendars?: boolean
 }
+
+const isWeekendIdx = (i: number) => [5, 6].includes(i)
 
 export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
   offsetMonth = 0,
+  multipleCalendars = false,
 }) => {
   const {
     viewDate: originalViewDate,
@@ -23,6 +28,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     locale,
     weekStartsOn,
   } = useCalendar()
+  const { styles } = useTheme()
 
   //adjust for offset month
   const viewDate = new Date(originalViewDate)
@@ -34,6 +40,11 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(
       new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1))
     )
+  )
+
+  const withThemeDaysClasses = useMemo(
+    () => calendarDaysViewClasses(styles),
+    [styles]
   )
 
   const month = viewDate.getMonth()
@@ -92,7 +103,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
   const rows: ReactNode[] = []
 
   while (date <= endDate) {
-    const days: ReactNode[] = []
+    const days = []
 
     for (let i = 0; i < 7; i++) {
       const cellDate = date.toDateString()
@@ -100,26 +111,31 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
       const isCurrentMonth = date.getMonth() === viewDate?.getMonth()
       const isSelected = isDateSelected(date)
       const isInRange = isDateInRange(date)
-      const isWeekend = [5, 6].includes(i)
-
+      const isWeekend = isWeekendIdx(i)
       const idx = isDateFirstOrLast(date)
+      const isInRenderedMonth = isDateInDisplayedMonth(date, viewDate)
+      const shouldSkipRender = multipleCalendars && !isInRenderedMonth
 
       days.push(
         <button
           data-date={cellDate}
-          key={`${rows.length}-${i}`}
-          className={calendarDaysViewClasses.day({
-            size,
-            isCurrentMonth,
-            isSelected,
-            isToday,
-            isWeekend,
-            isInRange,
-            isStart: idx === 0,
-            isEnd: idx === 1,
-          })}
+          key={`${days.length}-${i}`}
+          className={
+            !shouldSkipRender
+              ? withThemeDaysClasses({
+                  size,
+                  isCurrentMonth,
+                  isSelected,
+                  isToday,
+                  isWeekend,
+                  isInRange,
+                  isStart: idx === 0,
+                  isEnd: idx === 1,
+                })
+              : undefined
+          }
         >
-          {date.getDate().toString()}
+          {!shouldSkipRender ? date.getDate().toString() : null}
         </button>
       )
 
@@ -127,7 +143,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     }
 
     rows.push(
-      <div key={`week-${date.toString()}`} className={dayRowClasses()}>
+      <div key={`week-${days[0]}`} className={dayRowClasses()}>
         {days}
       </div>
     )
@@ -140,7 +156,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
           <div
             key={dayName}
             className={calendarDaysViewTitleClasses.day({
-              isWeekend: [5, 6].includes(i),
+              isWeekend: isWeekendIdx(i),
             })}
           >
             {dayName}

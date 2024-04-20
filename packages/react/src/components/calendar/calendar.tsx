@@ -17,8 +17,9 @@ import { CalendarDaysView } from './components/days'
 import { CalendarMonthsView } from './components/months'
 import { CalendarYearsView } from './components/years'
 import { changeCalendarView, getCalendarInitialValue } from './utils'
+import { Show } from '../show'
 
-const buttonClasses = 'h-7 w-7'
+const buttonClasses = 'size-7'
 
 const Calendar: FC<CalendarProps> = props => {
   const theme = useTheme()
@@ -117,7 +118,13 @@ const Calendar: FC<CalendarProps> = props => {
     for (let i = 0; i < numberOfMonths; i++) {
       switch (view) {
         case 'days':
-          views.push(<CalendarDaysView key={i} offsetMonth={i as 0 | 1} />)
+          views.push(
+            <CalendarDaysView
+              key={i}
+              offsetMonth={i as 0 | 1}
+              multipleCalendars={hasSecondView}
+            />
+          )
           break
         case 'months':
           views.push(<CalendarMonthsView key={i} />)
@@ -139,7 +146,6 @@ const Calendar: FC<CalendarProps> = props => {
         >
           <div className='flex items-center justify-between mb-2 w-full'>
             <Button
-              // circle
               size='sm'
               variant='text'
               className={buttonClasses}
@@ -148,7 +154,9 @@ const Calendar: FC<CalendarProps> = props => {
               <Icon icon='chevron_left' />
             </Button>
             <MonthYearTitle offsetMonth={0} />
-            {hasSecondView ? <MonthYearTitle offsetMonth={1} /> : null}
+            <Show when={hasSecondView}>
+              <MonthYearTitle offsetMonth={1} />
+            </Show>
             <Button
               size='sm'
               variant='text'
@@ -159,7 +167,7 @@ const Calendar: FC<CalendarProps> = props => {
             </Button>
           </div>
           {currentView}
-          {showTodaySelector && (
+          <Show when={showTodaySelector}>
             <div className='p-2'>
               <Button
                 variant='text'
@@ -171,7 +179,7 @@ const Calendar: FC<CalendarProps> = props => {
                 {todayText}
               </Button>
             </div>
-          )}
+          </Show>
         </div>
       </InteractiveContainer>
     </CalendarContext.Provider>

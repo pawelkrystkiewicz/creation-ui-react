@@ -47,3 +47,6 @@ export const getCalendarInitialValue = (
 
   return [value, null]
 }
+
+export const isDateInDisplayedMonth = (date: Date, viewedMonth: Date) =>
+  date.getMonth() === viewedMonth.getMonth()
