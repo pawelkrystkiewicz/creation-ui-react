@@ -91,19 +91,19 @@ export const defaultTheme: ThemeProps = {
         height: 'h-7',
         square: 'size-4',
         padding: 'px-2',
-        fontSize: 'text-xs',  // zmniejszone dla lepszego dopasowania
+        fontSize: 'text-xs',
       },
       md: {
         height: 'h-9',
         square: 'size-5',
         padding: 'px-3',
-        fontSize: 'text-sm',  // dopasowane do średniego rozmiaru
+        fontSize: 'text-sm',
       },
       lg: {
         height: 'h-12',
         square: 'size-6',
         padding: 'px-4',
-        fontSize: 'text-base',  // nieco większe dla lepszej czytelności
+        fontSize: 'text-base',
       },
     },
     drawers: themeDrawers,

@@ -1,13 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
+import get from 'lodash.get'
+import merge from 'lodash.merge'
 import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
 import { Overlay } from '../overlay'
 import { child, drawer, drawerAnimation } from './classes'
 import type { DrawerProps } from './drawer.types'
-import merge from 'lodash.merge'
-import get from 'lodash.get'
 
 const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const {
@@ -17,15 +17,18 @@ const Drawer = ({ open, children, onOverlayClick, ...props }: DrawerProps) => {
   const { position = drawers?.position || 'right', onClose = () => {} } = props
 
   const cx = merge({}, props.cx, {
-    width: get(props, 'cx.width', drawers?.widthClassNames ?? ''),
-    height: get(props, 'cx.height', drawers?.heightClassNames ?? ''),
+    width: get(props, 'cx.width', drawers?.width ?? ''),
+    height: get(props, 'cx.height', drawers?.height ?? ''),
   })
 
+  const verticalSize = cx.height
+  const horizontalSize = cx.width
+
   const finalSize = {
-    right: cx.width,
-    left: cx.width,
-    top: cx.height,
-    bottom: cx.height,
+    right: horizontalSize,
+    left: horizontalSize,
+    top: verticalSize,
+    bottom: verticalSize,
   }[position]
 
   return (

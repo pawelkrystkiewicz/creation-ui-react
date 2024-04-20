@@ -1,11 +1,10 @@
+import { Container } from '@components/container'
 import { childrenProp, openProp, positionProp } from '@components/examples/shared-props'
 import { Playground } from '@components/playground'
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { positionControl } from './shared-playground-controls'
 import { useState } from 'react'
-import { Container } from '@components/container'
-import clsx from 'clsx'
+import { positionControl } from './shared-playground-controls'
 
 export const DrawerExample = (props: DrawerProps) => {
   const [open, setOpen] = useState(false)
@@ -43,8 +42,6 @@ export const DrawerCustomizedExample = (props: DrawerProps) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const innerClasses = ['!w-[calc(100%-30px)]', '!h-[calc(100%-30px)]', 'rounded-xl', 'm-[15px]']
-
   return (
     <Container>
       <Button onClick={handleOpen}>Open Drawer</Button>
@@ -54,17 +51,23 @@ export const DrawerCustomizedExample = (props: DrawerProps) => {
         cx={{
           width: 'xl:w-1/3 lg:w-1/2 w-full',
           container: {
-            inner: clsx(innerClasses),
+            outer: 'p-[15px]',
+            inner: 'rounded-xl',
           },
         }}
       >
-        <div className='p-5 flex flex-col'>
+        <div className='p-5 flex flex-col h-full gap-2'>
           <h1>Title</h1>
-          <div className='mt-2 flex-grow'>
+          <div className='flex-grow'>
             <p className='text-sm text-gray-500'>Content</p>
           </div>
-          <div className='mt-4'>
-            <Button onClick={handleClose}>Save</Button>
+          <div className='flex gap-2 items-center'>
+            <Button onClick={handleClose} className='min-w-[100px]'>
+              Save
+            </Button>
+            <Button onClick={handleClose} variant={'outlined'} status={'error'} className='min-w-[100px]'>
+              Cancel
+            </Button>
           </div>
         </div>
       </Drawer>
