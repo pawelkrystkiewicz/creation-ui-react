@@ -66,7 +66,6 @@ export const defaultTheme: ThemeProps = {
         'bg-background-input',
         'border',
         'border-border',
-        'rounded-md',
       ],
       checkable: [
         ...animations.microInteractions,
@@ -88,6 +87,7 @@ export const defaultTheme: ThemeProps = {
     },
     size: {
       sm: {
+        minHeight: 'min-h-7',
         height: 'h-7',
         width: 'w-7',
         square: 'size-4',
@@ -95,6 +95,7 @@ export const defaultTheme: ThemeProps = {
         fontSize: 'text-xs',
       },
       md: {
+        minHeight: 'min-h-9',
         height: 'h-9',
         width: 'w-9',
         square: 'size-5',
@@ -102,6 +103,7 @@ export const defaultTheme: ThemeProps = {
         fontSize: 'text-sm',
       },
       lg: {
+        minHeight: 'min-h-12',
         height: 'h-12',
         width: 'w-12',
         square: 'size-6',

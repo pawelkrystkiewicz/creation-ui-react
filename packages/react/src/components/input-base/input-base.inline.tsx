@@ -1,6 +1,5 @@
 import { Description, InteractiveContainer, Loader, Show } from '@components'
 import { inputContainer } from '@root/classes'
-import { getBaseFromTheme } from '@root/theme/utils'
 import { useTheme } from '@theme'
 import { InputBaseProps } from '@types'
 import { useMemo, type FC } from 'react'
@@ -39,11 +38,11 @@ const InputBaseInline: FC<InputBaseProps> = props => {
   )
 
   const outerContainerClasses = twMerge(
-    withTheme.container({ disabled, error: !!error, layout }),
+    withTheme.container({ disabled, error: !!error, layout, size }),
     cx?.container?.inner
   )
 
-  const withThemeClasses = withTheme.input({
+  const withThemeInput = withTheme.input({
     size,
     variant,
     className: cx?.input,
@@ -56,7 +55,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
         value={{
           componentId,
           classes: {
-            input: withThemeClasses,
+            input: withThemeInput,
             container: outerContainerClasses,
           },
           disabled,
@@ -71,6 +70,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
             <Label
               htmlFor={componentId}
               className={cx?.label}
+              size={size}
               required={props.required}
               aria-label={props.label?.toString()}
             >

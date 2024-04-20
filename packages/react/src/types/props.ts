@@ -136,6 +136,10 @@ export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
    * Placeholder
    */
   placeholder?: string
+  /**
+   * Resize options for textarea
+   */
+  resize?: 'none' | 'both' | 'horizontal' | 'vertical'
 }
 
 export type InputClassNamesAPI = {

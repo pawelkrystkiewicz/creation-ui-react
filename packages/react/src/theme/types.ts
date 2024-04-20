@@ -81,6 +81,7 @@ export type ThemeStyles = {
 }
 
 type ThemeSize = {
+  minHeight: string
   height: string
   width: string
   square: string

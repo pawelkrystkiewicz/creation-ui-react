@@ -16,7 +16,8 @@ export const CheckboxView = ({
   const { size = defaultSize, ...rest } = props
 
   const checkboxClassNames = checkboxClasses(styles)({
-    className: [className, size],
+    className,
+    size,
     error: !!error,
     readOnly,
   })

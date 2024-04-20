@@ -1,7 +1,7 @@
 import { TextAreaExample, properties, PasswordExample, TextAreaPlayground } from '@components/examples/textarea'
 import { Container } from '@components/container'
 import { UnfoldVariants } from '@components/unfold-variants'
-import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
+import { ELEMENT_SIZES, ELEMENT_STATUS, TextArea } from '@creation-ui/react'
 import PropsTable from '@components/props-table'
 import { Icon } from '@mdi/react'
 import { mdiAccountOutline, mdiHelpCircle, mdiKeyVariant } from '@mdi/js'
@@ -19,8 +19,25 @@ For example:
 
 ```tsx copy
 // example with tailwindcss custom width
-<TextArea className='w-[200px] resize-y' />
+<TextArea className='w-[200px]' />
 ```
+
+## Setting the resizeability to textarea
+
+```tsx copy
+// resize?: 'none' | 'both' | 'horizontal' | 'vertical';
+<TextArea resize={'both'} label='Resizeable textarea' placeholder='You can resize me in X and Y' />
+```
+
+<Container column>
+  <TextArea resize={'both'} label='Resizeable textarea' placeholder='You can resize me in X and Y' />
+</Container>
+<Container column>
+  <TextArea resize={'vertical'} label='Resizeable textarea Y' placeholder='You can resize me in Y' />
+</Container>
+<Container column>
+  <TextArea resize={'horizontal'} label='Resizeable textarea X' placeholder='You can resize me in X' />
+</Container>
 
 ## Component API
 

@@ -12,7 +12,6 @@ export const checkboxClasses = ({
     variants: {
       error: {
         true: [values(error), '!checked:bg-error'],
-        false: null,
       },
       readOnly: { true: readOnly },
       size: {

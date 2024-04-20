@@ -14,9 +14,9 @@ export const inputContainer = ({
         row: ['flex-row', 'gap-2', 'items-center'],
       },
       size: {
-        sm: [size.sm.height, size.sm.fontSize],
-        md: [size.md.height, size.sm.fontSize],
-        lg: [size.lg.height, size.sm.fontSize],
+        sm: [size.sm.fontSize],
+        md: [size.sm.fontSize],
+        lg: [size.sm.fontSize],
       },
       disabled: { true: disabled },
       error: { true: error.text },

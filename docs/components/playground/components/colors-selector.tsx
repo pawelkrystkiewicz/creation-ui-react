@@ -50,7 +50,7 @@ export const ColorsSelector = ({ options, onClick, label, value, ...props }: Col
 
   return (
     <div className={containerClasses}>
-      <Label htmlFor={componentId} aria-label={label?.toString()}>
+      <Label htmlFor={componentId} aria-label={label?.toString()} size={size}>
         {label}
       </Label>
       <div className='flex flex-wrap gap-3 w-fit' aria-required={required}>

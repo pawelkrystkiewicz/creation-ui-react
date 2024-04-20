@@ -37,6 +37,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     variant = defaultVariant,
     layout = 'column',
     interactionsDisabled,
+    resize,
     onClear,
   } = props
   const componentId = useId(id)
@@ -53,7 +54,6 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     [styles]
   )
 
-
   const isUnstyled = UNSTYLED_TYPES.includes(type)
   const hasError = Boolean(error)
   const hasStartAdornment = Boolean(startAdornment)
@@ -61,7 +61,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const finalVariant = isUnstyled ? 'unstyled' : variant
 
   const container = twMerge(
-    withTheme.container({ disabled, error: !!error, layout }),
+    withTheme.container({ disabled, error: !!error, layout, size }),
     cx?.container?.outer
   )
 
@@ -74,19 +74,19 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     error: hasError,
     interactionsDisabled,
     className: cx?.input,
+    resize,
     // @ts-ignore
     type,
   })
-
+  if (type == 'textarea') {
+    console.log(input)
+  }
   return (
     <InteractiveContainer disabled={disabled}>
       <InputBaseContext.Provider
         value={{
           componentId,
-          classes: {
-            input: input,
-            container: container,
-          },
+          classes: { input, container },
           disabled,
           readOnly,
           error: !!error,
@@ -99,6 +99,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
             className={cx?.label}
             required={props.required}
             aria-label={props.label?.toString()}
+            size={size}
           >
             {props.label}
           </Label>

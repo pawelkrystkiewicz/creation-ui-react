@@ -14,4 +14,8 @@ export type TextAreaProps = Omit<
      * Variant of element
      */
     variant?: ElementVariant
+    /**
+     * Resize behavior
+     */
+    resize?: 'none' | 'both' | 'horizontal' | 'vertical'
   }
