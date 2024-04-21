@@ -1,0 +1,20 @@
+import { H2, Card, CardHeader, CardTitle, CardContent, CardStats, CardDescription } from '@creation-ui/react'
+import { mdiPalette, mdiPaletteSwatch } from '@mdi/js'
+import Icon from '@components/icon'
+import { Container } from '@components/container'
+import { NavigationCard } from '@components/NavigationCard'
+import NextLink from 'next/link'
+
+# Themeing
+
+Themeing consists of two parts: the CSS variables and the theme configuration (mostly shared TailwindCSS classes).
+
+<Container>
+  <NavigationCard link='/docs/customisation/colors' icon={mdiPalette} description={'Colors'} title={'CSS Variables'} />
+  <NavigationCard
+    link='/docs/customisation/theme'
+    icon={mdiPaletteSwatch}
+    description={'Global components configuration'}
+    title={'Theme'}
+  />
+</Container>

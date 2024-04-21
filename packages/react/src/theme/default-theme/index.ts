@@ -1,5 +1,4 @@
 import type { ThemeProps } from '../types'
-import { themeDrawers } from './modal'
 import { themeTypography } from './typography'
 
 const animations = {
@@ -111,7 +110,11 @@ export const defaultTheme: ThemeProps = {
         fontSize: 'text-base',
       },
     },
-    drawers: themeDrawers,
+    drawers: {
+      position: 'right',
+      width: 'md:w-1/2',
+      height: 'md:h-1/2',
+    },
     typography: themeTypography,
   },
 }

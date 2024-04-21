@@ -19,3 +19,7 @@
     --tw-ring-color: transparent !important;
     --tw-ring-offset-color: transparent !important;
 }
+
+.micro-interactions{
+    @apply transition-all duration-300 ease-in-out;
+}
