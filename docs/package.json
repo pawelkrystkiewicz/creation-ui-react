@@ -10,6 +10,7 @@
   "scripts": {
     "start": "next dev -p 3005",
     "build": "pnpm import-check && next build",
+    "build:lib":"cd ../packages/react && pnpm build",
     "preview": "next start",
     "lint": "next lint",
     "nuke": "rm -rf node_modules yarn.lock pnpm-lock.yaml .next && pnpm install",
