@@ -5,7 +5,7 @@ import merge from 'lodash.merge'
 import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
-import { Overlay } from '../overlay'
+import { Overlay } from '../overlay/overlay'
 import { child, drawer, drawerAnimation } from './classes'
 import type { DrawerProps } from './drawer.types'
 

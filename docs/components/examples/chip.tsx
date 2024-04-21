@@ -1,8 +1,7 @@
 import { Container } from '@components/container'
 import Icon from '@components/icon'
 import { Playground } from '@components/playground'
-import { ELEMENT_SIZES } from '@creation-ui/react'
-import { Chip } from '@creation-ui/react'
+import { Chip, ELEMENT_SIZES } from '@creation-ui/react'
 import { mdiAccountOutline, mdiHelpCircle } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
 import { labelControl, sizeControl, statusControl, variantBaseControl } from './shared-playground-controls'
@@ -12,7 +11,7 @@ export const ChipPlayground = () => (
   <Playground component={Chip} name='Chip' controls={[labelControl, variantBaseControl, sizeControl, statusControl]} />
 )
 
-export const ChipDeleteable = () => (
+export const ChipDeletable = () => (
   <Playground component={Chip} name='Chip' controls={[labelControl, variantBaseControl, sizeControl, statusControl]} />
 )
 

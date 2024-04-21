@@ -1,12 +1,10 @@
+import { Transition } from '@headlessui/react'
+import clsx from 'clsx'
+import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useTheme } from '../../theme'
 import { overlay } from './classes'
-import type { OverlayProps } from './overlay.types'
-import { Transition } from '@headlessui/react'
-import { Fragment } from 'react'
-import clsx from 'clsx'
-
-const animation = ['transition-opacity', 'ease-in-out', 'duration-300']
+import type { OverlayProps } from './types'
 
 export const Overlay = ({
   active,
@@ -15,15 +13,15 @@ export const Overlay = ({
   cursorWait,
   children,
 }: OverlayProps) => {
-  const { zIndex } = useTheme()
+  const { zIndex, styles } = useTheme()
 
   return (
     <Transition
       show={!!active}
       as={Fragment}
       unmount={false}
-      enter={clsx(animation)}
-      leave={clsx(animation)}
+      enter={clsx(styles.animations.microInteractions)}
+      leave={clsx(styles.animations.microInteractions)}
       enterTo='opacity-100'
       enterFrom='opacity-0'
       leaveFrom='opacity-100'

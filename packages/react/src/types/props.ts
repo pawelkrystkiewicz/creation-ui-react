@@ -56,7 +56,15 @@ export interface UIElement {
   id?: string
 }
 
-export interface BaseComponentProps extends Omit<UIElement, 'children'> {
+export interface BaseComponentProps {
+  /**
+   * CSS classes API
+   */
+  className?: string
+  /**
+   * HTML id of element
+   */
+  id?: string
   /**
    * Is element required?
    */

@@ -16,7 +16,7 @@ export const NavigationCard: FC<NavigationCardProps> = ({ description, link, tit
     <NextLink href={link} className='w-full'>
       <Card className='group hover:shadow-xl micro-interactions'>
         <CardContent className='flex items-center gap-2'>
-          <Show when={icon}>
+          <Show when={!!icon}>
             <Icon path={icon!} className='flex-shrink-0  group-hover:text-primary micro-interactions text-opacity-80' size={1} />
           </Show>
           <h2 className='font-bold text-lg'>{title}</h2>

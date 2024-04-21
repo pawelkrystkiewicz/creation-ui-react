@@ -6,8 +6,9 @@ import type {
   InputClassNamesAPI,
 } from '@types'
 
-export interface ChipProps
-  extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {
+export type ChipProps = Partial<
+  Pick<BaseComponentProps, 'className' | 'size' | 'label'>
+> & {
   /**
    * Should be uppercase?
    */

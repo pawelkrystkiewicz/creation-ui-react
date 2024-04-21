@@ -1,6 +1,6 @@
 import React from 'react'
-import { For } from '@root/packages/react/src'
 import { mount } from 'cypress/react18'
+import { For } from '@creation-ui/react'
 
 describe('For Component Tests', () => {
   it('correctly renders list items', () => {

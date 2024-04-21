@@ -1,4 +1,4 @@
-import { ElementSize, inputContainer, label as labelClasses, useTheme } from '@creation-ui/react'
+import { ElementSize, Label, inputContainer, useTheme } from '@creation-ui/react'
 import { ReactNode, useId } from 'react'
 
 interface ToolContainerProps {
@@ -14,16 +14,9 @@ export const ToolContainer = (props: ToolContainerProps) => {
   return (
     // @ts-ignore
     <div className={inputContainer(styles)({ className: [size] })}>
-      <label
-        htmlFor={componentId}
-        className={labelClasses({
-          // @ts-ignore
-          size,
-        })}
-        aria-label={label?.toString()}
-      >
+      <Label htmlFor={componentId} size={size} aria-label={label?.toString()}>
         {label}
-      </label>
+      </Label>
       <div className='flex gap-3 w-fit'>{props.children}</div>
     </div>
   )
