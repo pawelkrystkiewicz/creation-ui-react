@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { Character } from './types'
 import users from './users.json'
+import { Show } from '@creation-ui/react/dist/components/show/show'
 
 export const renderOption = (props: AutocompleteOptionProps, option: Character) => (
   // @ts-expect-error
@@ -18,15 +19,17 @@ export const renderOption = (props: AutocompleteOptionProps, option: Character) 
 )
 
 const renderSelection = (option: Character) => (
-  <div className='h-fit w-fit p-2 mr-2'>
-    <div className='flex gap-2 items-center'>
-      <Avatar size='sm' src={option.image} />
-      <div className='flex flex-col'>
-        <span className='font-medium'>{option.name}</span>
-        <span className='text-xs'>{option.species}</span>
+  <Show when={!!option}>
+    <div className='h-fit w-fit p-2 mr-2'>
+      <div className='flex gap-2 items-center'>
+        <Avatar size='sm' src={option.image} />
+        <div className='flex flex-col'>
+          <span className='font-medium'>{option.name}</span>
+          <span className='text-xs'>{option.species}</span>
+        </div>
       </div>
     </div>
-  </div>
+  </Show>
 )
 
 export const AutocompleteExampleCustomOptions = () => {

@@ -1,11 +1,9 @@
+import { Show, ShowFirstMatching, useInputBase } from '@components'
+import { DropdownMenu } from '@components/shared/DropdownMenu'
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import clsx from 'clsx'
 import { FC, useCallback } from 'react'
-import { Show, ShowFirstMatching } from '../../show'
-import { useInputBase } from '../../input-base/input-base.context'
-import { DropdownMenu } from '../../shared/DropdownMenu'
 import { useAutocomplete } from '../context'
-import { AutocompleteOptionDefault } from '../types'
 import { renderOptionInternalContainer } from '../utils/render-option'
 import { MultipleSelections } from './multiple-selections.view'
 
@@ -28,9 +26,10 @@ export const AutocompleteView: FC = () => {
     allowCreate,
   } = useAutocomplete()
 
-  const customRenderValue = renderSelection && !multiple && selected
+  const customRenderValue =
+    !!renderSelection && !multiple && selected != undefined
   const hasOptions = options.length > 0
-
+  console.log({ selected })
   const handleCreate = useCallback(() => {
     if (!onCreate || !query) return
     onCreate(query)
@@ -43,18 +42,15 @@ export const AutocompleteView: FC = () => {
           <Show when={multiple}>
             <MultipleSelections />
           </Show>
-          <ShowFirstMatching>
-            <Show when={!!customRenderValue}>
-              {renderSelection?.(selected as AutocompleteOptionDefault)}
-            </Show>
-            <Show when={true}>
-              <input
-                {...propsInput}
-                id={componentId}
-                className={clsx('reset-input h-fit', propsInput.className)}
-              />
-            </Show>
-          </ShowFirstMatching>
+          {!customRenderValue ? (
+            <input
+              {...propsInput}
+              id={componentId}
+              className={clsx('reset-input h-fit', propsInput.className)}
+            />
+          ) : (
+            renderSelection?.(selected)
+          )}
         </div>
       </div>
       <Show when={open}>
