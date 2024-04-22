@@ -28,6 +28,7 @@ export const defaultTheme: ThemeProps = {
   styles: {
     animations,
     selected: [
+      // TODO: remove in favor of in function injection
       ...animations.microInteractions,
       'bg-primary',
       'text-white',
@@ -61,12 +62,14 @@ export const defaultTheme: ThemeProps = {
     },
     inputs: {
       base: [
+        // TODO: remove in favor of in function injection
         ...animations.microInteractions,
         'bg-background-input',
         'border',
         'border-border',
       ],
       checkable: [
+        // TODO: remove in favor of in function injection
         ...animations.microInteractions,
         'text-primary',
         'checked:border-none',

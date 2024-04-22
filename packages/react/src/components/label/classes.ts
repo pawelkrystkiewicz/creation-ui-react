@@ -6,9 +6,9 @@ export const label = cva(['select-none', 'block', 'font-medium'], {
       true: ["after:content-['*']", 'after:ml-0.5', 'after:text-error'],
     },
     size: {
-      sm: ['text-xs'],
-      md: ['text-sm'],
-      lg: ['text-md'],
+      sm: ['!text-xs'],
+      md: ['!text-sm'],
+      lg: ['!text-md'],
     },
     for: {
       checkbox: ['inline-flex', 'items-center', 'cursor-pointer'],
