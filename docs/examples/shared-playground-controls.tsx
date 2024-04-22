@@ -137,6 +137,17 @@ export const statusControl: PlaygroundControl = {
   values: COLORS,
 }
 
+export const statusControlWithUndef: PlaygroundControl = {
+  name: 'status',
+  type: 'array',
+  defaultValue: 'primary',
+  component: 'colors',
+  values: [
+    ...COLORS,
+    { value: undefined, label: 'undefined', className: 'border border-border background-transparent-check' },
+  ],
+}
+
 export const disabledControl: PlaygroundControl = {
   name: 'disabled',
   type: 'boolean',

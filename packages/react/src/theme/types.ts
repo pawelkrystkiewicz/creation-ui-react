@@ -24,7 +24,6 @@ type ThemeDrawers = {
 }
 
 export type TypographyConfig = {
-  color?: string
   display: string
   fontFamily: string
   fontSize: Record<ElementSize, string>

@@ -8,23 +8,26 @@ import { properties, CalloutPlayground } from '@examples/callout'
 ## Example
 
 ```tsx copy
-import React from 'react'
-import { Callout } from '@creation-ui/react'
-import { mdiCheckCircle } from '@mdi/js'
-import { Icon } from '@mdi/react'
+import { Container } from '@components/container'
+import { Callout, CalloutProps, Description, Flex, H5, Show, useTheme } from '@creation-ui/react'
 
-export const Example = () => {
+interface CalloutExampleProps extends Omit<CalloutProps, 'children' | 'variant'> {
+  title?: string
+  content?: string
+}
+
+export const Example = ({ title, content, ...props }: CalloutExampleProps) => {
+  const { styles } = useTheme()
+
   return (
-    <>
-      <Callout
-        variant={'outlined'}
-        status={'success'}
-        title='Action completed'
-        content='Your request has been processed successfully.'
-        icon={<Icon path={mdiCheckCircle} size={1} />}
-        onClose={() => alert('Callout closed')}
-      />
-    </>
+    <Callout {...props} variant={variant}>
+      <Flex column>
+        <Show when={!!title}>
+          <H5>{title}</H5>
+        </Show>
+        <Description className='!text-inherit'>{content}</Description>
+      </Flex>
+    </Callout>
   )
 }
 ```

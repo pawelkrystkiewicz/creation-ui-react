@@ -1,45 +1,44 @@
+import { Container } from '@components/container'
 import { Playground } from '@components/playground'
-import { Callout } from '@creation-ui/react'
-import { mdiCheckCircle, mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js'
-import { Icon } from '@mdi/react'
+import { Callout, CalloutProps, Description, ELEMENT_VARIANTS, For, H5, Show, useTheme } from '@creation-ui/react'
+import { Flex } from '@creation-ui/react/dist/components/flex/flex'
 import { DocumentedProperty } from 'models/system'
-import { statusControl, variantControl } from './shared-playground-controls'
-import { iconProp, labelProp, statusProp, variantProp } from './shared-props'
+import { statusControlWithUndef } from './shared-playground-controls'
+import { childrenProp, statusProp, variantProp } from './shared-props'
 
-export const Example = () => (
-  <>
-    <Callout
-      variant={'outlined'}
-      status={'success'}
-      title='Action completed'
-      content='Your request has been processed successfully.'
-      icon={<Icon path={mdiCheckCircle} size={1} />}
-      onClose={() => alert('Callout closed')}
-    />
-  </>
-)
+interface CalloutExampleProps extends Omit<CalloutProps, 'children' | 'variant'> {
+  title?: string
+  content?: string
+}
 
-const ICON_OPTIONS = [
-  {
-    label: <Icon path={mdiEyeOutline} size={1} />,
-    value: <Icon path={mdiCheckCircle} size={1} />,
-  },
-  { label: <Icon path={mdiEyeOffOutline} size={1} />, value: null },
-]
+export const Example = ({ title, content, ...props }: CalloutExampleProps) => {
+  const { styles } = useTheme()
 
-const CALLBACK_OPTIONS = [
-  { label: 'No', value: null },
-  { label: 'Yes', value: () => alert('Callout closed') },
-]
+  return (
+    <Container variant='column'>
+      <For each={ELEMENT_VARIANTS}>
+        {variant => (
+          <Callout {...props} variant={variant} key={variant} className={styles.animations.microInteractions}>
+            <Flex column>
+              <Show when={!!title}>
+                <H5>{title}</H5>
+              </Show>
+              <Description className='!text-inherit'>{content}</Description>
+            </Flex>
+          </Callout>
+        )}
+      </For>
+    </Container>
+  )
+}
 
 export const CalloutPlayground = () => (
   <Playground
-    component={Callout}
+    component={Example}
     name='Callout'
     showCode={false}
     controls={[
-      statusControl,
-      variantControl,
+      statusControlWithUndef,
       {
         name: 'title',
         type: 'string',
@@ -50,26 +49,8 @@ export const CalloutPlayground = () => (
         type: 'string',
         defaultValue: 'Your request has been processed successfully.',
       },
-      {
-        name: 'icon',
-        type: 'array',
-        values: ICON_OPTIONS,
-        defaultValue: undefined,
-      },
-      {
-        label: 'Close Callback',
-        name: 'onClose',
-        type: 'array',
-        values: CALLBACK_OPTIONS,
-      },
     ]}
   />
 )
 
-export const properties: DocumentedProperty[] = [
-  { ...labelProp, name: 'title', description: 'Title of the callout' },
-  { ...labelProp, name: 'content', description: 'Content of the callout' },
-  iconProp,
-  statusProp,
-  variantProp,
-]
+export const properties: DocumentedProperty[] = [childrenProp, statusProp, variantProp]

@@ -1,30 +1,9 @@
-# Clear button
-
-Used in dropdowns to open options list.
-
-## Usage
-
-```tsx copy
-import { Button } from '@creation-ui/react'
-import { DropdownChevron } from '@creation-ui/react'
-import { useState } from 'react'
-
-export const DropdownChevronExample = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <div className='flex flex-col w-fit'>
-      <div>
-        <DropdownChevron open={isOpen} />
-      </div>
-      <Button onClick={() => setIsOpen(!isOpen)}>Toggle</Button>
-    </div>
-  )
-}
-```
-
 import { DropdownChevronExample, properties } from '@examples/dropdown-chevron'
 import PropsTable from '@components/props-table'
+
+# Dropdown Chevron
+
+Used in dropdowns to open options list.
 
 <DropdownChevronExample />
 

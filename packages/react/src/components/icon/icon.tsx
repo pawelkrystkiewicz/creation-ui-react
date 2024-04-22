@@ -1,7 +1,8 @@
 import { twMerge } from 'tailwind-merge'
-import { useTheme } from '@theme'
+import { ThemePreloadedClasses, useTheme } from '@theme'
 import type { IconProps, IconType } from './icon.type'
 import { cva } from 'class-variance-authority'
+import { useMemo } from 'react'
 
 // map of icon names to their svg path
 // https://pictogrammers.com/library/mdi/
@@ -19,33 +20,45 @@ const iconPathMap: Record<IconType, string> = {
   slash: 'M7 21L14.9 3H17L9.1 21H7Z',
   home: 'M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22',
   plus: 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z',
-  minus: 'M19,13H5V11H19V13Z'
+  minus: 'M19,13H5V11H19V13Z',
 }
 
-const iconClasses = cva([
-  'fill-text-primary',
-  'hover:fill-primary',
-  'size-4',
-  'flex-shrink-0',
-  'size-square',
-  'text-size',
-], {
-  variants: {
-    interactive: {
-      true: ['cursor-pointer']
-    },
-  }
-})
+const iconClasses = ({ size }: ThemePreloadedClasses) =>
+  cva(
+    [
+      'fill-text-primary',
+      'hover:fill-primary',
+      'size-4',
+      'flex-shrink-0',
+      'size-square',
+      'text-size',
+    ],
+    {
+      variants: {
+        interactive: {
+          true: ['cursor-pointer'],
+        },
+        size: {
+          sm: size.sm.square,
+          md: size.md.square,
+          lg: size.lg.square,
+        },
+      },
+    }
+  )
 
 const Icon = ({ icon, title, className, ...props }: IconProps) => {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, styles } = useTheme()
   const { size = defaultSize } = props
+
+  const withThemeClasses = useMemo(() => iconClasses(styles), [styles])
+
   const interactive = !!props.onClick
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      className={twMerge(iconClasses({ interactive,  }), size, className)}
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      className={twMerge(withThemeClasses({ interactive, size }), className)}
       {...props}
     >
       <title>{title}</title>
