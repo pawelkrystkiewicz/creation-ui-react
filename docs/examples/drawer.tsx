@@ -1,5 +1,5 @@
 import { Container } from '@components/container'
-import { childrenProp, openProp, positionProp } from '@components/examples/shared-props'
+import { childrenProp, openProp, positionProp } from '@root/examples/shared-props'
 import { Playground } from '@components/playground'
 import { Button, Drawer, DrawerProps } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'

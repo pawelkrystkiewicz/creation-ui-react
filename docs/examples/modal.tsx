@@ -1,4 +1,4 @@
-import { childrenProp, elementTypeProp, openProp } from '@components/examples/shared-props'
+import { childrenProp, elementTypeProp, openProp } from '@root/examples/shared-props'
 import { DocumentedProperty } from 'models/system'
 
 import Icon from '@components/icon'
