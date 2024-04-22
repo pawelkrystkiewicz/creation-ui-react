@@ -8,7 +8,7 @@ export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
       'inline-flex',
       'leading-5',
       'rounded-full',
-      'font-semibold',
+      'font-medium',
       'w-fit',
       'select-none',
       'justify-center',
@@ -25,6 +25,11 @@ export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
           error: ['text-error', 'bg-error', 'border-error'],
           warning: ['text-warning', 'bg-warning', 'border-warning'],
           info: ['text-info', 'bg-info', 'border-info'],
+          undefined: [
+            'bg-text-primary',
+            'text-text-primary',
+            'border-text-primary',
+          ],
         },
         size: {
           sm: ['!text-xs', 'px-1.5'],

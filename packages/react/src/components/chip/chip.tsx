@@ -6,13 +6,13 @@ import type { ChipProps } from './chip.types'
 import { chipClasses } from './classes'
 
 export const Chip = (props: ChipProps) => {
-  const { size: defaultSize, styles } = useTheme()
+  const { size: defaultSize, variant: defaultVariant, styles } = useTheme()
   const {
     //
     label,
-    status = 'primary',
+    status,
     size = defaultSize,
-    variant = 'outlined',
+    variant = defaultVariant,
     onDelete,
     onClick,
     startAdornment = null,
@@ -36,7 +36,7 @@ export const Chip = (props: ChipProps) => {
         variant,
         uppercase,
         interactive,
-        className: [cx?.container?.outer, size, variant],
+        className: [cx?.container?.outer],
       })}
       onClick={onClick}
     >

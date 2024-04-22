@@ -4,19 +4,15 @@ import { Playground } from '@components/playground'
 import { Chip, ELEMENT_SIZES } from '@creation-ui/react'
 import { mdiAccountOutline, mdiHelpCircle } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
-import { labelControl, sizeControl, statusControl, variantBaseControl } from './shared-playground-controls'
+import { labelControl, sizeControl, statusControlWithUndef, variantBaseControl } from './shared-playground-controls'
 import { labelProp, sizeProp, statusProp } from './shared-props'
 
 export const ChipPlayground = () => (
-  <Playground component={Chip} name='Chip' controls={[labelControl, variantBaseControl, sizeControl, statusControl]} />
-)
-
-export const ChipDeletable = () => (
-  <Playground component={Chip} name='Chip' controls={[labelControl, variantBaseControl, sizeControl, statusControl]} />
-)
-
-export const ChipWithStartAdornment = () => (
-  <Playground component={Chip} name='Chip' controls={[labelControl, variantBaseControl, sizeControl, statusControl]} />
+  <Playground
+    component={Chip}
+    name='Chip'
+    controls={[labelControl, variantBaseControl, sizeControl, statusControlWithUndef]}
+  />
 )
 
 export const ChipAdornmentsExamples = () => {

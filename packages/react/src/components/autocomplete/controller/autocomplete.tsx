@@ -52,7 +52,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     value,
     options = [],
     filterSelectedOptions = false,
-    defaultTagProps = { variant: 'outlined', status: 'info' },
+    defaultTagProps = {
+      variant: 'outlined',
+      status: undefined,
+    },
     autoHighlight = false,
     onChange,
     filterOptions = createFilterOptions<T>(),
@@ -102,6 +105,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       )
     })
   }
+
+  const { renderTags = _renderTags } = props
 
   const [open, setOpen] = useState<boolean>(false)
   const [query, setQuery] = useState<string>('')
@@ -405,7 +410,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       >
         <AutocompleteContext.Provider
           value={{
-            renderTags: _renderTags,
+            renderTags,
             handleRemoveSelected,
             setOpen,
             multiple,

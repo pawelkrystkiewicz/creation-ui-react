@@ -1,11 +1,10 @@
 import { useId } from '@floating-ui/react'
+import type { ElementSize } from '@types'
 import clsx from 'clsx'
 import type { HTMLProps } from 'react'
 import { forwardRef, useLayoutEffect } from 'react'
-import type { ElementSize } from '@types'
 import { popoverDescriptionClasses } from './classes'
 import { usePopoverContext } from './context'
-import { usePopover } from './use-popover'
 
 export interface PopoverDescriptionProps
   extends Omit<HTMLProps<HTMLParagraphElement>, 'size'> {

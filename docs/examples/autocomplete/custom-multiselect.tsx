@@ -5,22 +5,14 @@ import { renderOption } from './custom'
 import { Character } from './types'
 import users from './users.json'
 
-const renderTags = (selected: Character[], handleRemoveSelected: (option: any) => void) => {
-  return selected?.map(option => {
-    return (
-      <Flex
-        key={option.id}
-        items={'center'}
-        gap={2}
-        className='size-fit border rounded-full p-1 text-xs'
-      >
-        <Avatar size={16} src={option.image} className={'size-fit object-cover'} />
-        <span className='font-medium'>{option.name}</span>
-        <ClearButton onClick={() => handleRemoveSelected(option as any)} />
-      </Flex>
-    )
-  })
-}
+const renderTags = (selected: Character[], handleRemoveSelected: (option: any) => void) =>
+  selected?.map(option => (
+    <Flex key={option.id} items={'center'} gap={2} className='size-fit border rounded-full p-1 text-xs'>
+      <Avatar size={16} src={option.image} className={'size-fit object-cover'} />
+      <span className='font-medium'>{option.name}</span>
+      <ClearButton onClick={() => handleRemoveSelected(option as any)} />
+    </Flex>
+  ))
 
 export const AutocompleteExampleCustomMultiselect = () => {
   const [value, setValue] = useState<Character[] | undefined | null>([])
