@@ -7,17 +7,22 @@ export const checkboxClasses = ({
   readOnly,
   error,
   size,
+  animations,
+  focusable,
 }: ThemePreloadedClasses) =>
-  cva([inputs.base, inputs.checkable], {
-    variants: {
-      error: {
-        true: [values(error), '!checked:bg-error'],
+  cva(
+    [inputs.base, animations.microInteractionsAll, inputs.checkable, focusable],
+    {
+      variants: {
+        error: {
+          true: [values(error), '!checked:bg-error'],
+        },
+        readOnly: { true: readOnly },
+        size: {
+          sm: [size.sm.square, size.sm.fontSize],
+          md: [size.md.square, size.md.fontSize],
+          lg: [size.lg.square, size.lg.fontSize],
+        },
       },
-      readOnly: { true: readOnly },
-      size: {
-        sm: [size.sm.square, size.sm.fontSize],
-        md: [size.md.square, size.md.fontSize],
-        lg: [size.lg.square, size.lg.fontSize],
-      },
-    },
-  })
+    }
+  )

@@ -1,7 +1,14 @@
+import { groupPositionClasses } from '@root/classes'
 import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
 
-export const buttonClasses = ({ disabled }: ThemePreloadedClasses) =>
+export const buttonClasses = ({
+  disabled,
+  focusable,
+  size,
+  triggers,
+  animations,
+}: ThemePreloadedClasses) =>
   cva(
     [
       'gap-2',
@@ -14,16 +21,19 @@ export const buttonClasses = ({ disabled }: ThemePreloadedClasses) =>
       'justify-center',
       'overflow-hidden',
       'relative',
+      focusable,
+      animations.microInteractionsAll,
     ],
     {
       variants: {
         disabled: { true: disabled },
         uppercase: { true: 'uppercase' },
         size: {
-          sm: ['px-3'],
-          md: ['px-5'],
-          lg: ['px-6'],
+          sm: ['px-3', size.sm.height, size.sm.fontSize],
+          md: ['px-5', size.md.height, size.md.fontSize],
+          lg: ['px-6', size.lg.height, size.lg.fontSize],
         },
+        variant: triggers,
         status: {
           primary: [
             'bg-primary',
@@ -57,6 +67,7 @@ export const buttonClasses = ({ disabled }: ThemePreloadedClasses) =>
           ],
         },
         circle: { true: null, false: null },
+        fullWidth: { true: '!w-full' },
       },
       defaultVariants: {
         status: 'primary',

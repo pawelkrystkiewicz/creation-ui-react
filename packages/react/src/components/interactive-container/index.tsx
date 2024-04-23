@@ -6,12 +6,14 @@ interface InteractiveContainerProps {
   disabled?: boolean
   children?: React.ReactNode
   className?: string | string[]
+  fullWidth?: boolean
 }
 
 export const InteractiveContainer = ({
   className,
   disabled,
   children,
+  fullWidth,
 }: InteractiveContainerProps) => {
   const classes = clsx(className)?.split(' ')
   const widthClasses = getWidthClasses(classes)
@@ -20,6 +22,7 @@ export const InteractiveContainer = ({
     <div
       className={interactiveContainerClasses({
         disabled,
+        fullWidth,
         className: [widthClasses],
       })}
       data-testid='cui-interactive-container'

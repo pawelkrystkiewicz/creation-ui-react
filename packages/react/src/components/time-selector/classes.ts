@@ -14,7 +14,7 @@ export const cellClasses = ({
       'py-1',
       'rounded',
       'cursor-pointer',
-      animations?.microInteractions,
+      animations?.microInteractionsAll,
     ],
     {
       variants: {

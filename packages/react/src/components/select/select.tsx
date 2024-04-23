@@ -243,7 +243,7 @@ export function Select<T>(props: SelectProps<T>) {
         disabled={props.disabled}
         interactionsDisabled={interactionsDisabled}
         endAdornment={
-          <DropdownChevron open={open} onClick={handleChevronClick} />
+          <DropdownChevron open={open} onClick={handleChevronClick} size='md' />
         }
         helperText={helperText}
         clearable={clearable}

@@ -78,9 +78,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     // @ts-ignore
     type,
   })
-  if (type == 'textarea') {
-    console.log(input)
-  }
+
   return (
     <InteractiveContainer disabled={disabled}>
       <InputBaseContext.Provider
@@ -112,7 +110,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
                   className={inputIcon({
                     position: 'right',
                     type: type as any,
-                    className: [styles.animations.microInteractions],
+                    className: [styles.animations.microInteractionsAll],
                   })}
                   size={size === 'lg' ? 'md' : 'sm'}
                 />
@@ -124,7 +122,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
                   adornment={
                     <>
                       <Show when={clearable && !disableInteractions}>
-                        <ClearButton onClick={onClear} />
+                        <ClearButton onClick={onClear} size='sm' />
                       </Show>
                       {endAdornment}
                     </>

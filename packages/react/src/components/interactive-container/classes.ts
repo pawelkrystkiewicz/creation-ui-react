@@ -5,5 +5,8 @@ export const interactiveContainerClasses = cva([], {
     disabled: {
       true: ['cursor-not-allowed'],
     },
+    fullWidth:{
+      true: ['w-full'],
+    }
   },
 })

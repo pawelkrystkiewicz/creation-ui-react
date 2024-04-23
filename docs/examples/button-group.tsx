@@ -1,7 +1,7 @@
 import { Playground } from '@components/playground'
 import { ButtonGroup } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { sizeControl, statusControl } from './shared-playground-controls'
+import { sizeControl } from './shared-playground-controls'
 import { classNameProps, disabledProp, labelProp, onClickCallback, sizeProp } from './shared-props'
 
 export const ButtonGroupPlayground = () => {
@@ -18,7 +18,7 @@ export const ButtonGroupPlayground = () => {
       componentProps={{
         options: buttons,
       }}
-      controls={[sizeControl, statusControl]}
+      controls={[sizeControl]}
     />
   )
 }

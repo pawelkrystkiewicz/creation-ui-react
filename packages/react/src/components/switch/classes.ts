@@ -4,13 +4,13 @@ import { cva } from 'class-variance-authority'
 export const switchClasses = ({
   animations,
   readOnly,
-  triggers,
+  focusable,
 }: ThemePreloadedClasses) =>
   cva(
     [
-      animations.microInteractions,
+      focusable,
+      animations.microInteractionsAll,
       'border-border',
-      'micro-interactions',
       'cursor-pointer',
       'peer',
       'relative',

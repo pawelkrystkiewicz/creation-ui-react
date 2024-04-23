@@ -1,3 +1,4 @@
+import { groupPositionClasses } from '@root/classes'
 import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
 
@@ -12,13 +13,13 @@ export const toggleGroupButton = ({
   disabled,
   animations,
   size,
+  focusable,
 }: ThemePreloadedClasses) =>
   cva(
     [
-      animations.microInteractions,
+      focusable,
+      animations.microInteractionsAll,
       'border-border',
-      // 'size',
-      // 'text-size',
       'border-y',
       'cursor-pointer',
       'focus:z-10',
@@ -34,11 +35,7 @@ export const toggleGroupButton = ({
     ],
     {
       variants: {
-        element: {
-          first: ['rounded-l-md', 'border-x', 'z-10'],
-          middle: ['-ml-px', 'border-r'],
-          last: ['rounded-r-md', 'border-r'],
-        },
+        element: groupPositionClasses,
         checked: {
           true: [
             'bg-primary',

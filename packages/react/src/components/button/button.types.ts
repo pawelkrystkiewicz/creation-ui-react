@@ -38,13 +38,14 @@ export type ButtonProps = React.ComponentProps<'button'> & {
    * Should loader be colored in the same manner as current button's `status`. Default `true`
    */
   loaderInheritsColor?: boolean
+  /**
+   * Should button be full width?
+   */
+  fullWidth?: boolean
 }
 
-export type ButtonGroupProps = {
+export type ButtonGroupProps = Pick<ButtonProps, 'className' | 'size'> & {
   options: ButtonGroupOption[]
-  className?: string
-  size?: ElementSize
-  status?: ElementStatus
 }
 
 type ButtonGroupOption = {

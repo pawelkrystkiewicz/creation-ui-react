@@ -50,23 +50,21 @@ type ThemeHelpers = {
   getLimitText: (more: number) => string
 }
 
-type ThemeDisplayDirection = 'ltr' | 'rtl'
-
 export type ThemeProps = {
   helpers: ThemeHelpers
   size: ElementSize
   variant: ElementVariant
-  theme: ElementTheme
   zIndex: ThemeZIndex
   styles: ThemeStyles
-  // TODO:
   texts: ThemeTexts
-  respectReducedMotion: boolean
-  dir: ThemeDisplayDirection
 }
 
 export type ThemeStyles = {
-  animations: { microInteractions: string[] }
+  animations: {
+    microInteractionsAll: string[]
+    microInteractionsColor: string[]
+  }
+  focusable: string[]
   selected: string[]
   disabled: string[]
   invalid: StyleTextBorder

@@ -28,7 +28,7 @@ export const SwitchView = ({ checked, required, ...props }: SwitchProps) => {
           className={switchCircle({
             size,
             checked,
-            className: [styles.animations.microInteractions],
+            className: [styles.animations.microInteractionsAll],
           })}
         />
       </HSwitch>

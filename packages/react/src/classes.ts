@@ -7,7 +7,7 @@ export const inputContainer = ({
   disabled,
   error,
 }: ThemePreloadedClasses) =>
-  cva(['border-border', animations.microInteractions, 'flex'], {
+  cva(['border-border', animations.microInteractionsAll, 'flex'], {
     variants: {
       layout: {
         column: ['flex-col', 'gap-1', 'items-start'],
@@ -54,11 +54,13 @@ export const selectOptionClasses = ({
   selected,
   triggers,
   size,
+  focusable,
   animations,
 }: ThemePreloadedClasses) =>
   cva(
     [
-      animations.microInteractions,
+      focusable,
+      'transition-colors',
       'font-normal',
       'relative',
       'cursor-pointer',
@@ -73,7 +75,7 @@ export const selectOptionClasses = ({
     {
       variants: {
         selected: {
-          true: selected,
+          true: [...selected, animations.microInteractionsColor],
           false: [...triggers.outlined, 'bg-primary', 'border-0'],
         },
         size: {
@@ -82,10 +84,16 @@ export const selectOptionClasses = ({
           lg: [size.lg.fontSize, size.lg.height],
         },
         disabled: { true: disabled },
-        multiple: { true: ['flex', 'gap-2'], false: [] },
+        multiple: { true: ['flex', 'gap-2'] },
         truncate: {
           true: ['truncate', 'whitespace-nowrap'],
         },
       },
     }
   )
+
+export const groupPositionClasses = {
+  first: ['rounded-l-md', 'border-0', '!border-x', 'z-10'],
+  middle: ['-ml-px', 'border-0', '!border-r'],
+  last: ['rounded-r-md', 'border-0', '!border-r'],
+}

@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
 export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
   cva(
     [
-      animations.microInteractions,
+      animations.microInteractionsAll,
       'inline-flex',
       'leading-5',
       'rounded-full',

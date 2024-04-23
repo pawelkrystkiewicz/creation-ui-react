@@ -6,16 +6,11 @@ import {
   ShowFirstMatching,
 } from '@components'
 import { useId } from '@hooks'
-import { getBaseFromTheme } from '@root/theme/utils'
 import { useTheme } from '@theme'
 import React, { useMemo } from 'react'
 import type { ButtonProps } from './button.types'
 import { buttonClasses } from './classes'
-import {
-  CONTRASTING_VARIANT,
-  loaderColorClasses,
-  themeDependantBase,
-} from './constants'
+import { CONTRASTING_VARIANT, loaderColorClasses } from './constants'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -27,6 +22,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       id,
       loaderInheritsColor = true,
+
       ...props
     },
     ref
@@ -39,19 +35,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = theme.size,
       variant = 'contained',
       status = 'primary',
+      fullWidth,
       uppercase,
+      ...rest
     } = props
 
-    const base = getBaseFromTheme<ButtonProps>(
-      { size, variant },
-      styles,
-      themeDependantBase
-    )
-
-    const themeClasses = useMemo(
-      () => buttonClasses(styles),
-      [styles, variant, size]
-    )
+    const themeClasses = useMemo(() => buttonClasses(styles), [styles])
 
     const isContrastReq = CONTRASTING_VARIANT.includes(variant)
     const disabled = loading || props.disabled
@@ -66,21 +55,27 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       circle,
       disabled,
       uppercase,
-      className: [className, base],
+      variant,
+      fullWidth,
+      className,
     })
 
     const centerSpinner: boolean = Boolean(loading && circle)
     const leftSpinner: boolean = Boolean(loading && !circle)
 
     return (
-      <InteractiveContainer disabled={disabled} className={className}>
+      <InteractiveContainer
+        disabled={disabled}
+        className={className}
+        fullWidth={fullWidth}
+      >
         <button
           id={componentId}
           ref={ref}
           disabled={Boolean(disabled)}
           aria-disabled={Boolean(disabled)}
           type='button'
-          {...props}
+          {...rest}
           className={classes}
         >
           <ShowFirstMatching>

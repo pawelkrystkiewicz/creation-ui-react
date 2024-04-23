@@ -38,7 +38,7 @@ export const calendarDaysViewClasses = ({
   cva(
     [
       //
-      animations.microInteractions,
+      animations.microInteractionsAll,
       'cursor-pointer',
       'select-none',
       'justify-self-center',

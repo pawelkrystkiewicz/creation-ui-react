@@ -399,7 +399,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         label={props.label}
         required={props.required}
         endAdornment={
-          <DropdownChevron open={open} onClick={handleChevronClick} />
+          <DropdownChevron open={open} onClick={handleChevronClick} size='md' />
         }
         helperText={helperText}
         clearable={clearable}

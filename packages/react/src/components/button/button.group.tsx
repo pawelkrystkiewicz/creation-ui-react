@@ -8,7 +8,7 @@ import type { ButtonGroupProps } from './button.types'
 import { useTheme } from '@root/theme'
 import { useMemo } from 'react'
 
-const ButtonGroup = ({ options, status, className, ...props }: ButtonGroupProps) => {
+const ButtonGroup = ({ options, className, ...props }: ButtonGroupProps) => {
   const { styles, size: defaultSize } = useTheme()
   const { size = defaultSize, ...rest } = props
   const withThemeButton = useMemo(() => toggleGroupButton(styles), [styles])
@@ -17,7 +17,7 @@ const ButtonGroup = ({ options, status, className, ...props }: ButtonGroupProps)
     <div
       className={twMerge(
         toggleGroupContainer,
-        styles.animations.microInteractions,
+        styles.animations.microInteractionsAll,
         className
       )}
     >

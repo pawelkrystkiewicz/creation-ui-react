@@ -46,7 +46,7 @@ export const AutocompleteView: FC = () => {
             <input
               {...propsInput}
               id={componentId}
-              className={clsx('reset-input h-fit', propsInput.className)}
+              className={clsx('reset-input', 'h-fit', propsInput.className)}
             />
           ) : (
             renderSelection?.(selected)

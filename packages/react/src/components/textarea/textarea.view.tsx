@@ -7,13 +7,11 @@ export const TextAreaView = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ size, ...props }, ref: ForwardedRef<HTMLTextAreaElement>) => {
     const { componentId, classes, readOnly, error, disabled } = useInputBase()
 
-    const className = twMerge(classes.input)
-    console.log(className)
     return (
       <textarea
         ref={ref}
         id={componentId}
-        className={className}
+        className={twMerge('appearance-none', 'outline-none', classes.input)}
         disabled={disabled}
         aria-invalid={error}
         aria-readonly={readOnly}
