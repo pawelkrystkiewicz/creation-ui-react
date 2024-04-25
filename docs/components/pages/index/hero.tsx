@@ -58,7 +58,7 @@ export const Hero = () => {
         </div>
         <div className='flex place-items-center gap-3 lg:flex-row flex-col w-full lg:w-fit'>
           <div className='lg:w-52 w-full'>
-            <Button size='lg' className={clsx(gradient.bg, 'w-full  hover:scale-110')}>
+            <Button size='lg' className={clsx(gradient.bg, 'w-full border-none')}>
               <Link href='/docs'>Start &rarr;</Link>
             </Button>
           </div>
