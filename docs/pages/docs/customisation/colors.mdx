@@ -1,0 +1,100 @@
+# Colors
+
+TailwindCSS config wrapper consumes CSS variables, which makes it easy to customise the colors to match your brand.
+Below are the default values. In class `.dark` are settings for colors in dark mode.
+```css
+:root {
+  /* text */
+  --text-primary: 0 0% 1%;
+  --text-secondary: 0 0% 26%;
+  /* background */
+  --background-primary: 0 0% 98%;
+  --background-secondary: 0 0% 97%;
+  --background-input: 0 0% 95%;
+  --background-portal: 0 0% 98%;
+  /* main colors */
+  --primary: 211 100% 50%;
+  --warning: 38 92% 50%;
+  --error: 0 84% 60%;
+  --success: 160 84% 39%;
+  --info: 0 0% 55%;
+  /* other */
+  --border: 214 15% 91%;
+}
+
+.dark {
+  /* text */
+  --text-primary: 0 0% 97%;
+  --text-secondary: 0 0% 80%;
+  /* background */
+  --background-primary: 0 0% 1%;
+  --background-secondary: 0 0% 7%;
+  --background-input: 0 0% 25%;
+  --background-portal: 0 0% 8%;
+  /* main colors */
+  --primary: 211 100% 58%;
+  --warning: 43 96% 56%;
+  --error: 0 76% 57%;
+  --success: 160 84% 39%;
+  --info: 0 0% 55%;
+  /* other */
+  --border: 0 0% 14%;
+}
+```
+
+These variables are colors in HSL format just without the wrapping function like `hsl(0,0%,90%)`. This is done
+to allow opacity controls when passing to tailwind config as shown below `primary: 'hsl(var(--primary) / <alpha-value>)'`,
+
+> with-tw-config.ts
+
+```tsx
+import headless from '@headlessui/tailwindcss'
+import merge from 'lodash.merge'
+import twColors from 'tailwindcss/colors'
+import { breakpoints, typography } from '@theme'
+
+const deprecated = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
+
+Object.keys(twColors).forEach(key => {
+  if (deprecated.includes(key)) {
+    // @ts-ignore
+    delete twColors[key]
+  }
+})
+
+const creationUiConfig = {
+  darkMode: 'class',
+  content: ['node_modules/@creation-ui/react/**/*.{js,ts,jsx,tsx,css}'],
+  theme: {
+    colors: {
+      ...twColors,
+      text: {
+        primary: 'hsl(var(--text-primary) / <alpha-value>)',
+        secondary: 'hsl(var(--text-secondary) / <alpha-value>)',
+      },
+      background: {
+        primary: 'hsl(var(--background-primary) / <alpha-value>)',
+        secondary: 'hsl(var(--background-secondary) / <alpha-value>)',
+        input: 'hsl(var(--background-input) / <alpha-value>)',
+        portal: 'hsl(var(--background-portal) / <alpha-value>)',
+      },
+      border: 'hsl(var(--border) / <alpha-value>)',
+      primary: 'hsl(var(--primary) / <alpha-value>)',
+      warning: 'hsl(var(--warning) / <alpha-value>)',
+      error: 'hsl(var(--error) / <alpha-value>)',
+      success: 'hsl(var(--success) / <alpha-value>)',
+      info: 'hsl(var(--info) / <alpha-value>)',
+    },
+    fontFamily: typography,
+    screens: breakpoints,
+  },
+  plugins: [headless({ prefix: 'ui' })],
+}
+
+/**
+ * Merge @creation-ui and Tailwind CSS configurations
+ * @param {object} userConfig - Tailwind config object
+ * @return {object} new config object
+ */
+export const withTailwindConfig = (userConfig: object = {}): object => merge(creationUiConfig, { ...userConfig })
+```

@@ -1,29 +1,27 @@
-import {
-  InputBaseProps,
-  errorClasses,
-  inputClassesCVA,
-  inputContainer,
-  inputIcon,
-  label,
-  text,
-} from '@creation-ui/core'
+import { Description, InteractiveContainer } from '@components'
+import { inputContainer } from '@root/classes'
+import { useTheme } from '@theme'
+import { InputBaseProps } from '@types'
 import clsx from 'clsx'
-import { forwardRef, type FC } from 'react'
+import { forwardRef, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
 import { ClearButton } from '../clear-button'
-import { InteractiveContainer } from '../interactive-container'
+import { Label } from '../label'
 import { Loader } from '../loader'
-import { Show } from '../show'
-import { Description } from '../typography'
+import { Show, ShowFirstMatching } from '../show'
 import { Adornment } from './adornment'
+import { inputClasses, inputIcon } from './classes'
 import { UNSTYLED_TYPES } from './constants'
 import { InputBaseContainerInner } from './input-base.container-inner'
 import { InputBaseContext } from './input-base.context'
 
 const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
-  const { size: defaultSize, variant: defaultVariant = 'outlined' } = useTheme()
+  const {
+    size: defaultSize,
+    variant: defaultVariant = 'outlined',
+    styles,
+  } = useTheme()
   const {
     loading,
     helperText,
@@ -39,6 +37,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
     variant = defaultVariant,
     layout = 'column',
     interactionsDisabled,
+    resize,
     onClear,
   } = props
   const componentId = useId(id)
@@ -47,10 +46,12 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const readOnly = props.readOnly || loading
   const disableInteractions = disabled || readOnly || loading
 
-  const outerContainerClasses = twMerge(
-    inputContainer({ disabled, error: !!error, layout }),
-    text({ size }),
-    cx?.container?.outer
+  const withTheme = useMemo(
+    () => ({
+      container: inputContainer(styles),
+      input: inputClasses(styles),
+    }),
+    [styles]
   )
 
   const isUnstyled = UNSTYLED_TYPES.includes(type)
@@ -59,77 +60,81 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
   const hasEndAdornment = Boolean(endAdornment)
   const finalVariant = isUnstyled ? 'unstyled' : variant
 
-  const inputClasses = twMerge(
-    inputClassesCVA({
-      size,
-      variant: finalVariant,
-      startAdornment: hasStartAdornment,
-      endAdornment: hasEndAdornment,
-      clearable,
-      error: hasError,
-      interactionsDisabled,
-      // @ts-ignore
-      className: cx?.input,
-      // @ts-expect-error
-      type,
-    })
+  const container = twMerge(
+    withTheme.container({ disabled, error: !!error, layout, size }),
+    cx?.container?.outer
   )
+
+  const input = withTheme.input({
+    size,
+    variant: finalVariant,
+    startAdornment: hasStartAdornment,
+    endAdornment: hasEndAdornment,
+    clearable,
+    error: hasError,
+    interactionsDisabled,
+    className: cx?.input,
+    resize,
+    // @ts-ignore
+    type,
+  })
 
   return (
     <InteractiveContainer disabled={disabled}>
       <InputBaseContext.Provider
         value={{
           componentId,
-          classes: { input: inputClasses, container: outerContainerClasses },
+          classes: { input, container },
           disabled,
           readOnly,
           error: !!error,
           type,
         }}
       >
-        <div className={outerContainerClasses}>
-          <label
+        <div className={container}>
+          <Label
             htmlFor={componentId}
-            className={label({
-              size,
-              required: props.required,
-              className: cx?.label,
-            })}
+            className={cx?.label}
+            required={props.required}
             aria-label={props.label?.toString()}
+            size={size}
           >
             {props.label}
-          </label>
+          </Label>
           <InputBaseContainerInner className={cx?.container?.inner} ref={ref}>
             <Adornment position='left' type={type} adornment={startAdornment} />
             {children}
-            {loading ? (
-              <Loader
-                className={inputIcon({
-                  position: 'right',
-                  // @ts-expect-error
-                  type,
-                })}
-                size={size === 'lg' ? 'md' : 'sm'}
-              />
-            ) : (
-              <Adornment
-                position='right'
-                type={type}
-                adornment={
-                  <>
-                    <Show when={clearable && !disableInteractions}>
-                      <ClearButton onClick={onClear} />
-                    </Show>
-                    {endAdornment}
-                  </>
-                }
-              />
-            )}
+            <ShowFirstMatching>
+              <Show when={loading}>
+                <Loader
+                  className={inputIcon({
+                    position: 'right',
+                    type: type as any,
+                    className: [styles.animations.microInteractionsAll],
+                  })}
+                  size={size === 'lg' ? 'md' : 'sm'}
+                />
+              </Show>
+              <Show when={true}>
+                <Adornment
+                  position='right'
+                  type={type}
+                  adornment={
+                    <>
+                      <Show when={clearable && !disableInteractions}>
+                        <ClearButton onClick={onClear} size='sm' />
+                      </Show>
+                      {endAdornment}
+                    </>
+                  }
+                />
+              </Show>
+            </ShowFirstMatching>
           </InputBaseContainerInner>
           <Description
             size={size}
             error={hasError}
-            className={clsx(hasError && errorClasses.text)}
+            className={clsx(hasError && styles.error.text)}
           >
             {error || helperText}
           </Description>

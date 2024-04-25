@@ -1,6 +1,6 @@
 # Creation UI
 
-is a design system that lets you build React-powered websites
+is a design system that lets you build a React powered websites
 and apps. It's built on top of <b>React</b> and [Tailwind CSS](https://tailwindcss.com)
 and it's fully customizable. It's a great starting point for your next project.
 
@@ -9,7 +9,7 @@ and it's fully customizable. It's a great starting point for your next project.
 ## Prerequisites
 
 Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project - [Tailwind CSS Installation](https://tailwindcss.com/docs/installation/using-postcss).
-Also @creation-ui/core package is required for the React packages to work. It contains sharable theme config, styles and utilities.
+Also @creation-ui/react package is required for the React packages to work. It contains sharable theme config, styles and utilities.
 
 ```
   "peerDependencies": {
@@ -24,65 +24,87 @@ Also @creation-ui/core package is required for the React packages to work. It co
 To install Creation UI, run the command below:
 
     ```bash copy
-     yarn add @creation-ui/core @creation-ui/react
+     yarn add  @creation-ui/react
      ```
 
     ```bash copy
-     npm i @creation-ui/core @creation-ui/react
+     npm i  @creation-ui/react
      ```
 
     ```bash copy
-     pnpm i @creation-ui/core @creation-ui/react
+     pnpm i  @creation-ui/react
      ```
 
 ## Components
 
-- [x] [Autocomplete](/docs/components/autocomplete)
-- [x] [Avatar](/docs/components/avatar)
-- [x] [Button](/docs/components/button)
-- [x] [Checkbox](/docs/components/checkbox)
-- [x] [Drawer](/docs/components/drawer)
-- [x] [Input](/docs/components/input)
-- [x] [Box](/docs/components/box)
-- [x] [Button Group](/docs/components/button-group)
-- [x] [Dark Mode Toggle](/docs/components/dark-mode-toggle) inspired by [This guy](https://chakra-ui.com/)
-- [x] [Loader](/docs/components/loader)
-- [x] [Loading Overlay](/docs/components/loading-overlay)
-- [x] [Modal](/docs/components/modal)
-- [x] [Radio](/docs/components/radio)
-- [x] [Radio Group](/docs/components/radioGroup)
-- [x] [Select](/docs/components/select)
-- [x] [Status Badge](/docs/components/statusBadge)
-- [x] [Switch](/docs/components/switch)
-- [x] [TextArea](/docs/components/textarea)
-- [x] [Theme](/docs/components/theme)
-- [x] [Toggle Group](/docs/components/toggle-group)
-- [x] [Tooltip](/docs/components/tooltip)
+## Form Controls
 
-Reusable helpers
+- [Autocomplete](/docs/components/form-controls/autocomplete)
+- [Input](/docs/components/form-controls/input)
+- [Input Base](/docs/components/input-form-controls/base)
+- [TextArea](/docs/components/form-controls/textarea)
+- [Select](/docs/components/form-controls/select)
+- [Checkbox](/docs/components/form-controls/checkbox)
+- [Radio Group](/docs/components/radio-form-controls/group)
+- [Radio](/docs/components/form-controls/radio)
+- [Toggle Group](/docs/components/toggle-form-controls/group)
+- [Time Picker](/docs/components/date-form-controls/picker)
+- [Date Picker](/docs/components/time-form-controls/picker)
+- [Switch](/docs/components/form-controls/switch)
 
-- [x] [Dropdown Chevron](/docs/components/autocomplete)
-- [x] [Clear Button](/docs/components/autocomplete)
-- [x] [Error Text](/docs/components/autocomplete)
-- [x] [Select Option](/docs/components/SelectOption)
+## Buttons
 
-In development
+- [Button Group](/docs/components/buttons/button-group)
+- [Button](/docs/components/buttons/button)
+- [Toggle Group](/docs/components/buttons/toggle-group)
 
-- [ ] [Table](/docs/components/Table)
-- [ ] [Menu](/docs/components/Menu)
-- [ ] [Layout](/docs/components/Layout)
-- [ ] [Context Menu](/docs/components/context-menu)
-- [ ] [Accordion](/docs/components/Accordion)
-- [ ] [Schedule](/docs/components/schedule)
-- [ ] [Timeline](/docs/components/timeline)
-- [ ] [Breadcrumbs](/docs/components/breadcrumbs)
+## Portals
+
+- [Drawer](/docs/components/portals/drawer)
+- [Modal](/docs/components/portals/modal)
+- [Popover](/docs/components/portals/popover)
+- [Tooltip](/docs/components/portals/tooltip)
+
+## Data display
+
+- [Avatar](/docs/components/data-display/avatar)
+- [Breadcrumbs](/docs/components/data-display/breadcrumbs)
+- [Card](/docs/components/data-display/card)
+- [Chip](/docs/components/data-display/chip)
+- [Dark Mode Toggle](/docs/components/data-display/dark-mode-toggle)
+- [Table](/docs/components/data-display/table)
+- [Tree](/docs/components/data-display/tree)
+- [Typography](/docs/components/data-display/typography)
+
+## Feedback & Status
+
+- [Loader](/docs/components/feedback/loader)
+- [Loading Overlay](/docs/components/feedback/loading-overlay)
+- [Callout](/docs/components/feedback/callout)
+- [ProgressBar](/docs/components/feedback/progress-bar)
+
+## Utilities
+
+- [Theme](/docs/components/utilities/theme)
+- [Dropdown Chevron](/docs/components/utilities/dropdown-chevron)
+- [Clear Button](/docs/components/utilities/clear-button)
+- [Error Text](/docs/components/utilities/error-text)
+- [Select Option](/docs/components/utilities/select-option)
+- [Show](/docs/components/utilities/show)
+
+## Roadmap and future plans
+
+- Accordion
+- Menu
+- Schedule
+- Timeline
 
 ## Configuration
 
 1. Add `withTailwindConfig` to your `tailwind.config.js` file:
 
 ```js copy
-const { withTailwindConfig } = require('@creation-ui/core')
+const { withTailwindConfig } = require('@creation-ui/react')
 
 /** @type {import('tailwindcss').Config} */
 const config = withTailwindConfig({
@@ -102,11 +124,11 @@ module.exports = config
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 
 2. Import library's CSS file into your app.
-   If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-   If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
+If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
+If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import '@creation-ui/core/index.css'
+import '@creation-ui/react/index.css'
 ```
 
 3. Start using it!

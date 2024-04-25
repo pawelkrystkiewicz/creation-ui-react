@@ -1,23 +1,28 @@
+import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
-import { twMerge } from 'tailwind-merge'
-import {
-  classes,
-  sharedErrorClasses,
-  sharedReadOnlyCVA,
-  sharedSizeSquareCVA,
-} from '@creation-ui/core'
+import values from 'lodash.values'
 
-const { input, checkable } = classes
-
-const base = twMerge(input, checkable)
-
-export const checkboxClasses = cva(base, {
-  variants: {
-    size: sharedSizeSquareCVA,
-    error: {
-      true: [sharedErrorClasses, '!checked:bg-error-500'],
-      false: null,
-    },
-    readOnly: sharedReadOnlyCVA,
-  },
-})
+export const checkboxClasses = ({
+  inputs,
+  readOnly,
+  error,
+  size,
+  animations,
+  focusable,
+}: ThemePreloadedClasses) =>
+  cva(
+    [inputs.base, animations.microInteractionsAll, inputs.checkable, focusable],
+    {
+      variants: {
+        error: {
+          true: [values(error), '!checked:bg-error'],
+        },
+        readOnly: { true: readOnly },
+        size: {
+          sm: [size.sm.square, size.sm.fontSize],
+          md: [size.md.square, size.md.fontSize],
+          lg: [size.lg.square, size.lg.fontSize],
+        },
+      },
+    }
+  )

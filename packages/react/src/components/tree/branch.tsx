@@ -18,7 +18,7 @@ export const Branch = ({
         label={getItemLabel?.(branch)}
         cx={{
           container:
-            'truncate max-w-[200px] w-full text-left hover:bg-primary-200/20 rounded-md px-2',
+            'truncate max-w-[200px] w-full text-left hover:bg-primary/20 rounded-md px-2',
         }}
         style={{ paddingLeft: getItemOffset(level) }}
       />
@@ -37,7 +37,7 @@ export const Branch = ({
           outer: 'max-w-[200px] w-full text-left',
           inner: 'flex flex-col items-start text-left gap-1',
         },
-        trigger: 'w-full hover:bg-primary-200/20 rounded-md px-2',
+        trigger: 'w-full hover:bg-primary/20 rounded-md px-2',
       }}
       onClick={onBranchClick?.bind(null, branch)}
     >

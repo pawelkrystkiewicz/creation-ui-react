@@ -1,11 +1,6 @@
-import type { ElementStatus, ElementVariant } from '@creation-ui/core'
+import type { ElementStatus, ElementVariant } from '@types'
 
-export interface CalloutProps {
-  content: React.ReactNode
-  title?: React.ReactNode
-  icon?: React.ReactNode
+export interface CalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   status?: ElementStatus
   variant?: ElementVariant
-  onClose?: () => void
-  className?: string
 }

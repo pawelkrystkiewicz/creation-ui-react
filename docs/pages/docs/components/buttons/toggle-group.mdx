@@ -1,0 +1,41 @@
+# Toggle Group
+
+import {
+  ToggleGroupExample,
+  ToggleGroupPlayground,
+  playgroundConfig,
+  properties,
+  optionProps,
+} from '@examples/toggle-group'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
+import PropsTable from '@components/props-table'
+import { Playground } from '@components/playground'
+
+## Playground
+
+<ToggleGroupPlayground />
+
+```tsx copy
+import { ToggleGroup, ToggleGroupProps } from '@creation-ui/react'
+import { mdiAbacus, mdiAlarm, mdiBedQueenOutline } from '@mdi/js'
+import { Icon } from '@mdi/react'
+
+const options = [
+  { value: '1', label: <Icon path={mdiAbacus} /> },
+  { value: '2', label: <Icon path={mdiAlarm} /> },
+  { value: '3', label: <Icon path={mdiBedQueenOutline} /> },
+]
+
+export const ToggleGroupExample = ({ size }: ToggleGroupProps) => {
+  const [value, setValue] = useState<string>('1')
+
+  return <ToggleGroup label='Select option' size={'sm'} options={options} value={value} onChange={setValue} />
+}
+```
+
+## Component API
+
+<PropsTable properties={properties} name='ToggleGroup' description={'Props of ToggleGroup component.'} />
+<PropsTable properties={optionProps} name='ToggleGroupOption' description={'Props of ToggleGroupOption component.'} />

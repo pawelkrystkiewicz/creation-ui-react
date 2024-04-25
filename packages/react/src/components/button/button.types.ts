@@ -1,9 +1,5 @@
 import type React from 'react'
-import type {
-  ElementSize,
-  ElementStatus,
-  ElementVariant,
-} from '@creation-ui/core'
+import type { ElementSize, ElementStatus, ElementVariant } from '@types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**
@@ -38,13 +34,18 @@ export type ButtonProps = React.ComponentProps<'button'> & {
    * Is button text to be uppercase
    */
   uppercase?: boolean
+  /**
+   * Should loader be colored in the same manner as current button's `status`. Default `true`
+   */
+  loaderInheritsColor?: boolean
+  /**
+   * Should button be full width?
+   */
+  fullWidth?: boolean
 }
 
-export type ButtonGroupProps = {
+export type ButtonGroupProps = Pick<ButtonProps, 'className' | 'size'> & {
   options: ButtonGroupOption[]
-  className?: string
-  size?: ElementSize
-  status?: ElementStatus
 }
 
 type ButtonGroupOption = {

@@ -1,12 +1,12 @@
 import React from 'react'
-import type { ElementTypography } from '@creation-ui/core'
+import type { ElementTypography } from '@types'
 import { useTheme } from '../../theme'
 import { useTypography } from './use-typography'
 import { TypographyProps } from './types'
 
 export const createTypographyComponent = (variant: ElementTypography) => {
   return React.forwardRef<HTMLElement, TypographyProps>((props, ref) => {
-    const { typography, size: defaultSize } = useTheme()
+    const { styles, size: defaultSize } = useTheme()
     const {
       as,
       config,
@@ -21,7 +21,7 @@ export const createTypographyComponent = (variant: ElementTypography) => {
       as,
       config,
       className,
-      typography,
+      typography: styles.typography,
       variant,
     })
 

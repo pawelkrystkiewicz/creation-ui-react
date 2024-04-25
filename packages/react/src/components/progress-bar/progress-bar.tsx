@@ -1,18 +1,17 @@
-import { useTheme } from '../../theme'
+import { useTheme } from '@theme'
 import clsx from 'clsx'
 import type { ProgressBarProps } from './progress-bar.types'
 import { cva } from 'class-variance-authority'
+import { Show, ShowFirstMatching } from '@root/components'
 
-const INVERT_THRESHOLD = 52
+const INVERT_THRESHOLD = 48
 
 const classes = {
   container: [
     'w-full',
-    'bg-info-200',
     'rounded-full',
-    'dark:bg-info-700',
-    'relative',
-  ],
+    'relative', 'bg-background-input'
+  ]
 }
 
 const progressValue = cva(
@@ -22,23 +21,28 @@ const progressValue = cva(
     'left-1/2',
     'transform',
     '-translate-x-1/2',
-    '-translate-y-1/2',
-    'text-xs',
+    '-translate-y-1/2'
   ],
   {
     variants: {
-      invert: {
-        true: ['text-info-50'],
-        false: ['text-info-800'],
-      },
+
       size: {
-        sm: ['!top-0', '!-translate-y-full', 'pb-2', '!text-info-800'],
-        md: [],
-        lg: ['!text-base'],
-      },
-    },
+        sm: ['!top-0', '!-translate-y-full', 'pb-2', 'text-sm'],
+        md: ['text-sm'],
+        lg: ['text-base']
+      }
+    }
   }
 )
+
+const progressValueAtom = cva([], {
+  variants: {
+    invert: {
+      true: ['text-white'],
+      false: ['text-text-primary']
+    }
+  }
+})
 
 const progressBar = cva(
   [
@@ -47,30 +51,30 @@ const progressBar = cva(
     'rounded-full',
     'transition-all',
     'duration-500',
-    'ease-in-out',
+    'ease-in-out'
   ],
   {
     variants: {
       size: {
         sm: ['p-1'],
         md: ['p-2'],
-        lg: ['p-3'],
+        lg: ['p-3']
       },
       value: {
-        false: ['!bg-transparent'],
+        false: ['!bg-transparent']
       },
       status: {
-        primary: ['bg-primary-500'],
-        success: ['bg-success-500'],
-        warning: ['bg-warning-500'],
-        error: ['bg-error-500'],
-        info: ['bg-info-500'],
-      },
+        primary: ['bg-primary'],
+        success: ['bg-success'],
+        warning: ['bg-warning'],
+        error: ['bg-error'],
+        info: ['bg-info']
+      }
     },
     defaultVariants: {
       size: 'md',
-      status: 'primary',
-    },
+      status: 'primary'
+    }
   }
 )
 
@@ -85,11 +89,9 @@ const ProgressBar = (props: ProgressBarProps) => {
     className,
     size = defaultSize,
     status,
-    invertThreshold = INVERT_THRESHOLD,
+    invertThreshold = INVERT_THRESHOLD
   } = props
-
   const value = isNaN(_value) ? 0 : Math.min(100, Math.max(0, _value))
-
   const invert = value >= invertThreshold
   const formattedValue = formatDisplayValue(value)
   const width = formatDisplayValueDefault(value)
@@ -99,8 +101,22 @@ const ProgressBar = (props: ProgressBarProps) => {
         className={progressBar({ size, value: value !== 0, status })}
         style={{ width }}
       ></div>
-      <span className={progressValue({ invert, size })}>
-        {showValue && formattedValue}
+      <span className={progressValue({ size, className: [size] })}>
+        <Show when={showValue && size !== 'sm'}>
+          <ShowFirstMatching>
+            <Show when={formattedValue.length <= 3}>
+          {formattedValue?.split('').map((character, index) => {
+            const invert = invertThreshold + 2 * index <= value
+            return <span
+              className={progressValueAtom({ invert })}>{character}</span>
+          })}
+            </Show>
+            <Show when={true}>
+              <span
+                className={progressValueAtom({ invert })}>{formattedValue}</span>
+            </Show>
+          </ShowFirstMatching>
+        </Show>
       </span>
     </div>
   )

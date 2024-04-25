@@ -4,10 +4,11 @@ import type {
   ElementBaseVariant,
   ElementStatus,
   InputClassNamesAPI,
-} from '@creation-ui/core'
+} from '@types'
 
-export interface ChipProps
-  extends Pick<BaseComponentProps, 'className' | 'size' | 'label'> {
+export type ChipProps = Partial<
+  Pick<BaseComponentProps, 'className' | 'size' | 'label'>
+> & {
   /**
    * Should be uppercase?
    */

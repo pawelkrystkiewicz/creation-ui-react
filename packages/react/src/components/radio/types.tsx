@@ -1,4 +1,4 @@
-import type { ElementSize } from '@creation-ui/core'
+import type { ElementSize } from '@types'
 import type React from 'react'
 
 export type RadioGroupProps = Omit<

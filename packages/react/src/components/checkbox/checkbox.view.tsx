@@ -1,22 +1,21 @@
-import { useEffect, useRef } from 'react'
+import { useTheme } from '@root/theme'
+import { useEffect, useMemo, useRef } from 'react'
 import { useInputBase } from '../input-base/input-base.context'
 import { CheckboxProps } from './checkbox.types'
 import { checkboxClasses } from './classes'
 
 export const CheckboxView = ({
-  size,
   className,
   indeterminate,
   ...props
 }: CheckboxProps) => {
   const ref = useRef<HTMLInputElement>(null)
   const { componentId, error, readOnly, disabled } = useInputBase()
-  const checkboxClassNames = checkboxClasses({
-    size,
-    className,
-    error: !!error,
-    readOnly,
-  })
+  const { styles, size: defaultSize } = useTheme()
+
+  const { size = defaultSize, ...rest } = props
+
+  const withThemeClasses = useMemo(() => checkboxClasses(styles), [styles])
 
   useEffect(() => {
     if (indeterminate && ref.current) {
@@ -36,13 +35,18 @@ export const CheckboxView = ({
   return (
     <input
       ref={ref}
-      {...props}
+      {...rest}
       onChange={_onChange}
       disabled={disabled}
       readOnly={readOnly}
       id={componentId}
       type='checkbox'
-      className={checkboxClassNames}
+      className={withThemeClasses({
+        className,
+        size,
+        error: !!error,
+        readOnly,
+      })}
     />
   )
 }

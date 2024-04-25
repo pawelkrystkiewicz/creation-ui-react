@@ -1,63 +1,101 @@
-import React from 'react'
-import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
+import {
+  InteractiveContainer,
+  Loader,
+  LoadingOverlay,
+  Show,
+  ShowFirstMatching,
+} from '@components'
+import { useId } from '@hooks'
+import { useTheme } from '@theme'
+import React, { useMemo } from 'react'
 import type { ButtonProps } from './button.types'
-import { button } from './classes'
-import { text } from '@creation-ui/core'
-import { InteractiveContainer } from '../interactive-container'
-import { LoadingOverlay } from '../loading-overlay'
-import { Loader } from '../loader'
-import { twMerge } from 'tailwind-merge'
+import { buttonClasses } from './classes'
+import { CONTRASTING_VARIANT, loaderColorClasses } from './constants'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { children, loading, iconLeft, iconRight, className, id, ...props },
+    {
+      children,
+      loading,
+      iconLeft,
+      iconRight,
+      className,
+      id,
+      loaderInheritsColor = true,
+
+      ...props
+    },
     ref
   ) => {
     const componentId = useId(id)
-    const theme = useTheme()
+    const { styles, ...theme } = useTheme()
 
     const {
       circle,
       size = theme.size,
       variant = 'contained',
       status = 'primary',
+      fullWidth,
       uppercase,
+      ...rest
     } = props
 
-    const isLoaderWhite = variant === 'contained'
-    const disabled = loading || props.disabled
+    const themeClasses = useMemo(() => buttonClasses(styles), [styles])
 
-    const classes = twMerge(
-      button({
-        size,
-        status,
-        circle,
-        variant,
-        disabled,
-        uppercase,
-        className: [theme.roundness, className, text({ size })],
-      })
-    )
+    const isContrastReq = CONTRASTING_VARIANT.includes(variant)
+    const disabled = loading || props.disabled
+    const loaderClasses =
+      !isContrastReq && loaderInheritsColor
+        ? loaderColorClasses[status]
+        : undefined
+
+    const classes = themeClasses({
+      size,
+      status,
+      circle,
+      disabled,
+      uppercase,
+      variant,
+      fullWidth,
+      className,
+    })
 
     const centerSpinner: boolean = Boolean(loading && circle)
     const leftSpinner: boolean = Boolean(loading && !circle)
 
     return (
-      <InteractiveContainer disabled={disabled} className={className}>
+      <InteractiveContainer
+        disabled={disabled}
+        className={className}
+        fullWidth={fullWidth}
+      >
         <button
           id={componentId}
           ref={ref}
           disabled={Boolean(disabled)}
           aria-disabled={Boolean(disabled)}
           type='button'
-          {...props}
+          {...rest}
           className={classes}
         >
-          {leftSpinner && (
-            <Loader size={'sm'} active={leftSpinner} white={isLoaderWhite} />
-          )}
-          <LoadingOverlay active={centerSpinner} white={isLoaderWhite} />
+          <ShowFirstMatching>
+            <Show when={leftSpinner}>
+              <Loader
+                size={size}
+                white={isContrastReq}
+                className={loaderClasses}
+              />
+            </Show>
+            <Show when={centerSpinner}>
+              <LoadingOverlay
+                active
+                white={isContrastReq}
+                cx={{
+                  loader: loaderClasses,
+                }}
+              />
+            </Show>
+          </ShowFirstMatching>
           <>{iconLeft}</>
           <span>{children}</span>
           <>{iconRight}</>

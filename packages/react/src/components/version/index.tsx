@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import type { CommitInfo } from '@creation-ui/core'
+import type { CommitInfo } from '@types'
 
 interface VersionProps {
   classNameOverride?: string
@@ -12,7 +12,7 @@ export const Version = ({ classNameOverride, gitHash }: VersionProps) => {
   const { shortHash, hash, version, timestamp } = gitHash
   const date = new Date(timestamp)
 
-  const datePL = date.toLocaleString('pl', {})
+  // const datePL = date.toLocaleString('pl', {})
 
   const [month, day, year] = [
     date.getMonth(),
@@ -25,18 +25,18 @@ export const Version = ({ classNameOverride, gitHash }: VersionProps) => {
     date.getSeconds(),
   ]
 
-  const formatted = [
-    { value: day, formatter: zeroPad },
-    { value: month, formatter: zeroPad },
-    {
-      value: year,
-      formatter: (v: any) => String(v).split('').slice(2).join(''),
-    },
-    { value: hour, formatter: zeroPad },
-    { value: minutes, formatter: zeroPad },
-  ]
-    .map(({ value, formatter }) => formatter(value))
-    .join('')
+  // const formatted = [
+  //   { value: day, formatter: zeroPad },
+  //   { value: month, formatter: zeroPad },
+  //   {
+  //     value: year,
+  //     formatter: (v: any) => String(v).split('').slice(2).join(''),
+  //   },
+  //   { value: hour, formatter: zeroPad },
+  //   { value: minutes, formatter: zeroPad },
+  // ]
+  //   .map(({ value, formatter }) => formatter(value))
+  //   .join('')
 
   // prettier-ignore
   const classNames = [

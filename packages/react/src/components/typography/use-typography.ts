@@ -1,9 +1,5 @@
-import {
-  ClassName,
-  ElementTypography,
-  ThemeTypography,
-  TypographyConfig,
-} from '@creation-ui/core'
+import {  ClassName,  ElementTypography  } from '@types'
+import { ThemeTypography, TypographyConfig } from '@theme'
 import { cva } from 'class-variance-authority'
 import merge from 'lodash.merge'
 import values from 'lodash.values'

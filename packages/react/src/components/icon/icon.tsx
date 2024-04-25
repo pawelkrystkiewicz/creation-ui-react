@@ -1,8 +1,8 @@
-import { sharedSizeSquareCVA } from '@creation-ui/core'
-import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
-import { useTheme } from '../../theme'
+import { ThemePreloadedClasses, useTheme } from '@theme'
 import type { IconProps, IconType } from './icon.type'
+import { cva } from 'class-variance-authority'
+import { useMemo } from 'react'
 
 // map of icon names to their svg path
 // https://pictogrammers.com/library/mdi/
@@ -23,32 +23,42 @@ const iconPathMap: Record<IconType, string> = {
   minus: 'M19,13H5V11H19V13Z',
 }
 
-const iconClasses = cva(
-  [
-    //
-    'fill-info-500',
-    'dark:fill-info-100',
-    'hover:fill-primary-500',
-    'dark:hover:fill-primary-500',
-    'size-4',
-    'flex-shrink-0',
-  ],
-  {
-    variants: {
-      size: sharedSizeSquareCVA,
-    },
-  }
-)
+const iconClasses = ({ size }: ThemePreloadedClasses) =>
+  cva(
+    [
+      'fill-text-primary',
+      'hover:fill-primary',
+      'size-4',
+      'flex-shrink-0',
+      'size-square',
+      'text-size',
+    ],
+    {
+      variants: {
+        interactive: {
+          true: ['cursor-pointer'],
+        },
+        size: {
+          sm: size.sm.square,
+          md: size.md.square,
+          lg: size.lg.square,
+        },
+      },
+    }
+  )
 
 const Icon = ({ icon, title, className, ...props }: IconProps) => {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, styles } = useTheme()
   const { size = defaultSize } = props
 
+  const withThemeClasses = useMemo(() => iconClasses(styles), [styles])
+
+  const interactive = !!props.onClick
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
-      className={twMerge(iconClasses({ size }), className)}
+      className={twMerge(withThemeClasses({ interactive, size }), className)}
       {...props}
     >
       <title>{title}</title>

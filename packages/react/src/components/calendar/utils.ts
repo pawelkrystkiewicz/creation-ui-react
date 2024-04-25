@@ -1,4 +1,4 @@
-import { CalendarDateValue, CalendarView, DateRange } from './calendar.types'
+import { CalendarDateValue, CalendarViewMode, DateRange } from './calendar.types'
 
 export const getFirstDayOfWeek = (date, weekStartsOn) => {
   const day = new Date(date).getDay()
@@ -12,7 +12,7 @@ export const getFirstDayOfWeek = (date, weekStartsOn) => {
 
 export const changeCalendarView = (
   date: Date,
-  view: CalendarView,
+  view: CalendarViewMode,
   direction: 'next' | 'prev'
 ) => {
   const sign = direction === 'next' ? 1 : -1
@@ -47,3 +47,9 @@ export const getCalendarInitialValue = (
 
   return [value, null]
 }
+
+export const isDateInDisplayedMonth = (date: Date, viewedMonth: Date) =>
+  date.getMonth() === viewedMonth.getMonth()
+
+
+export const isWeekendIdx = (i: number) => [5, 6].includes(i)

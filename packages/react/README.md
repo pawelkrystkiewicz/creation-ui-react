@@ -95,7 +95,7 @@ You can extend all properties [as usual](https://tailwindcss.com/docs/configurat
    If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
-import '@creation-ui/core/index.css'
+import '@creation-ui/react/index.css'
 ```
 
 3. Start using it!

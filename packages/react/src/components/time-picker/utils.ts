@@ -15,3 +15,5 @@ export const formatTime = (value?: TimePickerValue): string => {
 
 export const sanitizeTime = (val: string): number =>
   Number(val?.replaceAll('__', ''))
+
+

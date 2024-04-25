@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { getShortUUID } from '@creation-ui/core'
+import { getShortUUID } from '@utils'
 
 const useIsomorphicEffect =
   typeof document !== 'undefined' ? useLayoutEffect : useEffect

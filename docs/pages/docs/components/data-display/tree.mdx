@@ -1,0 +1,84 @@
+import { TreeExample, properties } from '@examples/tree'
+import PropsTable from '@components/props-table'
+import { Container } from '@components/container'
+
+# Tree
+
+`Tree` is a versatile component designed for selecting items from a nested structure. It allows users to navigate through branches and leaves, providing a clear and intuitive interface for selecting categories or other hierarchical data.
+
+<Container>
+  <TreeExample />
+</Container>
+
+## Prerequisites
+
+### Data
+
+To use the `Tree` component, you need to provide it with recurring data type matching:
+
+```ts copy
+type BranchType = {
+  id: string | number
+  name: string
+  children?: BranchType[]
+}
+```
+
+In this example the utils function `buildTree` is used to convert the data to the required format. Keep in mind this function is expecting certain input data structure.
+
+### Controls
+
+- By default the `Tree` component is not providing any controls for the user to interact with. You can use the `onLeafClick` and `onBranchClick` props to handle the user interaction and provide your own controls.
+- If you provide `onClear` prop, the component will render a clear button when `value` is selected.
+
+### Styling
+
+You can use the `cx` object prop to style the `Tree` component. Each section of component can be styled separately:
+
+- placeholder
+- value
+- container:
+  - inner (value and buttons)
+  - outer (whole component)
+
+### Example
+
+```jsx copy
+import { Tree, BranchType, buildTree } from '@creation-ui/react'
+import { useMemo, useState } from 'react'
+import data from './tree-data.json'
+
+export const TreeExample = () => {
+  const tree = useMemo(() => buildTree(data), [data])
+  const [value, setValue] = (useState < BranchType) | (null > null)
+
+  const handleClear = () => setValue(null)
+  const handleLeafClick = (leaf: BranchType) => {
+    setValue(leaf)
+    console.log('Leaf clicked:', leaf.name)
+  }
+  const handleBranchClick = (branch: BranchType) => {
+    console.log('Branch clicked:', branch.name)
+  }
+
+  return (
+    <Tree
+      placeholder='Select category...'
+      tree={tree}
+      value={value}
+      onClear={handleClear}
+      onLeafClick={handleLeafClick}
+      onBranchClick={handleBranchClick}
+      cx={{
+        container: {
+          inner: 'w-48',
+        },
+      }}
+    />
+  )
+}
+```
+
+## Component API
+
+<PropsTable properties={properties} name='Tree' description={'Tree component props'} />

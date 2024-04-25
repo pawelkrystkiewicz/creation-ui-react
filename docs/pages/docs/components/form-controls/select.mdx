@@ -1,0 +1,59 @@
+import { SelectExample, properties, SelectPlayground } from '@examples/select'
+import PropsTable from '@components/props-table'
+import { Description } from '@components/typography'
+import { defaultOptionType, renderOptionProps } from '@examples/shared-props'
+
+# Select
+
+This component is built upon fantastic [@floating-ui/react](https://floating-ui.com/) library.<br/>
+
+<SelectPlayground />
+
+## Code example
+
+```tsx copy
+import { DropdownProps, Select } from '@creation-ui/react'
+import { useState } from 'react'
+
+const options = [
+  { id: '1', label: 'Wade Cooper' },
+  { id: '2', label: 'Arlene Mccoy' },
+  { id: '3', label: 'Devon Webb' },
+  { id: '4', label: 'Option disabled', disabled: true },
+  { id: '5', label: 'Tom Cook' },
+  { id: '6', label: 'Tanya Fox' },
+  { id: '7', label: 'Hellen Schmidt' },
+  { id: '8', label: 'Another option' },
+]
+
+export const SelectExample = ({ ...props }: DropdownProps) => {
+  const [value, setValue] = useState(null)
+  const onClear = () => setValue(null)
+
+  return (
+    <Select
+      label={'Person'}
+      value={value}
+      placeholder='Select value'
+      clearable
+      onChange={setValue}
+      onClear={onClear}
+      options={options}
+    />
+  )
+}
+```
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Select'
+  description='Select component props. Extends props of <a href="/docs/components/input-base">InputBase</a> component.'
+/>
+
+<PropsTable
+  properties={defaultOptionType}
+  name='SelectOptionDefault'
+  description='Default type of option if custom was not provided.'
+/>

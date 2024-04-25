@@ -1,6 +1,5 @@
+import { OptionProps } from '@types'
 import React, { forwardRef } from 'react'
-import { OptionProps } from '@creation-ui/core'
-import { selectOptionClasses } from '@creation-ui/core'
 
 export const Option = forwardRef<
   HTMLLIElement,
@@ -10,21 +9,16 @@ export const Option = forwardRef<
     { option, multiple, active, selected, size, children, className, ...rest },
     ref
   ) => {
+    const { label } = option
     return (
       <li
-        className={selectOptionClasses({
-          active,
-          selected,
-          multiple,
-          size,
-          className,
-        })}
+        className={className}
         ref={ref}
         role='option'
         aria-selected={selected}
         {...rest}
       >
-        {children ? children : option.label}
+        {children ? children : label}
       </li>
     )
   }

@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '@creation-ui/core'
+import type { BaseComponentProps } from '@types'
 
 export type CalendarDateValue = Date | null | undefined
 export type CalendarMode = 'single' | 'range'
@@ -17,6 +17,7 @@ export type CalendarProps = Omit<
   todayText?: string
   startOn?: CalendarDateValue
   numberOfMonths?: 1 | 2
+  locale?: string
 } & (
     | {
         onChange?: (date: CalendarDateValue) => void
@@ -31,6 +32,6 @@ export type CalendarProps = Omit<
   )
 
 export type DateRange = [CalendarDateValue, CalendarDateValue]
-export type CalendarView = 'days' | 'months' | 'years'
+export type CalendarViewMode = 'days' | 'months' | 'years'
 
 export type WeekDayIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7

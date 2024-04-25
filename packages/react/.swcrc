@@ -1,6 +1,22 @@
 {
+  "$schema": "http://json.schemastore.org/swcrc",
   "minify": true,
   "jsc": {
+  "baseUrl": "./",
+   "paths": {
+        "@root": ["./src/"],
+        "@root/*": ["./src/*"],
+        "@components": ["./src/components"],
+        "@components/*": ["./src/components/*"],
+        "@hooks": ["./src/hooks"],
+        "@hooks/*": ["./src/hooks/*"],
+        "@utils": ["./src/utils"],
+        "@utils/*": ["./src/utils/*"],
+        "@theme": ["./src/theme"],
+        "@theme/*": ["./src/theme/*"],
+        "@types": ["./src/types"],
+        "@types/*": ["./src/types/*"]
+      },
     "parser": {
       "syntax": "typescript",
       "tsx": true

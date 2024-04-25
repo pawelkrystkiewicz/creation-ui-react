@@ -1,0 +1,23 @@
+# Breadcrumbs
+
+import { properties, BreadcrumbsExample, BreadcrumbsExampleAllCustom } from '@examples/breadcrumbs'
+import PropsTable from '@components/props-table'
+import { Container } from '@components/container'
+
+## Separators showcase
+
+<Container variant='column'>
+  <BreadcrumbsExample />
+  <BreadcrumbsExample separator='dot' />
+  <BreadcrumbsExample separator='slash' />
+</Container>
+
+## Custom icon
+
+<Container>
+  <BreadcrumbsExampleAllCustom />
+</Container>
+
+## Component API
+
+<PropsTable properties={properties} name='Breadcrumbs' description={'Breadcrumbs component props'} />

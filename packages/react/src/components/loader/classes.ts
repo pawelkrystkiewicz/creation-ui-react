@@ -1,34 +1,18 @@
 import { cva } from 'class-variance-authority'
-import { microInteractions } from '@creation-ui/core'
+import clsx from 'clsx'
 
-const size = {
-  sm: ['w-4', 'h-4'],
-  md: ['w-6', 'h-6'],
-  lg: ['w-8', 'h-8'],
-}
-
-export const loaderClasses = cva(
-  ['flex', 'justify-center', 'items-center', 'select-none', microInteractions],
-  {
-    variants: {
-      size,
-      active: {
-        true: 'visible',
-        false: 'hidden',
-      },
-    },
-    defaultVariants: {
-      size: 'md',
-      active: true,
-    },
-  }
+export const loaderClasses = clsx(
+  'flex',
+  'justify-center',
+  'items-center',
+  'select-none'
 )
-export const loaderIconClasses = cva(['animate-spin'], {
+
+export const loaderIconClasses = cva(['animate-spin', 'text-info/25'], {
   variants: {
-    size,
     white: {
-      true: ['text-info-300', 'fill-white'],
-      false: ['text-info-200', 'fill-primary-500'],
+      false: ['fill-primary'],
+      true: ['fill-white'],
     },
   },
   defaultVariants: {

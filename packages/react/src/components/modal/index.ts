@@ -1,2 +1,5 @@
-export { default as Modal } from './modal'
+export * from './modal'
 export * from './modal.types'
+export * from './ModalFooter'
+export * from './ModalHeader'
+export * from './ModalTitle'

@@ -55,7 +55,7 @@ export const Tree: FC<TreeProps> = ({
               <Show when={!value}>
                 <span
                   className={twMerge(
-                    'text-info-500',
+                    'text-info',
                     'flex-shrink',
                     cx?.placeholder
                   )}
@@ -70,7 +70,9 @@ export const Tree: FC<TreeProps> = ({
               </Show>
             </ShowFirstMatching>
           </div>
-          <Loader active={!!loading} size={size} />
+          <Show when={loading}>
+            <Loader size={size} />
+          </Show>
           <Show when={hasClearButton}>
             &nbsp;
             <ClearButton onClick={onClear} size={size} />

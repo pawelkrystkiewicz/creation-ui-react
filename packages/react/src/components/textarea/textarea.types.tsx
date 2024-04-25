@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { BaseComponentProps, ElementVariant } from '@creation-ui/core'
+import type { BaseComponentProps, ElementVariant } from '@types'
 
 export type TextAreaProps = Omit<
   React.ComponentProps<'textarea'>,
@@ -14,4 +14,8 @@ export type TextAreaProps = Omit<
      * Variant of element
      */
     variant?: ElementVariant
+    /**
+     * Resize behavior
+     */
+    resize?: 'none' | 'both' | 'horizontal' | 'vertical'
   }

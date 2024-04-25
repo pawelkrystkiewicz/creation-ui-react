@@ -1,3 +1,4 @@
+import { Show } from '@root/components/show'
 import { useAutocomplete } from '../context'
 
 export const MultipleSelections = () => {
@@ -18,7 +19,9 @@ export const MultipleSelections = () => {
   return (
     <>
       {renderTags?.(limitedOptions, handleRemoveSelected)}
-      {more > 0 && <span>{getLimitTagsText!(more)}</span>}
+      <Show when={more > 0}>
+        <span>{getLimitTagsText!(more)}</span>
+      </Show>
     </>
   )
 }

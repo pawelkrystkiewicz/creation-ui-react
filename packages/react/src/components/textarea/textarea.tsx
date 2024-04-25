@@ -11,8 +11,8 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const { size = defaultSize, ...rest } = props
 
     return (
-      <InputBase {...rest} size={size} type={'text'}>
-        <TextAreaView {...rest} ref={ref} />
+      <InputBase {...rest} size={size} type={'textarea'}>
+        <TextAreaView {...rest} ref={ref} size={size} />
       </InputBase>
     )
   }

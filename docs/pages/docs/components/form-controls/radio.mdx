@@ -1,0 +1,34 @@
+# Radio
+
+import { RadioPlayground } from '@examples/radio'
+import { Container } from '@components/container'
+import { UnfoldVariants } from '@components/unfold-variants'
+import { ELEMENT_SIZES, ELEMENT_STATUS } from '@creation-ui/react'
+import PropsTable from '@components/props-table'
+import { properties } from '@examples/radio'
+
+<RadioPlayground />
+
+## Controlled example
+
+```tsx copy
+import { Radio, RadioProps } from '@creation-ui/react'
+
+export const RadioComponet = ({ ...props }: Omit<RadioProps, 'onChange'>) => {
+  const [checked, setChecked] = useState<boolean>(false)
+
+  return <Radio onChange={setChecked} checked={checked} {...props} />
+}
+```
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Radio'
+  description={
+    <>
+      Rest of the props are the same as for the native <code>input</code> component.
+    </>
+  }
+/>

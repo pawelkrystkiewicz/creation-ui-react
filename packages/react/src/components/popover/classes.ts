@@ -1,56 +1,19 @@
-import {
-  sharedTextSizesBase,
-  sharedTextSizesDescription,
-  sharedTextSizesHeading,
-} from '@creation-ui/core'
-import { cva } from 'class-variance-authority'
+import clsx from 'clsx'
 
-export const popoverCloseClasses = cva([], {
-  variants: {
-    size: sharedTextSizesBase,
-  },
-})
-export const popoverContentClasses = cva(
-  [
-    //
-    'bg-white',
-    'shadow-lg',
-    'rounded',
-    'py-2',
-    'px-3',
-  ],
-  {
-    variants: {
-      size: sharedTextSizesBase,
-    },
-  }
+export const popoverContentClasses = clsx(
+  'bg-background-portal',
+  '!shadow-lg',
+  'rounded-md',
+  'py-2',
+  'px-3',
+  'border',
+  'border-border'
 )
-export const popoverDescriptionClasses = cva(
-  [
-    //
-    'text-info-500',
-    'text-sm',
-    'leading-5',
-  ],
-  {
-    variants: {
-      size: sharedTextSizesDescription,
-    },
-  }
+export const popoverDescriptionClasses = clsx(
+  'text-info',
+  'text-sm',
+  'leading-5'
 )
-export const popoverHeadingClasses = cva(['font-bold'], {
-  variants: {
-    size: sharedTextSizesHeading,
-  },
-})
-export const popoverTriggerClasses = cva(
-  [
-    //
-    'cursor-pointer',
-  ],
-  {
-    variants: {
-      size: sharedTextSizesBase,
-    },
-  }
-)
+
+export const popoverHeadingClasses = clsx('font-bold')
+export const popoverTriggerClasses = clsx('cursor-pointer')

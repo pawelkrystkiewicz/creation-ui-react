@@ -1,4 +1,8 @@
-import { getFlatOptions, selectOptionClasses } from '@creation-ui/core'
+import { Chip } from '@components/chip'
+import { DropdownChevron } from '@components/dropdown-chevron'
+import { InputBase } from '@components/input-base'
+import { dropdownInitialProps } from '@components/select/constants'
+import { getDropdownHeight } from '@components/shared'
 import {
   autoUpdate,
   flip,
@@ -10,14 +14,11 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react'
+import { selectOptionClasses } from '@root/classes'
+import { getFlatOptions } from '@utils'
 import Keyboard from 'keyboard-key'
-import React, { useEffect, useRef, useState } from 'react'
-import { Chip } from '../../chip'
-import { Theme, useTheme } from '../../../theme'
-import { DropdownChevron } from '../../dropdown-chevron'
-import { InputBase } from '../../input-base'
-import { dropdownInitialProps } from '../../select/constants'
-import { getDropdownHeight } from '../../shared'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { Theme, useTheme } from '@theme'
 import { AUTOCOMPLETE_MARGIN } from '../constants'
 import { AutocompleteContext } from '../context'
 import {
@@ -31,7 +32,7 @@ import { createFilterOptions } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, styles } = useTheme()
   const {
     id,
     textLoading = 'Loading...',
@@ -51,7 +52,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     value,
     options = [],
     filterSelectedOptions = false,
-    defaultTagProps = { variant: 'outlined', status: 'info' },
+    defaultTagProps = {
+      variant: 'outlined',
+      status: undefined,
+    },
     autoHighlight = false,
     onChange,
     filterOptions = createFilterOptions<T>(),
@@ -101,6 +105,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       )
     })
   }
+
+  const { renderTags = _renderTags } = props
 
   const [open, setOpen] = useState<boolean>(false)
   const [query, setQuery] = useState<string>('')
@@ -282,6 +288,11 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     },
   }
 
+  const withThemeOptionStyle = useMemo(
+    () => selectOptionClasses(styles),
+    [styles]
+  )
+
   const getOptionProps = (
     option: T,
     index: number
@@ -343,12 +354,11 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       key: label,
       multiple,
       selected,
-      className: selectOptionClasses({
-        active,
+      className: withThemeOptionStyle({
         selected,
-        size,
         disabled,
         truncate,
+        className: [size],
       }),
       index,
       query,
@@ -389,7 +399,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         label={props.label}
         required={props.required}
         endAdornment={
-          <DropdownChevron open={open} onClick={handleChevronClick} />
+          <DropdownChevron open={open} onClick={handleChevronClick} size='md' />
         }
         helperText={helperText}
         clearable={clearable}
@@ -400,7 +410,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       >
         <AutocompleteContext.Provider
           value={{
-            renderTags: _renderTags,
+            renderTags,
             handleRemoveSelected,
             setOpen,
             multiple,

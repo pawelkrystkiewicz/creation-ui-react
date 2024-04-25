@@ -1,0 +1,42 @@
+import PropsTable from '@components/props-table'
+import { CustomChip, properties, ChipPlayground, ChipAdornmentsExamples } from '@examples/chip'
+import { Container } from '@components/container'
+
+# Chip
+
+## Playground
+
+<ChipPlayground />
+
+## Adornments
+
+Adornments are icons or other elements that can be added to the start or end of the Input component for additional interactivity or visual feedback:
+
+<ChipAdornmentsExamples />
+
+## What if I a color other than `status`?
+
+For this use case, you can use the `style` prop to customize the color of the chip. For example:
+
+<Container>
+  <CustomChip />
+</Container>
+
+Be aware that this will override the default coloring styles of the chip. Notice that bg hover effect was lost as it came from now disabled `status` styling.
+
+```tsx
+export const CustomChip = () => (
+  <Chip
+    label={'Indefatigable'}
+    style={{
+      color: 'rgba(255, 153, 0)',
+      backgroundColor: 'rgba(255, 153, 0, 0.1)',
+      borderColor: 'rgba(255, 153, 0, 0.5)',
+    }}
+  />
+)
+```
+
+## Component API
+
+<PropsTable properties={properties} name='Chip' description='Chip component props' />

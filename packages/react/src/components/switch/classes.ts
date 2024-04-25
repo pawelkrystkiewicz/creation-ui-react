@@ -1,61 +1,52 @@
+import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
-import {
-  microInteractions,
-  classes,
-  sharedReadOnlyCVA,
-} from '@creation-ui/core'
 
-export const switchClasses = cva(
-  [
-    ...classes.input,
-    microInteractions,
-    'checked:border-transparent',
-    'dark:checked:bg-primary-500',
-    'cursor-pointer',
-    'peer',
-    'relative',
-    'inline-flex',
-    'shrink-0',
-    'border-2',
-    '!bg-info-300',
-    '!dark:bg-info-700',
-    '!rounded-full',
-    'h-fit',
-  ],
-  {
-    variants: {
-      size: {
-        sm: ['w-8', 'p-0'],
-        md: ['w-12', 'p-0.5'],
-        lg: ['w-14', 'p-0.5'],
+export const switchClasses = ({
+  animations,
+  readOnly,
+  focusable,
+}: ThemePreloadedClasses) =>
+  cva(
+    [
+      focusable,
+      animations.microInteractionsAll,
+      'border-border',
+      'cursor-pointer',
+      'peer',
+      'relative',
+      'inline-flex',
+      'shrink-0',
+      '!rounded-full',
+      'h-fit',
+      'border',
+      'bg-background-input',
+    ],
+    {
+      variants: {
+        size: {
+          sm: ['w-[35px]', 'p-0.5'],
+          md: ['w-[47px]', 'p-0.5'],
+          lg: ['w-[55px]', 'p-0.5'],
+        },
+        checked: {
+          true: ['bg-primary'],
+          false: ['hover:bg-white/25'],
+        },
+        readOnly: { true: readOnly },
       },
-      checked: {
-        true: ['!bg-primary-500', '!border-primary-500'],
-        false: ['!border-transparent'],
+      defaultVariants: {
+        size: 'md',
       },
-      readOnly: sharedReadOnlyCVA,
-    },
-    defaultVariants: {
-      size: 'md',
-    },
-  }
-)
+    }
+  )
 export const switchCircle = cva(
-  [
-    microInteractions,
-    'transform',
-    'transition-all',
-    'rounded-full',
-    'bg-white',
-    'shadow-lg',
-    'ring-0',
-  ],
+  ['transform', 'rounded-full', 'bg-white', 'shadow-lg'],
   {
     variants: {
       size: {
-        sm: ['h-3', 'w-3'],
-        md: ['h-4', 'w-4'],
-        lg: ['h-5', 'w-5'],
+        sm: ['size-3'],
+        md: ['size-4'],
+        lg: ['size-5'],
       },
       checked: {
         true: null,

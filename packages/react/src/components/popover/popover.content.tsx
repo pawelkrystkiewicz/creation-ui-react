@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import type { ElementSize } from '@types'
 import {
   FloatingFocusManager,
   FloatingPortal,
@@ -8,6 +8,7 @@ import type { HTMLProps } from 'react'
 import { forwardRef } from 'react'
 import { popoverContentClasses } from './classes'
 import { usePopoverContext } from './context'
+import clsx from 'clsx'
 
 interface PopoverContentProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   size?: ElementSize
@@ -36,7 +37,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
           <div
             ref={ref}
             style={style}
-            className={popoverContentClasses({ size: finalSize, className })}
+            className={clsx(popoverContentClasses, finalSize, className)}
             aria-labelledby={ctx.labelId}
             aria-describedby={ctx.descriptionId}
             {...ctx.getFloatingProps(props)}

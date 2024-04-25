@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "lib": ["ES2021", "DOM", "DOM.Iterable"],
     "incremental": false,
@@ -16,14 +16,28 @@
     "noUncheckedIndexedAccess": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "outDir": "build",
+    "outDir": "dist",
     "declarationMap": true,
     "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types"]
+    "paths": {
+      "@root": ["./src/"],
+      "@root/*": ["./src/*"],
+      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
+      "@hooks": ["./src/hooks"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils": ["./src/utils"],
+      "@utils/*": ["./src/utils/*"],
+      "@theme": ["./src/theme"],
+      "@theme/*": ["./src/theme/*"],
+      "@types": ["./src/types"],
+      "@types/*": ["./src/types/*"]
+    }
   },
+  "include": ["src"],
   "exclude": [
     "node_modules",
-    "build",
+    "dist",
     "**/tests",
     "**/*.cy.tsx",
     "**/*.spec.tsx",

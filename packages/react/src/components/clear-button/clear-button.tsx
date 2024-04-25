@@ -1,4 +1,4 @@
-import { ElementSize } from '@creation-ui/core'
+import type { ElementSize } from '@types'
 import { cva } from 'class-variance-authority'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -6,8 +6,8 @@ import type { IconProps } from '../icon'
 import { Icon } from '../icon'
 
 const classes = cva([
-  'hover:fill-error-500',
-  'dark:hover:fill-error-500',
+  'hover:fill-error',
+  'dark:hover:fill-error',
   'cursor-pointer',
   'select-none',
 ])

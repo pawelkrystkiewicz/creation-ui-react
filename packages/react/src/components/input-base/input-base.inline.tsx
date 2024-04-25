@@ -1,22 +1,16 @@
-import type { FC } from 'react'
+import { Description, InteractiveContainer, Loader, Show } from '@components'
+import { inputContainer } from '@root/classes'
+import { useTheme } from '@theme'
+import { InputBaseProps } from '@types'
+import { useMemo, type FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import {
-  errorClasses,
-  inputClassesCVA,
-  inputContainer,
-  label,
-  text,
-} from '@creation-ui/core'
 import { useId } from '../../hooks'
-import { useTheme } from '../../theme'
-import { InputBaseProps } from '@creation-ui/core'
-import { InteractiveContainer } from '../interactive-container'
-import { Loader } from '../loader'
-import { Description } from '../typography'
+import { Label } from '../label'
+import { inputClasses } from './classes'
 import { InputBaseContext } from './input-base.context'
 
 const InputBaseInline: FC<InputBaseProps> = props => {
-  const { size: defaultSize } = useTheme()
+  const { size: defaultSize, styles } = useTheme()
   const {
     loading,
     helperText,
@@ -35,21 +29,25 @@ const InputBaseInline: FC<InputBaseProps> = props => {
   const disabled = props.disabled
   const readOnly = props.readOnly || loading
 
+  const withTheme = useMemo(
+    () => ({
+      container: inputContainer(styles),
+      input: inputClasses(styles),
+    }),
+    [styles]
+  )
+
   const outerContainerClasses = twMerge(
-    inputContainer({ disabled, error: !!error, layout }),
-    text({ size }),
+    withTheme.container({ disabled, error: !!error, layout, size }),
     cx?.container?.inner
   )
 
-  const inputClasses = twMerge(
-    inputClassesCVA({
-      size,
-      variant,
-      // @ts-ignore
-      className: cx?.input,
-      error: !!error,
-    })
-  )
+  const withThemeInput = withTheme.input({
+    size,
+    variant,
+    className: cx?.input,
+    error: !!error,
+  })
 
   return (
     <InteractiveContainer disabled={disabled}>
@@ -57,7 +55,7 @@ const InputBaseInline: FC<InputBaseProps> = props => {
         value={{
           componentId,
           classes: {
-            input: inputClasses,
+            input: withThemeInput,
             container: outerContainerClasses,
           },
           disabled,
@@ -69,22 +67,23 @@ const InputBaseInline: FC<InputBaseProps> = props => {
         <div className={cx?.container?.outer}>
           <div className={outerContainerClasses}>
             {children}
-            <label
+            <Label
               htmlFor={componentId}
-              className={label({
-                size,
-                required: props.required,
-                className: cx?.label,
-              })}
-              children={props.label}
+              className={cx?.label}
+              size={size}
+              required={props.required}
               aria-label={props.label?.toString()}
-            />
-            {loading && <Loader size={size === 'lg' ? 'md' : 'sm'} />}
+            >
+              {props.label}
+            </Label>
+            <Show when={loading}>
+              <Loader size={size === 'lg' ? 'md' : 'sm'} />
+            </Show>
           </div>
           <Description
             size={size}
             error={!!error}
-            className={error ? errorClasses.text : ''}
+            className={error && styles.error.text}
           >
             {error || helperText}
           </Description>

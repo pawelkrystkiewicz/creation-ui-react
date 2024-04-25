@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
-import { twix } from '@creation-ui/core'
+import { twix } from '@utils'
 
-const classes = twix('text-sm text-info-400')
+const classes = twix('text-sm text-info')
 
 export const CardDescription = forwardRef<
   HTMLParagraphElement,

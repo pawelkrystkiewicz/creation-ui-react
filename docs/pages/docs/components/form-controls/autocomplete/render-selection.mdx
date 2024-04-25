@@ -1,0 +1,41 @@
+import PropsTable from '@components/props-table'
+
+# renderSelection
+
+This an example of the default **single selection** rendering function. Based on that you can create your own `renderSelection` function.
+For multiple selection rendering see [renderTags](/docs/components/autocomplete/render-tags).
+
+```tsx
+import { useAutocomplete } from '../context'
+import { AutocompleteOptionDefault } from '../types'
+
+export const _renderSelection = (option: AutocompleteOptionDefault, _removeSelected: (option: any) => void) => {
+  // you can use _removeSelected to remove the selected option
+  const { getOptionLabel } = useAutocomplete()
+  return option ? <span>{getOptionLabel?.(option)}</span> : null
+}
+```
+
+## Custom example
+
+```tsx
+type Character = {
+  id: string
+  name: string
+  image: string
+  species: string
+  //... rest
+}
+
+const renderSelection = ({ image, name, species }: Character) => (
+  <div className='h-fit w-fit p-2 mr-2'>
+    <div className='flex gap-2 items-center'>
+      <Avatar size='sm' src={image} />
+      <div className='flex flex-col'>
+        <span className='font-medium'>{name}</span>
+        <span className='text-info text-xs'>{species}</span>
+      </div>
+    </div>
+  </div>
+)
+```
