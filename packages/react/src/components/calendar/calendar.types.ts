@@ -17,6 +17,7 @@ export type CalendarProps = Omit<
   todayText?: string
   startOn?: CalendarDateValue
   numberOfMonths?: 1 | 2
+  locale?: string
 } & (
     | {
         onChange?: (date: CalendarDateValue) => void

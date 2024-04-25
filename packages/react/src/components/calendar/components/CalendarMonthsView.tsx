@@ -10,10 +10,8 @@ export const CalendarMonthsView = () => {
     locale,
   } = useCalendar()
 
-  const effectiveLocale = locale || navigator.language
-
   const months = Array.from({ length: 12 }, (_, i) =>
-    new Intl.DateTimeFormat(effectiveLocale, { month: 'short' }).format(
+    new Intl.DateTimeFormat(locale, { month: 'short' }).format(
       new Date(2000, i)
     )
   )

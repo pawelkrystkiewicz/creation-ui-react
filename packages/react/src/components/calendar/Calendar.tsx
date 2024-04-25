@@ -87,6 +87,7 @@ const Calendar: FC<CalendarProps> = props => {
 
   const context: CalendarContextValue = useMemo(
     () => ({
+      locale : props.locale ?? navigator.language,
       setSelectedDates: handleDayClick,
       setViewDate: setViewDate,
       setView,
