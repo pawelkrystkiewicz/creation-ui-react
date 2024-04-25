@@ -1,9 +1,8 @@
 import { Playground } from '@components/playground'
 import { Button, Tooltip } from '@creation-ui/react'
-import { ELEMENT_POSITION } from '@creation-ui/react'
 import { DocumentedProperty } from 'models/system'
-import { ListOrTypes } from 'utils/list-or-types'
-import { positionControl } from './shared-playground-controls'
+import { positionControl, sizeControl } from './shared-playground-controls'
+import { positionProp, sizeProp } from './shared-props'
 
 export const TooltipExample = props => (
   <Tooltip {...props}>
@@ -20,6 +19,7 @@ export const TooltipPlayground = () => (
         defaultValue: 'Tooltip content',
       },
       positionControl,
+      sizeControl,
     ]}
     name='Tooltip'
     component={TooltipExample}
@@ -28,12 +28,8 @@ export const TooltipPlayground = () => (
 )
 
 export const properties: DocumentedProperty[] = [
-  {
-    name: 'position',
-    type: ListOrTypes([...ELEMENT_POSITION]),
-    defaultValue: 'top',
-    description: 'Size of element',
-  },
+  positionProp,
+  sizeProp,
   {
     description: 'Content inside tooltip',
     name: 'content',
