@@ -8,7 +8,7 @@ export const label = cva(['select-none', 'block', 'font-medium'], {
     size: {
       sm: ['!text-xs'],
       md: ['!text-sm'],
-      lg: ['!text-md'],
+      lg: ['!text-base'],
     },
     for: {
       checkbox: ['inline-flex', 'items-center', 'cursor-pointer'],
