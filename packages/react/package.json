@@ -3,7 +3,10 @@
   "homepage": "https://creation-ui.com",
   "version": "14.0.0",
   "description": "@creation-ui/react is an easy-to-use components library for ReactJS & Tailwind CSS.",
-  "repository": "https://github.com/creation-ui/react.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creation-ui/react.git"
+  },
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

@@ -10,7 +10,7 @@
   "scripts": {
     "start": "next dev -p 3005",
     "build": "pnpm import-check && next build",
-    "build:lib":"cd ../packages/react && pnpm build",
+    "build:lib": "cd ../packages/react && pnpm build",
     "preview": "next start",
     "lint": "next lint",
     "nuke": "rm -rf node_modules yarn.lock pnpm-lock.yaml .next && pnpm install",
@@ -21,7 +21,6 @@
     "rm:build": "rm -rf ./packages/react/build",
     "test": "pnpm package:build && cypress run --component",
     "test:dev": "pnpm package:build && cypress open --component",
-    "override-version": "sh ./override-version.sh",
     "generate:docs": "node ./scripts/generate-docs.js",
     "prettify": "prettier --write .",
     "update:tailwind": "pnpm -r add @headlessui/tailwindcss@latest @tailwindcss/aspect-ratio@latest @tailwindcss/typography@latest tailwind-merge@latest tailwindcss-debug-screens@latest prettier-plugin-tailwindcss@latest tailwindcss@latest",

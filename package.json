@@ -20,7 +20,7 @@
     "package:version": "pnpm run cui ci:version",
     "package:build": "pnpm run cui build",
     "package:publish": "pnpm run cui _publish",
-    "package": "pnpm package:version && pnpm package:build && pnpm test && pnpm package:publish",
+    "package": "pnpm package:version && pnpm package:build && pnpm package:publish",
     "package:auto": "pnpm package:build && pnpm package:publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ci:publish": "pnpm publish -r",
