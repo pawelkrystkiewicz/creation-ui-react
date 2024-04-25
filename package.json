@@ -24,7 +24,8 @@
     "package:auto": "pnpm package:build && pnpm package:publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ci:publish": "pnpm publish -r",
-    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)"
+    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)",
+    "override-version": "sh ./override-version.sh"
   },
   "devDependencies": {
     "@types/react": "^18.2.75",
