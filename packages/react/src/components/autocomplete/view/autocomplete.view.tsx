@@ -29,7 +29,6 @@ export const AutocompleteView: FC = () => {
   const customRenderValue =
     !!renderSelection && !multiple && selected != undefined
   const hasOptions = options.length > 0
-  console.log({ selected })
   const handleCreate = useCallback(() => {
     if (!onCreate || !query) return
     onCreate(query)

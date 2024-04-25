@@ -100,14 +100,6 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
       const idx = isDateFirstOrLast(date)
       const isInRenderedMonth = isDateInDisplayedMonth(date, viewDate)
       const shouldSkipRender = multipleCalendars && !isInRenderedMonth
-      console.table({
-        cellDate,
-        viewDate,
-        month,
-        multipleCalendars,
-        shouldSkipRender,
-        isInRenderedMonth,
-      })
 
       days.push(
         <button

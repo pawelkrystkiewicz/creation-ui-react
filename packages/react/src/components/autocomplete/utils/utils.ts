@@ -7,10 +7,8 @@ import {
 export const getTop = ({ placement, y = 0 }: any) => {
   switch (placement) {
     case 'top':
-      console.log('top', y - AUTOCOMPLETE_MARGIN)
       return y - AUTOCOMPLETE_MARGIN
     default:
-      console.log('bottom', y + AUTOCOMPLETE_MARGIN)
     case 'bottom':
       return y + AUTOCOMPLETE_MARGIN
   }
