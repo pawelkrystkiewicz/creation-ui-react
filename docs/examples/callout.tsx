@@ -1,10 +1,21 @@
 import { Container } from '@components/container'
 import { Playground } from '@components/playground'
-import { Callout, CalloutProps, Description, ELEMENT_VARIANTS, For, H5, Show, useTheme } from '@creation-ui/react'
+import {
+  Callout,
+  CalloutProps,
+  Description,
+  ELEMENT_VARIANTS,
+  type ElementVariant,
+  For,
+  H5,
+  Show,
+  useTheme,
+} from '@creation-ui/react'
 import { Flex } from '@creation-ui/react/dist/components/flex/flex'
 import { DocumentedProperty } from 'models/system'
 import { statusControlWithUndef } from './shared-playground-controls'
 import { childrenProp, statusProp, variantProp } from './shared-props'
+import clsx from 'clsx'
 
 interface CalloutExampleProps extends Omit<CalloutProps, 'children' | 'variant'> {
   title?: string
@@ -16,9 +27,9 @@ export const Example = ({ title, content, ...props }: CalloutExampleProps) => {
 
   return (
     <Container variant='column'>
-      <For each={ELEMENT_VARIANTS}>
-        {variant => (
-          <Callout {...props} variant={variant} key={variant} className={styles.animations.microInteractions}>
+      <For each={[...ELEMENT_VARIANTS]}>
+        {(variant: ElementVariant) => (
+          <Callout {...props} variant={variant} key={variant} className={clsx(styles?.animations.microInteractionsAll)}>
             <Flex column>
               <Show when={!!title}>
                 <H5>{title}</H5>
