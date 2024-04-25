@@ -86,6 +86,7 @@ export const CalendarView: FC<CalendarViewProps> = ({
         </div>
 
         <Show when={showTodaySelector}>
+          &nbsp;
           <Button
             variant='text'
             size={size}
