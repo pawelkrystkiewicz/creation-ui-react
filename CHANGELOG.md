@@ -1,5 +1,35 @@
 # Changelog
 
+## [14.0.0](https://github.com/creation-ui/react/compare/v13.8.0...v14.0.0) (2024-04-25)
+
+
+### Features
+
+* add build:watch to cui ([f039def](https://github.com/creation-ui/react/commit/f039defcfe72af75994fc01f8f14f847ca32419e))
+* add focusable classes to theme, apply focusable to inputs, buttons etc.; fix textarea outline ([dd42744](https://github.com/creation-ui/react/commit/dd427441b77972ebc3b92773d4b988caf42d944c))
+* add robust .cui-element classes for elements ([e166e68](https://github.com/creation-ui/react/commit/e166e684f2cc2963add5d98e39ffb318838748f3))
+* init monorepo ([2d24f5a](https://github.com/creation-ui/react/commit/2d24f5af6db7359226caf6eff6541570e613bee0))
+* introduce background-portal color ([66920a1](https://github.com/creation-ui/react/commit/66920a105e2d2c98f3478f97c116f06a6c27a8fe))
+* rename all color classes ([44996c3](https://github.com/creation-ui/react/commit/44996c37f1c89761a150af82e069735f9d75eecd))
+* size for tooltip ([9f54ba2](https://github.com/creation-ui/react/commit/9f54ba2047b141a29aaede9a65e80724abe70a30))
+
+
+### Bug Fixes
+
+* autocomplete not passing renderTags ([bb958aa](https://github.com/creation-ui/react/commit/bb958aab3fbdc090243989b86210b34049830ce9))
+* autocomplete renderSelection with null ([5fe6e9d](https://github.com/creation-ui/react/commit/5fe6e9d71ab55360f8bcb374f9a6c5c5558dc6bd))
+* build failing ([81e9362](https://github.com/creation-ui/react/commit/81e9362773180226dbc53388a9d6c52e1cee177b))
+* label wrong text size when LG ([b113d07](https://github.com/creation-ui/react/commit/b113d0782af803301e4fcd52867ae74c97d74671))
+* lp button ([fb746f0](https://github.com/creation-ui/react/commit/fb746f02dc27dd001fd8bfb6e4baa67373429650))
+* prepare page build ([3538131](https://github.com/creation-ui/react/commit/35381314a3e392c7950c24fba3b0bc29e992b83a))
+* remove console.logs from packages ([73d3bd7](https://github.com/creation-ui/react/commit/73d3bd7875d1e253a2a03a80d0c9978de007df30))
+* tailwind.con ([b9557e4](https://github.com/creation-ui/react/commit/b9557e416aa78d78b022c3b67334f8552e96fd27))
+
+
+### Miscellaneous Chores
+
+* release 14.0.0 ([c25fde3](https://github.com/creation-ui/react/commit/c25fde3fa5c4c02045128c86a1a286a9d1da5571))
+
 ## [13.8.0](https://github.com/creation-ui/react/compare/v13.7.1...v13.8.0) (2024-03-20)
 
 ### Miscellaneous Chores
