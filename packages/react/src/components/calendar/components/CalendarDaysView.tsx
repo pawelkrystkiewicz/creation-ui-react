@@ -1,19 +1,18 @@
-import { useCallback, type ReactNode, FC, useMemo } from 'react'
-import { useCalendar } from '../calendar.context'
-import {
-  calendarDaysViewClasses,
-  calendarDaysViewTitleClasses,
-  dayRowClasses,
-} from '../classes'
-import { getFirstDayOfWeek, isDateInDisplayedMonth } from '../utils'
+import { Flex } from '@root/components/flex'
 import { useTheme } from '@root/theme'
+import { FC, useCallback, useMemo, type ReactNode } from 'react'
+import { useCalendar } from '../calendar.context'
+import { calendarDaysViewClasses, dayRowClasses } from '../classes'
+import {
+  getFirstDayOfWeek,
+  isDateInDisplayedMonth,
+  isWeekendIdx,
+} from '../utils'
 
 interface CalendarDaysViewProps {
   offsetMonth?: 0 | 1
   multipleCalendars?: boolean
 }
-
-const isWeekendIdx = (i: number) => [5, 6].includes(i)
 
 export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
   offsetMonth = 0,
@@ -115,6 +114,14 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
       const idx = isDateFirstOrLast(date)
       const isInRenderedMonth = isDateInDisplayedMonth(date, viewDate)
       const shouldSkipRender = multipleCalendars && !isInRenderedMonth
+      console.table({
+        cellDate,
+        viewDate,
+        month,
+        multipleCalendars,
+        shouldSkipRender,
+        isInRenderedMonth,
+      })
 
       days.push(
         <button
@@ -143,29 +150,18 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     }
 
     rows.push(
-      <div key={`week-${days[0]}`} className={dayRowClasses()}>
+      <div key={`week-${days[0]}`} className={dayRowClasses}>
         {days}
       </div>
     )
   }
 
   return (
-    <div className='w-full'>
-      <div className={calendarDaysViewTitleClasses.row({ offsetMonth })}>
-        {dayNames.map((dayName, i) => (
-          <div
-            key={dayName}
-            className={calendarDaysViewTitleClasses.day({
-              isWeekend: isWeekendIdx(i),
-            })}
-          >
-            {dayName}
-          </div>
-        ))}
-      </div>
-      <div onClick={handleRowClick} className='flex-col flex gap-1 py-2'>
-        {rows}
-      </div>
+    <div
+      className='grid grid-flow-row w-full'
+      onClick={handleRowClick}
+    >
+      {rows}
     </div>
   )
 }

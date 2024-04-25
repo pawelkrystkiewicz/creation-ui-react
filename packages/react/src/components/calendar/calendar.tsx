@@ -1,9 +1,11 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useId } from '../../hooks'
 import { useTheme } from '../../theme'
 import { Button } from '../button'
+import { Flex } from '../flex'
 import { Icon } from '../icon'
 import { InteractiveContainer } from '../interactive-container'
+import { Show } from '../show'
 import { CalendarContext, CalendarContextValue } from './calendar.context'
 import {
   CalendarDateValue,
@@ -12,12 +14,12 @@ import {
   DateRange,
 } from './calendar.types'
 import { calendarClasses } from './classes'
-import { MonthYearTitle } from './components/container/month-year-title'
-import { CalendarDaysView } from './components/days'
-import { CalendarMonthsView } from './components/months'
-import { CalendarYearsView } from './components/years'
+import { CalendarDaysView } from './components/CalendarDaysView'
+import { CalendarMonthsView } from './components/CalendarMonthsView'
+import { CalendarYearsView } from './components/CalendarYearsView'
+import { MonthYearTitle } from './components/MonthYearTitle'
 import { changeCalendarView, getCalendarInitialValue } from './utils'
-import { Show } from '../show'
+import { CalendarDaysNames } from './components/CalendarDaysNames'
 
 const buttonClasses = 'size-7'
 
@@ -113,30 +115,12 @@ const Calendar: FC<CalendarProps> = props => {
   )
 
   const hasSecondView = useMemo(() => numberOfMonths === 2, [numberOfMonths])
-  const currentView = useMemo(() => {
-    let views: any[] = []
-    for (let i = 0; i < numberOfMonths; i++) {
-      switch (view) {
-        case 'days':
-          views.push(
-            <CalendarDaysView
-              key={i}
-              offsetMonth={i as 0 | 1}
-              multipleCalendars={hasSecondView}
-            />
-          )
-          break
-        case 'months':
-          views.push(<CalendarMonthsView key={i} />)
-          break
-        case 'years':
-          views.push(<CalendarYearsView key={i} />)
-          break
-      }
-    }
-    return <div className='flex flex-col md:flex-row gap-3'>{views}</div>
-  }, [view, numberOfMonths])
+  const viewIs = useCallback(
+    (viewType: CalendarView) => view === viewType,
+    [view]
+  )
 
+  // TODO: move to <CalendarView/>
   return (
     <CalendarContext.Provider value={context}>
       <InteractiveContainer className={className}>
@@ -144,41 +128,56 @@ const Calendar: FC<CalendarProps> = props => {
           className={calendarClasses.container({ size, hasSecondView })}
           id={componentId}
         >
-          <div className='flex items-center justify-between mb-2 w-full'>
-            <Button
-              size='sm'
-              variant='text'
-              className={buttonClasses}
-              onClick={onPrevClick.bind(null)}
-            >
-              <Icon icon='chevron_left' />
-            </Button>
-            <MonthYearTitle offsetMonth={0} />
-            <Show when={hasSecondView}>
-              <MonthYearTitle offsetMonth={1} />
-            </Show>
-            <Button
-              size='sm'
-              variant='text'
-              className={buttonClasses}
-              onClick={onNextClick.bind(null)}
-            >
-              <Icon icon='chevron_right' />
-            </Button>
-          </div>
-          {currentView}
-          <Show when={showTodaySelector}>
-            <div className='p-2'>
-              <Button
-                variant='text'
-                size='sm'
-                onClick={onTodayClick}
-                disabled={isTodaySelected}
-                className='absolute bottom-2 left-2'
-              >
-                {todayText}
-              </Button>
+          <Button
+            size={size}
+            variant='text'
+            onClick={onPrevClick.bind(null)}
+            className='!absolute top-0 left-0 mt-4 mx-2'
+          >
+            <Icon icon='chevron_left' size={size} />
+          </Button>
+          <Button
+            size={size}
+            variant='text'
+            onClick={onNextClick.bind(null)}
+            className='!absolute top-0 right-0 mt-4 mx-2'
+          >
+            <Icon icon='chevron_right' size={size} />
+          </Button>
+
+          <div className='grid lg:grid-flow-col gap-5'>
+            <div className='grid grid-flow-row justify-items-center gap-2'>
+              <MonthYearTitle offsetMonth={0} />
+              <Show when={viewIs('days')}>
+                <CalendarDaysNames />
+                <CalendarDaysView multipleCalendars={hasSecondView} />
+              </Show>
+              <Show when={viewIs('months')}>
+                <CalendarMonthsView />
+              </Show>
+              <Show when={viewIs('years')}>
+                <CalendarYearsView />
+              </Show>
             </div>
+            <Show when={viewIs('days') && hasSecondView}>
+              <div className='grid grid-flow-row justify-items-center gap-2'>
+                <MonthYearTitle offsetMonth={1} />
+                <CalendarDaysNames offsetMonth={1} />
+                <CalendarDaysView offsetMonth={1} multipleCalendars />
+              </div>
+            </Show>
+          </div>
+
+          <Show when={showTodaySelector}>
+            <Button
+              variant='text'
+              size={size}
+              onClick={onTodayClick}
+              disabled={isTodaySelected}
+              className='!absolute bottom-0 left-0'
+            >
+              {todayText}
+            </Button>
           </Show>
         </div>
       </InteractiveContainer>

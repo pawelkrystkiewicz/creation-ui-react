@@ -50,3 +50,6 @@ export const getCalendarInitialValue = (
 
 export const isDateInDisplayedMonth = (date: Date, viewedMonth: Date) =>
   date.getMonth() === viewedMonth.getMonth()
+
+
+export const isWeekendIdx = (i: number) => [5, 6].includes(i)

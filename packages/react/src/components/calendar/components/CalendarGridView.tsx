@@ -1,0 +1,34 @@
+import { ElementSize } from '@root/types'
+import { FC } from 'react'
+import { PeriodButton } from './PeriodButton'
+import { For } from '@root/components/for'
+
+interface CalendarGridViewProps {
+  size: ElementSize
+  currentValue: number
+  onClick: (period: string | number) => void
+  entries: (string | number)[]
+}
+
+export const CalendarGridView: FC<CalendarGridViewProps> = ({
+  currentValue,
+  onClick,
+  size,
+  entries,
+}) => {
+  return (
+    <div className='grid grid-cols-4 grid-rows-3 justify-items-center'>
+      <For each={entries}>
+        {(period, index) => (
+          <PeriodButton
+            size={size}
+            key={period}
+            period={period}
+            current={currentValue === period}
+            onClick={() => onClick(period)}
+          />
+        )}
+      </For>
+    </div>
+  )
+}

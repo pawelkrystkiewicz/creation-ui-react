@@ -1,25 +1,31 @@
-import { cva } from 'class-variance-authority'
-import { twix } from '@utils'
 import { ThemePreloadedClasses } from '@root/theme'
+import { cva } from 'class-variance-authority'
 
-export const headerClasses = twix('font-semibold', 'capitalize ')
+export const calendarHeaderClasses = cva(['font-semibold', 'mb-4'], {
+  variants: {
+    offsetMonth: {
+      0: [],
+      1: ['lg:block', 'hidden'],
+    },
+  },
+})
 
 export const calendarClasses = {
   container: cva(
     [
       'relative',
-      'micro-interactions',
-      'bg-background-primary',
+      'bg-background-portal',
       'border',
+      'border-border',
       'p-4',
       'rounded-md',
     ],
     {
       variants: {
         size: {
-          sm: ['w-72'],
-          md: ['w-96'],
-          lg: ['w-[406px]'],
+          sm: ['w-72', 'min-h-72'],
+          md: ['w-96', 'min-h-96'],
+          lg: ['w-[406px]', 'min-h-[406px]'],
         },
         hasSecondView: {
           true: ['!min-w-fit'],
@@ -33,12 +39,13 @@ export const calendarDaysViewClasses = ({
   animations,
   triggers,
   selected,
-  size,
+  focusable,
 }: ThemePreloadedClasses) =>
   cva(
     [
       //
       animations.microInteractionsAll,
+      focusable,
       'cursor-pointer',
       'select-none',
       'justify-self-center',
@@ -97,29 +104,22 @@ export const calendarDaysViewClasses = ({
     }
   )
 
-export const dayRowClasses = twix('grid', 'grid-cols-7')
+export const dayRowClasses = 'grid grid-cols-7 w-full'
 export const calendarDaysViewTitleClasses = {
   day: cva(['select-none', 'justify-self-center'], {
     variants: {
-      isToday: {
-        true: '',
-        false: '',
-      },
       isWeekend: {
         true: 'text-error',
         false: '',
       },
     },
   }),
-  row: cva(
-    [dayRowClasses(), 'py-2', 'text-xs', 'font-semibold', 'capitalize'],
-    {
-      variants: {
-        offsetMonth: {
-          0: '',
-          1: ['md:grid', 'hidden'],
-        },
+  row: cva([dayRowClasses, 'text-xs', 'font-semibold', 'capitalize'], {
+    variants: {
+      offsetMonth: {
+        0: [],
+        1: ['lg:grid', 'hidden'],
       },
-    }
-  ),
+    },
+  }),
 }

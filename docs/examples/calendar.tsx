@@ -4,14 +4,22 @@ import { DocumentedProperty } from '@models/system'
 import { sizeControl } from './shared-playground-controls'
 import { classNameProps, idProp, sizeProp } from './shared-props'
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
+const NoSSR = dynamic(() => import('../components/no-ssr'), { ssr: false })
 
-export const CalendarPlayground = () => <Playground component={Calendar} name='Calendar' controls={[sizeControl]} />
+export const CalendarPlayground = () => (
+  <NoSSR>
+    <Playground component={Calendar} name='Calendar' controls={[sizeControl]} />
+  </NoSSR>
+)
 
 export const CalendarExample = () => {
   const [value, setValue] = useState<DateRange>([null, null])
 
   return (
-    <Calendar mode='range' value={value} onChange={setValue} weekStartsOn={1} numberOfMonths={2} todayText='Heute' />
+    <NoSSR>
+      <Calendar mode='range' value={value} onChange={setValue} weekStartsOn={1} numberOfMonths={2} todayText='Heute' />
+    </NoSSR>
   )
 }
 
