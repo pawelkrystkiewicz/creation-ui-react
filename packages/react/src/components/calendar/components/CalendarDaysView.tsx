@@ -1,13 +1,8 @@
-import { Flex } from '@root/components/flex'
 import { useTheme } from '@root/theme'
 import { FC, useCallback, useMemo, type ReactNode } from 'react'
 import { useCalendar } from '../calendar.context'
 import { calendarDaysViewClasses, dayRowClasses } from '../classes'
-import {
-  getFirstDayOfWeek,
-  isDateInDisplayedMonth,
-  isWeekendIdx,
-} from '../utils'
+import { isDateInDisplayedMonth, isWeekendIdx } from '../utils'
 
 interface CalendarDaysViewProps {
   offsetMonth?: 0 | 1
@@ -24,7 +19,6 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     setSelectedDates,
     mode,
     size,
-    locale,
     weekStartsOn,
   } = useCalendar()
   const { styles } = useTheme()
@@ -32,14 +26,6 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
   //adjust for offset month
   const viewDate = new Date(originalViewDate)
   viewDate.setMonth(originalViewDate.getMonth() + offsetMonth)
-
-  const firstDayOfWeek = getFirstDayOfWeek(new Date(), weekStartsOn)
-
-  const dayNames = Array.from({ length: 7 }, (_, i) =>
-    new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(
-      new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1))
-    )
-  )
 
   const withThemeDaysClasses = useMemo(
     () => calendarDaysViewClasses(styles),
@@ -157,10 +143,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
   }
 
   return (
-    <div
-      className='grid grid-flow-row w-full'
-      onClick={handleRowClick}
-    >
+    <div className='grid grid-flow-row w-full gap-y-1' onClick={handleRowClick}>
       {rows}
     </div>
   )

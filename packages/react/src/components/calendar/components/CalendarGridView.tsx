@@ -17,9 +17,9 @@ export const CalendarGridView: FC<CalendarGridViewProps> = ({
   entries,
 }) => {
   return (
-    <div className='grid grid-cols-4 grid-rows-3 justify-items-center'>
+    <div className='grid grid-cols-4 grid-rows-3 place-items-center w-full h-full place-self-center'>
       <For each={entries}>
-        {(period, index) => (
+        {period => (
           <PeriodButton
             size={size}
             key={period}

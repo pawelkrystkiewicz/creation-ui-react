@@ -1,2 +1,2 @@
-export { default as Calendar } from './calendar'
+export { default as Calendar } from './CalendarController'
 export * from './calendar.types'
