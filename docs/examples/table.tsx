@@ -138,15 +138,15 @@ export const TableExample = () => {
         },
       },
       {
-        accessorKey: 'status',
+        accessorKey: 'color',
         header: () => <div className='mx-auto'>Status</div>,
-        id: 'status',
+        id: 'color',
         cell: info => {
-          const status = info.getValue() as string
+          const color = info.getValue() as string
 
-          const label = status === 'primary' ? 'Active' : status
+          const label = color === 'primary' ? 'Active' : color
 
-          return <Chip status={status as Person['status']} size='sm' uppercase label={label} />
+          return <Chip color={color as Person['color']} size='sm' uppercase label={label} />
         },
         enableColumnFilter: false,
         meta: {

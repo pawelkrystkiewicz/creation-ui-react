@@ -34,7 +34,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       circle,
       size = theme.size,
       variant = 'contained',
-      status = 'primary',
+      color = 'primary',
       fullWidth,
       uppercase,
       ...rest
@@ -46,11 +46,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const loaderColor = !loading
       ? 'white'
-      : getLoaderColor(variant, status, loaderInheritsColor, isDarkMode)
+      : getLoaderColor(variant, color, loaderInheritsColor, isDarkMode)
 
     const classes = themeClasses({
       size,
-      status,
+      color,
       circle,
       disabled,
       uppercase,

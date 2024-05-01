@@ -54,7 +54,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     filterSelectedOptions = false,
     defaultTagProps = {
       variant: 'outlined',
-      status: undefined,
+      color: 'mono',
     },
     autoHighlight = false,
     onChange,

@@ -19,7 +19,7 @@ export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
     ],
     {
       variants: {
-        status: {
+        color: {
           primary: ['text-primary', 'bg-primary', 'border-primary'],
           success: ['text-success', 'bg-success', 'border-success'],
           error: ['text-error', 'bg-error', 'border-error'],
@@ -51,7 +51,7 @@ export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
       },
       compoundVariants:[
         {
-          status: 'mono',
+          color: 'mono',
           variant: 'contained',
           class: ['dark:text-black'],
         }

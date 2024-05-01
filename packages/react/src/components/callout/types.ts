@@ -1,6 +1,6 @@
 import type { ElementColor, ElementVariant } from '@types'
 
 export interface CalloutProps extends React.HTMLAttributes<HTMLDivElement> {
-  status?: ElementColor
+  color?: ElementColor
   variant?: ElementVariant
 }

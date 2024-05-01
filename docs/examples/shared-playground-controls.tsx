@@ -131,7 +131,7 @@ export const variantBaseControl: PlaygroundControl = {
 }
 
 export const statusControl: PlaygroundControl = {
-  name: 'status',
+  name: 'color',
   type: 'array',
   defaultValue: 'primary',
   component: 'colors',
@@ -139,7 +139,7 @@ export const statusControl: PlaygroundControl = {
 }
 
 export const statusControlWithUndef: PlaygroundControl = {
-  name: 'status',
+  name: 'color',
   type: 'array',
   defaultValue: 'primary',
   component: 'colors',

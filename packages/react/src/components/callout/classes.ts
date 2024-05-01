@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority'
 
 export const calloutClasses = cva(['p-5', 'rounded-md', 'w-full'], {
   variants: {
-    status: {
+    color: {
       primary: ['bg-primary', 'text-primary', 'border-primary'],
       error: ['bg-error', 'text-error', 'border-error'],
       success: ['bg-success', 'text-success', 'border-success'],
@@ -18,7 +18,7 @@ export const calloutClasses = cva(['p-5', 'rounded-md', 'w-full'], {
   },
   compoundVariants: [
     {
-      status: 'mono',
+      color: 'mono',
       variant: 'contained',
       class: [
         'bg-black',
@@ -29,12 +29,12 @@ export const calloutClasses = cva(['p-5', 'rounded-md', 'w-full'], {
       ],
     },
     {
-      status: 'mono',
+      color: 'mono',
       variant: 'outlined',
       class: ['dark:text-white', 'text-black', 'border', '!bg-opacity-10'],
     },
     {
-      status: 'mono',
+      color: 'mono',
       variant: 'text',
       class: ['dark:text-white', 'text-black', 'bg-opacity-0'],
     },

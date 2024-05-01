@@ -10,7 +10,7 @@ export const Chip = (props: ChipProps) => {
   const {
     //
     label,
-    status = 'primary',
+    color = 'primary',
     size = defaultSize,
     variant = defaultVariant,
     onDelete,
@@ -32,7 +32,7 @@ export const Chip = (props: ChipProps) => {
       style={style}
       className={withTheme({
         size,
-        status: style ? undefined : status,
+        color: style ? undefined : color,
         variant,
         uppercase,
         interactive,
@@ -41,7 +41,7 @@ export const Chip = (props: ChipProps) => {
       onClick={onClick}
     >
       <Show when={!!startAdornment}>{startAdornment}</Show>
-      <span className={cx?.container?.inner}>{label ?? status}</span>
+      <span className={cx?.container?.inner}>{label ?? color}</span>
       <Show when={!!endAdornment}>{endAdornment}</Show>
       <Show when={removable}>
         <div className='rounded-full'>

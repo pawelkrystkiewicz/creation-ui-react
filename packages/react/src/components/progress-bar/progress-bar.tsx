@@ -14,11 +14,11 @@ const ProgressBar = (props: ProgressBarProps) => {
     formatDisplayValue = formatDisplayValueDefault,
     className,
     size = defaultSize,
-    status = 'primary',
+    color = 'primary',
     invertThreshold = INVERT_THRESHOLD,
   } = props
 
-  const isMono = status === 'mono'
+  const isMono = color === 'mono'
   const value = isNaN(_value) ? 0 : Math.min(100, Math.max(0, _value))
   const invert = value >= invertThreshold
   const formattedValue = formatDisplayValue(value)
@@ -27,7 +27,7 @@ const ProgressBar = (props: ProgressBarProps) => {
   return (
     <div {...props} className={container({  className })}>
       <div
-        className={progressBar({ size, value: value !== 0, status })}
+        className={progressBar({ size, value: value !== 0, color })}
         style={{ width }}
       />
       <Show when={showValue && size !== 'sm'}>

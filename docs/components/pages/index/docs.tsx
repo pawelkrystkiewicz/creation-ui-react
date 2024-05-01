@@ -22,7 +22,7 @@ export const Docs = () => (
       <p>Your adventure awaits.</p>
     </div>
 
-    <Button size='lg' className={clsx(gradient.bg, 'text-2xl hover:scale-110 mt-20')} status='info'>
+    <Button size='lg' className={clsx(gradient.bg, 'text-2xl hover:scale-110 mt-20')} color='info'>
       <Link href='/docs'>Ready? See the docs &rarr;</Link>
     </Button>
   </div>

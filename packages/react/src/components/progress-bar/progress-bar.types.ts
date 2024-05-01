@@ -21,9 +21,10 @@ export interface ProgressBarProps {
    * Function to format the value of the progress bar.
    */
   formatDisplayValue?: (value: number) => string
-
-  status?: ElementColor
-
+  /**
+   * Color of element
+   */
+  color?: ElementColor
   /**
    * This will decide when to invert the progress bar when the value is below the threshold.
    * If your text is longer than default string `{value}%` then you will find this option useful.

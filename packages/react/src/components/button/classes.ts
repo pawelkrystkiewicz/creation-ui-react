@@ -33,7 +33,7 @@ export const buttonClasses = ({
           lg: ['px-6', size.lg.height, size.lg.fontSize],
         },
         variant: triggers,
-        status: {
+        color: {
           primary: ['bg-primary', 'text-primary', 'border-primary'],
           success: ['bg-success', 'text-success', 'border-success'],
           warning: ['bg-warning', 'text-warning', 'border-warning'],
@@ -50,7 +50,7 @@ export const buttonClasses = ({
         fullWidth: { true: '!w-full' },
       },
       defaultVariants: {
-        status: 'primary',
+        color: 'primary',
         size: 'md',
         circle: false,
       },
@@ -72,7 +72,7 @@ export const buttonClasses = ({
           className: ['!px-1', '!size-20', '!rounded-full'],
         },
         {
-          status: 'mono',
+          color: 'mono',
           variant: 'contained',
           className: ['dark:text-black', 'text-white'],
         },

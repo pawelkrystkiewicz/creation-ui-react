@@ -59,7 +59,7 @@ export const progressBar = cva(
       value: {
         false: ['!bg-transparent'],
       },
-      status: {
+      color: {
         primary: ['bg-primary'],
         success: ['bg-success'],
         warning: ['bg-warning'],
@@ -70,7 +70,7 @@ export const progressBar = cva(
     },
     defaultVariants: {
       size: 'md',
-      status: 'primary',
+      color: 'primary',
     },
   }
 )

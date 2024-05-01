@@ -56,7 +56,7 @@ export const endAdornmentProp: DocumentedProperty = {
 
 export const statusProp: DocumentedProperty = {
   description: 'Status',
-  name: 'status',
+  name: 'color',
   type: ListOrTypes([...ELEMENT_STATUS, 'undefined']),
 }
 

@@ -29,13 +29,13 @@ export type ButtonProps = React.ComponentProps<'button'> & {
   /**
    * Status of the button
    */
-  status?: ElementColor
+  color?: ElementColor
   /**
    * Is button text to be uppercase
    */
   uppercase?: boolean
   /**
-   * Should loader be colored in the same manner as current button's `status`. Default `true`
+   * Should loader be colored in the same manner as current button's `color`. Default `true`
    */
   loaderInheritsColor?: boolean
   /**

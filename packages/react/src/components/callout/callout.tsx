@@ -7,14 +7,14 @@ export const Callout = (props: CalloutProps) => {
   const {
     children,
     className,
-    status = 'primary',
+    color = 'primary',
     variant = defaultVariant,
     ...rest
   } = props
 
   return (
     <div
-      className={calloutClasses({ status, variant, className })}
+      className={calloutClasses({ color, variant, className })}
       role='alert'
       {...rest}
     >

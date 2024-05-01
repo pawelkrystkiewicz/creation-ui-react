@@ -27,7 +27,7 @@ import clsx from 'clsx'
 // { description: 'disables InteractiveContainer when button is disabled' },
 // {
 //   description:
-//     'applies the correct styles for each combination of variant and status',
+//     'applies the correct styles for each combination of variant and color',
 // },
 // { description: 'applies the correct styles when circle prop is true' },
 
@@ -164,16 +164,16 @@ describe('Button', () => {
     cy.get('[data-testid="cui-loader"]').should('be.visible')
   })
   ;['light', 'dark'].forEach(mode =>
-    describe(`should apply colors according to [variant] [status] and mode`, () => {
+    describe(`should apply colors according to [variant] [color] and mode`, () => {
       describe(mode, () => {
         ELEMENT_VARIANTS.forEach(variant => {
           describe(variant, () => {
-            ELEMENT_STATUS.forEach(status => {
-              it(status, () => {
+            ELEMENT_STATUS.forEach(color => {
+              it(color, () => {
                 cy.mount(
                   <div className={clsx(`w-full h-full`, mode === 'dark' && 'bg-black dark')}>
-                    <Button status={status} variant={variant}>
-                      {status}
+                    <Button color={color} variant={variant}>
+                      {color}
                     </Button>
                   </div>
                 )
@@ -183,7 +183,7 @@ describe('Button', () => {
                   .invoke('attr', 'class') // returns "class1 class2 class3"
                   .then(classList => {
                     const classes = classList?.split(' ')
-                    const expectedClasses = modeVariantStatusExpectedClasses[mode][variant][status]
+                    const expectedClasses = modeVariantStatusExpectedClasses[mode][variant][color]
                     expectedClasses.forEach(expectedClass => expect(classes).to.include(expectedClass))
                   })
               })

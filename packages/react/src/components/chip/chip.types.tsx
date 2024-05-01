@@ -16,7 +16,7 @@ export type ChipProps = Partial<
   /**
    * Status of the element
    */
-  status?: ElementColor
+  color?: ElementColor
   /**
    * Should have border?
    */
@@ -47,7 +47,7 @@ export type ChipProps = Partial<
    */
   cx?: Pick<InputClassNamesAPI, 'container'>
   /**
-   * Style overrides, helpful with adding custom colors. Passing `style` will disable `status` prop.
+   * Style overrides, helpful with adding custom colors. Passing `style` will disable `color` prop.
    */
   style?: React.CSSProperties
 }
