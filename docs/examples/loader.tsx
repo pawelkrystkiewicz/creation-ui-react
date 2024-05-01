@@ -1,9 +1,9 @@
 import { Container } from '@components/container'
+import { Playground } from '@components/playground'
 import { Loader, LoaderProps } from '@creation-ui/react'
 import { DocumentedProperty } from '@models/system'
-import { classNameProps, sizeProp, colorProp } from './shared-props'
-import { Playground } from '@components/playground'
-import { loadingControl, sizeControl, colorControl, colorsBlackAndWhite } from './shared-playground-controls'
+import { colorsBlackAndWhite, sizeControl } from './shared-playground-controls'
+import { classNameProps, colorProp, sizeProp } from './shared-props'
 
 export const LoaderExample = (props: LoaderProps) => (
   <Container>
@@ -12,16 +12,7 @@ export const LoaderExample = (props: LoaderProps) => (
 )
 
 export const LoaderPlayground = () => (
-  <Playground
-    component={Loader}
-    name='Loader'
-    controls={[
-      //
-      sizeControl,
-      loadingControl,
-      colorsBlackAndWhite,
-    ]}
-  />
+  <Playground component={Loader} name='Loader' controls={[sizeControl, colorsBlackAndWhite]} />
 )
 
 export const properties: DocumentedProperty[] = [sizeProp, colorProp, classNameProps]
