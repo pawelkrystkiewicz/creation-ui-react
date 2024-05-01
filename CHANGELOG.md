@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.3](https://github.com/creation-ui/react/compare/v14.1.2...v14.1.3) (2024-05-01)
+
+
+### Bug Fixes
+
+* export useDetectDarkMode ([a24ce9d](https://github.com/creation-ui/react/commit/a24ce9d7fb5f1991e8a5ee1544d6bd33427cd959))
+
 ## [14.1.2](https://github.com/creation-ui/react/compare/v14.1.1...v14.1.2) (2024-05-01)
 
 
