@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.2](https://github.com/creation-ui/react/compare/v14.1.1...v14.1.2) (2024-05-01)
+
+
+### Bug Fixes
+
+* update node version in publish job ([01694ae](https://github.com/creation-ui/react/commit/01694aebedf8d6de02f6fecd71eee426863f04ed))
+
 ## [14.1.1](https://github.com/creation-ui/react/compare/v14.1.0...v14.1.1) (2024-05-01)
 
 

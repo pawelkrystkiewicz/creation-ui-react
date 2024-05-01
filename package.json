@@ -1,6 +1,6 @@
 {
   "name": "creation-ui-monorepo",
-  "version": "14.1.1",
+  "version": "14.1.2",
   "description": "React.js UI library.",
   "main": "index.js",
   "author": {
