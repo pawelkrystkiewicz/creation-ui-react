@@ -107,11 +107,13 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
             <ShowFirstMatching>
               <Show when={loading}>
                 <Loader
-                  className={inputIcon({
-                    position: 'right',
-                    type: type as any,
-                    className: [styles.animations.microInteractionsAll],
-                  })}
+                  cx={{
+                    outer: inputIcon({
+                      position: 'right',
+                      type: type as any,
+                      className: [styles.animations.microInteractionsAll],
+                    }),
+                  }}
                   size={size === 'lg' ? 'md' : 'sm'}
                 />
               </Show>

@@ -82,7 +82,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               <Loader size={size} color={loaderColor} />
             </Show>
             <Show when={centerSpinner}>
-              <LoadingOverlay active color={loaderColor} />
+              <LoadingOverlay active loaderColor={loaderColor} />
             </Show>
           </ShowFirstMatching>
           <>{iconLeft}</>

@@ -7,20 +7,19 @@ export const Loader = (props: LoaderProps) => {
   const { size: defaultSize, styles } = useTheme()
   const {
     //
-    className,
     color = 'primary',
-    innerClassName,
     size = defaultSize,
+    cx
   } = props
 
   return (
-    <div className={twMerge(loaderClasses, className)}>
+    <div className={twMerge(loaderClasses, cx?.outer)}>
       <svg
         aria-hidden='true'
         data-testid='cui-loader'
         className={loaderIconClasses({
+          className: [styles.size[size].square, cx?.inner],
           color,
-          className: [styles.size[size].square, innerClassName],
         })}
         viewBox='0 0 100 100'
         fill='none'

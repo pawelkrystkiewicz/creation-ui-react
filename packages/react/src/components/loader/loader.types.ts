@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '@types'
+import type { ElementSize } from '@types'
 
 export type LoaderColor =
   | 'primary'
@@ -8,11 +8,21 @@ export type LoaderColor =
   | 'info'
   | 'white'
   | 'black'
-export interface LoaderProps
-  extends Pick<BaseComponentProps, 'size' | 'className'> {
+
+export type LoaderProps = {
+  /**
+   * Color of the loader
+   */
   color?: LoaderColor
   /**
-   * Inner class name applied to SVG element
+   * Class names API. Inner will be applied to SVG element, outer to the container.
    */
-  innerClassName?: string
+  cx?: {
+    outer?: string
+    inner?: string
+  }
+  /**
+   * Loader size
+   */
+  size?: ElementSize
 }

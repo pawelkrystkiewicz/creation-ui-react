@@ -5,7 +5,7 @@ import { classNameProps, sizeProp } from './shared-props'
 
 export const LoaderExample = (props: LoaderProps) => (
   <Container>
-    <Loader {...props} />
+    <Loader {...props}/>
   </Container>
 )
 

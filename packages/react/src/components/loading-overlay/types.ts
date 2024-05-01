@@ -1,14 +1,16 @@
+import type { LoaderProps, OverlayProps } from '@components'
 import type { ClassName, ElementSize } from '@types'
-import type { LoaderProps } from '@components'
-import type { OverlayProps } from '@components'
 
 export interface LoadingOverlayProps
-  extends LoaderProps,
-    Partial<Omit<OverlayProps, 'className'>> {
+  extends Partial<Omit<OverlayProps, 'className'>> {
   size?: ElementSize
-  // classes modification interface
+  // Classes modification interface
   cx?: {
     overlay?: ClassName
-    loader?: { outer?: ClassName; inner?: ClassName }
+    loader?: LoaderProps['cx']
   }
+  /**
+   * Loader color
+   */
+  loaderColor?: LoaderProps['color']
 }
