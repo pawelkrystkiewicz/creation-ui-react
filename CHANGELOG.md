@@ -1,5 +1,19 @@
 # Changelog
 
+## [14.1.0](https://github.com/creation-ui/react/compare/v14.0.0...v14.1.0) (2024-05-01)
+
+
+### Features
+
+* add "mono" ElementStatus, rename ElementStatus to ElementColor ([19b089d](https://github.com/creation-ui/react/commit/19b089d85d6345a6e9b221f01e2175b162187d76))
+* rename status to color ([7c0859a](https://github.com/creation-ui/react/commit/7c0859aced95f77576f2831aeb784d8994d835b4))
+
+
+### Bug Fixes
+
+* rename ElementStatus ([93ec595](https://github.com/creation-ui/react/commit/93ec595f056dab15ce4499905d79d46eb904ec14))
+* tsc errors ([ebc586b](https://github.com/creation-ui/react/commit/ebc586bae284345cf6a4fe804c0526839fe23fa8))
+
 ## [14.0.0](https://github.com/creation-ui/react/compare/v13.8.0...v14.0.0) (2024-04-25)
 
 
