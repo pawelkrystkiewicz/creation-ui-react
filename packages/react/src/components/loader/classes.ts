@@ -10,12 +10,17 @@ export const loaderClasses = clsx(
 
 export const loaderIconClasses = cva(['animate-spin', 'text-info/25'], {
   variants: {
-    white: {
-      false: ['fill-primary'],
-      true: ['fill-white'],
+    color: {
+      error: 'fill-error',
+      info: 'fill-info',
+      primary: 'fill-primary',
+      success: 'fill-success',
+      warning: 'fill-warning',
+      white: 'fill-white',
+      black: 'fill-black',
     },
   },
   defaultVariants: {
-    white: false,
+    color: 'primary',
   },
 })

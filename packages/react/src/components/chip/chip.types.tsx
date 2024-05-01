@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import type {
   BaseComponentProps,
   ElementBaseVariant,
-  ElementStatus,
+  ElementColor,
   InputClassNamesAPI,
 } from '@types'
 
@@ -16,7 +16,7 @@ export type ChipProps = Partial<
   /**
    * Status of the element
    */
-  status?: ElementStatus
+  status?: ElementColor
   /**
    * Should have border?
    */

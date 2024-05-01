@@ -1,4 +1,4 @@
-import type { ClassName, ElementSize, ElementStatus } from '@types'
+import type { ClassName, ElementSize, ElementColor } from '@types'
 
 export interface ProgressBarProps {
   /**
@@ -22,7 +22,7 @@ export interface ProgressBarProps {
    */
   formatDisplayValue?: (value: number) => string
 
-  status?: ElementStatus
+  status?: ElementColor
 
   /**
    * This will decide when to invert the progress bar when the value is below the threshold.

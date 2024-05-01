@@ -44,16 +44,6 @@
   -moz-appearance: none !important;
 }
 
-.contrasting-text {
-  background: inherit;
-  background-clip: text;
-  filter: invert(1);
-
-  &.noinvert {
-    filter: none;
-  }
-}
-
 :root {
   /* text */
   --text-primary: 0 0% 1%;
@@ -111,3 +101,4 @@ body {
     display: none;
   }
 }
+

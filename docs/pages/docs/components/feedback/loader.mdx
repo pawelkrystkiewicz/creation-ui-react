@@ -8,25 +8,26 @@ import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES } from '@creation-ui/react'
 
 ```tsx copy
-import { Loader } from '@creation-ui/react';
+import { Loader } from '@creation-ui/react'
 
-<Loader />
+;<Loader />
 ```
 
 <LoaderExample />
 
 ### Customisation
+
 Loader can be modified by using `className` property:
+
 - text color styling to change circle background
 - fill color to change the short spinning part
 
 ```tsx copy
-  <Loader className={'fill-white text-red-800'} />
+<Loader innerClassName={'fill-white text-red-800'} />
 ```
 
-
 <div className={'bg-black p-3 rounded-md'}>
-  <LoaderExample className={'fill-white text-red-800'} />
+  <LoaderExample innerClassName={'fill-white text-red-800'} />
 </div>
 
 ## Sizes

@@ -25,11 +25,7 @@ export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
           error: ['text-error', 'bg-error', 'border-error'],
           warning: ['text-warning', 'bg-warning', 'border-warning'],
           info: ['text-info', 'bg-info', 'border-info'],
-          undefined: [
-            'bg-text-primary',
-            'text-text-primary',
-            'border-text-primary',
-          ],
+          mono: ['bg-text-primary', 'text-text-primary', 'border-text-primary'],
         },
         size: {
           sm: ['!text-xs', 'px-1.5'],
@@ -53,5 +49,12 @@ export const chipClasses = ({ animations, triggers }: ThemePreloadedClasses) =>
         uppercase: false,
         interactive: false,
       },
+      compoundVariants:[
+        {
+          status: 'mono',
+          variant: 'contained',
+          class: ['dark:text-black'],
+        }
+      ]
     }
   )

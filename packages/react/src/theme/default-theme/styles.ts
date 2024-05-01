@@ -23,18 +23,24 @@ export const styles: ThemeStyles = {
   triggers: {
     contained: [
       'hover:opacity-80',
-      'text-white',
       'opacity-100',
       'active:opacity-65',
       'border',
+      'text-white',
     ],
     outlined: [
       'hover:bg-opacity-10',
       'bg-opacity-0',
+      'dark:bg-opacity-0',
       'dark:hover:bg-opacity-25',
       'border',
     ],
-    text: ['hover:text-opacity-65', 'bg-opacity-0', 'border-transparent'],
+    text: [
+      'hover:text-opacity-65',
+      'bg-opacity-0',
+      'dark:bg-opacity-0',
+      'border-transparent',
+    ],
   },
   inputs: {
     base: ['bg-background-input', 'border', 'border-border'],

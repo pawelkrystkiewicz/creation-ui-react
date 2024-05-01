@@ -1,9 +1,18 @@
 import type { BaseComponentProps } from '@types'
 
+export type LoaderColor =
+  | 'primary'
+  | 'error'
+  | 'warning'
+  | 'success'
+  | 'info'
+  | 'white'
+  | 'black'
 export interface LoaderProps
   extends Pick<BaseComponentProps, 'size' | 'className'> {
+  color?: LoaderColor
   /**
-   * Use white loader
+   * Inner class name applied to SVG element
    */
-  white?: boolean
+  innerClassName?: string
 }

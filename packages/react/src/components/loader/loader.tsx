@@ -5,7 +5,13 @@ import { twMerge } from 'tailwind-merge'
 
 export const Loader = (props: LoaderProps) => {
   const { size: defaultSize, styles } = useTheme()
-  const { size = defaultSize, className, white } = props
+  const {
+    //
+    className,
+    color = 'primary',
+    innerClassName,
+    size = defaultSize,
+  } = props
 
   return (
     <div className={twMerge(loaderClasses, className)}>
@@ -13,8 +19,8 @@ export const Loader = (props: LoaderProps) => {
         aria-hidden='true'
         data-testid='cui-loader'
         className={loaderIconClasses({
-          className: [styles.size[size].square],
-          white,
+          color,
+          className: [styles.size[size].square, innerClassName],
         })}
         viewBox='0 0 100 100'
         fill='none'

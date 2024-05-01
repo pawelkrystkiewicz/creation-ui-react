@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { ElementSize, ElementStatus, ElementVariant } from '@types'
+import type { ElementSize, ElementColor, ElementVariant } from '@types'
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   /**
@@ -29,7 +29,7 @@ export type ButtonProps = React.ComponentProps<'button'> & {
   /**
    * Status of the button
    */
-  status?: ElementStatus
+  status?: ElementColor
   /**
    * Is button text to be uppercase
    */

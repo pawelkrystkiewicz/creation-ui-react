@@ -7,7 +7,7 @@ export const Callout = (props: CalloutProps) => {
   const {
     children,
     className,
-    status,
+    status = 'primary',
     variant = defaultVariant,
     ...rest
   } = props

@@ -4,6 +4,7 @@ export const ELEMENT_STATUS = [
   'warning',
   'success',
   'info',
+  'mono',
 ] as const
 
 export const ELEMENT_SIZES = ['sm', 'md', 'lg'] as const
@@ -39,7 +40,7 @@ export const ELEMENT_STATES = [
 export type HTMLInputType = string
 
 export type Breakpoints = (typeof BREAKPOINTS)[number]
-export type ElementStatus = (typeof ELEMENT_STATUS)[number]
+export type ElementColor = (typeof ELEMENT_STATUS)[number]
 export type ElementState = (typeof ELEMENT_STATES)[number]
 export type ElementSize = (typeof ELEMENT_SIZES)[number]
 export type ElementOrientation = (typeof ELEMENT_ORIENTATION)[number]

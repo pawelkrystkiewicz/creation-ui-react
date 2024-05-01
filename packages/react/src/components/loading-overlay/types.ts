@@ -9,6 +9,6 @@ export interface LoadingOverlayProps
   // classes modification interface
   cx?: {
     overlay?: ClassName
-    loader?: ClassName
+    loader?: { outer?: ClassName; inner?: ClassName }
   }
 }

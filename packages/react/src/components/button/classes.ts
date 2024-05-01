@@ -1,4 +1,3 @@
-import { groupPositionClasses } from '@root/classes'
 import { ThemePreloadedClasses } from '@root/theme'
 import { cva } from 'class-variance-authority'
 
@@ -35,35 +34,16 @@ export const buttonClasses = ({
         },
         variant: triggers,
         status: {
-          primary: [
-            'bg-primary',
-            'text-primary',
-            '!focus-visible:outline-primary',
-            'border-primary',
-          ],
-          success: [
-            'bg-success',
-            'text-success',
-            '!focus-visible:outline-success',
-            'border-success',
-          ],
-          warning: [
-            'bg-warning',
-            'text-warning',
-            '!focus-visible:outline-warning',
-            'border-warning',
-          ],
-          error: [
-            'bg-error',
-            'text-error',
-            '!focus-visible:outline-error',
-            'border-error',
-          ],
-          info: [
-            'bg-info',
-            'text-info',
-            '!focus-visible:outline-info',
-            'border-info',
+          primary: ['bg-primary', 'text-primary', 'border-primary'],
+          success: ['bg-success', 'text-success', 'border-success'],
+          warning: ['bg-warning', 'text-warning', 'border-warning'],
+          error: ['bg-error', 'text-error', 'border-error'],
+          info: ['bg-info', 'text-info', 'border-info'],
+          mono: [
+            'bg-black',
+            'dark:bg-white',
+            'border-black',
+            'dark:border-white',
           ],
         },
         circle: { true: null, false: null },
@@ -90,6 +70,11 @@ export const buttonClasses = ({
           size: 'lg',
           circle: true,
           className: ['!px-1', '!size-20', '!rounded-full'],
+        },
+        {
+          status: 'mono',
+          variant: 'contained',
+          className: ['dark:text-black', 'text-white'],
         },
       ],
     }

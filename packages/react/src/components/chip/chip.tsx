@@ -10,7 +10,7 @@ export const Chip = (props: ChipProps) => {
   const {
     //
     label,
-    status,
+    status = 'primary',
     size = defaultSize,
     variant = defaultVariant,
     onDelete,

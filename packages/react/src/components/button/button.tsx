@@ -10,7 +10,8 @@ import { useTheme } from '@theme'
 import React, { useMemo } from 'react'
 import type { ButtonProps } from './button.types'
 import { buttonClasses } from './classes'
-import { CONTRASTING_VARIANT, loaderColorClasses } from './constants'
+import { getLoaderColor } from './utils'
+import { useDetectDarkMode } from '@root/hooks/use-detect-dark-mode'
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -22,7 +23,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       id,
       loaderInheritsColor = true,
-
       ...props
     },
     ref
@@ -39,15 +39,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       uppercase,
       ...rest
     } = props
-
+    const isDarkMode = useDetectDarkMode()
     const themeClasses = useMemo(() => buttonClasses(styles), [styles])
 
-    const isContrastReq = CONTRASTING_VARIANT.includes(variant)
     const disabled = loading || props.disabled
-    const loaderClasses =
-      !isContrastReq && loaderInheritsColor
-        ? loaderColorClasses[status]
-        : undefined
+
+    const loaderColor = !loading
+      ? 'white'
+      : getLoaderColor(variant, status, loaderInheritsColor, isDarkMode)
 
     const classes = themeClasses({
       size,
@@ -80,20 +79,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         >
           <ShowFirstMatching>
             <Show when={leftSpinner}>
-              <Loader
-                size={size}
-                white={isContrastReq}
-                className={loaderClasses}
-              />
+              <Loader size={size} color={loaderColor} />
             </Show>
             <Show when={centerSpinner}>
-              <LoadingOverlay
-                active
-                white={isContrastReq}
-                cx={{
-                  loader: loaderClasses,
-                }}
-              />
+              <LoadingOverlay active color={loaderColor} />
             </Show>
           </ShowFirstMatching>
           <>{iconLeft}</>

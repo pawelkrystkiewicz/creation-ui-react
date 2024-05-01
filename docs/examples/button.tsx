@@ -11,29 +11,39 @@ import {
   variantControl,
 } from './shared-playground-controls'
 import { iconProp } from './shared-props'
+import dynamic from 'next/dynamic'
+const NoSSR = dynamic(() => import('../components/no-ssr'), { ssr: false })
 
 export const ButtonPlayground = () => (
-  <Playground
-    component={Button}
-    name='Button'
-    controls={[
-      childrenControl,
-      sizeControl,
-      variantControl,
-      statusControl,
-      loadingControl,
-      disabledControl,
-      {
-        name: 'uppercase',
-        type: 'boolean',
-      },
-      fullWidthControl,
-      {
-        name: 'circle',
-        type: 'boolean',
-      },
-    ]}
-  />
+  <NoSSR>
+    <Playground
+      component={Button}
+      name='Button'
+      controls={[
+        childrenControl,
+        sizeControl,
+        variantControl,
+        statusControl,
+        loadingControl,
+        disabledControl,
+        {
+          name: 'uppercase',
+          type: 'boolean',
+        },
+        fullWidthControl,
+        {
+          name: 'circle',
+          type: 'boolean',
+        },
+        {
+          name: 'loaderInheritsColor',
+          type: 'boolean',
+          label: 'Loader inherits color',
+          defaultValue: true,
+        },
+      ]}
+    />
+  </NoSSR>
 )
 
 export const properties: DocumentedProperty[] = [
