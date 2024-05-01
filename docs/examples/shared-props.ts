@@ -54,7 +54,7 @@ export const endAdornmentProp: DocumentedProperty = {
   type: 'React.ReactNode',
 }
 
-export const statusProp: DocumentedProperty = {
+export const colorProp: DocumentedProperty = {
   description: 'Status',
   name: 'color',
   type: ListOrTypes([...ELEMENT_STATUS, 'undefined']),
@@ -172,7 +172,7 @@ export const inputBasePublicProps: DocumentedProperty[] = [
   sizeProp,
   variantProp,
   loadingProp,
-  statusProp,
+  colorProp,
   cxProps,
   disabledProp,
   readOnlyProp,

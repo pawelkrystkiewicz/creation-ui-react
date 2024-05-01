@@ -4,14 +4,25 @@ import { Playground } from '@components/playground'
 import { Chip, ELEMENT_SIZES } from '@creation-ui/react'
 import { mdiAccountOutline, mdiHelpCircle } from '@mdi/js'
 import { DocumentedProperty } from 'models/system'
-import { labelControl, sizeControl, statusControlWithUndef, variantBaseControl } from './shared-playground-controls'
-import { labelProp, sizeProp, statusProp } from './shared-props'
+import {
+  colorControl,
+  labelControl,
+  sizeControl,
+  variantBaseControl
+} from './shared-playground-controls'
+import { colorProp, labelProp, sizeProp } from './shared-props'
 
 export const ChipPlayground = () => (
   <Playground
     component={Chip}
     name='Chip'
-    controls={[labelControl, variantBaseControl, sizeControl, statusControlWithUndef]}
+    controls={[
+      //
+      labelControl,
+      variantBaseControl,
+      sizeControl,
+      colorControl,
+    ]}
   />
 )
 
@@ -71,4 +82,4 @@ export const CustomChip = () => (
   />
 )
 
-export const properties: DocumentedProperty[] = [labelProp, statusProp, sizeProp]
+export const properties: DocumentedProperty[] = [labelProp, colorProp, sizeProp]

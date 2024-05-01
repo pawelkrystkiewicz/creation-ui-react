@@ -130,7 +130,7 @@ export const variantBaseControl: PlaygroundControl = {
   values: VARIANTS_BASE,
 }
 
-export const statusControl: PlaygroundControl = {
+export const colorControl: PlaygroundControl = {
   name: 'color',
   type: 'array',
   defaultValue: 'primary',
@@ -138,14 +138,15 @@ export const statusControl: PlaygroundControl = {
   values: COLORS,
 }
 
-export const statusControlWithUndef: PlaygroundControl = {
+export const colorsBlackAndWhite: PlaygroundControl = {
   name: 'color',
   type: 'array',
   defaultValue: 'primary',
   component: 'colors',
   values: [
-    ...COLORS,
-    { value: undefined, label: 'undefined', className: 'border border-border background-transparent-check' },
+    ...COLORS.filter(({ value }) => value !== 'mono'),
+    { value: 'black', label: 'Black', className: 'bg-black border-white border' },
+    { value: 'white', label: 'White', className: 'bg-white border-border border' },
   ],
 }
 

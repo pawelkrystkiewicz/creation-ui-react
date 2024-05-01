@@ -5,17 +5,17 @@ import {
   CalloutProps,
   Description,
   ELEMENT_VARIANTS,
-  type ElementVariant,
   For,
   H5,
   Show,
   useTheme,
+  type ElementVariant,
 } from '@creation-ui/react'
 import { Flex } from '@creation-ui/react/dist/components/flex/flex'
-import { DocumentedProperty } from 'models/system'
-import { statusControlWithUndef } from './shared-playground-controls'
-import { childrenProp, statusProp, variantProp } from './shared-props'
 import clsx from 'clsx'
+import { DocumentedProperty } from 'models/system'
+import { colorControl } from './shared-playground-controls'
+import { childrenProp, colorProp, variantProp } from './shared-props'
 
 interface CalloutExampleProps extends Omit<CalloutProps, 'children' | 'variant'> {
   title?: string
@@ -49,7 +49,7 @@ export const CalloutPlayground = () => (
     name='Callout'
     showCode={false}
     controls={[
-      statusControlWithUndef,
+      colorControl,
       {
         name: 'title',
         type: 'string',
@@ -64,4 +64,4 @@ export const CalloutPlayground = () => (
   />
 )
 
-export const properties: DocumentedProperty[] = [childrenProp, statusProp, variantProp]
+export const properties: DocumentedProperty[] = [childrenProp, colorProp, variantProp]

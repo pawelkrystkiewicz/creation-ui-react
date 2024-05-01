@@ -7,7 +7,7 @@ import {
   fullWidthControl,
   loadingControl,
   sizeControl,
-  statusControl,
+  colorControl,
   variantControl,
 } from './shared-playground-controls'
 import { iconProp } from './shared-props'
@@ -23,7 +23,7 @@ export const ButtonPlayground = () => (
         childrenControl,
         sizeControl,
         variantControl,
-        statusControl,
+        colorControl,
         loadingControl,
         disabledControl,
         {

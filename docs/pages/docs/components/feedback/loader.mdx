@@ -2,18 +2,12 @@
 
 Animated spinner for indicating loading state
 
-import { LoaderExample, properties } from '@examples/loader'
+import { LoaderPlayground, LoaderExample, properties } from '@examples/loader'
 import PropsTable from '@components/props-table'
 import { UnfoldVariants } from '@components/unfold-variants'
 import { ELEMENT_SIZES } from '@creation-ui/react'
 
-```tsx copy
-import { Loader } from '@creation-ui/react'
-
-;<Loader />
-```
-
-<LoaderExample />
+<LoaderPlayground />
 
 ### Customisation
 
@@ -23,18 +17,12 @@ Loader can be modified by using `className` property:
 - fill color to change the short spinning part
 
 ```tsx copy
-<Loader innerClassName={'fill-white text-red-800'} />
+<LoaderExample cx={{ inner: 'fill-white text-red-800' }} />
 ```
 
 <div className={'bg-black p-3 rounded-md'}>
-  <LoaderExample innerClassName={'fill-white text-red-800'} />
+  <LoaderExample cx={{ inner: 'fill-white text-red-800' }} />
 </div>
-
-## Sizes
-
-This component supports `size` prop with values `sm`, `md`, `lg`:
-
-<UnfoldVariants component={LoaderExample} variants={ELEMENT_SIZES} prop='size' nameProp='label' />
 
 ## Component API
 
