@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.1.1](https://github.com/creation-ui/react/compare/v14.1.0...v14.1.1) (2024-05-01)
+
+
+### Bug Fixes
+
+* build errors, add playground for Loader with colorsBlackAndWhite ([f7f5a4d](https://github.com/creation-ui/react/commit/f7f5a4d314b839ae451b1187d4a2f8fd388ec912))
+* Loader type errors ([7e286eb](https://github.com/creation-ui/react/commit/7e286eb60bebe1901d0bee30d34ecd0271ea021d))
+
 ## [14.1.0](https://github.com/creation-ui/react/compare/v14.0.0...v14.1.0) (2024-05-01)
 
 
