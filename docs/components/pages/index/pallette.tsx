@@ -1,7 +1,7 @@
 import { docsMicroInteractions } from '@components/classes'
 import Icon from '@components/icon'
 import { HeaderSubbed } from '@components/page-elements/header-subbed'
-import { ElementStatus, ELEMENT_STATUS } from '@creation-ui/react'
+import { ElementColor, ELEMENT_STATUS } from '@creation-ui/react'
 import { mdiOpenInNew } from '@mdi/js'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -11,7 +11,7 @@ import { ColorBox } from '../../page-elements/pallette/color-box'
 const colors = ELEMENT_STATUS
 
 export const Pallette = () => {
-  const [state, setState] = useState<ElementStatus | null>(null)
+  const [state, setState] = useState<ElementColor | null>(null)
   return (
     <div className='h-screen-nextra w-full snap-start'>
       <HeaderSubbed href='#advantages' title='The colors' subtitle='We picked only the best' ariaLabel=' The colors' />
@@ -19,7 +19,7 @@ export const Pallette = () => {
         <div className={twMerge('flex', 'justify-evenly w-full', docsMicroInteractions)}>
           {colors.map(color => (
             <ColorBox
-              color={color as ElementStatus}
+              color={color as ElementColor}
               key={color}
               selected={state === color}
               onClick={setState.bind(null, state === color ? null : color)}

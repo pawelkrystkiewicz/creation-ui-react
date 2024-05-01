@@ -1,10 +1,10 @@
 import { docsMicroInteractions } from '@components/classes'
-import { ElementStatus } from '@creation-ui/react'
+import { ElementColor } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 
 interface ColorBoxProps {
-  color: ElementStatus
+  color: ElementColor
   onClick?: () => void
   selected?: boolean
 }
