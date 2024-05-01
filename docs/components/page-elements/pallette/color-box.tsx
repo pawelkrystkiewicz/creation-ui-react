@@ -30,6 +30,7 @@ const boxClasses = cva(
         warning: ['bg-warning'],
         error: ['bg-error'],
         info: ['bg-info'],
+        mono: ['bg-black', 'dark:bg-white'],
       },
     },
   },

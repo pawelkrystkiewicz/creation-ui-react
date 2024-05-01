@@ -32,7 +32,7 @@ type Person = {
   avatar: string
   firstName: string
   lastName: string
-  status: ChipProps['status']
+  status: ChipProps['color']
   workTime: number
 }
 
@@ -146,7 +146,7 @@ export const TableExample = () => {
 
           const label = color === 'primary' ? 'Active' : color
 
-          return <Chip color={color as Person['color']} size='sm' uppercase label={label} />
+          return <Chip color={color as Person['status']} size='sm' uppercase label={label} />
         },
         enableColumnFilter: false,
         meta: {
