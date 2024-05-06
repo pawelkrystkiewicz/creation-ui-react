@@ -15,7 +15,9 @@ Also @creation-ui/react package is required for the React packages to work. It c
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18",
-    "tailwindcss": "^3.0"
+    "react-input-mask": "^2",
+    "tailwindcss": "^3.4",
+    "@headlessui/react": "^1.7.13"
   },
 ```
 
