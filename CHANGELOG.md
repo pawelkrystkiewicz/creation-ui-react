@@ -1,5 +1,13 @@
 # Changelog
 
+## [14.1.4](https://github.com/creation-ui/react/compare/v14.1.3...v14.1.4) (2024-06-08)
+
+
+### Bug Fixes
+
+* export hooks ([2132a1e](https://github.com/creation-ui/react/commit/2132a1e4a2762577299d3c5b0b19b20b79c0562d))
+* update peerDeps ([d105a35](https://github.com/creation-ui/react/commit/d105a35dd3d9046848ade1849b81470c021b6eea))
+
 ## [14.1.3](https://github.com/creation-ui/react/compare/v14.1.2...v14.1.3) (2024-05-01)
 
 
