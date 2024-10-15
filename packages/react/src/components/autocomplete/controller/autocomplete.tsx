@@ -207,15 +207,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       })
     : options
 
-  const filteredOptions: T[] = useMemo(
-    () =>
-      open
-        ? filterSelectedOptions
-          ? filterOptions(initiallyFiltered, { query, getOptionLabel })
-          : options
-        : [],
-    [open]
-  )
+  const filteredOptions: T[] = open
+    ? filterOptions(initiallyFiltered, { query, getOptionLabel })
+    : []
 
   const toggleOpen = () => setOpen(!open)
 
