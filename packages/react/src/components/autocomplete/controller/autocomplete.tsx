@@ -207,9 +207,15 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       })
     : options
 
-  const filteredOptions: T[] = open
-    ? filterOptions(initiallyFiltered, { query, getOptionLabel })
-    : []
+  const filteredOptions: T[] = useMemo(
+    () =>
+      open
+        ? filterSelectedOptions
+          ? filterOptions(initiallyFiltered, { query, getOptionLabel })
+          : options
+        : [],
+    [open]
+  )
 
   const toggleOpen = () => setOpen(!open)
 
@@ -261,10 +267,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     value: query,
     placeholder,
     'aria-autocomplete': 'list',
-    onFocus() {
-      if (!query) {
-        setOpen(true)
-      }
+    onClick() {
+      setOpen(true)
     },
     onBlur() {
       retainInputValue()
