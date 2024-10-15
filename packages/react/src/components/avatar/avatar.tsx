@@ -34,7 +34,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
       className={avatar.img({ variant, container: true, className })}
       style={style}
     >
-      <ShowFirstMatching>
+      <>
         <Show when={!children}>
           <img
             {...rest}
@@ -43,7 +43,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
           />
         </Show>
         <Show when={!!children}>{children}</Show>
-      </ShowFirstMatching>
+      </>
     </div>
   )
 })

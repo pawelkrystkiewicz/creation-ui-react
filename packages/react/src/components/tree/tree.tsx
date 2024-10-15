@@ -1,15 +1,15 @@
 import { FC, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { useTheme } from '../../theme'
 import { ClearButton } from '../clear-button'
 import { Flex } from '../flex'
 import { For } from '../for'
+import { Loader } from '../loader'
 import { Menu } from '../menu'
 import { DropdownMenu } from '../shared/DropdownMenu'
-import { Show, ShowFirstMatching } from '../show'
+import { Show } from '../show'
 import { Branch } from './branch'
 import { BranchType, TreeProps } from './types'
-import { Loader } from '../loader'
-import { useTheme } from '../../theme'
 
 export const Tree: FC<TreeProps> = ({
   tree = [],
@@ -51,7 +51,7 @@ export const Tree: FC<TreeProps> = ({
           className={twMerge('cursor-pointer', cx?.container?.inner)}
         >
           <div className='truncate flex-grow'>
-            <ShowFirstMatching>
+            <>
               <Show when={!value}>
                 <span
                   className={twMerge(
@@ -68,7 +68,7 @@ export const Tree: FC<TreeProps> = ({
                   {value?.name}
                 </span>
               </Show>
-            </ShowFirstMatching>
+            </>
           </div>
           <Show when={loading}>
             <Loader size={size} />

@@ -104,7 +104,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
           <InputBaseContainerInner className={cx?.container?.inner} ref={ref}>
             <Adornment position='left' type={type} adornment={startAdornment} />
             {children}
-            <ShowFirstMatching>
+            <>
               <Show when={loading}>
                 <Loader
                   cx={{
@@ -117,7 +117,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
                   size={size === 'lg' ? 'md' : 'sm'}
                 />
               </Show>
-              <Show when={true}>
+              <Show when={!loading}>
                 <Adornment
                   position='right'
                   type={type}
@@ -131,7 +131,7 @@ const InputBase = forwardRef<HTMLDivElement, InputBaseProps>((props, ref) => {
                   }
                 />
               </Show>
-            </ShowFirstMatching>
+            </>
           </InputBaseContainerInner>
           <Description
             size={size}

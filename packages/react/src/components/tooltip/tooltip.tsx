@@ -1,9 +1,9 @@
+import { useTheme } from '@root/theme'
 import clsx from 'clsx'
+import { useMemo } from 'react'
+import { Show } from '../show'
 import { tooltip } from './classes'
 import type { TooltipProps } from './tooltip.types'
-import { useTheme } from '@root/theme'
-import { useMemo } from 'react'
-import { Show, ShowFirstMatching } from '../show'
 
 const Tooltip = (props: TooltipProps) => {
   const { styles, size: defaultSize } = useTheme()
@@ -19,9 +19,9 @@ const Tooltip = (props: TooltipProps) => {
   const withThemeTooltip = useMemo(() => tooltip(styles), [styles])
 
   return (
-    <ShowFirstMatching>
+    <>
       <Show when={!content}>{children}</Show>
-      <Show when={true}>
+      <Show when={!!content}>
         <div className={clsx(['relative', 'max-w-fit', 'group'])}>
           <div
             {...rest}
@@ -32,7 +32,7 @@ const Tooltip = (props: TooltipProps) => {
           {children}
         </div>
       </Show>
-    </ShowFirstMatching>
+    </>
   )
 }
 

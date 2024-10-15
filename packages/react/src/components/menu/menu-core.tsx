@@ -136,7 +136,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
               })
             )}
           >
-            <ShowFirstMatching>
+            <>
               <Show when={!!renderInput}>
                 {renderInput?.({
                   chevron: <Chevron open={isOpen} aria-hidden size={size} />,
@@ -144,7 +144,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
               </Show>
               <Show when={true}>
                 <Chevron
-                  open={isOpen}
+                  open={!renderInput}
                   aria-hidden
                   size={size}
                   className={'absolute left-0 top-1/2 -translate-y-1/2'}
@@ -156,9 +156,9 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                   {label}
                 </span>
               </Show>
-            </ShowFirstMatching>
+            </>
           </button>
-          <ShowFirstMatching>
+          <>
             <Show when={isNested && isOpen}>
               <div
                 // this is nested list container
@@ -202,7 +202,7 @@ export const MenuCore = React.forwardRef<HTMLButtonElement, MenuProps>(
                 </FloatingList>
               </MenuContext.Provider>
             </Show>
-          </ShowFirstMatching>
+          </>
         </div>
       </FloatingNode>
     )
