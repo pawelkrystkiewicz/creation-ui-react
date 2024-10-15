@@ -19,7 +19,7 @@ export const AutocompleteView: FC = () => {
     textNotFound,
     floatingContext,
     open,
-    propsList,
+    propsList: { key, ...propsList },
     onCreate,
     textCreate,
     query,
@@ -60,7 +60,7 @@ export const AutocompleteView: FC = () => {
             visuallyHiddenDismiss
           >
             <DropdownMenu {...propsList} open={open}>
-              <ShowFirstMatching>
+              <>
                 <Show when={hasOptions}>
                   {options?.map(renderOptionInternalContainer)}
                 </Show>
@@ -71,17 +71,17 @@ export const AutocompleteView: FC = () => {
                       allowCreate ? 'cursor-pointer' : 'text-center'
                     )}
                   >
-                    <ShowFirstMatching>
+                    <>
                       <Show when={!allowCreate}>{textNotFound}</Show>
                       <Show when={!!allowCreate}>
                         <span onClick={handleCreate}>
                           {textCreate} &quot;{query}&quot;
                         </span>
                       </Show>
-                    </ShowFirstMatching>
+                    </>
                   </li>
                 </Show>
-              </ShowFirstMatching>
+              </>
             </DropdownMenu>
           </FloatingFocusManager>
         </FloatingPortal>
