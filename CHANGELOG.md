@@ -1,5 +1,18 @@
 # Changelog
 
+## [14.2.0](https://github.com/creation-ui/react/compare/v14.1.4...v14.2.0) (2024-10-15)
+
+
+### Features
+
+* enhance Autocomplete behaviour ([d32b1fa](https://github.com/creation-ui/react/commit/d32b1fa5b86e4d531fe83c5e6ce2e087b2bd5d8f))
+
+
+### Bug Fixes
+
+* allow query to always filter options in dropdown ([57b7eb1](https://github.com/creation-ui/react/commit/57b7eb18a0bdf023caaea5ff596fa549a89bb724))
+* on next ShowFirstMatching seems broken ([7588742](https://github.com/creation-ui/react/commit/758874228c931731dff3a247a9e23606eb689b00))
+
 ## [14.1.4](https://github.com/creation-ui/react/compare/v14.1.3...v14.1.4) (2024-06-08)
 
 
