@@ -22,6 +22,11 @@ const sizeMap: Record<LogoSizes, string> = {
   hero: 'h-32 w-32',
 }
 
-export const Logo = ({ size = 'sm', className }: LogoProps) => (
-  <img src={'/logo.png'} alt='Logo' className={clsx('rounded-full', className, sizeMap[size])} />
-)
+const url = {
+  light: '/logo-black.svg',
+  dark: '/logo-white.svg',
+}
+
+export const Logo = ({ size = 'sm', className }: LogoProps) => {
+  return <img src={url.light} alt='Logo' className={clsx('rounded-full dark:invert', className, sizeMap[size])} />
+}

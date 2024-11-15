@@ -1,7 +1,4 @@
-import { Advantages } from '@components/pages/index/advantages'
-import { Docs } from '@components/pages/index/docs'
 import { Hero } from '@components/pages/index/hero'
-import { Pallette } from '@components/pages/index/pallette'
 // import { Playground } from '@components/pages/index/playground'
 import clsx from 'clsx'
 
@@ -21,8 +18,8 @@ export const Index = () => (
   <div className={mainBodyClasses}>
     <Hero />
     {/* <Playground /> */}
-    <Pallette />
+    {/* <Pallette />
     <Advantages />
-    <Docs />
+    <Docs /> */}
   </div>
 )
