@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.3.0](https://github.com/creation-ui/react/compare/v14.2.0...v14.3.0) (2024-11-15)
+
+
+### Features
+
+* add new logo ([8780d13](https://github.com/creation-ui/react/commit/8780d1322e87b82b275ba2c403c52d2235800d66))
+
 ## [14.2.0](https://github.com/creation-ui/react/compare/v14.1.4...v14.2.0) (2024-10-15)
 
 
