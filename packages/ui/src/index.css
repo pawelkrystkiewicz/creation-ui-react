@@ -1,0 +1,42 @@
+.reset-input,
+.reset-input:focus-visible {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.form-color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.form-color::-webkit-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+
+.form-color::-moz-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+
+.reset-select select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}

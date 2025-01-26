@@ -1,0 +1,93 @@
+# Theme
+
+TailwindCSS 4 allows for configuring theme by setting CSS variables, which makes it easy to customize it to match your needs.
+Below are the default values import using in your .css file.
+
+```css
+@import '@creation-ui/react/theme.css';
+```
+
+```css
+@theme {
+  --color-primary: oklch(60.48% 0.2165 257.21);
+  --color-warning: oklch(77.97% 0.1665 72.45);
+  --color-error: oklch(66.16% 0.2249 25.88);
+  --color-success: oklch(75.14% 0.1514 166.5);
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+}
+```
+
+Recommended font used by Creation UI is [Manrope](https://fonts.google.com/specimen/Manrope) for sans-serif and [Fira Code](https://fonts.google.com/specimen/Fira+Code) for monospace.
+The caveat is that you need to set it yourself in your project.
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+@theme {
+  /* ...other things from your theme config */
+  --font-sans: 'Manrope', 'sans-serif';
+  --font-mono: 'Fira Code', 'monospace';
+}
+```
+
+## What else is I need to know?
+
+This is the content of `index.css` imported to your project as
+
+```css
+@import '@creation-ui/react/index.css';
+```
+
+This allows to reset input styles and use some helper classes like `micro-interactions`
+
+```css
+.reset-input,
+.reset-input:focus-visible {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.form-color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.form-color::-webkit-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+
+.form-color::-moz-color-swatch {
+  @apply rounded-md;
+  border: none;
+}
+
+.reset-select select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.micro-interactions {
+  @apply transition-all duration-300 ease-in-out;
+}
+```

@@ -1,0 +1,12 @@
+@theme {
+  --font-sans: "Manrope", "sans-serif";
+  --font-mono: "Fira Code", "monospace";
+
+  --color-primary: oklch(60.48% 0.2165 257.21);
+  --color-warning: oklch(77.97% 0.1665 72.45);
+  --color-error: oklch(66.16% 0.2249 25.88);
+  --color-success: oklch(75.14% 0.1514 166.5);
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+}

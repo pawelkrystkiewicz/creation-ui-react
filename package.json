@@ -1,47 +1,41 @@
 {
-  "name": "creation-ui-monorepo",
-  "version": "14.2.0",
-  "description": "React.js UI library.",
-  "main": "index.js",
-  "author": {
-    "name": "Paweł Krystkiewicz",
-    "email": "pawelkrystkiewicz@outlook.com"
-  },
+  "name": "@creation-ui",
+  "private": true,
   "scripts": {
-    "build:cui": "pnpm run cui pnpm build",
-    "build:docs": "pnpm run docs build",
-    "docs": "pnpm --filter ./docs",
-    "cui": "pnpm --filter ./packages/react",
-    "lint": "next lint",
-    "nuke": "rm -rf node_modules yarn.lock pnpm-lock.yaml .next && pnpm install",
-    "amend": "git commit --amend --no-edit",
-    "import-check": "npx cycle-import-check",
-    "prettify": "prettier --write .",
-    "package:version": "pnpm run cui ci:version",
-    "package:build": "pnpm run cui build",
-    "package:publish": "pnpm run cui _publish",
-    "package": "pnpm package:version && pnpm package:build && pnpm package:publish",
-    "package:auto": "pnpm package:build && pnpm package:publish",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "ci:publish": "pnpm publish -r",
-    "ci:version": "git fetch --tags && npm version $(git describe --abbrev=0 --tags)",
-    "override-version": "sh ./override-version.sh"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=docs^... && changeset publish"
   },
   "devDependencies": {
-    "@types/react": "^18.2.75",
-    "@types/react-dom": "^18.2.24",
-    "eslint": "8.29.0",
-    "eslint-config-next": "13.0.6",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.7",
-    "typescript": "^5.4.4"
+    "@changesets/cli": "^2.27.1",
+    "prettier": "^3.2.5",
+    "turbo": "^2.3.4",
+    "vitest": "^3.0.3"
   },
-  "keywords": [],
-  "license": "MIT",
+  "packageManager": "bun@1.1.29",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@creation-ui/react": "workspace:*",
+    "@headlessui/react": "^2.2.0",
+    "@tailwindcss/postcss": "^4.0.0-beta.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "esbuild-plugin-copy": "^2.1.1",
+    "next": "^15.1.5",
+    "nextra": "^4.0.4",
+    "nextra-theme-docs": "^4.0.4",
+    "react": "^19.0.0",
+    "react-code-blocks": "^0.1.6",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.0.0-beta.9"
   }
 }
