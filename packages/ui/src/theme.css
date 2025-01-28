@@ -9,4 +9,7 @@
 
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+  --ui-size: 35px;
+  --ui-icon-size: calc(var(--ui-size) * 0.5);
 }

@@ -1,6 +1,5 @@
 import { Tabs } from 'nextra/components'
-import { SCRIPTS_TABS } from '../../../constants'
-// import { Button } from '@creation-ui/react/button'
+import { Button } from '@creation-ui/react/Button'
 
 # Creation UI
 
@@ -27,7 +26,7 @@ Also @creation-ui/react package is required for the React packages to work. It c
 
 To install Creation UI, run command below:
 
-<Tabs items={SCRIPTS_TABS}>
+<Tabs items={['yarn', 'npm', 'pnpm', 'bun']}  defaultIndex="0">
   <Tabs.Tab>
 
     ```bash copy
@@ -77,8 +76,8 @@ module.exports = config
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 
 2. Import library's CSS file into your app.
-If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
+   If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
+   If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
 import '@creation-ui/react/index.css'
@@ -90,8 +89,12 @@ import '@creation-ui/react/index.css'
 import { Button } from '@creation-ui/react'
 
 export default function App() {
-  return <Button>Click me</Button>
+  return <Button variant='contained'>Click me</Button>
 }
 ```
 
-{/* <Button>Click me</Button> */}
+4. Rendered button
+
+<div className='mt-3 items-center flex w-full justify-center'>
+  <Button variant='contained'>Click me</Button>
+</div>

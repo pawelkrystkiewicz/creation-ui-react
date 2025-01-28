@@ -9,10 +9,25 @@
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
     },
-    "./button": {
+    "./Button": {
       "types": "./src/Button.tsx",
       "import": "./dist/Button.mjs",
       "require": "./dist/Button.js"
+    },
+    "./Switch": {
+      "types": "./src/Switch.tsx",
+      "import": "./dist/Switch.mjs",
+      "require": "./dist/Switch.js"
+    },
+    "./Input": {
+      "types": "./src/Input.tsx",
+      "import": "./dist/Input.mjs",
+      "require": "./dist/Input.js"
+    },
+    "./Link": {
+      "types": "./src/Link.tsx",
+      "import": "./dist/Link.mjs",
+      "require": "./dist/Link.js"
     },
     "./TouchTarget": {
       "types": "./src/TouchTarget.tsx",

@@ -1,18 +1,23 @@
 import * as Headless from '@headlessui/react'
 import { cva } from 'class-variance-authority'
 import React, { forwardRef, ReactNode } from 'react'
-import { Link } from './link'
+import { Link } from './Link'
+import { Loader } from './loader'
 import { TouchTarget } from './TouchTarget'
-import type { ElementColor, ElementVariant } from './types'
+import type {
+  ElementColor,
+  ElementPlacementHorizontal,
+  ElementVariant,
+} from './types'
+import { InteractiveContainer } from './InteractiveContainer'
 
 const styles = cva(
   [
     // Base
     'relative',
     // 'micro-interactions',
-    'transition-all duration-300 ease-fluid',
+    'transition-all duration-300 ease-in-out',
     'isolate',
-    'cursor-pointer',
     'inline-flex',
     'items-center',
     'justify-center',
@@ -34,9 +39,19 @@ const styles = cva(
     'data-disabled:opacity-50',
     'data-disabled:pointer-events-none',
     'data-active:scale-95',
+    'h-[var(--ui-size)]',
   ],
   {
     variants: {
+      disabled: {
+        true: 'pointer-events-none opacity-50',
+      },
+      uppercase: {
+        true: 'uppercase',
+      },
+      fullWidth: {
+        true: 'w-full',
+      },
       variant: {
         contained: [
           // Optical border, implemented as the button background to avoid corner artifacts
@@ -81,12 +96,20 @@ const styles = cva(
           // 'dark:[--btn-hover-overlay:theme(colors.white/5%)]',
           // 'dark:[--btn-bg:theme(colors.neutral.800)]',
         ],
-        success: ['[--btn-color:theme(colors.success)]', '[--btn-color-contrast:theme(colors.white)]'],
-        warning: ['[--btn-color:theme(colors.warning)]', '[--btn-color-contrast:theme(colors.black)]'],
-        error: ['[--btn-color:theme(colors.error)]', '[--btn-color-contrast:theme(colors.white)]'],
+        success: [
+          '[--btn-color:theme(colors.success)]',
+          '[--btn-color-contrast:theme(colors.white)]',
+        ],
+        warning: [
+          '[--btn-color:theme(colors.warning)]',
+          '[--btn-color-contrast:theme(colors.black)]',
+        ],
+        error: [
+          '[--btn-color:theme(colors.error)]',
+          '[--btn-color-contrast:theme(colors.white)]',
+        ],
         mono: [
           //
-
           '[--btn-color:theme(colors.black)]',
           'dark:[--btn-color:theme(colors.white)]',
           '[--btn-color-contrast:theme(colors.white)]',
@@ -100,9 +123,6 @@ const styles = cva(
       variant: 'outlined',
     },
   },
-
-
-
 )
 
 export type ButtonProps = {
@@ -110,26 +130,70 @@ export type ButtonProps = {
   variant?: ElementVariant
   className?: string
   children?: ReactNode
-} & (Omit<Headless.ButtonProps, 'className'> | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>)
+  loading?: boolean
+  disabled?: boolean
+  uppercase?: boolean
+  fullWidth?: boolean
+  startAdornment?: ReactNode
+  endAdornment?: ReactNode
+  spinnerPosition?: ElementPlacementHorizontal
+} & (
+  | Omit<Headless.ButtonProps, 'className'>
+  | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
+)
 
 export const Button = forwardRef(function (
-  { color, variant, className, children, ...props }: ButtonProps,
+  {
+    color,
+    variant,
+    className,
+    children,
+    loading,
+    fullWidth,
+    disabled,
+    startAdornment,
+    endAdornment,
+    uppercase,
+    spinnerPosition = 'left',
+    ...props
+  }: ButtonProps,
   ref: React.ForwardedRef<HTMLElement>,
 ) {
+  const isDisabled = Boolean(disabled || loading)
   const classes = styles({
     color,
     variant,
-
     className,
+    uppercase,
+    fullWidth,
+    disabled: isDisabled,
   })
+  // TODO: types
+  const spinner = <Loader color={color as any} />
+  const leftSpinner: boolean = Boolean(loading && spinnerPosition === 'left')
+  const rightSpinner: boolean = Boolean(loading && spinnerPosition === 'right')
+
+  const inner = (
+    <TouchTarget disabled={isDisabled}>
+      {leftSpinner && spinner}
+      {startAdornment}
+      {children}
+      {endAdornment}
+      {rightSpinner && spinner}
+    </TouchTarget>
+  )
 
   return 'href' in props ? (
-    <Link {...props} className={classes} ref={ref as React.ForwardedRef<HTMLAnchorElement>}>
-      <TouchTarget>{children}</TouchTarget>
+    <Link
+      {...props}
+      className={classes}
+      ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+    >
+      {inner}
     </Link>
   ) : (
     <Headless.Button {...props} className={classes} ref={ref}>
-      <TouchTarget>{children}</TouchTarget>
+      {inner}
     </Headless.Button>
   )
 })
