@@ -30,5 +30,5 @@ body {
 }
 
 .micro-interactions {
-  @apply transition-all duration-300 ease-fluid;
+  @apply transition-all duration-300 ease-snappy;
 }

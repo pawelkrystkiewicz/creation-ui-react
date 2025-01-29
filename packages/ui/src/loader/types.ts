@@ -1,19 +1,10 @@
-import { ElementSize } from '../types'
-
-export type LoaderColor =
-  | 'primary'
-  | 'error'
-  | 'warning'
-  | 'success'
-  | 'info'
-  | 'white'
-  | 'black'
+import { ElementColor } from "../types"
 
 export type LoaderProps = {
   /**
    * Color of the loader
    */
-  color?: LoaderColor
+  color?: string | ElementColor
   /**
    * Class names API. Inner will be applied to SVG element, outer to the container.
    */

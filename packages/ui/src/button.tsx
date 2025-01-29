@@ -9,14 +9,12 @@ import type {
   ElementPlacementHorizontal,
   ElementVariant,
 } from './types'
-import { InteractiveContainer } from './InteractiveContainer'
 
 const styles = cva(
   [
     // Base
     'relative',
-    // 'micro-interactions',
-    'transition-all duration-300 ease-in-out',
+    'micro-interactions',
     'isolate',
     'inline-flex',
     'items-center',
@@ -39,7 +37,7 @@ const styles = cva(
     'data-disabled:opacity-50',
     'data-disabled:pointer-events-none',
     'data-active:scale-95',
-    'h-[var(--ui-size)]',
+    'h-[var(--ui-height)]',
   ],
   {
     variants: {
@@ -137,6 +135,7 @@ export type ButtonProps = {
   startAdornment?: ReactNode
   endAdornment?: ReactNode
   spinnerPosition?: ElementPlacementHorizontal
+  loaderColor?: string
 } & (
   | Omit<Headless.ButtonProps, 'className'>
   | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
@@ -155,6 +154,7 @@ export const Button = forwardRef(function (
     endAdornment,
     uppercase,
     spinnerPosition = 'left',
+    loaderColor,
     ...props
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLElement>,
@@ -168,8 +168,8 @@ export const Button = forwardRef(function (
     fullWidth,
     disabled: isDisabled,
   })
-  // TODO: types
-  const spinner = <Loader color={color as any} />
+
+  const spinner = <Loader color={loaderColor ?? color} />
   const leftSpinner: boolean = Boolean(loading && spinnerPosition === 'left')
   const rightSpinner: boolean = Boolean(loading && spinnerPosition === 'right')
 

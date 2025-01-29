@@ -19,7 +19,7 @@ export const ButtonPlayground = () => (
   <>
     <Playground
       component={Button}
-      name="Button"
+      name='Button'
       controls={[
         childrenControl,
         sizeControl,
@@ -32,16 +32,6 @@ export const ButtonPlayground = () => (
           type: 'boolean',
         },
         fullWidthControl,
-        {
-          name: 'circle',
-          type: 'boolean',
-        },
-        {
-          name: 'loaderColor',
-          type: 'string',
-          label: 'Loader color',
-          defaultValue: true,
-        },
       ]}
     />
   </>

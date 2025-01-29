@@ -1,7 +1,15 @@
 import type { GenericColorDefinition } from '@/components/playground/components/colors-selector'
 import { INPUT_TYPES } from '@/components/playground/constants'
 import type { PlaygroundControl } from '@/components/playground/types'
-import { BorderBottom, BorderLeft, BorderRight, BorderTop, Text, TextSquare, TextSquareSolid } from 'iconoir-react'
+import {
+  BorderBottom,
+  BorderLeft,
+  BorderRight,
+  BorderTop,
+  Text,
+  TextSquare,
+  TextSquareSolid,
+} from 'iconoir-react'
 
 const SIZES = [
   { value: 'sm', label: 's' },
@@ -27,7 +35,11 @@ const COLORS: GenericColorDefinition[] = [
   { value: 'success', label: 'Success', className: 'bg-success' },
   { value: 'warning', label: 'Warning', className: 'bg-warning' },
   { value: 'error', label: 'Error', className: 'bg-error' },
-  { value: 'mono', label: 'Monochromatic', className: 'bg-black dark:bg-white' },
+  {
+    value: 'mono',
+    label: 'Monochromatic',
+    className: 'bg-black dark:bg-white',
+  },
 ]
 
 const POSITION_HORIZONTAL = [
@@ -112,8 +124,16 @@ export const colorsBlackAndWhite: PlaygroundControl = {
   component: 'colors',
   values: [
     ...COLORS.filter(({ value }) => value !== 'mono'),
-    { value: 'black', label: 'Black', className: 'bg-black border-white border' },
-    { value: 'white', label: 'White', className: 'bg-white border-border border' },
+    {
+      value: 'black',
+      label: 'Black',
+      className: 'bg-black border-white border',
+    },
+    {
+      value: 'white',
+      label: 'White',
+      className: 'bg-white border-border border',
+    },
   ],
 }
 
@@ -160,28 +180,34 @@ export const labelControl: PlaygroundControl = {
   defaultValue: 'Label',
 }
 
-export const createInputControls = (labelFieldDefaultValue = 'Input'): PlaygroundControl[] => {
+export const createInputControls = (
+  labelFieldDefaultValue = 'Input',
+): PlaygroundControl[] => {
   let base: PlaygroundControl[] = [
     sizeControl,
-    requiredControl,
     loadingControl,
     readOnlyControl,
     disabledControl,
     errorControl,
-    { ...clearableControl, defaultValue: true },
     { ...labelControl, defaultValue: labelFieldDefaultValue },
     { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
     helperTextControl,
   ]
 
   if (labelFieldDefaultValue !== 'Switch') {
-    base = [{ ...variantControl, defaultValue: 'outlined' }, ...base]
+    base.push({ ...variantControl, defaultValue: 'outlined' })
+  }
+
+  if (labelFieldDefaultValue !== 'Input') {
+    base.push(requiredControl)
   }
 
   return base
 }
 
-export const createRadioControls = (labelFieldDefaultValue = 'Radio'): PlaygroundControl[] => {
+export const createRadioControls = (
+  labelFieldDefaultValue = 'Radio',
+): PlaygroundControl[] => {
   const isRadio = labelFieldDefaultValue === 'Radio'
 
   const customErrorControl: PlaygroundControl = isRadio

@@ -5,14 +5,23 @@ import { twMerge } from 'tailwind-merge'
 export const Loader = (props: LoaderProps) => {
   const { color = 'primary', cx } = props
 
+  const isDefinedColor = [
+    'error',
+    'primary',
+    'success',
+    'warning',
+    'white',
+    'black',
+  ].includes(color)
+
   return (
     <div className={twMerge(loaderClasses, cx?.outer)}>
       <svg
         aria-hidden='true'
-        data-testid='cui-loader'
         className={loaderIconClasses({
-          className: cx?.inner,
-          color,
+          // @ts-expect-error
+          color: isDefinedColor ? color : undefined,
+          className: [cx?.inner, isDefinedColor ? '' : color],
         })}
         viewBox='0 0 100 100'
         fill='none'
