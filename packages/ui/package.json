@@ -22,7 +22,8 @@
     "lint": "eslint . --max-warnings 0",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "init:component": "turbo gen component"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
