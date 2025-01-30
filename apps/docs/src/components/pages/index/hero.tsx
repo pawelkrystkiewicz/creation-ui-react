@@ -1,6 +1,6 @@
 import { gradient } from '@/components/classes'
 import { Logo } from '@/components/logo'
-import { Button } from '@creation-ui/react/Button'
+import { Button } from '@creation-ui/react/button'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { CopyBlock, dracula } from 'react-code-blocks'

@@ -1,14 +1,14 @@
 import * as Headless from '@headlessui/react'
 import { cva } from 'class-variance-authority'
 import React, { forwardRef, ReactNode } from 'react'
-import { Link } from './Link'
-import { Loader } from './loader'
-import { TouchTarget } from './TouchTarget'
+import { Link } from '../link'
+import { Loader } from '../loader'
+import { TouchTarget } from '../touch-target'
 import type {
   ElementColor,
   ElementPlacementHorizontal,
   ElementVariant,
-} from './types'
+} from '../types'
 
 const styles = cva(
   [

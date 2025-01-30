@@ -1,7 +1,7 @@
 'use client'
 
 import { Playground } from '@/components/playground'
-import { Button } from '@creation-ui/react/Button'
+import { Button } from '@creation-ui/react/button'
 import type { DocumentedProperty } from '@/models/system'
 import {
   childrenControl,

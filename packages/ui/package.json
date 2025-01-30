@@ -9,30 +9,30 @@
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
     },
-    "./Button": {
-      "types": "./src/Button.tsx",
-      "import": "./dist/Button.mjs",
-      "require": "./dist/Button.js"
+    "./button": {
+      "types": "./src/button/index.ts",
+      "import": "./dist/button/index.mjs",
+      "require": "./dist/button/index.js"
     },
-    "./Switch": {
-      "types": "./src/Switch.tsx",
-      "import": "./dist/Switch.mjs",
-      "require": "./dist/Switch.js"
+    "./switch": {
+      "types": "./src/switch/index.ts",
+      "import": "./dist/switch/index.mjs",
+      "require": "./dist/switch/index.js"
     },
-    "./Input": {
-      "types": "./src/Input.tsx",
-      "import": "./dist/Input.mjs",
-      "require": "./dist/Input.js"
+    "./input": {
+      "types": "./src/input/index.ts",
+      "import": "./dist/input/index.mjs",
+      "require": "./dist/input/index.js"
     },
-    "./Link": {
-      "types": "./src/Link.tsx",
-      "import": "./dist/Link.mjs",
-      "require": "./dist/Link.js"
+    "./link": {
+      "types": "./src/link/index.ts",
+      "import": "./dist/link/index.mjs",
+      "require": "./dist/index.js"
     },
-    "./TouchTarget": {
-      "types": "./src/TouchTarget.tsx",
-      "import": "./dist/TouchTarget.mjs",
-      "require": "./dist/TouchTarget.js"
+    "./touch-target": {
+      "types": "./src/touch-target/TouchTarget.tsx",
+      "import": "./dist/touch-target/TouchTarget.mjs",
+      "require": "./dist/touch-target/TouchTarget.js"
     },
     "./index.css": {
       "default": "./dist/index.css"

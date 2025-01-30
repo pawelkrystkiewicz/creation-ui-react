@@ -1,6 +1,6 @@
 'use client'
 import { Playground } from '@/components/playground'
-import { Input, type InputProps } from '@creation-ui/react/Input'
+import { Input, type InputProps } from '@creation-ui/react/input'
 import type { DocumentedProperty } from '@/models/system'
 import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'

@@ -3,7 +3,7 @@ import copy from 'esbuild-plugin-copy'
 
 export default defineConfig(options => ({
   entryPoints: [
-    'src/Button.tsx',
+    'src/button/index.ts',
     // 'src/alert.tsx',
     // 'src/avatar.tsx',
     // 'src/badge.tsx',
@@ -14,8 +14,9 @@ export default defineConfig(options => ({
     // 'src/dropdown.tsx',
     // 'src/fieldset.tsx',
     // 'src/heading.tsx',
-    'src/Input.tsx',
-    'src/Link.tsx',
+    'src/input/index.ts',
+    'src/link/index.ts',
+    'src/loader/index.ts',
     // 'src/listbox.tsx',
     // 'src/navbar.tsx',
     // 'src/pagination.tsx',
@@ -24,10 +25,11 @@ export default defineConfig(options => ({
     // 'src/sidebar-layout.tsx',
     // 'src/sidebar.tsx',
     // 'src/stacked-layout.tsx',
-    'src/Switch.tsx',
+    'src/switch/index.ts',
     // 'src/table.tsx',
     // 'src/text.tsx',
     // 'src/textarea.tsx',
+    'src/touch-target/index.ts',
     'src/types/index.ts',
   ],
   format: ['cjs', 'esm'],

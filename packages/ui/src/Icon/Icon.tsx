@@ -3,7 +3,6 @@ import { twMerge } from 'tailwind-merge'
 import type { IconProps, IconType } from './types'
 
 // map of icon names to their svg path
-// https://pictogrammers.com/library/mdi/
 const iconPathMap: Record<IconType, string[]> = {
   chevron_right: ['M9 6L15 12L9 18'],
   chevron_left: ['M15 6L9 12L15 18'],

@@ -1,8 +1,6 @@
 import Icon from '@/components/icon'
-import { Card, CardContent, CardDescription } from '@creation-ui/react'
-import { Show } from '@creation-ui/react/dist/components/show/show'
 import NextLink from 'next/link'
-import { FC } from 'react'
+import type { FC } from 'react'
 
 interface NavigationCardProps {
   title: string
