@@ -1,7 +1,7 @@
 'use client'
 // import { ToggleGroup } from '@creation-ui/react/toggle-group'
-import { Input } from '@creation-ui/react/input'
-import { Switch } from '@creation-ui/react/switch'
+import { Input } from '@creation-ui/react'
+import { Switch } from '@creation-ui/react'
 import { capitalize } from '@/utils/list-or-types'
 import clsx from 'clsx'
 import type { FC } from 'react'
@@ -18,7 +18,10 @@ interface PlaygroundControlProps {
   parentKey?: string
 }
 
-export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({ property, parentKey }) => {
+export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
+  property,
+  parentKey,
+}) => {
   const { state, handleChange } = usePlayground()
   const { name: n, type, values, component: controls, helperText } = property
 
@@ -89,10 +92,16 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({ propert
     // />
     case 'nested':
       return (
-        <div className={clsx(classes.controls, '!pl-0', '!pt-0', '!border-none')}>
-          <div className="font-semibold">{label}</div>
+        <div
+          className={clsx(classes.controls, '!pl-0', '!pt-0', '!border-none')}
+        >
+          <div className='font-semibold'>{label}</div>
           {property.controls!.map(childProperty => (
-            <PlaygroundControlComponent property={childProperty} key={childProperty.name} parentKey={name} />
+            <PlaygroundControlComponent
+              property={childProperty}
+              key={childProperty.name}
+              parentKey={name}
+            />
           ))}
         </div>
       )

@@ -4,44 +4,16 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
-    "./utils": {
-      "types": "./src/utils/index.ts",
-      "import": "./dist/utils/index.mjs",
-      "require": "./dist/utils/index.js"
-    },
-    "./button": {
-      "types": "./src/button/index.ts",
-      "import": "./dist/button/index.mjs",
-      "require": "./dist/button/index.js"
-    },
-    "./switch": {
-      "types": "./src/switch/index.ts",
-      "import": "./dist/switch/index.mjs",
-      "require": "./dist/switch/index.js"
-    },
-    "./input": {
-      "types": "./src/input/index.ts",
-      "import": "./dist/input/index.mjs",
-      "require": "./dist/input/index.js"
-    },
-    "./link": {
-      "types": "./src/link/index.ts",
-      "import": "./dist/link/index.mjs",
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js"
-    },
-    "./touch-target": {
-      "types": "./src/touch-target/TouchTarget.tsx",
-      "import": "./dist/touch-target/TouchTarget.mjs",
-      "require": "./dist/touch-target/TouchTarget.js"
     },
     "./index.css": {
       "default": "./dist/index.css"
     },
     "./theme.css": {
       "default": "./dist/theme.css"
-    },
-    "./types": {
-      "default": "./dist/types.d.ts"
     }
   },
   "scripts": {
