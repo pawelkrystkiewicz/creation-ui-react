@@ -5,12 +5,13 @@ import type { DocumentedProperty } from '@/models/system'
 import {
   Checkbox,
   CheckboxField,
+  Description,
+  Field,
   Label,
-  type CheckboxProps
+  type CheckboxProps,
 } from '@creation-ui/react'
 import {
   disabledControl,
-  errorControl,
   helperTextControl,
   labelControl,
   loadingControl,
@@ -19,14 +20,16 @@ import {
 
 export const CheckboxExample = ({
   label,
+  helperText,
   ...props
-}: CheckboxProps & { label: string }) => {
+}: CheckboxProps & { label: string; helperText?: string }) => {
   return (
     <>
-      <CheckboxField>
+      <Field type='row'>
         <Checkbox name='checkbox' {...props} />
         <Label>{label}</Label>
-      </CheckboxField>
+        {helperText && <Description>{helperText}</Description>}
+      </Field>
     </>
   )
 }
@@ -35,8 +38,8 @@ export const CheckboxPlayground = () => (
   <Playground
     name='Checkbox'
     component={CheckboxExample}
+    showCode={false}
     controls={[
-      errorControl,
       loadingControl,
       disabledControl,
       readOnlyControl,
@@ -47,17 +50,15 @@ export const CheckboxPlayground = () => (
 )
 
 export const properties: DocumentedProperty[] = [
-  { name: 'label', type: 'string', description: 'Input label' },
   {
-    name: 'indeterminate',
-    type: 'string',
-    description: 'Should component display icon for the indeterminate state',
-    note: 'Often used as indication that not all options are selected on the list',
-  },
-  { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
-  {
-    name: 'enableFocusRing',
+    name: 'readOnly',
     type: 'boolean',
-    description: 'Should component display focus ring when `:focus`',
+    description: 'Is read only?',
+  },
+
+  {
+    name: 'loading',
+    type: 'boolean',
+    description: 'Is loading?',
   },
 ]

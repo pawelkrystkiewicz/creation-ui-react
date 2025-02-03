@@ -5,50 +5,6 @@ import { twMerge } from 'tailwind-merge'
 import { checkboxStyles } from './classes'
 import clsx from 'clsx'
 
-export function CheckboxGroup({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<'div'>) {
-  return (
-    <div
-      data-slot='control'
-      {...props}
-      className={twMerge(
-        className,
-        // Basic groups
-        'space-y-3',
-        // With descriptions
-        'has-data-[slot=description]:space-y-6 has-data-[slot=description]:**:data-[slot=label]:font-medium',
-      )}
-    />
-  )
-}
-
-export function CheckboxField({
-  className,
-  ...props
-}: { className?: string } & Omit<Headless.FieldProps, 'as' | 'className'>) {
-  return (
-    <Headless.Field
-      data-slot='field'
-      {...props}
-      className={twMerge(
-        className,
-        // Base layout
-        'grid grid-cols-[1.125rem_1fr] items-center gap-x-2 gap-y-1 sm:grid-cols-[1rem_1fr]',
-        // Control layout
-        '*:data-[slot=control]:col-start-1 *:data-[slot=control]:row-start-1 *:data-[slot=control]:justify-self-center',
-        // Label layout
-        '*:data-[slot=label]:col-start-2 *:data-[slot=label]:row-start-1 *:data-[slot=label]:justify-self-start',
-        // Description layout
-        '*:data-[slot=description]:col-start-2 *:data-[slot=description]:row-start-2',
-        // With description
-        'has-data-[slot=description]:**:data-[slot=label]:font-medium',
-      )}
-    />
-  )
-}
-
 export const Checkbox: FC<CheckboxProps> = ({
   className,
   disabled,
@@ -56,7 +12,6 @@ export const Checkbox: FC<CheckboxProps> = ({
   readOnly,
   ...props
 }) => {
-
   const isDisabled = loading || disabled || readOnly
 
   return (

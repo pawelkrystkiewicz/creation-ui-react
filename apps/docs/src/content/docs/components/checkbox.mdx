@@ -1,17 +1,34 @@
 import { CheckboxPlayground, properties } from '@/examples/checkbox'
 import PropsTable from '@/components/props-table'
 
+# Checkbox
+
+<br />
 <CheckboxPlayground />
+
+To create a robust checkbox input field you could make use of several of available components like Checkbox, CheckboxField, Label, Description
+
+```tsx
+export const CheckboxExample = ({
+  label,
+  helperText,
+  ...props
+}: CheckboxProps & { label: string; helperText?: string }) => {
+  return (
+    <>
+      <CheckboxField>
+        <Checkbox name='checkbox' {...props} />
+        <Label>{label}</Label>
+        {helperText && <Description>{helperText}</Description>}
+      </CheckboxField>
+    </>
+  )
+}
+```
 
 ## Component API
 
-<PropsTable
-  properties={properties}
-  name='Checkbox'
-  description={
-    <>
-      Rest of the props are the same as for the native <code>input</code>{' '}
-      component.
-    </>
-  }
-/>
+<PropsTable properties={properties} name='Checkbox' />
+Checkout rest of the props for Headless UI's
+[Checkbox](https://headlessui.com/react/checkbox#checkbox) component and
+[Field](https://headlessui.com/react/checkbox#field).
