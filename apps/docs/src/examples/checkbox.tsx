@@ -4,7 +4,6 @@ import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import {
   Checkbox,
-  CheckboxField,
   Description,
   Field,
   Label,
@@ -12,7 +11,7 @@ import {
 } from '@creation-ui/react'
 import {
   disabledControl,
-  helperTextControl,
+  descriptionControl,
   labelControl,
   loadingControl,
   readOnlyControl,
@@ -43,7 +42,7 @@ export const CheckboxPlayground = () => (
       loadingControl,
       disabledControl,
       readOnlyControl,
-      helperTextControl,
+      descriptionControl,
       labelControl,
     ]}
   />

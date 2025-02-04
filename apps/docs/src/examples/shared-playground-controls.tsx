@@ -54,19 +54,10 @@ const POSITION_VERTICAL = [
 
 const POSITION = [...POSITION_HORIZONTAL, ...POSITION_VERTICAL]
 
-const INPUT_TYPES_DROPDOWN = INPUT_TYPES
-
 export const childrenControl: PlaygroundControl = {
   name: 'children',
   type: 'string',
   defaultValue: 'Button',
-}
-
-export const sizeControl: PlaygroundControl = {
-  name: 'size',
-  type: 'array',
-  defaultValue: 'md',
-  values: SIZES,
 }
 
 export const positionControl: PlaygroundControl = {
@@ -164,14 +155,14 @@ export const clearableControl: PlaygroundControl = {
 export const errorControl: PlaygroundControl = {
   name: 'error',
   type: 'string',
-  helperText: 'Overrides helper text',
+  helperText: 'Error string',
 }
 
-export const helperTextControl: PlaygroundControl = {
-  name: 'helperText',
+export const descriptionControl: PlaygroundControl = {
+  name: 'description',
   type: 'string',
-  label: 'Helper Text',
-  defaultValue: 'This is helper text',
+  label: 'Description',
+  defaultValue: 'This is description text',
 }
 
 export const labelControl: PlaygroundControl = {
@@ -184,14 +175,13 @@ export const createInputControls = (
   labelFieldDefaultValue = 'Input',
 ): PlaygroundControl[] => {
   let base: PlaygroundControl[] = [
-    sizeControl,
     loadingControl,
     readOnlyControl,
     disabledControl,
     errorControl,
     { ...labelControl, defaultValue: labelFieldDefaultValue },
     { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
-    helperTextControl,
+    descriptionControl,
   ]
 
   if (labelFieldDefaultValue !== 'Switch') {
@@ -219,7 +209,6 @@ export const createRadioControls = (
     : errorControl
 
   const base = [
-    sizeControl,
     requiredControl,
     disabledControl,
     readOnlyControl,
@@ -228,7 +217,7 @@ export const createRadioControls = (
   ]
 
   if (!isRadio) {
-    base.push(helperTextControl)
+    base.push(descriptionControl)
   }
 
   return base

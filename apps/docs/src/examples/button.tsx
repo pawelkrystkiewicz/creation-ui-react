@@ -8,7 +8,7 @@ import {
   disabledControl,
   fullWidthControl,
   loadingControl,
-  sizeControl,
+
   colorControl,
   variantControl,
 } from './shared-playground-controls'
@@ -22,7 +22,6 @@ export const ButtonPlayground = () => (
       name='Button'
       controls={[
         childrenControl,
-        sizeControl,
         variantControl,
         colorControl,
         loadingControl,

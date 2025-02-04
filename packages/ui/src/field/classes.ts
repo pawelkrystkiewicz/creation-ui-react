@@ -11,7 +11,6 @@ export const fieldStyles = cva([], {
         '[&>[data-slot=control]+[data-slot=error]]:mt-3',
         '*:data-[slot=label]:font-medium',
       ],
-
       row: [
         // Base layout
         'grid grid-cols-[1.125rem_1fr] items-center gap-x-2 gap-y-1 sm:grid-cols-[1rem_1fr]',

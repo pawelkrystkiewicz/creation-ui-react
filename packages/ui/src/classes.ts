@@ -96,3 +96,8 @@ export const groupPositionClasses = {
   middle: ['-ml-px', 'border-0', '!border-r'],
   last: ['rounded-r-md', 'border-0', '!border-r'],
 }
+
+
+export const focusable =  ['focus-visible:outline-2', 'focus-visible:outline-primary']
+export const disabled = ['cursor-not-allowed', 'pointer-events-none', 'opacity-50']
+export const readOnly = ['cursor-not-allowed', 'pointer-events-none']

@@ -1,0 +1,42 @@
+import {
+  ToggleGroupExample,
+  optionProps,
+  properties,
+} from '@/examples/toggle-group'
+import PropsTable from '@/components/props-table'
+
+# ToggleGroup
+
+Use the `ToggleGroup` component to select a single option from a short list of options for example toggling text alignment.
+
+<br />
+
+<ToggleGroupExample />
+
+```tsx
+const options = [
+  { value: 'text-left', label: <AlignLeft /> },
+  { value: 'text-center', label: <AlignCenter /> },
+  { value: 'text-right', label: <AlignRight /> },
+  { value: 'text-justify', label: <AlignJustify /> },
+]
+
+export const ToggleGroupExample = () => {
+  const [value, setValue] = useState<string>('text-left')
+
+  return <ToggleGroup options={options} value={value} onChange={setValue} />
+}
+```
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='ToggleGroup'
+  description={'Props of ToggleGroup component.'}
+/>
+<PropsTable
+  properties={optionProps}
+  name='ToggleGroupOption'
+  description={'Props of ToggleGroupOption component.'}
+/>

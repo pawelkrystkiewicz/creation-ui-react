@@ -1,15 +1,14 @@
-import React, { FC } from 'react';
-import { LabelProps } from './types';
-import * as Headless from '@headlessui/react'
-import { twMerge } from 'tailwind-merge';
+import { Label as HeadlessLabel } from '@headlessui/react'
+import { labelStyles } from './classes'
+import type { FC } from 'react'
+import type { LabelProps } from './types'
 
-export const Label: FC<LabelProps> = ({className,...props}) => {
-  return  <Headless.Label
-      data-slot="label"
+export const Label: FC<LabelProps> = ({ className, required, ...props }) => {
+  return (
+    <HeadlessLabel
+      data-slot='label'
       {...props}
-      className={twMerge(
-        className,
-        'text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6 dark:text-white'
-      )}
+      className={labelStyles({ className, required })}
     />
-};
+  )
+}
