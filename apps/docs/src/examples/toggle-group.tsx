@@ -4,6 +4,7 @@ import { ToggleGroup } from '@creation-ui/react'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight } from 'iconoir-react'
 import { useState } from 'react'
 
+
 const options = [
   { value: 'text-left', label: <AlignLeft /> },
   { value: 'text-center', label: <AlignCenter /> },

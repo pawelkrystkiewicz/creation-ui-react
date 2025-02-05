@@ -1,22 +1,34 @@
-import Icon from '@/components/icon'
+import {
+  Card,
+  CardContent,
+  CardDescription
+} from '@creation-ui/react'
 import NextLink from 'next/link'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 interface NavigationCardProps {
   title: string
   link: string
-  icon?: string
+  icon?: ReactNode
   description: string
 }
 
-export const NavigationCard: FC<NavigationCardProps> = ({ description, link, title, icon }) => {
+export const NavigationCard: FC<NavigationCardProps> = ({
+  description,
+  link,
+  title,
+  icon,
+}) => {
   return (
     <NextLink href={link} className='w-full'>
       <Card className='group hover:shadow-xl micro-interactions'>
         <CardContent className='flex items-center gap-2'>
-          <Show when={!!icon}>
-            <Icon path={icon!} className='flex-shrink-0  group-hover:text-primary micro-interactions text-opacity-80' size={1} />
-          </Show>
+          icon &&
+          <>
+            <div className='flex-shrink-0  group-hover:text-primary micro-interactions text-opacity-80'>
+              {icon}
+            </div>
+          </>
           <h2 className='font-bold text-lg'>{title}</h2>
         </CardContent>
         <CardDescription>{description}</CardDescription>

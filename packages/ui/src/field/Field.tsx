@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { FieldProps } from './types'
+import React, { type FC } from 'react'
+import type { FieldProps } from './types'
 import * as Headless from '@headlessui/react'
 import { twMerge } from 'tailwind-merge'
 import { fieldStyles } from './classes'

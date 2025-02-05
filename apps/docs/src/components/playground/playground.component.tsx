@@ -10,6 +10,10 @@ interface PlaygroundComponentProps {
 export const PlaygroundComponent: FC<PlaygroundComponentProps> = () => {
   const { componentProps, component: Component, state } = usePlayground()
 
+  if (!Component) {
+    return null
+  }
+
   const { children, ...restOfComponentProps } = componentProps ?? {}
   return (
     <div className={clsx(classes.view)}>

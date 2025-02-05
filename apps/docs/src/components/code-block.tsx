@@ -12,7 +12,7 @@ export default function CodeBox({ code, language, wrapperClassName }: CodeBoxPro
     <div className={twMerge('p-10 rounded-lg bg-yellow-400', wrapperClassName)}>
       <div className='code-block'>
         <CopyBlock
-          className='p-4 text-sm'
+          // className='p-4 text-sm'
           text={code}
           language={language}
           showLineNumbers={false}

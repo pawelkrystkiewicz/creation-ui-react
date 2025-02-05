@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
-import { CheckboxProps } from './types'
 import * as Headless from '@headlessui/react'
+import clsx from 'clsx'
+import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { checkboxStyles } from './classes'
-import clsx from 'clsx'
+import type { CheckboxProps } from './types'
 
 export const Checkbox: FC<CheckboxProps> = ({
   className,

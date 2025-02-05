@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { ErrorProps } from './types';
+import React, { type FC } from 'react'
+import type { ErrorProps } from './types'
 import * as Headless from '@headlessui/react'
-import { twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge'
 
 export const Error: FC<ErrorProps> = ({ className, ...props }) => {
   return <Headless.Description

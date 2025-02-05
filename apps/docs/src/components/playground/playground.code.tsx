@@ -1,33 +1,35 @@
 'use client'
 import { formatCode } from '@/utils/format-code'
 import clsx from 'clsx'
+import { useMemo, type FC } from 'react'
 import { CopyBlock, vs2015 } from 'react-code-blocks'
 import { classes } from './classes'
 import { usePlayground } from './context/context'
-import { getComponentCode } from './utils/get-component-code'
-import { objectToPropsText } from './utils/object-to-props-text'
-import { type FC } from 'react'
 
-interface PlaygroundCodeProps {
-  visible?: boolean
-}
+const DEFAULT_PROPS_KEYS = ['props']
 
-export const PlaygroundCode: FC<PlaygroundCodeProps> = ({ visible }) => {
-  const {
-    state: { children, ...state },
-    name,
-  } = usePlayground()
-
-  if (!visible) return null
-
-  const stateAsProps = objectToPropsText(state).join('\n')
-  const code = getComponentCode(name, stateAsProps, children)
+export const PlaygroundCode: FC = () => {
+  const { state, code, propsKeys = DEFAULT_PROPS_KEYS } = usePlayground()
+  if (!code) {
+    return null
+  }
+  const withProps = useMemo(() => {
+    if (!code) return ''
+    return propsKeys?.reduce((acc: string, key: string) => {
+      const value = state?.[key]
+      if (typeof value === 'boolean') {
+        return acc.replace(`{{${key}}}`, value ? `${key}` : '')
+      } else {
+        return acc.replace(`{{${key}}}`, `{${JSON.stringify(value)}}`)
+      }
+    }, code)
+  }, [code, propsKeys, state])
 
   return (
     <div className={clsx(classes.code)}>
       <CopyBlock
-        text={formatCode(code)}
-        language={'jsx'}
+        text={formatCode(withProps)}
+        language={'tsx'}
         showLineNumbers={true}
         theme={vs2015}
         customStyle={{

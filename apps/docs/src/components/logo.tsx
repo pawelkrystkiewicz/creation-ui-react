@@ -1,7 +1,6 @@
-import { ElementSize } from '@creation-ui/react'
 import clsx from 'clsx'
 
-type LogoSizes = ElementSize | 'xl' | 'hero'
+type LogoSizes = 'sm' | 'md' | 'lg' | 'xl' | 'hero'
 
 interface LogoProps {
   /**

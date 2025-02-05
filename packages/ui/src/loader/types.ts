@@ -1,4 +1,4 @@
-import { ElementColor } from "../types"
+import type { ElementColor } from '../types'
 
 export type LoaderProps = {
   /**

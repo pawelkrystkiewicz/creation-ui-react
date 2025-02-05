@@ -4,7 +4,7 @@ import React, { forwardRef } from 'react'
 import { Icon } from '../icon'
 import { inputBorderStyles, inputStyles } from './classes'
 import { dateTypes } from './constants'
-import { InputProps } from './types'
+import type { InputProps } from './types'
 import { twMerge } from 'tailwind-merge'
 
 export const Input = forwardRef(function Input(

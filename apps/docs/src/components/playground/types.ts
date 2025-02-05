@@ -1,8 +1,19 @@
 import type { FC } from 'react'
 
-export type PlaygroundValueType = 'string' | 'boolean' | 'number' | 'array' | 'object'
+export type PlaygroundValueType =
+  | 'string'
+  | 'boolean'
+  | 'number'
+  | 'array'
+  | 'object'
 export type PlaygroundValues = string | boolean | number
-export type PlaygroundControls = 'input:text' | 'input:number' | 'colors' | 'switch' | 'toggle-group' | 'nested'
+export type PlaygroundControls =
+  | 'input:text'
+  | 'input:number'
+  | 'colors'
+  | 'switch'
+  | 'toggle-group'
+  | 'nested'
 
 export type PlaygroundControl = {
   name: string
@@ -15,19 +26,25 @@ export type PlaygroundControl = {
   helperText?: string
 }
 
-export interface PlaygroundControllerProps {
-  name: string
-  component: FC<any>
-  controls: PlaygroundControl[]
+export interface PlaygroundProps<T = Record<string, unknown>> {
+  component: FC<T>
+  controls?: PlaygroundControl[]
   showCode?: boolean
-  componentProps?: any
+  componentProps?: T
+  code?: string
+  propsKeys?: string[]
 }
 
 export interface PlaygroundState {
   [key: string]: PlaygroundValues
 }
 
-export interface PlaygroundContextValue extends PlaygroundControllerProps {
+export interface PlaygroundContextValue extends PlaygroundProps {
   state: PlaygroundState
   handleChange: (name: string, value: PlaygroundValues) => void
 }
+
+export type PlaygroundConfiguratorProps<T> = Pick<
+  PlaygroundProps<T>,
+  'code' | 'component' | 'controls' | 'propsKeys'
+>

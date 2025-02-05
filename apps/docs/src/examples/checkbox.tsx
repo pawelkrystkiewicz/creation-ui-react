@@ -35,7 +35,6 @@ export const CheckboxExample = ({
 
 export const CheckboxPlayground = () => (
   <Playground
-    name='Checkbox'
     component={CheckboxExample}
     showCode={false}
     controls={[

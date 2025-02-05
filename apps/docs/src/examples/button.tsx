@@ -8,7 +8,6 @@ import {
   disabledControl,
   fullWidthControl,
   loadingControl,
-
   colorControl,
   variantControl,
 } from './shared-playground-controls'
@@ -19,7 +18,6 @@ export const ButtonPlayground = () => (
   <>
     <Playground
       component={Button}
-      name='Button'
       controls={[
         childrenControl,
         variantControl,

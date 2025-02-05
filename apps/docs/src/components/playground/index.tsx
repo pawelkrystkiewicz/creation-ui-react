@@ -1,1 +1,1 @@
-export { PlaygroundController as Playground } from './playground.controller'
+export { Playground as Playground } from './playground.controller'

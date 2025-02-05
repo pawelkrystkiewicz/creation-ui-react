@@ -1,6 +1,6 @@
 import * as Headless from '@headlessui/react'
 import { cva } from 'class-variance-authority'
-import React, { forwardRef, ReactNode } from 'react'
+import React, { forwardRef, type ReactNode } from 'react'
 import { Link } from '../link'
 import { Loader } from '../loader'
 import { TouchTarget } from '../touch-target'

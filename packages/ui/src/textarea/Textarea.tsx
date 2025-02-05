@@ -1,7 +1,7 @@
 import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { TextareaProps } from './types'
+import type { TextareaProps } from './types'
 import { containerClasses } from './classes'
 
 export const Textarea = forwardRef(function Textarea(

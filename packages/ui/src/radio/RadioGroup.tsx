@@ -1,6 +1,6 @@
 import * as Headless from '@headlessui/react'
-import { FC } from 'react'
-import { RadioGroupProps } from './types'
+import type { FC } from 'react'
+import type { RadioGroupProps } from './types'
 import { radioGroupStyles } from './classes'
 
 export const RadioGroup: FC<RadioGroupProps> = ({ className, ...props }) => {

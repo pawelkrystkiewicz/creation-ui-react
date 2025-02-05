@@ -1,29 +1,49 @@
+'use client'
 import { cloneDeep, set } from 'lodash'
-import React, { useState, type FC } from 'react'
+import { useState, type FC } from 'react'
 import { PlaygroundContext } from './context/context'
 import { PlaygroundCode } from './playground.code'
 import { PlaygroundComponent } from './playground.component'
 import { PlaygroundControls } from './playground.controls'
 import { PlaygroundView } from './playground.view'
-import type { PlaygroundControl, PlaygroundControllerProps, PlaygroundState } from './types'
+import type {
+  PlaygroundControl,
+  PlaygroundProps,
+  PlaygroundState,
+} from './types'
 
 const prepareInitialState = (controls: PlaygroundControl[]) =>
-  controls?.reduce((acc: Record<string, unknown>, { type, name, defaultValue, values, controls: c }) => {
-    if (c) {
-      acc[name] = prepareInitialState(c)
-      return acc
-    }
+  controls?.reduce(
+    (
+      acc: Record<string, unknown>,
+      { type, name, defaultValue, values, controls: c },
+    ) => {
+      if (c) {
+        acc[name] = prepareInitialState(c)
+        return acc
+      }
 
-    const [first] = values ?? []
-    const fallback = type === 'boolean' ? false : type === 'string' ? '' : type === 'array' ? first.value : null
+      const [first] = values ?? []
+      const fallback =
+        type === 'boolean'
+          ? false
+          : type === 'string'
+            ? ''
+            : type === 'array'
+              ? first.value
+              : null
 
-    return { ...acc, [name]: defaultValue ?? fallback }
-  }, {})
+      return { ...acc, [name]: defaultValue ?? fallback }
+    },
+    {},
+  )
 
-export const PlaygroundController: FC<PlaygroundControllerProps> = props => {
-  const { showCode = true, controls } = props
+export function Playground<T>(props: PlaygroundProps<T>) {
+  const { showCode = true, controls = [] } = props
 
-  const [state, setState] = useState<PlaygroundState>(prepareInitialState(controls))
+  const [state, setState] = useState<PlaygroundState>(
+    prepareInitialState(controls),
+  )
 
   const handleChange = (name: string, value: any) => {
     setState(state => {
@@ -33,11 +53,13 @@ export const PlaygroundController: FC<PlaygroundControllerProps> = props => {
   }
 
   return (
-    <PlaygroundContext.Provider value={{ ...props, state, handleChange }}>
+    <PlaygroundContext.Provider
+      value={{ ...props, state, handleChange } as any}
+    >
       <PlaygroundView>
         <PlaygroundComponent />
         <PlaygroundControls />
-        <PlaygroundCode visible={showCode} />
+        {showCode && <PlaygroundCode />}
       </PlaygroundView>
     </PlaygroundContext.Provider>
   )

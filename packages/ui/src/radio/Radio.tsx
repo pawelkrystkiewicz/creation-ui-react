@@ -1,7 +1,7 @@
 import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
-import { FC } from 'react'
-import { RadioProps } from './types'
+import type { FC } from 'react'
+import type { RadioProps } from './types'
 import { radioStyles } from './classes'
 
 export const Radio: FC<RadioProps> = ({ className, ...props }) => {
