@@ -70,6 +70,13 @@ interface RadioGroupExampleProps {
   readOnly?: boolean
 }
 
+const options = [
+  { label: 'Yes', value: 'yes' },
+  { label: 'No', value: 'no' },
+  { label: 'Maybe', value: 'maybe' },
+  { label: 'Disabled option', value: 'option-32', disabled: true },
+]
+
 export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
   label,
   error,
@@ -80,22 +87,17 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
 }) => {
   const [selected, setSelected] = useState<string | undefined>(undefined)
 
-  const options = [
-    { label: 'Yes', value: 'yes' },
-    { label: 'No', value: 'no' },
-    { label: 'Maybe', value: 'maybe' },
-    { label: 'Disabled option', value: 'option-32', disabled: true },
-  ]
+
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setSelected(e.currentTarget.value)
   }
 
   return (
-    <Field disabled={disabled}>
-      <Label required={required}>{label}</Label>
-      <Description>{description}</Description>
-      <RadioGroup value={selected} disabled={disabled} readOnly={readOnly}>
+    <Field disabled={{disabled}}>
+      <Label required={{required}}>{{label}}</Label>
+      <Description>{{description}}</Description>
+      <RadioGroup value={selected} disabled={{disabled}} readOnly={{readOnly}}>
         {options.map(option => (
           <Field key={option.value} type='row'>
             <Radio onClick={handleClick} value={option.value} />
@@ -103,7 +105,7 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
           </Field>
         ))}
       </RadioGroup>
-      {error && <Error>{error}</Error>}
+      {error && <Error>{{error}}</Error>}
     </Field>
   )
 }`
@@ -114,7 +116,14 @@ export const RadioGroupPlayground = () => (
   <Playground
     component={RadioGroupExample}
     controls={radioControlsSet}
-    propsKeys={['label', 'error', 'description', 'required', 'disabled', 'readOnly']}
+    propsKeys={[
+      'label',
+      'error',
+      'description',
+      'required',
+      'disabled',
+      'readOnly',
+    ]}
     code={code}
   />
 )

@@ -18,7 +18,7 @@ export const PlaygroundCode: FC = () => {
     return propsKeys?.reduce((acc: string, key: string) => {
       const value = state?.[key]
       if (typeof value === 'boolean') {
-        return acc.replace(`{{${key}}}`, value ? `${key}` : '')
+        return acc.replace(`{{${key}}}`, value ? `{true}` : `{false}`)
       } else {
         return acc.replace(`{{${key}}}`, `{${JSON.stringify(value)}}`)
       }
