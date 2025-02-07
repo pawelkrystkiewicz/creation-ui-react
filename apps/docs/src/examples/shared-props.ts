@@ -66,6 +66,12 @@ export const openProp: DocumentedProperty = {
   type: 'boolean',
   defaultValue: 'false',
 }
+export const activeProp: DocumentedProperty = {
+  description: 'Is component visible',
+  name: 'active',
+  type: 'boolean',
+  defaultValue: 'false',
+}
 export const disabledProp: DocumentedProperty = {
   description: 'Is component disabled? This will disable all interactions with component and styling.',
   name: 'disabled',
