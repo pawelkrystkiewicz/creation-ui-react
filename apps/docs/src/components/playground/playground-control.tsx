@@ -1,6 +1,11 @@
 'use client'
-// import { ToggleGroup } from '@creation-ui/react/toggle-group'
-import { Input } from '@creation-ui/react'
+import {
+  Field,
+  Label,
+  Description,
+  Input,
+  ToggleGroup,
+} from '@creation-ui/react'
 import { Switch } from '@creation-ui/react'
 import { capitalize } from '@/utils/list-or-types'
 import clsx from 'clsx'
@@ -11,7 +16,6 @@ import { DEFAULT_CONTROLS } from './constants'
 import { usePlayground } from './context/context'
 import type { PlaygroundControl } from './types'
 import { get } from 'lodash'
-import { Field, Label } from '@headlessui/react'
 
 interface PlaygroundControlProps {
   property: PlaygroundControl
@@ -55,8 +59,8 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
             onChange={handleInputChange}
             placeholder={label}
             type={'number'}
-            // helperText={helperText}
           />
+          <Description>{helperText}</Description>
         </Field>
       )
     case 'colors':
@@ -72,24 +76,27 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
     case 'switch':
       return (
         <Field>
-          <Switch
-            checked={value as boolean}
-            onChange={handlePlainChange}
-            // helperText={helperText}
-            // label={label}
-          />
+          <Switch checked={value as boolean} onChange={handlePlainChange} />
           <Label className={'ml-2 font-medium text-sm'}>{label}</Label>
         </Field>
       )
     case 'toggle-group':
-      return 'Not implemented'
-    // <ToggleGroup
-    //   label={label}
-    //   options={(values ?? []) as any}
-    //   value={value as any}
-    //   onChange={handlePlainChange}
-    //   helperText={helperText}
-    // />
+      return (
+        <Field type='column'>
+          <Label className={'flex items-center gap-1 mb-2'}>
+            {label}{' '}
+            {value ? (
+              <code className='text-xs border rounded-sm px-1'>{value}</code>
+            ) : null}
+          </Label>
+          <ToggleGroup
+            options={(values ?? []) as any}
+            value={value as any}
+            onChange={handlePlainChange}
+          />
+          <Description>{helperText}</Description>
+        </Field>
+      )
     case 'nested':
       return (
         <div
@@ -109,17 +116,15 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
     default:
       return (
         <Field>
-          <Label className={'font-medium text-sm'}>{label}</Label>
+          <Label>{label}</Label>
           <Input
             onChange={handleInputChange}
             placeholder={label}
             type={'text'}
             value={value as string}
-            // onClear={onClear}
-            // clearable={!!value}
-            // helperText={helperText}
+            onClear={onClear}
           />
-          <span>{helperText}</span>
+          <Description>{helperText}</Description>
         </Field>
       )
   }

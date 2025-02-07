@@ -59,6 +59,6 @@ export const properties: DocumentedProperty[] = [
   {
     name: 'loaderColor',
     type: 'string',
-    description: `Loader color as tailwindcss color e.g. <code>"[--btn-loader:theme(colors.black)]"</code>`,
+    description: `Loader color as tailwindcss color e.g. <code>"[--trigger-loader:theme(colors.black)]"</code>`,
   },
 ]

@@ -14,6 +14,7 @@ export const ToggleGroup = ({
 }: ToggleGroupProps) => {
   return (
     <RadioGroup
+      data-slot='control'
       {...props}
       className={twMerge(
         'relative',
@@ -23,6 +24,7 @@ export const ToggleGroup = ({
         className,
       )}
       disabled={disabled}
+      onChange={onChange}
     >
       {options?.map(
         ({ label, value, disabled }: ToggleGroupOption, index, array) => (

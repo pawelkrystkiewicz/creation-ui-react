@@ -1,11 +1,6 @@
 import { cva } from 'class-variance-authority'
 
-export const inputContainer = ({
-  size,
-  animations,
-  disabled,
-  error,
-}:any) =>
+export const inputContainer = ({ size, animations, disabled, error }: any) =>
   cva(['border-border', animations.microInteractionsAll, 'flex'], {
     variants: {
       layout: {
@@ -55,7 +50,7 @@ export const selectOptionClasses = ({
   size,
   focusable,
   animations,
-}:any) =>
+}: any) =>
   cva(
     [
       focusable,
@@ -97,7 +92,76 @@ export const groupPositionClasses = {
   last: ['rounded-r-md', 'border-0', '!border-r'],
 }
 
-
-export const focusable =  ['focus-visible:outline-2', 'focus-visible:outline-primary']
-export const disabled = ['cursor-not-allowed', 'pointer-events-none', 'opacity-50']
+export const focusable = [
+  'focus-visible:outline-2',
+  'focus-visible:outline-primary',
+]
+export const disabled = [
+  'cursor-not-allowed',
+  'pointer-events-none',
+  'opacity-50',
+]
 export const readOnly = ['cursor-not-allowed', 'pointer-events-none']
+
+// color and style
+// use with "isolate"
+export const triggerVariants = {
+  variant: {
+    contained: [
+      // Optical border, implemented as the button background to avoid corner artifacts
+      'text-[var(--trigger-color-contrast)]',
+      'bg-[var(--trigger-color)]',
+      'data-active:bg-[var(--trigger-color)]/[85%]',
+      'data-hover:bg-[var(--trigger-color)]/90',
+    ],
+    outlined: [
+      // Base
+      'border',
+      '!border-[var(--trigger-color)]',
+      'text-[var(--trigger-color)]',
+      'bg-transparent',
+      'data-active:bg-[var(--trigger-color)]/20',
+      'data-hover:bg-[var(--trigger-color)]/10',
+      // Dark mode
+      'dark:data-active:bg-[var(--trigger-color)]/30',
+      'dark:data-hover:bg-[var(--trigger-color)]/25',
+    ],
+    text: [
+      // Base
+      'border-transparent',
+      'text-[var(--trigger-color)]',
+      'bg-transparent',
+      'data-active:bg-[var(--trigger-color)]/20',
+      'data-hover:bg-[var(--trigger-color)]/10',
+      // Dark mode
+      'dark:data-active:bg-[var(--trigger-color)]/30',
+      'dark:data-hover:bg-[var(--trigger-color)]/25',
+    ],
+  },
+  color: {
+    primary: [
+      '[--trigger-color:theme(colors.primary)]',
+      '[--trigger-color-contrast:theme(colors.white)]',
+    ],
+    success: [
+      '[--trigger-color:theme(colors.success)]',
+      '[--trigger-color-contrast:theme(colors.white)]',
+    ],
+    warning: [
+      '[--trigger-color:theme(colors.warning)]',
+      '[--trigger-color-contrast:theme(colors.black)]',
+    ],
+    error: [
+      '[--trigger-color:theme(colors.error)]',
+      '[--trigger-color-contrast:theme(colors.white)]',
+    ],
+    mono: [
+      //
+      '[--trigger-color:theme(colors.black)]',
+      '[--trigger-color-contrast:theme(colors.white)]',
+      'dark:[--trigger-color:theme(colors.white)]',
+      'dark:[--trigger-color-contrast:theme(colors.black)]',
+    ],
+    unstyled: [],
+  },
+}

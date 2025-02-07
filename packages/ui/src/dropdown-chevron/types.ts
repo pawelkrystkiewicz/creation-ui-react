@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react'
+import { IconProps } from '../icon'
 
-export interface DropdownChevronProps {
-  children?: ReactNode
-  className?: string
+export interface DropdownChevronProps extends Omit<IconProps, 'icon'> {
+  open?: boolean
 }

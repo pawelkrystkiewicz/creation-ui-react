@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-export interface ClearButtonProps {
+export interface SelectProps {
   children?: ReactNode
   className?: string
 }

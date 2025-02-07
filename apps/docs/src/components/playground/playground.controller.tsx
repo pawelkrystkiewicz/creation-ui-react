@@ -1,6 +1,6 @@
 'use client'
 import { cloneDeep, set } from 'lodash'
-import { useState, type FC } from 'react'
+import { useState } from 'react'
 import { PlaygroundContext } from './context/context'
 import { PlaygroundCode } from './playground.code'
 import { PlaygroundComponent } from './playground.component'

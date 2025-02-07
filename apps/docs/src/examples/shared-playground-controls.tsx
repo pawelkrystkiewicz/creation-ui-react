@@ -1,5 +1,4 @@
 import type { GenericColorDefinition } from '@/components/playground/components/colors-selector'
-import { INPUT_TYPES } from '@/components/playground/constants'
 import type { PlaygroundControl } from '@/components/playground/types'
 import {
   BorderBottom,
@@ -21,10 +20,10 @@ const SIZES = [
 ]
 
 const VARIANTS_BASE = [
-  { value: 'contained', label: <TextSquareSolid /> },
+  { value: 'contained', label: <TextSquareSolid className='text-white' /> },
   {
     value: 'outlined',
-    label: <TextSquare />,
+    label: <TextSquare className='text-white' />,
   },
 ]
 

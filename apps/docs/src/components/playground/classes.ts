@@ -8,7 +8,15 @@ export const classes = {
     'place-items-center',
     'justify-center',
   ],
-  controls: ['flex', 'flex-col', 'border-l', 'p-4', 'gap-2', 'bg-neutral-100'],
+  controls: [
+    'flex',
+    'flex-col',
+    'border-l',
+    'p-4',
+    'gap-2',
+    'bg-neutral-100',
+    'dark:bg-neutral-800',
+  ],
   title: ['text-xl', 'font-semibold', 'leading-relaxed'],
   code: ['col-span-3', 'text-sm', 'w-full', 'font-mono', 'border-t'],
 }
