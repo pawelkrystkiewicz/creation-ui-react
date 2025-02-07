@@ -1,11 +1,11 @@
 'use client'
 import { capitalize } from '@/utils/list-or-types'
-import { Field, Label } from '@headlessui/react'
+import type { BaseComponentProps, ElementSize } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 import { Xmark } from 'iconoir-react'
-import { type FC, useId } from 'react'
-import type { BaseComponentProps, ElementSize } from '../../../../../../packages/ui/src/types'
+import { type FC } from 'react'
+import { PlaygroundInputField } from '../playground.input-field'
 
 export type GenericColorDefinition = {
   label: string
@@ -22,7 +22,16 @@ interface ColorsSelectorProps extends BaseComponentProps {
 }
 
 const elementClasses = cva(
-  ['relative', 'transform', 'h-6', 'w-6', 'rounded', 'cursor-pointer', 'transition-all', 'hover:scale-125'],
+  [
+    'relative',
+    'transform',
+    'h-6',
+    'w-6',
+    'rounded',
+    'cursor-pointer',
+    'transition-all',
+    'hover:scale-125',
+  ],
   {
     variants: {
       selected: {
@@ -36,21 +45,18 @@ const elementClasses = cva(
   },
 )
 
-export const ColorsSelector = ({ options, onClick, label, value, ...props }: ColorsSelectorProps) => {
-  const componentId = useId()
-
+export const ColorsSelector = ({
+  options,
+  onClick,
+  label,
+  value,
+  ...props
+}: ColorsSelectorProps) => {
   const { required, readOnly, error } = props
-
   const disabled = props.disabled || readOnly
-  const containerClasses = clsx({ disabled, error: !!error }, 'micro-interactions')
-
   return (
-    <Field className={containerClasses}>
-      <Label htmlFor={componentId} aria-label={label?.toString()} className={'flex items-center gap-1 mb-2'}>
-        {label} {value ? <code className="text-xs border rounded-sm px-1">{value.value}
-        </code> : null}
-      </Label>
-      <div className="flex flex-wrap gap-3 w-fit" aria-required={required}>
+    <PlaygroundInputField label={label} value={value?.value}>
+      <div className='flex flex-wrap gap-3 w-fit mt-2' aria-required={required}>
         {options.map(option => (
           <ColorOption
             key={option.label}
@@ -60,7 +66,7 @@ export const ColorsSelector = ({ options, onClick, label, value, ...props }: Col
           />
         ))}
       </div>
-    </Field>
+    </PlaygroundInputField>
   )
 }
 
@@ -83,7 +89,8 @@ const ColorOption: FC<ColorOptionProps> = ({ option, onClick, selected }) => {
         undef,
         selected,
         className: className,
-      })}>
+      })}
+    >
       {undef && !selected && <Xmark />}
       <div
         className={clsx(

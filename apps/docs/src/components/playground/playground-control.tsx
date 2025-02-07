@@ -16,6 +16,7 @@ import { DEFAULT_CONTROLS } from './constants'
 import { usePlayground } from './context/context'
 import type { PlaygroundControl } from './types'
 import { get } from 'lodash'
+import { PlaygroundInputField } from './playground.input-field'
 
 interface PlaygroundControlProps {
   property: PlaygroundControl
@@ -30,9 +31,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
   const { name: n, type, values, component: controls, helperText } = property
 
   const name = parentKey ? `${parentKey}.${n}` : n
-
   const label = property.label ?? capitalize(name)
-
   const controlType = controls ?? DEFAULT_CONTROLS[type]
 
   const handleInputChange = (e: any) => {
@@ -46,22 +45,19 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
   }
 
   const value = get(state, name)
-
   const arrayValue = values?.find(v => v.value === value)
 
   switch (controlType) {
     case 'input:number':
       return (
-        <Field>
-          <Label>{label}</Label>
+        <PlaygroundInputField label={label} helperText={helperText}>
           <Input
             value={value as number}
             onChange={handleInputChange}
             placeholder={label}
             type={'number'}
           />
-          <Description>{helperText}</Description>
-        </Field>
+        </PlaygroundInputField>
       )
     case 'colors':
       return (
@@ -75,27 +71,28 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
       )
     case 'switch':
       return (
-        <Field>
+        <PlaygroundInputField
+          type='switch'
+          label={label}
+          helperText={helperText}
+        >
           <Switch checked={value as boolean} onChange={handlePlainChange} />
-          <Label className={'ml-2 font-medium text-sm'}>{label}</Label>
-        </Field>
+        </PlaygroundInputField>
       )
     case 'toggle-group':
       return (
-        <Field type='column'>
-          <Label className={'flex items-center gap-1 mb-2'}>
-            {label}{' '}
-            {value ? (
-              <code className='text-xs border rounded-sm px-1'>{value}</code>
-            ) : null}
-          </Label>
+        <PlaygroundInputField
+          type='column'
+          label={label}
+          helperText={helperText}
+          value={value as string}
+        >
           <ToggleGroup
             options={(values ?? []) as any}
             value={value as any}
             onChange={handlePlainChange}
           />
-          <Description>{helperText}</Description>
-        </Field>
+        </PlaygroundInputField>
       )
     case 'nested':
       return (
@@ -115,8 +112,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
     case 'input:text':
     default:
       return (
-        <Field>
-          <Label>{label}</Label>
+        <PlaygroundInputField label={label} helperText={helperText}>
           <Input
             onChange={handleInputChange}
             placeholder={label}
@@ -124,8 +120,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
             value={value as string}
             onClear={onClear}
           />
-          <Description>{helperText}</Description>
-        </Field>
+        </PlaygroundInputField>
       )
   }
 }
