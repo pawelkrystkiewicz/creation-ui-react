@@ -1,14 +1,14 @@
 'use client'
 
 import { Playground } from '@/components/playground'
-import { Button, type ButtonProps } from '@creation-ui/react'
 import type { DocumentedProperty } from '@/models/system'
+import { Button } from '@creation-ui/react'
 import {
   childrenControl,
+  colorControl,
   disabledControl,
   fullWidthControl,
   loadingControl,
-  colorControl,
   variantControl,
 } from './shared-playground-controls'
 
@@ -31,11 +31,11 @@ export const ButtonPlayground = () => (
         fullWidthControl,
       ]}
       code={`
+import { Button, type ButtonProps } from '@creation-ui/react'
 
-        const ButtonExample = (props: ButtonProps) => {
+const ButtonExample = (props: ButtonProps) => {
   return <Button {{props}}>{{children}}</Button>
-}
-      `}
+}`}
     />
   </>
 )
