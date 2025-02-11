@@ -95,7 +95,7 @@ export interface BaseComponentProps {
   helperText?: JSXNode
 }
 
-export interface InputBaseProps extends Omit<BaseComponentProps, 'className'> {
+export interface _InputBaseProps extends Omit<BaseComponentProps, 'className'> {
   /**
    * Component is in loading state?
    */
@@ -183,7 +183,7 @@ export interface DropdownProps extends BaseComponentProps {
   /**
    * CSS classes API
    */
-  cx?: InputBaseProps['cx']
+  cx?: _InputBaseProps['cx']
   /**
    * Placeholder
    */

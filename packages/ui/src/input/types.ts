@@ -1,15 +1,10 @@
 import type { InputProps as HeadlessInputProps } from '@headlessui/react'
-import type { ReactNode } from 'react'
+import { InputBaseProps } from '../input-base'
 import { dateTypes } from './constants'
-
 
 export type DateType = (typeof dateTypes)[number]
 
 export type InputProps = {
-  endAdornment?: ReactNode
-  startAdornment?: ReactNode
-  className?: string
-  onClear?: () => void
   type?:
     | 'email'
     | 'number'
@@ -19,4 +14,5 @@ export type InputProps = {
     | 'text'
     | 'url'
     | DateType
-} & Omit<HeadlessInputProps, 'as' | 'className'>
+} & Omit<HeadlessInputProps, 'as' | 'className'> &
+  InputBaseProps

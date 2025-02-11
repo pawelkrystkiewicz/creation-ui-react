@@ -1,6 +1,8 @@
-import type { ReactNode } from 'react'
+import type { SelectProps as HeadlessSelectProps } from '@headlessui/react'
+import type { InputBaseProps } from '../input-base'
 
-export interface SelectProps {
-  children?: ReactNode
-  className?: string
-}
+export type SelectProps = Omit<HeadlessSelectProps, 'as' | 'className'> &
+  Omit<InputBaseProps, 'className'> & {
+    multiple?: boolean
+    readOnly?: boolean
+  }
