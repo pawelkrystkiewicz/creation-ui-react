@@ -9,18 +9,36 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-*,
-*::before,
-*::after {
-  @apply border-neutral-300 dark:border-neutral-700;
+
+
+:root {
+  --text-primary: theme(colors.black);
+  --text-secondary: theme(colors.neutral.600);
+  --background-primary: theme(colors.white);
+  --background-secondary: theme(colors.neutral.50);
+  --border: theme(colors.neutral.200);
+
+  @variant dark {
+    --text-primary: theme(colors.neutral.100);
+    --text-secondary: theme(colors.neutral.300);
+    --background-primary: theme(colors.neutral.800);
+    --background-secondary: theme(colors.neutral.700);
+    --border: theme(colors.neutral.800);
+  };
+
+
 }
+
 
 html {
   @apply scroll-smooth;
 }
 
 body {
-  @apply font-sans antialiased bg-neutral-50 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-100;
+  @apply font-sans antialiased
+  /* text-[var(--text-primary)] bg-[var(--background-primary)] */
+  ;
+  /* @apply border-[var(--border)]; */
 }
 
 .hide-scrollbar {
