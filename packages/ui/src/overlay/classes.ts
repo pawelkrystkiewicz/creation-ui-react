@@ -13,6 +13,7 @@ export const overlay = cva(
     'h-full',
     'w-full',
     'z-50',
+    'z-(--ui-z-overlays)',
   ],
   {
     variants: {
