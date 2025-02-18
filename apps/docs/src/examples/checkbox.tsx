@@ -36,7 +36,6 @@ export const CheckboxExample = ({
 export const CheckboxPlayground = () => (
   <Playground
     component={CheckboxExample}
-    showCode={false}
     controls={[
       loadingControl,
       disabledControl,
@@ -44,6 +43,22 @@ export const CheckboxPlayground = () => (
       descriptionControl,
       labelControl,
     ]}
+    code={`
+      export const CheckboxExample = ({
+  label,
+  helperText,
+  ...props
+}: CheckboxProps & { label: string; helperText?: string }) => {
+  return (
+    <>
+      <Field type='row'>
+        <Checkbox name='checkbox' {{props}} />
+        <Label>{{label}}</Label>
+        {helperText && <Description>{{helperText}}</Description>}
+      </Field>
+    </>
+  )
+}`}
   />
 )
 

@@ -3,28 +3,10 @@ import PropsTable from '@/components/props-table'
 
 # Checkbox
 
-<br />
-<CheckboxPlayground />
-
 To create a robust checkbox input field you could make use of several of available components like Checkbox, CheckboxField, Label, Description
 
-```tsx
-export const CheckboxExample = ({
-  label,
-  helperText,
-  ...props
-}: CheckboxProps & { label: string; helperText?: string }) => {
-  return (
-    <>
-      <CheckboxField>
-        <Checkbox name='checkbox' {...props} />
-        <Label>{label}</Label>
-        {helperText && <Description>{helperText}</Description>}
-      </CheckboxField>
-    </>
-  )
-}
-```
+<br />
+<CheckboxPlayground />
 
 ## Component API
 

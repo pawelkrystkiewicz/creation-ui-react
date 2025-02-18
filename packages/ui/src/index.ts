@@ -25,7 +25,7 @@ export * from './select'
 export * from './switch'
 export * from './textarea'
 export * from './toggle-group'
+export * from './tooltip'
 export * from './touch-target'
 export * from './types'
 export * from './utils'
-
