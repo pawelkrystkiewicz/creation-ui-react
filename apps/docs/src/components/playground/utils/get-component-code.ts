@@ -1,3 +1,4 @@
+'use client'
 import type { PlaygroundValues } from '../types'
 
 export const getComponentCode = (name: string, stateAsProps: string, children?: PlaygroundValues): string =>

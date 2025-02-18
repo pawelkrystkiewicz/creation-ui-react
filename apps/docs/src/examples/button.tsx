@@ -13,6 +13,7 @@ import {
 } from './shared-playground-controls'
 
 import { iconProp } from './shared-props'
+import { Container } from '@/components/container'
 
 export const ButtonPlayground = () => (
   <>
@@ -38,6 +39,12 @@ const ButtonExample = (props: ButtonProps) => {
 }`}
     />
   </>
+)
+
+export const SingleButtonExample = () => (
+  <Container>
+    <Button>Button</Button>
+  </Container>
 )
 
 export const properties: DocumentedProperty[] = [

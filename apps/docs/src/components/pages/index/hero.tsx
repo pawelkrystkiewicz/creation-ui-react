@@ -1,3 +1,4 @@
+'use client'
 import { gradient } from '@/components/classes'
 import { Logo } from '@/components/logo'
 import { Button } from '@creation-ui/react'
@@ -41,22 +42,24 @@ export const Hero = () => {
   const installationScript = 'npm i @creation-ui/react'
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className='flex flex-col justify-center items-center'>
       <div className={clsx(contentContainer)}>
-        <div className="relative ">
-          <Logo size="hero" />
+        <div className='relative '>
+          <Logo size='hero' />
           <div className={backLight} />
         </div>
-        <div className="flex flex-col place-items-center gap-5">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-center leading-snug">
-            Make beautiful things <br className="sm:block hidden" /> with&nbsp;
-            <span className={clsx(gradient.text, 'block sm:inline')}>Creation UI</span>
+        <div className='flex flex-col place-items-center gap-5'>
+          <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-center leading-snug'>
+            Make beautiful things <br className='sm:block hidden' /> with&nbsp;
+            <span className={clsx(gradient.text, 'block sm:inline')}>
+              Creation UI
+            </span>
           </h1>
-          <p className="max-w-sm text-center font-thin">
+          <p className='max-w-sm text-center font-thin'>
             Streamlined components to accelerate your development process
           </p>
         </div>
-        <div className="flex place-items-center gap-3 lg:flex-row flex-col w-full lg:w-fit h-12">
+        <div className='flex place-items-center gap-3 lg:flex-row flex-col w-full lg:w-fit h-12'>
           <CopyBlock
             text={installationScript}
             language={'bash'}
@@ -71,9 +74,15 @@ export const Hero = () => {
               width: '100%',
             }}
           />
-          <div className="lg:w-52 w-full">
-            <Button className={clsx(gradient.bg, 'w-full border-none text-white h-12 flex-grow')} color="unstyled">
-              <Link href="/docs">Start &rarr;</Link>
+          <div className='lg:w-52 w-full'>
+            <Button
+              className={clsx(
+                gradient.bg,
+                'w-full border-none text-white h-12 flex-grow',
+              )}
+              color='unstyled'
+            >
+              <Link href='/docs'>Start &rarr;</Link>
             </Button>
           </div>
         </div>

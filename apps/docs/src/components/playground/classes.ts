@@ -1,5 +1,11 @@
 export const classes = {
-  container: ['grid', 'grid-cols-3', 'border', 'rounded-lg'],
+  container: [
+    'grid',
+    'grid-cols-3',
+    'border',
+    'rounded-lg',
+    'border-(--border)',
+  ],
   view: [
     'p-10',
     'col-span-2',
@@ -12,11 +18,19 @@ export const classes = {
     'flex',
     'flex-col',
     'border-l',
+    'border-(--border)',
     'p-4',
     'gap-2',
     'bg-neutral-100',
     'dark:bg-neutral-800',
   ],
   title: ['text-xl', 'font-semibold', 'leading-relaxed'],
-  code: ['col-span-3', 'text-sm', 'w-full', 'font-mono', 'border-t'],
+  code: [
+    'col-span-3',
+    'text-sm',
+    'w-full',
+    'font-mono',
+    'border-t',
+    'border-(--border)',
+  ],
 }

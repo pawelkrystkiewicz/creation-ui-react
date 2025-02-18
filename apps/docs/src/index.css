@@ -16,14 +16,14 @@
   --text-secondary: theme(colors.neutral.600);
   --background-primary: theme(colors.white);
   --background-secondary: theme(colors.neutral.50);
-  --border: theme(colors.neutral.200);
+  --border: theme(colors.neutral.300);
 
   @variant dark {
     --text-primary: theme(colors.neutral.100);
     --text-secondary: theme(colors.neutral.300);
     --background-primary: theme(colors.neutral.800);
     --background-secondary: theme(colors.neutral.700);
-    --border: theme(colors.neutral.800);
+    --border: theme(colors.neutral.700);
   };
 
 

@@ -1,3 +1,4 @@
+'use client'
 import { gradient } from '@/components/classes'
 import { HeaderSubbed } from '@/components/page-elements/header-subbed'
 import { Button } from '@creation-ui/react'

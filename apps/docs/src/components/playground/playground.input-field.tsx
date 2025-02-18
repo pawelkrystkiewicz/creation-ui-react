@@ -1,3 +1,4 @@
+'use client'
 import { Field, Label, Description, type FieldProps } from '@creation-ui/react'
 import type { FC } from 'react'
 

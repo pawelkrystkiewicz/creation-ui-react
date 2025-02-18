@@ -3,9 +3,8 @@ import { disabled, groupPositionClasses } from '../classes'
 
 export const toggleGroupButtonStyles = cva(
   [
-    'data-hover:border-zinc-950/20',
-    'dark:border-white/10',
     'border-y',
+    'border-(--border)',
     'cursor-pointer',
     'focus:z-10',
     'font-medium',
@@ -15,15 +14,14 @@ export const toggleGroupButtonStyles = cva(
     'relative',
     'z-0',
     'px-3',
-    'text-neutral-900',
-    'dark:text-white',
+    'fill-current',
   ],
   {
     variants: {
       element: groupPositionClasses,
       checked: {
         true: ['bg-primary', 'hover:bg-primary/75', 'text-white', 'font-bold'],
-        false: ['hover:bg-primary/20'],
+        false: ['hover:bg-primary/20', 'text-(--text-primary)'],
       },
       disabled: {
         true: disabled,

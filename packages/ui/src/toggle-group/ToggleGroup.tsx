@@ -27,11 +27,15 @@ export const ToggleGroup = ({
       onChange={onChange}
     >
       {options?.map(
-        ({ label, value, disabled }: ToggleGroupOption, index, array) => (
+        (
+          { label, value: optionValue, disabled }: ToggleGroupOption,
+          index,
+          array,
+        ) => (
           <RadioGroup.Option
-            key={value}
-            value={value}
-            title={value}
+            key={optionValue}
+            value={optionValue}
+            title={optionValue}
             disabled={disabled}
             className={({ checked, disabled }) =>
               toggleGroupButtonStyles({
@@ -41,7 +45,9 @@ export const ToggleGroup = ({
               })
             }
           >
-            <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
+            <RadioGroup.Label as='span'>
+              {label}
+            </RadioGroup.Label>
           </RadioGroup.Option>
         ),
       )}

@@ -5,15 +5,23 @@ export const propsByKeys = (
 ) => {
   return keys?.reduce((acc: string, key: string) => {
     const value = values?.[key]
-    if (typeof value === 'boolean') {
-      return acc.replace(`{{${key}}}`, value ? `{true}` : `{false}`)
-    } else {
-      return acc.replace(`{{${key}}}`, `{${JSON.stringify(value)}}`)
+    switch (true) {
+      case typeof value === 'boolean':
+        return acc.replace(`{{${key}}}`, value ? `{true}` : `{false}`);
+
+      case !isNaN(value):
+        return acc.replace(`{{${key}}}`, `{${value}}`);
+
+      default:
+        return acc.replace(`{{${key}}}`, `{${JSON.stringify(value)}}`);
     }
   }, codeTemplates)
 }
 
-export  const plainProps = (codeTemplates: string, values: Record<string, any>) => {
+export const plainProps = (
+  codeTemplates: string,
+  values: Record<string, any>,
+) => {
   const keys = Object.keys(values)
   const hasChildren = keys.includes('children')
 
@@ -24,10 +32,17 @@ export  const plainProps = (codeTemplates: string, values: Record<string, any>) 
       }
 
       const value = values[key]
-      if (typeof value === 'boolean') {
-        return value ? key : ''
+
+      switch (typeof value) {
+        case 'boolean':
+          return value ? key : ''
+
+        case 'number':
+          return `${key}={${value}}`
+
+        default:
+          return `${key}={${JSON.stringify(value)}}`
       }
-      return `${key}={${JSON.stringify(value)}}`
     })
     .filter(Boolean)
 

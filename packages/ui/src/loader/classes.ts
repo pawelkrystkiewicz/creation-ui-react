@@ -13,17 +13,16 @@ export const loaderIconClasses = cva(
     'animate-spin',
     'text-info/25',
     'size-[var(--ui-icon-height)]',
-    'fill-(--loader-color)',
   ],
   {
     variants: {
       color: {
-        error: '[--loader-color:fill-error]',
-        primary: '[--loader-color:fill-primary]',
-        success: '[--loader-color:fill-success]',
-        warning: '[--loader-color:fill-warning]',
-        white: '[--loader-color:fill-white]',
-        black: '[--loader-color:fill-black]',
+        error: 'fill-error',
+        primary: 'fill-primary',
+        success: 'fill-success',
+        warning: 'fill-warning',
+        white: 'fill-white',
+        black: 'fill-black',
       },
     },
     defaultVariants: {

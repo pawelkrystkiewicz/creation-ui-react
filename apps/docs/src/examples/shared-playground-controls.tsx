@@ -10,21 +10,9 @@ import {
   TextSquareSolid,
 } from 'iconoir-react'
 
-const SIZES = [
-  { value: 'sm', label: 's' },
-  {
-    value: 'md',
-    label: 'm',
-  },
-  { value: 'lg', label: 'l' },
-]
-
 const VARIANTS_BASE = [
-  { value: 'contained', label: <TextSquareSolid className='text-white' /> },
-  {
-    value: 'outlined',
-    label: <TextSquare className='text-white' />,
-  },
+  { value: 'contained', label: <TextSquareSolid /> },
+  { value: 'outlined', label: <TextSquare /> },
 ]
 
 export const VARIANTS = [...VARIANTS_BASE, { value: 'text', label: <Text /> }]

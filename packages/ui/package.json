@@ -37,11 +37,13 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "clsx": "2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@headlessui/react": "^2.2.0",
-    "tailwind-merge": "^2.6.0",
-    "clsx": "2.1.1"
+    "react-spring": "^9.7.5",
+    "resize-observer-polyfill": "^1.5.1",
+    "tailwind-merge": "^2.6.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",

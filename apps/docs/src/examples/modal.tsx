@@ -14,9 +14,6 @@ import {
 import { CreditCard } from 'iconoir-react'
 import { useToggle } from 'react-use'
 
-const MODAL_PADDING = 'p-4'
-const FORM_GAP = 4
-
 export const ModalExample = () => {
   const [open, toggleOpen] = useToggle(false)
   const [loading, toggleLoading] = useToggle(false)
@@ -80,8 +77,7 @@ export const ModalExample = () => {
                 <Label required>Expires</Label>
                 <Input
                   type='text'
-                  placeholder='06 / 2024'
-                  // cx={{ container: { inner: 'w-24' } }}
+                  placeholder={`12/${new Date().getFullYear().toString().slice(-2)}`}
                 />
               </Field>
               <Field>
