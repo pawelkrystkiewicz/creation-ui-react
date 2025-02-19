@@ -42,7 +42,7 @@ export interface AvatarGroupProps
   children?: ReactNode
   /**
    * Controls the offset of `Avatar`s components.
-   * Default 3.5% which translates directly to margin-left:3.5%.
+   * Default -3.5% which translates directly to margin-left:-3.5%.
    */
   stackingOffsetPercent?: number
   /**
