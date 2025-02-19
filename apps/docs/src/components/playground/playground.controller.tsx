@@ -39,7 +39,7 @@ const prepareInitialState = (controls: PlaygroundControl[]) =>
   )
 
 export function Playground<T>(props: PlaygroundProps<T>) {
-  const { showCode = true, controls = [] } = props
+  const { controls = [], code } = props
 
   const [state, setState] = useState<PlaygroundState>(
     prepareInitialState(controls),
@@ -59,7 +59,7 @@ export function Playground<T>(props: PlaygroundProps<T>) {
       <PlaygroundView>
         <PlaygroundComponent />
         <PlaygroundControls />
-        {showCode && <PlaygroundCode />}
+        {code && <PlaygroundCode />}
       </PlaygroundView>
     </PlaygroundContext.Provider>
   )

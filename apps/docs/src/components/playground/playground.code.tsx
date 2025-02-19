@@ -12,7 +12,7 @@ export const PlaygroundCode: FC = () => {
   const [formattedCode, setFormattedCode] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  const { state, code, propsKeys, controls } = usePlayground()
+  const { state, code,  controls } = usePlayground()
 
   if (!code) {
     return null
@@ -25,7 +25,7 @@ export const PlaygroundCode: FC = () => {
     formatCode(_code)
       .then(setFormattedCode)
       .finally(() => setLoading(false))
-  }, [code, propsKeys, state])
+  }, [code, state])
 
   return (
     <div className={clsx(classes.code, 'relative')}>

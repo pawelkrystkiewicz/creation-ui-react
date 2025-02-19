@@ -29,10 +29,8 @@ export type PlaygroundControl = {
 export interface PlaygroundProps<T = Record<string, unknown>> {
   component: FC<T>
   controls?: PlaygroundControl[]
-  showCode?: boolean
   componentProps?: T
   code?: string
-  propsKeys?: string[]
 }
 
 export interface PlaygroundState {
@@ -46,5 +44,5 @@ export interface PlaygroundContextValue extends PlaygroundProps {
 
 export type PlaygroundConfiguratorProps<T> = Pick<
   PlaygroundProps<T>,
-  'code' | 'component' | 'controls' | 'propsKeys'
+  'code' | 'component' | 'controls'
 >

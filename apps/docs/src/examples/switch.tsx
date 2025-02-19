@@ -45,7 +45,6 @@ const SwitchField = ({ label, description }: SwitchFieldProps) => {
 export const playgroundConfig: PlaygroundConfiguratorProps<SwitchFieldProps> = {
   component: SwitchField,
   code,
-  propsKeys: ['label', 'description'],
   controls: [labelControl, descriptionControl],
 }
 

@@ -116,14 +116,6 @@ export const RadioGroupPlayground = () => (
   <Playground
     component={RadioGroupExample}
     controls={radioControlsSet}
-    propsKeys={[
-      'label',
-      'error',
-      'description',
-      'required',
-      'disabled',
-      'readOnly',
-    ]}
     code={code}
   />
 )

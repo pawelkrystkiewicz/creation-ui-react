@@ -4,9 +4,17 @@ import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import { Avatar, AvatarGroup, type AvatarGroupProps } from '@creation-ui/react'
 import { Circle, RoundedMirror, Square } from 'iconoir-react'
+import { Fragment } from 'react'
 
-const SRC =
+const MALE_1 =
   'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80'
+const MALE_2 =
+  'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+const FEMALE_1 =
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+const FEMALE_2 =
+  'https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=2417&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
 const avatarVariants = [
   {
@@ -25,7 +33,6 @@ const avatarVariants = [
 
 export const AvatarPlayground = () => (
   <Playground
-    propsKeys={['variant', 'src', 'size']}
     component={Avatar}
     controls={[
       {
@@ -39,7 +46,7 @@ export const AvatarPlayground = () => (
         type: 'number',
         defaultValue: 40,
       },
-      { name: 'src', label: 'Image URL', type: 'string', defaultValue: SRC },
+      { name: 'src', label: 'Image URL', type: 'string', defaultValue: MALE_1 },
     ]}
     code={`<Avatar
       src={src}
@@ -52,18 +59,21 @@ export const AvatarPlayground = () => (
 export const AvatarWithNumberSize = () => {
   const numberSize = [10, 20, 30, 40, 50, 60, 100]
   return (
-    <Container className='items-start'>
+    <div className='flex items-center justify-between max-w-lg mx-auto'>
       {numberSize.map(size => (
-        <div className='flex flex-col gap-10 items-center' key={size}>
-          <p>{size}px</p>
-          <Avatar src={SRC} size={size} />
+        <div
+          className='grid grid-rows-2 gap-x-10 gap-y-5 items-center h-[200px]'
+          key={size}
+        >
+          <p className='mx-auto'>{size}px</p>
+          <Avatar src={FEMALE_1} size={size} className='self-center' />
         </div>
       ))}
-    </Container>
+    </div>
   )
 }
 
-const avatars = [SRC, SRC, SRC, SRC]
+const avatars = [MALE_1, FEMALE_1, MALE_2, FEMALE_2]
 
 export const AvatarGroupExample = (props: AvatarGroupProps) => {
   return (

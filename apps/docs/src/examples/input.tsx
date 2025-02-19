@@ -46,7 +46,6 @@ export const InputPlayground = ({ ...props }: InputExampleProps) => {
         onChange: (e: any) => setInputValue(e.target.value),
       }}
       controls={controls}
-      propsKeys={['onClear', 'value', 'onChange']}
     />
   )
 }
