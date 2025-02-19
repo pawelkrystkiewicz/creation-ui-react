@@ -1,10 +1,11 @@
 'use client'
+
 import { capitalize } from '@/utils/list-or-types'
 import type { BaseComponentProps, ElementSize } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 import { Xmark } from 'iconoir-react'
-import { type FC } from 'react'
+import { type FC, type ReactNode } from 'react'
 import { PlaygroundInputField } from '../playground.input-field'
 
 export type GenericColorDefinition = {
@@ -13,10 +14,10 @@ export type GenericColorDefinition = {
   className: string
 }
 
-interface ColorsSelectorProps extends BaseComponentProps {
+interface ColorsSelectorProps extends Omit<BaseComponentProps, 'label'> {
   options: GenericColorDefinition[]
   onClick: (value: string | boolean | undefined) => void
-  label: string
+  label: ReactNode
   value?: GenericColorDefinition
   size?: ElementSize
 }

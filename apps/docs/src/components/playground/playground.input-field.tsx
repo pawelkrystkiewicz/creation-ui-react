@@ -1,9 +1,9 @@
 'use client'
 import { Field, Label, Description, type FieldProps } from '@creation-ui/react'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 interface PlaygroundInputFieldProps {
-  label?: string
+  label?: ReactNode
   value?: string
   helperText?: string
   children: React.ReactNode
@@ -20,7 +20,7 @@ export const PlaygroundInputField: FC<PlaygroundInputFieldProps> = ({
   return (
     <Field type={type}>
       <Label className={'flex items-center gap-1'}>
-        {label}{' '}
+        {label}
         {value ? (
           <code className='text-xs border rounded-sm px-1'>{value}</code>
         ) : null}

@@ -26,7 +26,8 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
 
 export default AvatarProps
 
-export interface AvatarGroupProps {
+export interface AvatarGroupProps
+  extends Pick<AvatarProps, 'size' | 'variant'> {
   /**
    * Total number of avatars to show in counter
    */
@@ -34,20 +35,16 @@ export interface AvatarGroupProps {
   /**
    * Maximum number of avatars to show
    */
-  max?: number
+  limit?: number
   /**
    * Children of AvatarGroup - other `Avatar`s
    */
   children?: ReactNode
   /**
-   * How large should the Avatar be?
-   */
-  size?: AvatarProps['size']
-  /**
    * Controls the offset of `Avatar`s components.
-   * Default -0.3 Which means Avatars will overlap by 30% of their size.
+   * Default -7.5% which translates directly to margin-left:-7.5%.
    */
-  offsetMultiplier?: number
+  stackingOffsetPercent?: number
   /**
    * Class name
    */

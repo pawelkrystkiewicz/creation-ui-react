@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 export type PlaygroundValueType =
   | 'string'
@@ -18,7 +18,7 @@ export type PlaygroundControls =
 export type PlaygroundControl = {
   name: string
   type: PlaygroundValueType
-  label?: string
+  label?: ReactNode
   component?: PlaygroundControls
   defaultValue?: PlaygroundValues
   values?: any[]

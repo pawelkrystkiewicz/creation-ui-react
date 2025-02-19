@@ -7,11 +7,13 @@ import type AvatarProps from './types'
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const { variant = 'circle', children, className, size = 40, ...rest } = props
 
-  const { style } = useMemo(() => {
+  const style = useMemo(() => {
     const containerStyle = pick(props.style, AVATAR_CONTAINER_PROPS as any)
     return {
-      size,
-      style: { width: size, height: size, ...containerStyle },
+      //
+      width: Number(size),
+      height: Number(size),
+      ...containerStyle,
     }
   }, [size, props.style])
 

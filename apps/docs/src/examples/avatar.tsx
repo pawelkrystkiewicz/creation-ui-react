@@ -63,16 +63,78 @@ export const AvatarWithNumberSize = () => {
   )
 }
 
+const avatars = [SRC, SRC, SRC, SRC]
+
 export const AvatarGroupExample = (props: AvatarGroupProps) => {
   return (
-    <AvatarGroup {...props}>
-      <Avatar src={SRC} />
-      <Avatar src={SRC} />
-      <Avatar src={SRC} />
-      <Avatar src={SRC} />
-    </AvatarGroup>
+    <Container>
+      <AvatarGroup {...props}>
+        {avatars.map(src => (
+          <Avatar src={src} key={src} />
+        ))}
+      </AvatarGroup>
+    </Container>
   )
 }
+
+export const AvatarGroupPlayground = () => (
+  <Playground
+    code={`
+import { Avatar, AvatarGroup, type AvatarGroupProps } from '@creation-ui/react'
+import { Container } from '@/components/container'
+
+
+export const AvatarGroupExample = (props: AvatarGroupProps) => {
+  return (
+    <Container>
+      <AvatarGroup {{props}}>
+        {avatars.map(src => (
+          <Avatar src={src} key={src} />
+        ))}
+      </AvatarGroup>
+    </Container>
+  )
+}`}
+    component={AvatarGroupExample}
+    controls={[
+      {
+        name: 'variant',
+        values: avatarVariants,
+        defaultValue: 'circle',
+        type: 'array',
+      },
+      {
+        label: (
+          <>
+            Size <code>px</code>
+          </>
+        ),
+        name: 'size',
+        type: 'number',
+        defaultValue: 40,
+      },
+      {
+        label: (
+          <>
+            Stacking Offset <code>%</code>
+          </>
+        ),
+        name: 'stackingOffsetPercent',
+        type: 'number',
+        defaultValue: -7.5,
+      },
+      {
+        name: 'limit',
+        type: 'number',
+        defaultValue: 3,
+      },
+      {
+        name: 'total',
+        type: 'number',
+      },
+    ]}
+  />
+)
 
 export const properties: DocumentedProperty[] = [
   {
@@ -107,7 +169,7 @@ export const groupProperties: DocumentedProperty[] = [
     description: 'Manually controls the count displayed in last Avatar.',
   },
   {
-    name: 'max',
+    name: 'limit',
     type: 'number',
     description:
       'Amount of avatars to display. Surplus will be rendered as count in an extra (last) Avatar.',

@@ -1,0 +1,107 @@
+import PropsTable from '@/components/props-table'
+import {
+  commonProperties,
+  PopoverExampleControlled,
+  PopoverExampleUncontrolled,
+  popoverTriggerProperties,
+  properties,
+} from '@/examples/popover'
+
+# Popover
+
+The Popover component is a flexible UI element that can be used to display additional information or actions without taking the user away from the current context. It is commonly used for tooltips, dropdowns, and context menus.
+Uses [@floating/ui](https://floating-ui.com/docs/popover).
+
+## Playground
+
+The code in playgrounds is shortened for simplicity.
+
+Explore and experiment with the Popover component using the uncontrolled and controlled playgrounds below:
+
+### Uncontrolled Popover
+
+In the uncontrolled variant, the open and close behavior of the Popover is managed internally:
+
+<PopoverExampleUncontrolled />
+
+### Controlled Popover
+
+In the controlled variant, you can manage the open and close behavior of the Popover externally through props:
+
+<PopoverExampleControlled />
+
+### Full code example
+
+```tsx copy
+import {
+  ClearButton,
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeading,
+  PopoverTrigger,
+  Switch,
+} from '@creation-ui/react'
+
+export const PopoverExampleUncontrolled = () => {
+  return (
+    <Popover>
+      <PopoverTrigger>Open</PopoverTrigger>
+      <PopoverContent className='w-52'>
+        <PopoverHeading>Popover</PopoverHeading>
+        <PopoverDescription className='pt-2'>
+          In the uncontrolled variant, the open and close behavior of the
+          Popover is managed internally.
+        </PopoverDescription>
+        <br />
+        <PopoverClose>Dismiss</PopoverClose>
+      </PopoverContent>
+    </Popover>
+  )
+}
+```
+
+## Component API
+
+For detailed configuration options, refer to the Popover API in the props table below:
+
+<PropsTable
+  properties={properties}
+  name='Popover'
+  description={'Main wrapper component for the Popover feature.'}
+/>
+<PropsTable
+  properties={popoverTriggerProperties}
+  name='PopoverTrigger'
+  description={
+    'This component is required for uncontrolled approach and is used to trigger the Popover.'
+  }
+/>
+<PropsTable
+  properties={commonProperties}
+  name='PopoverContent'
+  description={
+    'This component is optional and can be used to present popover content.'
+  }
+/>
+<PropsTable
+  properties={commonProperties}
+  name='PopoverHeading'
+  description={
+    'This component is optional and can be used to provide a heading for the Popover.'
+  }
+/>
+
+<PropsTable
+  properties={commonProperties}
+  name='PopoverDescription'
+  description={
+    'This component is optional and can be used to provide additional information about the Popover.'
+  }
+/>
+<PropsTable
+  properties={commonProperties}
+  name='PopoverClose'
+  description={'Closing trigger'}
+/>

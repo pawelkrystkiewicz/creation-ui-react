@@ -1,22 +1,15 @@
 'use client'
-import {
-  Field,
-  Label,
-  Description,
-  Input,
-  ToggleGroup,
-} from '@creation-ui/react'
-import { Switch } from '@creation-ui/react'
 import { capitalize } from '@/utils/list-or-types'
+import { Input, Switch, ToggleGroup } from '@creation-ui/react'
 import clsx from 'clsx'
+import { get } from 'lodash'
 import type { FC } from 'react'
 import { classes } from './classes'
 import { ColorsSelector } from './components/colors-selector'
 import { DEFAULT_CONTROLS } from './constants'
 import { usePlayground } from './context/context'
-import type { PlaygroundControl } from './types'
-import { get } from 'lodash'
 import { PlaygroundInputField } from './playground.input-field'
+import type { PlaygroundControl } from './types'
 
 interface PlaygroundControlProps {
   property: PlaygroundControl
@@ -46,6 +39,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
 
   const value = get(state, name)
   const arrayValue = values?.find(v => v.value === value)
+  const placeholder = typeof label === 'string' ? label : undefined
 
   switch (controlType) {
     case 'input:number':
@@ -54,7 +48,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           <Input
             value={value as number}
             onChange={handleInputChange}
-            placeholder={label}
+            placeholder={placeholder}
             type={'number'}
           />
         </PlaygroundInputField>
@@ -115,7 +109,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
         <PlaygroundInputField label={label} helperText={helperText}>
           <Input
             onChange={handleInputChange}
-            placeholder={label}
+            placeholder={placeholder}
             type={'text'}
             value={value as string}
             onClear={onClear}

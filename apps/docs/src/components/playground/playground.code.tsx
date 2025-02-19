@@ -1,19 +1,18 @@
 'use client'
 import { formatCode } from '@/utils/format-code'
+import { LoadingOverlay } from '@creation-ui/react'
 import clsx from 'clsx'
-import { isEmpty } from 'lodash'
 import { useEffect, useState, type FC } from 'react'
 import { CopyBlock, vs2015 } from 'react-code-blocks'
 import { classes } from './classes'
 import { usePlayground } from './context/context'
-import { LoadingOverlay } from '@creation-ui/react'
-import { plainProps, propsByKeys } from './utils/prepare-props'
+import { assignPropsValues } from './utils/prepare-props'
 
 export const PlaygroundCode: FC = () => {
   const [formattedCode, setFormattedCode] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  const { state, code, propsKeys } = usePlayground()
+  const { state, code, propsKeys, controls } = usePlayground()
 
   if (!code) {
     return null
@@ -21,13 +20,7 @@ export const PlaygroundCode: FC = () => {
 
   useEffect(() => {
     setLoading(true)
-    let _code = ''
-
-    if (propsKeys && !isEmpty(propsKeys)) {
-      _code = propsByKeys(code, propsKeys, state)
-    } else {
-      _code = plainProps(code, state)
-    }
+    const _code = assignPropsValues(code, state, controls)
 
     formatCode(_code)
       .then(setFormattedCode)

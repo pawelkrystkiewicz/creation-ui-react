@@ -7,6 +7,7 @@ import {
   AvatarPlayground,
   AvatarWithNumberSize,
   AvatarGroupExample,
+  AvatarGroupPlayground,
 } from '@/examples/avatar'
 
 export const defaultProps = {
@@ -26,23 +27,7 @@ Use `size` prop to set custom size of avatar in pixels. <br/>
 
 ## AvatarGroup
 
-The `AvatarGroup` component is used to display a group of avatars.
-
-{/* <AvatarGroupExample size={40} /> */}
-
-### with `max` property
-
-The `max` property limits the number of avatars displayed. The remaining avatars are represented by a `+{number}` avatar.
-Also in this example `surplusClassName` property was useed to add custom styles to the `+{number}` avatar.
-
-<AvatarGroupExample max={3} surplusClassName='!bg-error' />
-
-### with `total` property
-
-The `total` property is used to display the total number
-of avatars. The remaining avatars are represented by a `+{number}` avatar.
-
-{/* <AvatarGroupExample total={325} /> */}
+<AvatarGroupPlayground />
 
 ## Component API
 
