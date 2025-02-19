@@ -11,4 +11,4 @@ export const AVATAR_CONTAINER_PROPS: (keyof CSSProperties)[] = [
   'padding',
 ]
 
-export const AVATAR_GROUP_OFFSET = -7.5
+export const AVATAR_GROUP_OFFSET = -3.5

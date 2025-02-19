@@ -131,7 +131,7 @@ export const AvatarGroupExample = (props: AvatarGroupProps) => {
         ),
         name: 'stackingOffsetPercent',
         type: 'number',
-        defaultValue: -7.5,
+        defaultValue: 3.5,
       },
       {
         name: 'limit',
