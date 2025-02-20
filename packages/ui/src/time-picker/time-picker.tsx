@@ -88,7 +88,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
         </InputMask>
       </PopoverTrigger>
       <PopoverContent
-        className='!p-0 !bg-transparent shadow'
+        className='!p-0'
         zIndex={zIndex?.popover}
       >
         {open && (

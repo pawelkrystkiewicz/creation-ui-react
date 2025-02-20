@@ -3,7 +3,7 @@
 import { Container } from '@/components/container'
 import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
-import { Flex, TimePicker, type TimePickerValue } from '@creation-ui/react'
+import { TimePicker, type TimePickerValue } from '@creation-ui/react'
 import React, { useState, type FC } from 'react'
 import { createInputControls } from './shared-playground-controls'
 

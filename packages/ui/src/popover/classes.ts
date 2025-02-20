@@ -8,9 +8,10 @@ export const popoverContentClasses = clsx(
   'px-3',
   'border',
   'border-(--border)',
+  'z-(--ui-z-dropdowns)',
 )
 export const popoverDescriptionClasses = clsx(
-  'text-info',
+  'text-(--text-primary)/75',
   'text-sm',
   'leading-5',
 )

@@ -48,7 +48,7 @@ export const TimeSelector: FC<TimeSelectorProps> = ({
   return (
     <div
       className={clsx(
-        'bg-background-portal',
+        'bg-(--background-primary)',
         'rounded',
         'flex',
         'justify-evenly',
