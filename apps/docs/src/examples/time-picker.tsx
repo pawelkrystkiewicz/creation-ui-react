@@ -13,7 +13,7 @@ interface CurrentDateProps {
   time?: TimePickerValue
 }
 
-const CurrentDate: FC<CurrentDateProps> = ({ time }) => {
+const CurrentTime: FC<CurrentDateProps> = ({ time }) => {
   if (!time) return null
 
   const now = new Date()
@@ -60,7 +60,7 @@ export const TimePickerExample = () => {
         onClear={onClear}
         className='w-48'
       />
-      <CurrentDate time={time} />
+      <CurrentTime time={time} />
     </Container>
   )
 }

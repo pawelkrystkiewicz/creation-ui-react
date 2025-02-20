@@ -1,0 +1,23 @@
+import { ForExample } from '@/examples/for'
+
+# For
+
+Abstraction for simplest mapping over an array in JSX. Accepts an array in `each` prop and a function as a child. The function will be called for each item in the array.
+
+## Usage
+
+```tsx copy
+import { For, Flex } from '@creation-ui/react'
+
+const items = ['apple', 'banana', 'cherry']
+
+const ForExample = () => (
+  <Flex column className='rounded-md bg-primary/10 w-fit p-3' items='center'>
+    <For each={items}>{item => <div key={item}>{item}</div>}</For>
+  </Flex>
+)
+```
+
+Result:
+
+<ForExample />
