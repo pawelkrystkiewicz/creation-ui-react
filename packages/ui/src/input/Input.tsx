@@ -17,9 +17,9 @@ export const Input = forwardRef(function Input(
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const isDateType = Boolean(props.type && dateTypes.includes(props.type))
-  const hasValue = Boolean(props.value)
-  const isDisabled = Boolean(props.disabled || props.readOnly || loading)
+  const isDateType = Boolean(props?.type && dateTypes.includes(props?.type))
+  const hasValue = Boolean(props?.value)
+  const isDisabled = Boolean(props?.disabled || props?.readOnly || loading)
   const clearable = Boolean(
     !isDisabled && typeof onClear === 'function' && hasValue,
   )

@@ -1,0 +1,25 @@
+import { properties, TimePickerExample } from '@/examples/time-picker'
+import PropsTable from '@/components/props-table'
+import UseClient from '@/components/UseClient'
+import dynamic from 'next/dynamic'
+
+export const NoSSRTimePickerExample = dynamic(
+  () => import('@/examples/time-picker').then(m => m.TimePickerExample),
+  { ssr: false },
+)
+
+# Time Picker
+
+<div suppressHydrationWarning>
+  <NoSSRTimePickerExample />
+</div>
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='Time Picker'
+  description={
+    'Rest of the props are the same as for the native `input` component.'
+  }
+/>

@@ -42,6 +42,7 @@
     "clsx": "2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "@mona-health/react-input-mask": "^3.0.3",
     "react-spring": "^9.7.5",
     "resize-observer-polyfill": "^1.5.1",
     "tailwind-merge": "^2.6.0"
