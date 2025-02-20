@@ -2,12 +2,9 @@
 
 import PropsTable from '@/components/props-table'
 import {
-  properties,
-  groupProperties,
   AvatarPlayground,
   AvatarWithNumberSize,
-  AvatarGroupExample,
-  AvatarGroupPlayground,
+  properties,
 } from '@/examples/avatar'
 
 export const defaultProps = {
@@ -25,20 +22,10 @@ Use `size` prop to set custom size of avatar in pixels. <br/>
 
 <AvatarWithNumberSize />
 
-## AvatarGroup
-
-<AvatarGroupPlayground />
-
 ## Component API
 
 <PropsTable
   properties={properties}
   name='Avatar'
   description='Avatar component props.'
-/>
-
-<PropsTable
-  properties={groupProperties}
-  name='AvatarGroup'
-  description='AvatarGroup component props.'
 />
