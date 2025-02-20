@@ -33,6 +33,7 @@
     "clsx": "^2.1.1",
     "esbuild-plugin-copy": "^2.1.1",
     "js-beautify": "^1.15.1",
+    "keyboard-key": "^1.1.0",
     "next": "^15.1.6",
     "nextra": "^4.1.0",
     "nextra-theme-docs": "^4.1.0",

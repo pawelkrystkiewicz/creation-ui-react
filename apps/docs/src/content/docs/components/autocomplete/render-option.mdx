@@ -1,0 +1,59 @@
+import { renderOptionProps } from '@/examples/shared-props'
+import PropsTable from '@/components/props-table'
+
+# renderOption
+
+This an example of the default **option** rendering function. Based on that you can create your own `renderOption` function.
+
+```tsx
+import { useAutocomplete } from '../context'
+import { AutocompleteOptionDefault, AutocompleteProps } from '../types'
+import Highlighter from 'react-highlight-words'
+
+export const _renderOption = (props: RenderOptionProps, option: AutocompleteOptionDefault) => {
+  const { getOptionLabel, autoHighlight } = useAutocomplete()
+  const label = getOptionLabel!(option)
+
+  return (
+    <li {...props}>
+      {autoHighlight ? <Highlighter searchWords={[props.query]} autoEscape={true} textToHighlight={label} /> : label}
+    </li>
+  )
+}
+```
+
+## Custom example
+
+```tsx
+type Character = {
+  id: string
+  name: string
+  image: string
+  species: string
+  //... rest
+}
+
+const renderOption = (props: AutocompleteOptionProps, option: Character) => (
+  <div {...props} className={clsx(props.className, 'h-fit w-fit p-2')}>
+    <div className='flex gap-2 items-center'>
+      <Avatar size='sm' src={option.image} />
+      <div className='flex flex-col'>
+        <span className='font-medium'>{option.name}</span>
+        <span className='text-info text-xs'>{option.species}</span>
+      </div>
+    </div>
+  </div>
+)
+```
+
+## Caveats
+
+The `props` of `renderOption` carry `className` that has all interaction on hover and focus.
+You can either preserve this like in example or skip altogether if you want to have your own styles for things like `selected`, `hover` or `disabled`.
+Please refer to type definition to find out what you can base your styles on.
+
+Highlighting of search term is lost in custom option component, but you can implement it yourself, e.g. using [react-highlight-words](https://github.com/bvaughn/react-highlight-words) library.
+
+## Component API
+
+<PropsTable properties={renderOptionProps} name='RenderOptionProps' description='type of RenderOptionProps' />

@@ -40,3 +40,7 @@
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
 }
+
+.hightlighter {
+  @apply font-medium bg-amber-500 rounded-sm p-0.5;
+}

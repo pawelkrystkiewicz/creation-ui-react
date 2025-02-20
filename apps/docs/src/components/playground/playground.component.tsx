@@ -8,7 +8,12 @@ interface PlaygroundComponentProps {
 }
 
 export const PlaygroundComponent: FC<PlaygroundComponentProps> = () => {
-  const { componentProps, component: Component, state } = usePlayground()
+  const {
+    componentProps,
+    component: Component,
+    state,
+    controls,
+  } = usePlayground()
 
   if (!Component) {
     return null
@@ -16,7 +21,7 @@ export const PlaygroundComponent: FC<PlaygroundComponentProps> = () => {
 
   const { children, ...restOfComponentProps } = componentProps ?? {}
   return (
-    <div className={clsx(classes.view)}>
+    <div className={clsx(classes.view({ controls: !!controls }))}>
       {children ? (
         <Component {...restOfComponentProps} {...state}>
           {children}

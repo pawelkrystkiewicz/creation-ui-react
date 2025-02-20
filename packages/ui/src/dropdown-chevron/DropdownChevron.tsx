@@ -19,7 +19,7 @@ const chevron = cva(
   },
 )
 
-const DropdownChevron = ({
+export const DropdownChevron = ({
   open,
   className,
   ...props
@@ -31,5 +31,3 @@ const DropdownChevron = ({
     {...props}
   />
 )
-
-export default DropdownChevron

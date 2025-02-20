@@ -6,6 +6,10 @@ import { PlaygroundControlComponent } from './playground-control'
 export const PlaygroundControls = () => {
   const { controls: properties } = usePlayground()
 
+  if (!properties) {
+    return null
+  }
+
   return (
     <div className={clsx(classes.controls)}>
       {properties?.map((property, index) => (

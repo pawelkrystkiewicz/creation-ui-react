@@ -22,7 +22,7 @@ export const inputContainer = ({ size, animations, disabled, error }: any) =>
 
 export const optionListClasses = cva(
   [
-    'bg-background-secondary',
+    'bg-(--background-secondary)',
     'shadow-md',
     'w-fit',
     'border',
@@ -43,48 +43,50 @@ export const optionListClasses = cva(
   },
 )
 
-export const selectOptionClasses = ({
-  disabled,
-  selected,
-  triggers,
-  size,
-  focusable,
-  animations,
-}: any) =>
-  cva(
-    [
-      focusable,
-      'transition-colors',
-      'font-normal',
-      'relative',
-      'cursor-pointer',
-      'select-none',
-      'rounded',
-      'group',
-      'w-full',
-      'flex',
-      'items-center',
-      'px-2',
-    ],
-    {
-      variants: {
-        selected: {
-          true: [...selected, animations.microInteractionsColor],
-          false: [...triggers.outlined, 'bg-primary', 'border-0'],
-        },
-        size: {
-          sm: [size.sm.fontSize, size.sm.height],
-          md: [size.md.fontSize, size.md.height],
-          lg: [size.lg.fontSize, size.lg.height],
-        },
-        disabled: { true: disabled },
-        multiple: { true: ['flex', 'gap-2'] },
-        truncate: {
-          true: ['truncate', 'whitespace-nowrap'],
-        },
+export const selectOptionClasses = cva(
+  [
+    // focusable,
+    'focus-visible:outline-2',
+    'focus-visible:outline-primary',
+    // focusable
+    'transition-colors',
+    'font-normal',
+    'relative',
+    'cursor-pointer',
+    'select-none',
+    'rounded',
+    'group',
+    'w-full',
+    'flex',
+    'items-center',
+    'px-2',
+  ],
+  {
+    variants: {
+      selected: {
+        true: [
+          // ...selected,
+          'micro-interactions',
+        ],
+        false: [
+          // ...triggers.outlined,
+          'bg-primary',
+          'border-0',
+        ],
+      },
+      // size: {
+      //   sm: [size.sm.fontSize, size.sm.height],
+      //   md: [size.md.fontSize, size.md.height],
+      //   lg: [size.lg.fontSize, size.lg.height],
+      // },
+      disabled: { true: 'opacity-75 pointer-events-none' },
+      multiple: { true: ['flex', 'gap-2'] },
+      truncate: {
+        true: ['truncate', 'whitespace-nowrap'],
       },
     },
-  )
+  },
+)
 
 export const groupPositionClasses = {
   first: ['rounded-l-md', 'border-0', '!border-x', 'z-10'],

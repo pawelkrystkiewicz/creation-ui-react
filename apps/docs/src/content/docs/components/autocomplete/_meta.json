@@ -1,0 +1,7 @@
+{
+  "render-tags": { "title": "renderTags" },
+  "filter-options": { "title": "filterOptions" },
+  "render-option": { "title": "renderOption" },
+  "render-selection": { "title": "renderSelection" },
+  "custom": { "title": "Customizing option and selection" }
+}

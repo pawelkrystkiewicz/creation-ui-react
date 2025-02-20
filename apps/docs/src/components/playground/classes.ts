@@ -1,3 +1,5 @@
+import { cva } from 'class-variance-authority'
+
 export const classes = {
   container: [
     'grid',
@@ -6,14 +8,14 @@ export const classes = {
     'rounded-lg',
     'border-(--border)',
   ],
-  view: [
-    'p-10',
-    'col-span-2',
-    'flex',
-    'items-center',
-    'place-items-center',
-    'justify-center',
-  ],
+  view: cva(
+    ['p-10', 'flex', 'items-center', 'place-items-center', 'justify-center'],
+    {
+      variants: {
+        controls: { true: ['col-span-2'], false: ['col-span-3'] },
+      },
+    },
+  ),
   controls: [
     'flex',
     'flex-col',
