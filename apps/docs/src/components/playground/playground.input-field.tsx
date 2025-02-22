@@ -21,12 +21,14 @@ export const PlaygroundInputField: FC<PlaygroundInputFieldProps> = ({
     <Field type={type}>
       <Label className={'flex items-center gap-1'}>
         {label}
-        {value ? (
-          <code className='text-xs border rounded-sm px-1'>{value}</code>
-        ) : null}
+        {value ? <LabelCode>{value}</LabelCode> : null}
       </Label>
       {children}
       <Description>{helperText}</Description>
     </Field>
   )
 }
+
+export const LabelCode = ({ children }: { children: ReactNode }) => (
+  <code className='text-xs border rounded-sm px-1'>{children}</code>
+)

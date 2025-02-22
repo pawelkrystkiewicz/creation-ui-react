@@ -1,42 +1,17 @@
 'use client'
 import { cloneDeep, set } from 'lodash'
 import { useState } from 'react'
+import UseClient from '../UseClient'
 import { PlaygroundContext } from './context/context'
 import { PlaygroundCode } from './playground.code'
 import { PlaygroundComponent } from './playground.component'
 import { PlaygroundControls } from './playground.controls'
 import { PlaygroundView } from './playground.view'
 import type {
-  PlaygroundControl,
   PlaygroundProps,
-  PlaygroundState,
+  PlaygroundState
 } from './types'
-
-const prepareInitialState = (controls: PlaygroundControl[]) =>
-  controls?.reduce(
-    (
-      acc: Record<string, unknown>,
-      { type, name, defaultValue, values, controls: c },
-    ) => {
-      if (c) {
-        acc[name] = prepareInitialState(c)
-        return acc
-      }
-
-      const [first] = values ?? []
-      const fallback =
-        type === 'boolean'
-          ? false
-          : type === 'string'
-            ? ''
-            : type === 'array'
-              ? first.value
-              : null
-
-      return { ...acc, [name]: defaultValue ?? fallback }
-    },
-    {},
-  )
+import { prepareInitialState } from './utils/prepare-initial-state'
 
 export function Playground<T>(props: PlaygroundProps<T>) {
   const { controls = [], code } = props
@@ -59,7 +34,11 @@ export function Playground<T>(props: PlaygroundProps<T>) {
       <PlaygroundView>
         <PlaygroundComponent />
         <PlaygroundControls />
-        {code && <PlaygroundCode />}
+        {code && (
+          <UseClient>
+            <PlaygroundCode />
+          </UseClient>
+        )}
       </PlaygroundView>
     </PlaygroundContext.Provider>
   )

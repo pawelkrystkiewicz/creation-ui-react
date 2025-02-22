@@ -51,7 +51,7 @@ export default async function RootLayout({ children }: any) {
           footer={footer}
           editLink="Edit this page on GitHub"
           docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
-          sidebar={{ defaultMenuCollapseLevel: 1 }}
+          sidebar={{ defaultMenuCollapseLevel: 2 }}
           pageMap={await getPageMap()}>
           <Providers>{children}</Providers>
         </Layout>

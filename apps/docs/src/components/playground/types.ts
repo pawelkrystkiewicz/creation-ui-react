@@ -24,6 +24,7 @@ export type PlaygroundControl = {
   values?: any[]
   controls?: PlaygroundControl[]
   helperText?: string
+  noBracesInReplacement?: boolean
 }
 
 export interface PlaygroundProps<T = Record<string, unknown>> {

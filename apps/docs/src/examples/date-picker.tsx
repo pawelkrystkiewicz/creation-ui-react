@@ -7,10 +7,8 @@ import { useState, type FC } from 'react'
 const CurrentDate: FC<any> = ({ date }) => {
   if (!date) return null
 
-  const now = new Date(date)
-
-  const formatted = now.toISOString()
-  const local = now.toLocaleString()
+  const formatted = date.toISOString()
+  const local = date.toLocaleString()
   return (
     <div className='text-sm max-w-sm'>
       <div className='grid grid-cols-2 gap-3'>
@@ -28,7 +26,7 @@ const CurrentDate: FC<any> = ({ date }) => {
       <div className='grid grid-cols-2 gap-3'>
         <div className='font-medium'>Timezone</div>
         <pre suppressHydrationWarning>
-          UTC {now.getTimezoneOffset()} minutes in&nbsp;
+          UTC {date.getTimezoneOffset()} minutes in&nbsp;
           {Intl.DateTimeFormat().resolvedOptions().timeZone}
         </pre>
       </div>

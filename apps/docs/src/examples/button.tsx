@@ -12,11 +12,12 @@ import {
   variantControl,
 } from './shared-playground-controls'
 
-import { iconProp } from './shared-props'
 import { Container } from '@/components/container'
+import UseClient from '@/components/UseClient'
+import { iconProp } from './shared-props'
 
 export const ButtonPlayground = () => (
-  <>
+  <UseClient>
     <Playground
       component={Button}
       controls={[
@@ -38,7 +39,7 @@ const ButtonExample = (props: ButtonProps) => {
   return <Button {{props}}>{{children}}</Button>
 }`}
     />
-  </>
+  </UseClient>
 )
 
 export const SingleButtonExample = () => (

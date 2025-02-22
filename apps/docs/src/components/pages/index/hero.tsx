@@ -78,7 +78,7 @@ export const Hero = () => {
             <Button
               className={clsx(
                 gradient.bg,
-                'w-full border-none text-white h-12 flex-grow',
+                'w-full border-none text-white flex-grow [--ui-height:theme(spacing.12)]',
               )}
               color='unstyled'
             >

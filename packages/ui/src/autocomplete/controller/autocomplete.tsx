@@ -119,7 +119,15 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const clearSearch = () => setQuery('')
 
   const clearableCallback = () => {
-    onChange?.(multiple ? [] : null)
+    switch (multiple) {
+      case true:
+        // @ts-expect-error
+        onChange?.([])
+        break
+      case false:
+        onChange?.(null)
+        break
+    }
     props.onInputChange?.({ target: { value: '' } } as any)
     clearSearch()
   }
@@ -210,15 +218,22 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const toggleOpen = () => setOpen(!open)
 
   const handleSelect = (option: T) => {
-    if (multiple) {
-      clearSearch()
-      const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
-      onChange?.(newValue)
-    } else {
-      onChange?.(option)
-      setActiveIdx(null)
-      setOpen(false)
-      setQuery(getOptionLabel?.(option))
+    switch (multiple) {
+      case true: {
+        clearSearch()
+        const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
+        // @ts-expect-error
+        onChange?.(newValue)
+        break
+      }
+      case false: {
+        // @ts-expect-error
+        onChange?.(option)
+        setActiveIdx(null)
+        setOpen(false)
+        setQuery(getOptionLabel?.(option))
+        break
+      }
     }
   }
 
@@ -236,6 +251,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const retainInputValue = () => {
     if (value && !multiple) {
+      // @ts-expect-error
       const label = getOptionLabel?.(value) || ''
 
       if (typeof label !== 'string' || typeof query !== 'string') {
@@ -424,5 +440,3 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     </>
   )
 }
-
-

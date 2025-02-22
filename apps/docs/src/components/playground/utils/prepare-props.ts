@@ -21,7 +21,7 @@ const _formatPropValue = (
 ): string | number => {
   switch (type) {
     case 'boolean':
-      return value ? 'true' : 'false'
+      return value ? '{true}' : '{false}'
 
     case 'number':
       return value ? value : 'undefined'
@@ -89,10 +89,13 @@ export const assignPropsValues = (
 
   replaceable?.forEach((key: string) => {
     const value = values?.[key]
-    const type = controlsMap[key]?.type
+    const { type, noBracesInReplacement } = controlsMap[key]
     const formatted = _formatPropValue(value, type)
 
-    code = code.replace(`{{${key}}}`, `{${formatted}}`)
+    code = code.replace(
+      `{{${key}}}`,
+      noBracesInReplacement ? (formatted as string) : `{${formatted}}`,
+    )
   }, codeTemplate)
 
   return code

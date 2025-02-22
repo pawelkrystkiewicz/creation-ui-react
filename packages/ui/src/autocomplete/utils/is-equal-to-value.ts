@@ -1,11 +1,16 @@
-export const _isOptionEqualToValue = <T>(a: T, b?: T | T[] | null): boolean => {
-  if (b === undefined || b === null) {
+import { FnIsOptionEqualToValue } from '../types'
+
+export const _isOptionEqualToValue = <T>(
+  option: T,
+  value: T | T[] | null | undefined,
+): boolean => {
+  if (value === undefined || value === null) {
     return false
   }
 
-  if (Array.isArray(b)) {
-    return b.some(v => _isOptionEqualToValue(a, v))
+  if (Array.isArray(value)) {
+    return value.some(v => _isOptionEqualToValue(option, v))
   } else {
-    return a === b
+    return option === value
   }
 }

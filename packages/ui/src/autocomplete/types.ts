@@ -1,5 +1,10 @@
 import type { ChipProps, DropdownMaxHeight, InputBaseProps } from '../'
 
+export type FnIsOptionEqualToValue<T> = (
+  option: T,
+  value?: T | T[] | null | undefined,
+) => boolean
+
 export type AutocompleteOptionDefault =
   | string
   | { label: string; disabled?: boolean }
@@ -11,7 +16,7 @@ export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   /**
    * Custom function to compare option and value
    */
-  isOptionEqualToValue?: (option: T, value?: T | null) => boolean
+  isOptionEqualToValue?: FnIsOptionEqualToValue<T>
   /**
    * Getter for option disabled state
    */
