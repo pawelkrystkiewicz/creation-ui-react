@@ -4,10 +4,12 @@ import { classes } from './classes'
 import { usePlayground } from './context/context'
 
 interface PlaygroundComponentProps {
-  children?: ReactNode
+  className?: string
 }
 
-export const PlaygroundComponent: FC<PlaygroundComponentProps> = () => {
+export const PlaygroundComponent: FC<PlaygroundComponentProps> = ({
+  className,
+}) => {
   const {
     componentProps,
     component: Component,
@@ -21,7 +23,7 @@ export const PlaygroundComponent: FC<PlaygroundComponentProps> = () => {
 
   const { children, ...restOfComponentProps } = componentProps ?? {}
   return (
-    <div className={clsx(classes.view({ controls: !!controls }))}>
+    <div className={clsx(classes.view({ controls: !!controls }), className)}>
       {children ? (
         <Component {...restOfComponentProps} {...state}>
           {children}

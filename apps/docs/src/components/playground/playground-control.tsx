@@ -1,6 +1,6 @@
 'use client'
 import { capitalize } from '@/utils/list-or-types'
-import { Input, Switch, ToggleGroup } from '@creation-ui/react'
+import { Input, Select, Switch, ToggleGroup } from '@creation-ui/react'
 import clsx from 'clsx'
 import { get } from 'lodash'
 import type { FC } from 'react'
@@ -42,6 +42,28 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
   const placeholder = typeof label === 'string' ? label : undefined
 
   switch (controlType) {
+    case 'select':
+      return (
+        <PlaygroundInputField
+          label={label}
+          helperText={helperText}
+          value={typeof value === 'string' ? value : (value as any).label}
+        >
+          <Select
+            name={name}
+            multiple={false}
+            onChange={handleInputChange}
+            // @ts-expect-error
+            value={value}
+          >
+            {(values ?? []).map(opt => (
+              <option value={opt} key={opt}>
+                {opt}
+              </option>
+            ))}
+          </Select>
+        </PlaygroundInputField>
+      )
     case 'input:number':
       return (
         <PlaygroundInputField label={label} helperText={helperText}>

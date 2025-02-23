@@ -14,6 +14,7 @@ export type PlaygroundControls =
   | 'switch'
   | 'toggle-group'
   | 'nested'
+  | 'select'
 
 export type PlaygroundControl = {
   name: string
@@ -32,6 +33,7 @@ export interface PlaygroundProps<T = Record<string, unknown>> {
   controls?: PlaygroundControl[]
   componentProps?: T
   code?: string
+  className?: string
 }
 
 export interface PlaygroundState {

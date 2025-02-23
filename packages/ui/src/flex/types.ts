@@ -3,7 +3,7 @@ import { flexClasses } from './classes'
 
 export type FlexClasses = VariantProps<typeof flexClasses>
 
-export type FlexProps = {} & FlexClasses &
+export type FlexProps = FlexClasses &
   Pick<
     React.HTMLAttributes<HTMLDivElement>,
     'title' | 'className' | 'children' | 'onClick'

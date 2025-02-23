@@ -7,6 +7,7 @@ import {
   variantControl,
 } from './shared-playground-controls'
 
+import { PlaygroundInputField } from '@/components/playground/playground.input-field'
 import { Select, type SelectProps } from '@creation-ui/react'
 import { iconProp } from './shared-props'
 
@@ -22,6 +23,18 @@ export const SelectExample = (props: SelectProps) => {
   )
 }
 
+export const SelectField = () => {
+  return (
+    <PlaygroundInputField
+      label='Currency'
+      helperText='Select your currency'
+      className='max-w-sm'
+    >
+      <SelectExample />
+    </PlaygroundInputField>
+  )
+}
+
 export const SelectPlayground = () => (
   <>
     <Playground
@@ -30,7 +43,6 @@ export const SelectPlayground = () => (
         variantControl,
         loadingControl,
         disabledControl,
-
         {
           name: 'multiple',
           type: 'boolean',

@@ -14,7 +14,7 @@ import type {
 import { prepareInitialState } from './utils/prepare-initial-state'
 
 export function Playground<T>(props: PlaygroundProps<T>) {
-  const { controls = [], code } = props
+  const { controls = [], code, className } = props
 
   const [state, setState] = useState<PlaygroundState>(
     prepareInitialState(controls),
@@ -32,7 +32,7 @@ export function Playground<T>(props: PlaygroundProps<T>) {
       value={{ ...props, state, handleChange } as any}
     >
       <PlaygroundView>
-        <PlaygroundComponent />
+        <PlaygroundComponent className={className} />
         <PlaygroundControls />
         {code && (
           <UseClient>

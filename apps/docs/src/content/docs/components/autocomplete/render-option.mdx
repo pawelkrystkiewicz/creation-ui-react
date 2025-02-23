@@ -4,6 +4,7 @@ import PropsTable from '@/components/props-table'
 # renderOption
 
 This an example of the default **option** rendering function. Based on that you can create your own `renderOption` function.
+See [Highlighter](../highlighter) for more details on how to highlight search term.
 
 ```tsx
 import { useAutocomplete } from '../context'
@@ -16,7 +17,7 @@ export const _renderOption = (props: RenderOptionProps, option: AutocompleteOpti
 
   return (
     <li {...props}>
-      {autoHighlight ? <Highlighter searchWords={[props.query]} autoEscape={true} textToHighlight={label} /> : label}
+      {autoHighlight ? <Highlighter searchWords={[props.query]} textToHighlight={label} /> : label}
     </li>
   )
 }

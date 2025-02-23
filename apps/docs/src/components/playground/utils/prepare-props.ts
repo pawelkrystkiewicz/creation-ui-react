@@ -21,7 +21,7 @@ const _formatPropValue = (
 ): string | number => {
   switch (type) {
     case 'boolean':
-      return value ? '{true}' : '{false}'
+      return value ? 'true' : 'false'
 
     case 'number':
       return value ? value : 'undefined'
@@ -82,7 +82,7 @@ export const assignPropsValues = (
 
   if (replaceable.includes('props')) {
     const props = getPropsObjectAsString(keys, values, controlsMap)
-    code = code.replace('{{props}}', props.join('\n'))
+    code = code.replace('{{props}}', props.join(' '))
   }
 
   if (replaceable.length === 1) return code

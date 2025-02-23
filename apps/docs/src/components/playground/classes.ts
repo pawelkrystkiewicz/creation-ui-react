@@ -7,6 +7,7 @@ export const classes = {
     'border',
     'rounded-lg',
     'border-(--border)',
+    'my-3'
   ],
   view: cva(
     ['p-10', 'flex', 'items-center', 'place-items-center', 'justify-center'],

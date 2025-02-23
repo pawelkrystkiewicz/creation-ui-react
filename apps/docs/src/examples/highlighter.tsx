@@ -31,6 +31,7 @@ export const HighlighterPlayground = () => (
       },
       {
         name: 'textToHighlight',
+        label: 'Text to highlight',
         type: 'string',
         defaultValue: 'Hello world',
       },
