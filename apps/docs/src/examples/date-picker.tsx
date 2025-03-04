@@ -35,7 +35,7 @@ const CurrentDate: FC<any> = ({ date }) => {
 }
 
 export const DatePickerExample = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date())
 
   const handleDateChange = (date: any) => {
     setSelectedDate(date)

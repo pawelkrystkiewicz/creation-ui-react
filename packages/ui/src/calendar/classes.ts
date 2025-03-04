@@ -9,32 +9,26 @@ export const calendarHeaderClasses = cva(['font-semibold', 'mb-4'], {
   },
 })
 
-export const calendarClasses = {
-  container: cva(
-    [
-      'relative',
-      'bg-(--background-primary)',
-      'border',
-      'border-(--border)',
-      'p-4',
-      'rounded-md',
-    ],
-    {
-      variants: {
-        // size: {
-        //   sm: ['w-72', 'min-h-72'],
-        //   md: ['w-96', 'min-h-96'],
-        //   lg: ['w-[406px]', 'min-h-[406px]'],
-        // },
-        hasSecondView: {
-          true: ['!min-w-fit'],
-        },
+export const calendarContainerClasses = cva(
+  [
+    'relative',
+    'bg-(--background-primary)',
+    'border',
+    'border-(--border)',
+    'p-4',
+    'rounded-md',
+    'w-fit',
+  ],
+  {
+    variants: {
+      hasSecondView: {
+        true: ['!min-w-fit'],
       },
     },
-  ),
-}
+  },
+)
 
-export const calendarDaysViewClasses = cva(
+export const calendarDayCellClasses = cva(
   [
     //
     'micro-interactions',
@@ -52,7 +46,7 @@ export const calendarDaysViewClasses = cva(
     'relative',
     'rounded-md',
     'border-transparent',
-    'bg-primary',
+    'size-(--ui-height)',
   ],
   {
     variants: {
@@ -64,18 +58,14 @@ export const calendarDaysViewClasses = cva(
           'rounded-none',
           'first:rounded-l-md',
           'last:rounded-r-md',
-          'bg-opacity-20',
+          'bg-primary/80',
+          'hover:bg-primary/100',
+          'text-white',
         ],
       },
       isSelected: {
-        true: [
-          // selected,
-          //  triggers.contained,
-          '!bg-opacity-100',
-        ],
-        false: [
-          // triggers.outlined
-        ],
+        true: ['bg-primary/80', 'hover:bg-primary/100', 'text-white'],
+        false: ['bg-primary/0', 'hover:bg-primary/10'],
       },
       isStart: {
         true: ['rounded-l-md'],
@@ -87,11 +77,6 @@ export const calendarDaysViewClasses = cva(
         true: [],
         false: ['text-opacity-75'],
       },
-      // size: {
-      //   sm: ['size-8', 'text-sm'],
-      //   md: ['size-10', 'text-sm'],
-      //   lg: ['size-12'],
-      // },
       isWeekend: {
         true: ['text-error'],
         false: [],
@@ -106,9 +91,9 @@ export const calendarDaysViewClasses = cva(
   },
 )
 
-export const dayRowClasses = 'grid grid-cols-7 w-full'
+export const dayRowClasses = 'grid grid-cols-7 w-[calc(var(--ui-height)*7)]'
 export const calendarDaysViewTitleClasses = {
-  day: cva(['select-none', 'justify-self-center'], {
+  day: cva(['select-none', 'items-center'], {
     variants: {
       isWeekend: {
         true: 'text-error',

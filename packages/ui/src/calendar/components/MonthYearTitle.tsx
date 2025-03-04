@@ -21,7 +21,8 @@ export const MonthYearTitle: FC<MonthYearTitleProps> = ({
 
   return (
     <Flex
-      gap={1}
+      gapX={1}
+      gapY={1}
       items={'center'}
       className={calendarHeaderClasses({ offsetMonth })}
     >

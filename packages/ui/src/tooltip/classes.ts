@@ -20,6 +20,8 @@ export const tooltipStyles = cva(
     'px-2',
     'border-(--border)',
     'bg-(--background-secondary)',
+    'z-(--ui-z-tooltips)',
+    'text-sm',
   ],
   {
     variants: {
@@ -28,7 +30,7 @@ export const tooltipStyles = cva(
           'before:top-full',
           '-top-10',
           'left-1/2',
-          'before:border-t-border',
+          'before:border-t-(--border)',
           '-translate-x-1/2',
           'before:left-1/2',
           'before:-translate-x-1/2',
@@ -41,7 +43,7 @@ export const tooltipStyles = cva(
           'before:bottom-full',
           'before:left-1/2',
           'before:-translate-x-1/2',
-          'before:border-b-border',
+          'before:border-b-(--border)',
         ],
         left: [
           'right-full',
@@ -51,7 +53,7 @@ export const tooltipStyles = cva(
           'before:left-full',
           'before:top-1/2',
           'before:-translate-y-1/2',
-          'before:border-l-border',
+          'before:border-l-(--border)',
         ],
         right: [
           'ml-2',
@@ -61,7 +63,7 @@ export const tooltipStyles = cva(
           'before:right-full',
           'before:top-1/2',
           'before:-translate-y-1/2',
-          'before:border-r-border',
+          'before:border-r-(--border)',
         ],
       },
     },

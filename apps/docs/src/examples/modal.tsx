@@ -72,7 +72,7 @@ export const ModalExample = () => {
                 }}
               />
             </Field>
-            <Flex items={'center'} gap={5}>
+            <Flex items={'center'} gapX={5}>
               <Field>
                 <Label required>Expires</Label>
                 <Input

@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { HighlighterProps } from './types'
+import type { FC } from 'react'
+import type { HighlighterProps } from './types'
 
 export const Highlighter: FC<HighlighterProps> = ({
   searchWords,

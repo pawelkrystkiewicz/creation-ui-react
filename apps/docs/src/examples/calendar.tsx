@@ -4,21 +4,24 @@ import type { DocumentedProperty } from '@/models/system'
 import { Calendar, type DateRange } from '@creation-ui/react'
 import { useState } from 'react'
 import { classNameProps, idProp, sizeProp } from './shared-props'
+import { Container } from '@/components/container'
 
 export const CalendarExample = () => {
   const [value, setValue] = useState<DateRange>([null, null])
 
   return (
-    <UseClient>
-      <Calendar
-        mode='range'
-        value={value}
-        onChange={setValue}
-        weekStartsOn={1}
-        numberOfMonths={2}
-        todayText='Heute'
-      />
-    </UseClient>
+    <Container>
+      <UseClient>
+        <Calendar
+          mode='range'
+          value={value}
+          onChange={setValue}
+          weekStartsOn={1}
+          numberOfMonths={2}
+          todayText='Heute'
+        />
+      </UseClient>
+    </Container>
   )
 }
 

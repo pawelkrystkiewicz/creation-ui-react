@@ -11,7 +11,7 @@ export const CalendarDaysViewMultiple: FC<CalendarDaysViewMultipleProps> = ({
 }) => {
   if (numberOfMonths === 1) {
     return (
-      <Flex gap={3}>
+      <Flex gapX={3} gapY={3}>
         <CalendarDaysView />
       </Flex>
     )
@@ -20,10 +20,10 @@ export const CalendarDaysViewMultiple: FC<CalendarDaysViewMultipleProps> = ({
   const array = Array.from({ length: numberOfMonths })
 
   return (
-    <Flex gap={5}>
+    <Flex gapX={5} gapY={5}>
       <For each={array}>
         {(_: any, i: number) => (
-          <Flex gap={3} key={i}>
+          <Flex gapX={3} gapY={3} key={i}>
             <CalendarDaysView offsetMonth={i as 0 | 1} multipleCalendars />
           </Flex>
         )}

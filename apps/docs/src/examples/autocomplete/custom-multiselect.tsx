@@ -1,6 +1,13 @@
 'use client'
 import { Container } from '@/components/container'
-import { Autocomplete, Avatar, ClearButton, Flex } from '@creation-ui/react'
+import {
+  Autocomplete,
+  Avatar,
+  ClearButton,
+  Field,
+  Flex,
+  Label,
+} from '@creation-ui/react'
 import { useState } from 'react'
 import { renderOption } from './custom'
 import { type Character } from './types'
@@ -14,7 +21,8 @@ const renderTags = (
     <Flex
       key={option.id}
       items={'center'}
-      gap={2}
+      gapX={2}
+      gapY={2}
       className='size-fit border rounded-full p-1 text-xs'
     >
       <Avatar
@@ -36,19 +44,21 @@ export const AutocompleteExampleCustomMultiselect = () => {
 
   return (
     <Container variant='column'>
-      <Autocomplete<Character>
-        renderOption={renderOption}
-        renderTags={renderTags}
-        label={'Autocomplete - custom'}
-        clearable
-        multiple
-        filterSelectedOptions
-        value={value as any}
-        options={users}
-        onChange={onChange as any}
-        isOptionEqualToValue={(a, b) => a?.id === b?.id}
-        getOptionLabel={({ name }: Character) => name}
-      />
+      <Field>
+        <Label>Autocomplete - custom</Label>
+        <Autocomplete<Character>
+          renderOption={renderOption}
+          renderTags={renderTags}
+          multiple
+          filterSelectedOptions
+          value={value as any}
+          options={users}
+          onChange={onChange as any}
+          isOptionEqualToValue={(a: Character, b: Character) => a?.id === b?.id}
+          getOptionLabel={({ name }: Character) => name}
+          onClear={() => setValue(null)}
+        />
+      </Field>
     </Container>
   )
 }

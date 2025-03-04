@@ -1,6 +1,6 @@
 import { FC, useCallback, type ReactNode } from 'react'
 import { useCalendar } from '../calendar.context'
-import { calendarDaysViewClasses, dayRowClasses } from '../classes'
+import { calendarDayCellClasses, dayRowClasses } from '../classes'
 import { isDateInDisplayedMonth, isWeekendIdx } from '../utils'
 
 interface CalendarDaysViewProps {
@@ -100,7 +100,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
           key={`${days.length}-${i}`}
           className={
             !shouldSkipRender
-              ? calendarDaysViewClasses({
+              ? calendarDayCellClasses({
                   isCurrentMonth,
                   isSelected,
                   isToday,

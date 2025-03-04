@@ -10,9 +10,9 @@ export const Tooltip = (props: TooltipProps) => {
 
   return (
     <div className={clsx(['relative', 'max-w-fit', 'group'])}>
-      <div {...rest} className={tooltipStyles({ className, position })}>
+      <span {...rest} className={tooltipStyles({ className, position })}>
         {content}
-      </div>
+      </span>
       {children}
     </div>
   )

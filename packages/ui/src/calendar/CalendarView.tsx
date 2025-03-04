@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Button } from '../button'
 import { Icon } from '../icon'
 import { CalendarViewMode } from './calendar.types'
-import { calendarClasses } from './classes'
+import { calendarContainerClasses } from './classes'
 import { CalendarDaysNames } from './components/CalendarDaysNames'
 import { CalendarDaysView } from './components/CalendarDaysView'
 import { CalendarMonthsView } from './components/CalendarMonthsView'
@@ -36,7 +36,7 @@ export const CalendarView: FC<CalendarViewProps> = ({
 }) => {
   return (
     <div className={className}>
-      <div className={calendarClasses.container({ hasSecondView })} id={id}>
+      <div className={calendarContainerClasses({ hasSecondView })} id={id}>
         <Button
           variant='text'
           onClick={onPrevClick?.bind(null)}
@@ -78,7 +78,6 @@ export const CalendarView: FC<CalendarViewProps> = ({
               variant='text'
               onClick={onTodayClick}
               disabled={isTodaySelected}
-              className='!absolute bottom-0 left-0 mb-4 mx-2'
             >
               {todayText}
             </Button>
