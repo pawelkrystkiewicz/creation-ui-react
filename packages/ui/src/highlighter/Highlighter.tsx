@@ -9,7 +9,6 @@ export const Highlighter: FC<HighlighterProps> = ({
 
   const regex = new RegExp(`(${searchWords.join('|')})`, 'gi')
   const parts = textToHighlight.split(regex).filter(Boolean)
-  console.log(parts)
 
   return (
     <span>
