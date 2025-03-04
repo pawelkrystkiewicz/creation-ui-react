@@ -8,10 +8,11 @@ export const Highlighter: FC<HighlighterProps> = ({
   if (!searchWords || !searchWords.length) return textToHighlight
 
   const regex = new RegExp(`(${searchWords.join('|')})`, 'gi')
-  const parts = textToHighlight.split(regex)
+  const parts = textToHighlight.split(regex).filter(Boolean)
+  console.log(parts)
 
   return (
-    <>
+    <span>
       {parts.map((part, index) =>
         searchWords.some(word => word.toLowerCase() === part.toLowerCase()) ? (
           <mark key={index} className='highlighter'>
@@ -21,6 +22,6 @@ export const Highlighter: FC<HighlighterProps> = ({
           part
         ),
       )}
-    </>
+    </span>
   )
 }
