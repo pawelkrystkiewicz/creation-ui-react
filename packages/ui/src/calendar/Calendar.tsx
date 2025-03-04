@@ -64,7 +64,11 @@ const Calendar: FC<CalendarProps> = props => {
   }
 
   const onTodayClick = () => {
+
     const today = new Date()
+
+    today.setHours(0, 0, 0, 0)
+
     setViewDate(today)
     handleDayClick(today)
     setView('days')
