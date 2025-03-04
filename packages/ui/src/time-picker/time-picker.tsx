@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
 import InputMask from '@mona-health/react-input-mask'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+import { Input } from '../input'
+import { Popover, PopoverContent, PopoverTrigger } from '../popover'
+import { TimeSelector } from '../time-selector'
 import { TimePickerProps, TimePickerValue } from './types'
 import { formatTime, sanitizeTime } from './utils'
-import { Popover, PopoverContent, PopoverTrigger } from '../popover'
-import { Input } from '../input'
-import { TimeSelector } from '../time-selector'
 
 export const TimePicker: FC<TimePickerProps> = props => {
   const { value, format = 24, onChange, zIndex, ...rest } = props
@@ -87,10 +87,7 @@ export const TimePicker: FC<TimePickerProps> = props => {
           <Input onClear={props.onClear} />
         </InputMask>
       </PopoverTrigger>
-      <PopoverContent
-        className='!p-0'
-        zIndex={zIndex?.popover}
-      >
+      <PopoverContent className='!p-0' zIndex={zIndex?.popover}>
         {open && (
           <TimeSelector value={value} onSelect={setValue} format={format} />
         )}
