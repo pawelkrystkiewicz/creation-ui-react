@@ -24,7 +24,9 @@
     --background-primary: theme(colors.neutral.800);
     --background-secondary: theme(colors.neutral.700);
     --border: theme(colors.neutral.700);
-  };
+  }
+
+  ;
 
 
 }
@@ -50,3 +52,12 @@ body {
 .micro-interactions {
   @apply transition-all duration-300 ease-snappy;
 }
+
+.link {
+  @apply text-primary underline;
+}
+
+.link:hover {
+  @apply text-primary/80;
+}
+

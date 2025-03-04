@@ -1,40 +1,49 @@
-import { InputField } from '@/examples/input-field'
+import PropsTable from '@/components/props-table'
+import {
+  fieldProperties,
+  labelProperties,
+  errorProperties,
+  descriptionProperties,
+  InputFieldPlayground,
+} from '@/examples/input-field'
 
 # InputField
 
 InputField allows you to create a form with a label, input, description, and error message.
 
-<InputField />
+<InputFieldPlayground />
 
-```tsx
-export const InputField = () => {
+## Components API
 
-  const [value, setValue] = useState(20)
-
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value))
-  }
-
-  const isError = value < 0
-
-  return (
-
-    <Field className='max-w-sm mx-auto'>
-      <Label>Amount</Label>
-      <Input
-        name='amount'
-        value={value}
-        onChange={onValueChange}
-        placeholder='$0.00'
-        autoFocus
-        type='number'
-      />
-      <Description>
-        Set the desired amount
-      </Description>
-      {isError && <Error>Amount must be greater than 0</Error>}
-    </Field>
-
-  )
-}
-```
+<PropsTable
+  properties={fieldProperties}
+  name='Field'
+  dependency={{
+    name: 'Headless UI Input',
+    link: 'https://headlessui.com/react/input',
+  }}
+/>
+<PropsTable
+  properties={labelProperties}
+  name='Label'
+  dependency={{
+    name: 'Headless UI Input',
+    link: 'https://headlessui.com/react/input',
+  }}
+/>
+<PropsTable
+  properties={descriptionProperties}
+  name='Description'
+  dependency={{
+    name: 'Headless UI Input',
+    link: 'https://headlessui.com/react/input',
+  }}
+/>
+<PropsTable
+  properties={errorProperties}
+  name='Error'
+  dependency={{
+    name: 'Headless UI Input',
+    link: 'https://headlessui.com/react/input',
+  }}
+/>

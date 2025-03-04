@@ -10,6 +10,7 @@
   "dependencies": {
     "iconoir-react": "^7.10.1",
     "lodash": "^4.17.21",
+    "nanoid": "^5.1.2",
     "next": "^15.0.2",
     "nextra": "^4.0.4",
     "nextra-theme-docs": "^4.0.4",

@@ -9,7 +9,7 @@ export interface TimePickerProps
   extends Omit<InputProps, 'onChange' | 'value'> {
   onChange?: (date: TimePickerValue) => void
   format?: 12 | 24
-  value: TimePickerValue
+  value?: TimePickerValue
   /**
    * z-index configuration
    */

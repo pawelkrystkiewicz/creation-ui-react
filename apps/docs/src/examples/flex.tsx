@@ -2,24 +2,70 @@
 
 import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
-import { Flex, type FlexProps } from '@creation-ui/react'
-import { WrapText, Xmark } from 'iconoir-react'
+import { generateId } from '@/utils/generate-id/generate-id'
+import { Flex, TouchTarget, type FlexProps } from '@creation-ui/react'
+import { Plus, Trash, WrapText, Xmark } from 'iconoir-react'
+import { useState } from 'react'
 
-const items = new Array(5).fill(null).map((_, i) => (
-  <div
-    key={i}
-    className='bg-(--background-primary) border border-(--border) rounded-md font-medium flex items-center justify-center'
-    style={{
-      minHeight: i % 3 === 0 ? 100 : 50,
-      minWidth: i % 3 === 0 ? 100 : 50,
-    }}
-  >
-    {i + 1}
-  </div>
-))
+const ID_LENGTH = 4
+
+type ItemType = {
+  id: string
+  minWidth: number
+  minHeight: number
+}
+
+const getStyle = (idx: number) => {
+  const minWidth = idx % 3 === 0 ? 100 : 50
+  const minHeight = idx % 3 === 0 ? 100 : 50
+  return { minWidth, minHeight }
+}
+
+const initialItems = new Array(5).fill(null).map((_, i) => ({
+  id: generateId(undefined, ID_LENGTH),
+  ...getStyle(i),
+}))
 
 export const FlexExample = (props: FlexProps) => {
-  return <Flex {...props}>{items}</Flex>
+  const [items, setItems] = useState<ItemType[]>(initialItems)
+
+  const addItem = () =>
+    setItems(prev => [
+      ...prev,
+      { id: generateId(undefined, ID_LENGTH), ...getStyle(prev.length) },
+    ])
+
+  const removeItem = (id: string) => () =>
+    setItems(prev => prev.filter(item => item.id !== id))
+
+  return (
+    <Flex {...props}>
+      {items.map(({ id, ...style }) => (
+        <div
+          key={id}
+          className='group bg-(--background-primary) border border-(--border) rounded-md font-medium flex items-center justify-center relative'
+          style={{ ...style }}
+        >
+          <span className='text-xs'>{id}</span>
+          <TouchTarget>
+            <Trash
+              className='group-hover:opacity-100 opacity-0 micro-interactions text-error absolute top-2 right-2 cursor-pointer'
+              onClick={removeItem(id)}
+            />
+          </TouchTarget>
+        </div>
+      ))}
+      <div
+        onClick={addItem}
+        className='cursor-pointer group bg-(--background-primary)/50 hover:bg-(--background-primary) rounded-md font-medium flex items-center justify-center micro-interactions'
+        style={{
+          minWidth: 50,
+        }}
+      >
+        <Plus className='group-hover:scale-110 group-hover:text-primary micro-interactions' />
+      </div>
+    </Flex>
+  )
 }
 
 export const FlexPlayground = () => {
@@ -41,10 +87,20 @@ export const FlexPlayground = () => {
         {
           name: 'shrink',
           type: 'boolean',
-          defaultValue: false,
+          defaultValue: true,
         },
         {
-          name: 'gap',
+          name: 'gapX',
+          type: 'array',
+          component: 'select',
+          values: [
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 20, 24, 28, 32, 36,
+            40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
+          ],
+          defaultValue: 3,
+        },
+        {
+          name: 'gapY',
           type: 'array',
           component: 'select',
           values: [
@@ -79,7 +135,7 @@ export const FlexPlayground = () => {
               value: 'reverse',
             },
           ],
-          defaultValue: 'none',
+          defaultValue: 'wrap',
           helperText:
             'In this example effect can be observed when shrink is enabled',
         },

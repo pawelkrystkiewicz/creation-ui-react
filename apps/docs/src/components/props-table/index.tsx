@@ -1,7 +1,7 @@
 'use client'
 import { Description, Header } from '@/components/typography'
-import clsx from 'clsx'
 import type { DocumentedProperty } from '@/models/system'
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 
 const TableHeader = () => (
@@ -80,15 +80,25 @@ interface PropsTableProps {
   properties?: DocumentedProperty[]
   name: string
   description: string
+  dependency?: {
+    name: string
+    link: string
+  }
 }
 
-const PropsTable = ({ properties, name, description }: PropsTableProps) => {
+const PropsTable = ({
+  properties,
+  name,
+  description,
+  dependency,
+}: PropsTableProps) => {
   const [highlightedName, setHighlightedName] = useState<string | null>(null)
 
   // Listen to URL changes
   function handleHashChange() {
     setHighlightedName(window.location.hash.slice(1)) // slice to remove the leading '#'
   }
+
   useEffect(() => {
     window.addEventListener('hashchange', handleHashChange, false)
 
@@ -113,6 +123,23 @@ const PropsTable = ({ properties, name, description }: PropsTableProps) => {
         </Header>
         {description && <p dangerouslySetInnerHTML={{ __html: description }} />}
       </Description>
+      {dependency && (
+        <>
+          <p>
+            This component is built on top of{' '}
+            <span className='font-medium'>{dependency.name}</span>. Visit the{' '}
+            <a
+              href={dependency.link}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='link'
+            >
+              docs
+            </a>{' '}
+            for the built in props
+          </p>
+        </>
+      )}
 
       <div className='mt-6 mb-12'>
         <div className='-mx-4 overflow-x-auto sm:mx-0'>

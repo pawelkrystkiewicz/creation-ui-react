@@ -49,7 +49,6 @@ const CurrentTime: FC<CurrentDateProps> = ({ time }) => {
 export const TimePickerExample = () => {
   const [time, setTime] = useState<TimePickerValue>(null)
   const onClear = () => setTime(null)
-  const now = new Date()
 
   return (
     <Container variant='column'>
