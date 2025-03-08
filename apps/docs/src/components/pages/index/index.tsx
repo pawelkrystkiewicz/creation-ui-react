@@ -1,6 +1,7 @@
 'use client'
 import { Hero } from '@/components/pages/index/hero'
 import clsx from 'clsx'
+import { Showcase } from './showcase'
 
 const mainBodyClasses = clsx([
   'flex',
@@ -17,5 +18,6 @@ const mainBodyClasses = clsx([
 export const Index = () => (
   <div className={mainBodyClasses}>
     <Hero />
+    <Showcase/>
   </div>
 )

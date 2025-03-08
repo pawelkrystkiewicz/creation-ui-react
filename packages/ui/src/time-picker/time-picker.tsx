@@ -10,10 +10,13 @@ import { formatTime } from './utils'
 export const TimePicker: FC<TimePickerProps> = props => {
   const { value, format = 24, onChange, zIndex, ...rest } = props
   const [open, setOpen] = useState(false)
+
   const inputValue = useMemo(() => formatTime(value), [value])
+
   const handleTimeInput = useMemo(() => getTimeInputHandler(format), [format])
   const sanitizeTime = useMemo(() => sanitizeTimeString(format), [format])
   const handleClick = () => setOpen(true)
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(sanitizeTime(event.target.value))
   }

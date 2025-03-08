@@ -1,9 +1,18 @@
-import clsx from 'clsx'
+import { cva } from 'class-variance-authority'
 import { FC, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { InputBaseProps } from './types'
 import { Icon } from '../icon'
 import { Loader } from '../loader'
+import { InputBaseProps } from './types'
+
+const classes = cva([
+  'cursor-pointer',
+  'absolute',
+  '-translate-y-1/2',
+  '-translate-x-1/2',
+  'right-0',
+  'bottom-0',
+])
 
 export const EndAdornment = ({ children }: { children: ReactNode }) => (
   <span
@@ -38,13 +47,7 @@ export const InputBase: FC<InputBaseProps> = ({
       )}
       {!loading && endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
       {clearable && (
-        <Icon
-          icon={'close'}
-          onClick={onClear}
-          className={clsx(
-            'cursor-pointer absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1/2',
-          )}
-        />
+        <Icon icon={'close'} onClick={onClear} className={classes()} />
       )}
     </span>
   )

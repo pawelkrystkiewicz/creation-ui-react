@@ -1,6 +1,6 @@
 'use client'
 import { Playground } from '@/components/playground'
-import { Input, type InputProps } from '@creation-ui/react'
+import { Input, type HTMLInputType, type InputProps } from '@creation-ui/react'
 import type { DocumentedProperty } from '@/models/system'
 import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'
@@ -63,7 +63,7 @@ export const PasswordExample = ({ ...props }: InputExampleProps) => {
   const onIconClick = () => {
     setType(type === 'password' ? 'text' : 'password')
   }
-  const htmlType = type as any
+  const htmlType = type as HTMLInputType
 
   const Icon = htmlType !== 'password' ? EyeClosed : Eye
 

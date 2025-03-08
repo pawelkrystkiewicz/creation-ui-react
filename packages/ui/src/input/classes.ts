@@ -38,10 +38,6 @@ export const inputStyles = cva(
     'dark:data-hover:data-disabled:border-white/15',
     // System icons
     'dark:[color-scheme:dark]',
-    // Padding
-    'py-[calc(--spacing(2.5)-1px)]',
-    'pr-[calc(var(--input-pr)+var(--input-pr-clearable))]',
-    'pl-[calc(var(--input-pl))]',
   ],
   {
     variants: {
@@ -84,10 +80,30 @@ export const inputStyles = cva(
         true: ['[--input-pr-clearable:var(--ui-icon-height)]'],
         false: ['[--input-pr-clearable:0px]'],
       },
+      type: {
+        default: [
+          'py-[calc(--spacing(2.5)-1px)]',
+          'pr-[calc(var(--input-pr)+var(--input-pr-clearable))]',
+          'pl-[calc(var(--input-pl))]',
+        ],
+        file: [
+          'py-[2px]',
+          'pr-[calc(var(--input-pr)+var(--input-pr-clearable))]',
+          'pl-[calc(var(--input-pl))]',
+        ],
+        color: [
+          'py-[1px]',
+          '[--input-pl:calc(--spacing(1.5))]',
+          '[--input-pr:calc(--spacing(1.5))]',
+          '[&::-webkit-color-swatch]:rounded-sm',
+          '[&::-webkit-color-swatch]:border-none',
+        ],
+      },
     },
     defaultVariants: {
       adornments: false,
       isDateType: false,
+      type: 'default',
     },
   },
 )

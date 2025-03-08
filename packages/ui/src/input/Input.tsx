@@ -2,7 +2,7 @@ import * as Headless from '@headlessui/react'
 import React, { forwardRef } from 'react'
 import { InputBase } from '../input-base'
 import { inputStyles } from './classes'
-import { dateTypes } from './constants'
+import { DATE_TYPES } from './constants'
 import type { InputProps } from './types'
 
 export const Input = forwardRef(function Input(
@@ -17,7 +17,12 @@ export const Input = forwardRef(function Input(
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const isDateType = Boolean(props?.type && dateTypes.includes(props?.type))
+  const isDateType = Boolean(
+    props?.type && DATE_TYPES.includes(props?.type as any),
+  )
+  const isTypeStyle = Boolean(
+    props?.type && ['color', 'file'].includes(props?.type as any),
+  )
   const hasValue = Boolean(props?.value)
   const isDisabled = Boolean(props?.disabled || props?.readOnly || loading)
   const clearable = Boolean(
@@ -39,6 +44,7 @@ export const Input = forwardRef(function Input(
       onClear={onClear}
       loading={loading}
       className={cx?.outer}
+      type={props.type}
     >
       <Headless.Input
         ref={ref}
@@ -48,6 +54,7 @@ export const Input = forwardRef(function Input(
           adornments,
           clearable,
           className: cx?.inner,
+          type: isTypeStyle ? (props.type as any) : 'default',
         })}
       />
     </InputBase>

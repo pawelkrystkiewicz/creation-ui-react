@@ -3,7 +3,6 @@ import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import {
   Checkbox,
-  DatePicker,
   Description,
   Error,
   Field,
@@ -14,12 +13,11 @@ import {
   Select,
   Switch,
   Textarea,
-  TimePicker,
   ToggleGroup,
   type FieldProps,
-  type TimePickerValue,
+  type HTMLInputType,
+  INPUT_TYPES,
 } from '@creation-ui/react'
-import { useState } from 'react'
 import {
   descriptionControl,
   errorControl,
@@ -27,31 +25,20 @@ import {
 } from './shared-playground-controls'
 import { childrenProp, classNameProps } from './shared-props'
 
-const inputTypes = [
-  'number',
-  'text',
-  'textarea',
-  'select',
-  'checkbox',
-  'radio',
-  'switch',
-  'toggle',
-  'date',
-  'time',
-]
+interface DynamicInputProps {
+  inputType:
+    | HTMLInputType
+    | 'textarea'
+    | 'select'
+    | 'checkbox'
+    | 'radio'
+    | 'switch'
+    | 'toggle'
+}
 
-const DynamicInput = ({
-  inputType,
-}: {
-  inputType: (typeof inputTypes)[number]
-}) => {
-  const [date, setDate] = useState<Date | null>(null)
-  const [time, setTime] = useState<TimePickerValue>(null)
-
+const DynamicInput = ({ inputType }: DynamicInputProps) => {
   const fruit = ['Banana', 'Apple', 'Orange', 'Pear']
   switch (inputType) {
-    case 'number':
-      return <Input type='number' />
     case 'textarea':
       return <Textarea />
     case 'select':
@@ -88,18 +75,9 @@ const DynamicInput = ({
           }))}
         />
       )
-    case 'date':
-      return (
-        <DatePicker
-          value={date}
-          // @ts-expect-error
-          onChange={setDate}
-        />
-      )
-    case 'time':
-      return <TimePicker value={time} onChange={setTime} />
+
     default:
-      return <Input />
+      return <Input type={inputType} />
   }
 }
 
@@ -107,7 +85,7 @@ interface InputFieldProps {
   label: string
   description: string
   error: string
-  inputType: (typeof inputTypes)[number]
+  inputType: HTMLInputType
   fieldType: FieldProps['type']
 }
 
@@ -140,7 +118,14 @@ export const InputFieldPlayground = () => {
           name: 'inputType',
           component: 'select',
           type: 'array',
-          values: inputTypes,
+          values: [
+            ...INPUT_TYPES,
+            'textarea',
+            'checkbox',
+            'radio',
+            'switch',
+            'toggle',
+          ],
         },
         {
           defaultValue: 'column',

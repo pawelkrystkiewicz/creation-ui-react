@@ -1,18 +1,10 @@
 import type { InputProps as HeadlessInputProps } from '@headlessui/react'
 import { InputBaseProps } from '../input-base'
-import { dateTypes } from './constants'
+import { DateType, INPUT_TYPES, InputType } from './constants'
 
-export type DateType = (typeof dateTypes)[number]
+export type HTMLInputType = InputType | DateType
 
 export type InputProps = {
-  type?:
-    | 'email'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'url'
-    | DateType
+  type?: HTMLInputType
 } & Omit<HeadlessInputProps, 'as' | 'className'> &
   InputBaseProps
