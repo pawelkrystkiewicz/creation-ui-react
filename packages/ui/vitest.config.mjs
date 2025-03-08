@@ -2,6 +2,8 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
+    include: ['**/*.spec.*', '**/*.specs.*'],
+    ignore: ['dist', 'node_modules'],
     pool: 'forks',
     poolOptions: {
       forks: {

@@ -8,10 +8,16 @@ export const NoSSRTimePickerExample = dynamic(
   { ssr: false },
 )
 
+export const NoSSRTimePickerConceptExample = dynamic(
+  () => import('@/examples/time-picker').then(m => m.TimePickerConceptExample),
+  { ssr: false },
+)
+
 # Time Picker
 
 <div suppressHydrationWarning>
   <NoSSRTimePickerExample />
+  <NoSSRTimePickerConceptExample />
 </div>
 
 ## Component API

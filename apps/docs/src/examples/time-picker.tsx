@@ -6,6 +6,7 @@ import type { DocumentedProperty } from '@/models/system'
 import { TimePicker, type TimePickerValue } from '@creation-ui/react'
 import React, { useState, type FC } from 'react'
 import { createInputControls } from './shared-playground-controls'
+import { TimeInput } from '@/components/time-input-concept/TimeInputConcept'
 
 const controls = createInputControls('TimePicker')
 
@@ -55,10 +56,20 @@ export const TimePickerExample = () => {
       <TimePicker
         value={time}
         onChange={setTime}
-        // zIndex={{ popover: 9999 }}
         onClear={onClear}
         className='w-48'
       />
+      <CurrentTime time={time} />
+    </Container>
+  )
+}
+export const TimePickerConceptExample = () => {
+  const [time, setTime] = useState<any>(null)
+  const onClear = () => setTime(null)
+
+  return (
+    <Container variant='column'>
+      <TimeInput value={time} onChange={setTime} onClear={onClear} />
       <CurrentTime time={time} />
     </Container>
   )
