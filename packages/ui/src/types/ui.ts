@@ -36,8 +36,6 @@ export const ELEMENT_STATES = [
   'default',
 ] as const
 
-export type HTMLInputType = string
-
 export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementColor = (typeof ELEMENT_COLOR)[number]
 export type ElementState = (typeof ELEMENT_STATES)[number]

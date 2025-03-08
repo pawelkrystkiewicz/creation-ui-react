@@ -35,14 +35,16 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "isolatedModules": true
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/content/docs/components/loader.mdx"  ],
+    "**/*.tsx",
+    "src/content/docs/components/loader.mdx"
+  ],
   "exclude": [
     "node_modules"
   ]

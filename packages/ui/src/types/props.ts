@@ -1,10 +1,11 @@
 import type {
   ForwardedComponent,
   FunctionalComponent,
+  HTMLInputType,
   HTMLProps,
   JSXNode,
 } from './base'
-import type { ElementSize, ElementVariant, HTMLInputType } from './ui'
+import type { ElementSize, ElementVariant } from './ui'
 
 export type DropdownOptionType = {
   id: string
@@ -265,7 +266,7 @@ export interface DropdownProps extends BaseComponentProps {
    * Filter options function
    */
   filterOptions?: (
-    query?: string
+    query?: string,
   ) => (option: DropdownOptionType | any) => string
   /**
    * onChange callback. Will return array of selected values. If !multiple, will return array with one value.

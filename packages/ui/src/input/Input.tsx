@@ -1,8 +1,8 @@
 import * as Headless from '@headlessui/react'
 import React, { forwardRef } from 'react'
+import { DATE_TYPES } from '../types'
 import { InputBase } from '../input-base'
 import { inputStyles } from './classes'
-import { DATE_TYPES } from './constants'
 import type { InputProps } from './types'
 
 export const Input = forwardRef(function Input(

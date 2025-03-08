@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
-import { ElementVariant } from '../types'
-import { HTMLInputType } from '../input'
+import type { HTMLInputType, ElementVariant } from '../types'
 
 export interface InputBaseProps {
   children?: ReactNode
