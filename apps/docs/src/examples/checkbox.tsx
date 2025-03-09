@@ -46,15 +46,17 @@ export const CheckboxPlayground = () => (
     code={`
       export const CheckboxExample = ({
   label,
-  helperText,
-  ...props
-}: CheckboxProps & { label: string; helperText?: string }) => {
+  description,
+  disabled,
+  loading,
+  readOnly,
+}: CheckboxProps & { label: string; description?: string }) => {
   return (
     <>
-      <Field type='row'>
-        <Checkbox name='checkbox' {{props}} />
+      <Field type='row' disabled={{disabled}}>
+        <Checkbox name='checkbox' disabled={{disabled}} loading={{loading}} readOnly={{readOnly}} />
         <Label>{{label}}</Label>
-        {helperText && <Description>{{helperText}}</Description>}
+        {description && <Description>{{description}}</Description>}
       </Field>
     </>
   )

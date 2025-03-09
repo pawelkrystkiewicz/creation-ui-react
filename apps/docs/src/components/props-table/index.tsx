@@ -117,12 +117,15 @@ const PropsTable = ({
 
   return (
     <>
-      <Description>
-        <Header aria-label={name} as={'h3'} id={name}>
-          {name}
-        </Header>
-        {description && <p dangerouslySetInnerHTML={{ __html: description }} />}
-      </Description>
+      <Header aria-label={name} as={'h3'} id={name}>
+        {name}
+      </Header>
+
+      {description && (
+        <Description>
+          <span dangerouslySetInnerHTML={{ __html: description }} />
+        </Description>
+      )}
       {dependency && (
         <>
           <p>

@@ -3,9 +3,26 @@ import { HTMLInputType, Input } from '@creation-ui/react'
 import { useState } from 'react'
 
 interface InputProps {
+  type: HTMLInputType
   placeholder?: string
-  type?: HTMLInputType
   initialValue?: string | number
+}
+
+const INITIAL_VALUE_MAP: Record<HTMLInputType, any> = {
+  number: 0,
+  email: '',
+  password: '',
+  search: '',
+  tel: '',
+  url: '',
+  color: '#007bff',
+  file: '',
+  date: '',
+  time: '',
+  month: '',
+  week: '',
+  text: '',
+  'datetime-local': '',
 }
 
 export const InputTemplate = ({
@@ -14,7 +31,7 @@ export const InputTemplate = ({
   initialValue,
 }: InputProps) => {
   const [state, setState] = useState<string | number | never>(
-    initialValue ?? '',
+    initialValue ?? INITIAL_VALUE_MAP[type],
   )
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

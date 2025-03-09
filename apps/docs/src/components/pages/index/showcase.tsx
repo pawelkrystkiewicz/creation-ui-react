@@ -1,65 +1,29 @@
 'use client'
 import {
   Button,
+  Calendar,
+  Checkbox,
   DATE_TYPES,
-  Description,
+  ELEMENT_VARIANTS,
   Field,
   Flex,
   Input,
   INPUT_TYPES,
   Label,
+  Link,
+  Select,
 } from '@creation-ui/react'
 import { InputTemplate } from './showcase/InputTemplate'
 
 export const Showcase = () => {
   return (
-    <div className='mt-10 grid grid-cols-4 grid-rows-3 gap-4 p-4 text-white min-h-screen'>
-      <div className='col-span-1 row-span-1 border p-4 rounded-md border-(--border)'>
-        <img
-          src='https://source.unsplash.com/random/300x200'
-          alt='Article'
-          className='rounded-md border-(--border) mb-4'
-        />
-        <h2 className='text-lg font-bold'>The Power of Positive Thinking</h2>
-        <p className='text-sm mt-2'>
-          Discover how the power of positive thinking can transform your life...
-        </p>
-        <div className='flex items-center mt-4'>
-          <img
-            src='https://source.unsplash.com/50x50/?face'
-            alt='Author'
-            className='w-8 h-8 rounded-full mr-2'
-          />
-          <span className='text-sm'>John Smith</span>
-        </div>
-      </div>
-      <div className='col-span-2 row-span-1 border p-4 rounded-md border-(--border)'>
-        <h2 className='text-lg font-bold mb-4'>Contacts</h2>
-        <table className='w-full text-left'>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>John Doe</td>
-              <td>+01 1234567890</td>
-            </tr>
-            <tr>
-              <td>Michael K</td>
-              <td>+01 1234567890</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div className='mt-10 flex flex-col sm:flex-row flex-wrap gap-4 p-4'>
       <Flex
         className='border border-(--border) p-5 rounded-md h-fit'
         column
         gapY={3}
       >
-        <h2 className='text-lg font-bold'>Register</h2>
+        <h2 className='text-lg font-bold text-center'>Register</h2>
         <p className='text-sm text-(--text-secondary)'>
           Enter your email and password to create an account
         </p>
@@ -71,57 +35,98 @@ export const Showcase = () => {
           <Label>Password</Label>
           <Input type='password' placeholder='********' />
         </Field>
-        <Field>
-          <Label>Date of birth</Label>
-          <Input type='date' placeholder='Date of birth' />
+
+        <Field type='row'>
+          <Label>Remember me</Label>
+          <Checkbox />
         </Field>
-        <Button className='rounded mt-2' variant='contained'>
+        <Button className='rounded' variant='contained'>
           Register
         </Button>
-      </Flex>
-      <div className='col-span-1 row-span-1 border p-4 rounded-md border-(--border) flex flex-col items-center'>
-        <h2 className='text-lg font-bold'>Weekly Views</h2>
-        <p className='text-2xl'>10,000</p>
-      </div>
-
-      <div className='col-span-1 row-span-1 border p-4 rounded-md border-(--border) flex flex-col items-center'>
-        <h2 className='text-lg font-bold'>Weekly Followers</h2>
-        <p className='text-2xl'>15,790</p>
-      </div>
-      <Flex
-        className='col-span-1 row-span-1 border p-4 rounded-md border-(--border) flex justify-between'
-        column
-        gapY={4}
-      >
-        <h2 className='text-lg font-bold'>Supported Input Types</h2>
-        {INPUT_TYPES.map(type => (
-          <Field key={type}>
-            <Label className='capitalize'>{type}</Label>
-            <InputTemplate key={type} type={type} />
-            <Description>{type}</Description>
-          </Field>
-        ))}
-        {DATE_TYPES.map(type => (
-          <Field key={type}>
-            <Label className='capitalize'>{type}</Label>
-            <InputTemplate key={type} type={type} />
-            <Description>{type}</Description>
-          </Field>
-        ))}
+        <p className='text-sm text-(--text-secondary) text-center'>
+          Already have an account?{' '}
+          <Link href='/login' className='link'>
+            Login
+          </Link>
+        </p>
       </Flex>
       <Flex
         className='col-span-1 row-span-1 border p-4 rounded-md border-(--border) flex justify-between'
         column
         gapY={4}
       >
-        <h2 className='text-lg font-bold'>Supported Input Types</h2>
+        <h2 className='text-lg font-bold text-center'>
+          Native Inputs for the win!
+        </h2>
+        <p className='text-sm text-(--text-secondary) text-center'>
+          Supported Input Types
+        </p>
         {INPUT_TYPES.map(type => (
-          <InputTemplate key={type} type={type} />
+          <Field key={type}>
+            <Label className='capitalize'>{type}</Label>
+            <InputTemplate key={type} type={type} />
+          </Field>
         ))}
         {DATE_TYPES.map(type => (
-          <InputTemplate key={type} type={type} />
+          <Field key={type}>
+            <Label className='capitalize'>{type}</Label>
+            <InputTemplate key={type} type={type} />
+          </Field>
         ))}
       </Flex>
+      <Flex
+        column
+        gapY={2}
+        className='border border-(--border) p-4 rounded-md h-fit w-fit'
+      >
+        <h2 className='text-lg font-bold'>Buttons</h2>
+        <Flex gapX={5}>
+          {ELEMENT_VARIANTS.map(variant => (
+            <Flex column gapY={2} key={variant}>
+              <p className='text-center capitalize'>{variant}</p>
+              <Button
+                variant={variant}
+                data-active='true'
+                className='capitalize'
+              >
+                active
+              </Button>
+              <Button
+                variant={variant}
+                data-hover='true'
+                className='capitalize'
+              >
+                hover
+              </Button>
+              <Button
+                variant={variant}
+                data-focus='true'
+                className='capitalize'
+              >
+                focus
+              </Button>
+              <Button
+                variant={variant}
+                data-disabled='true'
+                className='capitalize'
+              >
+                disabled
+              </Button>
+            </Flex>
+          ))}
+        </Flex>
+      </Flex>
+      <Calendar />
+      <div className='flex gap-4 h-fit flex-grow-0'>
+        <Select>
+          <option value='1'>Option 1</option>
+          <option value='2'>Option 2</option>
+          <option value='4' disabled>
+            Option 4
+          </option>
+          <option value='3'>Option 3</option>
+        </Select>
+      </div>
     </div>
   )
 }

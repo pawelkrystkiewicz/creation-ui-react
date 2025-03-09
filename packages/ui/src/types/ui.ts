@@ -6,7 +6,6 @@ export const ELEMENT_COLOR = [
   'mono',
 ] as const
 
-export const ELEMENT_SIZES = ['sm', 'md', 'lg'] as const
 export const ELEMENT_THEMES = ['dark', 'light'] as const
 export const ELEMENT_BASE_VARIANTS = ['contained', 'outlined'] as const
 export const ELEMENT_VARIANTS = [...ELEMENT_BASE_VARIANTS, 'text'] as const
@@ -14,7 +13,6 @@ export const ELEMENT_ORIENTATION = ['vertical', 'horizontal'] as const
 export const ELEMENT_PLACEMENT_VERTICAL = ['top', 'bottom'] as const
 export const ELEMENT_PLACEMENT_HORIZONTAL = ['right', 'left'] as const
 export const ELEMENT_POSITION = ['top', 'bottom', 'right', 'left'] as const
-export const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl', 'xl2'] as const
 export const TYPOGRAPHY = [
   'h1',
   'h2',
@@ -36,10 +34,8 @@ export const ELEMENT_STATES = [
   'default',
 ] as const
 
-export type Breakpoints = (typeof BREAKPOINTS)[number]
 export type ElementColor = (typeof ELEMENT_COLOR)[number]
 export type ElementState = (typeof ELEMENT_STATES)[number]
-export type ElementSize = (typeof ELEMENT_SIZES)[number]
 export type ElementOrientation = (typeof ELEMENT_ORIENTATION)[number]
 export type ElementTheme = (typeof ELEMENT_THEMES)[number]
 export type ElementVariant = (typeof ELEMENT_VARIANTS)[number]

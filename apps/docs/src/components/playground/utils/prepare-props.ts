@@ -1,9 +1,13 @@
 import type { PlaygroundControl, PlaygroundValueType } from '../types'
 
-const _getControlKeys = (controls: PlaygroundControl[]) => {
+export const _getControlKeys = (controls: PlaygroundControl[]) => {
   const controlsMap = controls.reduce(
     (acc: Record<string, PlaygroundControl>, control: PlaygroundControl) => {
-      acc[control.name] = control
+      const { type } = control
+      acc[control.name] = {
+        ...control,
+        ...(type === 'string' && { noBracesInReplacement: true }),
+      }
       return acc
     },
     {},
@@ -15,7 +19,7 @@ const _getControlKeys = (controls: PlaygroundControl[]) => {
   return { keys, controlsMap }
 }
 
-const _formatPropValue = (
+export const _formatPropValue = (
   value: any,
   type: PlaygroundValueType,
 ): string | number => {
@@ -24,14 +28,17 @@ const _formatPropValue = (
       return value ? 'true' : 'false'
 
     case 'number':
-      return value ? value : 'undefined'
+      return value ? Number(value) : 'undefined'
+
+    case 'string':
+      return value ? value : ''
 
     default:
       return JSON.stringify(value)
   }
 }
 
-const getPropsObjectAsString = <T extends string>(
+export const getPropsObjectAsString = <T extends string>(
   keys: T[],
   values: Record<T, any>,
   controlsMap: Record<T, PlaygroundControl>,
@@ -55,7 +62,7 @@ const getPropsObjectAsString = <T extends string>(
     })
     .filter(Boolean)
 
-const _extractPropsKeys = (code: string): string[] => {
+export const _extractPropsKeys = (code: string): string[] => {
   const regex = /{{(.*?)}}/g
   const matches = []
   let match
@@ -66,6 +73,8 @@ const _extractPropsKeys = (code: string): string[] => {
 
   return matches
 }
+
+// TODO: add tests
 
 export const assignPropsValues = (
   codeTemplate: string,
@@ -92,10 +101,16 @@ export const assignPropsValues = (
     const { type, noBracesInReplacement } = controlsMap[key]
     const formatted = _formatPropValue(value, type)
 
-    code = code.replace(
-      `{{${key}}}`,
-      noBracesInReplacement ? (formatted as string) : `{${formatted}}`,
-    )
+    if (type === 'boolean' && formatted === 'false') {
+      // remove the prop if the value is false
+      code = code.replace(`${key}={{${key}}}`, '')
+    } else {
+      // handle rest normally
+      code = code.replace(
+        `{{${key}}}`,
+        noBracesInReplacement ? (formatted as string) : `{${formatted}}`,
+      )
+    }
   }, codeTemplate)
 
   return code
