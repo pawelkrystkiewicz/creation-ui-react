@@ -13,31 +13,36 @@ import {
 } from './shared-playground-controls'
 
 import { Container } from '@/components/container'
+import { PlaygroundControl } from '@/components/playground/types'
 import UseClient from '@/components/UseClient'
 import { iconProp } from './shared-props'
+
+export const BUTTON_CONTROLS: PlaygroundControl[] = [
+  childrenControl,
+  variantControl,
+  colorControl,
+  loadingControl,
+  disabledControl,
+  {
+    name: 'uppercase',
+    type: 'boolean',
+  },
+  fullWidthControl,
+]
+
+export const BUTTON_CODE_TEMPLATE = `
+import { Button, type ButtonProps } from '@creation-ui/react'
+
+const ButtonExample = ({children, ...rest}: ButtonProps) => {
+  return <Button {{rest}}>{{children}}</Button>
+}`
 
 export const ButtonPlayground = () => (
   <UseClient>
     <Playground
       component={Button}
-      controls={[
-        childrenControl,
-        variantControl,
-        colorControl,
-        loadingControl,
-        disabledControl,
-        {
-          name: 'uppercase',
-          type: 'boolean',
-        },
-        fullWidthControl,
-      ]}
-      code={`
-import { Button, type ButtonProps } from '@creation-ui/react'
-
-const ButtonExample = (props: ButtonProps) => {
-  return <Button {{props}}>{{children}}</Button>
-}`}
+      controls={BUTTON_CONTROLS}
+      code={BUTTON_CODE_TEMPLATE}
     />
   </UseClient>
 )

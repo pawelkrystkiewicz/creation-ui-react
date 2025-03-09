@@ -17,33 +17,15 @@ import {
   readOnlyControl,
 } from './shared-playground-controls'
 
-export const CheckboxExample = ({
-  label,
-  helperText,
-  ...props
-}: CheckboxProps & { label: string; helperText?: string }) => {
-  return (
-    <>
-      <Field type='row'>
-        <Checkbox name='checkbox' {...props} />
-        <Label>{label}</Label>
-        {helperText && <Description>{helperText}</Description>}
-      </Field>
-    </>
-  )
-}
+export const CHECKBOX_CONTROLS = [
+  loadingControl,
+  disabledControl,
+  readOnlyControl,
+  descriptionControl,
+  labelControl,
+]
 
-export const CheckboxPlayground = () => (
-  <Playground
-    component={CheckboxExample}
-    controls={[
-      loadingControl,
-      disabledControl,
-      readOnlyControl,
-      descriptionControl,
-      labelControl,
-    ]}
-    code={`
+export const CHECKBOX_CODE_TEMPLATE = `
       export const CheckboxExample = ({
   label,
   description,
@@ -60,7 +42,29 @@ export const CheckboxPlayground = () => (
       </Field>
     </>
   )
-}`}
+}`
+
+export const CheckboxExample = ({
+  label,
+  description,
+  ...props
+}: CheckboxProps & { label: string; description?: string }) => {
+  return (
+    <>
+      <Field type='row'>
+        <Checkbox name='checkbox' {...props} />
+        <Label>{label}</Label>
+        {description && <Description>{description}</Description>}
+      </Field>
+    </>
+  )
+}
+
+export const CheckboxPlayground = () => (
+  <Playground
+    component={CheckboxExample}
+    controls={CHECKBOX_CONTROLS}
+    code={CHECKBOX_CODE_TEMPLATE}
   />
 )
 

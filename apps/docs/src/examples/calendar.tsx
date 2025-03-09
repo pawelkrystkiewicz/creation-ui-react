@@ -3,7 +3,7 @@ import UseClient from '@/components/UseClient'
 import type { DocumentedProperty } from '@/models/system'
 import { Calendar, type DateRange } from '@creation-ui/react'
 import { useState } from 'react'
-import { classNameProps, idProp, sizeProp } from './shared-props'
+import { classNameProps, idProp,  } from './shared-props'
 import { Container } from '@/components/container'
 
 export const CalendarExample = () => {
@@ -26,7 +26,6 @@ export const CalendarExample = () => {
 }
 
 export const properties: DocumentedProperty[] = [
-  sizeProp,
   {
     name: 'onClick',
     description:

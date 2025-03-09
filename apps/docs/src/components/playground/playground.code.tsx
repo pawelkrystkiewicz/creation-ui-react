@@ -12,7 +12,7 @@ export const PlaygroundCode: FC = () => {
   const [formattedCode, setFormattedCode] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  const { state, code,  controls } = usePlayground()
+  const { state, code } = usePlayground()
 
   if (!code) {
     return null
@@ -20,7 +20,7 @@ export const PlaygroundCode: FC = () => {
 
   useEffect(() => {
     setLoading(true)
-    const _code = assignPropsValues(code, state, controls)
+    const _code = assignPropsValues(code, state)
 
     formatCode(_code)
       .then(setFormattedCode)

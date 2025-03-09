@@ -11,7 +11,7 @@ import {
 } from '@creation-ui/react'
 import { useState, type FC } from 'react'
 import { createRadioControls } from './shared-playground-controls'
-import { childrenProp, labelProp, sizeProp } from './shared-props'
+import { childrenProp, labelProp } from './shared-props'
 
 interface RadioGroupExampleProps {
   label?: string
@@ -121,7 +121,6 @@ export const RadioGroupPlayground = () => (
 )
 
 export const properties: DocumentedProperty[] = [
-  sizeProp,
   labelProp,
   childrenProp,
 ]

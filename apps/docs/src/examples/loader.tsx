@@ -4,7 +4,7 @@ import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import { Loader, type LoaderProps } from '@creation-ui/react'
 import { colorControl } from './shared-playground-controls'
-import { classNameProps, colorProp, sizeProp } from './shared-props'
+import { classNameProps, colorProp } from './shared-props'
 
 export const LoaderExample = (props: LoaderProps) => (
   <Container>
@@ -30,7 +30,6 @@ export const LoaderExample = (props: LoaderProps) => (
 )
 
 export const properties: DocumentedProperty[] = [
-  sizeProp,
   colorProp,
   classNameProps,
 ]

@@ -13,7 +13,7 @@ export const formatCode = async (code: string) => {
       ],
       semi: false,
       arrowParens: 'avoid',
-      printWidth: 80,
+      printWidth: 40,
       jsxSingleQuote: true,
       trailingComma: 'all',
       tabWidth: 2,
