@@ -8,7 +8,6 @@ export interface InputBaseProps {
   onClear?: () => void
   clearable?: boolean
   loading?: boolean
-  className?: string
   variant?: ElementVariant
   type?: HTMLInputType
   cx?: {

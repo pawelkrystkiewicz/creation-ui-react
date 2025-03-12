@@ -27,7 +27,7 @@ export const StartAdornment = ({ children }: { children: ReactNode }) => (
   </span>
 )
 
-export const InputBase: FC<InputBaseProps> = ({
+export const InputBase: FC<InputBaseProps & { className?: string }> = ({
   startAdornment,
   endAdornment,
   clearable,

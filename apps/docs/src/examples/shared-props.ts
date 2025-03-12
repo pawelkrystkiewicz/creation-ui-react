@@ -101,7 +101,7 @@ export const childrenProp: DocumentedProperty = {
 export const classNameProps: DocumentedProperty = {
   description: 'Class names to add to wrapper component',
   name: 'className',
-  type: 'string | string[]',
+  type: 'string',
 }
 
 export const loaderWhiteProp: DocumentedProperty = {

@@ -12,9 +12,9 @@ export const calendarHeaderClasses = cva(['font-semibold', 'mb-4'], {
 export const calendarContainerClasses = cva(
   [
     'relative',
-    'bg-(--background-primary)',
+    'bg-background-primary',
     'border',
-    'border-(--border)',
+    'border-border',
     'p-4',
     'rounded-md',
     'w-fit',

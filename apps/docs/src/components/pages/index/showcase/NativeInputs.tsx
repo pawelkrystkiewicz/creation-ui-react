@@ -1,31 +1,40 @@
 'use client'
-import { DATE_TYPES, Field, INPUT_TYPES, Label } from '@creation-ui/react'
-import { Container } from './Container'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  DATE_TYPES,
+  Field,
+  INPUT_TYPES,
+  Label,
+} from '@creation-ui/react'
 import { InputTemplate } from './InputTemplate'
 
 export const NativeInputs = () => {
   return (
-    <Container>
-      <h2 className='text-lg font-bold text-center'>
-        Native Inputs for the win!
-      </h2>
-      <p className='text-sm text-(--text-secondary) text-center'>
-        Supported Input Types
-      </p>
-      <div className='grid grid-cols-3 gap-4'>
-        {INPUT_TYPES.map(type => (
-          <Field key={type}>
-            <Label className='capitalize'>{type}</Label>
-            <InputTemplate key={type} type={type} />
-          </Field>
-        ))}
-        {DATE_TYPES.map(type => (
-          <Field key={type}>
-            <Label className='capitalize'>{type}</Label>
-            <InputTemplate key={type} type={type} />
-          </Field>
-        ))}
-      </div>
-    </Container>
+    <Card>
+      <CardHeader className='flex-col items-start'>
+        <CardTitle>Native Inputs for the win!</CardTitle>
+        <CardDescription>Supported Input Types</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className='grid grid-cols-3 gap-4'>
+          {INPUT_TYPES.map(type => (
+            <Field key={type}>
+              <Label className='capitalize'>{type}</Label>
+              <InputTemplate key={type} type={type} />
+            </Field>
+          ))}
+          {DATE_TYPES.map(type => (
+            <Field key={type}>
+              <Label className='capitalize'>{type}</Label>
+              <InputTemplate key={type} type={type} />
+            </Field>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   )
 }

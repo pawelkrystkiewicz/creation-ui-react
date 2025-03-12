@@ -11,36 +11,12 @@
 
 
 
-:root {
-  --text-primary: theme(colors.black);
-  --text-secondary: theme(colors.neutral.600);
-  --background-primary: theme(colors.white);
-  --background-secondary: theme(colors.neutral.50);
-  --border: theme(colors.neutral.300);
-
-  @variant dark {
-    --text-primary: theme(colors.neutral.100);
-    --text-secondary: theme(colors.neutral.300);
-    --background-primary: theme(colors.neutral.800);
-    --background-secondary: theme(colors.neutral.700);
-    --border: theme(colors.neutral.700);
-  }
-
-  ;
-
-
-}
-
-
 html {
   @apply scroll-smooth;
 }
 
 body {
-  @apply font-sans antialiased
-  /* text-[var(--text-primary)] bg-[var(--background-primary)] */
-  ;
-  /* @apply border-[var(--border)]; */
+  @apply font-sans antialiased text-text-primary border-border;
 }
 
 .hide-scrollbar {
@@ -60,4 +36,3 @@ body {
 .link:hover {
   @apply text-primary/80;
 }
-

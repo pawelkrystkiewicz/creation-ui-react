@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { twix } from '../utils'
 
-const titleClasses = twix('leading-none tracking-tight text-sm font-medium')
+const titleClasses = twix('leading-none tracking-tight text-lg font-medium')
 
 export const CardTitle = forwardRef<
   HTMLHeadingElement,
@@ -12,13 +12,11 @@ export const CardTitle = forwardRef<
 
 const cardClasses = twix(
   'border',
-  'min-h-fit',
-  'min-w-fit',
-  'flex-grow',
-  'rounded-xl',
-  'p-6',
-  'shadow',
-  'border-global',
+  'rounded-lg',
+  'p-5',
+  'text-text-primary',
+  'bg-background-primary',
+  'border-border',
 )
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
@@ -45,7 +43,7 @@ export const CardContent = forwardRef<
   <div ref={ref} className={clsx(className)} {...props} />
 ))
 
-const cardDescriptionClasses = twix('text-sm text-info')
+const cardDescriptionClasses = twix('text-sm text-text-secondary')
 
 export const CardDescription = forwardRef<
   HTMLParagraphElement,
@@ -54,7 +52,7 @@ export const CardDescription = forwardRef<
   <p ref={ref} className={cardDescriptionClasses(className)} {...props} />
 ))
 
-const cardFooterClasses = twix('flex items-center p-6 pt-0')
+const cardFooterClasses = twix('flex items-center gap-2')
 
 export const CardFooter = forwardRef<
   HTMLDivElement,

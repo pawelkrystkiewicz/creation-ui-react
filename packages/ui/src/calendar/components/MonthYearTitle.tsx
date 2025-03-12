@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { useCalendar } from '../calendar.context'
 import { calendarHeaderClasses } from '../classes'
 import { Flex } from '../../'
@@ -16,13 +16,12 @@ export const MonthYearTitle: FC<MonthYearTitleProps> = ({
   const adjustedViewDate = new Date(originalViewDate)
   adjustedViewDate.setMonth(originalViewDate.getMonth() + offsetMonth) // offsetMonth - 1 because 1 means no change and 2 means next month
 
-  const isMonthName = view === 'days'
-  const isYearName = ['months', 'days'].includes(view)
+  const isMonthName = useMemo(() => view === 'days', [view])
+  const isYearName = useMemo(() => ['months', 'days'].includes(view), [view])
 
   return (
     <Flex
       gapX={1}
-      gapY={1}
       items={'center'}
       className={calendarHeaderClasses({ offsetMonth })}
     >

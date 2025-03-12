@@ -2,20 +2,17 @@ import { useId } from '@floating-ui/react'
 import clsx from 'clsx'
 import type { HTMLProps } from 'react'
 import { forwardRef, useLayoutEffect } from 'react'
-import type { ElementSize } from '../types'
 import { popoverHeadingClasses } from './classes'
 import { usePopoverContext } from './context'
 
 interface PopoverHeadingProps
-  extends Omit<HTMLProps<HTMLHeadingElement>, 'size'> {
-  size?: ElementSize
-}
+  extends Omit<HTMLProps<HTMLHeadingElement>, 'size'> {}
 
 export const PopoverHeading = forwardRef<
   HTMLHeadingElement,
   PopoverHeadingProps
->(function PopoverHeading({ size, children, className, ...props }, ref) {
-  const { setLabelId, ...ctx } = usePopoverContext()
+>(function PopoverHeading({ children, className, ...props }, ref) {
+  const { setLabelId } = usePopoverContext()
   const id = useId()
 
   // Only sets `aria-labelledby` on the Popover root element

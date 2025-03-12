@@ -1,13 +1,14 @@
 'use client'
 
+import { Flex } from '@creation-ui/react'
 import {
+  BlogCard,
   ButtonsState,
   CalendarPicker,
   CookieSettings,
   CreditCardForm,
   DashboardChartCard,
   DashboardStatsCard,
-  ModalForm,
   NativeInputs,
   Pagination,
   RegisterForm,
@@ -19,15 +20,17 @@ export const Showcase = () => {
     <div className='mt-10 flex flex-col sm:flex-row flex-wrap gap-4 p-4'>
       <RegisterForm />
       <ButtonsState />
+      <CreditCardForm />
       <TeamMembers />
       <CookieSettings />
-      <CreditCardForm />
-      <DashboardChartCard />
-      <DashboardStatsCard />
-      <ModalForm />
-      <Pagination />
       <CalendarPicker />
-      <NativeInputs />
+      <BlogCard />
+      <Flex column gapY={4}>
+        <DashboardStatsCard />
+        <DashboardChartCard />
+      </Flex>
+      {/* <Pagination /> */}
+      {/* <NativeInputs /> */}
     </div>
   )
 }

@@ -6,7 +6,7 @@ export const classes = {
     'grid-cols-3',
     'border',
     'rounded-lg',
-    'border-(--border)',
+    'border-border',
     'my-3'
   ],
   view: cva(
@@ -21,7 +21,7 @@ export const classes = {
     'flex',
     'flex-col',
     'border-l',
-    'border-(--border)',
+    'border-border',
     'p-4',
     'gap-2',
     'bg-neutral-100',
@@ -34,6 +34,6 @@ export const classes = {
     'w-full',
     'font-mono',
     'border-t',
-    'border-(--border)',
+    'border-border',
   ],
 }

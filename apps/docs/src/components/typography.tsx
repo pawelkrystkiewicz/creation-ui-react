@@ -26,7 +26,7 @@ export const Header = ({
   >
     <a
       href={href}
-      className='after:hash absolute -ml-6 !text-(--text-secondary) !no-underline opacity-0 !shadow-none focus-visible:opacity-100 group-hover:opacity-100'
+      className='after:hash absolute -ml-6 !text-text-secondary !no-underline opacity-0 !shadow-none focus-visible:opacity-100 group-hover:opacity-100'
       aria-label={props['aria-label']}
     />
     <span aria-hidden='true'>{children}</span>

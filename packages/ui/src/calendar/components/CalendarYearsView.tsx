@@ -6,14 +6,13 @@ export const CalendarYearsView = () => {
     viewDate: currentDate,
     setViewDate: setCurrentDate,
     setView,
-    size,
   } = useCalendar()
 
   const startYear = Math.floor(currentDate.getFullYear() / 10) * 10 - 1
   const years = Array.from({ length: 12 }, (_, i) => startYear + i)
 
-  const handleYearClick = (year: number) => {
-    setCurrentDate(new Date(year, currentDate.getMonth()))
+  const handleYearClick = (year: number | string) => {
+    setCurrentDate(new Date(Number(year), currentDate.getMonth()))
     setView('months')
   }
 
@@ -21,7 +20,6 @@ export const CalendarYearsView = () => {
 
   return (
     <CalendarGridView
-      size={size}
       entries={years}
       currentValue={currentYear}
       onClick={handleYearClick}

@@ -22,7 +22,7 @@ export const inputContainer = ({ size, animations, disabled, error }: any) =>
 
 export const optionListClasses = cva(
   [
-    'bg-(--background-secondary)',
+    'bg-background-secondary',
     'shadow-md',
     'w-fit',
     'border',

@@ -43,7 +43,7 @@ export const FlexExample = (props: FlexProps) => {
       {items.map(({ id, ...style }) => (
         <div
           key={id}
-          className='group bg-(--background-primary) border border-(--border) rounded-md font-medium flex items-center justify-center relative'
+          className='group bg-background-primary border border-border rounded-md font-medium flex items-center justify-center relative'
           style={{ ...style }}
         >
           <span className='text-xs'>{id}</span>
@@ -57,7 +57,7 @@ export const FlexExample = (props: FlexProps) => {
       ))}
       <div
         onClick={addItem}
-        className='cursor-pointer group bg-(--background-primary)/50 hover:bg-(--background-primary) rounded-md font-medium flex items-center justify-center micro-interactions'
+        className='cursor-pointer group bg-background-primary/50 hover:bg-background-primary rounded-md font-medium flex items-center justify-center micro-interactions'
         style={{
           minWidth: 50,
         }}

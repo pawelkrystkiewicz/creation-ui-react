@@ -12,7 +12,6 @@ import { changeCalendarView, getCalendarInitialValue } from './utils'
 const Calendar: FC<CalendarProps> = props => {
   const {
     className,
-    id,
     onChange,
     weekStartsOn = 1,
     numberOfMonths = 1,
@@ -64,7 +63,6 @@ const Calendar: FC<CalendarProps> = props => {
   }
 
   const onTodayClick = () => {
-
     const today = new Date()
 
     today.setHours(0, 0, 0, 0)
@@ -84,7 +82,10 @@ const Calendar: FC<CalendarProps> = props => {
 
   const context: CalendarContextValue = useMemo(
     () => ({
-      locale: props.locale ?? navigator.language,
+      locale:
+        (props.locale ?? typeof navigator !== 'undefined')
+          ? navigator.language
+          : 'en',
       setSelectedDates: handleDayClick,
       setViewDate: setViewDate,
       setView,

@@ -74,7 +74,7 @@ export const Modal: FC<ModalProps> = ({ className, children, ...props }) => {
               'data-enter:ease-out',
               'data-closed:data-enter:scale-95',
               'data-leave:ease-in',
-              'bg-(--background-primary)',
+              'bg-background-primary',
             ])}
           >
             {children}
@@ -96,7 +96,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       className={clsx(
         className,
         'flex items-center gap-4 py-5 px-6 ',
-        border && 'border-b border-(--border)',
+        border && 'border-b border-border',
       )}
     />
   )
@@ -121,7 +121,7 @@ export const ModalFooter: FC<ModalFooterProps> = ({
       className={clsx(
         className,
         'px-6 py-3 flex flex-col-reverse items-center justify-end gap-3 *:w-full sm:mt-4 sm:flex-row sm:*:w-auto',
-        border && 'border-t border-(--border)',
+        border && 'border-t border-border',
       )}
     />
   )

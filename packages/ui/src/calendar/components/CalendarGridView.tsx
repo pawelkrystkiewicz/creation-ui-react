@@ -4,7 +4,7 @@ import { For } from '../../'
 
 interface CalendarGridViewProps {
   currentValue: number
-  onClick: (period: string | number) => void
+  onClick: (period: number | string) => void
   entries: (string | number)[]
 }
 
@@ -21,7 +21,7 @@ export const CalendarGridView: FC<CalendarGridViewProps> = ({
             key={period}
             period={period}
             current={currentValue === period}
-            onClick={() => onClick(period)}
+            onClick={onClick.bind(null, period)}
           />
         )}
       </For>

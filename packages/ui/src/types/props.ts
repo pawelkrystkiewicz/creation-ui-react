@@ -5,7 +5,7 @@ import type {
   HTMLProps,
   JSXNode,
 } from './base'
-import type { ElementSize, ElementVariant } from './ui'
+import type { ElementVariant } from './ui'
 
 export type DropdownOptionType = {
   id: string
@@ -74,10 +74,6 @@ export interface BaseComponentProps {
    * Is element read-only?
    */
   readOnly?: boolean
-  /**
-   * element size
-   */
-  size?: ElementSize
   /**
    * Input label
    */
@@ -295,7 +291,6 @@ export interface OptionProps {
   selected?: boolean
   option: DropdownOptionType
   multiple?: boolean
-  size?: ElementSize
   children?: JSXNode
 }
 

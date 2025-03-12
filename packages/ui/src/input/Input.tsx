@@ -6,15 +6,7 @@ import { inputStyles } from './classes'
 import type { InputProps } from './types'
 
 export const Input = forwardRef(function Input(
-  {
-    className,
-    onClear,
-    startAdornment,
-    endAdornment,
-    loading,
-    cx,
-    ...props
-  }: InputProps,
+  { onClear, startAdornment, endAdornment, loading, cx, ...props }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const isDateType = Boolean(

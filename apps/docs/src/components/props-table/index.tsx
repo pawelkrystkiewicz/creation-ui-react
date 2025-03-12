@@ -147,8 +147,8 @@ const PropsTable = ({
       <div className='mt-6 mb-12'>
         <div className='-mx-4 overflow-x-auto sm:mx-0'>
           <div className='inline-block min-w-full'>
-            <table className='w- w-full min-w-[540px] border-b text-left sm:min-w-full border-(--border)'>
-              <tbody className='divide-y divide-(--border)'>
+            <table className='w- w-full min-w-[540px] border-b text-left sm:min-w-full border-border'>
+              <tbody className='divide-y divide-border'>
                 <TableHeader />
                 <>
                   {properties?.map?.(prop => (
