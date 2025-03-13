@@ -8,6 +8,7 @@ import {
 } from '@creation-ui/react'
 import { useState } from 'react'
 import { activeProp, colorProp, onClickCallback } from './shared-props'
+import { Playground } from '@/components/playground'
 
 export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
   const [loading, setLoading] = useState(true)
@@ -22,7 +23,7 @@ export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
         className='
       relative
       overflow-clip
-      bg-blue-200 h-36 w-36 rounded-lg'
+      bg-blue-200 size-36 rounded-lg'
       >
         <LoadingOverlay active={loading} {...props} />
       </div>
@@ -31,6 +32,44 @@ export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
         {loading ? 'Stop' : 'Start'} loading
       </Button>
     </Container>
+  )
+}
+
+export const LoadingOverlayPlayground = () => {
+  return (
+    <Playground
+      component={LoadingOverlayExample}
+      code={`
+import { Container } from '@/components/container'
+import {
+  Button,
+  LoadingOverlay,
+  type LoadingOverlayProps,
+} from '@creation-ui/react'
+import { useState } from 'react'
+import { Playground } from '@/components/playground'
+
+export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
+  const [loading, setLoading] = useState(true)
+
+  const start = () => setLoading(true)
+  const end = () => setLoading(false)
+  const handleClick = loading ? end : start
+
+  return (
+    <Container variant='column'>
+      <div className='relative overflow-clip bg-blue-200 size-36 rounded-lg'>
+        <LoadingOverlay active={loading} {...props} />
+      </div>
+      <Button onClick={handleClick}>
+        {loading ? 'Stop' : 'Start'} loading
+      </Button>
+    </Container>
+  )
+}
+
+    `}
+    />
   )
 }
 
@@ -54,15 +93,9 @@ export const properties: DocumentedProperty[] = [
       'Class names to add to wrapping InputBase component. Separately modify inner and outer container or input',
     name: 'cx',
     type: JSON.stringify(
-      {
-        overlay: 'string',
-        loader: {
-          inner: 'string',
-          outer: 'string',
-        },
-      },
+      { overlay: 'string', loader: { inner: 'string', outer: 'string' } },
       null,
-      4,
+      2,
     ),
   },
 ]

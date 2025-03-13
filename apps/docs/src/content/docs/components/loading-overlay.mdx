@@ -1,4 +1,8 @@
-import { LoadingOverlayExample, properties } from '@/examples/loading-overlay'
+import {
+  LoadingOverlayPlayground,
+  LoadingOverlayExample,
+  properties,
+} from '@/examples/loading-overlay'
 import PropsTable from '@/components/props-table'
 import { UnfoldVariants } from '@/components/unfold-variants'
 
@@ -6,39 +10,7 @@ import { UnfoldVariants } from '@/components/unfold-variants'
 
 Animated spinner for loading states.
 
-```tsx copy
-import { LoadingOverlay } from '@creation-ui/react'
-;<LoadingOverlay />
-```
-
-## Showing the overlay
-
-<LoadingOverlayExample />
-
-```tsx copy
-export const LoadingOverlayExample = (props: LoadingOverlayProps) => {
-  const [loading, setLoading] = useState(true)
-
-  const start = () => setLoading(true)
-  const end = () => setLoading(false)
-  const handleClick = loading ? end : start
-
-  return (
-    <Container variant='column'>
-      <div
-        className='
-      relative
-      overflow-clip
-      bg-blue-200 h-36 w-36 rounded-lg'
-      >
-        <LoadingOverlay active={loading} {...props} />
-      </div>
-
-      <Button onClick={handleClick}>{loading ? 'Stop' : 'Start'} loading</Button>
-    </Container>
-  )
-}
-```
+<LoadingOverlayPlayground />
 
 ## Limitations
 
@@ -47,4 +19,8 @@ In TailwindCSS it would be `relative` and `overflow-clip`
 
 ## Component API
 
-<PropsTable properties={properties} name='LoadingOverlay' description='LoadingOverlay component props' />
+<PropsTable
+  properties={properties}
+  name='LoadingOverlay'
+  description='LoadingOverlay component props'
+/>
