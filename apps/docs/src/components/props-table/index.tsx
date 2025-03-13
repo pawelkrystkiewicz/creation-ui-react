@@ -126,24 +126,21 @@ const PropsTable = ({
           <span dangerouslySetInnerHTML={{ __html: description }} />
         </Description>
       )}
-      {dependency && (
-        <>
-          <p>
-            This component is built on top of{' '}
-            <span className='font-medium'>{dependency.name}</span>. Visit the{' '}
-            <a
-              href={dependency.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='link'
-            >
-              docs
-            </a>{' '}
-            for the built in props
-          </p>
-        </>
-      )}
-
+      {dependency ? (
+        <p>
+          This component is built on top of{' '}
+          <span className='font-medium'>{dependency.name}</span>. Visit the{' '}
+          <a
+            href={dependency.link}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='link'
+          >
+            docs
+          </a>{' '}
+          for the built in props
+        </p>
+      ) : null}
       <div className='mt-6 mb-12'>
         <div className='-mx-4 overflow-x-auto sm:mx-0'>
           <div className='inline-block min-w-full'>

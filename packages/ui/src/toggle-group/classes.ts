@@ -9,12 +9,13 @@ export const toggleGroupButtonStyles = cva(
     'focus:z-10',
     'font-medium',
     'hover:bg-primary/10',
-    'inline-flex',
+    'flex',
     'items-center',
+    'justify-center',
     'relative',
     'z-0',
-    'px-3',
-    'fill-current',
+    'h-(--ui-height)',
+    'min-w-(--ui-height)',
   ],
   {
     variants: {

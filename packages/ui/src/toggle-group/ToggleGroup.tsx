@@ -21,6 +21,7 @@ export const ToggleGroup = ({
         'inline-flex',
         'rounded-md',
         'h-[var(--ui-height)]',
+        'max-h-[var(--ui-height)]',
         className,
       )}
       disabled={disabled}

@@ -5,7 +5,7 @@ export default function Providers({ children }: { children: ReactNode }) {
   return (
     <IconoirProvider
       iconProps={{
-        color: '#AAAAAA',
+        color: 'currentColor',
         strokeWidth: 1,
         width: '1em',
         height: '1em',
