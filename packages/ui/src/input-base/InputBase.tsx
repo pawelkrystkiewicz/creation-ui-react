@@ -2,7 +2,6 @@ import { cva } from 'class-variance-authority'
 import { FC, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Icon } from '../icon'
-import { Loader } from '../loader'
 import { InputBaseProps } from './types'
 
 const classes = cva([
@@ -34,18 +33,12 @@ export const InputBase: FC<InputBaseProps & { className?: string }> = ({
   onClear,
   children,
   className,
-  loading,
 }) => {
   return (
     <span data-slot='control' className={twMerge('relative', className)}>
       {startAdornment && <StartAdornment>{startAdornment}</StartAdornment>}
       {children}
-      {loading && (
-        <EndAdornment>
-          <Loader />
-        </EndAdornment>
-      )}
-      {!loading && endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
+      {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
       {clearable && (
         <Icon icon={'close'} onClick={onClear} className={classes()} />
       )}

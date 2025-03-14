@@ -6,7 +6,7 @@ import { inputStyles } from './classes'
 import type { InputProps } from './types'
 
 export const Input = forwardRef(function Input(
-  { onClear, startAdornment, endAdornment, loading, cx, ...props }: InputProps,
+  { onClear, startAdornment, endAdornment, cx, ...props }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const isDateType = Boolean(
@@ -16,15 +16,15 @@ export const Input = forwardRef(function Input(
     props?.type && ['color', 'file'].includes(props?.type as any),
   )
   const hasValue = Boolean(props?.value)
-  const isDisabled = Boolean(props?.disabled || props?.readOnly || loading)
+  const isDisabled = Boolean(props?.disabled || props?.readOnly)
   const clearable = Boolean(
     !isDisabled && typeof onClear === 'function' && hasValue,
   )
-  const adornments = Boolean(startAdornment && (endAdornment || loading))
+  const adornments = Boolean(startAdornment && endAdornment)
     ? 'both'
     : !!startAdornment
       ? 'start'
-      : !!endAdornment || loading
+      : !!endAdornment
         ? 'end'
         : false
 
@@ -34,7 +34,6 @@ export const Input = forwardRef(function Input(
       endAdornment={endAdornment}
       clearable={clearable}
       onClear={onClear}
-      loading={loading}
       className={cx?.outer}
       type={props.type}
     >

@@ -22,8 +22,10 @@ import {
   descriptionControl,
   errorControl,
   labelControl,
+  loadingControl,
 } from './shared-playground-controls'
 import { childrenProp, classNameProps } from './shared-props'
+import { Table2Columns, TableRows, ViewColumns3 } from 'iconoir-react'
 
 interface DynamicInputProps {
   inputType:
@@ -87,6 +89,7 @@ interface InputFieldProps {
   error: string
   inputType: HTMLInputType
   fieldType: FieldProps['type']
+  loading?: boolean
 }
 
 export const InputField = ({
@@ -105,7 +108,7 @@ export const InputField = ({
     </Field>
   )
 }
-
+const iconClasses = 'text-text-primary text-lg flex-shrink-0 size-6'
 export const InputFieldPlayground = () => {
   return (
     <Playground
@@ -130,9 +133,12 @@ export const InputFieldPlayground = () => {
         {
           defaultValue: 'column',
           name: 'fieldType',
-          component: 'select',
+          component: 'toggle-group',
           type: 'array',
-          values: ['switch', 'row', 'column'],
+          values: [
+            { label: <TableRows className={iconClasses} />, value: 'row' },
+            { label: <ViewColumns3 className={iconClasses} />, value: 'column' },
+          ],
         },
       ]}
       component={InputField}
@@ -147,6 +153,7 @@ export const InputField = ({
   error,
   inputType,
   fieldType,
+  loading,
 }: InputFieldProps) => {
   return (
     <Field type={{fieldType}}>

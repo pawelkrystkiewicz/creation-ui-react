@@ -9,8 +9,8 @@ import {
   CreditCardForm,
   DashboardChartCard,
   DashboardStatsCard,
-  NativeInputs,
-  Pagination,
+  // NativeInputs,
+  // Pagination,
   RegisterForm,
   TeamMembers,
 } from './showcase/index'

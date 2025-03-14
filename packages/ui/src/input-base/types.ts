@@ -7,7 +7,6 @@ export interface InputBaseProps {
   startAdornment?: ReactNode
   onClear?: () => void
   clearable?: boolean
-  loading?: boolean
   variant?: ElementVariant
   type?: HTMLInputType
   cx?: {

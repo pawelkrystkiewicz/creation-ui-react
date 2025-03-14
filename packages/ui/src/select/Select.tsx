@@ -11,13 +11,12 @@ export const Select = forwardRef(function Select(
     startAdornment,
     endAdornment,
     onClear,
-    loading,
     ...props
   }: SelectProps,
   ref: ForwardedRef<HTMLSelectElement>,
 ) {
   const hasValue = Boolean(props.value)
-  const isDisabled = Boolean(props.disabled || props.readOnly || loading)
+  const isDisabled = Boolean(props.disabled || props.readOnly)
   const clearable = Boolean(
     !isDisabled && typeof onClear === 'function' && hasValue,
   )
@@ -33,7 +32,6 @@ export const Select = forwardRef(function Select(
       className={cx?.outer}
       endAdornment={endAdornment}
       startAdornment={startAdornment}
-      loading={loading}
       onClear={onClear}
     >
       <Headless.Select

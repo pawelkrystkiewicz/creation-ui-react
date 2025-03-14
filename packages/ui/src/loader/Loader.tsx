@@ -15,7 +15,7 @@ export const Loader = (props: LoaderProps) => {
   ].includes(color)
 
   return (
-    <div className={twMerge(loaderClasses, cx?.outer)}>
+    <span className={twMerge(loaderClasses, cx?.outer)}>
       <svg
         aria-hidden='true'
         className={loaderIconClasses({
@@ -36,6 +36,6 @@ export const Loader = (props: LoaderProps) => {
           fill='currentFill'
         />
       </svg>
-    </div>
+    </span>
   )
 }
