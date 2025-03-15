@@ -11,7 +11,7 @@ import { Globe } from 'iconoir-react'
 
 export const DashboardStatsCard = () => {
   return(<Card className='w-96 h-36 flex-grow-0'>
-      <CardHeader>
+      <CardHeader className='flex items-center justify-between'>
         <CardTitle>Site visits</CardTitle>
         <Globe className='text-text-primary' data-slot='icon' />
       </CardHeader>

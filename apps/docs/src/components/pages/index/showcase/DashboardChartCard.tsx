@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle
 } from '@creation-ui/react'
-import { Globe } from 'iconoir-react'
+import { Computer, Globe } from 'iconoir-react'
 import {
   CartesianGrid,
   Legend,
@@ -63,9 +63,9 @@ const data = [
 export const DashboardChartCard = () => {
   return (
     <Card className='w-96 h-96 flex-grow-0'>
-      <CardHeader>
+      <CardHeader className='flex items-center justify-between'>
         <CardTitle>Site visits by device</CardTitle>
-        <Globe className='text-text-primary' data-slot='icon' />
+        <Computer className='text-text-primary' data-slot='icon' />
       </CardHeader>
       <>
         <ResponsiveContainer width='100%' height='90%' className={'-mx-4'}>

@@ -61,14 +61,7 @@ export const CardFooter = forwardRef<
   <div ref={ref} className={cardFooterClasses(className)} {...props} />
 ))
 
-const cardHeaderClasses = twix(
-  'w-full',
-  'gap-3',
-  'flex',
-  'items-center',
-  'justify-between',
-  'pb-2',
-)
+const cardHeaderClasses = twix('w-full')
 
 export const CardHeader = forwardRef<
   HTMLDivElement,
