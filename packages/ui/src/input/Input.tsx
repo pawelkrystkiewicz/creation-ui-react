@@ -34,7 +34,7 @@ export const Input = forwardRef(function Input(
       endAdornment={endAdornment}
       clearable={clearable}
       onClear={onClear}
-      className={cx?.outer}
+      className={cx?.container}
       type={props.type}
     >
       <Headless.Input
@@ -44,7 +44,7 @@ export const Input = forwardRef(function Input(
           isDateType,
           adornments,
           clearable,
-          className: cx?.inner,
+          className: cx?.input,
           type: isTypeStyle ? (props.type as any) : 'default',
         })}
       />

@@ -49,7 +49,7 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
       <Description>{description}</Description>
       <RadioGroup value={selected} disabled={disabled} readOnly={readOnly}>
         {options.map(option => (
-          <Field key={option.value} type='row'>
+          <Field key={option.value} layout='row'>
             <Radio onClick={handleClick} value={option.value} />
             <Label key={option.value}>{option.label}</Label>
           </Field>

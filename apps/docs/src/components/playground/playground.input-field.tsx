@@ -7,7 +7,7 @@ interface PlaygroundInputFieldProps {
   value?: string
   helperText?: string
   children: React.ReactNode
-  type?: FieldProps['type']
+  type?: FieldProps['layout']
   className?: string
 }
 
@@ -20,7 +20,7 @@ export const PlaygroundInputField: FC<PlaygroundInputFieldProps> = ({
   className,
 }) => {
   return (
-    <Field type={type} className={className}>
+    <Field layout={type} className={className}>
       <Label className={'flex items-center gap-1'}>
         {label}
         {value ? <LabelCode>{value}</LabelCode> : null}

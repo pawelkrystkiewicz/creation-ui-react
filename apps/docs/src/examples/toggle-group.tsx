@@ -4,13 +4,13 @@ import type { DocumentedProperty } from '@/models/system'
 import { ToggleGroup } from '@creation-ui/react'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight } from 'iconoir-react'
 import { useState } from 'react'
+import { ICON_CLASSES } from './shared-playground-controls'
 
-const iconClasses = 'text-text-primary text-lg flex-shrink-0 size-6'
 const options = [
-  { value: 'text-left', label: <AlignLeft className={iconClasses} /> },
-  { value: 'text-center', label: <AlignCenter className={iconClasses} /> },
-  { value: 'text-right', label: <AlignRight className={iconClasses} /> },
-  { value: 'text-justify', label: <AlignJustify className={iconClasses} /> },
+  { value: 'text-left', label: <AlignLeft className={ICON_CLASSES} /> },
+  { value: 'text-center', label: <AlignCenter className={ICON_CLASSES} /> },
+  { value: 'text-right', label: <AlignRight className={ICON_CLASSES} /> },
+  { value: 'text-justify', label: <AlignJustify className={ICON_CLASSES} /> },
 ]
 
 export const ToggleGroupExample = () => {
@@ -26,13 +26,12 @@ export const ToggleGroupPlayground = () => (
 import { ToggleGroup } from '@creation-ui/react'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight } from 'iconoir-react'
 import { useState } from 'react'
-
-const iconClasses = 'text-text-primary text-lg flex-shrink-0 size-6'
+import { ICON_CLASSES } from './shared-playground-controls'
 const options = [
-  { value: 'text-left', label: <AlignLeft className={iconClasses} /> },
-  { value: 'text-center', label: <AlignCenter className={iconClasses} /> },
-  { value: 'text-right', label: <AlignRight className={iconClasses} /> },
-  { value: 'text-justify', label: <AlignJustify className={iconClasses} /> },
+  { value: 'text-left', label: <AlignLeft className={ICON_CLASSES} /> },
+  { value: 'text-center', label: <AlignCenter className={ICON_CLASSES} /> },
+  { value: 'text-right', label: <AlignRight className={ICON_CLASSES} /> },
+  { value: 'text-justify', label: <AlignJustify className={ICON_CLASSES} /> },
 ]
 
 export const ToggleGroupExample = () => {

@@ -5,18 +5,10 @@ import type { FieldProps } from './types'
 
 export const Field: FC<FieldProps> = ({
   className,
-  type = 'column',
-  children,
-  disabled,
+  layout = 'column',
   ...props
 }) => {
   return (
-    <Headless.Field
-      {...props}
-      className={fieldStyles({ className, type })}
-      disabled={disabled}
-    >
-      {children}
-    </Headless.Field>
+    <Headless.Field {...props} className={fieldStyles({ className, layout })} />
   )
 }

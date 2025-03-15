@@ -24,8 +24,8 @@ export const CreditCardFormExample = () => {
           type='text'
           placeholder='Olivia Rhye'
           cx={{
-            outer: 'flex-grow',
-            inner: 'w-64',
+            container: 'flex-grow',
+            input: 'w-64',
           }}
         />
       </Field>
@@ -35,8 +35,8 @@ export const CreditCardFormExample = () => {
           type='text'
           placeholder='1234 1234 1234 1234'
           cx={{
-            outer: 'flex-grow',
-            inner: 'w-64',
+            container: 'flex-grow',
+            input: 'w-64',
           }}
         />
       </Field>

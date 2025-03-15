@@ -15,7 +15,7 @@ const SwitchField = ({ label, description }: SwitchFieldProps) => {
   const [checked, setChecked] = useState(false)
 
   return (
-    <Field type='row'>
+    <Field layout='row'>
       <Switch checked={checked} onChange={setChecked} />
       <Label>{label}</Label>
       <Description>{description}</Description>

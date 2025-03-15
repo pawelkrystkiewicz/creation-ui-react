@@ -32,7 +32,7 @@ export const RegisterForm = () => {
           <Input type='password' placeholder='********' />
         </Field>
 
-        <Field type='row'>
+        <Field layout='row'>
           <Label>Remember me</Label>
           <Checkbox />
         </Field>

@@ -7,6 +7,7 @@ import {
   Error,
   Field,
   Input,
+  INPUT_TYPES,
   Label,
   Radio,
   RadioGroup,
@@ -16,16 +17,15 @@ import {
   ToggleGroup,
   type FieldProps,
   type HTMLInputType,
-  INPUT_TYPES,
 } from '@creation-ui/react'
+import { TableRows, ViewColumns3 } from 'iconoir-react'
 import {
   descriptionControl,
   errorControl,
+  ICON_CLASSES,
   labelControl,
-  loadingControl,
 } from './shared-playground-controls'
 import { childrenProp, classNameProps } from './shared-props'
-import { Table2Columns, TableRows, ViewColumns3 } from 'iconoir-react'
 
 interface DynamicInputProps {
   inputType:
@@ -59,7 +59,7 @@ const DynamicInput = ({ inputType }: DynamicInputProps) => {
       return (
         <RadioGroup>
           {fruit.map(option => (
-            <Field key={option} type='row'>
+            <Field key={option} layout='row'>
               <Radio value={option} />
               <Label>{option}</Label>
             </Field>
@@ -88,7 +88,7 @@ interface InputFieldProps {
   description: string
   error: string
   inputType: HTMLInputType
-  fieldType: FieldProps['type']
+  layout: FieldProps['layout']
   loading?: boolean
 }
 
@@ -97,10 +97,10 @@ export const InputField = ({
   description,
   error,
   inputType,
-  fieldType,
+  layout,
 }: InputFieldProps) => {
   return (
-    <Field type={fieldType}>
+    <Field layout={layout}>
       <Label>{label}</Label>
       <DynamicInput inputType={inputType} />
       <Description>{description}</Description>
@@ -108,11 +108,24 @@ export const InputField = ({
     </Field>
   )
 }
-const iconClasses = 'text-text-primary text-lg flex-shrink-0 size-6'
+
 export const InputFieldPlayground = () => {
   return (
     <Playground
       controls={[
+        {
+          defaultValue: 'column',
+          name: 'layout',
+          component: 'toggle-group',
+          type: 'array',
+          values: [
+            { label: <TableRows className={ICON_CLASSES} />, value: 'row' },
+            {
+              label: <ViewColumns3 className={ICON_CLASSES} />,
+              value: 'column',
+            },
+          ],
+        },
         { ...labelControl, defaultValue: 'Amount' },
         { ...descriptionControl, defaultValue: 'Set the desired amount' },
         { ...errorControl, defaultValue: undefined, helperText: undefined },
@@ -130,16 +143,6 @@ export const InputFieldPlayground = () => {
             'toggle',
           ],
         },
-        {
-          defaultValue: 'column',
-          name: 'fieldType',
-          component: 'toggle-group',
-          type: 'array',
-          values: [
-            { label: <TableRows className={iconClasses} />, value: 'row' },
-            { label: <ViewColumns3 className={iconClasses} />, value: 'column' },
-          ],
-        },
       ]}
       component={InputField}
       code={`
@@ -152,11 +155,11 @@ export const InputField = ({
   description,
   error,
   inputType,
-  fieldType,
+  layout,
   loading,
 }: InputFieldProps) => {
   return (
-    <Field type={{fieldType}}>
+    <Field type={{layout}}>
       <Label>{{label}}</Label>
       <DynamicInput inputType={{inputType}} />
       <Description>{{description}}</Description>
@@ -168,14 +171,18 @@ export const InputField = ({
   )
 }
 
+
+
+
 export const fieldProperties: DocumentedProperty[] = [
   childrenProp,
   classNameProps,
   {
-    description: 'The layout of the field',
-    name: 'type',
+    description:
+      'The layout of the field. Use row for small controls like Switch or Checkbox.',
+    name: 'layout',
     defaultValue: 'column',
-    type: "'column' | 'row' | 'switch'",
+    type: "'column' | 'row'",
   },
 ]
 

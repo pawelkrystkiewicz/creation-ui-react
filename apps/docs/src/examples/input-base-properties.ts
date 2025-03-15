@@ -7,7 +7,6 @@ export const inputBaseProperties: DocumentedProperty[] = [
   { name: 'readOnly', type: 'boolean', description: 'Is element read-only?' },
   { name: 'label', type: 'string', description: 'Input label' },
   { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
-  { name: 'loading', type: 'boolean', description: 'Show loading state' },
   {
     ...iconProp,
     name: 'startAdornment',
@@ -20,19 +19,13 @@ export const inputBaseProperties: DocumentedProperty[] = [
   },
   {
     name: 'helperText',
-    type: 'boolean',
+    type: 'string',
     description: 'Additional information for display with component',
-  },
-  {
-    name: 'error',
-    type: 'boolean',
-    description: 'Text to be displayed when input is invalid',
   },
   {
     name: 'cx',
     type: `{
         input?: 'string',
-        label?: 'string',
         container?: {
           inner?: 'string',
           outer?: 'string',

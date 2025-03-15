@@ -46,9 +46,7 @@ export const ToggleGroup = ({
               })
             }
           >
-            <RadioGroup.Label as='span'>
-              {label}
-            </RadioGroup.Label>
+            <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
           </RadioGroup.Option>
         ),
       )}

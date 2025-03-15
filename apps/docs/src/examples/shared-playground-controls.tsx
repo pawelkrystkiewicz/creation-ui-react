@@ -9,13 +9,25 @@ import {
   TextSquare,
   TextSquareSolid,
 } from 'iconoir-react'
+import { twMerge } from 'tailwind-merge'
+
+export const ICON_CLASSES = 'text-lg flex-shrink-0 w-6 h-6'
 
 const VARIANTS_BASE = [
-  { value: 'contained', label: <TextSquareSolid /> },
-  { value: 'outlined', label: <TextSquare /> },
+  {
+    value: 'contained',
+    label: <TextSquareSolid className={twMerge(ICON_CLASSES, 'w-8')} />,
+  },
+  {
+    value: 'outlined',
+    label: <TextSquare className={twMerge(ICON_CLASSES, 'w-8')} />,
+  },
 ]
 
-export const VARIANTS = [...VARIANTS_BASE, { value: 'text', label: <Text /> }]
+export const VARIANTS = [
+  ...VARIANTS_BASE,
+  { value: 'text', label: <Text className={twMerge(ICON_CLASSES, 'w-8')} /> },
+]
 
 const COLORS: GenericColorDefinition[] = [
   { value: 'primary', label: 'Primary', className: 'bg-primary' },
@@ -30,13 +42,13 @@ const COLORS: GenericColorDefinition[] = [
 ]
 
 const POSITION_HORIZONTAL = [
-  { value: 'left', label: <BorderLeft /> },
-  { value: 'right', label: <BorderRight /> },
+  { value: 'left', label: <BorderLeft className={ICON_CLASSES} /> },
+  { value: 'right', label: <BorderRight className={ICON_CLASSES} /> },
 ]
 const POSITION_VERTICAL = [
   //
-  { value: 'top', label: <BorderTop /> },
-  { value: 'bottom', label: <BorderBottom /> },
+  { value: 'top', label: <BorderTop className={ICON_CLASSES} /> },
+  { value: 'bottom', label: <BorderBottom className={ICON_CLASSES} /> },
 ]
 
 const POSITION = [...POSITION_HORIZONTAL, ...POSITION_VERTICAL]

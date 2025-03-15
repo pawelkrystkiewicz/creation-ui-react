@@ -1,0 +1,25 @@
+import PropsTable from '@/components/props-table'
+import {
+  fieldProperties,
+  labelProperties,
+  errorProperties,
+  descriptionProperties,
+  InputFieldPlayground,
+} from '@/examples/input-field'
+
+# Field
+
+Field allows you to create a form with a label, input, description, and error message.
+
+<InputFieldPlayground />
+
+## Components API
+
+<PropsTable
+  properties={fieldProperties}
+  name='Field'
+  dependency={{
+    name: 'Headless UI Input',
+    link: 'https://headlessui.com/react/input',
+  }}
+/>

@@ -51,7 +51,7 @@ export const CheckboxExample = ({
 }: CheckboxProps & { label: string; description?: string }) => {
   return (
     <>
-      <Field type='row'>
+      <Field layout='row'>
         <Checkbox name='checkbox' {...props} />
         <Label>{label}</Label>
         {description && <Description>{description}</Description>}

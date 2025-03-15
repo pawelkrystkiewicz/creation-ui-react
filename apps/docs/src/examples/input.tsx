@@ -1,11 +1,16 @@
 'use client'
 import { Playground } from '@/components/playground'
-import { Input, type HTMLInputType, type InputProps } from '@creation-ui/react'
 import type { DocumentedProperty } from '@/models/system'
+import { Input, type HTMLInputType, type InputProps } from '@creation-ui/react'
+import { Eye, EyeClosed } from 'iconoir-react'
 import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'
-import { createInputControls } from './shared-playground-controls'
-import { Eye, EyeClosed } from 'iconoir-react'
+import {
+  disabledControl,
+  readOnlyControl,
+  requiredControl,
+  variantControl,
+} from './shared-playground-controls'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 
@@ -17,6 +22,8 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
       setValue(props.value as any)
     }
   }, [props.value, setValue])
+
+
 
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>
@@ -30,8 +37,6 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
   )
 }
 
-const controls = createInputControls('Input')
-
 export const InputPlayground = ({ ...props }: InputExampleProps) => {
   const [inputValue, setInputValue] = useState<string>('')
   const onClear = () => {
@@ -39,13 +44,19 @@ export const InputPlayground = ({ ...props }: InputExampleProps) => {
   }
   return (
     <Playground
-      component={Input}
+      component={InputExample}
       componentProps={{
         onClear,
         value: inputValue,
         onChange: (e: any) => setInputValue(e.target.value),
       }}
-      controls={controls}
+      controls={[
+        { ...variantControl, defaultValue: 'outlined' },
+        { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
+        readOnlyControl,
+        disabledControl,
+        requiredControl,
+      ]}
     />
   )
 }
@@ -87,9 +98,7 @@ export const InputWidthsExample = ({ ...props }: InputExampleProps) => {
     <div className='flex flex-col gap-10 my-10 w-full'>
       {test.map(width => (
         <Input
-          // @ts-expect-error
-          cx={{ container: { inner: width } }}
-          label={width}
+          cx={{ container: width }}
           placeholder='Placeholder'
           clearable
           key={width}

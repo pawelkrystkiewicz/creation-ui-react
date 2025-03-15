@@ -29,7 +29,7 @@ export const Select = forwardRef(function Select(
         : false
   return (
     <InputBase
-      className={cx?.outer}
+      className={cx?.container}
       endAdornment={endAdornment}
       startAdornment={startAdornment}
       onClear={onClear}

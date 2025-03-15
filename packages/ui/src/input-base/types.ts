@@ -10,7 +10,7 @@ export interface InputBaseProps {
   variant?: ElementVariant
   type?: HTMLInputType
   cx?: {
-    outer?: string
-    inner?: string
+    container?: string
+    input?: string
   }
 }

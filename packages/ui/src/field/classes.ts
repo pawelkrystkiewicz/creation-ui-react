@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 export const fieldStyles = cva(['f'], {
   variants: {
-    type: {
+    layout: {
       column: [
         // Base layout
         'flex',
@@ -29,8 +29,8 @@ export const fieldStyles = cva(['f'], {
     },
   },
   defaultVariants: {
-    type: 'column',
+    layout: 'column',
   },
 })
 
-export type FieldType = VariantProps<typeof fieldStyles>['type']
+export type FieldLayout = VariantProps<typeof fieldStyles>['layout']
