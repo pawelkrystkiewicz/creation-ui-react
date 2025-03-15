@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { HTMLInputType, ElementVariant } from '../types'
+import type { HTMLInputType, InputVariant } from '../types'
 
 export interface InputBaseProps {
   children?: ReactNode
@@ -7,7 +7,7 @@ export interface InputBaseProps {
   startAdornment?: ReactNode
   onClear?: () => void
   clearable?: boolean
-  variant?: ElementVariant
+  variant?: InputVariant
   type?: HTMLInputType
   cx?: {
     container?: string

@@ -6,7 +6,15 @@ import { inputStyles } from './classes'
 import type { InputProps } from './types'
 
 export const Input = forwardRef(function Input(
-  { onClear, startAdornment, endAdornment, cx, ...props }: InputProps,
+  {
+    onClear,
+    startAdornment,
+    endAdornment,
+    cx,
+    border,
+    background,
+    ...props
+  }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const isDateType = Boolean(
@@ -46,6 +54,8 @@ export const Input = forwardRef(function Input(
           clearable,
           className: cx?.input,
           type: isTypeStyle ? (props.type as any) : 'default',
+          border: border,
+          background: background,
         })}
       />
     </InputBase>

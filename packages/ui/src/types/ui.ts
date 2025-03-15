@@ -9,6 +9,11 @@ export const ELEMENT_COLOR = [
 export const ELEMENT_THEMES = ['dark', 'light'] as const
 export const ELEMENT_BASE_VARIANTS = ['contained', 'outlined'] as const
 export const ELEMENT_VARIANTS = [...ELEMENT_BASE_VARIANTS, 'text'] as const
+export const INPUT_VARIANTS = [
+  ...ELEMENT_BASE_VARIANTS,
+  'underline',
+  'text',
+] as const
 export const ELEMENT_ORIENTATION = ['vertical', 'horizontal'] as const
 export const ELEMENT_PLACEMENT_VERTICAL = ['top', 'bottom'] as const
 export const ELEMENT_PLACEMENT_HORIZONTAL = ['right', 'left'] as const
@@ -39,6 +44,7 @@ export type ElementState = (typeof ELEMENT_STATES)[number]
 export type ElementOrientation = (typeof ELEMENT_ORIENTATION)[number]
 export type ElementTheme = (typeof ELEMENT_THEMES)[number]
 export type ElementVariant = (typeof ELEMENT_VARIANTS)[number]
+export type InputVariant = (typeof INPUT_VARIANTS)[number]
 export type ElementBaseVariant = (typeof ELEMENT_BASE_VARIANTS)[number]
 export type ElementPlacementHorizontal =
   (typeof ELEMENT_PLACEMENT_HORIZONTAL)[number]

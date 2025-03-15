@@ -2,15 +2,23 @@
 import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import { Input, type HTMLInputType, type InputProps } from '@creation-ui/react'
-import { Eye, EyeClosed } from 'iconoir-react'
+import {
+  BorderBottom,
+  BorderOut,
+  Eye,
+  EyeClosed,
+  Prohibition,
+} from 'iconoir-react'
 import { useEffect, useState } from 'react'
 import { inputBaseProperties } from './input-base-properties'
 import {
   disabledControl,
+  inputBackgroundControl,
+  inputBorderControl,
   readOnlyControl,
   requiredControl,
-  variantControl,
 } from './shared-playground-controls'
+import { ICON_CLASSES } from './shared-playground-controls'
 
 interface InputExampleProps extends Omit<InputProps, 'onChange' | 'ref'> {}
 
@@ -22,8 +30,6 @@ export const InputExample = ({ ...props }: InputExampleProps) => {
       setValue(props.value as any)
     }
   }, [props.value, setValue])
-
-
 
   return (
     <div className='flex flex-col gap-3 max-w-xs' key={props.key}>
@@ -51,7 +57,8 @@ export const InputPlayground = ({ ...props }: InputExampleProps) => {
         onChange: (e: any) => setInputValue(e.target.value),
       }}
       controls={[
-        { ...variantControl, defaultValue: 'outlined' },
+        inputBackgroundControl,
+        inputBorderControl,
         { name: 'placeholder', type: 'string', defaultValue: 'Placeholder' },
         readOnlyControl,
         disabledControl,

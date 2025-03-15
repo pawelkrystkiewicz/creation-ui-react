@@ -3,31 +3,46 @@ import type { PlaygroundControl } from '@/components/playground/types'
 import {
   BorderBottom,
   BorderLeft,
+  BorderOut,
   BorderRight,
   BorderTop,
+  Prohibition,
   Text,
   TextSquare,
   TextSquareSolid,
+  Underline,
 } from 'iconoir-react'
 import { twMerge } from 'tailwind-merge'
 
 export const ICON_CLASSES = 'text-lg flex-shrink-0 w-6 h-6'
 
-const VARIANTS_BASE = [
-  {
-    value: 'contained',
-    label: <TextSquareSolid className={twMerge(ICON_CLASSES, 'w-8')} />,
-  },
-  {
-    value: 'outlined',
-    label: <TextSquare className={twMerge(ICON_CLASSES, 'w-8')} />,
-  },
+const VARIANT_CONTAINED = {
+  value: 'contained',
+  label: <TextSquareSolid className={twMerge(ICON_CLASSES, 'w-8')} />,
+}
+const VARIANT_OUTLINED = {
+  value: 'outlined',
+  label: <TextSquare className={twMerge(ICON_CLASSES, 'w-8')} />,
+}
+const VARIANT_UNDERLINE = {
+  value: 'underline',
+  label: <Underline className={twMerge(ICON_CLASSES, 'w-8')} />,
+}
+const VARIANT_TEXT = {
+  value: 'text',
+  label: <Text className={twMerge(ICON_CLASSES, 'w-8')} />,
+}
+
+export const BUTTON_VARIANTS = [
+  VARIANT_CONTAINED,
+  VARIANT_OUTLINED,
+  VARIANT_TEXT,
 ]
 
-export const VARIANTS = [
-  ...VARIANTS_BASE,
-  { value: 'text', label: <Text className={twMerge(ICON_CLASSES, 'w-8')} /> },
-]
+export const VARIANT_UNSTYLED = {
+  value: 'unstyled',
+  label: <Prohibition className={twMerge(ICON_CLASSES, 'w-8')} />,
+}
 
 const COLORS: GenericColorDefinition[] = [
   { value: 'primary', label: 'Primary', className: 'bg-primary' },
@@ -89,14 +104,34 @@ export const variantControl: PlaygroundControl = {
   name: 'variant',
   type: 'array',
   defaultValue: 'contained',
-  values: VARIANTS,
+  values: BUTTON_VARIANTS,
 }
 
 export const variantBaseControl: PlaygroundControl = {
   name: 'variant',
   type: 'array',
   defaultValue: 'contained',
-  values: VARIANTS_BASE,
+  values: [VARIANT_CONTAINED, VARIANT_OUTLINED],
+}
+
+export const inputBorderControl: PlaygroundControl = {
+  name: 'border',
+  type: 'array',
+  defaultValue: 'full',
+  values: [
+    { value: 'full', label: <BorderOut className={ICON_CLASSES} /> },
+    {
+      value: 'bottom',
+      label: <BorderBottom className={ICON_CLASSES} />,
+    },
+    { value: 'none', label: <Prohibition className={ICON_CLASSES} /> },
+  ],
+}
+
+export const inputBackgroundControl: PlaygroundControl = {
+  name: 'background',
+  type: 'boolean',
+  defaultValue: true,
 }
 
 export const colorControl: PlaygroundControl = {

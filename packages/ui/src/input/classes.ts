@@ -1,4 +1,4 @@
-import { cva } from 'class-variance-authority'
+import { cva, VariantProps } from 'class-variance-authority'
 
 export const inputStyles = cva(
   [
@@ -8,22 +8,21 @@ export const inputStyles = cva(
     'w-full',
     'h-[var(--ui-height)]',
     'appearance-none',
-    'rounded-md',
     // Typography
     'text-base/6',
-    'text-zinc-950',
-    'placeholder:text-zinc-500',
+    'text-neutral-950',
+    'placeholder:text-neutral-500',
     'sm:text-sm/6',
     'dark:text-white',
     // Border
-    'border',
-    'border-zinc-950/10',
-    'data-hover:border-zinc-950/20',
+
+    'border-neutral-950/10',
+    'data-hover:border-neutral-950/20',
     'dark:border-white/10',
     'dark:data-hover:border-white/20',
     // Background color
-    'bg-transparent',
-    'dark:bg-white/5',
+
+    // 'dark:bg-white/5',
     // Hide default focus styles
     'focus:outline-hidden',
     // Invalid state
@@ -32,7 +31,7 @@ export const inputStyles = cva(
     'dark:data-invalid:border-error',
     'dark:data-invalid:data-hover:border-error',
     // Disabled state
-    'data-disabled:border-zinc-950/20',
+    'data-disabled:border-neutral-950/20',
     'dark:data-disabled:border-white/15',
     'dark:data-disabled:bg-white/[2.5%]',
     'dark:data-hover:data-disabled:border-white/15',
@@ -99,39 +98,24 @@ export const inputStyles = cva(
           '[&::-webkit-color-swatch]:border-none',
         ],
       },
+      border: {
+        full: ['border', 'rounded-md'],
+        bottom: ['border-b'],
+        none: ['border-none'],
+      },
+      background: {
+        true: ['bg-background-secondary/50', 'dark:bg-background-secondary/20'],
+        false: ['bg-transparent'],
+      },
     },
     defaultVariants: {
       adornments: false,
       isDateType: false,
       type: 'default',
+      border: 'full',
+      background: true,
     },
   },
 )
 
-export const inputBorderStyles = [
-  // Basic layout
-  'relative',
-  'block',
-  'w-full',
-  // Background color + shadow applied to inset pseudo element, so shadow blends with border in light mode
-  'before:absolute',
-  'before:inset-px',
-  'before:rounded-[calc(var(--radius-lg)-1px)]',
-  'before:bg-white',
-  // Background color is moved to control and shadow is removed in dark mode so hide `before` pseudo
-  'dark:before:hidden',
-  // Focus ring
-  'after:pointer-events-none',
-  'after:absolute',
-  'after:inset-0',
-  'after:rounded-lg',
-  'after:ring-transparent',
-  'after:ring-inset',
-  'sm:focus-within:after:ring-2',
-  'sm:focus-within:after:ring-primary',
-  // Disabled state
-  'has-data-disabled:opacity-50',
-  'has-data-disabled:before:bg-neutral-950/5',
-  // Invalid state
-  'has-data-invalid:before:border-error',
-]
+export type InputStylesType = VariantProps<typeof inputStyles>

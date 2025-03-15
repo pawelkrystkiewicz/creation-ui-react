@@ -8,6 +8,7 @@ import {
   Field,
   Input,
   INPUT_TYPES,
+  InputProps,
   Label,
   Radio,
   RadioGroup,
@@ -23,6 +24,8 @@ import {
   descriptionControl,
   errorControl,
   ICON_CLASSES,
+  inputBackgroundControl,
+  inputBorderControl,
   labelControl,
 } from './shared-playground-controls'
 import { childrenProp, classNameProps } from './shared-props'
@@ -36,9 +39,11 @@ interface DynamicInputProps {
     | 'radio'
     | 'switch'
     | 'toggle'
+  border?: InputProps['border']
+  background?: InputProps['background']
 }
 
-const DynamicInput = ({ inputType }: DynamicInputProps) => {
+const DynamicInput = ({ inputType, border, background }: DynamicInputProps) => {
   const fruit = ['Banana', 'Apple', 'Orange', 'Pear']
   switch (inputType) {
     case 'textarea':
@@ -79,7 +84,7 @@ const DynamicInput = ({ inputType }: DynamicInputProps) => {
       )
 
     default:
-      return <Input type={inputType} />
+      return <Input type={inputType} border={border} background={background} />
   }
 }
 
@@ -90,6 +95,8 @@ interface InputFieldProps {
   inputType: HTMLInputType
   layout: FieldProps['layout']
   loading?: boolean
+  inputBorder?: InputProps['border']
+  inputBackground?: InputProps['background']
 }
 
 export const InputField = ({
@@ -98,11 +105,17 @@ export const InputField = ({
   error,
   inputType,
   layout,
+  inputBorder,
+  inputBackground,
 }: InputFieldProps) => {
   return (
     <Field layout={layout}>
       <Label>{label}</Label>
-      <DynamicInput inputType={inputType} />
+      <DynamicInput
+        inputType={inputType}
+        border={inputBorder}
+        background={inputBackground}
+      />
       <Description>{description}</Description>
       {error && <Error>{error}</Error>}
     </Field>
@@ -143,6 +156,8 @@ export const InputFieldPlayground = () => {
             'toggle',
           ],
         },
+        {...inputBackgroundControl, name: 'inputBackground'},
+        {...inputBorderControl, name: 'inputBorder'},
       ]}
       component={InputField}
       code={`
@@ -156,12 +171,17 @@ export const InputField = ({
   error,
   inputType,
   layout,
-  loading,
+  inputBorder,
+  inputBackground,
 }: InputFieldProps) => {
   return (
     <Field type={{layout}}>
       <Label>{{label}}</Label>
-      <DynamicInput inputType={{inputType}} />
+       <DynamicInput
+        inputType={{inputType}}
+        border={{inputBorder}}
+        background={{inputBackground}}
+      />
       <Description>{{description}}</Description>
       {error && <Error>{{error}}</Error>}
     </Field>
@@ -170,9 +190,6 @@ export const InputField = ({
     />
   )
 }
-
-
-
 
 export const fieldProperties: DocumentedProperty[] = [
   childrenProp,
