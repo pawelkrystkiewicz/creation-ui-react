@@ -126,8 +126,8 @@ module.exports = config
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 
 2. Import library's CSS file into your app.
-If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
+   If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
+   If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
 ```js copy
 import '@creation-ui/react/index.css'
@@ -142,3 +142,60 @@ export default function App() {
   return <Button>Click me</Button>
 }
 ```
+
+Components
+
+| Shadcn component name | Disambugation                 | CUI component name |
+| --------------------- | ----------------------------- | ------------------ |
+| Accordion             |                               | -                  |
+| Alert                 | Callout                       | ✔                 |
+| Alert Dialog          | Modal                         | ✔                 |
+| Aspect Ratio          |                               | -                  |
+| Avatar                |                               | ✔                 |
+|                       |                               | AvatarGroup        |
+| Badge                 |                               | Chip               |
+| Breadcrumb            |                               | -                  |
+| Button                |                               | ✔                 |
+| Calendar              |                               | ✔                 |
+| Card                  | Container                     | -                  |
+| Carousel              |                               | -                  |
+| Chart                 |                               | -                  |
+| Checkbox              |                               | ✔                 |
+| Collapsible           |                               | -                  |
+| Combobox              | Autocomplete                  | ✔                 |
+| Command               | Spotlight                     | -                  |
+| Context Menu          |                               | -                  |
+| Data Table            |                               | -                  |
+| Date Picker           |                               | ✔                 |
+| Dialog                | Modal                         | ✔                 |
+| Drawer                | Mobile Drawer                 | -                  |
+| Dropdown Menu         |                               | -                  |
+| Form                  |                               | -                  |
+| Hover Card            | Popover (on hover)            | -                  |
+| Input                 |                               | ✔                 |
+| Input OTP             |                               | -                  |
+| Label                 |                               | ✔                 |
+| Menubar               | Navbar with Menu on hover     |                    |
+| Navigation Menu       | Navbar with Popovers on hover |                    |
+| Pagination            |                               | -                  |
+| Popover               |                               | ✔                 |
+| Progress              |                               | -                  |
+| Radio Group           |                               | ✔                 |
+| Resizable             |                               | -                  |
+| Scroll Area           |                               | -                  |
+| Select                |                               | ✔                 |
+| Separator             |                               | -                  |
+| Sheet                 | Drawer                        | ✔                 |
+| Sidebar               |                               | -                  |
+| Skeleton              |                               | -                  |
+| Slider                |                               | -                  |
+| Sonner                | Toasts                        | -                  |
+| Switch                |                               | ✔                 |
+| Table                 |                               | -                  |
+| Tabs                  |                               | -                  |
+| Textarea              |                               | ✔                 |
+| Toast                 |                               | -                  |
+| Toggle                |                               | -                  |
+| Toggle Group          |                               | ✔                 |
+| Tooltip               |                               | ✔                 |
+|                       |                               | TimePicker         |

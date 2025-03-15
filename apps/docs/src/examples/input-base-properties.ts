@@ -1,0 +1,38 @@
+import type { DocumentedProperty } from '@/models/system'
+import { iconProp, variantProp } from './shared-props'
+
+export const inputBaseProperties: DocumentedProperty[] = [
+  { ...variantProp, defaultValue: 'outlined' },
+  { name: 'required', type: 'boolean', description: 'Is element required?' },
+  { name: 'readOnly', type: 'boolean', description: 'Is element read-only?' },
+  { name: 'label', type: 'string', description: 'Input label' },
+  { name: 'disabled', type: 'boolean', description: 'Is disabled?' },
+  {
+    ...iconProp,
+    name: 'startAdornment',
+    description: 'Icon on the left side of the component',
+  },
+  {
+    ...iconProp,
+    name: 'endAdornment',
+    description: 'Icon on the right side of the component',
+  },
+  {
+    name: 'helperText',
+    type: 'string',
+    description: 'Additional information for display with component',
+  },
+  {
+    name: 'cx',
+    type: `{
+        input?: 'string',
+        container?: {
+          inner?: 'string',
+          outer?: 'string',
+        }
+      }`,
+
+    description:
+      'Class names manipulation API. Each property ("input", "label", etc.) is assigned to different Input component',
+  },
+]

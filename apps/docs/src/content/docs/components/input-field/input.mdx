@@ -1,0 +1,131 @@
+import {
+  InputExample,
+  properties,
+  PasswordExample,
+  InputPlayground,
+  InputWidthsExample,
+} from '@/examples/input'
+import { Container } from '@/components/container'
+import PropsTable from '@/components/props-table'
+import { HelpCircle, User, Key } from 'iconoir-react'
+
+# Input
+
+The Input component is a fundamental piece of UI that allows users to input text into your application. It supports a variety of types including text, password, email, etc. Additionally, it provides customizable options such as adornments, size, loading state, error state, and more.
+Checkout usage in [Field](field) component.
+
+## Playground
+
+Use the playground below to explore the different options available for the Input component:
+
+<InputPlayground />
+
+### Width
+
+Please note that the `Input` component dynamically adjusts its width based on the length of its content. To set a fixed width, you can provide your own width constraints via a custom wrapper or by passing a class to the `className` prop:
+
+```tsx copy
+//example with tailwindcss custom width
+<Input cx={{ container: 'w-[200px]' }} />
+```
+
+<InputWidthsExample />
+
+## Input Adornments
+
+Adornments are icons or other elements that can be added to the start or end of the Input component for additional interactivity or visual feedback:
+
+<Container>
+  <InputExample
+    label='Email'
+    defaultValue='user@gmail.com'
+    size='sm'
+    startAdornment={<User />}
+  />
+  <InputExample
+    label='Password'
+    defaultValue='6465465'
+    type='password'
+    size='sm'
+    endAdornment={<Key />}
+  />
+  <InputExample
+    label='Email'
+    size='sm'
+    defaultValue='user@gmail.com'
+    startAdornment={<User />}
+    endAdornment={<HelpCircle />}
+  />
+</Container>
+
+<Container>
+  <InputExample
+    label='Email'
+    defaultValue='user@gmail.com'
+    startAdornment={<User />}
+/>
+
+<InputExample
+  label='Password'
+  defaultValue='6465465'
+  type='password'
+  endAdornment={<Key />}
+/>
+
+<InputExample
+  label='Email'
+  defaultValue='user@gmail.com'
+  startAdornment={<User />}
+  endAdornment={<HelpCircle />}
+/>
+
+</Container>
+<Container>
+  <InputExample
+    label='Email'
+    size='lg'
+    defaultValue='user@gmail.com'
+    startAdornment={<User />}
+  />
+  <InputExample
+    label='Password'
+    defaultValue='6465465'
+    type='password'
+    endAdornment={<Key/>}
+    size='lg'
+  />
+  <InputExample
+    label='Email'
+    defaultValue='user@gmail.com'
+    startAdornment={<User />}
+    endAdornment={<HelpCircle />}
+    size='lg'
+  />
+</Container>
+
+## Interactive icon
+
+You can also use an interactive icon with the Input component, such as a visibility toggle for password fields:
+
+<Container>
+  <PasswordExample
+    label='Password'
+    helperText='You can toggle my visibility'
+    value='this-is-my-password'
+  />
+</Container>
+
+## Component API
+
+Refer to the props table below for a detailed list of all properties that you can use to customize the Input component. In addition to these, it accepts all properties applicable to the native input HTML element:
+
+<PropsTable
+  properties={properties}
+  name='Input'
+  description={
+    <>
+      Rest of the props are the same as for the native <code>input</code>{' '}
+      component.
+    </>
+  }
+/>

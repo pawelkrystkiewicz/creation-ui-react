@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+@import "tailwindcss";
+@source "../../../packages/ui/dist";
+@source "@creation-ui/react";
+@import '@creation-ui/react/index.css';
+@import '@creation-ui/react/theme.css';
+
+@variant dark (&:where(.dark, .dark *));
+
+
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply font-sans antialiased text-text-primary border-border;
+}
+
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.micro-interactions {
+  @apply transition-all duration-300 ease-snappy;
+}
+
+.link {
+  @apply text-primary underline;
+}
+
+.link:hover {
+  @apply text-primary/80;
+}

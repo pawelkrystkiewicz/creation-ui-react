@@ -1,0 +1,38 @@
+# Date Picker
+
+import { properties, DatePickerExample } from '@/examples/date-picker'
+import PropsTable from '@/components/props-table'
+
+<DatePickerExample />
+
+```tsx copy
+
+import { Container } from '@/components/container'
+import type { DocumentedProperty } from '@/models/system'
+import { DatePicker } from '@creation-ui/react'
+import { useState, type FC } from 'react'
+
+
+
+export const DatePickerExample = () => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date)
+  }
+
+  return (
+    <Container variant='column'>
+      <DatePicker value={selectedDate} onChange={handleDateChange} />
+      <CurrentDate date={selectedDate} />
+    </Container>
+  )
+}
+
+```
+
+## Component API
+
+<PropsTable properties={properties} name='DatePicker' />
+
+Rest of the props is the same as in [Input props](/docs/components/Input) and controls the `Input` element.

@@ -26,3 +26,7 @@ chrome-user-data
 *.swo
 .swc/plugins/v4/39e77f182717b0adf8ef81cb7c1a7540fa5a2c931097a4a6299440e6198cfdca
 .env
+
+test-runner-profile
+.turbo
+.turbo/*

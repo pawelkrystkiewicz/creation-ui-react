@@ -1,0 +1,23 @@
+import PropsTable from '@/components/props-table'
+import { HighlighterPlayground, properties } from '@/examples/highlighter'
+
+# Highlighter
+
+This component is used to highlight search term in word string, used in Autocomplete's [renderOption](./autocomplete/render-option).
+This is simplest possible implementation of the component. It is highly recommended to use more sophisticated solution such as [react-highlight-words](https://github.com/bvaughn/react-highlight-words).
+
+<HighlighterPlayground />
+
+## Limited customization
+
+To customize the highlight effect, overwrite the `hightlighter` class.
+
+```css tailwind copy
+.hightlighter {
+  @apply font-medium bg-amber-500 rounded-sm p-0.5;
+}
+```
+
+## Component API
+
+<PropsTable properties={properties} name='Highlighter' />

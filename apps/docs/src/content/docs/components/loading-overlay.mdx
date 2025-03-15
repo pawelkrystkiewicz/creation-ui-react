@@ -1,0 +1,26 @@
+import {
+  LoadingOverlayPlayground,
+  LoadingOverlayExample,
+  properties,
+} from '@/examples/loading-overlay'
+import PropsTable from '@/components/props-table'
+import { UnfoldVariants } from '@/components/unfold-variants'
+
+# LoadingOverlay
+
+Animated spinner for loading states.
+
+<LoadingOverlayPlayground />
+
+## Limitations
+
+To keep `LoadingOverlay` within the parent container you need to make it **relative** and **clip the overflow** to take into account the rounded edges.
+In TailwindCSS it would be `relative` and `overflow-clip`
+
+## Component API
+
+<PropsTable
+  properties={properties}
+  name='LoadingOverlay'
+  description='LoadingOverlay component props'
+/>
