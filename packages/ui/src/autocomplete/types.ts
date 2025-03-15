@@ -14,6 +14,14 @@ export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   'interactionsDisabled' | 'layout' | 'children' | 'type'
 > & {
   /**
+   * Disable read only
+   */
+  readOnly?: boolean
+  /**
+   * Disable interactions
+   */
+  disabled?: boolean
+  /**
    * Custom function to compare option and value
    */
   isOptionEqualToValue?: FnIsOptionEqualToValue<T>

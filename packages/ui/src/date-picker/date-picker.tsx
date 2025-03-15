@@ -60,7 +60,7 @@ export const DatePicker: FC<DatePickerProps> = props => {
           onChange={handleDateSelect}
           // TODO: type
           value={value as any}
-          mode='single'
+          mode='date'
         />
       </PopoverContent>
     </Popover>

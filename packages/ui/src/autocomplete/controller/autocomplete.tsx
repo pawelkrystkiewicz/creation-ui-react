@@ -107,11 +107,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const isQuery = !!query?.trim()
   const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
-  const interactionsDisabled =
-    //
-    // props.disabled ||
-    props.loading
-  //  || props.readOnly
+  const interactionsDisabled = props.disabled || props.readOnly
   const clearable = props.clearable && (!isEmpty || isQuery)
 
   const listRef = useRef<Array<HTMLElement | null>>([])
@@ -394,7 +390,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     <>
       <InputBase
         variant={variant}
-        loading={props.loading}
         endAdornment={
           <DropdownChevron open={open} onClick={handleChevronClick} />
         }

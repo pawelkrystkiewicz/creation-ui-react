@@ -15,7 +15,7 @@ const Calendar: FC<CalendarProps> = props => {
     onChange,
     weekStartsOn = 1,
     numberOfMonths = 1,
-    mode = 'single',
+    mode = 'date',
     value,
     todayText = 'Today',
     startOn,
