@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Button } from '../button'
 import { Icon } from '../icon'
 import { CalendarViewMode } from './calendar.types'
 import { calendarContainerClasses } from './classes'
@@ -37,20 +36,18 @@ export const CalendarView: FC<CalendarViewProps> = ({
   return (
     <div className={className}>
       <div className={calendarContainerClasses({ hasSecondView })} id={id}>
-        <Button
-          variant='text'
+        <button
           onClick={onPrevClick?.bind(null)}
-          className='!absolute top-0 left-0 mt-4 mx-2'
+          className='!absolute top-0 left-0 mt-4 mx-2 text-xs cursor-pointer hover:text-primary micro-interactions'
         >
           <Icon icon='chevron_left' />
-        </Button>
-        <Button
-          variant='text'
+        </button>
+        <button
           onClick={onNextClick?.bind(null)}
-          className='!absolute top-0 right-0 mt-4 mx-2'
+          className='!absolute top-0 right-0 mt-4 mx-2 text-xs cursor-pointer hover:text-primary micro-interactions'
         >
           <Icon icon='chevron_right' />
-        </Button>
+        </button>
 
         <div className='grid lg:grid-flow-col gap-5'>
           <div className='grid grid-flow-row justify-items-center gap-2'>
@@ -74,13 +71,13 @@ export const CalendarView: FC<CalendarViewProps> = ({
         {showTodaySelector && (
           <>
             &nbsp;
-            <Button
-              variant='text'
+            <button
               onClick={onTodayClick}
               disabled={isTodaySelected}
+              className='text-xs cursor-pointer hover:text-primary micro-interactions'
             >
               {todayText}
-            </Button>
+            </button>
           </>
         )}
       </div>

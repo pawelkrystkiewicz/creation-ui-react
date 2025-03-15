@@ -1,12 +1,25 @@
 import { Container } from '@/components/container'
-import { properties, CalendarExample } from '@/examples/calendar'
+import {
+  properties,
+  TwoCalendarsExample,
+  CalendarRangeExample,
+  CalendarExample,
+} from '@/examples/calendar'
 import PropsTable from '@/components/props-table'
 
 # Calendar
 
-## Date range selection and two months view
+## Single date selection
 
 <CalendarExample />
+
+## Date range selection
+
+<CalendarRangeExample />
+
+## Date range selection and two months view
+
+<TwoCalendarsExample />
 
 ## Component API
 
@@ -15,3 +28,16 @@ import PropsTable from '@/components/props-table'
   name='Calendar'
   description={'Calendar component props'}
 />
+
+### Dynamic value type
+
+Type of value and onChange callback depends on the selected calendar mode.
+
+```ts copy
+type CalendarDateValue = Date | null | undefined
+```
+
+| Mode  | Value type                               |
+| ----- | ---------------------------------------- |
+| date  | `CalendarDateValue`                      |
+| range | `[CalendarDateValue, CalendarDateValue]` |

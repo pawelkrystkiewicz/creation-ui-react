@@ -1,12 +1,12 @@
 'use client'
+import { Container } from '@/components/container'
 import UseClient from '@/components/UseClient'
 import type { DocumentedProperty } from '@/models/system'
 import { Calendar, type DateRange } from '@creation-ui/react'
 import { useState } from 'react'
-import { classNameProps, idProp,  } from './shared-props'
-import { Container } from '@/components/container'
+import { classNameProps } from './shared-props'
 
-export const CalendarExample = () => {
+export const TwoCalendarsExample = () => {
   const [value, setValue] = useState<DateRange>([null, null])
 
   return (
@@ -24,6 +24,33 @@ export const CalendarExample = () => {
     </Container>
   )
 }
+export const CalendarRangeExample = () => {
+  const [value, setValue] = useState<DateRange>([null, null])
+
+  return (
+    <Container>
+      <UseClient>
+        <Calendar
+          mode='range'
+          value={value}
+          onChange={setValue}
+          weekStartsOn={1}
+        />
+      </UseClient>
+    </Container>
+  )
+}
+export const CalendarExample = () => {
+  const [value, setValue] = useState<DateRange>([null, null])
+
+  return (
+    <Container>
+      <UseClient>
+        <Calendar value={value} onChange={setValue} weekStartsOn={1} />
+      </UseClient>
+    </Container>
+  )
+}
 
 export const properties: DocumentedProperty[] = [
   {
@@ -31,6 +58,12 @@ export const properties: DocumentedProperty[] = [
     description:
       'Callback function to be called when the calendar date is clicked',
     type: ' onClick: (date: CalendarDateValue) => void',
+  },
+  {
+    name: 'mode',
+    description: 'The mode of the calendar. Select single date or date range.',
+    type: 'date | range',
+    defaultValue: 'date',
   },
   {
     name: 'weekStartsOn',
@@ -44,5 +77,17 @@ export const properties: DocumentedProperty[] = [
     defaultValue: 'undefined',
   },
   classNameProps,
-  idProp,
+  {
+    name: 'numberOfMonths',
+    description: 'The number of months to display.',
+    type: '1 | 2',
+    defaultValue: '1',
+  },
+  {
+    name: 'todayText',
+    description: 'The text to display for the today date.',
+    type: 'string',
+    defaultValue: '"Today"',
+  },
+
 ]

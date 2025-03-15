@@ -1,7 +1,7 @@
 import type { BaseComponentProps } from '../types'
 
 export type CalendarDateValue = Date | null | undefined
-export type CalendarMode = 'single' | 'range'
+export type CalendarMode = 'date' | 'range'
 export type CalendarProps = Omit<
   BaseComponentProps,
   | 'label'
@@ -22,7 +22,7 @@ export type CalendarProps = Omit<
     | {
         onChange?: (date: CalendarDateValue) => void
         value?: CalendarDateValue
-        mode?: 'single'
+        mode?: 'date'
       }
     | {
         onChange?: (date: DateRange) => void
