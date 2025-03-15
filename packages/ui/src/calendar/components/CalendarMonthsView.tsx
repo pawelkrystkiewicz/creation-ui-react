@@ -6,18 +6,19 @@ export const CalendarMonthsView = () => {
     viewDate: currentDate,
     setViewDate: setCurrentDate,
     setView,
-    size,
     locale,
   } = useCalendar()
 
   const months = Array.from({ length: 12 }, (_, i) =>
     new Intl.DateTimeFormat(locale, { month: 'short' }).format(
-      new Date(2000, i)
-    )
+      new Date(2000, i),
+    ),
   )
 
-  const handleMonthClick = (month: string) => {
-    setCurrentDate(new Date(currentDate.getFullYear(), months.indexOf(month)))
+  const handleMonthClick = (month: string | number) => {
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), months.indexOf(month as string)),
+    )
     setView('days')
   }
 
@@ -25,7 +26,6 @@ export const CalendarMonthsView = () => {
 
   return (
     <CalendarGridView
-      size={size}
       entries={months}
       currentValue={currentMonth}
       onClick={handleMonthClick}

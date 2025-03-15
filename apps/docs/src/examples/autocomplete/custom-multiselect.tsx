@@ -54,6 +54,7 @@ export const AutocompleteExampleCustomMultiselect = () => {
           value={value as any}
           options={users}
           onChange={onChange as any}
+          // @ts-expect-error
           isOptionEqualToValue={(a: Character, b: Character) => a?.id === b?.id}
           getOptionLabel={({ name }: Character) => name}
           onClear={() => setValue(null)}

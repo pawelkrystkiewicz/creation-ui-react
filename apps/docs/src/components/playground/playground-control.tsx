@@ -88,7 +88,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
     case 'switch':
       return (
         <PlaygroundInputField
-          type='switch'
+          type='row'
           label={label}
           helperText={helperText}
         >

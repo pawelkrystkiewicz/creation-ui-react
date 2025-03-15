@@ -52,11 +52,11 @@ export const AutocompleteExampleCustomOptions = () => {
     <Autocomplete<Character>
       renderOption={renderOption}
       renderSelection={renderSelection}
-      label={'Autocomplete - custom'}
       clearable
       value={value}
       options={users}
       onChange={onChange}
+      // @ts-expect-error
       isOptionEqualToValue={(a, b) => a?.id === b?.id}
       getOptionLabel={({ name }: Character) => name}
     />
