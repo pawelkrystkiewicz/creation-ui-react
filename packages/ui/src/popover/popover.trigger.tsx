@@ -26,7 +26,7 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
         ctx.getReferenceProps({
           ref,
           ...props,
-          ...children.props,
+          ...(children.props as any),
           'data-state': ctx.open ? 'open' : 'closed',
         }),
       )

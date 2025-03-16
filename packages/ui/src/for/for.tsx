@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, type ReactNode } from 'react'
 import type { ForProps } from './types'
 
 function _For<T>({ each, children }: ForProps<T>) {
@@ -14,4 +14,4 @@ function _For<T>({ each, children }: ForProps<T>) {
   return <>{each?.map((item, index) => children?.(item, index))}</>
 }
 
-export const For = memo(_For) as <T>(props: ForProps<T>) => JSX.Element
+export const For = memo(_For) as <T>(props: ForProps<T>) => ReactNode
