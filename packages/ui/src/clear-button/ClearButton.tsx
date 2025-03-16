@@ -1,8 +1,7 @@
 import { cva } from 'class-variance-authority'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import type { IconProps } from '../icon'
-import { Icon } from '../icon'
+import { Icon, type IconProps } from '../icon'
 
 const classes = cva([
   'hover:fill-error',

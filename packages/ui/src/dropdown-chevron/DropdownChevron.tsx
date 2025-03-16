@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
-import { Icon } from '../icon'
 import type { DropdownChevronProps } from './types'
+import { Icon } from '../icon'
 
 const chevron = cva(
   [
