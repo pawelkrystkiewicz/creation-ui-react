@@ -9,7 +9,7 @@ describe('newId', () => {
   })
 
   test('should throw an error when called with an undefined or null prefix', () => {
-    const result = generateId()
+    const result = generateId(undefined)
     expect(typeof result).toBe('string')
     expect(result).toMatch(new RegExp(`[0-9A-Za-z]{${ID_LENGTH}}`))
   })
