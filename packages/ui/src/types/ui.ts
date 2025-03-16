@@ -58,18 +58,3 @@ export type ElementPlacement = {
 }
 export type TailwindShades = (typeof TAILWIND_SHADES)[number]
 export type TailwindColorSet = Record<TailwindShades, string>
-
-export const icons = [
-  'check',
-  'chevron_down',
-  'chevron_left',
-  'chevron_right',
-  'close',
-  'dot',
-  'home',
-  'readonly',
-  'slash',
-  'straight',
-] as const
-
-export type IconType = (typeof icons)[number]
