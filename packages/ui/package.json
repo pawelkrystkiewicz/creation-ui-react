@@ -23,7 +23,9 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "init:component": "turbo gen component"
+    "init:component": "turbo gen component",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

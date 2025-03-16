@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
-import type { IconProps, IconType } from './types'
+import type { IconProps, IconType } from '.'
 
 // map of icon names to their svg path
 const iconPathMap: Record<IconType, string[]> = {
