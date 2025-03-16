@@ -10,6 +10,7 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
+    "@creation-ui/react": "workspace:*",
     "@vitejs/plugin-react": "^4.3.4",
     "iconoir-react": "^7.10.1",
     "lodash": "^4.17.21",
