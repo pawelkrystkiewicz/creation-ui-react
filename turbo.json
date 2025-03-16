@@ -6,6 +6,9 @@
       "outputs": [".next/**", "dist/**", "packages/ui/dist/**"],
       "dependsOn": ["^build"]
     },
+    "docs:build": {
+      "dependsOn": ["build", "packages/ui"]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
