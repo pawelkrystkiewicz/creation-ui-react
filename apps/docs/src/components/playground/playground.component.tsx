@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import type { FC, ReactNode } from 'react'
+import type { FC } from 'react'
 import { classes } from './classes'
 import { usePlayground } from './context/context'
 
@@ -24,13 +24,9 @@ export const PlaygroundComponent: FC<PlaygroundComponentProps> = ({
   const { children, ...restOfComponentProps } = componentProps ?? {}
   return (
     <div className={clsx(classes.view({ controls: !!controls }), className)}>
-      {children ? (
-        <Component {...restOfComponentProps} {...state}>
-          {children}
-        </Component>
-      ) : (
-        <Component {...restOfComponentProps} {...state} />
-      )}
+      <Component {...restOfComponentProps} {...state}>
+        {typeof children === 'string' ? children : null}
+      </Component>
     </div>
   )
 }

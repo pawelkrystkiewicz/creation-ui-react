@@ -5,6 +5,8 @@ import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import '../index.css'
 import Providers from './providers'
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
+import Error from './error'
 
 export const metadata = {
   metadataBase: new URL('https://creation-ui.com'),
@@ -28,7 +30,9 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: any) {
-  const banner = <Banner storageKey="some-key">Creation UI 15.0 is released 🎉</Banner>
+  const banner = (
+    <Banner storageKey='cui-banner'>Creation UI 15.0 is released 🎉</Banner>
+  )
 
   const navbar = (
     <Navbar
@@ -42,19 +46,21 @@ export default async function RootLayout({ children }: any) {
   const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
 
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head></Head>
+    <html lang='en' dir='ltr' suppressHydrationWarning>
       <body>
-        <Layout
-          banner={banner}
-          navbar={navbar}
-          footer={footer}
-          editLink="Edit this page on GitHub"
-          docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
-          sidebar={{ defaultMenuCollapseLevel: 2 }}
-          pageMap={await getPageMap()}>
-          <Providers>{children}</Providers>
-        </Layout>
+        <ErrorBoundary errorComponent={Error}>
+          <Layout
+            banner={banner}
+            navbar={navbar}
+            footer={footer}
+            editLink='Edit this page on GitHub'
+            docsRepositoryBase='https://github.com/shuding/nextra/blob/main/examples/docs'
+            sidebar={{ defaultMenuCollapseLevel: 2 }}
+            pageMap={await getPageMap('/')}
+          >
+            <Providers>{children}</Providers>
+          </Layout>
+        </ErrorBoundary>
       </body>
     </html>
   )
