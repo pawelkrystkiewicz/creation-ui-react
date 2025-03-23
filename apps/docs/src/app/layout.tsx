@@ -1,12 +1,12 @@
 /* eslint-env node */
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { Footer, Layout, Navbar } from 'nextra-theme-docs'
 import 'nextra-theme-docs/style.css'
-import { Banner, Head } from 'nextra/components'
+import { Banner } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import '../index.css'
-import Providers from './providers'
-import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import Error from './error'
+import Providers from './providers'
 
 export const metadata = {
   metadataBase: new URL('https://creation-ui.com'),
