@@ -7,6 +7,10 @@ import { getPageMap } from 'nextra/page-map'
 import '../index.css'
 import Error from './error'
 import Providers from './providers'
+import { Manrope, Fira_Code } from 'next/font/google'
+import clsx from 'clsx'
+import { Logo } from '@/components/logo'
+import { Flex } from '@creation-ui/react'
 
 export const metadata = {
   metadataBase: new URL('https://creation-ui.com'),
@@ -29,6 +33,16 @@ export const metadata = {
   },
 }
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+})
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  variable: '--font-fira-code',
+})
+
 export default async function RootLayout({ children }: any) {
   const banner = (
     <Banner storageKey='cui-banner'>Creation UI 15.0 is released 🎉</Banner>
@@ -37,8 +51,8 @@ export default async function RootLayout({ children }: any) {
   const navbar = (
     <Navbar
       logo={
-        <div>
-          <b>CUI</b> <span>React design system</span>
+        <div className='flex items-center gap-2'>
+          <Logo /> <span>React components library</span>
         </div>
       }
     />
@@ -46,7 +60,12 @@ export default async function RootLayout({ children }: any) {
   const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
 
   return (
-    <html lang='en' dir='ltr' suppressHydrationWarning>
+    <html
+      lang='en'
+      dir='ltr'
+      suppressHydrationWarning
+      className={clsx(manrope.variable, firaCode.variable)}
+    >
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Layout
@@ -56,7 +75,7 @@ export default async function RootLayout({ children }: any) {
             editLink='Edit this page on GitHub'
             docsRepositoryBase='https://github.com/shuding/nextra/blob/main/examples/docs'
             sidebar={{ defaultMenuCollapseLevel: 2 }}
-            pageMap={await getPageMap('/')}
+            pageMap={await getPageMap()}
           >
             <Providers>{children}</Providers>
           </Layout>

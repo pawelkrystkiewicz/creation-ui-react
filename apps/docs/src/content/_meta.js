@@ -1,16 +1,8 @@
 export default {
-  index: {
-    title: 'Creation UI - React Tailwind CSS components',
-    type: 'page',
-    display: 'hidden',
+  index: 'Setup',
+  components: {
     theme: {
-      layout: 'full',
-      timestamp: false,
-      footer: false,
+      layout: 'default',
     },
-  },
-  docs: {
-    title: 'Documentation',
-    type: 'page',
   },
 }
