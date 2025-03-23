@@ -53,35 +53,32 @@ To install Creation UI, run command below:
 
 ## Configuration
 
-1. Add `withTailwindConfig` to your `tailwind.config.js` file:
+1. In your main .css file where you import tailwindcss v4, also import the creation ui css file.
+Don't forget to add `@source` to the path of the Creation UI package to let tailwindcss know where to also look for it's classes there.
 
-```js copy
-const { withTailwindConfig } = require('@creation-ui/react')
+```css copy
+@import "tailwindcss";
+@import '@creation-ui/react/index.css';
+@import '@creation-ui/react/theme.css';
 
-/** @type {import('tailwindcss').Config} */
-const config = withTailwindConfig({
-  content: [
-    //
-    './packages/**/*.{js,ts,jsx,tsx,mdx}',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './**/*.css',
-  ],
-  plugins: [require('@tailwindcss/typography')],
-})
+@source "@creation-ui/react";
 
-module.exports = config
+/* you can extend the config as usual */
+@theme {
+  --font-sans: 'Manrope', 'sans-serif';
+  --font-mono: 'Fira Code', 'monospace';
+}
+
+/* use dark theme detection */
+@variant dark (&:where(.dark, .dark *));
+
+/* rest of your css */
+/* ... */
 ```
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 
-2. Import library's CSS file into your app.
-   If you're using standard config of `Next.js`, you should import it in `pages/_app.js` or similar.
-   If you're using standard config of `create-react-app` or `Vite`, you should import it in `index.js` or similar.
 
-```js copy
-import '@creation-ui/react/index.css'
-```
 
 3. Start using it!
 
