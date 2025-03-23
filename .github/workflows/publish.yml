@@ -13,13 +13,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Verify token set in root
         run: |
@@ -35,7 +30,7 @@ jobs:
         run: npm whoami
 
       - name: Install dependencies
-        run: pnpm install -r
+        run: bun install
 
       - name: Build and Test
-        run: pnpm package
+        run: bun run package

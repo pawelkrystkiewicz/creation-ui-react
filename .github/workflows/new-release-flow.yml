@@ -17,6 +17,7 @@ jobs:
 
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
+        uses: oven-sh/setup-bun@v2
         with:
           node-version: 20
 
