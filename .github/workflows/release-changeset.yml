@@ -38,10 +38,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: bun run release
 
-      - name: Send a Slack notification if a publish happens
+      - name: On success actions
         if: steps.changesets.outputs.published == 'true'
-        # You can do something when a publish happens.
-        run: my-slack-bot send-notification --message "A new version of ${GITHUB_REPOSITORY} was published!"
+        run: echo "Package published successfully"
