@@ -1,5 +1,5 @@
 {
-  "name": "@creation-ui",
+  "name": "creation-ui-react",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -8,6 +8,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
+    "override-version": "sh ./override-version.sh",
     "version-packages": "changeset version",
     "release": "turbo run build --filter=docs^... && changeset publish"
   },
