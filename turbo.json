@@ -1,12 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "docs#build": {
-      "dependsOn": ["ui#build"]
-    },
     "build": {
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "dependsOn": ["^build"]
     },
     "lint": {
       "dependsOn": ["^lint"]

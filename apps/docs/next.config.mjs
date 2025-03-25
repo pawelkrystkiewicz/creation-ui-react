@@ -20,4 +20,7 @@ export default withNextra({
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: ['@creation-ui/react'],
+  },
 })

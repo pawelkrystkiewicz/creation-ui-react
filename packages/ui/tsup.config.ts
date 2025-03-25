@@ -8,13 +8,11 @@ export default defineConfig(options => ({
   sourcemap: true,
   treeshake: true,
   clean: true,
-  watch: true,
   external: ['react'],
   esbuildPlugins: [
     copy({
       resolveFrom: 'cwd',
       assets: {
-        watch: true,
         from: ['./src/index.css', './src/theme.css'], // Source CSS file
         to: ['dist'], // Destination directory
       },

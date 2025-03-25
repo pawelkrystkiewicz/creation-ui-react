@@ -4,14 +4,14 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "next",
+    "dev": "next --turbo",
     "build": "next build",
     "start": "next start",
     "test": "vitest",
     "test:watch": "vitest --watch"
   },
   "dependencies": {
-    "@creation-ui/react": "workspace:*",
+    "@creation-ui/react": "*",
     "@headlessui/react": "^2.2.0",
     "@vitejs/plugin-react": "^4.3.4",
     "class-variance-authority": "^0.7.1",
