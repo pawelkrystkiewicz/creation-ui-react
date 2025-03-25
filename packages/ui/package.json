@@ -25,7 +25,8 @@
     "coverage": "vitest run --coverage",
     "init:component": "turbo gen component",
     "typecheck": "tsc --noEmit",
-    "typecheck:watch": "tsc --noEmit --watch"
+    "typecheck:watch": "tsc --noEmit --watch",
+    "copy": "cp ../../README.md ./package.json ./CHANGELOG.md ./LICENSE ./.npmrc ./.npmignore ./dist && cp ./src/index.css ./dist"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

@@ -7,7 +7,8 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "turbo run build --filter=@creation-ui/react^... && changeset publish",
+    "copy": "cd packages/ui && bun run copy",
+    "release": "bun run copy &&turbo run build --filter=@creation-ui/react^... && changeset publish",
     "changeset": "changeset",
     "version-packages": "changeset version"
   },
