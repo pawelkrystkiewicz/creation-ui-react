@@ -25,10 +25,13 @@
   cursor: pointer;
 }
 
+
+
 .form-color::-webkit-color-swatch {
   @apply rounded-md;
   border: none;
 }
+
 
 .form-color::-moz-color-swatch {
   @apply rounded-md;
@@ -43,4 +46,8 @@
 
 .hightlighter {
   @apply font-medium bg-amber-500 rounded-sm p-0.5;
+}
+
+.micro-interactions{
+  @apply transition-all duration-300 ease-in-out;
 }
