@@ -64,7 +64,7 @@
     },
     "packages/ui": {
       "name": "@creation-ui/react",
-      "version": "0.0.0-dev-20250325114355",
+      "version": "15.0.1",
       "dependencies": {
         "@floating-ui/react": "^0.27.4",
         "@headlessui/react": "^2.2.0",
