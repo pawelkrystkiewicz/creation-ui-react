@@ -8,13 +8,13 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "copy": "cd packages/ui && bun run copy",
-    "release": "bun run copy &&turbo run build --filter=@creation-ui/react^... && changeset publish",
+    "release": "turbo run build --filter=@creation-ui/react^... && bun run copy && changeset publish",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "pre:enter": "changeset pre enter next",
     "pre:exit": "changeset pre exit next",
     "version:dev": "changeset version --snapshot dev",
-    "release:dev": "bun run copy && turbo run build --filter=@creation-ui/react^... && changeset publish --tag dev"
+    "release:dev": "turbo run build --filter=@creation-ui/react^... && bun run copy && changeset publish --tag dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
