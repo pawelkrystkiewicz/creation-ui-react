@@ -27,9 +27,9 @@ jobs:
           TOKEN_LINE=$(grep '_authToken' .npmrc)
           echo "${TOKEN_LINE:0:40}"
 
-      - name: Verify token set in packages/react
+      - name: Verify token set in packages/ui
         run: |
-          TOKEN_LINE=$(grep '_authToken' packages/react/.npmrc)
+          TOKEN_LINE=$(grep '_authToken' packages/ui/.npmrc)
           echo "${TOKEN_LINE:0:40}"
 
       - name: Verify NPM Authentication
