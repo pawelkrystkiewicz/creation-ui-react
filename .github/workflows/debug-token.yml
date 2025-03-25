@@ -1,0 +1,36 @@
+name: Debug NPM Token
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Verify token set in root
+        run: |
+          TOKEN_LINE=$(grep '_authToken' .npmrc)
+          echo "${TOKEN_LINE:0:40}"
+
+      - name: Verify token set in packages/react
+        run: |
+          TOKEN_LINE=$(grep '_authToken' packages/react/.npmrc)
+          echo "${TOKEN_LINE:0:40}"
+
+      - name: Verify NPM Authentication
+        run: npm whoami
