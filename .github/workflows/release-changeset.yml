@@ -11,9 +11,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-      env:
-    NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
-    GITHUB_TOKEN: ${{ secrets.PAT }}
+    env:
+      NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+      GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
