@@ -57,11 +57,13 @@ To install Creation UI, run command below:
 Don't forget to add `@source` to the path of the Creation UI package to let tailwindcss know where to also look for it's classes there.
 
 ```css copy
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import "tailwindcss";
 @import '@creation-ui/react/index.css';
 @import '@creation-ui/react/theme.css';
 
-@source "@creation-ui/react";
+@source "../node_modules/@creation-ui/react/dist";
 
 /* you can extend the config as usual */
 @theme {
