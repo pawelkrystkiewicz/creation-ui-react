@@ -1,5 +1,11 @@
 # @creation-ui/react
 
+## 0.0.0-dev-20250325121741
+
+### Patch Changes
+
+- 030e925: Fix which files are pushed to npm
+
 ## 0.0.0-dev-20250325114355
 
 ### Patch Changes
