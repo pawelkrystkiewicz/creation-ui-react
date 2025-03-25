@@ -20,8 +20,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Dependencies
+      - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
         run: bun i
 
       - name: Create Release Pull Request or Publish to npm
