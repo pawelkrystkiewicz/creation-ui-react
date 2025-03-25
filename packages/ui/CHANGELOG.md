@@ -1,5 +1,11 @@
 # @creation-ui/react
 
+## 0.0.0-dev-20250325114355
+
+### Patch Changes
+
+- 48a0cf6: Fix which files are pushed to npm
+
 ## 15.0.0
 
 ### Major Changes
