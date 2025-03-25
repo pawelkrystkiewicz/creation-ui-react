@@ -1,6 +1,6 @@
 {
   "name": "@creation-ui/react",
-  "version": "15.0.0-alpha.1",
+  "version": "15.0.0",
   "sideEffects": false,
   "license": "MIT",
   "exports": {
@@ -57,5 +57,28 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "react",
+    "next",
+    "create react app",
+    "remix",
+    "vite",
+    "gatsby",
+    "tailwind",
+    "tailwind components",
+    "tailwind elements",
+    "tailwind library",
+    "react library",
+    "react components library",
+    "tailwind sections",
+    "tailwind css",
+    "tailwind ui",
+    "tailwind css react",
+    "tailwind css next",
+    "tailwind css remix",
+    "tailwind css vite",
+    "tailwind css gatsby"
+  ]
 }
