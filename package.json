@@ -10,7 +10,11 @@
     "copy": "cd packages/ui && bun run copy",
     "release": "bun run copy &&turbo run build --filter=@creation-ui/react^... && changeset publish",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "pre:enter": "changeset pre enter next",
+    "pre:exit": "changeset pre exit next",
+    "version:dev": "changeset version --snapshot dev",
+    "release:dev": "bun run copy && turbo run build --filter=@creation-ui/react^... && changeset publish --tag dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
