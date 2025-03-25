@@ -11,6 +11,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+      env:
+    NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
+    GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -25,6 +28,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Verify NPM Authentication
+        run: npm whoami
+
       - name: Install Dependencies
         run: bun i
 
@@ -34,9 +40,6 @@ jobs:
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: bun run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN_AUTOMATION }}
 
       - name: Send a Slack notification if a publish happens
         if: steps.changesets.outputs.published == 'true'
