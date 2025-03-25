@@ -8,13 +8,13 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "copy": "cd packages/ui && bun run copy",
-    "release": "turbo run build --filter=@creation-ui/react^... && bun run copy && changeset publish",
+    "release": "turbo run build --filter=@creation-ui/react && bun run copy && changeset publish",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "pre:enter": "changeset pre enter next",
     "pre:exit": "changeset pre exit next",
     "version:dev": "changeset version --snapshot dev",
-    "release:dev": "turbo run build --filter=@creation-ui/react^... && bun run copy && changeset publish --tag dev"
+    "release:dev": "turbo run build --filter=@creation-ui/react && bun run copy && changeset publish --tag dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
@@ -30,23 +30,9 @@
   ],
   "dependencies": {
     "@creation-ui/react": "workspace:*",
-    "@headlessui/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@turbo/gen": "^2.3.4",
-    "@types/js-beautify": "^1.14.3",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "esbuild-plugin-copy": "^2.1.1",
-    "js-beautify": "^1.15.1",
-    "keyboard-key": "^1.1.0",
-    "next": "^15.1.6",
-    "nextra": "^4.1.0",
-    "nextra-theme-docs": "^4.1.0",
-    "plop": "^4.0.1",
-    "react-code-blocks": "^0.1.6",
-    "react-element-to-jsx-string": "^17.0.0",
-    "react-use": "^17.6.0",
-    "tailwind-merge": "^2.6.0",
-    "tailwindcss": "^4.0.0"
+    "plop": "^4.0.1"
   }
 }

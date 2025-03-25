@@ -21,7 +21,13 @@
     "nextra-theme-docs": "^4.2.17",
     "prettier": "^3.4.2",
     "recharts": "^2.15.1",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "react-use": "^17.6.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.0.0",
+    "@headlessui/react": "^2.2.0"
   },
   "devDependencies": {
     "@types/bun": "latest",
