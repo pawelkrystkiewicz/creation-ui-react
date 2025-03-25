@@ -20,7 +20,9 @@
     "prettier": "^3.4.2",
     "turbo": "^2.4.4",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.4",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
   },
   "packageManager": "bun@1.1.29",
   "workspaces": [
@@ -32,6 +34,8 @@
     "@tailwindcss/postcss": "^4.0.0",
     "@turbo/gen": "^2.3.4",
     "esbuild-plugin-copy": "^2.1.1",
-    "plop": "^4.0.1"
+    "plop": "^4.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

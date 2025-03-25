@@ -22,11 +22,16 @@ export const PlaygroundComponent: FC<PlaygroundComponentProps> = ({
   }
 
   const { children, ...restOfComponentProps } = componentProps ?? {}
+
   return (
     <div className={clsx(classes.view({ controls: !!controls }), className)}>
-      <Component {...restOfComponentProps} {...state}>
-        {typeof children === 'string' ? children : null}
-      </Component>
+      {children ? (
+        <Component {...restOfComponentProps} {...state}>
+          {children}
+        </Component>
+      ) : (
+        <Component {...restOfComponentProps} {...state} />
+      )}
     </div>
   )
 }
