@@ -1,5 +1,11 @@
 # @creation-ui/react
 
+## 0.0.0
+
+### Patch Changes
+
+- c77e25e: Fix npm content issue
+
 ## 0.0.0-dev-20250325121741
 
 ### Patch Changes
