@@ -1,7 +1,10 @@
 export default {
-  index: 'Setup',
+  index: {
+    title: 'Setup',
+  },
   components: {
     theme: {
+      collapsed: false,
       layout: 'default',
     },
   },
