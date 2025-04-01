@@ -3,9 +3,10 @@ import { Hero } from '@/components/pages/index/hero'
 import clsx from 'clsx'
 import { Showcase } from './showcase'
 
-const mainBodyClasses = clsx([
+const mainBodyClasses = clsx(
   'flex',
   'flex-col',
+  'gap-14',
   'mx-auto',
   'snap-y',
   'snap-mandatory',
@@ -13,11 +14,11 @@ const mainBodyClasses = clsx([
   'md:max-w-md',
   'sm:max-w-sm',
   'max-w-xs',
-])
+)
 
 export const Index = () => (
   <div className={mainBodyClasses}>
     <Hero />
-    <Showcase/>
+    <Showcase />
   </div>
 )

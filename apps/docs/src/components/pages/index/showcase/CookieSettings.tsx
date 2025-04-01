@@ -10,7 +10,8 @@ import {
   Flex,
   Switch,
 } from '@creation-ui/react'
-
+import { ShowcaseCardProps } from './types'
+import clsx from 'clsx'
 const options = [
   {
     name: 'Strictly Necessary',
@@ -32,9 +33,9 @@ const options = [
   },
 ]
 
-export const CookieSettings = () => {
+export const CookieSettings = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className='max-w-sm flex flex-col gap-4 justify-between'>
+    <Card className={clsx('max-w-sm flex flex-col gap-4 justify-between', className)}>
       <CardHeader className='flex flex-col gap-1 items-start'>
         <CardTitle>Cookie Settings</CardTitle>
         <CardDescription>Manage your cookie settings here.</CardDescription>

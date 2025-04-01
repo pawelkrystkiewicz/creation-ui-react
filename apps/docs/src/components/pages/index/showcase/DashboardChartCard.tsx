@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle
 } from '@creation-ui/react'
-import { Computer, Globe } from 'iconoir-react'
+import { Computer } from 'iconoir-react'
 import {
   CartesianGrid,
   Legend,
@@ -15,7 +15,8 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-
+import { ShowcaseCardProps } from './types'
+import clsx from 'clsx'
 const data = [
   {
     name: 'Page A',
@@ -60,9 +61,9 @@ const data = [
     amt: 2100,
   },
 ]
-export const DashboardChartCard = () => {
+export const DashboardChartCard = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className='w-96 h-96 flex-grow-0'>
+    <Card className={clsx('h-96 flex-grow-0', className)}>
       <CardHeader className='flex items-center justify-between'>
         <CardTitle>Site visits by device</CardTitle>
         <Computer className='text-text-primary' data-slot='icon' />

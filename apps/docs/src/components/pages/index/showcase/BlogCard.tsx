@@ -1,13 +1,17 @@
 'use client'
 import { Card } from '@creation-ui/react'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ShowcaseCardProps } from './types'
 
 const date = new Date('2021-02-27')
 
-export const BlogCard = () => {
+export const BlogCard = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className='!w-sm flex flex-col gap-2 flex-grow-0 h-full p-4'>
+    <Card
+      className={clsx('flex flex-col gap-2 flex-grow-0 h-full p-4', className)}
+    >
       <Image
         src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fGxhcHRvcHxlbnwwfHx8fDE3MzM5NDY5OTh8MA&ixlib=rb-4.0.3&q=80&w=1200'
         alt='Blog Card'
@@ -19,7 +23,10 @@ export const BlogCard = () => {
         <span>{date.toLocaleDateString()}</span>
         <span>4 min read</span>
       </div>
-      <Link href='https://pl.inventorium.io/dlaczego-robisz-to-co-robisz/' target='_blank'>
+      <Link
+        href='https://pl.inventorium.io/dlaczego-robisz-to-co-robisz/'
+        target='_blank'
+      >
         <h3 className='text-lg font-bold'>Dlaczego robisz to co robisz</h3>
       </Link>
       <p className='text-ellipsis text-sm text-text-primary leading-relaxed line-clamp-4 text-justify'>

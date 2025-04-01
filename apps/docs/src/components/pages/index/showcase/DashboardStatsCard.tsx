@@ -8,9 +8,11 @@ import {
   CardTitle,
 } from '@creation-ui/react'
 import { Globe } from 'iconoir-react'
-
-export const DashboardStatsCard = () => {
-  return(<Card className='w-96 h-36 flex-grow-0'>
+import { ShowcaseCardProps } from './types'
+import clsx from 'clsx'
+export const DashboardStatsCard = ({ className }: ShowcaseCardProps) => {
+  return (
+    <Card className={clsx('h-36 flex-grow-0', className)}>
       <CardHeader className='flex items-center justify-between'>
         <CardTitle>Site visits</CardTitle>
         <Globe className='text-text-primary' data-slot='icon' />

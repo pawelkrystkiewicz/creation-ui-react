@@ -12,10 +12,12 @@ import {
   Label,
   Link,
 } from '@creation-ui/react'
+import clsx from 'clsx'
+import { ShowcaseCardProps } from './types'
 
-export const RegisterForm = () => {
+export const RegisterForm = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className='flex flex-col gap-4'>
+    <Card className={clsx('flex flex-col gap-4', className)}>
       <CardHeader className='flex-col items-start gap-1'>
         <CardTitle>Register</CardTitle>
         <CardDescription>

@@ -8,15 +8,16 @@ import {
   ELEMENT_VARIANTS,
   Flex,
 } from '@creation-ui/react'
+import { ShowcaseCardProps } from './types'
 
-export const ButtonsState = () => {
+export const ButtonsState = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader>
         <CardTitle>Buttons</CardTitle>
       </CardHeader>
       <CardContent>
-        <Flex gapX={6} gapY={2}>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
           {ELEMENT_VARIANTS.map(variant => (
             <Flex column gapY={6} key={variant}>
               <p className='text-center capitalize'>{variant}</p>
@@ -50,7 +51,7 @@ export const ButtonsState = () => {
               </Button>
             </Flex>
           ))}
-        </Flex>
+        </div>
       </CardContent>
     </Card>
   )

@@ -9,26 +9,26 @@ import {
   CreditCardForm,
   DashboardChartCard,
   DashboardStatsCard,
-  // NativeInputs,
-  // Pagination,
   RegisterForm,
   TeamMembers,
 } from './showcase/index'
 
+const cardWidth = 'w-[320px] sm:w-sm'
+
 export const Showcase = () => {
   return (
-    <div className='mt-10 flex flex-col sm:flex-row flex-wrap gap-4 p-4'>
-      <RegisterForm />
-      <ButtonsState />
-      <CreditCardForm />
-      <TeamMembers />
-      <CookieSettings />
-      <CalendarPicker />
-      <BlogCard />
+    <div className='my-10 mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-10'>
+      <RegisterForm className={cardWidth} />
+      <ButtonsState className={cardWidth} />
+      <CreditCardForm className={cardWidth} />
+      <TeamMembers className={cardWidth} />
+      <CookieSettings className={cardWidth} />
+      <BlogCard className={cardWidth} />
       <Flex column gapY={4}>
-        <DashboardStatsCard />
-        <DashboardChartCard />
+        <DashboardStatsCard className={cardWidth} />
+        <DashboardChartCard className={cardWidth} />
       </Flex>
+      <CalendarPicker />
       {/* <Pagination /> */}
       {/* <NativeInputs /> */}
     </div>

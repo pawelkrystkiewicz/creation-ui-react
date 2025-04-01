@@ -10,7 +10,8 @@ import {
   Select,
 } from '@creation-ui/react'
 import { MALE_1, FEMALE_1, MALE_2, FEMALE_2 } from '@/examples/avatar'
-
+import { ShowcaseCardProps } from './types'
+import clsx from 'clsx'
 enum Role {
   Owner = 'Owner',
   Developer = 'Developer',
@@ -67,9 +68,9 @@ const RoleSelector = ({
   )
 }
 
-export const TeamMembers = () => {
+export const TeamMembers = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className='flex flex-col gap-4'>
+    <Card className={clsx('flex flex-col gap-4', className)}>
       <CardHeader className='flex-col items-start gap-1'>
         <CardTitle>Team Members</CardTitle>
         <CardDescription>

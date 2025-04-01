@@ -12,10 +12,17 @@ import {
   Label,
   Button,
 } from '@creation-ui/react'
+import clsx from 'clsx'
+import { ShowcaseCardProps } from './types'
 
-export const CreditCardForm = () => {
+export const CreditCardForm = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className='w-fit h-fit flex-shrink-1 flex flex-col gap-4'>
+    <Card
+      className={clsx(
+        'w-fit h-fit flex-shrink-1 flex flex-col gap-4',
+        className,
+      )}
+    >
       <CardHeader>
         <CardTitle>Credit Card</CardTitle>
       </CardHeader>
