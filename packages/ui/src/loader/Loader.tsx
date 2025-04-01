@@ -17,6 +17,7 @@ export const Loader = (props: LoaderProps) => {
   return (
     <span className={twMerge(loaderClasses, cx?.outer)}>
       <svg
+        data-testid='cui-loader'
         aria-hidden='true'
         className={loaderIconClasses({
           // @ts-expect-error

@@ -129,7 +129,12 @@ export const Button = forwardRef(function (
       {inner}
     </Link>
   ) : (
-    <Headless.Button {...props} className={classes} ref={ref}>
+    <Headless.Button
+      {...props}
+      className={classes}
+      ref={ref}
+      disabled={isDisabled}
+    >
       {inner}
     </Headless.Button>
   )
