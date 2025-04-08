@@ -34,7 +34,8 @@
     "test:coverage": "vitest --coverage export JEST_IMAGE_SNAPSHOT_TRACK_OBSOLETE=1 --config vitest.config.mts",
     "init:component": "turbo gen component",
     "typecheck": "tsc --noEmit",
-    "typecheck:watch": "tsc --noEmit --watch"
+    "typecheck:watch": "tsc --noEmit --watch",
+    "nuke": "rm -rf node_modules && rm -rf dist && rm -rf bun.lockb"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -44,6 +45,8 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/jest-axe": "^3.5.9",
     "@types/jest-image-snapshot": "^6.4.0",
+    "@types/pixelmatch": "^5.2.6",
+    "@types/pngjs": "^6.0.5",
     "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-react-swc": "^3.8.1",
@@ -53,10 +56,15 @@
     "jest-axe": "^7.0.1",
     "jest-image-snapshot": "^6.4.0",
     "jsdom": "^26.0.0",
+    "memfs": "^4.17.0",
+    "pixelmatch": "^7.1.0",
     "playwright": "^1.51.1",
+    "pngjs": "^7.0.0",
     "tsup": "^8.4.0",
     "typescript": "5.5.4",
     "vite": "^6.2.5",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "vite-plugin-node-stdlib-browser": "^0.2.1",
     "vitest": "^3.1.1",
     "vitest-browser-react": "^0.1.1"
   },
@@ -73,10 +81,10 @@
     "tailwindcss": "^4.1.3"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwindcss": "^3.0.0 || ^4.0.0",
-    "@headlessui/react": "^2.2.0",
+    "react": "^18 | ^19",
+    "react-dom": "^18 | ^19",
+    "tailwindcss": "^4.1",
+    "@headlessui/react": "^2.2",
     "tailwind-merge": "^2.6.0",
     "clsx": "2.1.1"
   },

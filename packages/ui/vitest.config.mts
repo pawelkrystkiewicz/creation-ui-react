@@ -2,13 +2,16 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    // @ts-expect-error
+    react(),
+  ],
   test: {
     // coverage: {
     //   provider: 'v8',
     //   reporter: ['text', 'json', 'html'],
     // },
-    exclude: ['dist/**', '**/node_modules/**', './src/**/*.node.spec.ts'],
+    exclude: ['dist/**', '**/node_modules/**'],
     includeTaskLocation: true,
     workspace: [
       {

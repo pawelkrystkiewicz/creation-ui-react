@@ -1,11 +1,10 @@
-import 'vitest-browser-react'
-import { expect, afterEach } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import { toHaveNoViolations } from 'jest-axe'
+import { afterEach, expect } from 'vitest'
+import 'vitest-browser-react'
 
 expect.extend(toHaveNoViolations)
 
-// Cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
   cleanup()
 })
