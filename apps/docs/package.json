@@ -11,7 +11,7 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
-    "@creation-ui/react": "*",
+    "@creation-ui/react": "workspace:*",
     "@headlessui/react": "^2.2.0",
     "@vitejs/plugin-react": "^4.3.4",
     "class-variance-authority": "^0.7.1",
