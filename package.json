@@ -14,7 +14,12 @@
     "pre:exit": "changeset pre exit next",
     "version:dev": "changeset version --snapshot dev",
     "release:dev": "turbo run build --filter=@creation-ui/react && changeset publish --tag dev",
-    "test:ui": "cd packages/ui && bun run test"
+    "test:ct": "cd packages/ui && bun run test:ct",
+    "test:ui": "cd packages/ui && bun run test",
+    "docker:rebuild": "docker build -t playwright-bun -f ct.dockerfile . --shm-size=2gb",
+    "docker:test": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun",
+    "docker:test:update": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun bun run test:ct:update",
+    "docker:test:ui": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun bun run test:ct:ui"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",

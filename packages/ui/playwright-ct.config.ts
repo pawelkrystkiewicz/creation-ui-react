@@ -9,11 +9,11 @@ export default defineConfig({
   testMatch: '**/*.ct.spec.tsx',
   testDir: path.join(__dirname, 'src'),
   outputDir: './playwright/output',
-  timeout: 10 * 1000,
+  timeout: 30 * 1000,
   snapshotPathTemplate:
     '{testDir}/__screenshots__{/projectName}/{testFilePath}/{arg}{ext}',
-
   reporter: process.env.CI ? 'github' : 'html',
+  workers: process.env.CI ? 1 : undefined,
   use: {
     ctViteConfig: {
       plugins: [react(), tailwindcss()],
