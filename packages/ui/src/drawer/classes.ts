@@ -21,11 +21,11 @@ export const drawerChildClasses = [
   'overflow-hidden',
   'text-left',
   'shadow-xl',
-  'bg-[varbackground-primary]',
+  'bg-(--background-primary)',
 ]
 
 export const drawerStyles = cva(
-  ['fixed', 'overflow-hidden', 'w-full', 'h-full', 'z-[var(--ui-z-drawers)]'],
+  ['fixed', 'overflow-hidden', 'w-full', 'h-full', 'z-(--ui-z-drawers)'],
   {
     variants: {
       position: {

@@ -34,6 +34,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@creation-ui/react": [
+        "../../packages/ui/dist"
       ]
     },
     "isolatedModules": true
