@@ -20,5 +20,5 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build
+      - name: Run Unit Tests
         run: cd packages/ui && bun run test
