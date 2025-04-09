@@ -92,10 +92,10 @@
   },
   "peerDependencies": {
     "@headlessui/react": "^2.2",
-    "clsx": "2.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.6.0",
+    "clsx": "^2",
+    "react": "^16 | ^17 | ^18 | ^19",
+    "react-dom": "^16 | ^17 | ^18 | ^19",
+    "tailwind-merge": "^2.6",
     "tailwindcss": "^4.1"
   },
   "publishConfig": {
