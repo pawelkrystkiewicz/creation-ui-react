@@ -17,4 +17,5 @@ storybook-static/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/playwright/output/
 trace.zip
