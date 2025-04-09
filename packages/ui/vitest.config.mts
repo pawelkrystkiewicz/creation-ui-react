@@ -1,9 +1,9 @@
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
+import { defineConfig, UserConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  // @ts-expect-error
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   test: {
     // coverage: {
     //   provider: 'v8',
@@ -14,4 +14,4 @@ export default defineConfig({
     exclude: ['dist/**', '**/node_modules/**', '**/*.ct.spec.tsx'],
     includeTaskLocation: true,
   },
-})
+} as UserConfig)

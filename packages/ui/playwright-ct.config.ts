@@ -1,12 +1,14 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-react'
+import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   testMatch: '**/*.ct.spec.tsx',
   outputDir: './playwright/output',
-  timeout: 60 * 1000,
+  timeout: 10 * 1000,
   use: {
     ctViteConfig: {
-      configFile: './vitest.config.mts',
+      plugins: [react(), tailwindcss()],
     },
   },
   projects: [

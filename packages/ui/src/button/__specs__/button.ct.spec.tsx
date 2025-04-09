@@ -2,9 +2,14 @@ import { test, expect } from '@playwright/experimental-ct-react'
 import { Button } from '..'
 import { ELEMENT_COLOR, ELEMENT_VARIANTS } from '../../types'
 
-test('button', async ({ mount, page }) => {
-  await mount(<Button>Click me</Button>)
-  await expect(page.getByText('Click me')).toBeVisible()
+test('default button renders correctly', async ({ mount, page }) => {
+  // check if tailwindcss is setup in test correctly
+  const label = 'Button'
+  await mount(<Button>{label}</Button>)
+  const button = page.getByText(label)
+
+  await expect(button).toBeVisible()
+  await expect(button).toHaveCSS('color', 'oklch(0.6048 0.2165 257.21)')
 })
 
 for (const color of ELEMENT_COLOR) {
