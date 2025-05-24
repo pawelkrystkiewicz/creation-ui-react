@@ -69,8 +69,9 @@ export default async function RootLayout({ children }: any) {
       <head>
         <script
           defer
-          data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
-          src={process.env.NEXT_PUBLIC_ANALYTICS_URL}
+          id='umami'
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
         />
       </head>
       <body>
