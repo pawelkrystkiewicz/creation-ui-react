@@ -66,6 +66,13 @@ export default async function RootLayout({ children }: any) {
       suppressHydrationWarning
       className={clsx(manrope.variable, firaCode.variable)}
     >
+      <head>
+        <script
+          defer
+          src={process.env.NEXT_PUBLIC_ANALYTICS_URL}
+          data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_ID}
+        />
+      </head>
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Layout
