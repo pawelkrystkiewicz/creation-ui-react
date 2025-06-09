@@ -29,3 +29,4 @@ remote-repo/
 scripts/flow/*/.flowconfig
 test-runner-profile
 test/the-files-to-test.generated.js
+_pagefind/
