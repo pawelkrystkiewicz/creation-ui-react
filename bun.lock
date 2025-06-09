@@ -17,6 +17,7 @@
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "knip": "^5.48.0",
+        "pagefind": "^1.3.0",
         "prettier": "^3.4.2",
         "turbo": "^2.5.0",
         "typescript": "^5.7.3",
@@ -701,6 +702,16 @@
     "@npmcli/package-json": ["@npmcli/package-json@5.2.1", "", { "dependencies": { "@npmcli/git": "^5.0.0", "glob": "^10.2.2", "hosted-git-info": "^7.0.0", "json-parse-even-better-errors": "^3.0.0", "normalize-package-data": "^6.0.0", "proc-log": "^4.0.0", "semver": "^7.5.3" } }, "sha512-f7zYC6kQautXHvNbLEWgD/uGu1+xCn9izgqBfgItWSx22U0ZDekxN08A1vM8cTxj/cRVe0Q94Ode+tdoYmIOOQ=="],
 
     "@npmcli/promise-spawn": ["@npmcli/promise-spawn@7.0.2", "", { "dependencies": { "which": "^4.0.0" } }, "sha512-xhfYPXoV5Dy4UkY0D+v2KkwvnDfiA/8Mt3sWCGI/hM03NsYIH8ZaG6QzS9x7pje5vHZBZJ2v6VRFVTWACnqcmQ=="],
+
+    "@pagefind/darwin-arm64": ["@pagefind/darwin-arm64@1.3.0", "", { "os": "darwin", "cpu": "arm64" }, "sha512-365BEGl6ChOsauRjyVpBjXybflXAOvoMROw3TucAROHIcdBvXk9/2AmEvGFU0r75+vdQI4LJdJdpH4Y6Yqaj4A=="],
+
+    "@pagefind/darwin-x64": ["@pagefind/darwin-x64@1.3.0", "", { "os": "darwin", "cpu": "x64" }, "sha512-zlGHA23uuXmS8z3XxEGmbHpWDxXfPZ47QS06tGUq0HDcZjXjXHeLG+cboOy828QIV5FXsm9MjfkP5e4ZNbOkow=="],
+
+    "@pagefind/linux-arm64": ["@pagefind/linux-arm64@1.3.0", "", { "os": "linux", "cpu": "arm64" }, "sha512-8lsxNAiBRUk72JvetSBXs4WRpYrQrVJXjlRRnOL6UCdBN9Nlsz0t7hWstRk36+JqHpGWOKYiuHLzGYqYAqoOnQ=="],
+
+    "@pagefind/linux-x64": ["@pagefind/linux-x64@1.3.0", "", { "os": "linux", "cpu": "x64" }, "sha512-hAvqdPJv7A20Ucb6FQGE6jhjqy+vZ6pf+s2tFMNtMBG+fzcdc91uTw7aP/1Vo5plD0dAOHwdxfkyw0ugal4kcQ=="],
+
+    "@pagefind/windows-x64": ["@pagefind/windows-x64@1.3.0", "", { "os": "win32", "cpu": "x64" }, "sha512-BR1bIRWOMqkf8IoU576YDhij1Wd/Zf2kX/kCI0b2qzCKC8wcc2GQJaaRMCpzvCCrmliO4vtJ6RITp/AnoYUUmQ=="],
 
     "@pkgjs/parseargs": ["@pkgjs/parseargs@0.11.0", "", {}, "sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg=="],
 
@@ -2709,6 +2720,8 @@
     "package-json-from-dist": ["package-json-from-dist@1.0.1", "", {}, "sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw=="],
 
     "package-manager-detector": ["package-manager-detector@0.2.8", "", {}, "sha512-ts9KSdroZisdvKMWVAVCXiKqnqNfXz4+IbrBG8/BWx/TR5le+jfenvoBuIZ6UWM9nz47W7AbD9qYfAwfWMIwzA=="],
+
+    "pagefind": ["pagefind@1.3.0", "", { "optionalDependencies": { "@pagefind/darwin-arm64": "1.3.0", "@pagefind/darwin-x64": "1.3.0", "@pagefind/linux-arm64": "1.3.0", "@pagefind/linux-x64": "1.3.0", "@pagefind/windows-x64": "1.3.0" }, "bin": { "pagefind": "lib/runner/bin.cjs" } }, "sha512-8KPLGT5g9s+olKMRTU9LFekLizkVIu9tes90O1/aigJ0T5LmyPqTzGJrETnSw3meSYg58YH7JTzhTTW/3z6VAw=="],
 
     "pako": ["pako@1.0.11", "", {}, "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="],
 
