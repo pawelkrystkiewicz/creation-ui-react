@@ -10,7 +10,6 @@ import Providers from './providers'
 import { Manrope, Fira_Code } from 'next/font/google'
 import clsx from 'clsx'
 import { Logo } from '@/components/logo'
-import { Flex } from '@creation-ui/react'
 
 export const metadata = {
   metadataBase: new URL('https://creation-ui.com'),
