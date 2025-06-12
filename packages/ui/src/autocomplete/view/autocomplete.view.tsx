@@ -1,7 +1,7 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react'
 import clsx from 'clsx'
 import { FC, useCallback } from 'react'
-import { DropdownMenu, Show } from '../../'
+import { DropdownMenu, Input, Show } from '../../'
 import { useAutocomplete } from '../context'
 import { renderOptionInternalContainer } from '../utils/render-option'
 import { MultipleSelections } from './multiple-selections.view'
@@ -40,9 +40,10 @@ export const AutocompleteView: FC = () => {
             <MultipleSelections />
           </Show>
           {!customRenderValue ? (
-            <input
+            <Input
               {...propsInput}
-              className={clsx('reset-input', 'h-fit', propsInput.className)}
+              cx={{ input: clsx(propsInput.className) }}
+              type={'text'}
             />
           ) : (
             renderSelection?.(selected)
