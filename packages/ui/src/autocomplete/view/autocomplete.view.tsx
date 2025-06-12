@@ -24,6 +24,9 @@ export const AutocompleteView: FC = () => {
     allowCreate,
   } = useAutocomplete()
 
+  console.log(propsList)
+  console.log(floatingContext)
+
   const customRenderValue =
     !!renderSelection && !multiple && selected != undefined
   const hasOptions = options.length > 0
@@ -33,7 +36,7 @@ export const AutocompleteView: FC = () => {
   }, [query, onCreate])
 
   return (
-    <div className={clsx('relative h-auto py-1')}>
+    <div className={clsx('!relative h-auto py-1')}>
       <div className={clsx('flex flex-col gap-1')}>
         <div className='inline-flex gap-2 items-center flex-wrap h-fit'>
           <Show when={multiple}>

@@ -25,6 +25,7 @@ import {
 import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
 import { createFilterOptions } from '../utils/utils'
 import { AutocompleteView } from '../view/autocomplete.view'
+import type {} from '@floating-ui/react-dom'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const {
@@ -133,7 +134,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     clearSearch()
   }
 
-  // @ts-ignore
   const { refs, context, floatingStyles } = useFloating<HTMLInputElement>({
     placement: 'bottom',
     whileElementsMounted: autoUpdate,
