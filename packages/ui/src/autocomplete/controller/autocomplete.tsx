@@ -265,9 +265,11 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   }, [])
 
   const inputProps: AutocompleteInnerInputProps = {
+    role: 'textbox',
     onChange: onInputChange,
     value: query,
     'aria-autocomplete': 'list',
+    'aria-controls': 'autocomplete-list',
     onClick() {
       setOpen(true)
     },

@@ -24,9 +24,6 @@ export const AutocompleteView: FC = () => {
     allowCreate,
   } = useAutocomplete()
 
-  console.log(propsList)
-  console.log(floatingContext)
-
   const customRenderValue =
     !!renderSelection && !multiple && selected != undefined
   const hasOptions = options.length > 0

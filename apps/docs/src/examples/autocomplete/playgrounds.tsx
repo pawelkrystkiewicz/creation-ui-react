@@ -6,6 +6,7 @@ import options from '../people-short-list.json'
 import { createInputControls } from '../shared-playground-controls'
 import { type PersonOnListType } from './types'
 
+
 const autocompleteControls = createInputControls('Autocomplete')
 const autocompleteControlsMultiple = createInputControls(
   'Autocomplete - multiple',

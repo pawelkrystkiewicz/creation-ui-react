@@ -40,7 +40,13 @@ export const InputBase: FC<InputBaseProps & { className?: string }> = ({
       {children}
       {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
       {clearable && (
-        <Icon icon={'close'} onClick={onClear} className={classes()} />
+        <Icon
+          icon={'close'}
+          onClick={onClear}
+          className={classes()}
+          role='button'
+          data-testid='clear-button'
+        />
       )}
     </span>
   )
