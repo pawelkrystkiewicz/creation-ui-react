@@ -9,6 +9,11 @@ export type AutocompleteOptionDefault =
   | string
   | { label: string; disabled?: boolean }
 
+export type AutocompleteRenderOption<T> = (
+  props: AutocompleteOptionProps,
+  option: T,
+) => React.ReactNode
+
 export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   InputBaseProps,
   'interactionsDisabled' | 'layout' | 'children' | 'type'
@@ -36,7 +41,7 @@ export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   /**
    * Component to display list options
    */
-  renderOption?: (props: AutocompleteOptionProps, option: T) => React.ReactNode
+  renderOption?: AutocompleteRenderOption<T>
   /**
    * Component to display list options
    */

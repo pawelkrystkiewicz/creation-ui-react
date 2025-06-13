@@ -6,7 +6,7 @@ import {
   AutocompleteInnerInputProps,
 } from './types'
 
-interface AutocompleteContextValue<T = any>
+export interface AutocompleteContextValue<T = any>
   extends Pick<
     AutocompleteProps<T>,
     | 'renderOption'
@@ -31,22 +31,27 @@ interface AutocompleteContextValue<T = any>
   open?: boolean
   floatingContext: any
   activeIndex: number | null
-  selected?: AutocompleteOptionDefault | AutocompleteOptionDefault[] | null
+  selected?: T | T[] | null
   /** PROPS **/
   propsInput: AutocompleteInnerInputProps
   propsList: Record<string, unknown>
   getOptionProps: (
-    option: AutocompleteOptionDefault,
+    option: T,
     index: number,
   ) => AutocompleteOptionProps
   /** CONTROLS **/
   setOpen: (value: boolean) => void
   handleRemoveSelected: (option: AutocompleteOptionDefault) => void
 }
+// Define a non-generic context first
+// We will cast the type later
 export const AutocompleteContext = createContext<any>(null)
 
-export const useAutocomplete = () => {
-  const context = useContext<AutocompleteContextValue>(AutocompleteContext)
+export const useAutocomplete = <T = AutocompleteOptionDefault>() => {
+  const context = useContext(
+    AutocompleteContext
+  ) as AutocompleteContextValue<T> | null
+
   if (!context) {
     throw new Error(
       'useAutocomplete must be used within an AutocompleteProvider',

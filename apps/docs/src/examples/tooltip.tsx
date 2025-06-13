@@ -5,7 +5,7 @@ import { Button, Tooltip, type TooltipProps } from '@creation-ui/react'
 import { positionControl } from './shared-playground-controls'
 import { positionProp } from './shared-props'
 
-export const TooltipExample = (props: TooltipProps) => (
+export const TooltipExample = (props: Omit<TooltipProps, 'children'>) => (
   <Tooltip {...props}>
     <Button variant='contained'>Submit</Button>
   </Tooltip>

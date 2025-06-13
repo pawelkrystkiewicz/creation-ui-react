@@ -15,13 +15,12 @@ export const getTop = ({ placement, y = 0 }: any) => {
 }
 
 export const stripDiacritics = (text: string) => {
-  return typeof text.normalize !== 'undefined'
-    ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    : text
+  if (typeof text.normalize === 'undefined') return text
+  return text.normalize('NFKD').replace(/\p{Diacritic}/gu, '')
 }
 
 export function createFilterOptions<T>(
-  config?: AutocompleteFilterOptionsConfig<T>
+  config?: AutocompleteFilterOptionsConfig<T>,
 ) {
   const {
     ignoreAccents = true,
@@ -34,7 +33,7 @@ export function createFilterOptions<T>(
 
   return (
     options: T[],
-    { query = '', getOptionLabel }: AutocompleteFilterOptions<T>
+    { query = '', getOptionLabel }: AutocompleteFilterOptions<T>,
   ) => {
     let input = trim ? query.trim() : query
     if (ignoreCase) {

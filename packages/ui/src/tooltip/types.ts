@@ -1,7 +1,7 @@
-import type { ClassName, ElementPosition } from '../types'
+import type { ElementPosition } from '../types'
 
 export interface TooltipProps {
-  className?: ClassName
+  className?: string
   children?: React.ReactNode
   content?: React.ReactNode
   position?: ElementPosition

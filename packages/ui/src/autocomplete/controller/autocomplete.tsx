@@ -1,144 +1,69 @@
+import React from 'react'
 import {
+  useFloating,
   autoUpdate,
   flip,
-  size as floatingSize,
   offset,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useListNavigation,
+  size as floatingSize,
   useRole,
+  useDismiss,
+  useListNavigation,
+  useInteractions,
 } from '@floating-ui/react'
 import Keyboard from 'keyboard-key'
-import React, { useEffect, useRef, useState } from 'react'
-import { Chip, DropdownChevron, getDropdownHeight, InputBase } from '../../'
+import { InputBase, DropdownChevron } from '../../'
 import { selectOptionClasses } from '../../classes'
-import { getFlatOptions } from '../../utils/normalize-dropdown-options'
-import { AUTOCOMPLETE_MARGIN } from '../constants'
 import { AutocompleteContext } from '../context'
 import {
-  AutocompleteInnerInputProps,
-  AutocompleteOptionProps,
   AutocompleteProps,
+  AutocompleteOptionProps,
   GetItemPropsReturnType,
 } from '../types'
-import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
-import { createFilterOptions } from '../utils/utils'
+import { AUTOCOMPLETE_MARGIN } from '../constants'
 import { AutocompleteView } from '../view/autocomplete.view'
-import type {} from '@floating-ui/react-dom'
+import { useAutocompleteCore } from './use-autocomplete-core'
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
+  const core = useAutocompleteCore(props)
+
   const {
-    textLoading = 'Loading...',
-    textEmpty = 'No options',
-    textNotFound = 'No results found',
-    textCreate = 'Create',
-    multiple = false,
-    limit,
-    maxHeight,
-    variant,
-    zIndex,
-    cx,
+    open,
+    setOpen,
+    query,
+    activeIndex,
+    setActiveIdx,
+    filteredOptions,
     value,
-    options = [],
-    filterSelectedOptions = false,
-    defaultTagProps = {
-      variant: 'outlined',
-      color: 'mono',
-    },
-    autoHighlight = false,
-    onChange,
-    filterOptions = createFilterOptions<T>(),
-    getLimitTagsText = (more: number) => `+${more}`,
+    multiple,
+    getOptionLabel,
+    getOptionDisabled,
     renderOption,
     renderSelection,
-    getOptionLabel: getOptionLabelProp = (option: T): string =>
-      typeof option === 'string' ? option : (option as any).label,
-    isOptionEqualToValue = _isOptionEqualToValue<T>,
-    getOptionDisabled = (option: T) => (option as any).disabled,
-  } = props
+    renderTags,
+    getLimitTagsText,
+    textEmpty,
+    textLoading,
+    textNotFound,
+    defaultTagProps,
+    autoHighlight,
+    limit,
+    zIndex,
+    maxHeight,
+    clearable,
+    clearableCallback,
+    createCallback,
+    handleRemoveSelected,
+    onInputChangeHandler,
+    listRef,
+    textCreate,
+  } = core
 
-  let getOptionLabel = getOptionLabelProp
-  getOptionLabel = (option: T) => {
-    const optionLabel = getOptionLabelProp(option)
-    if (typeof optionLabel !== 'string') {
-      if (process.env.NODE_ENV !== 'production') {
-        const erroneousReturn =
-          optionLabel === undefined
-            ? 'undefined'
-            : `${typeof optionLabel} (${optionLabel})`
-
-        console.error(
-          `CUI: The \`getOptionLabel\` method of [Autocomplete] returned ${erroneousReturn} instead of a string for ${JSON.stringify(
-            option,
-          )}.`,
-        )
-      }
-
-      return String(optionLabel)
-    }
-
-    return optionLabel
-  }
-
-  const _renderTags = (
-    selected: T[],
-    handleRemoveSelected: (option: T) => void,
-  ) => {
-    return selected?.map(option => {
-      const label = getOptionLabel(option)
-      const onDelete = () => handleRemoveSelected(option)
-      return (
-        <Chip
-          {...defaultTagProps}
-          key={label}
-          label={label}
-          onDelete={onDelete}
-        />
-      )
-    })
-  }
-
-  const { renderTags = _renderTags } = props
-
-  const [open, setOpen] = useState<boolean>(false)
-  const [query, setQuery] = useState<string>('')
-  const [activeIndex, setActiveIdx] = useState<number | null>(null)
-  const [width, setWidth] = useState<number | undefined>(undefined)
-
-  const isQuery = !!query?.trim()
-  const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
-  const interactionsDisabled = props.disabled || props.readOnly
-  const clearable = props.clearable && (!isEmpty || isQuery)
-
-  const listRef = useRef<Array<HTMLElement | null>>([])
-
-  const clearSearch = () => setQuery('')
-
-  const clearableCallback = () => {
-    switch (multiple) {
-      case true:
-        // @ts-expect-error
-        onChange?.([])
-        break
-      case false:
-        onChange?.(null)
-        break
-    }
-    props.onInputChange?.({ target: { value: '' } } as any)
-    clearSearch()
-  }
-
-  const createCallback = () => {
-    props.onCreate?.(query)
-    clearSearch()
-  }
-
+  // Floating UI setup
   const { refs, context, floatingStyles } = useFloating<HTMLInputElement>({
     placement: 'bottom',
     whileElementsMounted: autoUpdate,
     onOpenChange: open => {
-      if (interactionsDisabled) return
+      if (props.disabled || props.readOnly) return
       setOpen(open)
     },
     open,
@@ -147,10 +72,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       offset(5),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
-          const height = getDropdownHeight(maxHeight, availableHeight)
-
-          setWidth(Number(rects.reference.width?.toFixed(0)))
-
+          const height = maxHeight || availableHeight
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
             maxHeight: height,
@@ -176,97 +98,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [role, dismiss, listNav],
   )
 
-  function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if (interactionsDisabled) return
-    const {
-      target: { value },
-    } = event
-
-    const text = value
-    setQuery(text)
-    props.onInputChange?.(event)
-
-    if (text) {
-      setOpen(true)
-      setActiveIdx(0)
-    } else {
-      setOpen(false)
-    }
-  }
-
-  const initiallyFiltered = filterSelectedOptions
-    ? options.filter(option => {
-        if (
-          ((multiple ? value : [value]) as T[]).some(v =>
-            isOptionEqualToValue(option, v),
-          )
-        ) {
-          return false
-        }
-        return true
-      })
-    : options
-
-  const filteredOptions: T[] = open
-    ? filterOptions(initiallyFiltered, { query, getOptionLabel })
-    : []
-
-  const toggleOpen = () => setOpen(!open)
-
-  const handleSelect = (option: T) => {
-    switch (multiple) {
-      case true: {
-        clearSearch()
-        const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
-        // @ts-expect-error
-        onChange?.(newValue)
-        break
-      }
-      case false: {
-        // @ts-expect-error
-        onChange?.(option)
-        setActiveIdx(null)
-        setOpen(false)
-        setQuery(getOptionLabel?.(option))
-        break
-      }
-    }
-  }
-
-  const handleRemoveSelected = (option: T) => {
-    if (multiple) {
-      // @ts-expect-error
-      const newValue = value?.filter((o: any) => o.id !== option.id)
-      onChange?.(!multiple ? getFlatOptions(newValue) : newValue)
-    }
-  }
-
-  const containerProps = getReferenceProps({
-    ref: refs.setReference,
-  })
-
-  const retainInputValue = () => {
-    if (value && !multiple) {
-      // @ts-expect-error
-      const label = getOptionLabel?.(value) || ''
-
-      if (typeof label !== 'string' || typeof query !== 'string') {
-        clearSearch()
-      }
-
-      if (!open && label !== query) {
-        setQuery(label)
-      }
-    }
-  }
-
-  useEffect(() => {
-    retainInputValue()
-  }, [])
-
-  const inputProps: AutocompleteInnerInputProps = {
+  // Input props
+  const inputProps = {
     role: 'textbox',
-    onChange: onInputChange,
+    onChange: onInputChangeHandler,
     value: query,
     'aria-autocomplete': 'list',
     'aria-controls': 'autocomplete-list',
@@ -274,13 +109,13 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       setOpen(true)
     },
     onBlur() {
-      retainInputValue()
+      core.retainInputValue()
     },
-    onKeyDown(event) {
+    onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
       switch (event.key) {
         case 'Enter':
           if (activeIndex != null && filteredOptions[activeIndex]) {
-            handleSelect(filteredOptions[activeIndex])
+            core.handleSelect(filteredOptions[activeIndex])
           } else {
             createCallback()
           }
@@ -295,12 +130,16 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     },
   }
 
+  // Option props
   const getOptionProps = (
     option: T,
     index: number,
   ): AutocompleteOptionProps => {
     const active = activeIndex === index
-    const selected = isOptionEqualToValue(option, value)
+    const selected =
+      getOptionLabel && getOptionLabel(option) && core.value
+        ? core.getOptionLabel(option) === core.getOptionLabel(core.value as T)
+        : false
     const disabled = getOptionDisabled(option)
     const label = getOptionLabel?.(option)
     const truncate = typeof renderOption !== 'function'
@@ -309,46 +148,37 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       ref: node => {
         listRef.current[index] = node
       },
-      onKeyDown(e) {
+      onKeyDown(e: React.KeyboardEvent<HTMLLIElement>) {
         if (disabled) return
-
         const code = Keyboard.getCode(e)
-
         const isEnter = code === Keyboard.Enter
         const isSpace = code === Keyboard.Spacebar
-
         if (isEnter || isSpace) {
           e.preventDefault()
           const wasSelected =
             (e.target as any).getAttribute?.('aria-selected') === 'true'
-
           if (selected && multiple) {
             handleRemoveSelected(option)
           }
-
           if (!wasSelected) {
-            handleSelect(option)
+            core.handleSelect(option)
           }
-
           refs.domReference.current?.focus()
         }
       },
       onClick(e: React.MouseEvent<HTMLLIElement>) {
         if (disabled) return
-
         const wasSelected =
           (e.target as any).getAttribute?.('aria-selected') === 'true'
-
         if (selected && multiple) {
           handleRemoveSelected(option)
         }
-
         if (!wasSelected) {
-          handleSelect(option)
+          core.handleSelect(option)
         }
         refs.domReference.current?.focus()
       },
-      style: { ...(truncate ? { maxWidth: width } : {}) },
+      style: { ...(truncate ? { maxWidth: undefined } : {}) },
     }) as unknown as GetItemPropsReturnType
 
     return {
@@ -384,56 +214,54 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const handleChevronClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    if (interactionsDisabled) return
-    toggleOpen()
+    if (props.disabled || props.readOnly) return
+    setOpen(!open)
   }
 
   return (
-    <>
-      <InputBase
-        variant={variant}
-        endAdornment={
-          <DropdownChevron open={open} onClick={handleChevronClick} />
-        }
-        clearable={clearable}
-        onClear={clearableCallback}
-        cx={cx}
-        {...containerProps}
+    <InputBase
+      variant={props.variant}
+      endAdornment={
+        <DropdownChevron open={open} onClick={handleChevronClick} />
+      }
+      clearable={clearable}
+      onClear={clearableCallback}
+      cx={props.cx}
+      {...getReferenceProps({ ref: refs.setReference })}
+    >
+      <AutocompleteContext.Provider
+        value={{
+          renderTags,
+          handleRemoveSelected,
+          setOpen,
+          multiple,
+          autoHighlight,
+          clearable,
+          floatingContext: context,
+          options: filteredOptions,
+          activeIndex,
+          limit,
+          selected: value,
+          propsList: listProps,
+          propsInput: inputProps,
+          textEmpty,
+          textLoading,
+          textNotFound,
+          open,
+          defaultTagProps,
+          renderOption,
+          renderSelection,
+          getOptionLabel,
+          getOptionProps,
+          getLimitTagsText,
+          onCreate: createCallback,
+          allowCreate: !!props.onCreate,
+          textCreate,
+          query,
+        }}
       >
-        <AutocompleteContext.Provider
-          value={{
-            renderTags,
-            handleRemoveSelected,
-            setOpen,
-            multiple,
-            autoHighlight,
-            clearable,
-            floatingContext: context,
-            options: filteredOptions,
-            activeIndex,
-            limit,
-            selected: value,
-            propsList: listProps,
-            propsInput: inputProps,
-            textEmpty,
-            textLoading,
-            textNotFound,
-            open,
-            defaultTagProps,
-            renderOption,
-            renderSelection,
-            getOptionLabel,
-            getOptionProps,
-            getLimitTagsText,
-            onCreate: createCallback,
-            allowCreate: !!props.onCreate,
-            textCreate,
-            query,
-          }}
-        >
-          <AutocompleteView />
-        </AutocompleteContext.Provider>
-      </InputBase>
-    </>
+        <AutocompleteView<T> />
+      </AutocompleteContext.Provider>
+    </InputBase>
   )
 }

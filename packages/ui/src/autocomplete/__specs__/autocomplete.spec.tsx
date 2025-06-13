@@ -1,8 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, fireEvent, screen, within } from '@testing-library/react'
-import { Autocomplete } from '../controller/autocomplete'
-import React from 'react'
 import '@testing-library/jest-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { Autocomplete } from '../controller/autocomplete'
 
 const OPTIONS = [
   { id: 1, label: 'Apple' },

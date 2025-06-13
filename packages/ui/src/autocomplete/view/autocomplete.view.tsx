@@ -5,8 +5,9 @@ import { DropdownMenu, Input, Show } from '../../'
 import { useAutocomplete } from '../context'
 import { renderOptionInternalContainer } from '../utils/render-option'
 import { MultipleSelections } from './multiple-selections.view'
+import { AutocompleteOptionDefault } from '../types'
 
-export const AutocompleteView: FC = () => {
+export function AutocompleteView<T = AutocompleteOptionDefault>() {
   const {
     //
     propsInput,
@@ -22,7 +23,7 @@ export const AutocompleteView: FC = () => {
     textCreate,
     query,
     allowCreate,
-  } = useAutocomplete()
+  } = useAutocomplete<T>()
 
   const customRenderValue =
     !!renderSelection && !multiple && selected != undefined
@@ -46,7 +47,7 @@ export const AutocompleteView: FC = () => {
               type={'text'}
             />
           ) : (
-            renderSelection?.(selected)
+            renderSelection?.(selected as T)
           )}
         </div>
       </div>

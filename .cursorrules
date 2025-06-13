@@ -1,0 +1,267 @@
+// Cursor AI Configuration for @creation-ui/react project
+// This file defines the coding standards and preferences for AI assistance
+
+## Project Overview
+
+You are working on "@creation-ui/react", a modern React TypeScript components library with documentation static page using:
+
+- React with TypeScript
+- Next.js with Nextra for documentation
+- Tailwind CSS for styling
+- Class Variance Authority (CVA) for component variants
+
+## Code Style & Formatting
+
+### TypeScript/JavaScript
+
+- Use **no semicolons** (eslint/prettier configured)
+- Use **single quotes** for strings
+- Use **trailing commas** in objects, arrays, function parameters
+- Use **arrow functions without parentheses** for single parameters: `items => items.map(...)`
+- Use **arrow functions with parentheses** for multiple parameters: `(a, b) => a + b`
+- Prefer **const** over **let**, avoid **var**
+- Use **template literals** for string interpolation
+- Use **optional chaining** (?.) and **nullish coalescing** (??) operators
+- Use **destructuring** for objects and arrays when appropriate
+
+### React Components
+
+- Use **functional components** with hooks (no class components)
+- Use **React.forwardRef** for components that need ref forwarding
+- Export components as **named exports**: `export const ComponentName = () => {}`
+- Use **PascalCase** for component names and files
+- Use **camelCase** for props, variables, and functions
+- Group imports in this order:
+  1. React imports
+  2. Third-party libraries
+  3. Relative imports
+- DO NOT Leave blank lines between import groups
+
+### File Naming
+
+- Use **PascalCase** for React component files: `ButtonMicro.tsx`, `DataTable.tsx`
+- Use **camelCase** for utility files: `baseUrl.ts`, `dateUtils.ts`
+- Use **kebab-case** for config files: `.cursorrules`, `vite.config.ts`
+
+### Import Patterns
+
+- Group related imports together
+- Use **named imports** over default imports when possible
+- Example import structure:
+
+```typescript
+import { useState, useEffect } from 'react'
+import { Button, Input } from '@creation-ui/react'
+import { useQuery } from '@apollo/client'
+import { ComponentProps } from '@/types'
+```
+
+### Component Patterns
+
+- Use **interface** for component props, not **type**
+- Use **React.FC** type annotation (prefer inference)
+- Use **forwardRef** pattern when components need ref access
+- Example component structure:
+
+```typescript
+import { type FC } from 'react'
+
+interface ComponentNameProps {
+  title: string
+  onClick?: () => void
+  children?: React.ReactNode
+  className?: string
+}
+
+export const ComponentName: FC<ComponentNameProps> = ({ title, onClick, children, className}) => {
+  return (
+    <div className=clsx("...", className)>
+      {children}
+    </div>
+  )
+}
+```
+
+### Styling Approach
+
+- Use **Tailwind CSS** classes for styling
+- Use **Class Variance Authority (CVA)** for component variants
+- Use **CSS custom properties** for dynamic theming: `[--trigger-color:theme(colors.primary)]`
+- Group Tailwind classes logically:
+  1. Layout (flex, grid, position)
+  2. Spacing (margin, padding)
+  3. Sizing (width, height)
+  4. Typography (text, font)
+  5. Colors (bg, text, border)
+  6. Effects (shadow, opacity)
+  7. Responsive modifiers
+  8. State modifiers (hover, focus, active)
+
+### State Management
+
+- Use **React hooks** (useState, useEffect, useCallback, useMemo) for local state
+- Prefer **custom hooks** for complex state logic
+- Use **Context API** when neccessary to avoid props drilling
+
+### TypeScript Patterns
+
+- Use **strict TypeScript** configuration
+- Prefer **interface** over **type** for object shapes
+- Use **type** for unions, primitives, and computed types
+- Use **generic types** when appropriate
+- Use **const assertions** for readonly data: `as const`
+- Use **utility types** (Partial, Pick, Omit, etc.) when needed
+- Example type definitions:
+
+```typescript
+interface User {
+  id: string
+  name: string
+  email: string
+}
+
+type UserRole = 'admin' | 'user' | 'guest'
+
+type CreateUserPayload = Omit<User, 'id'>
+```
+
+### Error Handling
+
+- Use **try-catch** blocks for async operations
+- Use **Error boundaries** for React error handling
+- Use **toast notifications** for user-facing errors
+- Log errors appropriately but don't expose sensitive information
+
+### Testing Patterns
+
+- Write tests for utility functions
+- Write integration tests for components
+- Use **describe** and **it** blocks for test organization
+- Mock external dependencies appropriately
+
+When possible - only arguments and output changes and scenario and test mechanics does note - use this pattern:
+
+```ts
+describe('isEmpty', () => {
+  ;[
+    {
+      description: 'should return true for [null]',
+      input: null,
+      expected: true,
+    },
+    {
+      description: 'should return true for [undefined]',
+      input: undefined,
+      expected: true,
+    },
+    /*...other case*/
+  ].forEach(({ description, input, expected }) => {
+    it(description, () => {
+      expect(isEmpty(input)).toStrictEqual(expected)
+    })
+  })
+})
+```
+
+### GraphQL Patterns
+
+- Use **Apollo Client** for GraphQL operations
+- Use **code generation** for TypeScript types from GraphQL schema
+- Use **fragments** for reusable query parts
+- Handle **loading** and **error** states appropriately
+
+### Performance Considerations
+
+- Use **React.memo** for expensive components
+- Use **useCallback** and **useMemo** judiciously (not everywhere)
+- Use **lazy loading** for routes and heavy components
+- Optimize **bundle size** by avoiding unnecessary imports
+
+### Accessibility
+
+- Use **semantic HTML** elements
+- Include **ARIA attributes** when needed
+- Ensure **keyboard navigation** support
+- Use **proper heading hierarchy**
+- Include **alt text** for images
+
+### Security
+
+- **Sanitize user inputs**
+- Use **environment variables** for sensitive configuration
+- **Validate data** on both client and server
+- Follow **authentication best practices**
+
+## Specific Libraries & Patterns
+
+### TanStack Router
+
+- Use **file-based routing** with route files
+- Use **route loaders** for data fetching
+- Use **search params** for URL state
+- Use **navigate** function for programmatic navigation
+
+### Apollo Client
+
+- Use **useQuery**, **useMutation**, **useSubscription** hooks
+- Handle **loading**, **error**, and **data** states
+- Use **optimistic updates** where appropriate
+- Use **cache policies** effectively
+
+### Tailwind CSS
+
+- Use **responsive design** principles
+- Use **dark mode** classes when needed: `dark:bg-gray-800`
+- Use **state variants**: `hover:`, `focus:`, `active:`, `disabled:`
+- Use **arbitrary values** sparingly: `w-[100px]`
+
+### Class Variance Authority
+
+- Create **variant-based** component APIs
+- Use **compound variants** for complex styling rules
+- Use **default variants** for common use cases
+- Example CVA usage:
+
+```typescript
+const buttonVariants = cva(
+  'inline-flex items-center justify-center rounded-md font-medium',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-primary text-primary-foreground',
+        secondary: 'bg-secondary text-secondary-foreground',
+      },
+      size: {
+        sm: 'h-9 px-3',
+        md: 'h-10 px-4',
+        lg: 'h-11 px-8',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+    },
+  },
+)
+```
+
+## AI Assistant Guidelines
+
+- **Follow the established patterns** in the codebase
+- **Suggest modern React patterns** and best practices
+- **Use TypeScript effectively** with proper typing
+- **Consider performance implications** of suggestions
+- **Maintain consistency** with existing code style
+- **Suggest refactoring** when code can be improved
+- **Explain complex concepts** when introducing new patterns
+- **Consider accessibility** in UI suggestions
+- **Follow security best practices**
+- **Write clean, readable code** with appropriate comments
+
+When suggesting code changes:
+
+1. Follow the exact formatting and style patterns shown above
+2. Use the same import patterns and grouping
+3. Maintain consistency with existing component structures
+4. Consider the broader architecture and patterns in use
+5. Suggest improvements that align with the project's tech stack
