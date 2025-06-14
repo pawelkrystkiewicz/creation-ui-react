@@ -1,9 +1,10 @@
 import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
 import React, {
-  ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
   forwardRef,
   Fragment,
+  memo,
   useMemo,
 } from 'react'
 import { ClearButton } from '../clear-button'
@@ -13,7 +14,7 @@ import { EndAdornment } from './EndAdornment'
 import { StartAdornment } from './StartAdornment'
 import type { InputProps } from './types'
 
-export const Input = forwardRef(function Input(
+const InputComponent = forwardRef(function Input(
   {
     onClear,
     startAdornment,
@@ -70,52 +71,61 @@ export const Input = forwardRef(function Input(
     containerHeight,
   })
 
-  const InnerWrapper = ({
-    children,
-  }: ComponentPropsWithoutRef<typeof Fragment>) => {
-    return (
-      <>
-        {startAdornment && <StartAdornment>{startAdornment}</StartAdornment>}
-        {children}
-        {clearable && (
-          <ClearButton
-            onClick={onClear}
-            className={clsx(
-              'cursor-pointer',
-              'absolute',
-              '-translate-y-1/2',
-              '-translate-x-1/2',
-              'top-1/2',
-              endAdornment ? 'right-6' : 'right-0',
-            )}
-            role='button'
-            data-testid='clear-button'
-          />
-        )}
-        {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
-      </>
-    )
-  }
-
-  // Render prop pattern
-  if (typeof children === 'function') {
-    return (
-      <span data-slot='control' className='relative'>
-        <Headless.Input ref={ref} as={as} {...props} className={classes}>
-          {bag => <InnerWrapper>{children(bag)}</InnerWrapper>}
-        </Headless.Input>
-      </span>
-    )
-  }
-
-  // Default pattern
-  return (
-    <span data-slot='control' className={'relative'}>
-      <InnerWrapper>
-        <Headless.Input ref={ref} as={as} {...props} className={classes} />
-      </InnerWrapper>
-    </span>
+  const InnerWrapper = memo(
+    ({ children }: ComponentPropsWithRef<typeof Fragment>) => {
+      return (
+        <>
+          {startAdornment && <StartAdornment>{startAdornment}</StartAdornment>}
+          {children}
+          {clearable && (
+            <ClearButton
+              onClick={onClear}
+              className={clsx(
+                'cursor-pointer',
+                'absolute',
+                '-translate-y-1/2',
+                '-translate-x-1/2',
+                'top-1/2',
+                endAdornment ? 'right-6' : 'right-0',
+              )}
+              role='button'
+              data-testid='clear-button'
+            />
+          )}
+          {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
+        </>
+      )
+    },
   )
+
+  switch (true) {
+    case typeof children === 'function':
+      return (
+        <span data-slot='control' className='relative'>
+          <Headless.Input as={as} ref={ref} {...props} className={classes}>
+            {bag => <InnerWrapper>{children(bag)}</InnerWrapper>}
+          </Headless.Input>
+        </span>
+      )
+    case !!children:
+      return (
+        <span data-slot='control' className='relative'>
+          <Headless.Input as={as} ref={ref} {...props} className={classes}>
+            <InnerWrapper>{children}</InnerWrapper>
+          </Headless.Input>
+        </span>
+      )
+    default:
+      return (
+        <span data-slot='control' className='relative'>
+          <InnerWrapper>
+            <Headless.Input ref={ref} as={as} {...props} className={classes} />
+          </InnerWrapper>
+        </span>
+      )
+  }
 })
 
-Input.displayName = 'Input'
+InputComponent.displayName = 'Input'
+
+export const Input = memo(InputComponent)

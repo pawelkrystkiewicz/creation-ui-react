@@ -13,7 +13,14 @@ import {
 } from '@floating-ui/react'
 import clsx from 'clsx'
 import Keyboard from 'keyboard-key'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  ComponentPropsWithoutRef,
+  FC,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import {
   ClearButton,
   DropdownChevron,
@@ -33,19 +40,6 @@ import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
 import { createFilterOptions } from '../utils/utils'
 import { _renderOption } from '../view/render-option'
 import { _renderTags } from '../view/render-tags'
-
-/**
- * #TODO:
- * [x] multiple selection tags are not rendered
- * [x] multiple selection tags counter should be at the end
- * [x] clear button missing
- * [x] no style for disabled option
- * [x] no style for selected multiple option
- * [x] test rendering with multiple selections and wrapping input?
- * [x] remove `clearable` prop to the component
- * [ ] focus is lost when typing
- * [ ] remve InputBase from repo
- */
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const {
@@ -174,6 +168,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
           onChange?.(option)
           setActiveIdx(null)
           setOpen(false)
+          // no focus on input - automatic action
           setQuery(getOptionLabel?.(option))
           break
         }
@@ -193,23 +188,23 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [multiple, value, onChange],
   )
 
-  const retainInputValue = useCallback(() => {
-    if (value && !multiple) {
-      // @ts-expect-error
-      const label = getOptionLabel?.(value) || ''
-      if (typeof label !== 'string' || typeof query !== 'string') {
-        clearSearch()
-      }
-      if (!open && label !== query) {
-        setQuery(label)
-      }
-    }
-  }, [value, multiple, getOptionLabel, query, open, clearSearch])
+  // const retainInputValue = useCallback(() => {
+  //   if (value && !multiple) {
+  //     // @ts-expect-error
+  //     const label = getOptionLabel?.(value) || ''
+  //     if (typeof label !== 'string' || typeof query !== 'string') {
+  //       clearSearch()
+  //     }
+  //     if (!open && label !== query) {
+  //       setQuery(label)
+  //     }
+  //   }
+  // }, [value, multiple, getOptionLabel, query, open, clearSearch])
 
-  useEffect(() => {
-    retainInputValue()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   retainInputValue()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   const onInputChangeHandler = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -217,17 +212,17 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       const {
         target: { value },
       } = event
-      const text = value
-      setQuery(text)
+
+      setQuery(value)
       onInputChange?.(event)
-      if (text) {
+      if (value) {
         setOpen(true)
         setActiveIdx(0)
       } else {
         setOpen(false)
       }
     },
-    [interactionsDisabled, onInputChange],
+    [interactionsDisabled],
   )
 
   // Floating UI setup
@@ -273,39 +268,41 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [role, dismiss, listNav],
   )
 
-  // Input props
-  const inputProps = {
-    role: 'textbox',
-    placeholder,
-    className: 'reset-input w-full',
-    onChange: onInputChangeHandler,
-    value: query,
-    'aria-autocomplete': 'list',
-    'aria-controls': 'autocomplete-list',
-    onClick() {
-      setOpen(true)
-    },
-    onBlur() {
-      retainInputValue()
-    },
-    onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-      switch (event.key) {
-        case 'Enter':
-          if (activeIndex != null && filteredOptions[activeIndex]) {
-            handleSelect(filteredOptions[activeIndex])
-          } else {
-            createCallback()
-          }
-          break
-        case 'Escape':
-          setOpen(false)
-          break
-        case 'ArrowDown':
-          setOpen(true)
-          break
-      }
-    },
-  }
+  const inputProps: React.InputHTMLAttributes<HTMLInputElement> = useMemo(
+    () => ({
+      role: 'textbox',
+      placeholder,
+      className: 'reset-input w-full',
+      onChange: onInputChangeHandler,
+      value: query,
+      'aria-autocomplete': 'list',
+      'aria-controls': 'autocomplete-list',
+      onClick() {
+        setOpen(true)
+      },
+      // onBlur() {
+      //   retainInputValue()
+      // },
+      onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+        switch (event.key) {
+          case 'Enter':
+            if (activeIndex != null && filteredOptions[activeIndex]) {
+              handleSelect(filteredOptions[activeIndex])
+            } else {
+              createCallback()
+            }
+            break
+          case 'Escape':
+            setOpen(false)
+            break
+          case 'ArrowDown':
+            setOpen(true)
+            break
+        }
+      },
+    }),
+    [activeIndex, filteredOptions?.length, query],
+  )
 
   // Option props
   const getOptionProps = (
@@ -396,7 +393,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   }
 
   const customRenderValue = useMemo(
-    () => !!renderSelection && !multiple && value != undefined,
+    () =>
+      typeof renderSelection === 'function' && !multiple && value != undefined,
     [renderSelection, multiple, value],
   )
 
@@ -430,6 +428,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       <Input
         containerHeight='auto'
         as={'div'}
+        onClick={() => setOpen(true)}
         variant={props.variant}
         endAdornment={
           <div className='w-fit flex items-center gap-1'>
@@ -455,31 +454,25 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         background={background}
         {...getReferenceProps({ ref: refs.setReference })}
       >
-        {({ disabled, autofocus }) => {
-          return (
-            <div className='flex items-center gap-2 flex-wrap'>
-              {multiple &&
-                renderTags({
-                  renderableOptions: limitedOptions,
-                  removeSelected: disabled ? undefined : handleRemoveSelected,
-                  getOptionLabel,
-                  defaultTagProps,
-                })}
-              {moreTagsAreSelected > 0 && (
-                <span>{getLimitTagsText!(moreTagsAreSelected)}</span>
-              )}
-              {!customRenderValue ? (
-                <input
-                  {...(inputProps as any)}
-                  autoFocus={autofocus}
-                  disabled={disabled}
-                />
-              ) : (
-                renderSelection?.(value as T)
-              )}
-            </div>
-          )
-        }}
+        {_bag => (
+          <div className='flex items-center gap-2 flex-wrap'>
+            {multiple &&
+              renderTags({
+                renderableOptions: limitedOptions,
+                removeSelected: disabled ? undefined : handleRemoveSelected,
+                getOptionLabel,
+                defaultTagProps,
+              })}
+            {moreTagsAreSelected > 0 && (
+              <span>{getLimitTagsText?.(moreTagsAreSelected)}</span>
+            )}
+            {!customRenderValue ? (
+              <input {...(inputProps as any)} />
+            ) : (
+              renderSelection?.(value as T)
+            )}
+          </div>
+        )}
       </Input>
       {open && (
         <FloatingPortal>
@@ -501,23 +494,20 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
                     }),
                   )
                 ) : (
-                  <li
-                    className={clsx(
-                      'py-2 px-3 w-full',
-                      props.onCreate ? 'cursor-pointer' : 'text-center',
-                    )}
-                  >
+                  <li key='options-not-found' className={'py-1 px-2 w-full'}>
                     {props.onCreate ? (
-                      <span onClick={handleCreate}>
+                      <span onClick={handleCreate} className='cursor-pointer'>
                         {textCreate} &quot;{query}&quot;
                       </span>
                     ) : (
-                      textNotFound
+                      <EmptyState>{textNotFound}</EmptyState>
                     )}
                   </li>
                 )
               ) : (
-                <li>{textEmpty}</li>
+                <li key='options-are-empty' className={'py-1 px-2 w-full'}>
+                  <EmptyState>{textEmpty}</EmptyState>
+                </li>
               )}
             </DropdownMenu>
           </FloatingFocusManager>
@@ -526,3 +516,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     </>
   )
 }
+
+const EmptyState: FC<ComponentPropsWithoutRef<'span'>> = ({ children }) => (
+  <span className='text-center text-text-secondary text-sm mx-auto'>
+    {children}
+  </span>
+)
