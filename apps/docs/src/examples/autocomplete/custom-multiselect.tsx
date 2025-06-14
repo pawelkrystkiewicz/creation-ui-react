@@ -2,6 +2,7 @@
 import { Container } from '@/components/container'
 import {
   Autocomplete,
+  AutocompleteRenderTags,
   Avatar,
   ClearButton,
   Field,
@@ -13,17 +14,17 @@ import { renderOption } from './custom'
 import { type Character } from './types'
 import users from './users.json'
 
-const renderTags = (
-  selected: Character[],
-  handleRemoveSelected: (option: any) => void,
-) =>
+const renderTags: AutocompleteRenderTags<Character> = ({
+  renderableOptions: selected,
+  removeSelected,
+}) =>
   selected?.map(option => (
     <Flex
       key={option.id}
       items={'center'}
       gapX={2}
       gapY={2}
-      className='size-fit border rounded-full p-1 text-xs'
+      className='size-fit rounded-full p-1 text-xs'
     >
       <Avatar
         size={16}
@@ -31,7 +32,7 @@ const renderTags = (
         className={'size-fit object-cover'}
       />
       <span className='font-medium'>{option.name}</span>
-      <ClearButton onClick={() => handleRemoveSelected(option as any)} />
+      <ClearButton onClick={() => removeSelected?.(option as any)} />
     </Flex>
   ))
 

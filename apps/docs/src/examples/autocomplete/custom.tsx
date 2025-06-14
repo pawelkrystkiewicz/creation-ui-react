@@ -1,7 +1,7 @@
 'use client'
 import {
-  type AutocompleteOptionProps,
   Autocomplete,
+  AutocompleteRenderOption,
   Avatar,
 } from '@creation-ui/react'
 import clsx from 'clsx'
@@ -9,21 +9,25 @@ import { useState } from 'react'
 import { type Character } from './types'
 import users from './users.json'
 
-export const renderOption = (
-  props: AutocompleteOptionProps,
-  option: Character,
-) => (
-  // @ts-expect-error
-  <div {...props} className={clsx(props.className, 'h-fit w-fit p-2')}>
-    <div className='flex gap-2 items-center'>
-      <Avatar size={40} src={option.image} />
-      <div className='flex flex-col'>
-        <span className='font-medium'>{option.name}</span>
-        <span className='text-xs'>{option.species}</span>
+export const renderOption: AutocompleteRenderOption<Character> = ({
+  option,
+  index,
+  getOptionProps,
+}) => {
+  const props = getOptionProps(option, index)
+
+  return (
+    <li {...props} className={clsx(props.className, 'h-fit w-fit px-2 py-2')}>
+      <div className='flex gap-2 items-center'>
+        <Avatar size={40} src={option.image} />
+        <div className='flex flex-col'>
+          <span className='font-medium'>{option.name}</span>
+          <span className='text-xs'>{option.species}</span>
+        </div>
       </div>
-    </div>
-  </div>
-)
+    </li>
+  )
+}
 
 const renderSelection = (option: Character) => {
   if (!option) return null
@@ -52,7 +56,6 @@ export const AutocompleteExampleCustomOptions = () => {
     <Autocomplete<Character>
       renderOption={renderOption}
       renderSelection={renderSelection}
-      clearable
       value={value}
       options={users}
       onChange={onChange}
