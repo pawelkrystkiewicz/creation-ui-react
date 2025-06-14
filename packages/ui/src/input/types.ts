@@ -8,7 +8,6 @@ export type InputProps = Omit<HeadlessInputProps, 'as'> & {
   endAdornment?: ReactNode
   startAdornment?: ReactNode
   onClear?: () => void
-  variant?: InputVariant
   type?: HTMLInputType
   cx?: {
     container?: string

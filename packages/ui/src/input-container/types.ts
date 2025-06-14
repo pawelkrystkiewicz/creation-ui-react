@@ -1,7 +1,9 @@
-import { InputVariant } from "../types"
-import { InputContainerStyles } from "./classess"
+import { InputContainerStyles } from './classess'
 
-export type InputContainerProps = React.HTMLAttributes<HTMLDivElement> &
+export type InputContainerProps = Pick<
+  React.HTMLAttributes<HTMLDivElement>,
+  'className' | 'style' | 'children' | 'onClick'
+> &
   Omit<InputContainerStyles, 'adornments' | 'clearable'> & {
     endAdornment?: React.ReactNode
     startAdornment?: React.ReactNode
@@ -9,5 +11,4 @@ export type InputContainerProps = React.HTMLAttributes<HTMLDivElement> &
     disabled?: boolean
     readOnly?: boolean
     hasValue?: boolean
-    variant?: InputVariant
   }

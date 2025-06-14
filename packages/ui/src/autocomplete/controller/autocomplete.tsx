@@ -22,11 +22,9 @@ import React, {
   useState,
 } from 'react'
 import {
-  ClearButton,
   DropdownChevron,
   DropdownMenu,
   DropdownMenuProps,
-  Input,
   InputContainer,
 } from '../../'
 import { selectOptionClasses } from '../../classes'
@@ -274,9 +272,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       onClick() {
         setOpen(true)
       },
-      // onBlur() {
-      //   retainInputValue()
-      // },
       onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         switch (event.key) {
           case 'Enter':
@@ -419,7 +414,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       <InputContainer
         containerHeight='auto'
         onClick={() => setOpen(true)}
-        variant={props.variant}
         disabled={disabled}
         readOnly={readOnly}
         hasValue={Boolean(query || value)}

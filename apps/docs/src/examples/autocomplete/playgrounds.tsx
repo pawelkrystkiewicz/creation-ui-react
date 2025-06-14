@@ -12,7 +12,7 @@ const AutocompleteExample = () => {
     <Autocomplete<PersonOnListType>
       value={value}
       options={options}
-      onChange={setValue}
+      onChange={value => setValue(value as PersonOnListType)}
       getOptionLabel={(option: PersonOnListType) => option?.label}
     />
   )
