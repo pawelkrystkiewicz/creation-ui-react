@@ -1,5 +1,11 @@
 # @creation-ui/react
 
+## 15.1.1
+
+### Patch Changes
+
+- c5fca06: Fix module resolution by correcting package.json exports field to match actual build output files
+
 ## 15.1.0
 
 ### Minor Changes
