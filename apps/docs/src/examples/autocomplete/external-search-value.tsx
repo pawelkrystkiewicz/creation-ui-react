@@ -20,7 +20,6 @@ export const AutocompleteExternalSearchValueExample = () => {
   return (
     <Container variant='column'>
       <Autocomplete<PersonOnListType>
-        clearable
         value={value}
         options={options}
         onChange={onChange}

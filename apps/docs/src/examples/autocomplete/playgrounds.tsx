@@ -63,7 +63,6 @@ export const AutocompleteMultipleExample = () => {
       options={options}
       onCreate={onCreate}
       onChange={handleChange}
-      clearable
       onClear={() => setValue([])}
     />
   )
