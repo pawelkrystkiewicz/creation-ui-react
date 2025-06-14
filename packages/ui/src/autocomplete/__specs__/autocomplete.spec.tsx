@@ -149,7 +149,7 @@ describe('Autocomplete', () => {
   })
 
   // this does not work because our input is loosing focus on every render
-  it.skip('supports keyboard navigation and selection', () => {
+  it('supports keyboard navigation and selection', () => {
     render(
       <Autocomplete
         options={OPTIONS}
@@ -161,9 +161,16 @@ describe('Autocomplete', () => {
     const input = screen.getByRole('textbox')
     fireEvent.focus(input)
     fireEvent.change(input, { target: { value: 'a' } })
+    fireEvent.keyDown(input, { key: 'Enter' })
+    // first option is selected by default
+    expect(onChange).toHaveBeenCalledWith(OPTIONS[0])
+
+    fireEvent.focus(input)
+    fireEvent.change(input, { target: { value: 'a' } })
     fireEvent.keyDown(input, { key: 'ArrowDown' })
     fireEvent.keyDown(input, { key: 'Enter' })
-    expect(onChange).toHaveBeenCalledWith(OPTIONS[0])
+    // moving down will select the second option
+    expect(onChange).toHaveBeenCalledWith(OPTIONS[1])
   })
 
   it('renders custom option and selection', () => {
@@ -214,7 +221,7 @@ describe('Autocomplete', () => {
         onClear={onClear}
       />,
     )
-    const clearButton = screen.getByTestId('autocomplete-clear-button')
+    const clearButton = screen.getByTestId('input-clear-button')
     expect(clearButton).toBeInTheDocument()
     fireEvent.click(clearButton)
     expect(onClear).toHaveBeenCalled()

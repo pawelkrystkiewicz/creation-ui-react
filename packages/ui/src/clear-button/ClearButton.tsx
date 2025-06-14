@@ -14,7 +14,7 @@ export interface ClearButtonProps extends Omit<IconProps, 'icon'> {}
 
 export const ClearButton = forwardRef<any, ClearButtonProps>(
   ({ onClick, className, ...props }, ref) => (
-    <div role='button' data-testid='clear-button'>
+    <div role='button'>
       <Icon
         ref={ref}
         icon='close'

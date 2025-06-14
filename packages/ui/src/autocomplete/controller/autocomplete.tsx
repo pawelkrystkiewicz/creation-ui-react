@@ -27,6 +27,7 @@ import {
   DropdownMenu,
   DropdownMenuProps,
   Input,
+  InputContainer,
 } from '../../'
 import { selectOptionClasses } from '../../classes'
 import { getFlatOptions } from '../../utils/normalize-dropdown-options'
@@ -265,7 +266,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     () => ({
       role: 'textbox',
       placeholder,
-      className: 'reset-input w-full',
+      className: clsx('reset-input w-full', props.cx?.input),
       onChange: onInputChangeHandler,
       value: query,
       'aria-autocomplete': 'list',
@@ -415,55 +416,44 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   return (
     <>
-      <Input
+      <InputContainer
         containerHeight='auto'
-        as={'div'}
         onClick={() => setOpen(true)}
         variant={props.variant}
+        disabled={disabled}
+        readOnly={readOnly}
+        hasValue={Boolean(query || value)}
+        onClear={clearableCallback}
         endAdornment={
-          <div className='w-fit flex items-center gap-1'>
-            {isClearable && (
-              <ClearButton
-                onClick={clearableCallback}
-                role='button'
-                data-testid='autocomplete-clear-button'
-              />
-            )}
-            <DropdownChevron open={open} onClick={handleChevronClick} />
-          </div>
+          <DropdownChevron
+            open={open}
+            onClick={handleChevronClick}
+            data-testid='chevron-button'
+          />
         }
-        cx={{
-          container: clsx(
-            props.cx?.container,
-            // account for the clear button and the chevron extra width
-            '[--input-pr:calc(--spacing(3.5)-1px+var(--ui-icon-height)*2)]',
-          ),
-          input: clsx(props.cx?.input),
-        }}
+        className={clsx(props.cx?.container)}
         border={border}
         background={background}
         {...getReferenceProps({ ref: refs.setReference })}
       >
-        {_bag => (
-          <div className='flex items-center gap-2 flex-wrap'>
-            {multiple &&
-              renderTags({
-                renderableOptions: limitedOptions,
-                removeSelected: disabled ? undefined : handleRemoveSelected,
-                getOptionLabel,
-                defaultTagProps,
-              })}
-            {moreTagsAreSelected > 0 && (
-              <span>{getLimitTagsText?.(moreTagsAreSelected)}</span>
-            )}
-            {!customRenderValue ? (
-              <input {...(inputProps as any)} />
-            ) : (
-              renderSelection?.(value as T)
-            )}
-          </div>
-        )}
-      </Input>
+        <div className='flex items-center gap-2 flex-wrap'>
+          {multiple &&
+            renderTags({
+              renderableOptions: limitedOptions,
+              removeSelected: disabled ? undefined : handleRemoveSelected,
+              getOptionLabel,
+              defaultTagProps,
+            })}
+          {moreTagsAreSelected > 0 && (
+            <span>{getLimitTagsText?.(moreTagsAreSelected)}</span>
+          )}
+          {!customRenderValue ? (
+            <input {...(inputProps as any)} />
+          ) : (
+            renderSelection?.(value as T)
+          )}
+        </div>
+      </InputContainer>
       {open && (
         <FloatingPortal>
           <FloatingFocusManager

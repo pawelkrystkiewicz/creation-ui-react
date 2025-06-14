@@ -1,5 +1,5 @@
 'use client'
-import { Field, Label } from '@headlessui/react'
+import { Field, Label } from '@creation-ui/react'
 import { type ReactNode } from 'react'
 import { inputContainer } from '../../../../../../packages/ui/src/classes'
 

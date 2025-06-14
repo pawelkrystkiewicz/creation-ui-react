@@ -1,37 +1,23 @@
-import { cva, VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-export const inputStyles = cva(
+export const cuiInputContainer = cva(
   [
     // Basic layout
     'relative',
+    'group',
     'block',
-    'w-full',
-
-    'appearance-none',
-    // Typography
-    'text-base/6',
-    'placeholder:text-neutral-500',
-    'sm:text-sm/6',
-    'text-text-primary',
-
-    // Hide default focus styles
-    'focus:outline-hidden',
+    'w-fit',
     // Border
-    'border-neutral-950/10',
-    'data-hover:border-neutral-950/20',
-    'dark:border-white/10',
-    'dark:data-hover:border-white/20',
+    'border-border',
+    'group-hover:border-primary',
+    'group-active:border-primary',
+    'group-focus:border-primary',
+    'group-focus-within:border-primary',
     // Invalid state
-    'data-invalid:border-error',
-    'data-invalid:data-hover:border-error',
-    'dark:data-invalid:border-error',
-    'dark:data-invalid:data-hover:border-error',
+    'invalid:border-error',
+    'invalid:hover:border-error/80',
     // Disabled state
-    'data-disabled:border-neutral-950/20',
-    'dark:data-disabled:border-white/15',
-    'dark:data-disabled:bg-white/[2.5%]',
-    'dark:data-hover:data-disabled:border-white/15',
-    'dark:[color-scheme:dark]',
+    'disabled:border-border/20',
   ],
   {
     variants: {
@@ -78,7 +64,7 @@ export const inputStyles = cva(
         true: ['[--input-pr-clearable:var(--ui-icon-height)]'],
         false: ['[--input-pr-clearable:0px]'],
       },
-      type: {
+      inputType: {
         default: [
           'py-1',
           'pr-[calc(var(--input-pr)+var(--input-pr-clearable))]',
@@ -110,12 +96,19 @@ export const inputStyles = cva(
     defaultVariants: {
       adornments: false,
       isDateType: false,
-      type: 'default',
+      inputType: 'default',
       border: 'full',
       background: true,
       containerHeight: 'fixed',
     },
+    compoundVariants: [
+      {
+        clearable: true,
+        adornments: 'end',
+        class: '[--input-pr:calc(--spacing(3.5)-1px+var(--ui-icon-height)*2)]',
+      },
+    ],
   },
 )
 
-export type InputStylesType = VariantProps<typeof inputStyles>
+export type InputContainerStyles = VariantProps<typeof cuiInputContainer>

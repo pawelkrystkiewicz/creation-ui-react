@@ -1,20 +1,11 @@
-import * as Headless from '@headlessui/react'
-import clsx from 'clsx'
-import React, {
-  ComponentPropsWithRef,
-  forwardRef,
-  Fragment,
-  memo,
-  useMemo,
-} from 'react'
-import { ClearButton } from '../clear-button'
+import { Input as HeadlessInput } from '@headlessui/react'
+import React, { forwardRef, memo, useMemo } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { InputContainer } from '../input-container'
 import { DATE_TYPES } from '../types'
-import { inputStyles } from './classes'
-import { EndAdornment } from './EndAdornment'
-import { StartAdornment } from './StartAdornment'
 import type { InputProps } from './types'
 
-const InputComponent = forwardRef(function Input(
+const _Input = forwardRef(function Input(
   {
     onClear,
     startAdornment,
@@ -38,94 +29,32 @@ const InputComponent = forwardRef(function Input(
       Boolean(props?.type && ['color', 'file'].includes(props?.type as any)),
     [props?.type],
   )
-  const hasValue = useMemo(() => Boolean(props?.value), [props?.value])
-  const isDisabled = useMemo(
-    () => Boolean(props?.disabled || props?.readOnly),
-    [props?.disabled, props?.readOnly],
-  )
-  const clearable = useMemo(
-    () => Boolean(!isDisabled && typeof onClear === 'function' && hasValue),
-    [isDisabled, hasValue],
-  )
 
-  const adornments = useMemo(
-    () =>
-      Boolean(startAdornment && endAdornment)
-        ? 'both'
-        : !!startAdornment
-          ? 'start'
-          : !!endAdornment
-            ? 'end'
-            : false,
-    [startAdornment, endAdornment],
+  return (
+    <InputContainer
+      className={cx?.container}
+      endAdornment={endAdornment}
+      startAdornment={startAdornment}
+      onClear={onClear}
+      border={border}
+      background={background}
+      containerHeight={containerHeight}
+      hasValue={Boolean(props?.value)}
+      readOnly={props?.readOnly}
+      disabled={props?.disabled}
+      inputType={isTypeStyle ? (props?.type as any) : 'default'}
+      isDateType={isDateType}
+    >
+      <HeadlessInput
+        ref={ref}
+        as={as}
+        {...props}
+        className={twMerge('appearance-none focus:outline-none', cx?.input)}
+      />
+    </InputContainer>
   )
-
-  const classes = inputStyles({
-    isDateType,
-    adornments,
-    clearable,
-    className: cx?.input,
-    type: isTypeStyle ? (props.type as any) : 'default',
-    border: border,
-    background: background,
-    containerHeight,
-  })
-
-  const InnerWrapper = memo(
-    ({ children }: ComponentPropsWithRef<typeof Fragment>) => {
-      return (
-        <>
-          {startAdornment && <StartAdornment>{startAdornment}</StartAdornment>}
-          {children}
-          {clearable && (
-            <ClearButton
-              onClick={onClear}
-              className={clsx(
-                'cursor-pointer',
-                'absolute',
-                '-translate-y-1/2',
-                '-translate-x-1/2',
-                'top-1/2',
-                endAdornment ? 'right-6' : 'right-0',
-              )}
-              role='button'
-              data-testid='clear-button'
-            />
-          )}
-          {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
-        </>
-      )
-    },
-  )
-
-  switch (true) {
-    case typeof children === 'function':
-      return (
-        <span data-slot='control' className='relative'>
-          <Headless.Input as={as} ref={ref} {...props} className={classes}>
-            {bag => <InnerWrapper>{children(bag)}</InnerWrapper>}
-          </Headless.Input>
-        </span>
-      )
-    case !!children:
-      return (
-        <span data-slot='control' className='relative'>
-          <Headless.Input as={as} ref={ref} {...props} className={classes}>
-            <InnerWrapper>{children}</InnerWrapper>
-          </Headless.Input>
-        </span>
-      )
-    default:
-      return (
-        <span data-slot='control' className='relative'>
-          <InnerWrapper>
-            <Headless.Input ref={ref} as={as} {...props} className={classes} />
-          </InnerWrapper>
-        </span>
-      )
-  }
 })
 
-InputComponent.displayName = 'Input'
+_Input.displayName = 'Input'
 
-export const Input = memo(InputComponent)
+export const Input = memo(_Input)
