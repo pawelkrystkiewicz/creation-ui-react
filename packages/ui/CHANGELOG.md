@@ -1,5 +1,11 @@
 # @creation-ui/react
 
+## 15.1.0
+
+### Minor Changes
+
+- 74af897: Refactor Autocomplete and add it's docs. Remove InputBase in favor of InputContainer. Move styles from Headless.Input level to InputContainer.
+
 ## 15.0.1
 
 ### Patch Changes
