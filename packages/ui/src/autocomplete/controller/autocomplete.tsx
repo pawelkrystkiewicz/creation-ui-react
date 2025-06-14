@@ -38,7 +38,7 @@ import { _renderTags } from '../view/render-tags'
  * #TODO:
  * [x] multiple selection tags are not rendered
  * [x] multiple selection tags counter should be at the end
- * [ ] clear button missing
+ * [x] clear button missing
  * [x] no style for disabled option
  * [x] no style for selected multiple option
  * [x] test rendering with multiple selections and wrapping input?
@@ -81,7 +81,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     getLimitTagsText = (more: number) => `+${more}`,
     textEmpty = 'No options',
     textNotFound = 'No results found',
-    textLoading = 'Loading...',
     textCreate = 'Create',
     placeholder = 'Search...',
     readOnly,
@@ -491,30 +490,34 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
           >
             <DropdownMenu {...listProps} open={open}>
               {hasOptions ? (
-                displayedOptions?.map((option, index) =>
-                  renderOption({
-                    option,
-                    index,
-                    getOptionProps,
-                    getOptionLabel,
-                    autoHighlight,
-                  }),
+                displayedOptions.length > 0 ? (
+                  displayedOptions?.map((option, index) =>
+                    renderOption({
+                      option,
+                      index,
+                      getOptionProps,
+                      getOptionLabel,
+                      autoHighlight,
+                    }),
+                  )
+                ) : (
+                  <li
+                    className={clsx(
+                      'py-2 px-3 w-full',
+                      props.onCreate ? 'cursor-pointer' : 'text-center',
+                    )}
+                  >
+                    {props.onCreate ? (
+                      <span onClick={handleCreate}>
+                        {textCreate} &quot;{query}&quot;
+                      </span>
+                    ) : (
+                      textNotFound
+                    )}
+                  </li>
                 )
               ) : (
-                <li
-                  className={clsx(
-                    'py-2 px-3 w-full',
-                    props.onCreate ? 'cursor-pointer' : 'text-center',
-                  )}
-                >
-                  {props.onCreate ? (
-                    <span onClick={handleCreate}>
-                      {textCreate} &quot;{query}&quot;
-                    </span>
-                  ) : (
-                    textNotFound
-                  )}
-                </li>
+                <li>{textEmpty}</li>
               )}
             </DropdownMenu>
           </FloatingFocusManager>
