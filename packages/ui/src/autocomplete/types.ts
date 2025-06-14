@@ -9,7 +9,13 @@ export type AutocompleteOptionDefault =
 
 export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   InputProps,
-  'interactionsDisabled' | 'layout' | 'children' | 'type' | 'as' | 'onChange'
+  | 'interactionsDisabled'
+  | 'layout'
+  | 'children'
+  | 'type'
+  | 'as'
+  | 'onChange'
+  | 'value'
 > & {
   /**
    * Disable read only

@@ -118,16 +118,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const clearSearch = useCallback(() => setQuery(''), [])
 
   const clearableCallback = useCallback(() => {
-    switch (multiple) {
-      case true:
-        // @ts-expect-error
-        onChange?.([])
-        break
-      case false:
-        onChange?.(null)
-        break
-    }
-    onInputChange?.({ target: { value: '' } } as any)
+    // @ts-expect-error
+    onChange?.(multiple ? [] : null)
+    props.onClear?.()
     clearSearch()
   }, [multiple, onChange, onInputChange, clearSearch])
 
@@ -398,11 +391,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [renderSelection, multiple, value],
   )
 
-  const hasOptions = useMemo(
-    () => filteredOptions?.length > 0,
-    [filteredOptions?.length],
-  )
-
   const handleCreate = useCallback(() => {
     if (!props.onCreate || !query) return
     props.onCreate(query)
@@ -412,6 +400,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     () => (filterSelectedOptions || isQuery ? filteredOptions : options),
     [filterSelectedOptions, isQuery, filteredOptions?.length, options?.length],
   )
+
+  const noOptionsDefined = useMemo(() => !options.length, [options.length])
 
   const moreTagsAreSelected = useMemo(
     () => (multiple ? (value as T[])?.length - (limit ?? 0) : 0),
@@ -436,7 +426,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
               <ClearButton
                 onClick={clearableCallback}
                 role='button'
-                data-testid='clear-button'
+                data-testid='autocomplete-clear-button'
               />
             )}
             <DropdownChevron open={open} onClick={handleChevronClick} />
@@ -482,7 +472,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
             visuallyHiddenDismiss
           >
             <DropdownMenu {...listProps} open={open}>
-              {hasOptions ? (
+              {!noOptionsDefined ? (
                 displayedOptions.length > 0 ? (
                   displayedOptions?.map((option, index) =>
                     renderOption({
