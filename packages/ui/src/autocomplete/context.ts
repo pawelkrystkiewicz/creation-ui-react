@@ -35,21 +35,19 @@ export interface AutocompleteContextValue<T = any>
   /** PROPS **/
   propsInput: AutocompleteInnerInputProps
   propsList: Record<string, unknown>
-  getOptionProps: (
-    option: T,
-    index: number,
-  ) => AutocompleteOptionProps
+  getOptionProps: (option: T, index: number) => AutocompleteOptionProps
   /** CONTROLS **/
   setOpen: (value: boolean) => void
   handleRemoveSelected: (option: AutocompleteOptionDefault) => void
 }
+
 // Define a non-generic context first
 // We will cast the type later
 export const AutocompleteContext = createContext<any>(null)
 
 export const useAutocomplete = <T = AutocompleteOptionDefault>() => {
   const context = useContext(
-    AutocompleteContext
+    AutocompleteContext,
   ) as AutocompleteContextValue<T> | null
 
   if (!context) {

@@ -1,5 +1,3 @@
-import { FnIsOptionEqualToValue } from '../types'
-
 export const _isOptionEqualToValue = <T>(
   option: T,
   value: T | T[] | null | undefined,
@@ -14,3 +12,5 @@ export const _isOptionEqualToValue = <T>(
     return option === value
   }
 }
+
+export type FnIsOptionEqualToValue<T> = typeof _isOptionEqualToValue<T>

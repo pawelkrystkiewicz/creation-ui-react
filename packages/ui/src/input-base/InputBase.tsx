@@ -1,30 +1,10 @@
-import { cva } from 'class-variance-authority'
-import { FC, ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { Icon } from '../icon'
+import clsx from 'clsx'
+import { type FC } from 'react'
+import { ClearButton } from '../clear-button'
+import { inputBaseClasses } from './classes'
+import { EndAdornment } from '../input/EndAdornment'
+import { StartAdornment } from '../input/StartAdornment'
 import { InputBaseProps } from './types'
-
-const classes = cva([
-  'cursor-pointer',
-  'absolute',
-  '-translate-y-1/2',
-  '-translate-x-1/2',
-  'right-0',
-  'bottom-0',
-])
-
-export const EndAdornment = ({ children }: { children: ReactNode }) => (
-  <span
-    className={'absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1/2'}
-  >
-    {children}
-  </span>
-)
-export const StartAdornment = ({ children }: { children: ReactNode }) => (
-  <span className={'absolute left-0 top-1/2 -translate-y-1/2 translate-x-1/2'}>
-    {children}
-  </span>
-)
 
 export const InputBase: FC<InputBaseProps & { className?: string }> = ({
   startAdornment,
@@ -33,17 +13,30 @@ export const InputBase: FC<InputBaseProps & { className?: string }> = ({
   onClear,
   children,
   className,
+  border,
+  background,
 }) => {
   return (
-    <span data-slot='control' className={twMerge('relative', className)}>
+    <span
+      data-slot='control'
+      className={'relative'}
+    >
       {startAdornment && <StartAdornment>{startAdornment}</StartAdornment>}
       {children}
-      {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
+      {endAdornment && (
+        <EndAdornment isNotLast={clearable}>{endAdornment}</EndAdornment>
+      )}
       {clearable && (
-        <Icon
-          icon={'close'}
+        <ClearButton
           onClick={onClear}
-          className={classes()}
+          className={clsx(
+            'cursor-pointer',
+            'absolute',
+            '-translate-y-1/2',
+            '-translate-x-1/2',
+            'right-0',
+            'top-1/2',
+          )}
           role='button'
           data-testid='clear-button'
         />

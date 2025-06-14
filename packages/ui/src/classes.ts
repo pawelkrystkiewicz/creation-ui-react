@@ -43,51 +43,6 @@ export const optionListClasses = cva(
   },
 )
 
-export const selectOptionClasses = cva(
-  [
-    // focusable,
-    'focus-visible:outline-2',
-    'focus-visible:outline-primary',
-    // focusable
-    'transition-colors',
-    'font-normal',
-    'relative',
-    'cursor-pointer',
-    'select-none',
-    'rounded',
-    'group',
-    'w-full',
-    'flex',
-    'items-center',
-    'px-2',
-  ],
-  {
-    variants: {
-      selected: {
-        true: [
-          // ...selected,
-          'micro-interactions',
-        ],
-        false: [
-          // ...triggers.outlined,
-          'bg-primary',
-          'border-0',
-        ],
-      },
-      // size: {
-      //   sm: [size.sm.fontSize, size.sm.height],
-      //   md: [size.md.fontSize, size.md.height],
-      //   lg: [size.lg.fontSize, size.lg.height],
-      // },
-      disabled: { true: 'opacity-75 pointer-events-none' },
-      multiple: { true: ['flex', 'gap-2'] },
-      truncate: {
-        true: ['truncate', 'whitespace-nowrap'],
-      },
-    },
-  },
-)
-
 export const groupPositionClasses = {
   first: ['rounded-l-md', 'border-0', '!border-x', 'z-10'],
   middle: ['-ml-px', 'border-0', '!border-r'],
@@ -167,3 +122,39 @@ export const triggerVariants = {
     unstyled: [],
   },
 }
+
+export const selectOptionClasses = cva(
+  [
+    // focusable,
+    'focus-visible:outline-2',
+    'focus-visible:outline-primary',
+    // focusable
+    'transition-colors',
+    'font-normal',
+    'relative',
+    'cursor-pointer',
+    'select-none',
+    'rounded',
+    'group',
+    'w-full',
+    'flex',
+    'items-center',
+    'px-2',
+    'py-0.5',
+    'micro-interactions',
+    'text-text-primary',
+  ],
+  {
+    variants: {
+      selected: {
+        true: ['bg-primary', 'text-white', 'hover:bg-primary/80'],
+        false: ['hover:bg-primary/20'],
+      },
+      disabled: { true: 'opacity-75 pointer-events-none' },
+      multiple: { true: ['flex', 'gap-2'] },
+      truncate: {
+        true: ['truncate', 'whitespace-nowrap'],
+      },
+    },
+  },
+)

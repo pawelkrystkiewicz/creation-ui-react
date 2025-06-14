@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 import { forwardRef } from 'react'
 
-interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
+export interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
   open?: boolean
   placement?: 'top' | 'bottom'
 }
@@ -27,15 +27,14 @@ export const dropdownMenuClasses = cva(
       open: { true: 'block', false: 'hidden' },
       placement: {
         top: ['!mb-1'],
-        bottom: ['!mt-0']
-      }
-    }
-  }
+        bottom: ['!mt-0'],
+      },
+    },
+  },
 )
 
 export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
   ({ children, open, className, placement, ...props }, ref) => {
-
     return (
       <ul
         ref={ref}
@@ -45,5 +44,5 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
         {children}
       </ul>
     )
-  }
+  },
 )

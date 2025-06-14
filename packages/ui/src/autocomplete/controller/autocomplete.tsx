@@ -1,62 +1,235 @@
-import React from 'react'
 import {
-  useFloating,
   autoUpdate,
   flip,
-  offset,
+  FloatingFocusManager,
+  FloatingPortal,
   size as floatingSize,
-  useRole,
+  offset,
   useDismiss,
-  useListNavigation,
+  useFloating,
   useInteractions,
+  useListNavigation,
+  useRole,
 } from '@floating-ui/react'
+import clsx from 'clsx'
 import Keyboard from 'keyboard-key'
-import { InputBase, DropdownChevron } from '../../'
-import { selectOptionClasses } from '../../classes'
-import { AutocompleteContext } from '../context'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
-  AutocompleteProps,
+  ClearButton,
+  DropdownChevron,
+  DropdownMenu,
+  DropdownMenuProps,
+  Input,
+} from '../../'
+import { selectOptionClasses } from '../../classes'
+import { getFlatOptions } from '../../utils/normalize-dropdown-options'
+import { AUTOCOMPLETE_MARGIN } from '../constants'
+import {
   AutocompleteOptionProps,
+  AutocompleteProps,
   GetItemPropsReturnType,
 } from '../types'
-import { AUTOCOMPLETE_MARGIN } from '../constants'
-import { AutocompleteView } from '../view/autocomplete.view'
-import { useAutocompleteCore } from './use-autocomplete-core'
+import { _isOptionEqualToValue } from '../utils/is-equal-to-value'
+import { createFilterOptions } from '../utils/utils'
+import { _renderOption } from '../view/render-option'
+import { _renderTags } from '../view/render-tags'
+
+/**
+ * #TODO:
+ * [x] multiple selection tags are not rendered
+ * [x] multiple selection tags counter should be at the end
+ * [ ] clear button missing
+ * [x] no style for disabled option
+ * [x] no style for selected multiple option
+ * [x] test rendering with multiple selections and wrapping input?
+ * [x] remove `clearable` prop to the component
+ * [ ] focus is lost when typing
+ * [ ] remve InputBase from repo
+ */
 
 export function Autocomplete<T>(props: AutocompleteProps<T>) {
-  const core = useAutocompleteCore(props)
-
   const {
-    open,
-    setOpen,
-    query,
-    activeIndex,
-    setActiveIdx,
-    filteredOptions,
     value,
-    multiple,
-    getOptionLabel,
-    getOptionDisabled,
-    renderOption,
-    renderSelection,
-    renderTags,
-    getLimitTagsText,
-    textEmpty,
-    textLoading,
-    textNotFound,
-    defaultTagProps,
-    autoHighlight,
-    limit,
-    zIndex,
+    options = [],
+    multiple = false,
+    filterOptions = createFilterOptions<T>(),
+    getOptionLabel: getOptionLabelProp = (option: T): string =>
+      typeof option === 'string' ? option : (option as any).label,
+    isOptionEqualToValue = _isOptionEqualToValue<T>,
+    getOptionDisabled = (option: T) => (option as any).disabled,
+    filterSelectedOptions = false,
+    onChange,
+    onInputChange,
+    onCreate,
     maxHeight,
-    clearable,
-    clearableCallback,
-    createCallback,
-    handleRemoveSelected,
-    onInputChangeHandler,
-    listRef,
-    textCreate,
-  } = core
+    zIndex,
+    defaultTagProps = {
+      variant: 'outlined',
+      color: 'unstyled',
+      cx: {
+        container: {
+          outer: 'max-w-full !border-neutral-400 hover:bg-neutral-100',
+          inner: 'truncate',
+        },
+      },
+    },
+    autoHighlight = false,
+    limit,
+    renderOption = _renderOption,
+    renderSelection,
+    renderTags = _renderTags,
+    getLimitTagsText = (more: number) => `+${more}`,
+    textEmpty = 'No options',
+    textNotFound = 'No results found',
+    textLoading = 'Loading...',
+    textCreate = 'Create',
+    placeholder = 'Search...',
+    readOnly,
+    disabled,
+    border,
+    background,
+  } = props
+
+  let getOptionLabel = getOptionLabelProp
+  getOptionLabel = (option: T) => {
+    const optionLabel = getOptionLabelProp(option)
+    if (typeof optionLabel !== 'string') {
+      if (process.env.NODE_ENV !== 'production') {
+        const erroneousReturn =
+          optionLabel === undefined
+            ? 'undefined'
+            : `${typeof optionLabel} (${optionLabel})`
+        console.error(
+          `CUI: The \`getOptionLabel\` method of [Autocomplete] returned ${erroneousReturn} instead of a string for ${JSON.stringify(
+            option,
+          )}.`,
+        )
+      }
+      return String(optionLabel)
+    }
+    return optionLabel
+  }
+
+  const [open, setOpen] = useState<boolean>(false)
+  const [query, setQuery] = useState<string>('')
+  const [activeIndex, setActiveIdx] = useState<number | null>(null)
+
+  const isQuery = !!query?.trim()
+  const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
+  const interactionsDisabled = disabled || readOnly
+  const isClearable =
+    typeof props.onClear === 'function' && (!isEmpty || isQuery)
+
+  const listRef = useRef<Array<HTMLElement | null>>([])
+
+  const clearSearch = useCallback(() => setQuery(''), [])
+
+  const clearableCallback = useCallback(() => {
+    switch (multiple) {
+      case true:
+        // @ts-expect-error
+        onChange?.([])
+        break
+      case false:
+        onChange?.(null)
+        break
+    }
+    onInputChange?.({ target: { value: '' } } as any)
+    clearSearch()
+  }, [multiple, onChange, onInputChange, clearSearch])
+
+  const createCallback = useCallback(() => {
+    onCreate?.(query)
+    clearSearch()
+  }, [onCreate, query, clearSearch])
+
+  const initiallyFiltered = filterSelectedOptions
+    ? options.filter(option => {
+        if (
+          ((multiple ? value : [value]) as T[]).some(v =>
+            isOptionEqualToValue(option, v),
+          )
+        ) {
+          return false
+        }
+        return true
+      })
+    : options
+
+  const filteredOptions: T[] = open
+    ? filterOptions(initiallyFiltered, { query, getOptionLabel })
+    : []
+
+  const handleSelect = useCallback(
+    (option: T) => {
+      switch (multiple) {
+        case true: {
+          clearSearch()
+          const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
+          // @ts-expect-error
+          onChange?.(newValue)
+          break
+        }
+        case false: {
+          // @ts-expect-error
+          onChange?.(option)
+          setActiveIdx(null)
+          setOpen(false)
+          setQuery(getOptionLabel?.(option))
+          break
+        }
+      }
+    },
+    [multiple, clearSearch, isEmpty, value, onChange, getOptionLabel],
+  )
+
+  const handleRemoveSelected = useCallback(
+    (option: T) => {
+      if (multiple) {
+        // @ts-expect-error
+        const newValue = value?.filter((o: any) => o.id !== option.id)
+        onChange?.(!multiple ? getFlatOptions(newValue) : newValue)
+      }
+    },
+    [multiple, value, onChange],
+  )
+
+  const retainInputValue = useCallback(() => {
+    if (value && !multiple) {
+      // @ts-expect-error
+      const label = getOptionLabel?.(value) || ''
+      if (typeof label !== 'string' || typeof query !== 'string') {
+        clearSearch()
+      }
+      if (!open && label !== query) {
+        setQuery(label)
+      }
+    }
+  }, [value, multiple, getOptionLabel, query, open, clearSearch])
+
+  useEffect(() => {
+    retainInputValue()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const onInputChangeHandler = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (interactionsDisabled) return
+      const {
+        target: { value },
+      } = event
+      const text = value
+      setQuery(text)
+      onInputChange?.(event)
+      if (text) {
+        setOpen(true)
+        setActiveIdx(0)
+      } else {
+        setOpen(false)
+      }
+    },
+    [interactionsDisabled, onInputChange],
+  )
 
   // Floating UI setup
   const { refs, context, floatingStyles } = useFloating<HTMLInputElement>({
@@ -68,8 +241,11 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     },
     open,
     middleware: [
-      flip({ padding: AUTOCOMPLETE_MARGIN }),
       offset(5),
+      flip({
+        padding: AUTOCOMPLETE_MARGIN,
+        fallbackAxisSideDirection: 'end',
+      }),
       floatingSize({
         apply({ rects, availableHeight, elements }) {
           const height = maxHeight || availableHeight
@@ -88,7 +264,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const dismiss = useDismiss(context)
   const listNav = useListNavigation(context, {
     listRef,
-    activeIndex: activeIndex,
+    activeIndex,
     onNavigate: setActiveIdx,
     virtual: true,
     loop: true,
@@ -101,6 +277,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   // Input props
   const inputProps = {
     role: 'textbox',
+    placeholder,
+    className: 'reset-input w-full',
     onChange: onInputChangeHandler,
     value: query,
     'aria-autocomplete': 'list',
@@ -109,13 +287,13 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       setOpen(true)
     },
     onBlur() {
-      core.retainInputValue()
+      retainInputValue()
     },
     onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
       switch (event.key) {
         case 'Enter':
           if (activeIndex != null && filteredOptions[activeIndex]) {
-            core.handleSelect(filteredOptions[activeIndex])
+            handleSelect(filteredOptions[activeIndex])
           } else {
             createCallback()
           }
@@ -136,10 +314,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     index: number,
   ): AutocompleteOptionProps => {
     const active = activeIndex === index
-    const selected =
-      getOptionLabel && getOptionLabel(option) && core.value
-        ? core.getOptionLabel(option) === core.getOptionLabel(core.value as T)
-        : false
+    const selected = multiple
+      ? (value as T[]).some(v => isOptionEqualToValue(option, v))
+      : isOptionEqualToValue(option, value as T)
+
     const disabled = getOptionDisabled(option)
     const label = getOptionLabel?.(option)
     const truncate = typeof renderOption !== 'function'
@@ -161,7 +339,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
             handleRemoveSelected(option)
           }
           if (!wasSelected) {
-            core.handleSelect(option)
+            handleSelect(option)
           }
           refs.domReference.current?.focus()
         }
@@ -174,7 +352,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
           handleRemoveSelected(option)
         }
         if (!wasSelected) {
-          core.handleSelect(option)
+          handleSelect(option)
         }
         refs.domReference.current?.focus()
       },
@@ -204,13 +382,13 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const listProps = {
     ref: refs.setFloating,
-    placement: context.placement,
+    placement: context.placement as 'bottom' | 'top',
     style: {
       ...floatingStyles,
       zIndex: zIndex?.list,
     },
     ...getFloatingProps(),
-  }
+  } satisfies DropdownMenuProps
 
   const handleChevronClick = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -218,50 +396,130 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     setOpen(!open)
   }
 
+  const customRenderValue = useMemo(
+    () => !!renderSelection && !multiple && value != undefined,
+    [renderSelection, multiple, value],
+  )
+
+  const hasOptions = useMemo(
+    () => filteredOptions?.length > 0,
+    [filteredOptions?.length],
+  )
+
+  const handleCreate = useCallback(() => {
+    if (!props.onCreate || !query) return
+    props.onCreate(query)
+  }, [query, props.onCreate])
+
+  const displayedOptions = useMemo(
+    () => (filterSelectedOptions || isQuery ? filteredOptions : options),
+    [filterSelectedOptions, isQuery, filteredOptions?.length, options?.length],
+  )
+
+  const moreTagsAreSelected = useMemo(
+    () => (multiple ? (value as T[])?.length - (limit ?? 0) : 0),
+    [multiple, value, limit],
+  )
+
+  const limitedOptions = useMemo(
+    () => (multiple ? (value as T[])?.slice(0, limit) : []),
+    [multiple, value, limit],
+  )
+
   return (
-    <InputBase
-      variant={props.variant}
-      endAdornment={
-        <DropdownChevron open={open} onClick={handleChevronClick} />
-      }
-      clearable={clearable}
-      onClear={clearableCallback}
-      cx={props.cx}
-      {...getReferenceProps({ ref: refs.setReference })}
-    >
-      <AutocompleteContext.Provider
-        value={{
-          renderTags,
-          handleRemoveSelected,
-          setOpen,
-          multiple,
-          autoHighlight,
-          clearable,
-          floatingContext: context,
-          options: filteredOptions,
-          activeIndex,
-          limit,
-          selected: value,
-          propsList: listProps,
-          propsInput: inputProps,
-          textEmpty,
-          textLoading,
-          textNotFound,
-          open,
-          defaultTagProps,
-          renderOption,
-          renderSelection,
-          getOptionLabel,
-          getOptionProps,
-          getLimitTagsText,
-          onCreate: createCallback,
-          allowCreate: !!props.onCreate,
-          textCreate,
-          query,
+    <>
+      <Input
+        containerHeight='auto'
+        as={'div'}
+        variant={props.variant}
+        endAdornment={
+          <div className='w-fit flex items-center gap-1'>
+            {isClearable && (
+              <ClearButton
+                onClick={clearableCallback}
+                role='button'
+                data-testid='clear-button'
+              />
+            )}
+            <DropdownChevron open={open} onClick={handleChevronClick} />
+          </div>
+        }
+        cx={{
+          container: clsx(
+            props.cx?.container,
+            // account for the clear button and the chevron extra width
+            '[--input-pr:calc(--spacing(3.5)-1px+var(--ui-icon-height)*2)]',
+          ),
+          input: clsx(props.cx?.input),
         }}
+        border={border}
+        background={background}
+        {...getReferenceProps({ ref: refs.setReference })}
       >
-        <AutocompleteView<T> />
-      </AutocompleteContext.Provider>
-    </InputBase>
+        {({ disabled, autofocus }) => {
+          return (
+            <div className='flex items-center gap-2 flex-wrap'>
+              {multiple &&
+                renderTags({
+                  renderableOptions: limitedOptions,
+                  removeSelected: disabled ? undefined : handleRemoveSelected,
+                  getOptionLabel,
+                  defaultTagProps,
+                })}
+              {moreTagsAreSelected > 0 && (
+                <span>{getLimitTagsText!(moreTagsAreSelected)}</span>
+              )}
+              {!customRenderValue ? (
+                <input
+                  {...(inputProps as any)}
+                  autoFocus={autofocus}
+                  disabled={disabled}
+                />
+              ) : (
+                renderSelection?.(value as T)
+              )}
+            </div>
+          )
+        }}
+      </Input>
+      {open && (
+        <FloatingPortal>
+          <FloatingFocusManager
+            initialFocus={-1}
+            context={context}
+            visuallyHiddenDismiss
+          >
+            <DropdownMenu {...listProps} open={open}>
+              {hasOptions ? (
+                displayedOptions?.map((option, index) =>
+                  renderOption({
+                    option,
+                    index,
+                    getOptionProps,
+                    getOptionLabel,
+                    autoHighlight,
+                  }),
+                )
+              ) : (
+                <li
+                  className={clsx(
+                    'py-2 px-3 w-full',
+                    props.onCreate ? 'cursor-pointer' : 'text-center',
+                  )}
+                >
+                  {props.onCreate ? (
+                    <span onClick={handleCreate}>
+                      {textCreate} &quot;{query}&quot;
+                    </span>
+                  ) : (
+                    textNotFound
+                  )}
+                </li>
+              )}
+            </DropdownMenu>
+          </FloatingFocusManager>
+        </FloatingPortal>
+      )}
+    </>
   )
 }

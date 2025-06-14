@@ -2,17 +2,14 @@ import PropsTable from '@/components/props-table'
 
 # renderSelection
 
-This an example of the default **single selection** rendering function. Based on that you can create your own `renderSelection` function.
+This an example how you can create your own `renderSelection` function.
 For multiple selection rendering see [renderTags](/docs/components/autocomplete/render-tags).
 
 ```tsx
-import { useAutocomplete } from '../context'
-import { AutocompleteOptionDefault } from '../types'
+import { AutocompleteOptionDefault } from '@creation-ui/react'
 
-export const _renderSelection = (option: AutocompleteOptionDefault, _removeSelected: (option: any) => void) => {
-  // you can use _removeSelected to remove the selected option
-  const { getOptionLabel } = useAutocomplete()
-  return option ? <span>{getOptionLabel?.(option)}</span> : null
+export const renderSelection = (option: AutocompleteOptionDefault) => {
+  return <span>{option.label}</span>
 }
 ```
 

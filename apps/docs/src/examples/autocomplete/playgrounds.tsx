@@ -3,14 +3,7 @@ import { Playground } from '@/components/playground'
 import { Autocomplete } from '@creation-ui/react'
 import { useState } from 'react'
 import options from '../people-short-list.json'
-import { createInputControls } from '../shared-playground-controls'
 import { type PersonOnListType } from './types'
-
-
-const autocompleteControls = createInputControls('Autocomplete')
-const autocompleteControlsMultiple = createInputControls(
-  'Autocomplete - multiple',
-)
 
 const AutocompleteExample = () => {
   const [value, setValue] = useState<PersonOnListType | null>(options[0])
@@ -65,11 +58,13 @@ export const AutocompleteMultipleExample = () => {
 
   return (
     <Autocomplete<PersonOnListType>
-      multiple={true}
+      multiple
       value={value}
       options={options}
       onCreate={onCreate}
       onChange={handleChange}
+      clearable
+      onClear={() => setValue([])}
     />
   )
 }
@@ -98,11 +93,13 @@ export const AutocompleteMultipleExample = () => {
 
   return (
     <Autocomplete<PersonOnListType>
-      multiple={true}
+      multiple
       value={value}
       options={options}
       onCreate={onCreate}
       onChange={handleChange}
+      clearable
+      onClear={() => setValue([])}
     />
   )
 }`}

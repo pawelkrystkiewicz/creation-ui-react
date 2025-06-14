@@ -1,11 +1,21 @@
 import type { InputProps as HeadlessInputProps } from '@headlessui/react'
 import { InputBaseProps } from '../input-base'
-import { HTMLInputType } from '../types'
+import { HTMLInputType, InputVariant } from '../types'
 import { InputStylesType } from './classes'
+import { ElementType, ReactNode } from 'react'
 
-export type InputProps = {
+export interface InputProps extends Omit<HeadlessInputProps, 'as'> {
+  as?: ElementType
+  endAdornment?: ReactNode
+  startAdornment?: ReactNode
+  onClear?: () => void
+  variant?: InputVariant
   type?: HTMLInputType
   border?: InputStylesType['border']
   background?: InputStylesType['background']
-} & Omit<HeadlessInputProps, 'as' | 'className'> &
-  InputBaseProps
+  containerHeight?: InputStylesType['containerHeight']
+  cx?: {
+    container?: string
+    input?: string
+  }
+}

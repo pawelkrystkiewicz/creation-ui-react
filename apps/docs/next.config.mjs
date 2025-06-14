@@ -12,7 +12,6 @@ const withNextra = nextra({
 })
 
 export default withNextra({
-  swcMinify: true,
   reactStrictMode: true,
   images: {
     remotePatterns: [

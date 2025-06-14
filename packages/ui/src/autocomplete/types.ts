@@ -1,22 +1,15 @@
-import type { ChipProps, DropdownMaxHeight, InputBaseProps } from '../'
-
-export type FnIsOptionEqualToValue<T> = (
-  option: T,
-  value?: T | T[] | null | undefined,
-) => boolean
+import type { ChipProps, DropdownMaxHeight, InputProps } from '../'
+import { FnIsOptionEqualToValue } from './utils/is-equal-to-value'
+import type { AutocompleteRenderOption } from './view/render-option'
+import type { AutocompleteRenderTags } from './view/render-tags'
 
 export type AutocompleteOptionDefault =
   | string
   | { label: string; disabled?: boolean }
 
-export type AutocompleteRenderOption<T> = (
-  props: AutocompleteOptionProps,
-  option: T,
-) => React.ReactNode
-
 export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
-  InputBaseProps,
-  'interactionsDisabled' | 'layout' | 'children' | 'type'
+  InputProps,
+  'interactionsDisabled' | 'layout' | 'children' | 'type' | 'as' | 'onChange'
 > & {
   /**
    * Disable read only
@@ -49,10 +42,7 @@ export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   /**
    * Component to display selection in `multiple` mode
    */
-  renderTags?: (
-    selected: T[],
-    removeSelected: (option: T) => void,
-  ) => React.ReactNode
+  renderTags?: AutocompleteRenderTags<T>
   /**
    * Text to display when the tags are truncated (limitTags).
     Signature:
@@ -106,7 +96,6 @@ export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
    * @param title:string - The new value(s). Calls with the current input value.
    */
   onCreate?: (title: string) => void
-
   /**
    * Callback function that is called when the input value changes.
    */
