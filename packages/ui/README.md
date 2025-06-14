@@ -5,9 +5,16 @@ Also @creation-ui/react package is required for the React packages to work. It c
 
 ```json
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18 || ^19",
-    "react-dom": "^16 || ^17 || ^18 || ^19",
-    "tailwindcss": "^4.0"
+    "@floating-ui/react": "^0.27.12",
+    "@floating-ui/react-dom": "^2.1.3",
+    "@headlessui/react": "^2.2",
+    "@mona-health/react-input-mask": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2",
+    "react": "^16 | ^17 | ^18 | ^19",
+    "react-dom": "^16 | ^17 | ^18 | ^19",
+    "tailwind-merge": "^2.6",
+    "tailwindcss": "^4.1"
   },
 ```
 

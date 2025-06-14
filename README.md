@@ -1,13 +1,19 @@
 # Creation UI
 
-Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project
-Also @creation-ui/react package is required for the React packages to work. It contains sharable theme config, styles and utilities.
+Creation UI is working with your app's Tailwind CSS and you need to have it installed in your project
 
 ```json
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18 || ^19",
-    "react-dom": "^16 || ^17 || ^18 || ^19",
-    "tailwindcss": "^4.0"
+    "@floating-ui/react": "^0.27.12",
+    "@floating-ui/react-dom": "^2.1.3",
+    "@headlessui/react": "^2.2",
+    "@mona-health/react-input-mask": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2",
+    "react": "^16 | ^17 | ^18 | ^19",
+    "react-dom": "^16 | ^17 | ^18 | ^19",
+    "tailwind-merge": "^2.6",
+    "tailwindcss": "^4.1"
   },
 ```
 
@@ -21,7 +27,7 @@ To install Creation UI, run command below:
 
 > pnpm i @creation-ui/react
 
-> bun i @creation-ui/react
+> bun add @creation-ui/react
 
 ## Configuration
 
