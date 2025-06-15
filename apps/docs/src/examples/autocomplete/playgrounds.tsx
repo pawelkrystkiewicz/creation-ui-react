@@ -48,7 +48,7 @@ const AutocompleteExample = () => {
 export const AutocompleteMultipleExample = () => {
   const [value, setValue] = useState<PersonOnListType[] | null>([
     options[0],
-    options[3],
+    options[1],
   ])
 
   const handleChange = (value: PersonOnListType[] | null) => setValue(value)
@@ -58,7 +58,9 @@ export const AutocompleteMultipleExample = () => {
 
   return (
     <Autocomplete<PersonOnListType>
+      cx={{ container: 'w-64' }}
       multiple
+      limit={3}
       value={value}
       options={options}
       onCreate={onCreate}
@@ -71,7 +73,7 @@ export const AutocompleteMultipleExample = () => {
 export const AutocompleteMultiplePlayground = () => {
   return (
     <Playground
-      component={AutocompleteExample}
+      component={AutocompleteMultipleExample}
       code={`
 import { Autocomplete } from '@creation-ui/react'
 import { useState } from 'react'
@@ -82,7 +84,7 @@ import options from '../people-short-list.json'
 export const AutocompleteMultipleExample = () => {
   const [value, setValue] = useState<PersonOnListType[] | null>([
     options[0],
-    options[3],
+    options[1],
   ])
 
   const handleChange = (value: PersonOnListType[] | null) => setValue(value)
@@ -93,6 +95,8 @@ export const AutocompleteMultipleExample = () => {
   return (
     <Autocomplete<PersonOnListType>
       multiple
+      limit={3}
+      cx={{ container: 'w-64' }}
       value={value}
       options={options}
       onCreate={onCreate}

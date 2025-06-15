@@ -1,4 +1,4 @@
-import { Highlighter } from '../..'
+import { Highlighter, Icon } from '../..'
 import { AutocompleteOptionDefault, AutocompleteOptionProps } from '../types'
 
 type RenderOptionProps<T = AutocompleteOptionDefault> = {
@@ -33,6 +33,7 @@ export const _renderOption = <T,>({
       ) : (
         label
       )}
+      <Icon icon='check' className='[li[aria-selected="true"]_&]:block hidden text-primary' />
     </li>
   )
 }

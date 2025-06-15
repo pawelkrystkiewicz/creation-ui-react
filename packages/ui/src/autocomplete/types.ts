@@ -14,7 +14,7 @@ export type AutocompleteOptionDefault =
 
 export type AutocompleteProps<T = AutocompleteOptionDefault> = Omit<
   InputContainerProps,
-  'interactionsDisabled' | 'layout' | 'children'
+  'interactionsDisabled' | 'layout' | 'children' | 'endAdornment'
 > &
   Pick<InputProps, 'cx'> & {
     /**

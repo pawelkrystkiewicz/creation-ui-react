@@ -17,6 +17,7 @@ import React, {
   ComponentPropsWithoutRef,
   FC,
   useCallback,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -67,7 +68,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       },
     },
     autoHighlight = false,
-    limit,
+    limit = 0,
     renderOption = _renderOption,
     renderSelection,
     renderTags = _renderTags,
@@ -109,8 +110,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const isQuery = !!query?.trim()
   const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
   const interactionsDisabled = disabled || readOnly
-  const isClearable =
-    typeof props.onClear === 'function' && (!isEmpty || isQuery)
 
   const listRef = useRef<Array<HTMLElement | null>>([])
 
@@ -180,23 +179,23 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [multiple, value, onChange],
   )
 
-  // const retainInputValue = useCallback(() => {
-  //   if (value && !multiple) {
-  //     // @ts-expect-error
-  //     const label = getOptionLabel?.(value) || ''
-  //     if (typeof label !== 'string' || typeof query !== 'string') {
-  //       clearSearch()
-  //     }
-  //     if (!open && label !== query) {
-  //       setQuery(label)
-  //     }
-  //   }
-  // }, [value, multiple, getOptionLabel, query, open, clearSearch])
+  const retainInputValue = useCallback(() => {
+    if (value && !multiple) {
+      // @ts-expect-error
+      const label = getOptionLabel?.(value) || ''
+      if (typeof label !== 'string' || typeof query !== 'string') {
+        clearSearch()
+      }
+      if (!open && label !== query) {
+        setQuery(label)
+      }
+    }
+  }, [value, multiple, getOptionLabel, query, open, clearSearch])
 
-  // useEffect(() => {
-  //   retainInputValue()
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+  useLayoutEffect(() => {
+    retainInputValue()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const onInputChangeHandler = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -271,6 +270,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       'aria-controls': 'autocomplete-list',
       onClick() {
         setOpen(true)
+      },
+      onBlur() {
+        retainInputValue()
       },
       onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         switch (event.key) {
@@ -399,14 +401,13 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
   const noOptionsDefined = useMemo(() => !options.length, [options.length])
 
-  const moreTagsAreSelected = useMemo(
-    () => (multiple ? (value as T[])?.length - (limit ?? 0) : 0),
-    [multiple, value, limit],
-  )
-
   const limitedOptions = useMemo(
     () => (multiple ? (value as T[])?.slice(0, limit) : []),
     [multiple, value, limit],
+  )
+  const moreTagsAreSelected = useMemo(
+    () => (multiple ? (value as T[])?.length - limitedOptions.length : 0),
+    [multiple, value, limit, limitedOptions],
   )
 
   return (
@@ -418,6 +419,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         readOnly={readOnly}
         hasValue={Boolean(query || value)}
         onClear={clearableCallback}
+        startAdornment={props.startAdornment}
         endAdornment={
           <DropdownChevron
             open={open}

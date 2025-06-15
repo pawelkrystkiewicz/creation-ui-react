@@ -134,7 +134,7 @@ export const selectOptionClasses = cva(
     'relative',
     'cursor-pointer',
     'select-none',
-    'rounded',
+    'rounded-sm',
     'group',
     'w-full',
     'flex',
@@ -143,12 +143,15 @@ export const selectOptionClasses = cva(
     'py-0.5',
     'micro-interactions',
     'text-text-primary',
+    'hover:bg-primary/20',
+    'inline-flex',
+    'justify-between',
   ],
   {
     variants: {
       selected: {
-        true: ['bg-primary', 'text-white', 'hover:bg-primary/80'],
-        false: ['hover:bg-primary/20'],
+        true: ['bg-primary/10'],
+        false: [],
       },
       disabled: { true: 'opacity-75 pointer-events-none' },
       multiple: { true: ['flex', 'gap-2'] },
