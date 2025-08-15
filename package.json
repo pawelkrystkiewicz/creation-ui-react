@@ -20,6 +20,7 @@
     "docker:test": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun",
     "docker:test:update": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun bun run test:ct:update",
     "docker:test:ui": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun bun run test:ct:ui",
+    "update-screenshots": "./scripts/update-screenshots.sh",
     "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i"
   },
   "devDependencies": {
