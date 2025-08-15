@@ -14,13 +14,8 @@
     "pre:exit": "changeset pre exit next",
     "version:dev": "changeset version --snapshot dev",
     "release:dev": "turbo run build --filter=@creation-ui/react && changeset publish --tag dev",
-    "test:ct": "cd packages/ui && bun run test:ct",
-    "test:ui": "cd packages/ui && bun run test",
-    "docker:build": "docker build -t creation-ui-visual-tests -f ct.dockerfile . --shm-size=2gb",
-    "docker:test:visual": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/src/__screenshots__:/app/packages/ui/src/__screenshots__ creation-ui-visual-tests",
-    "docker:test:visual:update": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/src/__screenshots__:/app/packages/ui/src/__screenshots__ creation-ui-visual-tests bun run test:ct:update --project=visual-regression",
-    "docker:test:visual:ui": "docker run --rm -p 9323:9323 -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/src/__screenshots__:/app/packages/ui/src/__screenshots__ creation-ui-visual-tests bun run test:ct:ui --project=visual-regression",
-    "docker:clean": "docker rmi creation-ui-visual-tests 2>/dev/null || true",
+    "test:unit": "cd packages/ui && bun run test:unit",
+    "test:visual": "cd packages/ui && bun run test:visual",
     "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i"
   },
   "devDependencies": {
