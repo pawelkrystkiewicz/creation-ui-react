@@ -1,9 +1,8 @@
 name: Visual Regression Tests
 on:
   push:
-    branches: [master]
+    branches: [master, develop]
   pull_request:
-    branches: [master]
 jobs:
   test:
     timeout-minutes: 60
