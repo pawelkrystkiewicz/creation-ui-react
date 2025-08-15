@@ -15,7 +15,9 @@
     "version:dev": "changeset version --snapshot dev",
     "release:dev": "turbo run build --filter=@creation-ui/react && changeset publish --tag dev",
     "test:unit": "cd packages/ui && bun run test:unit",
+    "test:unit:coverage": "cd packages/ui && bun run test:unit:coverage",
     "test:visual": "cd packages/ui && bun run test:visual",
+    "test:visual:update": "cd packages/ui && bun run test:visual:update",
     "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i"
   },
   "devDependencies": {

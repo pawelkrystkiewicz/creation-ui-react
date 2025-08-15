@@ -31,7 +31,7 @@
     "test:unit": "vitest --exclude **/__specs__/*.visual.spec.tsx",
     "test:visual": "vitest visual",
     "test:update": "vitest --update",
-    "test:coverage": "vitest --coverage",
+    "test:unit:coverage": "vitest --coverage --exclude **/__specs__/*.visual.spec.tsx",
     "init:component": "turbo gen component",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch",

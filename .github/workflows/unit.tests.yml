@@ -20,5 +20,16 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Run Unit Tests
-        run: cd packages/ui && bun run test
+      - name: Run tests and generate coverage report
+        run: bun run test:unit:coverage
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/lcov-report
+
+      - name: Vitest Coverage Report
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
