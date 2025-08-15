@@ -1,0 +1,116 @@
+{
+  '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
+  'extends': ['config:recommended', ':timezone(Europe/Warsaw)'],
+  'schedule': ['before 10am on monday'],
+  'labels': ['dependencies', 'renovate'],
+  'assignees': ['pawelkrystkiewicz'],
+  'dependencyDashboard': true,
+
+  // Limity PR-ów
+  'prHourlyLimit': 3,
+  'prConcurrentLimit': 5,
+  'branchConcurrentLimit': 10,
+
+  // Strategia aktualizacji zakresów
+  'rangeStrategy': 'bump',
+
+  // Utrzymanie lockfile (np. pnpm-lock.yaml)
+  'lockFileMaintenance': {
+    'enabled': true,
+    'schedule': ['before 10am on monday'],
+    'automerge': true,
+  },
+
+  // Aktualizacje npm + GitHub Actions
+  'enabledManagers': ['npm', 'github-actions'],
+
+  // Automerge globalnie wyłączony; włączamy selektywnie w regułach
+  'automerge': false,
+  'automergeType': 'pr',
+  'automergeStrategy': 'squash',
+
+  // Komunikaty commitów
+  'commitMessagePrefix': '⬆️ ',
+  'commitMessageAction': 'Update',
+  'commitMessageTopic': '{{depName}}',
+  'commitMessageExtra': 'to {{newVersion}}',
+
+  // Ignorowanie niektórych pakietów (opcjonalnie uzupełnij)
+  'ignoreDeps': [],
+
+  // Reguły
+  'packageRules': [
+    // Grupowanie ekosystemów
+    {
+      'groupName': 'React ecosystem',
+      'matchPackagePatterns': ['^react', '^@types/react'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'Next.js ecosystem',
+      'matchPackagePatterns': ['^next', '^@next/'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'Testing tools',
+      'matchPackagePatterns': ['^vitest', '^@vitest/'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'Sentry',
+      'matchPackagePatterns': ['^@sentry/'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'Vercel',
+      'matchPackagePatterns': ['^@vercel/'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'Auth (Kinde)',
+      'matchPackagePatterns': ['^@kinde-oss/'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'TailwindCSS',
+      'matchPackagePatterns': ['^@tailwindcss/', '^tailwindcss$'],
+      'schedule': ['before 10am on monday'],
+    },
+    {
+      'groupName': 'Dev dependencies',
+      'matchDepTypes': ['devDependencies'],
+      'schedule': ['before 10am on monday'],
+    },
+
+    // Bezpieczne automerge
+    {
+      'matchUpdateTypes': ['patch'],
+      'automerge': true,
+      'platformAutomerge': true,
+    },
+    {
+      'matchUpdateTypes': ['minor'],
+      'matchCurrentVersion': '!/^0/', // nie dla wersji 0.x
+      'automerge': true,
+      'platformAutomerge': true,
+    },
+
+    // Major – z akceptacją i buforem stabilności
+    {
+      'groupName': 'Major updates',
+      'matchUpdateTypes': ['major'],
+      'stabilityDays': 3,
+      'dependencyDashboardApproval': true,
+      'automerge': false,
+      'prPriority': -1,
+      // Every Saturday at 06:00 (minute wildcard required by Renovate)
+      'schedule': ['* 6 * * 6'],
+    },
+  ],
+
+  // Vulnerability alerts
+  'vulnerabilityAlerts': {
+    'enabled': true,
+    'schedule': ['at any time'],
+  },
+}
