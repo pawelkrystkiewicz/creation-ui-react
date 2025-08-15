@@ -35,5 +35,4 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vite-config-path: packages/ui/vitest.config.mts
-          file-coverage-root-path: packages/ui/coverage
+          working-directory: packages/ui

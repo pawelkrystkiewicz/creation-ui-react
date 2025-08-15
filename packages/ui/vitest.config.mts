@@ -8,6 +8,13 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'json-summary'],
+      reportOnFailure: true,
+      thresholds: {
+        statements: 10,
+        branches: 10,
+        functions: 10,
+        lines: 10,
+      },
     },
     setupFiles: ['./test.setup.ts'],
     globals: true,
@@ -35,12 +42,6 @@ export default defineConfig({
           },
         },
       },
-    },
-    thresholds: {
-      statements: 10,
-      branches: 10,
-      functions: 10,
-      lines: 10,
     },
   },
 } as UserConfig)
