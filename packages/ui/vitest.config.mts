@@ -24,7 +24,7 @@ export default defineConfig({
           browser: 'chromium',
           headless: true,
           viewport: { width: 1280, height: 720 },
-        }
+        },
       ],
       expect: {
         toMatchScreenshot: {
@@ -35,6 +35,12 @@ export default defineConfig({
           },
         },
       },
+    },
+    thresholds: {
+      statements: 10,
+      branches: 10,
+      functions: 10,
+      lines: 10,
     },
   },
 } as UserConfig)
