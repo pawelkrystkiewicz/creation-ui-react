@@ -1,9 +1,5 @@
-import { cleanup } from '@testing-library/react'
+/// <reference types="@vitest/browser/providers/playwright" />
+import '@testing-library/jest-dom/vitest'
 import { toHaveNoViolations } from 'jest-axe'
-import { afterEach, expect } from 'vitest'
 
 expect.extend(toHaveNoViolations)
-
-afterEach(() => {
-  cleanup()
-})
