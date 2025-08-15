@@ -1,0 +1,163 @@
+# CodeRabbit Configuration for @creation-ui/react
+# A modern React TypeScript component library with Tailwind CSS v4
+
+# Language and framework configuration
+language: typescript
+reviews:
+  # Request changes for high-impact issues
+  request_changes: auto
+  # Auto-approve minor changes like dependency updates
+  auto_approve: false
+  # Add line-by-line suggestions
+  line_suggestions: true
+  # Enable poem mode for creative commit messages
+  poem: true
+
+# High-level instructions for the AI reviewer
+high_level_summary: true
+
+# Path-based instructions
+path_instructions:
+  - path: "packages/ui/src/**"
+    instructions: |
+      Focus on React component best practices:
+      - Ensure proper TypeScript interfaces for props (not types)
+      - Verify proper forwardRef usage where needed
+      - Check for proper accessibility (ARIA attributes, semantic HTML)
+      - Ensure Tailwind CSS v4 classes are used correctly
+      - Verify CVA (Class Variance Authority) patterns are followed
+      - Check for proper error handling and loading states
+      - Ensure proper React hooks usage (useCallback, useMemo judiciously)
+      - Verify no semicolons, single quotes, and trailing commas
+      - Check that components follow the established export patterns
+      - Ensure proper component composition and reusability
+
+  - path: "packages/ui/src/**/classes.ts"
+    instructions: |
+      Review CVA class definitions:
+      - Ensure proper variant structure and naming
+      - Check for consistent Tailwind CSS v4 usage
+      - Verify default variants are sensible
+      - Check for proper compound variants when needed
+      - Ensure classes are organized logically (layout, spacing, sizing, typography, colors, effects)
+
+  - path: "packages/ui/src/**/__specs__/**"
+    instructions: |
+      Review test files for:
+      - Proper test coverage and meaningful test cases
+      - Accessibility testing with jest-axe
+      - Component behavior testing
+      - Visual regression test patterns
+      - Proper mocking and test setup
+      - Use of the established test pattern with describe/forEach for similar test cases
+
+  - path: "apps/docs/**"
+    instructions: |
+      Review documentation code:
+      - Ensure examples are working and up-to-date
+      - Check Nextra 4 specific patterns
+      - Verify proper component showcases
+      - Ensure code examples follow project standards
+      - Check for proper MDX usage and formatting
+
+  - path: "**/*.tsx"
+    instructions: |
+      React/TSX specific review:
+      - No class components (functional only)
+      - Proper hook usage and dependencies
+      - Event handler naming (onX pattern)
+      - Proper key props for lists
+      - No inline styles (use Tailwind)
+      - Proper error boundaries where needed
+      - Check for React 19 compatibility
+
+  - path: "**/*.ts"
+    instructions: |
+      TypeScript specific review:
+      - Prefer interfaces over types for object shapes
+      - Use proper generic constraints
+      - Avoid any types
+      - Use utility types (Partial, Pick, Omit) appropriately
+      - Ensure proper type exports
+      - Check for proper const assertions
+
+  - path: "**/package.json"
+    instructions: |
+      Package.json review:
+      - Check peer dependencies are correctly specified
+      - Ensure version constraints are appropriate
+      - Verify scripts are consistent across workspace
+      - Check for security vulnerabilities in dependencies
+
+# Specific review focus areas
+review_selection:
+  - "**/*.{ts,tsx}"
+  - "**/*.{js,jsx}"
+  - "**/*.json"
+  - "**/*.md"
+  - "**/*.mdx"
+  - "**/*.yaml"
+  - "**/*.yml"
+
+# Ignore patterns
+ignore:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "**/.next/**"
+  - "**/coverage/**"
+  - "**/playwright-report/**"
+  - "**/test-results/**"
+  - "**/.turbo/**"
+  - "**/bun.lockb"
+  - "**/package-lock.json"
+  - "**/yarn.lock"
+  - "**/*.tsbuildinfo"
+  - "**/public/_pagefind/**"
+
+# Knowledge base - key project information
+knowledge_base:
+  - "This is a React TypeScript component library using Tailwind CSS v4"
+  - "Components use Class Variance Authority (CVA) for variant management"
+  - "Project uses Bun as package manager and runtime"
+  - "Uses Turbo for monorepo management"
+  - "Documentation is built with Next.js and Nextra 4"
+  - "Testing includes Vitest for unit tests and Playwright for visual regression"
+  - "Components should be composable and follow atomic design principles"
+  - "Accessibility is a priority - components should be screen reader friendly"
+  - "Code style: no semicolons, single quotes, trailing commas, arrow functions"
+  - "React 19 compatible with proper peer dependencies"
+  - "Uses floating-ui for positioning, Headless UI for complex components"
+
+# Early access features
+early_access: false
+
+# Tone and style
+tone_instructions: |
+  Be constructive and educational. Focus on:
+  - Component library best practices
+  - TypeScript improvements
+  - Accessibility enhancements
+  - Performance optimizations
+  - Code consistency with project standards
+  - Security considerations
+  - Testing completeness
+
+  Avoid being overly verbose. Prioritize actionable feedback.
+  When suggesting changes, provide code examples when helpful.
+  Consider the impact on library consumers and breaking changes.
+
+# Auto-review triggers
+triggers:
+  - "feat:"
+  - "fix:"
+  - "refactor:"
+  - "perf:"
+  - "test:"
+  - "docs:"
+  - "style:"
+  - "chore:"
+
+# Enable various review features
+enable_auto_review: true
+enable_auto_incremental_review: true
+enable_auto_review_drafts: false
