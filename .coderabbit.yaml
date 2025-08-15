@@ -3,19 +3,7 @@
 
 # Language and tone configuration
 language: en-US
-tone_instructions: |
-  Be constructive and educational. Focus on:
-  - Component library best practices
-  - TypeScript improvements
-  - Accessibility enhancements
-  - Performance optimizations
-  - Code consistency with project standards
-  - Security considerations
-  - Testing completeness
-
-  Avoid being overly verbose. Prioritize actionable feedback.
-  When suggesting changes, provide code examples when helpful.
-  Consider the impact on library consumers and breaking changes.
+tone_instructions: "Be constructive and educational. Focus on component library best practices, TypeScript, accessibility, performance, and code consistency. Provide actionable feedback with examples when helpful."
 
 # Early access features
 early_access: false
