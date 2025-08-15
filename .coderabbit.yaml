@@ -196,19 +196,19 @@ reviews:
       enabled: false
     sqlfluff:
       enabled: false
-    prisma_schema_linting:
+    prismaLint:
       enabled: false
     pylint:
       enabled: false
     oxlint:
       enabled: false
-    shopify_theme_check:
+    shopifyThemeCheck:
       enabled: false
     luacheck:
       enabled: false
     brakeman:
       enabled: false
-    dotenv_linter:
+    dotenvLinter:
       enabled: false
     htmlhint:
       enabled: false
@@ -234,9 +234,11 @@ knowledge_base:
 # Code generation settings
 code_generation:
   language: en-US
-  docstring_path_instructions:
-    - path: 'packages/ui/src/**/*.tsx'
-      instructions: 'Generate comprehensive JSDoc comments for React components including props, usage examples, and accessibility notes.'
-  unit_test_path_instructions:
-    - path: 'packages/ui/src/**/*.ts'
-      instructions: 'Generate comprehensive unit tests using Vitest and React Testing Library, including accessibility tests with jest-axe.'
+  docstrings:
+    path_instructions:
+      - path: 'packages/ui/src/**/*.tsx'
+        instructions: 'Generate comprehensive JSDoc comments for React components including props, usage examples, and accessibility notes.'
+  unit_tests:
+    path_instructions:
+      - path: 'packages/ui/src/**/*.ts'
+        instructions: 'Generate comprehensive unit tests using Vitest and React Testing Library, including accessibility tests with jest-axe.'

@@ -45,15 +45,20 @@ jobs:
         with:
           node-version: 24
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Install Playwright Browsers
-        run: npx --no playwright install --with-deps --only-shell
+        run: bun x playwright install --with-deps --only-shell
 
       # the magic happens below 🪄
       - name: Update Visual Regression Screenshots
-        run: npm run test:visual --update
+        run: cd packages/ui && bun run test:visual -- --update
 
       # check what changed
       - name: Check for changes
