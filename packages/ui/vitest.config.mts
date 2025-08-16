@@ -16,6 +16,7 @@ export default defineConfig({
         lines: 46,
       },
     },
+    css: true,
     setupFiles: ['./test.setup.ts'],
     globals: true,
     environment: 'jsdom',

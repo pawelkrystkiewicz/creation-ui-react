@@ -10,7 +10,8 @@
   ],
   "compilerOptions": {
     "types": [
-      "@vitest/browser/providers/playwright"
+      "@vitest/browser/providers/playwright",
+      "@vitest/browser/matchers"
     ]
   }
 }
