@@ -1,9 +1,8 @@
 name: Unit Tests
 on:
   push:
-    branches: [master]
+    branches: [master, develop]
   pull_request:
-    branches: [master]
 jobs:
   test:
     timeout-minutes: 60
@@ -20,5 +19,20 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Run Unit Tests
-        run: cd packages/ui && bun run test
+      - name: Install Playwright browsers
+        run: bun x playwright install --with-deps chromium
+
+      - name: Run tests and generate coverage report
+        run: bun run test:unit:coverage
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: packages/ui/coverage
+
+      - name: Vitest Coverage Report
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: packages/ui
