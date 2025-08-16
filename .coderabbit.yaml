@@ -1,0 +1,244 @@
+# CodeRabbit Configuration for @creation-ui/react
+# A modern React TypeScript component library with Tailwind CSS v4
+
+# Language and tone configuration
+language: en-US
+tone_instructions: "Be constructive and educational. Focus on component library best practices, TypeScript, accessibility, performance, and code consistency. Provide actionable feedback with examples when helpful."
+
+# Early access features
+early_access: false
+
+# Review configuration
+reviews:
+  # Review profile and behavior
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  high_level_summary_placeholder: '@coderabbitai summary'
+  high_level_summary_in_walkthrough: false
+  auto_title_placeholder: '@coderabbitai'
+  auto_title_instructions: ''
+  review_status: true
+  commit_status: true
+  fail_commit_status: false
+  collapse_walkthrough: false
+  changed_files_summary: true
+  sequence_diagrams: true
+  assess_linked_issues: true
+  related_issues: true
+  related_prs: true
+  suggested_labels: true
+  auto_apply_labels: false
+  suggested_reviewers: true
+  auto_assign_reviewers: false
+  poem: true
+  abort_on_close: true
+  disable_cache: false
+
+  # Path-based instructions
+  path_instructions:
+    - path: 'packages/ui/src/**'
+      instructions: |
+        Focus on React component best practices:
+        - Ensure proper TypeScript interfaces for props (not types)
+        - Verify proper forwardRef usage where needed
+        - Check for proper accessibility (ARIA attributes, semantic HTML)
+        - Ensure Tailwind CSS v4 classes are used correctly
+        - Verify CVA (Class Variance Authority) patterns are followed
+        - Check for proper error handling and loading states
+        - Ensure proper React hooks usage (useCallback, useMemo judiciously)
+        - Verify no semicolons, single quotes, and trailing commas
+        - Check that components follow the established export patterns
+        - Ensure proper component composition and reusability
+
+    - path: 'packages/ui/src/**/classes.ts'
+      instructions: |
+        Review CVA class definitions:
+        - Ensure proper variant structure and naming
+        - Check for consistent Tailwind CSS v4 usage
+        - Verify default variants are sensible
+        - Check for proper compound variants when needed
+        - Ensure classes are organized logically (layout, spacing, sizing, typography, colors, effects)
+
+    - path: 'packages/ui/src/**/__specs__/**'
+      instructions: |
+        Review test files for:
+        - Proper test coverage and meaningful test cases
+        - Accessibility testing with jest-axe
+        - Component behavior testing
+        - Visual regression test patterns
+        - Proper mocking and test setup
+        - Use of the established test pattern with describe/forEach for similar test cases
+
+    - path: 'apps/docs/**'
+      instructions: |
+        Review documentation code:
+        - Ensure examples are working and up-to-date
+        - Check Nextra 4 specific patterns
+        - Verify proper component showcases
+        - Ensure code examples follow project standards
+        - Check for proper MDX usage and formatting
+
+    - path: '**/*.tsx'
+      instructions: |
+        React/TSX specific review:
+        - No class components (functional only)
+        - Proper hook usage and dependencies
+        - Event handler naming (onX pattern)
+        - Proper key props for lists
+        - No inline styles (use Tailwind)
+        - Proper error boundaries where needed
+        - Check for React 19 compatibility
+
+    - path: '**/*.ts'
+      instructions: |
+        TypeScript specific review:
+        - Prefer interfaces over types for object shapes
+        - Use proper generic constraints
+        - Avoid any types
+        - Use utility types (Partial, Pick, Omit) appropriately
+        - Ensure proper type exports
+        - Check for proper const assertions
+
+    - path: '**/package.json'
+      instructions: |
+        Package.json review:
+        - Check peer dependencies are correctly specified
+        - Ensure version constraints are appropriate
+        - Verify scripts are consistent across workspace
+        - Check for security vulnerabilities in dependencies
+
+  # Path filters for focused reviews
+  path_filters:
+    - '!**/node_modules/**'
+    - '!**/dist/**'
+    - '!**/.next/**'
+    - '!**/coverage/**'
+    - '!**/playwright-report/**'
+    - '!**/test-results/**'
+    - '!**/.turbo/**'
+    - '!**/bun.lockb'
+    - '!**/package-lock.json'
+    - '!**/yarn.lock'
+    - '!**/*.tsbuildinfo'
+    - '!**/public/_pagefind/**'
+    - '**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml}'
+
+  # Labeling instructions
+  labeling_instructions:
+    - label: 'accessibility'
+      instructions: 'Apply when changes affect component accessibility, ARIA attributes, or semantic HTML structure.'
+    - label: 'performance'
+      instructions: 'Apply when changes could impact component rendering performance or bundle size.'
+    - label: 'breaking-change'
+      instructions: 'Apply when changes modify public APIs or component interfaces.'
+    - label: 'documentation'
+      instructions: 'Apply when changes affect component documentation or examples.'
+    - label: 'testing'
+      instructions: 'Apply when changes involve test files or testing utilities.'
+
+  # Automatic review settings
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    ignore_title_keywords: ['WIP', 'Draft', 'wip', 'draft']
+    labels: ['ready-for-review']
+    drafts: false
+    base_branches: ['master', 'develop', 'main', 'test/add-visual-regression-tests']
+
+  # Finishing touches
+  finishing_touches:
+    docstrings:
+      enabled: true
+    unit_tests:
+      enabled: true
+
+  # Tools configuration
+  tools:
+    eslint:
+      enabled: true
+    markdownlint:
+      enabled: true
+    yamllint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    actionlint:
+      enabled: true
+    # Disable tools not relevant to this project
+    ruff:
+      enabled: false
+    checkov:
+      enabled: false
+    detekt:
+      enabled: false
+    semgrep:
+      enabled: false
+    pmd:
+      enabled: false
+    phpmd:
+      enabled: false
+    phpcs:
+      enabled: false
+    cppcheck:
+      enabled: false
+    flake8:
+      enabled: false
+    rubocop:
+      enabled: false
+    buf:
+      enabled: false
+    regal:
+      enabled: false
+    circleci:
+      enabled: false
+    clippy:
+      enabled: false
+    sqlfluff:
+      enabled: false
+    prismaLint:
+      enabled: false
+    pylint:
+      enabled: false
+    oxlint:
+      enabled: false
+    shopifyThemeCheck:
+      enabled: false
+    luacheck:
+      enabled: false
+    brakeman:
+      enabled: false
+    dotenvLinter:
+      enabled: false
+    htmlhint:
+      enabled: false
+    checkmake:
+      enabled: false
+
+# Chat configuration
+chat:
+  auto_reply: true
+
+# Knowledge base configuration
+knowledge_base:
+  opt_out: false
+  web_search:
+    enabled: true
+  learnings:
+    scope: auto
+  issues:
+    scope: auto
+  pull_requests:
+    scope: auto
+
+# Code generation settings
+code_generation:
+  language: en-US
+  docstrings:
+    path_instructions:
+      - path: 'packages/ui/src/**/*.tsx'
+        instructions: 'Generate comprehensive JSDoc comments for React components including props, usage examples, and accessibility notes.'
+  unit_tests:
+    path_instructions:
+      - path: 'packages/ui/src/**/*.ts'
+        instructions: 'Generate comprehensive unit tests using Vitest and React Testing Library, including accessibility tests with jest-axe.'

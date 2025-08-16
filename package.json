@@ -14,24 +14,21 @@
     "pre:exit": "changeset pre exit next",
     "version:dev": "changeset version --snapshot dev",
     "release:dev": "turbo run build --filter=@creation-ui/react && changeset publish --tag dev",
-    "test:ct": "cd packages/ui && bun run test:ct",
-    "test:ui": "cd packages/ui && bun run test",
-    "docker:rebuild": "docker build -t playwright-bun -f ct.dockerfile . --shm-size=2gb",
-    "docker:test": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun",
-    "docker:test:update": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun bun run test:ct:update",
-    "docker:test:ui": "docker run --rm -v $(pwd)/playwright-report:/app/playwright-report -v $(pwd)/packages/ui/tests/__snapshots__:/app/packages/ui/tests/__snapshots__ playwright-bun bun run test:ct:ui",
-    "update-screenshots": "./scripts/update-screenshots.sh",
-    "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i"
+    "test:unit": "cd packages/ui && bun run test:unit",
+    "test:unit:coverage": "cd packages/ui && bun run test:unit:coverage",
+    "test:visual": "cd packages/ui && bun run test:visual",
+    "test:visual:update": "cd packages/ui && bun run test:visual:update",
+    "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i",
+    "update-screenshots": "./scripts/update-screenshots.sh"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.12",
+    "@changesets/cli": "^2.29.5",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
-    "knip": "^5.48.0",
-    "prettier": "^3.4.2",
-    "turbo": "^2.5.0",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.4"
+    "knip": "^5.62.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.5",
+    "typescript": "^5.9.2"
   },
   "packageManager": "bun@1.1.29",
   "workspaces": [
@@ -41,7 +38,7 @@
   "dependencies": {
     "@creation-ui/react": "workspace:*",
     "@tailwindcss/postcss": "^4.0.0",
-    "@turbo/gen": "^2.3.4",
+    "@turbo/gen": "^2.5.5",
     "esbuild-plugin-copy": "^2.1.1",
     "plop": "^4.0.1",
     "react": "^19.1.0",
