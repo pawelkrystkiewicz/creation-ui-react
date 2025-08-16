@@ -1,11 +1,11 @@
-import { Button } from '..'
-import { ELEMENT_COLOR, ELEMENT_VARIANTS } from '../../types'
-import { Icon } from '../../icon'
-import { page } from '@vitest/browser/context'
-import { render } from 'vitest-browser-react'
 import { vi } from 'vitest'
+import { render } from 'vitest-browser-react'
+import { Button } from '..'
+import { verifyCss } from '../../../test/utils/helpers'
 import { parseColorString } from '../../../test/utils/parsers'
-// import { fireEvent } from '@testing-library/react'
+import { Icon } from '../../icon'
+import { ELEMENT_COLOR, ELEMENT_VARIANTS } from '../../types'
+import { scenarios } from './test-data'
 
 describe('Button CT', () => {
   it('default button renders correctly with children', async () => {
@@ -25,10 +25,7 @@ describe('Button CT', () => {
 
     await expect(button).toMatchScreenshot()
 
-    const cssColor = button
-      .computedStyleMap()
-      .get('color')
-      ?.toString()
+    const cssColor = button.computedStyleMap().get('color')?.toString()
     console.log(cssColor)
     const parsedColor = parseColorString(cssColor)
     /**
@@ -47,215 +44,160 @@ describe('Button CT', () => {
     // expect(clickHandler).toHaveBeenCalledTimes(1)
   })
 
-  // for (const color of ELEMENT_COLOR) {
-  //   for (const variant of ELEMENT_VARIANTS) {
-  //     it(`matches snapshot for [${color}] color and [${variant}] variant`, async () => {
-  //       const buttonText = `${color} ${variant}`
+  for (const color of ELEMENT_COLOR) {
+    for (const variant of ELEMENT_VARIANTS) {
+      it(`matches snapshot for [${color}] color and [${variant}] variant`, async () => {
+        const buttonText = `${color} ${variant}`
 
-  //       render(
-  //         <Button color={color} variant={variant}>
-  //           {buttonText}
-  //         </Button>,
-  //       )
-  //       await expect(page.getByText(buttonText)).toMatchScreenshot()
-  //     })
-  //   }
-  // }
+        const screen = render(
+          <Button color={color} variant={variant}>
+            {buttonText}
+          </Button>,
+        )
+        await expect(screen.getByText(buttonText).element()).toMatchScreenshot()
+      })
+    }
+  }
 
-  // it('renders as a link when href is provided', async () => {
-  //   const screen = render(<Button href='/test'>Link</Button>)
-  //   const link = screen.getByRole('link')
-  //   await expect.element(link).toBeVisible()
-  //   await expect.element(link).toBeEnabled()
-  //   await expect.element(link).toHaveAttribute('href', '/test')
-  // })
+  it('renders as a link when href is provided', async () => {
+    const screen = render(<Button href='/test'>Link</Button>)
+    const link = screen.getByRole('link').element()
+    await expect(link).toBeVisible()
+    await expect(link).toBeEnabled()
+    await expect(link).toHaveAttribute('href', '/test')
+  })
 
-  // describe('Adornments', () => {
-  //   const startAdornment = <Icon icon='plus' data-testid='icon-plus' />
-  //   const endAdornment = <Icon icon='minus' data-testid='icon-minus' />
-  //   const scenarios = [
-  //     {
-  //       description: 'renders button with startAdornment',
-  //       props: { startAdornment },
-  //       expected: { dataTestId: ['icon-plus'], disabled: false },
-  //     },
-  //     {
-  //       description: 'renders button with endAdornment',
-  //       props: { endAdornment },
-  //       expected: { dataTestId: ['icon-minus'], disabled: false },
-  //     },
-  //     {
-  //       description: 'renders button with both adornments',
-  //       props: { startAdornment, endAdornment },
-  //       expected: { dataTestId: ['icon-plus', 'icon-minus'], disabled: false },
-  //     },
-  //     {
-  //       description: 'renders button with both adornments and loading',
-  //       props: { startAdornment, endAdornment, loading: true },
-  //       expected: {
-  //         dataTestId: ['icon-plus', 'icon-minus', 'cui-loader'],
-  //         disabled: true,
-  //       },
-  //     },
-  //     {
-  //       description: 'renders button with endAdornment and loading',
-  //       props: { endAdornment, loading: true },
-  //       expected: { dataTestId: ['icon-minus', 'cui-loader'], disabled: true },
-  //     },
-  //   ]
+  describe('Adornments', () => {
+    const startAdornment = <Icon icon='plus' data-testid='icon-plus' />
+    const endAdornment = <Icon icon='minus' data-testid='icon-minus' />
+    const scenarios = [
+      {
+        description: 'renders button with startAdornment',
+        props: { startAdornment },
+        expected: { dataTestId: ['icon-plus'], disabled: false },
+      },
+      {
+        description: 'renders button with endAdornment',
+        props: { endAdornment },
+        expected: { dataTestId: ['icon-minus'], disabled: false },
+      },
+      {
+        description: 'renders button with both adornments',
+        props: { startAdornment, endAdornment },
+        expected: { dataTestId: ['icon-plus', 'icon-minus'], disabled: false },
+      },
+      {
+        description: 'renders button with both adornments and loading',
+        props: { startAdornment, endAdornment, loading: true },
+        expected: {
+          dataTestId: ['icon-plus', 'icon-minus', 'cui-loader'],
+          disabled: true,
+        },
+      },
+      {
+        description: 'renders button with endAdornment and loading',
+        props: { endAdornment, loading: true },
+        expected: { dataTestId: ['icon-minus', 'cui-loader'], disabled: true },
+      },
+    ]
 
-  //   for (const { description, expected, props } of scenarios) {
-  //     it(description, async () => {
-  //       const screen = render(<Button {...props}>Button text</Button>)
-  //       const button = screen.getByRole('button')
-  //       await expect.element(button).toBeVisible()
-  //       await expect
-  //         .element(button)
-  //         [expected.disabled ? 'toBeDisabled' : 'toBeEnabled']()
+    for (const { description, expected, props } of scenarios) {
+      it(description, async () => {
+        const screen = render(<Button {...props}>Button text</Button>)
+        const button = screen.getByRole('button').element()
+        await expect(button).toBeVisible()
+        await expect(button)[
+          expected.disabled ? 'toBeDisabled' : 'toBeEnabled'
+        ]()
 
-  //       for (const dataTestId of expected.dataTestId) {
-  //         await expect.element(screen.getByTestId(dataTestId)).toBeVisible()
-  //       }
-  //       await expect(button).toMatchScreenshot()
-  //     })
-  //   }
-  // })
+        for (const dataTestId of expected.dataTestId) {
+          await expect(screen.getByTestId(dataTestId).element()).toBeVisible()
+        }
+        await expect(button).toMatchScreenshot()
+      })
+    }
+  })
 
-  // describe('States', () => {
-  //   const scenarios = {
-  //     disabled: {
-  //       props: { disabled: true },
-  //       expected: {
-  //         disabled: true,
-  //         css: [
-  //           ['opacity', '0.5'],
-  //           ['cursor', 'default'],
-  //         ],
-  //       },
-  //     },
-  //     loading: {
-  //       props: { loading: true },
-  //       expected: {
-  //         disabled: true,
-  //         css: [
-  //           ['opacity', '0.5'],
-  //           ['cursor', 'default'],
-  //         ],
-  //       },
-  //     },
-  //     normal: {
-  //       props: {},
-  //       expected: {
-  //         css: [
-  //           ['color', 'oklch(0.6048 0.2165 257.21)'],
-  //           ['background-color', 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)'],
-  //           ['transform', 'none'],
-  //           ['opacity', '1'],
-  //         ],
-  //       },
-  //     },
-  //     active: {
-  //       props: {},
-  //       expected: {
-  //         css: [
-  //           ['color', 'oklch(0.6048 0.2165 257.21)'],
-  //           ['background-color', 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)'],
-  //           ['transform', 'none'],
-  //           ['opacity', '1'],
-  //         ],
-  //       },
-  //     },
-  //     hover: {
-  //       props: {},
-  //       expected: {
-  //         css: [
-  //           ['color', 'oklch(0.6048 0.2165 257.21)'],
-  //           ['background-color', 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)'],
-  //           ['transform', 'none'],
-  //           ['opacity', '1'],
-  //         ],
-  //       },
-  //     },
-  //     focus: {
-  //       props: {},
-  //       expected: {
-  //         css: [
-  //           ['color', 'oklch(0.6048 0.2165 257.21)'],
-  //           ['background-color', 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)'],
-  //           ['transform', 'none'],
-  //           ['opacity', '1'],
-  //         ],
-  //       },
-  //     },
-  //   }
+  describe('Button States', () => {
+    /**
+     * TODO: fix tests after official Vitest 4 release
+     * currently can't trigger real user events in tests
+     */
+    it('should correctly render [disabled] button', async () => {
+      const screen = render(<Button disabled>Button text</Button>)
+      const button = screen.getByRole('button').element()
+      await expect(button).toBeVisible()
+      await expect(button).toBeDisabled()
 
-  //   it('should correctly render [disabled] button', async () => {
-  //     const screen = render(<Button disabled>Button text</Button>)
-  //     const button = screen.getByRole('button')
-  //     await expect.element(button).toBeVisible()
-  //     await expect.element(button).toBeDisabled()
+      await expect(button).toMatchScreenshot()
 
-  //     for (const [property, value] of scenarios.disabled.expected.css) {
-  //       await expect.element(button).toHaveCSS(property, value)
-  //     }
+      await verifyCss(
+        button,
+        scenarios.disabled.expected.css,
+        'button:disabled',
+      )
+    })
 
-  //     await expect(button).toMatchScreenshot()
-  //   })
+    it('should correctly render [loading] button', async () => {
+      const screen = render(<Button loading>Button text</Button>)
+      const button = screen.getByRole('button').element()
+      await expect(button).toBeVisible()
+      await expect(button).toBeDisabled()
+      await expect(button).toMatchScreenshot()
+      await verifyCss(button, scenarios.loading.expected.css, 'button:loading')
+    })
 
-  //   it('should correctly render [loading] button', async () => {
-  //     const screen = render(<Button loading>Button text</Button>)
-  //     const button = screen.getByRole('button')
-  //     await expect.element(button).toBeVisible()
-  //     await expect.element(button).toBeDisabled()
+    it.skip('should correctly render [default] button state', async () => {
+      const screen = render(<Button>Button text</Button>)
+      const button = screen.getByRole('button').element()
 
-  //     for (const [property, value] of scenarios.loading.expected.css) {
-  //       await expect.element(button).toHaveCSS(property, value)
-  //     }
-  //     await expect(button).toMatchScreenshot()
-  //   })
+      await expect(button).toBeVisible()
+      await expect(button).toBeEnabled()
+      ;['data-active', 'data-focus', 'data-hover'].forEach(element => {
+        expect(button).not.toHaveAttribute(element)
+      })
 
-  //   it('should render button with :hover, :focus, and :active states', async () => {
-  //     const screen = render(<Button>Button text</Button>)
-  //     const button = screen.getByRole('button')
-  //     await expect.element(button).toBeVisible()
-  //     await expect.element(button).toBeEnabled()
+      await expect(button).toMatchScreenshot()
+      await verifyCss(button, scenarios.default.expected.css, 'button:default')
+    })
 
-  //     const box = await button.boundingBox()
-  //     if (box) {
-  //       const centerX = box.x + box.width / 2
-  //       const centerY = box.y + box.height / 2
+    it.skip('should correctly render [active] button state', async () => {
+      const screen = render(<Button data-active='true'>Button text</Button>)
+      const button = screen.getByRole('button').element()
 
-  //       // Simulate hover
-  //       await page.mouse.move(centerX, centerY)
-  //       for (const [property, value] of scenarios.hover.expected.css) {
-  //         await expect.element(button).toHaveCSS(property, value)
-  //       }
-  //       await expect(button).toMatchScreenshot()
+      await expect(button).toBeVisible()
+      await expect(button).toBeEnabled()
 
-  //       // Simulate focus
-  //       await button.focus()
-  //       for (const [property, value] of scenarios.focus.expected.css) {
-  //         await expect.element(button).toHaveCSS(property, value)
-  //       }
-  //       await expect(button).toMatchScreenshot()
+      // Simulate active state
+      await button.dispatchEvent(new MouseEvent('mousedown'))
+      expect(button).toHaveAttribute('data-active', 'true')
 
-  //       // Simulate active (mousedown)
-  //       await page.mouse.down()
-  //       for (const [property, value] of scenarios.active.expected.css) {
-  //         await expect.element(button).toHaveCSS(property, value)
-  //       }
-  //       await expect(button).toMatchScreenshot()
+      await expect(button).toMatchScreenshot()
+      await verifyCss(button, scenarios.active.expected.css, 'button:active')
+    })
 
-  //       // Cleanup
-  //       await page.mouse.up()
-  //       // loose focus
-  //       await button.blur()
+    it.skip('should correctly render [focus] button state', async () => {
+      const screen = render(<Button data-focus='true'>Button text</Button>)
+      const button = screen.getByRole('button').element()
 
-  //       for (const [property, value] of scenarios.normal.expected.css) {
-  //         await expect.element(button).toHaveCSS(property, value)
-  //       }
-  //       await expect(button).toMatchScreenshot()
-  //     }
-  //   })
-  // })
+      await expect(button).toBeVisible()
+      await expect(button).toBeEnabled()
+      expect(button).toHaveAttribute('data-focus', 'true')
+
+      await expect(button).toMatchScreenshot()
+      await verifyCss(button, scenarios.focus.expected.css, 'button:focus')
+    })
+
+    it.skip('should correctly render [hover] button state', async () => {
+      const screen = render(<Button data-hover='true'>Button text</Button>)
+      const button = screen.getByRole('button').element()
+
+      await expect(button).toBeVisible()
+      await expect(button).toBeEnabled()
+      expect(button).toHaveAttribute('data-hover', 'true')
+
+      await expect(button).toMatchScreenshot()
+      await verifyCss(button, scenarios.hover.expected.css, 'button:hover')
+    })
+  })
 })

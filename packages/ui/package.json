@@ -43,28 +43,27 @@
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@tailwindcss/vite": "^4.1.3",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^6.7.0",
     "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^14.6.1",
     "@types/bun": "latest",
     "@types/jest-axe": "^3.5.9",
-    "@types/jest-image-snapshot": "^6.4.0",
     "@types/node": "^22.14.0",
     "@types/pixelmatch": "^5.2.6",
     "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/browser": "^4.0.0-beta.7",
-    "@vitest/coverage-v8": "^4.0.0-beta.7",
+    "@vitest/browser": "^4.0.0-beta.8",
+    "@vitest/coverage-v8": "^4.0.0-beta.8",
     "chromium-bidi": "^3.2.1",
     "eslint": "^8.57.1",
-    "jest-axe": "^7.0.1",
+    "jest-axe": "^10.0.0",
     "jsdom": "^26.0.0",
     "lightningcss": "1.21.0",
     "playwright": "1.55.0-alpha-2025-08-14",
     "tsup": "^8.4.0",
     "typescript": "5.5.4",
     "vite": "^6.2.5",
-    "vitest": "^4.0.0-beta.7",
+    "vitest": "^4.0.0-beta.8",
     "vitest-browser-react": "^1.0.1"
   },
   "dependencies": {
@@ -118,12 +117,6 @@
     "tailwind css vite",
     "tailwind css gatsby"
   ],
-  "jest": {
-    "reporters": [
-      "default",
-      "jest-image-snapshot/src/outdated-snapshot-reporter.js"
-    ]
-  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
