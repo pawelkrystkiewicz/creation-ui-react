@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout selected branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.ref_name }}
           # use PAT if triggering other workflows
@@ -41,7 +41,7 @@ jobs:
 
       # your setup steps here (node, pnpm, whatever)
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24
 
