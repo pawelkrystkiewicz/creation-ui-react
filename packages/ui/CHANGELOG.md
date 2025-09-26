@@ -1,5 +1,11 @@
 # @creation-ui/react
 
+## 15.2.0
+
+### Minor Changes
+
+- Fix: text color in Label component, add Card tests
+
 ## 15.1.2
 
 ### Patch Changes
@@ -41,7 +47,6 @@
 ### Major Changes
 
 - d26fbbb: ### 🚀 Major Updates
-
   - **Documentation engine upgraded to Nextra 4**
     The documentation site has been migrated to Nextra 4 for overall better developer experience.
   - **Tailwind CSS upgraded from v3 to v4**
@@ -50,9 +55,7 @@
   ***
 
   ### 🔄 Component Changes
-
   - **Removed deprecated/legacy components:**
-
     - `box`,
     - `breadcrumbs`,
     - `buggy`,
@@ -85,7 +88,6 @@
   ***
 
   ### 📦 Dependency Updates
-
   - Support for **React 19** and updated peer dependencies.
   - Key upgrades:
     - `@floating-ui/react` → `0.27.4`
@@ -98,14 +100,12 @@
   ***
 
   ### 🛠️ Tooling Improvements
-
   - Build system migrated from Rollup/SWC to **tsup** for faster, more reliable builds.
   - Cleaned up and modernized scripts and dev tooling.
 
   ***
 
   ### 🧹 Cleanup & Maintenance
-
   - Removed legacy utilities and large monolithic components.
   - Simplified and flattened export structure for consistency and ease of use.
 
