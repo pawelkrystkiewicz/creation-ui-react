@@ -5,7 +5,7 @@ import { verifyCss } from '../../../test/utils/helpers'
 
 describe('Card CT', () => {
   it('renders basic card with all components', async () => {
-    const screen = render(
+    const screen = await render(
       <Card data-testid='card'>
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
@@ -36,7 +36,7 @@ describe('Card CT', () => {
   })
 
   it('renders card with stats', async () => {
-    const screen = render(
+    const screen = await render(
       <Card data-testid='stats-card'>
         <CardHeader>
           <CardTitle>Statistics</CardTitle>
@@ -64,7 +64,7 @@ describe('Card CT', () => {
   })
 
   it('renders card as link when href is provided', async () => {
-    const screen = render(
+    const screen = await render(
       <Card href='/example' data-testid='link-card'>
         <CardContent>
           <CardTitle>Clickable Card</CardTitle>
@@ -85,7 +85,7 @@ describe('Card CT', () => {
   })
 
   it('renders card with custom className', async () => {
-    const screen = render(
+    const screen = await render(
       <Card data-testid='custom-card' className='bg-blue-100 border-blue-300'>
         <CardContent>
           <CardTitle>Custom Styled Card</CardTitle>
@@ -105,7 +105,7 @@ describe('Card CT', () => {
 
   describe('Card Components', () => {
     it('renders CardTitle with correct styles', async () => {
-      const screen = render(
+      const screen = await render(
         <CardTitle data-testid='title'>Test Title</CardTitle>,
       )
 
@@ -122,7 +122,7 @@ describe('Card CT', () => {
     })
 
     it('renders CardDescription with correct styles', async () => {
-      const screen = render(
+      const screen = await render(
         <CardDescription data-testid='description'>Test description</CardDescription>,
       )
 
@@ -136,7 +136,7 @@ describe('Card CT', () => {
     })
 
     it('renders CardHeader with full width', async () => {
-      const screen = render(
+      const screen = await render(
         <CardHeader data-testid='header'>
           <CardTitle>Header Title</CardTitle>
         </CardHeader>,
@@ -152,7 +152,7 @@ describe('Card CT', () => {
     })
 
     it('renders CardFooter with flex layout', async () => {
-      const screen = render(
+      const screen = await render(
         <CardFooter data-testid='footer'>
           <button>Button 1</button>
           <button>Button 2</button>
@@ -171,7 +171,7 @@ describe('Card CT', () => {
     })
 
     it('renders CardContent as simple container', async () => {
-      const screen = render(
+      const screen = await render(
         <CardContent data-testid='content'>
           <p>Content goes here</p>
         </CardContent>,
@@ -187,7 +187,7 @@ describe('Card CT', () => {
 
   describe('Card Layout Variations', () => {
     it('renders minimal card with just content', async () => {
-      const screen = render(
+      const screen = await render(
         <Card data-testid='minimal-card'>
           <CardContent>Simple content</CardContent>
         </Card>,
@@ -199,7 +199,7 @@ describe('Card CT', () => {
     })
 
     it('renders card with complex content structure', async () => {
-      const screen = render(
+      const screen = await render(
         <Card data-testid='complex-card'>
           <CardHeader>
             <CardTitle>Complex Card</CardTitle>
@@ -226,7 +226,7 @@ describe('Card CT', () => {
     })
 
     it('renders nested card structure', async () => {
-      const screen = render(
+      const screen = await render(
         <Card data-testid='outer-card'>
           <CardHeader>
             <CardTitle>Outer Card</CardTitle>
