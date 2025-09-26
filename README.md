@@ -77,3 +77,61 @@ To run it locally in dev mode:
 Building:
 
 > bun run build
+
+## Package Versioning and Release Process
+
+This project uses [Changesets](https://github.com/changesets/changesets) for version management and automated releases.
+
+### Creating a New Version
+
+1. **Add a changeset** for your changes:
+   ```bash
+   bun run changeset
+   ```
+   This will prompt you to describe your changes and select the appropriate version bump (patch, minor, or major).
+
+2. **Version packages** (updates package.json versions and generates CHANGELOG.md):
+   ```bash
+   bun run version-packages
+   ```
+
+3. **Publish to npm** (builds and publishes the package):
+   ```bash
+   bun run release
+   ```
+
+### Pre-release Versions
+
+For beta/alpha releases:
+
+1. **Enter pre-release mode**:
+   ```bash
+   bun run pre:enter
+   ```
+
+2. **Create development snapshots**:
+   ```bash
+   bun run version:dev
+   bun run release:dev
+   ```
+
+3. **Exit pre-release mode** when ready:
+   ```bash
+   bun run pre:exit
+   ```
+
+### Automated Releases
+
+The project uses GitHub Actions for automated releases:
+- **Automatic releases**: When changes are pushed to `master`, the release workflow automatically creates a PR with version updates or publishes the package if changesets are ready.
+- **Manual releases**: You can manually trigger releases using the available npm scripts.
+
+### Available Scripts
+
+- `bun run changeset` - Create a new changeset
+- `bun run version-packages` - Update package versions based on changesets
+- `bun run release` - Build and publish to npm
+- `bun run pre:enter` - Enter pre-release mode
+- `bun run pre:exit` - Exit pre-release mode
+- `bun run version:dev` - Create development snapshot version
+- `bun run release:dev` - Publish development snapshot
