@@ -16,12 +16,12 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js 20.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22.19.0
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
