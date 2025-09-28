@@ -345,7 +345,7 @@ The following components are available in the `src/` directory and need comprehe
 - [ ] **for** - Conditional rendering utility
 - [ ] **highlighter** - Text highlighting component
 - [ ] **icon** - Icon display component
-- [ ] **input** - Text input component
+- [x] **input** - Text input component
 - [ ] **input-container** - Input wrapper component
 - [ ] **label** - Form label component
 - [ ] **link** - Link component
