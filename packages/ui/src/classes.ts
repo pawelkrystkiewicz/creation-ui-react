@@ -70,6 +70,7 @@ export const triggerVariants = {
       'bg-[var(--trigger-color)]',
       'data-active:bg-[var(--trigger-color)]/[85%]',
       'data-hover:bg-[var(--trigger-color)]/90',
+      'cursor-pointer',
     ],
     outlined: [
       // Base
@@ -82,6 +83,7 @@ export const triggerVariants = {
       // Dark mode
       'dark:data-active:bg-[var(--trigger-color)]/30',
       'dark:data-hover:bg-[var(--trigger-color)]/25',
+      'cursor-pointer',
     ],
     text: [
       // Base
@@ -93,6 +95,7 @@ export const triggerVariants = {
       // Dark mode
       'dark:data-active:bg-[var(--trigger-color)]/30',
       'dark:data-hover:bg-[var(--trigger-color)]/25',
+      'cursor-pointer',
     ],
   },
   color: {
