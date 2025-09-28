@@ -1,7 +1,7 @@
 import { render } from 'vitest-browser-react'
 import { describe, expect, it } from 'vitest'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardStats, CardTitle } from '..'
-import { verifyCss } from '../../../test/utils/helpers'
+import { verifyComputedStyles } from '../../../test/utils/helpers'
 
 describe('Card CT', () => {
   it('renders basic card with all components', async () => {
@@ -25,7 +25,7 @@ describe('Card CT', () => {
     await expect(card).toMatchScreenshot()
 
     // Verify basic card styles
-    await verifyCss(card, {
+    await verifyComputedStyles(card, {
       'border-radius': '8px',
       'border-width': '1px',
       'padding-top': '20px',
@@ -55,7 +55,7 @@ describe('Card CT', () => {
 
     // Verify stats styles
     const stats = screen.getByText('1,234').element()
-    await verifyCss(stats, {
+    await verifyComputedStyles(stats, {
       'font-weight': '700',
       'font-size': '36px',
       'margin-top': '6px',
@@ -79,7 +79,7 @@ describe('Card CT', () => {
     await expect(link).toMatchScreenshot()
 
     // Verify link styles
-    await verifyCss(link, {
+    await verifyComputedStyles(link, {
       display: 'block',
     }, 'card link styles')
   })
@@ -113,7 +113,7 @@ describe('Card CT', () => {
       await expect(title).toBeVisible()
       await expect(title).toMatchScreenshot()
 
-      await verifyCss(title, {
+      await verifyComputedStyles(title, {
         'font-weight': '500',
         'font-size': '18px',
         'line-height': '1.55556',
@@ -130,7 +130,7 @@ describe('Card CT', () => {
       await expect(description).toBeVisible()
       await expect(description).toMatchScreenshot()
 
-      await verifyCss(description, {
+      await verifyComputedStyles(description, {
         'font-size': '14px',
       }, 'card description styles')
     })
@@ -146,7 +146,7 @@ describe('Card CT', () => {
       await expect(header).toBeVisible()
       await expect(header).toMatchScreenshot()
 
-      await verifyCss(header, {
+      await verifyComputedStyles(header, {
         width: '100%',
       }, 'card header styles')
     })
@@ -163,7 +163,7 @@ describe('Card CT', () => {
       await expect(footer).toBeVisible()
       await expect(footer).toMatchScreenshot()
 
-      await verifyCss(footer, {
+      await verifyComputedStyles(footer, {
         display: 'flex',
         'align-items': 'center',
         gap: '8px',
