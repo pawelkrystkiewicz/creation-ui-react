@@ -6,7 +6,7 @@ describe('For Visual Tests', () => {
   it('renders list of simple items correctly', async () => {
     const items = ['Apple', 'Banana', 'Cherry', 'Date']
     
-    const screen = render(
+    const screen = await render(
       <div style={{ padding: '16px' }}>
         <For each={items}>
           {(item, index) => (
@@ -32,7 +32,7 @@ describe('For Visual Tests', () => {
   })
 
   it('renders empty list correctly', async () => {
-    const screen = render(
+    const screen = await render(
       <div style={{ 
         padding: '16px',
         border: '1px dashed #ccc',
@@ -62,7 +62,7 @@ describe('For Visual Tests', () => {
       { id: 3, name: 'Bob Johnson', role: 'Manager', avatar: '👨‍💼' }
     ]
     
-    const screen = render(
+    const screen = await render(
       <div style={{ padding: '16px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
         <For each={users}>
           {(user, index) => (
@@ -125,7 +125,7 @@ describe('For Visual Tests', () => {
       { text: 'Fourth item', color: '#fff3e0' }
     ]
     
-    const screen = render(
+    const screen = await render(
       <div style={{ padding: '16px', maxWidth: '400px' }}>
         <h3 style={{ margin: '0 0 16px 0', color: '#333' }}>Colored List Items</h3>
         <For each={items}>
@@ -177,7 +177,7 @@ describe('For Visual Tests', () => {
       { id: 4, name: 'Watch', price: '$299', emoji: '⌚' }
     ]
     
-    const screen = render(
+    const screen = await render(
       <div style={{ 
         padding: '16px',
         display: 'grid',
@@ -234,7 +234,7 @@ describe('For Visual Tests', () => {
       { name: 'Charlie', age: 35, department: 'Marketing' }
     ]
     
-    const screen = render(
+    const screen = await render(
       <div style={{ padding: '16px', fontFamily: 'Arial, sans-serif' }}>
         <div style={{
           display: 'grid',
@@ -292,7 +292,7 @@ describe('For Visual Tests', () => {
       }
     ]
     
-    const screen = render(
+    const screen = await render(
       <div style={{ padding: '16px' }}>
         <For each={categories}>
           {(category, categoryIndex) => (

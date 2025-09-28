@@ -4,7 +4,7 @@ import { Show } from '../show'
 
 describe('Show Visual Tests', () => {
   it('default component renders correctly when condition is true', async () => {
-    const screen = render(
+    const screen = await render(
       <Show when={true}>
         <div style={{ padding: '16px', backgroundColor: '#f0f0f0', borderRadius: '4px' }}>
           Content is visible
@@ -16,7 +16,7 @@ describe('Show Visual Tests', () => {
   })
 
   it('renders fallback correctly when condition is false', async () => {
-    const screen = render(
+    const screen = await render(
       <Show 
         when={false} 
         fallback={
@@ -33,7 +33,7 @@ describe('Show Visual Tests', () => {
   })
 
   it('renders nothing when condition is false and no fallback', async () => {
-    const screen = render(
+    const screen = await render(
       <div data-testid="empty-container" style={{ padding: '16px', border: '1px solid #ccc', minHeight: '50px' }}>
         <Show when={false}>
           <div>Hidden content</div>
@@ -45,7 +45,7 @@ describe('Show Visual Tests', () => {
   })
 
   it('renders complex children with styling', async () => {
-    const screen = render(
+    const screen = await render(
       <Show when={true}>
         <div style={{ 
           padding: '20px', 
@@ -73,7 +73,7 @@ describe('Show Visual Tests', () => {
   })
 
   it('renders complex fallback with styling', async () => {
-    const screen = render(
+    const screen = await render(
       <Show 
         when={false}
         fallback={
@@ -112,7 +112,7 @@ describe('Show Visual Tests', () => {
       { id: 3, name: 'Visible Item 2', show: true }
     ]
 
-    const screen = render(
+    const screen = await render(
       <div style={{ padding: '16px' }}>
         {items.map(item => (
           <Show key={item.id} when={item.show}>
@@ -134,7 +134,7 @@ describe('Show Visual Tests', () => {
   })
 
   it('renders nested Show components', async () => {
-    const screen = render(
+    const screen = await render(
       <Show when={true}>
         <div style={{ padding: '16px', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
           <h3 style={{ margin: '0 0 10px 0' }}>Outer Content</h3>
