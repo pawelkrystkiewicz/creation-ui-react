@@ -3,15 +3,17 @@ import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { Button } from '..'
 import { ELEMENT_COLOR } from '../../types'
+import { verifyCss } from '../../../test/utils/helpers'
 
 describe('Button', () => {
-  it('applies custom className', () => {
+  it('applies custom className', async () => {
     const { getByRole } = render(
       <Button className='custom-class'>Click me</Button>,
     )
     const button = getByRole('button')
     expect(button).toBeDefined()
     expect(button.classList).toContain('custom-class')
+    await verifyCss(button, { cursor: 'pointer' })
   })
 
   ELEMENT_COLOR.forEach(color => {

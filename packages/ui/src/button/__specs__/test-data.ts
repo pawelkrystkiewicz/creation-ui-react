@@ -1,4 +1,4 @@
-import type { Properties, StandardLonghandPropertiesHyphen } from 'csstype'
+import type { StandardLonghandPropertiesHyphen } from 'csstype'
 import { ElementState } from '../../types'
 import { ButtonProps } from '../Button'
 
@@ -19,7 +19,7 @@ export const scenarios: TestScenarios<ElementState | 'loading', ButtonProps> = {
       disabled: true,
       css: {
         opacity: '0.5',
-        cursor: 'default',
+        cursor: 'not-allowed',
       },
     },
   },
@@ -29,7 +29,7 @@ export const scenarios: TestScenarios<ElementState | 'loading', ButtonProps> = {
       disabled: true,
       css: {
         opacity: '0.5',
-        cursor: 'default',
+        cursor: 'not-allowed',
       },
     },
   },
@@ -41,6 +41,7 @@ export const scenarios: TestScenarios<ElementState | 'loading', ButtonProps> = {
         'background-color': 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)',
         transform: 'none',
         opacity: '1',
+        cursor: 'pointer',
       },
     },
   },
@@ -52,6 +53,7 @@ export const scenarios: TestScenarios<ElementState | 'loading', ButtonProps> = {
         'background-color': 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)',
         transform: 'none',
         opacity: '1',
+        cursor: 'pointer',
       },
     },
   },
@@ -63,6 +65,7 @@ export const scenarios: TestScenarios<ElementState | 'loading', ButtonProps> = {
         'background-color': 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)',
         transform: 'none',
         opacity: '1',
+        cursor: 'pointer',
       },
     },
   },
@@ -74,6 +77,7 @@ export const scenarios: TestScenarios<ElementState | 'loading', ButtonProps> = {
         'background-color': 'oklab(0.6048 -0.0479284 -0.211128 / 0.1)',
         transform: 'none',
         opacity: '1',
+        cursor: 'pointer',
       },
     },
   },
