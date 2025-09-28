@@ -23,4 +23,4 @@ jobs:
         run: bun x playwright install --with-deps chromium
 
       - name: Run Visual Regression Tests
-        run: cd packages/ui && bun run test:visual
+        run: bun run test:visual:update

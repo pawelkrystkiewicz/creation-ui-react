@@ -30,7 +30,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "test:unit": "vitest --exclude **/__specs__/*.visual.spec.tsx",
     "test:visual": "vitest visual",
-    "test:update": "vitest --update",
+    "test:visual:update": "vitest --update",
     "test:unit:coverage": "vitest --coverage --exclude **/__specs__/*.visual.spec.tsx",
     "init:component": "turbo gen component",
     "typecheck": "tsc --noEmit",
