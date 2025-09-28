@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Autocomplete } from '../controller/autocomplete'
 import { AutocompleteOptionProps } from '../types'
@@ -226,5 +226,41 @@ describe('Autocomplete', () => {
     fireEvent.click(clearButton)
     expect(onClear).toHaveBeenCalled()
     expect(onChange).toHaveBeenCalledWith(null)
+  })
+
+  it('should not render clear button when nothing is selected [single]', async () => {
+    await render(
+      <Autocomplete
+        options={OPTIONS}
+        value={null}
+        onChange={onChange}
+        getOptionLabel={o => o.label}
+        onClear={onClear}
+        multiple
+      />,
+    )
+
+    await waitFor(() => {
+      const clearButton = screen.queryByTestId('input-clear-button')
+      expect(clearButton).not.toBeInTheDocument()
+    })
+  })
+
+  it('should not render clear button when nothing is selected [multiple]', async () => {
+    await render(
+      <Autocomplete
+        options={OPTIONS}
+        value={[]}
+        onChange={onChange}
+        getOptionLabel={o => o.label}
+        onClear={onClear}
+        multiple
+      />,
+    )
+
+    await waitFor(() => {
+      const clearButton = screen.queryByTestId('input-clear-button')
+      expect(clearButton).not.toBeInTheDocument()
+    })
   })
 })
