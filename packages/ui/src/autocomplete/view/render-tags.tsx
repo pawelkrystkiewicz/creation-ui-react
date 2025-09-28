@@ -13,7 +13,7 @@ export const _renderTags = <T,>({
   getOptionLabel,
   defaultTagProps,
 }: AutocompleteRenderTagsProps<T>) =>
-  renderableOptions.map((option: T) => {
+  renderableOptions?.map((option: T) => {
     const label = getOptionLabel?.(option) ?? (option as string)
     const remove = () => removeSelected?.(option)
     return (
