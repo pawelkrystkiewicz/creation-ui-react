@@ -78,6 +78,61 @@ Building:
 
 > bun run build
 
+## Development Workflow (Trunk-Based Development)
+
+This project follows trunk-based development practices. We work directly on the `master` branch with short-lived feature branches.
+
+### Example Workflow
+
+1. **Start working on a new feature/fix**:
+   ```bash
+   git checkout master
+   git pull origin master
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes and commit frequently**:
+   ```bash
+   # Make small, focused changes
+   git add .
+   git commit -m "feat: add new component feature"
+
+   # Continue working and committing
+   git add .
+   git commit -m "fix: handle edge case in component"
+   ```
+
+3. **Keep your branch up to date** (if working for more than a day):
+   ```bash
+   git checkout master
+   git pull origin master
+   git checkout feature/your-feature-name
+   git rebase master
+   ```
+
+4. **Create a Pull Request**:
+   - Push your branch and create a PR to `master`
+   - Keep PRs small and focused (aim for same-day merge)
+   - Request review from team members
+
+5. **After PR approval and CI passes**:
+   ```bash
+   # Merge to master (preferably via GitHub UI)
+   # Delete the feature branch
+   git checkout master
+   git pull origin master
+   git branch -d feature/your-feature-name
+   ```
+
+### Best Practices
+
+- **Keep branches short-lived** (ideally merged within 1-2 days)
+- **Make small, focused PRs** that are easy to review
+- **Rebase instead of merge** to keep history clean
+- **Run tests locally** before pushing: `bun run test:unit`
+- **Optionally run update for visual reggression tests**  on PR: `bun run update-screenshots` which will trigger GH action on your branch
+- **Follow conventional commits** for clear commit messages
+
 ## Package Versioning and Release Process
 
 This project uses [Changesets](https://github.com/changesets/changesets) for version management and automated releases.
@@ -123,8 +178,10 @@ For beta/alpha releases:
 ### Automated Releases
 
 The project uses GitHub Actions for automated releases:
-- **Automatic releases**: When changes are pushed to `master`, the release workflow automatically creates a PR with version updates or publishes the package if changesets are ready.
+- **Automatic releases**: When changes are merged to `master`, the release workflow automatically creates a PR with version updates or publishes the package if changesets are ready.
 - **Manual releases**: You can manually trigger releases using the available npm scripts.
+
+**Note**: With trunk-based development, all releases are triggered from the `master` branch. The previous `develop` branch has been removed.
 
 ### Available Scripts
 
