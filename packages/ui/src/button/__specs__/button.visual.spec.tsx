@@ -1,7 +1,7 @@
-import { vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { render } from 'vitest-browser-react'
 import { Button } from '..'
-import { verifyCss } from '../../../test/utils/helpers'
+import { verifyComputedStyles } from '../../../test/utils/helpers'
 import { parseColorString } from '../../../test/utils/parsers'
 import { Icon } from '../../icon'
 import { ELEMENT_COLOR, ELEMENT_VARIANTS } from '../../types'
@@ -131,7 +131,7 @@ describe('Button CT', () => {
 
       await expect(button).toMatchScreenshot()
 
-      await verifyCss(
+      await verifyComputedStyles(
         button,
         scenarios.disabled.expected.css,
         'button:disabled',
@@ -144,7 +144,7 @@ describe('Button CT', () => {
       await expect(button).toBeVisible()
       await expect(button).toBeDisabled()
       await expect(button).toMatchScreenshot()
-      await verifyCss(button, scenarios.loading.expected.css, 'button:loading')
+      await verifyComputedStyles(button, scenarios.loading.expected.css, 'button:loading')
     })
 
     it.skip('should correctly render [default] button state', async () => {
@@ -158,7 +158,7 @@ describe('Button CT', () => {
       })
 
       await expect(button).toMatchScreenshot()
-      await verifyCss(button, scenarios.default.expected.css, 'button:default')
+      await verifyComputedStyles(button, scenarios.default.expected.css, 'button:default')
     })
 
     it.skip('should correctly render [active] button state', async () => {
@@ -173,7 +173,7 @@ describe('Button CT', () => {
       expect(button).toHaveAttribute('data-active', 'true')
 
       await expect(button).toMatchScreenshot()
-      await verifyCss(button, scenarios.active.expected.css, 'button:active')
+      await verifyComputedStyles(button, scenarios.active.expected.css, 'button:active')
     })
 
     it.skip('should correctly render [focus] button state', async () => {
@@ -185,7 +185,7 @@ describe('Button CT', () => {
       expect(button).toHaveAttribute('data-focus', 'true')
 
       await expect(button).toMatchScreenshot()
-      await verifyCss(button, scenarios.focus.expected.css, 'button:focus')
+      await verifyComputedStyles(button, scenarios.focus.expected.css, 'button:focus')
     })
 
     it.skip('should correctly render [hover] button state', async () => {
@@ -197,7 +197,7 @@ describe('Button CT', () => {
       expect(button).toHaveAttribute('data-hover', 'true')
 
       await expect(button).toMatchScreenshot()
-      await verifyCss(button, scenarios.hover.expected.css, 'button:hover')
+      await verifyComputedStyles(button, scenarios.hover.expected.css, 'button:hover')
     })
   })
 })

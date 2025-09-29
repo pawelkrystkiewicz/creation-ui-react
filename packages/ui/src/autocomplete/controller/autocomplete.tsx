@@ -30,6 +30,7 @@ import {
 } from '../../'
 import { selectOptionClasses } from '../../classes'
 import { getFlatOptions } from '../../utils/normalize-dropdown-options'
+import { isEmpty } from '../../utils/isEmpty'
 import { AUTOCOMPLETE_MARGIN } from '../constants'
 import {
   AutocompleteOptionProps,
@@ -107,8 +108,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
   const [query, setQuery] = useState<string>('')
   const [activeIndex, setActiveIdx] = useState<number | null>(null)
 
-  const isQuery = !!query?.trim()
-  const isEmpty = value === null || (Array.isArray(value) && value.length === 0)
+  const isQuery = !isEmpty(query)
+  const isEmptyValue = isEmpty(value)
   const interactionsDisabled = disabled || readOnly
 
   const listRef = useRef<Array<HTMLElement | null>>([])
@@ -149,7 +150,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
       switch (multiple) {
         case true: {
           clearSearch()
-          const newValue = ((isEmpty ? [] : value) as T[]).concat(option)
+          const newValue = ((isEmptyValue ? [] : value) as T[]).concat(option)
           // @ts-expect-error
           onChange?.(newValue)
           break
@@ -406,8 +407,13 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
     [multiple, value, limit],
   )
   const moreTagsAreSelected = useMemo(
-    () => (multiple ? (value as T[])?.length - limitedOptions.length : 0),
+    () => (multiple ? (value as T[])?.length - limitedOptions?.length : 0),
     [multiple, value, limit, limitedOptions],
+  )
+
+  const hasValue = useMemo(
+    () => query?.length > 0 || !isEmptyValue,
+    [query, isEmptyValue],
   )
 
   return (
@@ -417,7 +423,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
         onClick={() => setOpen(true)}
         disabled={disabled}
         readOnly={readOnly}
-        hasValue={Boolean(query || value)}
+        hasValue={hasValue}
         onClear={clearableCallback}
         startAdornment={props.startAdornment}
         endAdornment={
