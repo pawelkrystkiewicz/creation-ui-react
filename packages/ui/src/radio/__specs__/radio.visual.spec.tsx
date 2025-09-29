@@ -42,7 +42,7 @@ describe('Radio Visual Tests', () => {
       </RadioGroup>
     )
     const element = screen.getByRole('radio').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toMatchScreenshot()
   })
 
@@ -53,7 +53,7 @@ describe('Radio Visual Tests', () => {
       </RadioGroup>
     )
     const element = screen.getByRole('radio').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toBeChecked()
     await expect(element).toMatchScreenshot()
   })
@@ -65,7 +65,7 @@ describe('Radio Visual Tests', () => {
       </RadioGroup>
     )
     const element = screen.getByRole('radio').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).not.toBeChecked()
     await expect(element).toMatchScreenshot()
   })

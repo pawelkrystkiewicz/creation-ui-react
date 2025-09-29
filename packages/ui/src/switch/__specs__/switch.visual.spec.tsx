@@ -26,14 +26,14 @@ describe('Switch Visual Tests', () => {
   it('should correctly render disabled state', async () => {
     const screen = await render(<Switch disabled />)
     const element = screen.getByRole('switch').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('data-disabled')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render disabled checked state', async () => {
     const screen = await render(<Switch disabled checked onChange={() => {}} />)
     const element = screen.getByRole('switch').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('data-disabled')
     await expect(element).toBeChecked()
     await expect(element).toMatchScreenshot()
   })
@@ -43,7 +43,7 @@ describe('Switch Visual Tests', () => {
       <Switch disabled checked={false} onChange={() => {}} />,
     )
     const element = screen.getByRole('switch').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('data-disabled')
     await expect(element).not.toBeChecked()
     await expect(element).toMatchScreenshot()
   })
@@ -126,6 +126,6 @@ describe('Switch Visual Tests', () => {
       </div>,
     )
 
-    await expect(screen).toMatchScreenshot()
+    await expect(screen.container).toMatchScreenshot()
   })
 })

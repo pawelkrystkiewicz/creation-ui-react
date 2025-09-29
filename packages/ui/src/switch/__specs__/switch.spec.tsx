@@ -3,7 +3,7 @@ import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { Switch, SwitchField } from '..'
 
-describe('Switch', async () => {
+describe('Switch', () => {
   it('renders correctly with default props', async () => {
     const { getByRole } = await render(<Switch />)
     const switchElement = getByRole('switch')
@@ -106,15 +106,15 @@ describe('Switch', async () => {
 
   it('forwards props correctly', async () => {
     const { getByRole } = await render(
-      <Switch aria-label='Test switch' name='test-switch' />,
+      <Switch aria-label='Test switch' id='test-switch-id' />,
     )
     const switchElement = getByRole('switch')
     expect(switchElement).toHaveAttribute('aria-label', 'Test switch')
-    expect(switchElement).toHaveAttribute('name', 'test-switch')
+    expect(switchElement).toHaveAttribute('id', 'test-switch-id')
   })
 })
 
-describe('SwitchField', async () => {
+describe('SwitchField', () => {
   it('renders correctly with default props', async () => {
     const { container } = await render(
       <SwitchField>

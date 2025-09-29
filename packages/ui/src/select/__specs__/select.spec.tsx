@@ -3,7 +3,7 @@ import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { Select } from '..'
 
-describe('Select', async () => {
+describe('Select', () => {
   it('renders correctly with default props', async () => {
     const { getByRole } = await render(
       <Select>

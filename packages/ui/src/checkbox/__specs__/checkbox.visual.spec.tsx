@@ -26,14 +26,14 @@ describe('Checkbox Visual Tests', () => {
   it('should correctly render disabled state', async () => {
     const screen = await render(<Checkbox disabled />)
     const element = screen.getByRole('checkbox').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render disabled checked state', async () => {
     const screen = await render(<Checkbox disabled checked onChange={() => {}} />)
     const element = screen.getByRole('checkbox').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toBeChecked()
     await expect(element).toMatchScreenshot()
   })
@@ -41,14 +41,14 @@ describe('Checkbox Visual Tests', () => {
   it('should correctly render readOnly state', async () => {
     const screen = await render(<Checkbox readOnly />)
     const element = screen.getByRole('checkbox').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render loading state', async () => {
     const screen = await render(<Checkbox loading />)
     const element = screen.getByRole('checkbox').element()
-    await expect(element).toBeDisabled()
+    await expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toMatchScreenshot()
   })
 

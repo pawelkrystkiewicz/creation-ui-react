@@ -1,16 +1,21 @@
-import * as Headless from '@headlessui/react'
-import clsx from 'clsx'
+import {
+  FieldProps,
+  Field as HeadlessField,
+  Switch as HeadlessSwitch,
+  SwitchProps,
+} from '@headlessui/react'
+import { twMerge } from 'tailwind-merge'
 import { switchClasses, switchDot } from './classes'
 
 export function SwitchField({
   className,
   ...props
-}: { className?: string } & Omit<Headless.FieldProps, 'as' | 'className'>) {
+}: { className?: string } & Omit<FieldProps, 'as' | 'className'>) {
   return (
-    <Headless.Field
+    <HeadlessField
       data-slot='field'
       {...props}
-      className={clsx(
+      className={twMerge(
         className,
         // Base layout
         'grid grid-cols-[1fr_auto] items-center gap-x-8 gap-y-1 sm:grid-cols-[1fr_auto]',
@@ -32,10 +37,14 @@ export function Switch({
   ...props
 }: {
   className?: string
-} & Omit<Headless.SwitchProps, 'as' | 'className' | 'children'>) {
+} & Omit<SwitchProps, 'as' | 'className' | 'children'>) {
   return (
-    <Headless.Switch data-slot='control' {...props} className={switchClasses()}>
+    <HeadlessSwitch
+      data-slot='control'
+      {...props}
+      className={twMerge(switchClasses(), className)}
+    >
       <span aria-hidden='true' className={switchDot} />
-    </Headless.Switch>
+    </HeadlessSwitch>
   )
 }

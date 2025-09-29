@@ -3,7 +3,7 @@ import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { Textarea } from '..'
 
-describe('Textarea', async () => {
+describe('Textarea', () => {
   it('renders correctly with default props', async () => {
     const { getByRole } = await render(<Textarea placeholder='Test textarea' />)
     const textarea = getByRole('textbox')
