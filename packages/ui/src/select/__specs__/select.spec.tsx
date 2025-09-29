@@ -160,7 +160,6 @@ describe('Select', () => {
     )
 
     expect(selectRef).not.toBeNull()
-    // @ts-expect-error - tagName is not defined on HTMLSelectElement
     expect(selectRef?.tagName).toBe('SELECT')
   })
 
