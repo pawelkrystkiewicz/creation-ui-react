@@ -20,7 +20,7 @@
     "clsx": "^2.1.1",
     "iconoir-react": "^7.10.1",
     "lodash": "^4.17.21",
-    "nanoid": "^5.1.2",
+    "nanoid": "^5.1.6",
     "next": "^15.3.3",
     "nextra": "^4.2.17",
     "nextra-theme-docs": "^4.2.17",
