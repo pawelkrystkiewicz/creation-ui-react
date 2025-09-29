@@ -13,7 +13,7 @@ describe('Button CT', () => {
     const clickHandler = vi.fn()
     const label = 'Button'
 
-    const screen = render(<Button onClick={clickHandler}>{label}</Button>)
+    const screen = await render(<Button onClick={clickHandler}>{label}</Button>)
 
     const buttonSelector = screen.getByRole('button')
     const button = buttonSelector.element()
@@ -49,7 +49,7 @@ describe('Button CT', () => {
       it(`matches snapshot for [${color}] color and [${variant}] variant`, async () => {
         const buttonText = `${color} ${variant}`
 
-        const screen = render(
+        const screen = await render(
           <Button color={color} variant={variant}>
             {buttonText}
           </Button>,
@@ -60,7 +60,7 @@ describe('Button CT', () => {
   }
 
   it('renders as a link when href is provided', async () => {
-    const screen = render(<Button href='/test'>Link</Button>)
+    const screen = await render(<Button href='/test'>Link</Button>)
     const link = screen.getByRole('link').element()
     await expect(link).toBeVisible()
     await expect(link).toBeEnabled()
@@ -103,7 +103,7 @@ describe('Button CT', () => {
 
     for (const { description, expected, props } of scenarios) {
       it(description, async () => {
-        const screen = render(<Button {...props}>Button text</Button>)
+        const screen = await render(<Button {...props}>Button text</Button>)
         const button = screen.getByRole('button').element()
         await expect(button).toBeVisible()
         await expect(button)[
@@ -124,7 +124,7 @@ describe('Button CT', () => {
      * currently can't trigger real user events in tests
      */
     it('should correctly render [disabled] button', async () => {
-      const screen = render(<Button disabled>Button text</Button>)
+      const screen = await render(<Button disabled>Button text</Button>)
       const button = screen.getByRole('button').element()
       await expect(button).toBeVisible()
       await expect(button).toBeDisabled()
@@ -139,7 +139,7 @@ describe('Button CT', () => {
     })
 
     it('should correctly render [loading] button', async () => {
-      const screen = render(<Button loading>Button text</Button>)
+      const screen = await render(<Button loading>Button text</Button>)
       const button = screen.getByRole('button').element()
       await expect(button).toBeVisible()
       await expect(button).toBeDisabled()
@@ -148,7 +148,7 @@ describe('Button CT', () => {
     })
 
     it.skip('should correctly render [default] button state', async () => {
-      const screen = render(<Button>Button text</Button>)
+      const screen = await render(<Button>Button text</Button>)
       const button = screen.getByRole('button').element()
 
       await expect(button).toBeVisible()
@@ -162,7 +162,7 @@ describe('Button CT', () => {
     })
 
     it.skip('should correctly render [active] button state', async () => {
-      const screen = render(<Button data-active='true'>Button text</Button>)
+      const screen = await render(<Button data-active='true'>Button text</Button>)
       const button = screen.getByRole('button').element()
 
       await expect(button).toBeVisible()
@@ -177,7 +177,7 @@ describe('Button CT', () => {
     })
 
     it.skip('should correctly render [focus] button state', async () => {
-      const screen = render(<Button data-focus='true'>Button text</Button>)
+      const screen = await render(<Button data-focus='true'>Button text</Button>)
       const button = screen.getByRole('button').element()
 
       await expect(button).toBeVisible()
@@ -189,7 +189,7 @@ describe('Button CT', () => {
     })
 
     it.skip('should correctly render [hover] button state', async () => {
-      const screen = render(<Button data-hover='true'>Button text</Button>)
+      const screen = await render(<Button data-hover='true'>Button text</Button>)
       const button = screen.getByRole('button').element()
 
       await expect(button).toBeVisible()

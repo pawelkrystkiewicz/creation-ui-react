@@ -1,6 +1,14 @@
 import { render } from 'vitest-browser-react'
 import { describe, expect, it } from 'vitest'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardStats, CardTitle } from '..'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardStats,
+  CardTitle,
+} from '..'
 import { verifyComputedStyles } from '../../../test/utils/helpers'
 
 describe('Card CT', () => {
@@ -25,14 +33,18 @@ describe('Card CT', () => {
     await expect(card).toMatchScreenshot()
 
     // Verify basic card styles
-    await verifyComputedStyles(card, {
-      'border-radius': '8px',
-      'border-width': '1px',
-      'padding-top': '20px',
-      'padding-right': '20px',
-      'padding-bottom': '20px',
-      'padding-left': '20px',
-    }, 'basic card styles')
+    await verifyComputedStyles(
+      card,
+      {
+        'border-radius': '8px',
+        'border-width': '1px',
+        'padding-top': '20px',
+        'padding-right': '20px',
+        'padding-bottom': '20px',
+        'padding-left': '20px',
+      },
+      'basic card styles',
+    )
   })
 
   it('renders card with stats', async () => {
@@ -55,12 +67,16 @@ describe('Card CT', () => {
 
     // Verify stats styles
     const stats = screen.getByText('1,234').element()
-    await verifyComputedStyles(stats, {
-      'font-weight': '700',
-      'font-size': '36px',
-      'margin-top': '6px',
-      'margin-bottom': '6px',
-    }, 'card stats styles')
+    await verifyComputedStyles(
+      stats,
+      {
+        'font-weight': '700',
+        'font-size': '36px',
+        'margin-top': '6px',
+        'margin-bottom': '6px',
+      },
+      'card stats styles',
+    )
   })
 
   it('renders card as link when href is provided', async () => {
@@ -79,9 +95,13 @@ describe('Card CT', () => {
     await expect(link).toMatchScreenshot()
 
     // Verify link styles
-    await verifyComputedStyles(link, {
-      display: 'block',
-    }, 'card link styles')
+    await verifyComputedStyles(
+      link,
+      {
+        display: 'block',
+      },
+      'card link styles',
+    )
   })
 
   it('renders card with custom className', async () => {
@@ -113,26 +133,36 @@ describe('Card CT', () => {
       await expect(title).toBeVisible()
       await expect(title).toMatchScreenshot()
 
-      await verifyComputedStyles(title, {
-        'font-weight': '500',
-        'font-size': '18px',
-        'line-height': '1.55556',
-        'letter-spacing': '-0.45px',
-      }, 'card title styles')
+      await verifyComputedStyles(
+        title,
+        {
+          'font-weight': '500',
+          'font-size': '18px',
+          'line-height': '1.55556',
+          'letter-spacing': '-0.45px',
+        },
+        'card title styles',
+      )
     })
 
     it('renders CardDescription with correct styles', async () => {
       const screen = await render(
-        <CardDescription data-testid='description'>Test description</CardDescription>,
+        <CardDescription data-testid='description'>
+          Test description
+        </CardDescription>,
       )
 
       const description = screen.getByTestId('description').element()
       await expect(description).toBeVisible()
       await expect(description).toMatchScreenshot()
 
-      await verifyComputedStyles(description, {
-        'font-size': '14px',
-      }, 'card description styles')
+      await verifyComputedStyles(
+        description,
+        {
+          'font-size': '14px',
+        },
+        'card description styles',
+      )
     })
 
     it('renders CardHeader with full width', async () => {
@@ -146,9 +176,13 @@ describe('Card CT', () => {
       await expect(header).toBeVisible()
       await expect(header).toMatchScreenshot()
 
-      await verifyComputedStyles(header, {
-        width: '100%',
-      }, 'card header styles')
+      await verifyComputedStyles(
+        header,
+        {
+          width: '100%',
+        },
+        'card header styles',
+      )
     })
 
     it('renders CardFooter with flex layout', async () => {
@@ -163,11 +197,15 @@ describe('Card CT', () => {
       await expect(footer).toBeVisible()
       await expect(footer).toMatchScreenshot()
 
-      await verifyComputedStyles(footer, {
-        display: 'flex',
-        'align-items': 'center',
-        gap: '8px',
-      }, 'card footer styles')
+      await verifyComputedStyles(
+        footer,
+        {
+          display: 'flex',
+          'align-items': 'center',
+          gap: '8px',
+        },
+        'card footer styles',
+      )
     })
 
     it('renders CardContent as simple container', async () => {
