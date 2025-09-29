@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { Input } from '..'
 import { ELEMENT_COLOR, INPUT_VARIANTS } from '../../types'
 
-describe('Input', async () => {
+describe('Input', () => {
   it('renders correctly with default props', async () => {
     const { getByRole } = await render(<Input placeholder='Test input' />)
     const input = getByRole('textbox')
