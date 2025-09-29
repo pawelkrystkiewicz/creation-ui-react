@@ -342,7 +342,7 @@ The following components are available in the `src/` directory and need comprehe
 - [ ] **error** - Error message component
 - [ ] **field** - Form field wrapper component
 - [ ] **flex** - Flexbox layout component
-- [ ] **for** - Conditional rendering utility
+- [x] **for** - Conditional rendering utility
 - [ ] **highlighter** - Text highlighting component
 - [ ] **icon** - Icon display component
 - [x] **input** - Text input component
@@ -356,7 +356,7 @@ The following components are available in the `src/` directory and need comprehe
 - [ ] **popover** - Popover component
 - [ ] **radio** - Radio button component
 - [ ] **select** - Select dropdown component
-- [ ] **show** - Conditional display utility
+- [x] **show** - Conditional display utility
 - [ ] **switch** - Toggle switch component
 - [ ] **textarea** - Textarea input component
 - [ ] **toggle-group** - Toggle button group component
