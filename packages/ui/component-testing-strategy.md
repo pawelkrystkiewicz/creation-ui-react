@@ -225,10 +225,14 @@ bun run test:unit:coverage
 ### verifyComputedStyles - CSS Style Verification
 
 ```typescript
-await verifyComputedStyles(element, {
-  'cursor': 'pointer',
-  'display': 'flex'
-}, 'debug-message')
+await verifyComputedStyles(
+  element,
+  {
+    cursor: 'pointer',
+    display: 'flex',
+  },
+  'debug-message',
+)
 ```
 
 ### parseColorString - Color Parsing
@@ -390,3 +394,18 @@ The following components are available in the `src/` directory and need comprehe
 - Components marked with [ ] need test implementation
 - Use button tests as a template for similar interactive components
 - Utility components (for, show) may need simpler test strategies
+
+### Running tests
+
+To run non-components tests use:
+
+> bun test:unit
+
+To run component tests locally (do not commit images):
+> bun test:visual (they will most likely fail)
+To avoid failing locally:
+> bun test:visual:update
+
+To generate commitable and valid test renderings (images) you need to trigger a Github action on your commnad. You can do this by calling this command and following the steps in CLI prompts:
+
+> bun update-screenshots
