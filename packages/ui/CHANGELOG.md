@@ -1,5 +1,13 @@
 # @creation-ui/react
 
+## 15.2.1
+
+### Patch Changes
+
+- Automated release based on commits:
+
+  chore: Enhance GitHub Actions workflows with Slack notifications
+
 ## 15.2.0
 
 ### Minor Changes
