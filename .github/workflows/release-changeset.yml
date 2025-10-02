@@ -67,19 +67,60 @@ jobs:
               fi
             done <<< "$COMMITS"
 
+            # Calculate next version for changeset
+            CURRENT_VERSION=$(cat packages/ui/package.json | grep '"version":' | sed 's/.*"version": *"\([^"]*\)".*/\1/')
+            echo "Current version: $CURRENT_VERSION"
+            
+            # Calculate next version based on bump type
+            IFS='.' read -r -a version_parts <<< "$CURRENT_VERSION"
+            major=${version_parts[0]}
+            minor=${version_parts[1]}
+            patch=${version_parts[2]}
+            
+            case $BUMP_TYPE in
+              "major")
+                NEXT_VERSION="$((major + 1)).0.0"
+                ;;
+              "minor")
+                NEXT_VERSION="$major.$((minor + 1)).0"
+                ;;
+              "patch")
+                NEXT_VERSION="$major.$minor.$((patch + 1))"
+                ;;
+            esac
+            
+            echo "Next version will be: $NEXT_VERSION"
+
             # Generate changeset file
             CHANGESET_FILE=".changeset/auto-generated-$(date +%s).md"
             echo "---" > "$CHANGESET_FILE"
             echo "\"@creation-ui/react\": $BUMP_TYPE" >> "$CHANGESET_FILE"
             echo "---" >> "$CHANGESET_FILE"
             echo "" >> "$CHANGESET_FILE"
-            echo "Automated release based on commits:" >> "$CHANGESET_FILE"
+            echo "🚀 Release v$NEXT_VERSION" >> "$CHANGESET_FILE"
+            echo "" >> "$CHANGESET_FILE"
+            echo "### Changes in this release:" >> "$CHANGESET_FILE"
             echo "" >> "$CHANGESET_FILE"
             echo "$COMMITS" >> "$CHANGESET_FILE"
 
-            echo "Generated changeset with $BUMP_TYPE version bump"
+            echo "Generated changeset with $BUMP_TYPE version bump (v$NEXT_VERSION)"
           else
             echo "Changeset files already exist, skipping generation"
+          fi
+
+      - name: Get next version for PR title
+        id: version
+        run: |
+          if [ -f packages/ui/package.json ]; then
+            CURRENT_VERSION=$(cat packages/ui/package.json | grep '"version":' | sed 's/.*"version": *"\([^"]*\)".*/\1/')
+            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+            
+            # Check if there are any changesets to determine if this will create a new version
+            if [ "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
+              echo "has_changesets=true" >> $GITHUB_OUTPUT
+            else
+              echo "has_changesets=false" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Create Release Pull Request or Publish to npm
@@ -87,7 +128,7 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: bun run release
-          title: 'Release: Version Packages'
+          title: '🚀 Release: @creation-ui/react packages'
           createGithubReleases: true
 
       - name: Notify Slack on Release Success
@@ -95,7 +136,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          slack-message: '🚀 New package version published successfully!'
+          slack-message: '🚀 New package version published successfully!\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -104,7 +145,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
-          slack-message: '📝 Release PR created with changelog updates'
+          slack-message: '📝 Release PR created with changelog updates\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -113,6 +154,6 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
-          slack-message: '❌ Release workflow failed'
+          slack-message: '❌ Release workflow failed\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
