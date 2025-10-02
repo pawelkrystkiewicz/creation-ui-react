@@ -58,16 +58,15 @@ jobs:
               fi
             done <<< "$COMMITS"
             
-            # Generate changeset
-            cat > .changeset/auto-generated-$(date +%s).md << EOF
-            ---
-            "@creation-ui/react": $BUMP_TYPE
-            ---
-            
-            Automated release based on commits:
-            
-            $COMMITS
-            EOF
+            # Generate changeset file
+            CHANGESET_FILE=".changeset/auto-generated-$(date +%s).md"
+            echo "---" > "$CHANGESET_FILE"
+            echo "\"@creation-ui/react\": $BUMP_TYPE" >> "$CHANGESET_FILE"
+            echo "---" >> "$CHANGESET_FILE"
+            echo "" >> "$CHANGESET_FILE"
+            echo "Automated release based on commits:" >> "$CHANGESET_FILE"
+            echo "" >> "$CHANGESET_FILE"
+            echo "$COMMITS" >> "$CHANGESET_FILE"
             
             echo "Generated changeset with $BUMP_TYPE version bump"
           else
