@@ -37,15 +37,24 @@ jobs:
       - name: Generate changeset if none exists
         run: |
           if [ ! "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
-            echo "No changeset files found, generating one from commits..."
+            echo "No changeset files found, checking for new commits..."
 
-            # Get commit messages since last release
+            # Get commit messages since last release, excluding release commits
             LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
             if [ -z "$LAST_TAG" ]; then
-              COMMITS=$(git log --pretty=format:"%s" --since="1 day ago")
+              COMMITS=$(git log --pretty=format:"%s" --since="1 day ago" | grep -v "^Version Packages" | grep -v "^Release:" | grep -v "^chore: release" | grep -v "^chore(release)" || true)
             else
-              COMMITS=$(git log --pretty=format:"%s" $LAST_TAG..HEAD)
+              COMMITS=$(git log --pretty=format:"%s" $LAST_TAG..HEAD | grep -v "^Version Packages" | grep -v "^Release:" | grep -v "^chore: release" | grep -v "^chore(release)" || true)
             fi
+
+            # Check if we have any non-release commits
+            if [ -z "$COMMITS" ]; then
+              echo "No non-release commits found, skipping changeset generation"
+              exit 0
+            fi
+
+            echo "Found commits for release:"
+            echo "$COMMITS"
 
             # Determine version bump based on conventional commits
             BUMP_TYPE="patch"
@@ -78,6 +87,8 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: bun run release
+          title: 'Release: Version Packages'
+          createGithubReleases: true
 
       - name: Notify Slack on Release Success
         if: steps.changesets.outputs.published == 'true'
