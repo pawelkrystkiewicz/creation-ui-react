@@ -125,6 +125,36 @@ describe('Select', () => {
     expect(clearButton).toBeDefined()
   })
 
+  it('positions chevron correctly when clear button is present', async () => {
+    const { container, getByTestId } = await render(
+      <Select onClear={() => {}} value='option1' onChange={() => {}}>
+        <option value='option1'>Option 1</option>
+      </Select>,
+    )
+    const clearButton = getByTestId('input-clear-button')
+    const chevron = container.querySelector('svg')
+    const chevronContainer = chevron?.parentElement
+    
+    expect(clearButton).toBeDefined()
+    expect(chevron).toBeDefined()
+    expect(chevronContainer).toHaveClass('right-6')
+    expect(chevronContainer).not.toHaveClass('right-0')
+  })
+
+  it('positions chevron at right edge when no clear button', async () => {
+    const { container } = await render(
+      <Select>
+        <option value='option1'>Option 1</option>
+      </Select>,
+    )
+    const chevron = container.querySelector('svg')
+    const chevronContainer = chevron?.parentElement
+    
+    expect(chevron).toBeDefined()
+    expect(chevronContainer).toHaveClass('right-0')
+    expect(chevronContainer).not.toHaveClass('right-6')
+  })
+
   it('renders dropdown chevron for single select', async () => {
     const { container } = await render(
       <Select>

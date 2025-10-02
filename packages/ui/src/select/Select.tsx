@@ -16,6 +16,9 @@ export const Select = forwardRef(function Select(
   }: SelectProps,
   ref: ForwardedRef<HTMLSelectElement>,
 ) {
+  const hasValue = !!props?.value
+  const isDisabled = Boolean(props?.disabled || props?.readOnly)
+  const showClearButton = !isDisabled && typeof onClear === 'function' && hasValue
   return (
     <InputContainer
       className={cx?.container}
@@ -42,7 +45,9 @@ export const Select = forwardRef(function Select(
             cx?.input,
             multiple
               ? 'px-[calc(--spacing(3.5)-1px)] sm:px-[calc(--spacing(3)-1px)]'
-              : 'pr-[calc(--spacing(10)-1px)] pl-[calc(--spacing(3.5)-1px)] sm:pr-[calc(--spacing(9)-1px)] sm:pl-[calc(--spacing(3)-1px)]',
+              : showClearButton
+                ? 'pr-[calc(--spacing(12)-1px)] pl-[calc(--spacing(3.5)-1px)] sm:pr-[calc(--spacing(11)-1px)] sm:pl-[calc(--spacing(3)-1px)]'
+                : 'pr-[calc(--spacing(10)-1px)] pl-[calc(--spacing(3.5)-1px)] sm:pr-[calc(--spacing(9)-1px)] sm:pl-[calc(--spacing(3)-1px)]',
             // Options (multi-select)
             '[&_optgroup]:font-semibold',
           )}
@@ -50,7 +55,10 @@ export const Select = forwardRef(function Select(
           {children}
         </HeadlessSelect>
         {!multiple && (
-          <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
+          <span className={clsx(
+            'pointer-events-none absolute inset-y-0 flex items-center',
+            showClearButton ? 'right-6 pr-2' : 'right-0 pr-2'
+          )}>
             <svg
               className='size-5 stroke-zinc-500 group-has-data-disabled:stroke-zinc-600 sm:size-4 dark:stroke-zinc-400 forced-colors:stroke-[CanvasText]'
               viewBox='0 0 16 16'

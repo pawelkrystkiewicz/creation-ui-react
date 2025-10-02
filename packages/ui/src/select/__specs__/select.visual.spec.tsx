@@ -114,4 +114,16 @@ describe('Select Visual Tests', () => {
     const element = screen.getByRole('combobox').element()
     await expect(element).toMatchScreenshot()
   })
+
+  it('should correctly position chevron when clear button is present', async () => {
+    const screen = await render(
+      <Select onClear={() => {}} value="option1" onChange={() => {}}>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </Select>
+    )
+    const element = screen.getByRole('combobox').element()
+    await expect(element).toMatchScreenshot()
+  })
 })
