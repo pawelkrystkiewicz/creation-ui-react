@@ -136,7 +136,9 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          slack-message: '🚀 New package version published successfully!\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
+          slack-message: |
+            🚀 New package version published successfully: ${{ steps.changesets.outputs.publishedPackages }}
+            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -145,7 +147,9 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
-          slack-message: '📝 Release PR created with changelog updates\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
+          slack-message: |
+            📝 Release PR created with changelog updates
+            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -154,6 +158,8 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
-          slack-message: '❌ Release workflow failed\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
+          slack-message: |
+            ❌ Release workflow failed
+            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

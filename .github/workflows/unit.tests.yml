@@ -42,7 +42,9 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
-          slack-message: '✅ Unit Tests passed on master branch with coverage report\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
+          slack-message: |
+            ✅ Unit Tests passed on master branch with coverage report
+            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -51,6 +53,8 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
-          slack-message: '❌ Unit Tests failed on master branch\n🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>'
+          slack-message: |
+            ❌ Unit Tests failed on master branch
+            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
