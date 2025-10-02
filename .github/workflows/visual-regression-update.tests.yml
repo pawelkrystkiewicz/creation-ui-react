@@ -1,10 +1,8 @@
-name: Visual Regression Tests
+name: Visual Regression Update Tests
 on:
-  push:
-    branches: all
-  pull_request:
+  workflow_dispatch:
 jobs:
-  visual-regression-test:
+  visual-regression-update-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -22,5 +20,5 @@ jobs:
       - name: Install Playwright browsers
         run: bun x playwright install --with-deps chromium
 
-      - name: Run Visual Regression Tests
-        run: bun run test:visual
+      - name: Run Visual Regression Update Tests
+        run: bun run test:visual:update
