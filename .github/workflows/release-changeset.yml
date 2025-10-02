@@ -38,7 +38,7 @@ jobs:
         run: |
           if [ ! "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
             echo "No changeset files found, generating one from commits..."
-            
+
             # Get commit messages since last release
             LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
             if [ -z "$LAST_TAG" ]; then
@@ -46,7 +46,7 @@ jobs:
             else
               COMMITS=$(git log --pretty=format:"%s" $LAST_TAG..HEAD)
             fi
-            
+
             # Determine version bump based on conventional commits
             BUMP_TYPE="patch"
             while IFS= read -r commit; do
@@ -57,7 +57,7 @@ jobs:
                 BUMP_TYPE="minor"
               fi
             done <<< "$COMMITS"
-            
+
             # Generate changeset file
             CHANGESET_FILE=".changeset/auto-generated-$(date +%s).md"
             echo "---" > "$CHANGESET_FILE"
@@ -67,7 +67,7 @@ jobs:
             echo "Automated release based on commits:" >> "$CHANGESET_FILE"
             echo "" >> "$CHANGESET_FILE"
             echo "$COMMITS" >> "$CHANGESET_FILE"
-            
+
             echo "Generated changeset with $BUMP_TYPE version bump"
           else
             echo "Changeset files already exist, skipping generation"
@@ -79,6 +79,29 @@ jobs:
         with:
           publish: bun run release
 
-      - name: On success actions
+      - name: Notify Slack on Release Success
         if: steps.changesets.outputs.published == 'true'
-        run: echo "Package published successfully"
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: '🚀 New package version published successfully!'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack on Release PR Created
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
+          slack-message: '📝 Release PR created with changelog updates'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack on Release Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
+          slack-message: '❌ Release workflow failed'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
