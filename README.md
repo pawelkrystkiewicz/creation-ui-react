@@ -1,8 +1,22 @@
-# Creation UI
+# Creation UI React
 
-Creation UI is working with your app's Tailwind CSS and you need to have it installed in your project
+A modern, accessible, and customizable React component library built with Tailwind CSS v4. Creation UI provides a comprehensive set of components designed for building beautiful user interfaces with ease.
+
+## Features
+
+- 🎨 **Tailwind CSS v4 Integration** - Seamlessly works with your existing Tailwind setup
+- ♿ **Accessibility First** - Built with WCAG guidelines in mind
+- 🎭 **Customizable Theming** - Easy to customize and extend
+- 📱 **Responsive Design** - Mobile-first approach
+- ⚡ **TypeScript Support** - Full type safety out of the box
+- 🔧 **Developer Experience** - Intuitive API and excellent documentation
+
+## Prerequisites
+
+Creation UI requires Tailwind CSS v4 to be installed in your project. Ensure you have the following peer dependencies:
 
 ```json
+{
   "peerDependencies": {
     "@floating-ui/react": "^0.27.12",
     "@floating-ui/react-dom": "^2.1.3",
@@ -14,27 +28,35 @@ Creation UI is working with your app's Tailwind CSS and you need to have it inst
     "react-dom": "^16 | ^17 | ^18 | ^19",
     "tailwind-merge": "^2.6",
     "tailwindcss": "^4.1"
-  },
+  }
+}
 ```
 
 ## Installation
 
-To install Creation UI, run command below:
+Install Creation UI using your preferred package manager:
 
-> yarn add @creation-ui/react
+```bash
+# npm
+npm install @creation-ui/react
 
-> npm i @creation-ui/react
+# yarn
+yarn add @creation-ui/react
 
-> pnpm i @creation-ui/react
+# pnpm
+pnpm add @creation-ui/react
 
-> bun add @creation-ui/react
+# bun
+bun add @creation-ui/react
+```
 
-## Configuration
+## Quick Start
 
-1. In your main .css file where you import tailwindcss v4, also import the creation ui css file.
-   Don't forget to add `@source` to the path of the Creation UI package to let tailwindcss know where to also look for it's classes there.
+### 1. CSS Configuration
 
-```css copy
+Add Creation UI styles to your main CSS file where you import Tailwind CSS v4:
+
+```css
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import 'tailwindcss';
@@ -43,82 +65,108 @@ To install Creation UI, run command below:
 
 @source "../node_modules/@creation-ui/react/dist";
 
-/* you can extend tour theme config as needed */
+/* Customize theme variables as needed */
 @theme {
   --font-sans: 'Manrope', 'sans-serif';
   --font-mono: 'Fira Code', 'monospace';
 }
 
-/* use dark theme detection */
+/* Dark theme support */
 @variant dark (&:where(.dark, .dark *));
-
-/* rest of your css */
-/* ... */
 ```
 
-You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
+> **Note**: The `@source` directive tells Tailwind CSS to scan the Creation UI package for additional CSS classes.
 
-3. Start using it!
+### 2. Start Using Components
 
-```jsx copy
+Import and use Creation UI components in your React application:
+
+```jsx
 import { Button } from '@creation-ui/react'
 
 export default function App() {
-  return <Button variant='contained'>Click me</Button>
+  return (
+    <div className="p-8">
+      <Button variant="contained" size="lg">
+        Get Started
+      </Button>
+    </div>
+  )
 }
 ```
 
+## Customization
+
+Creation UI is built to be highly customizable. You can extend the theme configuration using standard Tailwind CSS practices. For more detailed customization options, refer to the [Tailwind CSS documentation](https://tailwindcss.com/docs/configuration).
+
 ## Development
 
-To run it locally in dev mode:
+### Local Development
 
-> bun install && bun dev
+Start the development environment:
 
-Building:
+```bash
+bun install && bun dev
+```
 
-> bun run build
+Build the project:
 
-## Development Workflow (Trunk-Based Development)
+```bash
+bun run build
+```
 
-This project follows trunk-based development practices. We work directly on the `master` branch with short-lived feature branches.
+### Testing
 
-### Example Workflow
+Run unit tests:
 
-1. **Start working on a new feature/fix**:
+```bash
+bun run test:unit
+```
+
+Run unit tests with coverage:
+
+```bash
+bun run test:unit:coverage
+```
+
+Run visual regression tests:
+
+```bash
+bun run test:visual
+```
+
+Update visual regression test snapshots:
+
+```bash
+bun run test:visual:update
+```
+
+## Development Workflow
+
+This project follows **trunk-based development** practices with automated CI/CD workflows.
+
+### Contributing Guidelines
+
+1. **Create a feature branch**:
    ```bash
    git checkout master
    git pull origin master
    git checkout -b feature/your-feature-name
    ```
 
-2. **Make your changes and commit frequently**:
+2. **Make focused changes**:
    ```bash
-   # Make small, focused changes
    git add .
    git commit -m "feat: add new component feature"
-
-   # Continue working and committing
-   git add .
-   git commit -m "fix: handle edge case in component"
    ```
 
-3. **Keep your branch up to date** (if working for more than a day):
-   ```bash
-   git checkout master
-   git pull origin master
-   git checkout feature/your-feature-name
-   git rebase master
-   ```
-
-4. **Create a Pull Request**:
+3. **Create a Pull Request**:
    - Push your branch and create a PR to `master`
-   - Keep PRs small and focused (aim for same-day merge)
-   - Request review from team members
+   - Keep PRs small and focused
+   - All tests must pass before merging
 
-5. **After PR approval and CI passes**:
+4. **After approval**:
    ```bash
-   # Merge to master (preferably via GitHub UI)
-   # Delete the feature branch
    git checkout master
    git pull origin master
    git branch -d feature/your-feature-name
@@ -126,31 +174,74 @@ This project follows trunk-based development practices. We work directly on the 
 
 ### Best Practices
 
-- **Keep branches short-lived** (ideally merged within 1-2 days)
-- **Make small, focused PRs** that are easy to review
-- **Rebase instead of merge** to keep history clean
-- **Run tests locally** before pushing: `bun run test:unit`
-- **Optionally run update for visual reggression tests**  on PR: `bun run update-screenshots` which will trigger GH action on your branch
-- **Follow conventional commits** for clear commit messages
+- **Short-lived branches** (1-2 days maximum)
+- **Small, focused PRs** for easier review
+- **Run tests locally** before pushing
+- **Follow conventional commits** for automated versioning
+- **Automated visual regression** test updates available via `bun run update-screenshots`
 
-## Package Versioning and Release Process
+### Automated Workflows
 
-This project uses [Changesets](https://github.com/changesets/changesets) for version management and automated releases.
+The project includes several automated GitHub Actions workflows:
 
-### Creating a New Version
+#### Continuous Integration
+
+- **Unit Tests**: Automatically run on every push and PR
+- **Visual Regression Tests**: Validate UI components haven't changed unexpectedly
+- **Coverage Reports**: Generate and upload test coverage reports
+
+#### Automated Releases
+
+- **Changesets Integration**: Automatic version management and changelog generation
+- **Semantic Versioning**: Based on conventional commit messages:
+  - `feat!` or breaking changes → **major** version bump
+  - `feat:` → **minor** version bump  
+  - `fix:`, `docs:`, etc. → **patch** version bump
+- **Release PRs**: Automatically created when changes are ready for release
+- **NPM Publishing**: Automatic package publishing when release PRs are merged
+
+#### Notifications
+
+- **Slack Integration**: Real-time notifications for:
+  - Test failures on master branch
+  - Successful releases
+  - Release PR creation
+
+### Slack Notifications Setup
+
+To enable Slack notifications for your development team:
+
+1. **Create a Slack App** in your workspace
+2. **Add Bot Token Scopes**: `chat:write`, `chat:write.public`
+3. **Install the app** in your workspace
+4. **Copy the Bot User OAuth Token** (starts with `xoxb-`)
+5. **Add GitHub Secrets**:
+   - `SLACK_BOT_TOKEN`: Your bot token
+   - `SLACK_CHANNEL_ID`: The ID of your notification channel
+6. **Find Channel ID**: Open channel → View details → Copy Channel ID
+
+## Release Management
+
+This project uses [Changesets](https://github.com/changesets/changesets) for automated version management and releases.
+
+### Manual Release Process
 
 1. **Add a changeset** for your changes:
+
    ```bash
    bun run changeset
    ```
-   This will prompt you to describe your changes and select the appropriate version bump (patch, minor, or major).
+
+   This will prompt you to describe your changes and select the appropriate version bump.
 
 2. **Version packages** (updates package.json versions and generates CHANGELOG.md):
+
    ```bash
    bun run version-packages
    ```
 
 3. **Publish to npm** (builds and publishes the package):
+
    ```bash
    bun run release
    ```
@@ -160,28 +251,34 @@ This project uses [Changesets](https://github.com/changesets/changesets) for ver
 For beta/alpha releases:
 
 1. **Enter pre-release mode**:
+
    ```bash
    bun run pre:enter
    ```
 
 2. **Create development snapshots**:
+
    ```bash
    bun run version:dev
    bun run release:dev
    ```
 
 3. **Exit pre-release mode** when ready:
+
    ```bash
    bun run pre:exit
    ```
 
-### Automated Releases
+### Automated Release Workflow
 
-The project uses GitHub Actions for automated releases:
-- **Automatic releases**: When changes are merged to `master`, the release workflow automatically creates a PR with version updates or publishes the package if changesets are ready.
-- **Manual releases**: You can manually trigger releases using the available npm scripts.
+The project uses GitHub Actions for fully automated releases:
 
-**Note**: With trunk-based development, all releases are triggered from the `master` branch. The previous `develop` branch has been removed.
+- **Automatic changeset generation**: When no changeset exists, the system automatically generates one based on conventional commit messages
+- **Release PR creation**: Automatically creates PRs with version updates and changelog
+- **NPM publishing**: Automatic package publishing when release PRs are merged
+- **Slack notifications**: Real-time updates about release status
+
+All releases are triggered from the `master` branch following trunk-based development practices.
 
 ### Available Scripts
 
@@ -192,3 +289,11 @@ The project uses GitHub Actions for automated releases:
 - `bun run pre:exit` - Exit pre-release mode
 - `bun run version:dev` - Create development snapshot version
 - `bun run release:dev` - Publish development snapshot
+
+## Contributing
+
+We welcome contributions! Please read our development workflow section above and ensure all tests pass before submitting a PR.
+
+## License
+
+This project is licensed under the MIT License.
