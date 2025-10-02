@@ -179,7 +179,7 @@ describe('Input', () => {
   it('forwards ref correctly', async () => {
     let inputRef: HTMLInputElement | null = null
 
-    render(
+    await render(
       <Input
         ref={ref => {
           inputRef = ref
@@ -189,7 +189,6 @@ describe('Input', () => {
     )
 
     expect(inputRef).not.toBeNull()
-    // @ts-expect-error - tagName is not defined on HTMLInputElement
     expect(inputRef?.tagName).toBe('INPUT')
   })
 })

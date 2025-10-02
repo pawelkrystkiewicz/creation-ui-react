@@ -19,18 +19,21 @@ describe('Textarea Visual Tests', () => {
   it('should correctly render readOnly state', async () => {
     const screen = await render(<Textarea readOnly placeholder="ReadOnly textarea" />)
     const element = screen.getByRole('textbox').element()
+    await expect(element).toHaveAttribute('readonly')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render resizable state', async () => {
     const screen = await render(<Textarea resizable={true} placeholder="Resizable textarea" />)
     const element = screen.getByRole('textbox').element()
+    await expect(element.className).toContain('resize-y')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render non-resizable state', async () => {
     const screen = await render(<Textarea resizable={false} placeholder="Non-resizable textarea" />)
     const element = screen.getByRole('textbox').element()
+    await expect(element.className).toContain('resize-none')
     await expect(element).toMatchScreenshot()
   })
 
@@ -43,12 +46,14 @@ describe('Textarea Visual Tests', () => {
       />
     )
     const element = screen.getByRole('textbox').element()
+    await expect(element).toHaveValue('This is a sample text content in the textarea')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render invalid state', async () => {
     const screen = await render(<Textarea invalid placeholder="Invalid textarea" />)
     const element = screen.getByRole('textbox').element()
+    await expect(element).toHaveAttribute('data-invalid')
     await expect(element).toMatchScreenshot()
   })
 })

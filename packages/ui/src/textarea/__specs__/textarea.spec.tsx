@@ -70,7 +70,7 @@ describe('Textarea', () => {
   it('forwards ref correctly', async () => {
     let textareaRef: HTMLTextAreaElement | null = null
 
-    render(
+    await render(
       <Textarea
         ref={ref => {
           textareaRef = ref
@@ -80,7 +80,6 @@ describe('Textarea', () => {
     )
 
     expect(textareaRef).not.toBeNull()
-    // @ts-expect-error - tagName is not defined on HTMLTextAreaElement
     expect(textareaRef?.tagName).toBe('TEXTAREA')
   })
 
