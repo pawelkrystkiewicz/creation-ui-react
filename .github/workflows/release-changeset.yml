@@ -34,6 +34,46 @@ jobs:
       - name: Install Dependencies
         run: bun i
 
+      - name: Generate changeset if none exists
+        run: |
+          if [ ! "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
+            echo "No changeset files found, generating one from commits..."
+            
+            # Get commit messages since last release
+            LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+            if [ -z "$LAST_TAG" ]; then
+              COMMITS=$(git log --pretty=format:"%s" --since="1 day ago")
+            else
+              COMMITS=$(git log --pretty=format:"%s" $LAST_TAG..HEAD)
+            fi
+            
+            # Determine version bump based on conventional commits
+            BUMP_TYPE="patch"
+            while IFS= read -r commit; do
+              if [[ $commit == *"!"* ]] || [[ $commit == feat!* ]] || [[ $commit == *"BREAKING CHANGE"* ]]; then
+                BUMP_TYPE="major"
+                break
+              elif [[ $commit == feat* ]]; then
+                BUMP_TYPE="minor"
+              fi
+            done <<< "$COMMITS"
+            
+            # Generate changeset
+            cat > .changeset/auto-generated-$(date +%s).md << EOF
+            ---
+            "@creation-ui/react": $BUMP_TYPE
+            ---
+            
+            Automated release based on commits:
+            
+            $COMMITS
+            EOF
+            
+            echo "Generated changeset with $BUMP_TYPE version bump"
+          else
+            echo "Changeset files already exist, skipping generation"
+          fi
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
