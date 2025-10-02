@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.3
+
+### Patch Changes
+
+- 🚀 Release v15.2.3
+
+  ### Changes in this release:
+
+  chore: Update Slack notifications in workflows for improved message formatting
+
 ## 15.2.2
 
 ### Patch Changes
