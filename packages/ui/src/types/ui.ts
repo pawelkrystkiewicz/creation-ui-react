@@ -14,6 +14,9 @@ export const INPUT_VARIANTS = [
   'underline',
   'text',
 ] as const
+export const INPUT_BORDER = ['full', 'bottom', 'none'] as const
+export const INPUT_CONTAINER_HEIGHTS = ['fixed', 'auto'] as const
+export const INPUT_BACKGROUNDS = ['none', 'bottom', 'full'] as const
 export const ELEMENT_ORIENTATION = ['vertical', 'horizontal'] as const
 export const ELEMENT_PLACEMENT_VERTICAL = ['top', 'bottom'] as const
 export const ELEMENT_PLACEMENT_HORIZONTAL = ['right', 'left'] as const
@@ -45,6 +48,9 @@ export type ElementOrientation = (typeof ELEMENT_ORIENTATION)[number]
 export type ElementTheme = (typeof ELEMENT_THEMES)[number]
 export type ElementVariant = (typeof ELEMENT_VARIANTS)[number]
 export type InputVariant = (typeof INPUT_VARIANTS)[number]
+export type InputBorder = (typeof INPUT_BORDER)[number]
+export type InputContainerHeight = (typeof INPUT_CONTAINER_HEIGHTS)[number]
+export type InputBackground = (typeof INPUT_BACKGROUNDS)[number]
 export type ElementBaseVariant = (typeof ELEMENT_BASE_VARIANTS)[number]
 export type ElementPlacementHorizontal =
   (typeof ELEMENT_PLACEMENT_HORIZONTAL)[number]

@@ -2,11 +2,11 @@ import { describe, expect, it } from 'vitest'
 import { render } from 'vitest-browser-react'
 import { Input } from '..'
 import { Icon } from '../../icon'
-import { ELEMENT_COLOR, INPUT_VARIANTS } from '../../types'
+import { ELEMENT_COLOR, INPUT_BORDER } from '../../types'
 
 describe('Input CT', () => {
   it('default input renders correctly', async () => {
-    const screen = render(<Input placeholder="Default input" />)
+    const screen = await render(<Input placeholder='Default input' />)
 
     const input = screen.getByRole('textbox').element()
     await expect(input).toBeVisible()
@@ -16,13 +16,10 @@ describe('Input CT', () => {
     await expect(input).toMatchScreenshot()
   })
 
-  for (const variant of INPUT_VARIANTS) {
-    it(`matches snapshot for [${variant}] variant`, async () => {
-      const screen = render(
-        <Input
-          border={variant}
-          placeholder={`${variant} input`}
-        />
+  for (const border of INPUT_BORDER) {
+    it(`matches snapshot for [${border}] border`, async () => {
+      const screen = await render(
+        <Input border={border} placeholder={`${border} input`} />,
       )
       const input = screen.getByRole('textbox').element()
       await expect(input).toBeVisible()
@@ -32,11 +29,8 @@ describe('Input CT', () => {
 
   for (const color of ELEMENT_COLOR) {
     it(`matches snapshot for [${color}] color`, async () => {
-      const screen = render(
-        <Input
-          background={color}
-          placeholder={`${color} input`}
-        />
+      const screen = await render(
+        <Input color={color} placeholder={`${color} input`} />,
       )
       const input = screen.getByRole('textbox').element()
       await expect(input).toBeVisible()
@@ -45,13 +39,13 @@ describe('Input CT', () => {
   }
 
   it('renders with startAdornment', async () => {
-    const startAdornment = <Icon icon="plus" data-testid="icon-plus" />
+    const startAdornment = <Icon icon='plus' data-testid='icon-plus' />
 
-    const screen = render(
+    const screen = await render(
       <Input
         startAdornment={startAdornment}
-        placeholder="Input with start adornment"
-      />
+        placeholder='Input with start adornment'
+      />,
     )
 
     const input = screen.getByRole('textbox').element()
@@ -63,13 +57,13 @@ describe('Input CT', () => {
   })
 
   it('renders with endAdornment', async () => {
-    const endAdornment = <Icon icon="minus" data-testid="icon-minus" />
+    const endAdornment = <Icon icon='minus' data-testid='icon-minus' />
 
-    const screen = render(
+    const screen = await render(
       <Input
         endAdornment={endAdornment}
-        placeholder="Input with end adornment"
-      />
+        placeholder='Input with end adornment'
+      />,
     )
 
     const input = screen.getByRole('textbox').element()
@@ -81,15 +75,15 @@ describe('Input CT', () => {
   })
 
   it('renders with both adornments', async () => {
-    const startAdornment = <Icon icon="plus" data-testid="icon-plus" />
-    const endAdornment = <Icon icon="minus" data-testid="icon-minus" />
+    const startAdornment = <Icon icon='plus' data-testid='icon-plus' />
+    const endAdornment = <Icon icon='minus' data-testid='icon-minus' />
 
-    const screen = render(
+    const screen = await render(
       <Input
         startAdornment={startAdornment}
         endAdornment={endAdornment}
-        placeholder="Input with both adornments"
-      />
+        placeholder='Input with both adornments'
+      />,
     )
 
     const input = screen.getByRole('textbox').element()
@@ -103,13 +97,13 @@ describe('Input CT', () => {
   })
 
   it('renders with clearable functionality', async () => {
-    const screen = render(
+    const screen = await render(
       <Input
         onClear={() => {}}
-        value="Clearable value"
+        value='Clearable value'
         onChange={() => {}}
-        placeholder="Clearable input"
-      />
+        placeholder='Clearable input'
+      />,
     )
 
     const input = screen.getByRole('textbox').element()
@@ -122,13 +116,13 @@ describe('Input CT', () => {
 
   describe('Input States', () => {
     it('should correctly render [disabled] state', async () => {
-      const screen = render(
+      const screen = await render(
         <Input
           disabled
-          placeholder="Disabled input"
-          value="Disabled value"
+          placeholder='Disabled input'
+          value='Disabled value'
           onChange={() => {}}
-        />
+        />,
       )
 
       const input = screen.getByRole('textbox').element()
@@ -138,13 +132,13 @@ describe('Input CT', () => {
     })
 
     it('should correctly render [readOnly] state', async () => {
-      const screen = render(
+      const screen = await render(
         <Input
           readOnly
-          placeholder="ReadOnly input"
-          value="ReadOnly value"
+          placeholder='ReadOnly input'
+          value='ReadOnly value'
           onChange={() => {}}
-        />
+        />,
       )
 
       const input = screen.getByRole('textbox').element()
@@ -154,12 +148,12 @@ describe('Input CT', () => {
     })
 
     it('should correctly render input with value', async () => {
-      const screen = render(
+      const screen = await render(
         <Input
-          value="Input with value"
+          value='Input with value'
           onChange={() => {}}
-          placeholder="Placeholder"
-        />
+          placeholder='Placeholder'
+        />,
       )
 
       const input = screen.getByRole('textbox').element()
@@ -176,16 +170,13 @@ describe('Input CT', () => {
       'number',
       'tel',
       'url',
-      'search'
+      'search',
     ] as const
 
     for (const type of inputTypes) {
       it(`matches snapshot for [${type}] input type`, async () => {
-        const screen = render(
-          <Input
-            type={type}
-            placeholder={`${type} input`}
-          />
+        const screen = await render(
+          <Input type={type} placeholder={`${type} input`} />,
         )
 
         let input
@@ -208,15 +199,17 @@ describe('Input CT', () => {
       'datetime-local',
       'month',
       'time',
-      'week'
+      'week',
     ] as const
 
     for (const type of dateTypes) {
       it(`matches snapshot for [${type}] date input type`, async () => {
-        const screen = render(<Input type={type} />)
+        const screen = await render(<Input type={type} />)
 
         const container = screen.container
-        const input = container.querySelector(`input[type="${type}"]`) as HTMLElement
+        const input = container.querySelector(
+          `input[type="${type}"]`,
+        ) as HTMLElement
 
         expect(input).toBeDefined()
         await expect(input).toBeVisible()
@@ -225,7 +218,7 @@ describe('Input CT', () => {
     }
 
     it('matches snapshot for [file] input type', async () => {
-      const screen = render(<Input type="file" />)
+      const screen = await render(<Input type='file' />)
 
       const container = screen.container
       const input = container.querySelector('input[type="file"]') as HTMLElement
@@ -236,10 +229,12 @@ describe('Input CT', () => {
     })
 
     it('matches snapshot for [color] input type', async () => {
-      const screen = render(<Input type="color" />)
+      const screen = await render(<Input type='color' />)
 
       const container = screen.container
-      const input = container.querySelector('input[type="color"]') as HTMLElement
+      const input = container.querySelector(
+        'input[type="color"]',
+      ) as HTMLElement
 
       expect(input).toBeDefined()
       await expect(input).toBeVisible()
@@ -248,15 +243,15 @@ describe('Input CT', () => {
   })
 
   describe('Container Height Variants', () => {
-    const heights = ['sm', 'md', 'lg'] as const
+    const heights = ['fixed', 'auto'] as const
 
     for (const height of heights) {
       it(`matches snapshot for [${height}] container height`, async () => {
-        const screen = render(
+        const screen = await render(
           <Input
-            containerHeight={height}
+            containerHeight={height as 'fixed' | 'auto'}
             placeholder={`${height} height input`}
-          />
+          />,
         )
 
         const input = screen.getByRole('textbox').element()
@@ -268,18 +263,18 @@ describe('Input CT', () => {
 
   describe('Complex Combinations', () => {
     it('matches snapshot for complex input with all features', async () => {
-      const screen = render(
+      const screen = await render(
         <Input
-          startAdornment={<Icon icon="plus" data-testid="start-icon" />}
-          endAdornment={<Icon icon="minus" data-testid="end-icon" />}
+          startAdornment={<Icon icon='plus' data-testid='start-icon' />}
+          endAdornment={<Icon icon='minus' data-testid='end-icon' />}
           onClear={() => {}}
-          value="Complex input value"
+          value='Complex input value'
           onChange={() => {}}
-          border="outlined"
-          background="primary"
-          containerHeight="lg"
-          placeholder="Complex input"
-        />
+          border='full'
+          color='primary'
+          containerHeight={'auto'}
+          placeholder='Complex input'
+        />,
       )
 
       const input = screen.getByRole('textbox').element()

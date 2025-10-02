@@ -36,7 +36,7 @@ import { parseColorString } from '../../../test/utils/parsers'
 
 ```typescript
 it('renders correctly with default props', () => {
-  const { getByRole } = render(<Component>Test content</Component>)
+  const { getByRole } = await render(<Component>Test content</Component>)
   const element = getByRole('[appropriate-role]')
   expect(element).toBeDefined()
   expect(element).toHaveTextContent('Test content')
@@ -47,7 +47,7 @@ it('renders correctly with default props', () => {
 
 ```typescript
 it('applies custom className', () => {
-  const { getByRole } = render(
+  const { getByRole } = await render(
     <Component className='custom-class'>Test</Component>
   )
   const element = getByRole('[role]')
@@ -59,7 +59,7 @@ it('applies custom className', () => {
 
 ```typescript
 it('has no accessibility violations', async () => {
-  const { container } = render(<Component>Accessible content</Component>)
+  const { container } = await render(<Component>Accessible content</Component>)
   const results = await axe(container)
   expect(results).toHaveNoViolations()
 })
@@ -72,7 +72,7 @@ it('has no accessibility violations', async () => {
 ```typescript
 ELEMENT_COLOR.forEach(color => {
   it(`applies correct --trigger-color var for [${color}] color`, () => {
-    const { getByRole } = render(<Component color={color}>{color}</Component>)
+    const { getByRole } = await render(<Component color={color}>{color}</Component>)
     const element = getByRole('[role]')
     const classes = element.className
 
@@ -92,7 +92,7 @@ ELEMENT_COLOR.forEach(color => {
 ```typescript
 ELEMENT_VARIANTS.forEach(variant => {
   it(`applies correct styles for [${variant}] variant`, () => {
-    const { getByRole } = render(<Component variant={variant}>Test</Component>)
+    const { getByRole } = await render(<Component variant={variant}>Test</Component>)
     const element = getByRole('[role]')
     expect(element.className).toContain('[expected-css-class]')
   })
@@ -105,7 +105,7 @@ ELEMENT_VARIANTS.forEach(variant => {
 
 ```typescript
 it('applies [property-name] styles when [propertyName] prop is true', () => {
-  const { getByRole } = render(<Component [propertyName]>Test</Component>)
+  const { getByRole } = await render(<Component [propertyName]>Test</Component>)
   const element = getByRole('[role]')
   expect(element.className).toContain('[expected-class]')
 })
@@ -117,7 +117,7 @@ it('applies [property-name] styles when [propertyName] prop is true', () => {
 
 ```typescript
 it('default component renders correctly', async () => {
-  const screen = render(<Component>Test content</Component>)
+  const screen = await render(<Component>Test content</Component>)
   const element = screen.getByRole('[role]').element()
   await expect(element).toMatchScreenshot()
 })
@@ -130,7 +130,7 @@ for (const color of ELEMENT_COLOR) {
   for (const variant of ELEMENT_VARIANTS) {
     it(`matches snapshot for [${color}] color and [${variant}] variant`, async () => {
       const text = `${color} ${variant}`
-      const screen = render(
+      const screen = await render(
         <Component color={color} variant={variant}>
           {text}
         </Component>
@@ -147,7 +147,7 @@ for (const color of ELEMENT_COLOR) {
 
 ```typescript
 it('should correctly render [disabled] state', async () => {
-  const screen = render(<Component disabled>Test</Component>)
+  const screen = await render(<Component disabled>Test</Component>)
   const element = screen.getByRole('[role]').element()
   await expect(element).toBeDisabled()
   await expect(element).toMatchScreenshot()
@@ -158,7 +158,7 @@ it('should correctly render [disabled] state', async () => {
 
 ```typescript
 it('should correctly render [loading] state', async () => {
-  const screen = render(<Component loading>Test</Component>)
+  const screen = await render(<Component loading>Test</Component>)
   const element = screen.getByRole('[role]').element()
   await expect(element).toBeDisabled()
   await expect(element).toMatchScreenshot()
@@ -183,7 +183,7 @@ describe('Adornments', () => {
 
   for (const { description, expected, props } of scenarios) {
     it(description, async () => {
-      const screen = render(<Component {...props}>Test</Component>)
+      const screen = await render(<Component {...props}>Test</Component>)
       const element = screen.getByRole('[role]').element()
 
       for (const dataTestId of expected.dataTestId) {
