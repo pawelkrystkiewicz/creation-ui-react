@@ -1,7 +1,6 @@
 name: Visual Regression Tests
 on:
   push:
-    branches: all
   pull_request:
 jobs:
   visual-regression-test:
