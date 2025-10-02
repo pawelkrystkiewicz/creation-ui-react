@@ -22,13 +22,13 @@
     "update-screenshots": "./scripts/update-screenshots.sh"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.5",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
-    "knip": "^5.62.0",
+    "@changesets/cli": "^2.29.7",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "knip": "^5.64.1",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.5",
-    "typescript": "^5.9.2"
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3"
   },
   "packageManager": "bun@1.1.29",
   "workspaces": [
