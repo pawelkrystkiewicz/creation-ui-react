@@ -68,6 +68,7 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
       background,
       containerHeight,
       className,
+      clearable,
     ])
 
     return (
@@ -89,7 +90,7 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
             data-testid='input-clear-button'
           />
         )}
-        {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}{' '}
+        {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
       </div>
     )
   },

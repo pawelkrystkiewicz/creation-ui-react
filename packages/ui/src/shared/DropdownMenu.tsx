@@ -21,6 +21,7 @@ export const dropdownMenuClasses = cva(
     'gap-1',
     'p-1',
     'z-(--ui-z-dropdowns)',
+    'outline-transparent',
   ],
   {
     variants: {

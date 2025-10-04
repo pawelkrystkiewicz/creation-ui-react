@@ -1,7 +1,7 @@
-import type { SelectProps as HeadlessSelectProps } from '@headlessui/react'
+import type { ListboxProps } from '@headlessui/react'
 import type { InputContainerProps, InputProps } from '../'
 
-export type SelectProps = Omit<HeadlessSelectProps, 'as' | 'className'> &
+export type SelectProps = Omit<ListboxProps, 'as' | 'className'> &
   Omit<InputContainerProps, 'className'> &
   Pick<InputProps, 'cx'> & {
     multiple?: boolean
