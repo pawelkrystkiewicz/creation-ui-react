@@ -8,6 +8,8 @@ const classes = cva([
   'dark:hover:fill-error',
   'cursor-pointer',
   'select-none',
+  'size-[var(--ui-icon-height)]',
+  'flex-shrink-0',
 ])
 
 export interface ClearButtonProps extends Omit<IconProps, 'icon'> {}
