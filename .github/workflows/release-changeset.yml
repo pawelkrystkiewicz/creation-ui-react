@@ -133,7 +133,7 @@ jobs:
 
       - name: Notify Slack on Release Success
         if: steps.changesets.outputs.published == 'true'
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v1.27.1
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           slack-message: |
@@ -144,7 +144,7 @@ jobs:
 
       - name: Notify Slack on Release PR Created
         if: steps.changesets.outputs.hasChangesets == 'true'
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v1.27.1
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
           slack-message: |
@@ -155,7 +155,7 @@ jobs:
 
       - name: Notify Slack on Release Failure
         if: failure()
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v1.27.1
         with:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
           slack-message: |
