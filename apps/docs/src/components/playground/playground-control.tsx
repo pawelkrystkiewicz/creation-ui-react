@@ -1,15 +1,46 @@
 'use client'
 import { capitalize } from '@/utils/list-or-types'
-import { Input, Select, Switch, ToggleGroup } from '@creation-ui/react'
+import {
+  Input,
+  Select,
+  SelectButton,
+  Selected,
+  SelectOption,
+  SelectOptions,
+  Switch,
+  ToggleGroup,
+} from '@creation-ui/react'
 import clsx from 'clsx'
 import { get } from 'lodash'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { classes } from './classes'
 import { ColorsSelector } from './components/colors-selector'
 import { DEFAULT_CONTROLS } from './constants'
 import { usePlayground } from './context/context'
 import { PlaygroundInputField } from './playground.input-field'
-import type { PlaygroundControl } from './types'
+import type { PlaygroundControl, PlaygroundSelectValue } from './types'
+
+const PLAIN_SELECT_VALUE = ['string', 'number', 'boolean']
+type SelectComplexOption = { label: ReactNode; value: PlaygroundSelectValue }
+type SelectOptionType = PlaygroundSelectValue | SelectComplexOption
+
+const selectValue = (
+  option?: SelectOptionType,
+): PlaygroundSelectValue | undefined => {
+  if (PLAIN_SELECT_VALUE.includes(typeof option)) {
+    return option as any
+  }
+
+  return (option as SelectComplexOption)?.value
+}
+
+const selectLabel = (option?: SelectOptionType): string => {
+  if (PLAIN_SELECT_VALUE.includes(typeof option)) {
+    return option as any
+  }
+
+  return String((option as SelectComplexOption)?.label ?? '')
+}
 
 interface PlaygroundControlProps {
   property: PlaygroundControl
@@ -38,7 +69,9 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
   }
 
   const value = get(state, name)
-  const arrayValue = values?.find(v => v.value === value)
+  const arrayValue = values?.find(v => selectValue(v) === value) as
+    | PlaygroundSelectValue
+    | undefined
   const placeholder = typeof label === 'string' ? label : undefined
 
   switch (controlType) {
@@ -47,20 +80,30 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
         <PlaygroundInputField
           label={label}
           helperText={helperText}
-          value={typeof value === 'string' ? value : (value as any).label}
+          value={selectLabel(value as SelectOptionType)}
         >
           <Select
-            name={name}
-            multiple={false}
-            onChange={handleInputChange}
-            // @ts-expect-error
-            value={value}
+            value={value as string}
+            onChange={handlePlainChange}
+            cx={{
+              container: 'w-full',
+            }}
           >
-            {(values ?? []).map(opt => (
-              <option value={opt} key={opt}>
-                {opt}
-              </option>
-            ))}
+            <SelectButton className='w-full'>
+              <Selected placeholder='Select option' />
+            </SelectButton>
+            <SelectOptions>
+              {(values ?? []).map(option => {
+                const value = selectValue(option as SelectOptionType)
+                const label = selectLabel(option)
+
+                return (
+                  <SelectOption key={value} value={value as string}>
+                    {label}
+                  </SelectOption>
+                )
+              })}
+            </SelectOptions>
           </Select>
         </PlaygroundInputField>
       )
@@ -79,7 +122,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
       return (
         <ColorsSelector
           label={label}
-          value={arrayValue}
+          value={arrayValue as any}
           options={(values ?? []) as any}
           onClick={handlePlainChange}
           helperText={helperText}
@@ -87,11 +130,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
       )
     case 'switch':
       return (
-        <PlaygroundInputField
-          type='row'
-          label={label}
-          helperText={helperText}
-        >
+        <PlaygroundInputField type='row' label={label} helperText={helperText}>
           <Switch checked={value as boolean} onChange={handlePlainChange} />
         </PlaygroundInputField>
       )

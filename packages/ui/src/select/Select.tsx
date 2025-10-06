@@ -1,47 +1,29 @@
-import { Listbox, ListboxButton, ListboxOptions } from '@headlessui/react'
-import { ForwardedRef, forwardRef, useMemo } from 'react'
-import { DropdownChevron } from '../dropdown-chevron'
+import { Listbox } from '@headlessui/react'
+import { ForwardedRef, forwardRef, ReactNode } from 'react'
 import { InputContainer } from '../input-container/InputContainer'
 import { SelectProps } from './types'
-import { DropdownMenu } from '../shared'
-import { ClearButton } from '../clear-button'
+import { SelectContext } from './SelectContext'
 
-export const Select = forwardRef(function Select(
-  {
-    multiple,
-    startAdornment,
-    endAdornment,
-    onClear,
-    children,
-    cx,
-    ...props
-  }: SelectProps,
-  ref: ForwardedRef<HTMLDivElement>,
-) {
-  const isClearable = useMemo(
-    () =>
-      Boolean(
-        !props?.disabled && typeof onClear === 'function' && !!props?.value,
-      ),
-    [props?.disabled, props?.value],
-  )
+interface SelectComponentProps extends SelectProps {
+  children: ReactNode
+  onClear?: () => void
+}
 
-  return (
-    <InputContainer
-      className={cx?.container}
-      endAdornment={endAdornment}
-      startAdornment={startAdornment}
-      hasValue={!!props?.value}
-      disabled={props?.disabled}
-      readOnly={props?.readOnly}
-      containerHeight={multiple ? 'auto' : 'fixed'}
-      border={props?.border}
-      background={props?.background}
-    >
-      <>
+export const Select = forwardRef<HTMLDivElement, SelectComponentProps>(
+  ({ startAdornment, endAdornment, children, cx, onClear, ...props }, ref) => {
+    return (
+      <InputContainer
+        className={cx?.container}
+        endAdornment={endAdornment}
+        startAdornment={startAdornment}
+        hasValue={!!props?.value}
+        disabled={props?.disabled}
+        readOnly={props?.readOnly}
+        border={props?.border}
+        background={props?.background}
+      >
         <Listbox
           ref={ref}
-          multiple={multiple}
           value={props.value}
           onChange={props.onChange}
           disabled={props.disabled}
@@ -50,34 +32,37 @@ export const Select = forwardRef(function Select(
           name={props.name}
           refName={props.refName}
         >
-          {({ open }) => (
-            <>
-              <ListboxButton
-                className={
-                  'flex items-center cursor-pointer justify-between w-full min-h-full'
-                }
-              >
-                <span className=''>{props.value}</span>
-                <div className='flex items-center gap-1'>
-                  {isClearable && <ClearButton onClick={onClear} />}
-                  <DropdownChevron open={open} />
-                </div>
-              </ListboxButton>
-              <ListboxOptions
-                transition
-                className='outline-transparent -ml-3.5 transition micro-interactions data-closed:opacity-0 '
-              >
-                <DropdownMenu
-                  className='mt-3 w-[calc(100%-theme(spacing.10))]'
-                  open={open}
-                >
-                  {children}
-                </DropdownMenu>
-              </ListboxOptions>
-            </>
-          )}
+          {({ open, disabled, invalid, value }) => {
+            const contextValue = {
+              open,
+              disabled: disabled || false,
+              invalid: invalid || false,
+              value,
+              onClear,
+            }
+
+            return (
+              <SelectContext.Provider value={contextValue}>
+                {children}
+              </SelectContext.Provider>
+            )
+          }}
         </Listbox>
-      </>
-    </InputContainer>
-  )
-})
+      </InputContainer>
+    )
+  },
+)
+
+/**
+ *
+ * <Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+ */

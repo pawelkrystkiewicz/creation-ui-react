@@ -16,13 +16,17 @@ export type PlaygroundControls =
   | 'nested'
   | 'select'
 
+export type PlaygroundSelectValue = string | number
+
 export type PlaygroundControl = {
   name: string
   type: PlaygroundValueType
   label?: ReactNode
   component?: PlaygroundControls
   defaultValue?: PlaygroundValues
-  values?: any[]
+  values?:
+    | PlaygroundSelectValue[]
+    | { label: ReactNode; value: PlaygroundSelectValue }[]
   controls?: PlaygroundControl[]
   helperText?: string
   noBracesInReplacement?: boolean

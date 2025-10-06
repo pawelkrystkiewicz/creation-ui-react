@@ -1,3 +1,7 @@
 export * from './Select'
+export * from './SelectButton'
+export * from './Selected'
 export * from './SelectOption'
+export * from './SelectOptions'
+export * from './SelectContext'
 export * from './types'

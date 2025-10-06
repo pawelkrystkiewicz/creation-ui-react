@@ -3,28 +3,32 @@ import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import {
   disabledControl,
+  inputBackgroundControl,
+  inputBorderControl,
   labelControl,
   loadingControl,
-  variantControl,
 } from './shared-playground-controls'
 
 import { PlaygroundInputField } from '@/components/playground/playground.input-field'
 import {
   Field,
-  Icon,
   Label,
   Select,
+  SelectButton,
+  Selected,
+  SelectOptions,
   SelectOption,
   type SelectProps,
 } from '@creation-ui/react'
-import { iconProp } from './shared-props'
 import { useState } from 'react'
-import clsx from 'clsx'
+import { iconProp } from './shared-props'
 
 export const SelectExample = (
-  props: SelectProps & { required?: boolean; label?: string },
+  props: SelectProps & {
+    required?: boolean
+    label?: string
+  },
 ) => {
-  const width = 'w-32'
   const options = [
     { value: 'USD', label: 'USD' },
     { value: 'EUR', label: 'EUR' },
@@ -37,36 +41,21 @@ export const SelectExample = (
   const onClear = () => {
     setSelected(undefined)
   }
+
   return (
     <Field disabled={props.disabled}>
       <Label required={props.required}>{props.label}</Label>
-      <Select
-        name='currency'
-        {...props}
-        value={selected}
-        onChange={setSelected}
-        onClear={onClear}
-        cx={{
-          container: width,
-        }}
-      >
-        {options.map(option => (
-          <SelectOption
-            key={option.value}
-            value={option.value}
-            selected={option.value === selected}
-            className={width}
-          >
-            {option.label}
-            <Icon
-              icon='check'
-              className={clsx(
-                'text-primary micro-interactions',
-                option.value === selected ? 'opacity-100' : 'opacity-0',
-              )}
-            />
-          </SelectOption>
-        ))}
+      <Select {...props} value={selected} onChange={setSelected}>
+        <SelectButton className={'w-[180px]'} onClear={onClear}>
+          <Selected placeholder='Currency' />
+        </SelectButton>
+        <SelectOptions>
+          {options.map(option => (
+            <SelectOption key={option.value} value={option.value}>
+              {option.label}
+            </SelectOption>
+          ))}
+        </SelectOptions>
       </Select>
     </Field>
   )
@@ -89,30 +78,39 @@ export const SelectPlayground = () => (
     <Playground
       component={SelectExample}
       controls={[
-        variantControl,
         loadingControl,
         disabledControl,
-        {
-          name: 'multiple',
-          type: 'boolean',
-        },
         labelControl,
+        inputBorderControl,
+        inputBackgroundControl,
       ]}
       code={`
-import { Select, type SelectProps } from '@creation-ui/react'
+        import {
+          Select,
+          SelectButton,
+          Selected,
+          SelectOptions,
+          SelectOption,
+          type SelectProps
+        } from '@creation-ui/react'
 
-export const SelectExample = (props: SelectProps) => {
-  return (
-    <Select name='currency' {{props}}>
-      <option value='USD'>USD</option>
-      <option value='EUR'>EUR</option>
-      <option value='GBP'>GBP</option>
-      <option value='CAD'>CAD</option>
-      <option value='PLN'>PLN</option>
-    </Select>
-  )
-}
-  `}
+        export const SelectElegantExample = (props: SelectProps) => {
+          return (
+            <Select {{props}}>
+              <SelectButton className="w-[180px]">
+                <Selected placeholder="Currency" />
+              </SelectButton>
+              <SelectOptions>
+                <SelectOption value="USD">USD</SelectOption>
+                <SelectOption value="EUR">EUR</SelectOption>
+                <SelectOption value="GBP">GBP</SelectOption>
+                <SelectOption value="CAD">CAD</SelectOption>
+                <SelectOption value="PLN">PLN</SelectOption>
+              </SelectOptions>
+            </Select>
+          )
+        }
+          `}
     />
   </>
 )
