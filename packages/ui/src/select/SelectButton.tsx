@@ -8,12 +8,11 @@ import { useSelectContext } from './SelectContext'
 interface SelectButtonProps {
   children?: ReactNode
   className?: string
-  onClear?: () => void
 }
 
 export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
-  ({ children, className, onClear }, ref) => {
-    const { open, disabled, value } = useSelectContext()
+  ({ children, className }, ref) => {
+    const { open, disabled, value, onClear } = useSelectContext()
 
     const isClearable = Boolean(
       !disabled && typeof onClear === 'function' && !!value,
@@ -35,7 +34,13 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
       >
         {children}
         <div className='flex items-center gap-1'>
-          {isClearable && <ClearButton onClick={handleClear} role='button' />}
+          {isClearable && (
+            <ClearButton
+              onClick={handleClear}
+              role='button'
+              className='z-10'
+            />
+          )}
           <DropdownChevron open={open} />
         </div>
       </ListboxButton>

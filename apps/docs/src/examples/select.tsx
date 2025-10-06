@@ -29,30 +29,29 @@ export const SelectExample = (
     label?: string
   },
 ) => {
-  const options = [
-    { value: 'USD', label: 'USD' },
-    { value: 'EUR', label: 'EUR' },
-    { value: 'GBP', label: 'GBP' },
-    { value: 'CAD', label: 'CAD' },
-    { value: 'PLN', label: 'PLN' },
-  ]
-  const [selected, setSelected] = useState<string | undefined>(options[0].value)
+  const options = ['USD', 'EUR', 'GBP', 'CAD', 'PLN']
+  const [selected, setSelected] = useState<string | null>(options[0])
 
   const onClear = () => {
-    setSelected(undefined)
+    setSelected(null)
   }
 
   return (
     <Field disabled={props.disabled}>
       <Label required={props.required}>{props.label}</Label>
-      <Select {...props} value={selected} onChange={setSelected}>
-        <SelectButton className={'w-[180px]'} onClear={onClear}>
+      <Select
+        {...props}
+        value={selected}
+        onChange={setSelected}
+        onClear={onClear}
+      >
+        <SelectButton className={'w-[180px]'}>
           <Selected placeholder='Currency' />
         </SelectButton>
         <SelectOptions>
           {options.map(option => (
-            <SelectOption key={option.value} value={option.value}>
-              {option.label}
+            <SelectOption key={option} value={option}>
+              {option}
             </SelectOption>
           ))}
         </SelectOptions>

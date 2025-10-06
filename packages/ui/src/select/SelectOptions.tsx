@@ -22,7 +22,7 @@ export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
         ref={ref}
         transition
         className={twMerge(
-          'outline-transparent transition micro-interactions data-closed:opacity-0 -mx-3.5 !z-(--ui-z-dropdowns) bg-background-primary',
+          'outline-transparent transition micro-interactions data-closed:opacity-0 -mx-3.5 bg-background-primary',
           className,
         )}
       >

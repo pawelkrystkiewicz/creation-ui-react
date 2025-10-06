@@ -16,15 +16,14 @@ export interface ClearButtonProps extends Omit<IconProps, 'icon'> {}
 
 export const ClearButton = forwardRef<any, ClearButtonProps>(
   ({ onClick, className, ...props }, ref) => (
-    <div role='button'>
-      <Icon
-        ref={ref}
-        icon='close'
-        onClick={onClick}
-        className={twMerge(classes(), className)}
-        aria-hidden='true'
-        {...props}
-      />
-    </div>
+    <Icon
+      ref={ref}
+      icon='close'
+      onClick={onClick}
+      className={twMerge(classes(), className)}
+      role='button'
+      aria-hidden='true'
+      {...props}
+    />
   ),
 )

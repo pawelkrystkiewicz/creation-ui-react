@@ -4,13 +4,18 @@ import { InputContainer } from '../input-container/InputContainer'
 import { SelectProps } from './types'
 import { SelectContext } from './SelectContext'
 
-interface SelectComponentProps extends SelectProps {
+interface SelectComponentProps<T = string> extends SelectProps<T> {
   children: ReactNode
+  /**
+   * Callback when clear button is clicked
+   */
   onClear?: () => void
 }
 
 export const Select = forwardRef<HTMLDivElement, SelectComponentProps>(
   ({ startAdornment, endAdornment, children, cx, onClear, ...props }, ref) => {
+    const { value, onChange, disabled, horizontal, invalid, name, refName } =
+      props
     return (
       <InputContainer
         className={cx?.container}
@@ -24,13 +29,13 @@ export const Select = forwardRef<HTMLDivElement, SelectComponentProps>(
       >
         <Listbox
           ref={ref}
-          value={props.value}
-          onChange={props.onChange}
-          disabled={props.disabled}
-          horizontal={props.horizontal}
-          invalid={props.invalid}
-          name={props.name}
-          refName={props.refName}
+          value={value ?? undefined}
+          onChange={onChange}
+          disabled={disabled}
+          horizontal={horizontal}
+          invalid={invalid}
+          name={name}
+          refName={refName}
         >
           {({ open, disabled, invalid, value }) => {
             const contextValue = {
