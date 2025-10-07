@@ -122,7 +122,7 @@ export const properties: DocumentedProperty[] = [
   },
   {
     ...iconProp,
-    name: 'starAdornment',
+    name: 'startAdornment',
     description: "E.g. icon on the left side of the component's children",
   },
   {

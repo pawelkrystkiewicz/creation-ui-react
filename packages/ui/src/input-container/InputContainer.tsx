@@ -44,7 +44,7 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
 
     const clearable = useMemo(
       () => Boolean(!isDisabled && typeof onClear === 'function' && hasValue),
-      [isDisabled, hasValue],
+      [isDisabled, hasValue, onClear],
     )
 
     const classes = useMemo(() => {
