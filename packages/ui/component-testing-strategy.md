@@ -20,11 +20,7 @@ import { render } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { verifyComputedStyles } from '../../../test/utils/helpers'
-
-// For visual tests (.visual.spec.tsx)
-import { describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
-import { verifyComputedStyles } from '../../../test/utils/helpers'
+//+ For visual tests (.visual.spec.tsx)
 import { parseColorString } from '../../../test/utils/parsers'
 ```
 

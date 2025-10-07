@@ -1,4 +1,4 @@
-import { render } from 'vitest-browser-react'
+import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import {
   Card,
@@ -13,7 +13,7 @@ import { verifyComputedStyles } from '../../../test/utils/helpers'
 
 describe('Card CT', () => {
   it('renders basic card with all components', async () => {
-    const screen = await render(
+    const { getByTestId } = render(
       <Card data-testid='card'>
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
@@ -28,8 +28,8 @@ describe('Card CT', () => {
       </Card>,
     )
 
-    const card = screen.getByTestId('card').element()
-    await expect(card).toBeVisible()
+    const card = getByTestId('card')
+    expect(card).toBeVisible()
     await expect(card).toMatchScreenshot()
 
     // Verify basic card styles
@@ -48,7 +48,7 @@ describe('Card CT', () => {
   })
 
   it('renders card with stats', async () => {
-    const screen = await render(
+    const { getByTestId, getByText } = render(
       <Card data-testid='stats-card'>
         <CardHeader>
           <CardTitle>Statistics</CardTitle>
@@ -61,12 +61,12 @@ describe('Card CT', () => {
       </Card>,
     )
 
-    const card = screen.getByTestId('stats-card').element()
-    await expect(card).toBeVisible()
+    const card = getByTestId('stats-card')
+    expect(card).toBeVisible()
     await expect(card).toMatchScreenshot()
 
     // Verify stats styles
-    const stats = screen.getByText('1,234').element()
+    const stats = getByText('1,234')
     await verifyComputedStyles(
       stats,
       {
@@ -80,7 +80,7 @@ describe('Card CT', () => {
   })
 
   it('renders card as link when href is provided', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Card href='/example' data-testid='link-card'>
         <CardContent>
           <CardTitle>Clickable Card</CardTitle>
@@ -89,9 +89,9 @@ describe('Card CT', () => {
       </Card>,
     )
 
-    const link = screen.getByRole('link').element()
-    await expect(link).toBeVisible()
-    await expect(link).toHaveAttribute('href', '/example')
+    const link = getByRole('link')
+    expect(link).toBeVisible()
+    expect(link).toHaveAttribute('href', '/example')
     await expect(link).toMatchScreenshot()
 
     // Verify link styles
@@ -105,7 +105,7 @@ describe('Card CT', () => {
   })
 
   it('renders card with custom className', async () => {
-    const screen = await render(
+    const { getByTestId } = render(
       <Card data-testid='custom-card' className='bg-blue-100 border-blue-300'>
         <CardContent>
           <CardTitle>Custom Styled Card</CardTitle>
@@ -114,8 +114,8 @@ describe('Card CT', () => {
       </Card>,
     )
 
-    const card = screen.getByTestId('custom-card').element()
-    await expect(card).toBeVisible()
+    const card = getByTestId('custom-card')
+    expect(card).toBeVisible()
     await expect(card).toMatchScreenshot()
 
     // Verify custom classes are applied
@@ -125,12 +125,12 @@ describe('Card CT', () => {
 
   describe('Card Components', () => {
     it('renders CardTitle with correct styles', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <CardTitle data-testid='title'>Test Title</CardTitle>,
       )
 
-      const title = screen.getByTestId('title').element()
-      await expect(title).toBeVisible()
+      const title = getByTestId('title')
+      expect(title).toBeVisible()
       await expect(title).toMatchScreenshot()
 
       await verifyComputedStyles(
@@ -146,14 +146,14 @@ describe('Card CT', () => {
     })
 
     it('renders CardDescription with correct styles', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <CardDescription data-testid='description'>
           Test description
         </CardDescription>,
       )
 
-      const description = screen.getByTestId('description').element()
-      await expect(description).toBeVisible()
+      const description = getByTestId('description')
+      expect(description).toBeVisible()
       await expect(description).toMatchScreenshot()
 
       await verifyComputedStyles(
@@ -166,14 +166,14 @@ describe('Card CT', () => {
     })
 
     it('renders CardHeader with full width', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <CardHeader data-testid='header'>
           <CardTitle>Header Title</CardTitle>
         </CardHeader>,
       )
 
-      const header = screen.getByTestId('header').element()
-      await expect(header).toBeVisible()
+      const header = getByTestId('header')
+      expect(header).toBeVisible()
       await expect(header).toMatchScreenshot()
 
       await verifyComputedStyles(
@@ -186,15 +186,15 @@ describe('Card CT', () => {
     })
 
     it('renders CardFooter with flex layout', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <CardFooter data-testid='footer'>
           <button>Button 1</button>
           <button>Button 2</button>
         </CardFooter>,
       )
 
-      const footer = screen.getByTestId('footer').element()
-      await expect(footer).toBeVisible()
+      const footer = getByTestId('footer')
+      expect(footer).toBeVisible()
       await expect(footer).toMatchScreenshot()
 
       await verifyComputedStyles(
@@ -209,14 +209,14 @@ describe('Card CT', () => {
     })
 
     it('renders CardContent as simple container', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <CardContent data-testid='content'>
           <p>Content goes here</p>
         </CardContent>,
       )
 
-      const content = screen.getByTestId('content').element()
-      await expect(content).toBeVisible()
+      const content = getByTestId('content')
+      expect(content).toBeVisible()
       await expect(content).toMatchScreenshot()
 
       expect(content.tagName).toBe('DIV')
@@ -225,19 +225,19 @@ describe('Card CT', () => {
 
   describe('Card Layout Variations', () => {
     it('renders minimal card with just content', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <Card data-testid='minimal-card'>
           <CardContent>Simple content</CardContent>
         </Card>,
       )
 
-      const card = screen.getByTestId('minimal-card').element()
-      await expect(card).toBeVisible()
+      const card = getByTestId('minimal-card')
+      expect(card).toBeVisible()
       await expect(card).toMatchScreenshot()
     })
 
     it('renders card with complex content structure', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <Card data-testid='complex-card'>
           <CardHeader>
             <CardTitle>Complex Card</CardTitle>
@@ -258,13 +258,13 @@ describe('Card CT', () => {
         </Card>,
       )
 
-      const card = screen.getByTestId('complex-card').element()
-      await expect(card).toBeVisible()
+      const card = getByTestId('complex-card')
+      expect(card).toBeVisible()
       await expect(card).toMatchScreenshot()
     })
 
     it('renders nested card structure', async () => {
-      const screen = await render(
+      const { getByTestId } = render(
         <Card data-testid='outer-card'>
           <CardHeader>
             <CardTitle>Outer Card</CardTitle>
@@ -280,11 +280,11 @@ describe('Card CT', () => {
         </Card>,
       )
 
-      const outerCard = screen.getByTestId('outer-card').element()
-      const innerCard = screen.getByTestId('inner-card').element()
+      const outerCard = getByTestId('outer-card')
+      const innerCard = getByTestId('inner-card')
 
-      await expect(outerCard).toBeVisible()
-      await expect(innerCard).toBeVisible()
+      expect(outerCard).toBeVisible()
+      expect(innerCard).toBeVisible()
       await expect(outerCard).toMatchScreenshot()
     })
   })

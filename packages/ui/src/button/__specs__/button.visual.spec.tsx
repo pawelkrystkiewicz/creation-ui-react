@@ -1,11 +1,17 @@
 import { describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
 import { Button } from '..'
 import { verifyComputedStyles } from '../../../test/utils/helpers'
 import { parseColorString } from '../../../test/utils/parsers'
 import { Icon } from '../../icon'
 import { ELEMENT_COLOR, ELEMENT_VARIANTS } from '../../types'
 import { scenarios } from './test-data'
+import { page } from 'vitest/browser'
+import { render } from '@testing-library/react'
+
+const getButton = (baseElement: HTMLElement) => {
+  const screen = page.elementLocator(baseElement)
+  return screen.getByRole('button').element()
+}
 
 describe('Button CT', () => {
   it('default button renders correctly with children', async () => {
@@ -13,10 +19,11 @@ describe('Button CT', () => {
     const clickHandler = vi.fn()
     const label = 'Button'
 
-    const screen = await render(<Button onClick={clickHandler}>{label}</Button>)
+    const { baseElement } = await render(
+      <Button onClick={clickHandler}>{label}</Button>,
+    )
 
-    const buttonSelector = screen.getByRole('button')
-    const button = buttonSelector.element()
+    const button = getButton(baseElement)
 
     expect(button).toBeEnabled()
     expect(button).toHaveTextContent(label)
@@ -26,7 +33,6 @@ describe('Button CT', () => {
     await expect(button).toMatchScreenshot()
 
     const cssColor = button.computedStyleMap().get('color')?.toString()
-    console.log(cssColor)
     const parsedColor = parseColorString(cssColor)
     /**
      * full color is oklch(0.6048 0.2165 257.21)
@@ -54,14 +60,14 @@ describe('Button CT', () => {
             {buttonText}
           </Button>,
         )
-        await expect(screen.getByText(buttonText).element()).toMatchScreenshot()
+        await expect(screen.getByText(buttonText)).toMatchScreenshot()
       })
     }
   }
 
   it('renders as a link when href is provided', async () => {
     const screen = await render(<Button href='/test'>Link</Button>)
-    const link = screen.getByRole('link').element()
+    const link = screen.getByRole('link')
     await expect(link).toBeVisible()
     await expect(link).toBeEnabled()
     await expect(link).toHaveAttribute('href', '/test')
@@ -104,14 +110,14 @@ describe('Button CT', () => {
     for (const { description, expected, props } of scenarios) {
       it(description, async () => {
         const screen = await render(<Button {...props}>Button text</Button>)
-        const button = screen.getByRole('button').element()
+        const button = screen.getByRole('button')
         await expect(button).toBeVisible()
         await expect(button)[
           expected.disabled ? 'toBeDisabled' : 'toBeEnabled'
         ]()
 
         for (const dataTestId of expected.dataTestId) {
-          await expect(screen.getByTestId(dataTestId).element()).toBeVisible()
+          await expect(screen.getByTestId(dataTestId)).toBeVisible()
         }
         await expect(button).toMatchScreenshot()
       })
@@ -125,7 +131,7 @@ describe('Button CT', () => {
      */
     it('should correctly render [disabled] button', async () => {
       const screen = await render(<Button disabled>Button text</Button>)
-      const button = screen.getByRole('button').element()
+      const button = screen.getByRole('button')
       await expect(button).toBeVisible()
       await expect(button).toBeDisabled()
 
@@ -140,16 +146,20 @@ describe('Button CT', () => {
 
     it('should correctly render [loading] button', async () => {
       const screen = await render(<Button loading>Button text</Button>)
-      const button = screen.getByRole('button').element()
+      const button = screen.getByRole('button')
       await expect(button).toBeVisible()
       await expect(button).toBeDisabled()
       await expect(button).toMatchScreenshot()
-      await verifyComputedStyles(button, scenarios.loading.expected.css, 'button:loading')
+      await verifyComputedStyles(
+        button,
+        scenarios.loading.expected.css,
+        'button:loading',
+      )
     })
 
     it.skip('should correctly render [default] button state', async () => {
       const screen = await render(<Button>Button text</Button>)
-      const button = screen.getByRole('button').element()
+      const button = screen.getByRole('button')
 
       await expect(button).toBeVisible()
       await expect(button).toBeEnabled()
@@ -158,12 +168,18 @@ describe('Button CT', () => {
       })
 
       await expect(button).toMatchScreenshot()
-      await verifyComputedStyles(button, scenarios.default.expected.css, 'button:default')
+      await verifyComputedStyles(
+        button,
+        scenarios.default.expected.css,
+        'button:default',
+      )
     })
 
     it.skip('should correctly render [active] button state', async () => {
-      const screen = await render(<Button data-active='true'>Button text</Button>)
-      const button = screen.getByRole('button').element()
+      const screen = await render(
+        <Button data-active='true'>Button text</Button>,
+      )
+      const button = screen.getByRole('button')
 
       await expect(button).toBeVisible()
       await expect(button).toBeEnabled()
@@ -173,31 +189,47 @@ describe('Button CT', () => {
       expect(button).toHaveAttribute('data-active', 'true')
 
       await expect(button).toMatchScreenshot()
-      await verifyComputedStyles(button, scenarios.active.expected.css, 'button:active')
+      await verifyComputedStyles(
+        button,
+        scenarios.active.expected.css,
+        'button:active',
+      )
     })
 
     it.skip('should correctly render [focus] button state', async () => {
-      const screen = await render(<Button data-focus='true'>Button text</Button>)
-      const button = screen.getByRole('button').element()
+      const screen = await render(
+        <Button data-focus='true'>Button text</Button>,
+      )
+      const button = screen.getByRole('button')
 
       await expect(button).toBeVisible()
       await expect(button).toBeEnabled()
       expect(button).toHaveAttribute('data-focus', 'true')
 
       await expect(button).toMatchScreenshot()
-      await verifyComputedStyles(button, scenarios.focus.expected.css, 'button:focus')
+      await verifyComputedStyles(
+        button,
+        scenarios.focus.expected.css,
+        'button:focus',
+      )
     })
 
     it.skip('should correctly render [hover] button state', async () => {
-      const screen = await render(<Button data-hover='true'>Button text</Button>)
-      const button = screen.getByRole('button').element()
+      const screen = await render(
+        <Button data-hover='true'>Button text</Button>,
+      )
+      const button = screen.getByRole('button')
 
       await expect(button).toBeVisible()
       await expect(button).toBeEnabled()
       expect(button).toHaveAttribute('data-hover', 'true')
 
       await expect(button).toMatchScreenshot()
-      await verifyComputedStyles(button, scenarios.hover.expected.css, 'button:hover')
+      await verifyComputedStyles(
+        button,
+        scenarios.hover.expected.css,
+        'button:hover',
+      )
     })
   })
 })

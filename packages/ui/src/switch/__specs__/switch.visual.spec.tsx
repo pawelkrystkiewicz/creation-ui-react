@@ -1,55 +1,57 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'vitest-browser-react'
-import { Switch, SwitchField } from '..'
+import { render } from '@testing-library/react'
+import { Switch, SwitchField } from '../'
 
 describe('Switch Visual Tests', () => {
   it('default component renders correctly', async () => {
-    const screen = await render(<Switch />)
-    const element = screen.getByRole('switch').element()
+    const { getByRole } = render(<Switch />)
+    const element = getByRole('switch')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render checked state', async () => {
-    const screen = await render(<Switch checked onChange={() => {}} />)
-    const element = screen.getByRole('switch').element()
-    await expect(element).toBeChecked()
+    const { getByRole } = render(<Switch checked onChange={() => {}} />)
+    const element = getByRole('switch')
+    expect(element).toBeChecked()
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render unchecked state', async () => {
-    const screen = await render(<Switch checked={false} onChange={() => {}} />)
-    const element = screen.getByRole('switch').element()
-    await expect(element).not.toBeChecked()
+    const { getByRole } = render(<Switch checked={false} onChange={() => {}} />)
+    const element = getByRole('switch')
+    expect(element).not.toBeChecked()
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render disabled state', async () => {
-    const screen = await render(<Switch disabled />)
-    const element = screen.getByRole('switch').element()
-    await expect(element).toHaveAttribute('data-disabled')
+    const { getByRole } = render(<Switch disabled />)
+    const element = getByRole('switch')
+    expect(element).toHaveAttribute('data-disabled')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render disabled checked state', async () => {
-    const screen = await render(<Switch disabled checked onChange={() => {}} />)
-    const element = screen.getByRole('switch').element()
-    await expect(element).toHaveAttribute('data-disabled')
-    await expect(element).toBeChecked()
+    const { getByRole } = render(
+      <Switch disabled checked onChange={() => {}} />,
+    )
+    const element = getByRole('switch')
+    expect(element).toHaveAttribute('data-disabled')
+    expect(element).toBeChecked()
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render disabled unchecked state', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Switch disabled checked={false} onChange={() => {}} />,
     )
-    const element = screen.getByRole('switch').element()
-    await expect(element).toHaveAttribute('data-disabled')
-    await expect(element).not.toBeChecked()
+    const element = getByRole('switch')
+    expect(element).toHaveAttribute('data-disabled')
+    expect(element).not.toBeChecked()
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render switch field with label', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <SwitchField>
         <label
           data-slot='label'
@@ -60,12 +62,12 @@ describe('Switch Visual Tests', () => {
         <Switch />
       </SwitchField>,
     )
-    const element = screen.getByRole('switch').element()
+    const element = getByRole('switch')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render switch field with label and description', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <SwitchField>
         <label
           data-slot='label'
@@ -82,12 +84,12 @@ describe('Switch Visual Tests', () => {
         <Switch checked onChange={() => {}} />
       </SwitchField>,
     )
-    const element = screen.getByRole('switch').element()
+    const element = getByRole('switch')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render multiple switch fields', async () => {
-    const screen = await render(
+    const { container } = render(
       <div
         style={{
           display: 'flex',
@@ -126,6 +128,6 @@ describe('Switch Visual Tests', () => {
       </div>,
     )
 
-    await expect(screen.container).toMatchScreenshot()
+    await expect(container).toMatchScreenshot()
   })
 })
