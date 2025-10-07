@@ -25,6 +25,7 @@ export const ToggleGroup = ({
         className,
       )}
       disabled={disabled}
+      value={value}
       onChange={onChange}
     >
       {options?.map(
