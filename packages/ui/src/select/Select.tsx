@@ -1,10 +1,13 @@
 import { Listbox } from '@headlessui/react'
-import { ForwardedRef, forwardRef, ReactNode } from 'react'
+import React, { forwardRef, ReactNode } from 'react'
 import { InputContainer } from '../input-container/InputContainer'
-import { SelectProps } from './types'
 import { SelectContext } from './SelectContext'
+import { SelectProps } from './types'
 
 interface SelectComponentProps<T = string> extends SelectProps<T> {
+  /**
+   * Children to render
+   */
   children: ReactNode
   /**
    * Callback when clear button is clicked
@@ -12,8 +15,18 @@ interface SelectComponentProps<T = string> extends SelectProps<T> {
   onClear?: () => void
 }
 
-export const Select = forwardRef<HTMLDivElement, SelectComponentProps>(
-  ({ startAdornment, endAdornment, children, cx, onClear, ...props }, ref) => {
+export const Select = forwardRef(
+  <T = string,>(
+    {
+      startAdornment,
+      endAdornment,
+      children,
+      cx,
+      onClear,
+      ...props
+    }: SelectComponentProps<T>,
+    ref: React.Ref<HTMLDivElement>,
+  ) => {
     const { value, onChange, disabled, horizontal, invalid, name, refName } =
       props
     return (
@@ -29,6 +42,7 @@ export const Select = forwardRef<HTMLDivElement, SelectComponentProps>(
       >
         <Listbox
           ref={ref}
+          // @ts-expect-error -- listbox doesn't support generics
           value={value ?? undefined}
           onChange={onChange}
           disabled={disabled}
@@ -57,17 +71,3 @@ export const Select = forwardRef<HTMLDivElement, SelectComponentProps>(
     )
   },
 )
-
-/**
- *
- * <Select>
-  <SelectTrigger className="w-[180px]">
-    <SelectValue placeholder="Theme" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="light">Light</SelectItem>
-    <SelectItem value="dark">Dark</SelectItem>
-    <SelectItem value="system">System</SelectItem>
-  </SelectContent>
-</Select>
- */

@@ -1,9 +1,21 @@
 import { ListboxButton } from '@headlessui/react'
 import { forwardRef, ReactNode } from 'react'
+import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { ClearButton } from '../clear-button'
 import { DropdownChevron } from '../dropdown-chevron'
 import { useSelectContext } from './SelectContext'
+
+const buttonClasses = cva(
+  ['flex items-center cursor-pointer justify-between w-full min-h-full'],
+  {
+    variants: {
+      disabled: {
+        true: ['opacity-50', 'pointer-events-none'],
+      },
+    },
+  },
+)
 
 interface SelectButtonProps {
   children?: ReactNode
@@ -27,21 +39,12 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
     return (
       <ListboxButton
         ref={ref}
-        className={twMerge(
-          'flex items-center cursor-pointer justify-between w-full min-h-full',
-          className,
-        )}
+        className={twMerge(buttonClasses({ disabled }), className)}
       >
         {children}
         <div className='flex items-center gap-1'>
-          {isClearable && (
-            <ClearButton
-              onClick={handleClear}
-              role='button'
-              className='z-10'
-            />
-          )}
-          <DropdownChevron open={open} />
+          {isClearable && <ClearButton onClick={handleClear} role='button' />}
+          <DropdownChevron open={open} disabled={disabled} />
         </div>
       </ListboxButton>
     )
