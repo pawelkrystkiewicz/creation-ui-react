@@ -1,9 +1,11 @@
-import type { PlaygroundControl } from '../types'
+import type { PlaygroundControl, PlaygroundState } from '../types'
 
-export const prepareInitialState = (controls: PlaygroundControl[]) =>
-  controls?.reduce(
+export const prepareInitialState = (controls: PlaygroundControl[]): PlaygroundState => {
+  if (!controls) return {}
+  
+  return controls.reduce(
     (
-      acc: Record<string, unknown>,
+      acc: any,
       { type, name, defaultValue, values, controls: c },
     ) => {
       if (c) {
@@ -18,10 +20,11 @@ export const prepareInitialState = (controls: PlaygroundControl[]) =>
           : type === 'string'
             ? ''
             : type === 'array'
-              ? first.value
+              ? typeof first === 'object' && first !== null ? first.value : first
               : null
 
       return { ...acc, [name]: defaultValue ?? fallback }
     },
-    {},
-  )
+    {} as PlaygroundState,
+  ) as PlaygroundState
+}

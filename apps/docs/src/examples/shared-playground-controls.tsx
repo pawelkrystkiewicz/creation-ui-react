@@ -139,7 +139,7 @@ export const colorControl: PlaygroundControl = {
   type: 'array',
   defaultValue: 'primary',
   component: 'colors',
-  values: COLORS,
+  values: COLORS as any,
 }
 
 export const colorsBlackAndWhite: PlaygroundControl = {
@@ -159,7 +159,7 @@ export const colorsBlackAndWhite: PlaygroundControl = {
       label: 'White',
       className: 'bg-white border-border border',
     },
-  ],
+  ] as any,
 }
 
 export const disabledControl: PlaygroundControl = {

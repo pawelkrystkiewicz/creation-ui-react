@@ -25,7 +25,7 @@ export const RoleSelector = ({
 }: RoleSelectorProps) => {
   return (
     <>
-      <Select<Role> value={value} onChange={onChange} disabled={disabled}>
+      <Select value={value} onChange={(value) => onChange?.(value as Role)} disabled={disabled}>
         <SelectButton className='w-28'>
           <Selected placeholder='Select role' />
         </SelectButton>

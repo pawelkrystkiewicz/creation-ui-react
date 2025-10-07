@@ -8,10 +8,5 @@
     "build",
     "node_modules"
   ],
-  "compilerOptions": {
-    "types": [
-      "@vitest/browser/providers/playwright",
-      "@vitest/browser/matchers"
-    ]
-  }
+  "compilerOptions": {}
 }
