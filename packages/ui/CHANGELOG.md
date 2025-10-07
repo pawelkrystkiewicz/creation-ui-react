@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.3
+
+### Patch Changes
+
+- 🚀 Release v15.2.3
+
+  ### Changes in this release:
+
+  fix: Pass value prop to ToggleGroup (#132)
+
 ## 15.2.2
 
 ### Patch Changes
