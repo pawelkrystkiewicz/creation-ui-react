@@ -167,7 +167,7 @@ describe('Select', () => {
         </Select>,
       )
       const clearButton = container.querySelector(
-        'div[role="button"][aria-label="Clear selection"]',
+        '[data-testid="cui-clear-button"]',
       )
       expect(clearButton).toBeDefined()
       expect(clearButton).not.toBeNull()
@@ -184,7 +184,7 @@ describe('Select', () => {
         </Select>,
       )
       const clearButton = container.querySelector(
-        'div[role="button"][aria-label="Clear selection"]',
+        '[data-testid="cui-clear-button"]',
       )
       expect(clearButton).toBeDefined()
       expect(clearButton).not.toBeNull()
@@ -201,7 +201,7 @@ describe('Select', () => {
         </Select>,
       )
       const clearButton = container.querySelector(
-        'div[role="button"][aria-label="Clear selection"]',
+        '[data-testid="cui-clear-button"]',
       )
       expect(clearButton).toBeDefined()
       expect(clearButton).not.toBeNull()

@@ -30,6 +30,7 @@ export const ClearButton = forwardRef<HTMLElement, ClearButtonProps>(
         ref={ref as React.Ref<HTMLButtonElement>}
         type='button'
         aria-label='Clear selection'
+        data-testid='cui-clear-button'
         onClick={onClick}
         className={twMerge(classes(), className)}
         {...props}
