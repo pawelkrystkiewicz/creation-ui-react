@@ -86,7 +86,6 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
               'top-1/2',
               endAdornment ? 'right-6' : 'right-0',
             )}
-            role='button'
             data-testid='input-clear-button'
           />
         )}
