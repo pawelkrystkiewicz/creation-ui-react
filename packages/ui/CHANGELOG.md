@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.4
+
+### Patch Changes
+
+- 🚀 Release v15.2.4
+
+  ### Changes in this release:
+
+  ⬆️ Update @floating-ui/react to 0.27.16 (#105)
+
 ## 15.2.3
 
 ### Patch Changes
