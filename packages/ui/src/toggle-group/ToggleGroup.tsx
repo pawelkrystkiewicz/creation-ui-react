@@ -35,7 +35,6 @@ export const ToggleGroup = ({
       disabled={disabled}
       value={value}
       onChange={onChange}
-      value={value}
     >
       {options?.map((option, index, array) => (
         <ToggleOption
