@@ -13,6 +13,7 @@ const optionsStyles = cva(
     'bg-transparent',
     'border-none',
     'shadow-none',
+    'space-y-1',
   ],
   {
     variants: {},

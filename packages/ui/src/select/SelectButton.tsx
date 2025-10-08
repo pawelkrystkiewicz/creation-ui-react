@@ -41,10 +41,13 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
       <ListboxButton
         ref={ref}
         className={twMerge(buttonClasses({ disabled }), className)}
+        disabled={disabled}
       >
         {children}
         <div className='flex items-center gap-1'>
-          {isClearable && <ClearButton onClick={handleClear} asDiv />}
+          {isClearable && (
+            <ClearButton onClick={handleClear} asDiv className='z-[1]' />
+          )}
           <DropdownChevron open={open} disabled={disabled} />
         </div>
       </ListboxButton>

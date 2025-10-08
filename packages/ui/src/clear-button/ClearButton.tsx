@@ -36,18 +36,10 @@ export const ClearButton = forwardRef<HTMLElement, ClearButtonProps>(
       return (
         <div
           ref={ref as React.Ref<HTMLDivElement>}
-          role="button"
-          tabIndex={0}
-          aria-label="Clear selection"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault()
-              onClick?.(e as any)
-            }
-          }}
+          aria-hidden='true'
           {...commonProps}
         >
-          <Icon icon='close' />
+          <Icon icon='close' aria-hidden='true' />
         </div>
       )
     }
@@ -55,11 +47,11 @@ export const ClearButton = forwardRef<HTMLElement, ClearButtonProps>(
     return (
       <button
         ref={ref as React.Ref<HTMLButtonElement>}
-        type="button"
-        aria-label="Clear selection"
+        type='button'
+        aria-label='Clear selection'
         {...commonProps}
       >
-        <Icon icon='close' />
+        <Icon icon='close' aria-hidden='true' />
       </button>
     )
   },

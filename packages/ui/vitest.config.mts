@@ -10,6 +10,14 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'json-summary'],
       reportOnFailure: true,
+      exclude: [
+        'dist/**',
+        '**/node_modules/**',
+        '**/*.stories.tsx',
+        '**/types.ts',
+        '**/index.ts',
+        '**/*.d.ts',
+      ],
       thresholds: {
         statements: 80,
         branches: 70,

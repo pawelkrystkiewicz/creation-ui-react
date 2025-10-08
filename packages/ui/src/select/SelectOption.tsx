@@ -50,6 +50,7 @@ export const SelectOption = forwardRef<HTMLLIElement, SelectOptionProps>(
         {showCheckIcon && (
           <Icon
             icon='check'
+            aria-hidden='true'
             className={twMerge(
               'text-primary micro-interactions',
               isSelected ? 'opacity-100' : 'opacity-0',
