@@ -45,9 +45,7 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
       >
         {children}
         <div className='flex items-center gap-1'>
-          {isClearable && (
-            <ClearButton onClick={handleClear} asDiv className='z-[1]' />
-          )}
+          {isClearable && <ClearButton onClick={handleClear} />}
           <DropdownChevron open={open} disabled={disabled} />
         </div>
       </ListboxButton>

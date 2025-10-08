@@ -21,35 +21,18 @@ const classes = cva([
 export interface ClearButtonProps {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
   className?: string
-  asDiv?: boolean
 }
 
 export const ClearButton = forwardRef<HTMLElement, ClearButtonProps>(
-  ({ onClick, className, asDiv = false, ...props }, ref) => {
-    const commonProps = {
-      onClick,
-      className: twMerge(classes(), className),
-      ...props,
-    }
-
-    if (asDiv) {
-      return (
-        <div
-          ref={ref as React.Ref<HTMLDivElement>}
-          aria-hidden='true'
-          {...commonProps}
-        >
-          <Icon icon='close' aria-hidden='true' />
-        </div>
-      )
-    }
-
+  ({ onClick, className, ...props }, ref) => {
     return (
       <button
         ref={ref as React.Ref<HTMLButtonElement>}
         type='button'
         aria-label='Clear selection'
-        {...commonProps}
+        onClick={onClick}
+        className={twMerge(classes(), className)}
+        {...props}
       >
         <Icon icon='close' aria-hidden='true' />
       </button>
