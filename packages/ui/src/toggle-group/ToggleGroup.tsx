@@ -1,9 +1,20 @@
-import { getElementPosition } from '../utils/get-element-position'
 import { RadioGroup } from '@headlessui/react'
+import { useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { toggleGroupButtonStyles } from './classes'
-import type { ToggleGroupOption, ToggleGroupProps } from './types'
+import { toggleGroupContainerStyles } from './classes'
+import { ToggleOption } from './ToggleOption'
+import type { ToggleGroupProps } from './types'
 
+// TODO: make it modular like select:
+/**
+ *
+ * <ToggleGroup>
+ *  <ToggleOption>
+ *  <ToggleOption>
+ *  <ToggleOption>
+ *  <ToggleOption>
+ * </ToggleGroup>
+ */
 export const ToggleGroup = ({
   className,
   options,
@@ -12,45 +23,28 @@ export const ToggleGroup = ({
   disabled,
   ...props
 }: ToggleGroupProps) => {
+  const containerClasses = useMemo(
+    () => twMerge(toggleGroupContainerStyles({ disabled }), className),
+    [disabled, className],
+  )
   return (
     <RadioGroup
       data-slot='control'
       {...props}
-      className={twMerge(
-        'relative',
-        'inline-flex',
-        'rounded-md',
-        'h-[var(--ui-height)]',
-        'max-h-[var(--ui-height)]',
-        className,
-      )}
+      className={containerClasses}
       disabled={disabled}
       value={value}
       onChange={onChange}
+      value={value}
     >
-      {options?.map(
-        (
-          { label, value: optionValue, disabled }: ToggleGroupOption,
-          index,
-          array,
-        ) => (
-          <RadioGroup.Option
-            key={optionValue}
-            value={optionValue}
-            title={optionValue}
-            disabled={disabled}
-            className={({ checked, disabled }) =>
-              toggleGroupButtonStyles({
-                disabled,
-                checked,
-                element: getElementPosition(array, index),
-              })
-            }
-          >
-            <RadioGroup.Label as='span'>{label}</RadioGroup.Label>
-          </RadioGroup.Option>
-        ),
-      )}
+      {options?.map((option, index, array) => (
+        <ToggleOption
+          key={option.value}
+          option={option}
+          array={array}
+          index={index}
+        />
+      ))}
     </RadioGroup>
   )
 }

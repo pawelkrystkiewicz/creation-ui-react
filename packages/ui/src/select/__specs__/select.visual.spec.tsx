@@ -1,117 +1,127 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'vitest-browser-react'
-import { Select } from '..'
+import { render } from '@testing-library/react'
+import { Select, SelectButton, SelectOptions, SelectOption } from '..'
 
 describe('Select Visual Tests', () => {
   it('default component renders correctly', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <SelectOption value="option3">Option 3</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render disabled state', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select disabled>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
-    await expect(element).toBeDisabled()
+    const element = getByRole('button')
+    expect(element).toBeDisabled()
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render readOnly state', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select readOnly>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render with selected value', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select value="option2" onChange={() => {}}>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+        <SelectButton>Option 2</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <SelectOption value="option3">Option 3</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
-    await expect(element).toMatchScreenshot()
-  })
-
-  it('should correctly render multiple select', async () => {
-    const screen = await render(
-      <Select multiple value={['option1', 'option3']} onChange={() => {}}>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </Select>
-    )
-    const element = screen.getByRole('listbox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render with startAdornment', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select startAdornment={<span>@</span>}>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render with endAdornment', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select endAdornment={<span>$</span>}>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render with both adornments', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select
         startAdornment={<span>@</span>}
         endAdornment={<span>$</span>}
       >
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 
   it('should correctly render with optgroups', async () => {
-    const screen = await render(
+    const { getByRole } = render(
       <Select>
-        <optgroup label="Group 1">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-        </optgroup>
-        <optgroup label="Group 2">
-          <option value="option3">Option 3</option>
-          <option value="option4">Option 4</option>
-        </optgroup>
+        <SelectButton>Select an option</SelectButton>
+        <SelectOptions>
+          <div className='px-2 py-1 text-sm font-medium text-gray-500'>Group 1</div>
+          <SelectOption value="option1">Option 1</SelectOption>
+          <SelectOption value="option2">Option 2</SelectOption>
+          <div className='px-2 py-1 text-sm font-medium text-gray-500'>Group 2</div>
+          <SelectOption value="option3">Option 3</SelectOption>
+          <SelectOption value="option4">Option 4</SelectOption>
+        </SelectOptions>
       </Select>
     )
-    const element = screen.getByRole('combobox').element()
+    const element = getByRole('button')
     await expect(element).toMatchScreenshot()
   })
 })

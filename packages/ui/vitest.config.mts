@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig, UserConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+import { playwright } from '@vitest/browser-playwright'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
@@ -9,11 +10,19 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'json-summary'],
       reportOnFailure: true,
+      exclude: [
+        'dist/**',
+        '**/node_modules/**',
+        '**/*.stories.tsx',
+        '**/types.ts',
+        '**/index.ts',
+        '**/*.d.ts',
+      ],
       thresholds: {
-        statements: 44,
-        branches: 27,
-        functions: 21,
-        lines: 46,
+        statements: 50,
+        branches: 35,
+        functions: 33,
+        lines: 51,
       },
     },
     css: true,
@@ -26,7 +35,7 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: process.env.CI ? true : false,
-      provider: 'playwright',
+      provider: playwright(),
       instances: [
         {
           browser: 'chromium',

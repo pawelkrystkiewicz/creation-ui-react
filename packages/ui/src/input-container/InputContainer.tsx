@@ -44,7 +44,7 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
 
     const clearable = useMemo(
       () => Boolean(!isDisabled && typeof onClear === 'function' && hasValue),
-      [isDisabled, hasValue],
+      [isDisabled, hasValue, onClear],
     )
 
     const classes = useMemo(() => {
@@ -68,6 +68,7 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
       background,
       containerHeight,
       className,
+      clearable,
     ])
 
     return (
@@ -85,11 +86,10 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
               'top-1/2',
               endAdornment ? 'right-6' : 'right-0',
             )}
-            role='button'
             data-testid='input-clear-button'
           />
         )}
-        {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}{' '}
+        {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
       </div>
     )
   },

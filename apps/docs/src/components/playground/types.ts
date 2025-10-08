@@ -16,13 +16,17 @@ export type PlaygroundControls =
   | 'nested'
   | 'select'
 
+export type PlaygroundSelectValue = string | number
+
 export type PlaygroundControl = {
   name: string
   type: PlaygroundValueType
   label?: ReactNode
   component?: PlaygroundControls
   defaultValue?: PlaygroundValues
-  values?: any[]
+  values?:
+    | PlaygroundSelectValue[]
+    | { label: ReactNode; value: PlaygroundSelectValue }[]
   controls?: PlaygroundControl[]
   helperText?: string
   noBracesInReplacement?: boolean
@@ -37,7 +41,7 @@ export interface PlaygroundProps<T = Record<string, unknown>> {
 }
 
 export interface PlaygroundState {
-  [key: string]: PlaygroundValues
+  [key: string]: PlaygroundValues | PlaygroundState | null
 }
 
 export interface PlaygroundContextValue extends PlaygroundProps {

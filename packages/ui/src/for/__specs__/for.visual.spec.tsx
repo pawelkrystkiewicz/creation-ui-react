@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'vitest-browser-react'
+import { render } from '@testing-library/react'
 import { For } from '../for'
 
 describe('For Visual Tests', () => {
   it('renders list of simple items correctly', async () => {
     const items = ['Apple', 'Banana', 'Cherry', 'Date']
     
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ padding: '16px' }}>
         <For each={items}>
           {(item, index) => (
@@ -27,12 +27,12 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('1. Apple').element().parentElement!
+    const container = getByText('1. Apple').parentElement!
     await expect(container).toMatchScreenshot()
   })
 
   it('renders empty list correctly', async () => {
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ 
         padding: '16px',
         border: '1px dashed #ccc',
@@ -51,7 +51,7 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('No items to display').element().parentElement!
+    const container = getByText('No items to display').parentElement!
     await expect(container).toMatchScreenshot()
   })
 
@@ -62,7 +62,7 @@ describe('For Visual Tests', () => {
       { id: 3, name: 'Bob Johnson', role: 'Manager', avatar: '👨‍💼' }
     ]
     
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ padding: '16px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
         <For each={users}>
           {(user, index) => (
@@ -113,7 +113,7 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('John Doe').element().parentElement!.parentElement!
+    const container = getByText('John Doe').parentElement!.parentElement!
     await expect(container).toMatchScreenshot()
   })
 
@@ -125,7 +125,7 @@ describe('For Visual Tests', () => {
       { text: 'Fourth item', color: '#fff3e0' }
     ]
     
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ padding: '16px', maxWidth: '400px' }}>
         <h3 style={{ margin: '0 0 16px 0', color: '#333' }}>Colored List Items</h3>
         <For each={items}>
@@ -165,7 +165,7 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('Colored List Items').element().parentElement!
+    const container = getByText('Colored List Items').parentElement!
     await expect(container).toMatchScreenshot()
   })
 
@@ -177,7 +177,7 @@ describe('For Visual Tests', () => {
       { id: 4, name: 'Watch', price: '$299', emoji: '⌚' }
     ]
     
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ 
         padding: '16px',
         display: 'grid',
@@ -223,7 +223,7 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('Laptop').element().parentElement!.parentElement!
+    const container = getByText('Laptop').parentElement!.parentElement!
     await expect(container).toMatchScreenshot()
   })
 
@@ -234,7 +234,7 @@ describe('For Visual Tests', () => {
       { name: 'Charlie', age: 35, department: 'Marketing' }
     ]
     
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ padding: '16px', fontFamily: 'Arial, sans-serif' }}>
         <div style={{
           display: 'grid',
@@ -274,7 +274,7 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('Name').element().parentElement!.parentElement!
+    const container = getByText('Name').parentElement!.parentElement!
     await expect(container).toMatchScreenshot()
   })
 
@@ -292,7 +292,7 @@ describe('For Visual Tests', () => {
       }
     ]
     
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ padding: '16px' }}>
         <For each={categories}>
           {(category, categoryIndex) => (
@@ -337,7 +337,7 @@ describe('For Visual Tests', () => {
       </div>
     )
     
-    const container = screen.getByText('Fruits').element().parentElement!.parentElement!
+    const container = getByText('Fruits').parentElement!.parentElement!
     await expect(container).toMatchScreenshot()
   })
 })

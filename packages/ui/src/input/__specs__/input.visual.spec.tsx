@@ -1,39 +1,40 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'vitest-browser-react'
+import { render } from '@testing-library/react'
 import { Input } from '..'
 import { Icon } from '../../icon'
 import { ELEMENT_COLOR, INPUT_BORDER } from '../../types'
+import { page } from 'vitest/browser'
 
 describe('Input CT', () => {
   it('default input renders correctly', async () => {
-    const screen = await render(<Input placeholder='Default input' />)
+    const { getByRole } = render(<Input placeholder='Default input' />)
 
-    const input = screen.getByRole('textbox').element()
-    await expect(input).toBeVisible()
-    await expect(input).toBeEnabled()
-    await expect(input).toHaveAttribute('placeholder', 'Default input')
+    const input = getByRole('textbox')
+    expect(input).toBeVisible()
+    expect(input).toBeEnabled()
+    expect(input).toHaveAttribute('placeholder', 'Default input')
 
     await expect(input).toMatchScreenshot()
   })
 
   for (const border of INPUT_BORDER) {
     it(`matches snapshot for [${border}] border`, async () => {
-      const screen = await render(
+      const { getByRole } = render(
         <Input border={border} placeholder={`${border} input`} />,
       )
-      const input = screen.getByRole('textbox').element()
-      await expect(input).toBeVisible()
+      const input = getByRole('textbox')
+      expect(input).toBeVisible()
       await expect(input).toMatchScreenshot()
     })
   }
 
   for (const color of ELEMENT_COLOR) {
     it(`matches snapshot for [${color}] color`, async () => {
-      const screen = await render(
+      const { getByRole } = render(
         <Input color={color} placeholder={`${color} input`} />,
       )
-      const input = screen.getByRole('textbox').element()
-      await expect(input).toBeVisible()
+      const input = getByRole('textbox')
+      expect(input).toBeVisible()
       await expect(input).toMatchScreenshot()
     })
   }
@@ -41,36 +42,36 @@ describe('Input CT', () => {
   it('renders with startAdornment', async () => {
     const startAdornment = <Icon icon='plus' data-testid='icon-plus' />
 
-    const screen = await render(
+    const { getByRole, getByTestId } = render(
       <Input
         startAdornment={startAdornment}
         placeholder='Input with start adornment'
       />,
     )
 
-    const input = screen.getByRole('textbox').element()
-    const icon = screen.getByTestId('icon-plus').element()
+    const input = getByRole('textbox')
+    const icon = getByTestId('icon-plus')
 
-    await expect(input).toBeVisible()
-    await expect(icon).toBeVisible()
+    expect(input).toBeVisible()
+    expect(icon).toBeVisible()
     await expect(input).toMatchScreenshot()
   })
 
   it('renders with endAdornment', async () => {
     const endAdornment = <Icon icon='minus' data-testid='icon-minus' />
 
-    const screen = await render(
+    const { getByRole, getByTestId } = render(
       <Input
         endAdornment={endAdornment}
         placeholder='Input with end adornment'
       />,
     )
 
-    const input = screen.getByRole('textbox').element()
-    const icon = screen.getByTestId('icon-minus').element()
+    const input = getByRole('textbox')
+    const icon = getByTestId('icon-minus')
 
-    await expect(input).toBeVisible()
-    await expect(icon).toBeVisible()
+    expect(input).toBeVisible()
+    expect(icon).toBeVisible()
     await expect(input).toMatchScreenshot()
   })
 
@@ -78,7 +79,7 @@ describe('Input CT', () => {
     const startAdornment = <Icon icon='plus' data-testid='icon-plus' />
     const endAdornment = <Icon icon='minus' data-testid='icon-minus' />
 
-    const screen = await render(
+    const { getByRole, getByTestId } = render(
       <Input
         startAdornment={startAdornment}
         endAdornment={endAdornment}
@@ -86,18 +87,18 @@ describe('Input CT', () => {
       />,
     )
 
-    const input = screen.getByRole('textbox').element()
-    const plusIcon = screen.getByTestId('icon-plus').element()
-    const minusIcon = screen.getByTestId('icon-minus').element()
+    const input = getByRole('textbox')
+    const plusIcon = getByTestId('icon-plus')
+    const minusIcon = getByTestId('icon-minus')
 
-    await expect(input).toBeVisible()
-    await expect(plusIcon).toBeVisible()
-    await expect(minusIcon).toBeVisible()
+    expect(input).toBeVisible()
+    expect(plusIcon).toBeVisible()
+    expect(minusIcon).toBeVisible()
     await expect(input).toMatchScreenshot()
   })
 
   it('renders with clearable functionality', async () => {
-    const screen = await render(
+    const { getByRole, getByTestId } = render(
       <Input
         onClear={() => {}}
         value='Clearable value'
@@ -106,17 +107,17 @@ describe('Input CT', () => {
       />,
     )
 
-    const input = screen.getByRole('textbox').element()
-    const clearButton = screen.getByTestId('input-clear-button').element()
+    const input = getByRole('textbox')
+    const clearButton = getByTestId('input-clear-button')
 
-    await expect(input).toBeVisible()
-    await expect(clearButton).toBeVisible()
+    expect(input).toBeVisible()
+    expect(clearButton).toBeVisible()
     await expect(input).toMatchScreenshot()
   })
 
   describe('Input States', () => {
     it('should correctly render [disabled] state', async () => {
-      const screen = await render(
+      const { getByRole } = render(
         <Input
           disabled
           placeholder='Disabled input'
@@ -125,14 +126,14 @@ describe('Input CT', () => {
         />,
       )
 
-      const input = screen.getByRole('textbox').element()
-      await expect(input).toBeVisible()
-      await expect(input).toBeDisabled()
+      const input = getByRole('textbox')
+      expect(input).toBeVisible()
+      expect(input).toBeDisabled()
       await expect(input).toMatchScreenshot()
     })
 
     it('should correctly render [readOnly] state', async () => {
-      const screen = await render(
+      const { getByRole } = render(
         <Input
           readOnly
           placeholder='ReadOnly input'
@@ -141,14 +142,14 @@ describe('Input CT', () => {
         />,
       )
 
-      const input = screen.getByRole('textbox').element()
-      await expect(input).toBeVisible()
-      await expect(input).toHaveAttribute('readonly')
+      const input = getByRole('textbox')
+      expect(input).toBeVisible()
+      expect(input).toHaveAttribute('readonly')
       await expect(input).toMatchScreenshot()
     })
 
     it('should correctly render input with value', async () => {
-      const screen = await render(
+      const { getByRole } = render(
         <Input
           value='Input with value'
           onChange={() => {}}
@@ -156,15 +157,15 @@ describe('Input CT', () => {
         />,
       )
 
-      const input = screen.getByRole('textbox').element()
-      await expect(input).toBeVisible()
-      await expect(input).toHaveValue('Input with value')
+      const input = getByRole('textbox')
+      expect(input).toBeVisible()
+      expect(input).toHaveValue('Input with value')
       await expect(input).toMatchScreenshot()
     })
   })
 
   describe('Input Types', () => {
-    const inputTypes = [
+    const INPUT_TYPES = [
       'email',
       'password',
       'number',
@@ -173,23 +174,21 @@ describe('Input CT', () => {
       'search',
     ] as const
 
-    for (const type of inputTypes) {
+    for (const type of INPUT_TYPES) {
       it(`matches snapshot for [${type}] input type`, async () => {
-        const screen = await render(
-          <Input type={type} placeholder={`${type} input`} />,
+        const { baseElement } = render(
+          <Input
+            type={type as any}
+            placeholder={`${type} input`}
+            data-testid={'input'}
+          />,
         )
 
-        let input
-        if (type === 'number') {
-          input = screen.getByRole('spinbutton').element()
-        } else if (type === 'search') {
-          input = screen.getByRole('searchbox').element()
-        } else {
-          input = screen.getByRole('textbox').element()
-        }
+        const screen = page.elementLocator(baseElement)
+        const input = screen.getByTestId('input').element()
 
-        await expect(input).toBeVisible()
-        await expect(input).toHaveAttribute('type', type)
+        expect(input).toBeVisible()
+        expect(input).toHaveAttribute('type', type)
         await expect(input).toMatchScreenshot()
       })
     }
@@ -204,40 +203,37 @@ describe('Input CT', () => {
 
     for (const type of dateTypes) {
       it(`matches snapshot for [${type}] date input type`, async () => {
-        const screen = await render(<Input type={type} />)
+        const { container } = render(<Input type={type} />)
 
-        const container = screen.container
         const input = container.querySelector(
           `input[type="${type}"]`,
         ) as HTMLElement
 
         expect(input).toBeDefined()
-        await expect(input).toBeVisible()
+        expect(input).toBeVisible()
         await expect(input).toMatchScreenshot()
       })
     }
 
     it('matches snapshot for [file] input type', async () => {
-      const screen = await render(<Input type='file' />)
+      const { container } = render(<Input type='file' />)
 
-      const container = screen.container
       const input = container.querySelector('input[type="file"]') as HTMLElement
 
       expect(input).toBeDefined()
-      await expect(input).toBeVisible()
+      expect(input).toBeVisible()
       await expect(input).toMatchScreenshot()
     })
 
     it('matches snapshot for [color] input type', async () => {
-      const screen = await render(<Input type='color' />)
+      const { container } = render(<Input type='color' />)
 
-      const container = screen.container
       const input = container.querySelector(
         'input[type="color"]',
       ) as HTMLElement
 
       expect(input).toBeDefined()
-      await expect(input).toBeVisible()
+      expect(input).toBeVisible()
       await expect(input).toMatchScreenshot()
     })
   })
@@ -247,15 +243,15 @@ describe('Input CT', () => {
 
     for (const height of heights) {
       it(`matches snapshot for [${height}] container height`, async () => {
-        const screen = await render(
+        const { getByRole } = render(
           <Input
             containerHeight={height as 'fixed' | 'auto'}
             placeholder={`${height} height input`}
           />,
         )
 
-        const input = screen.getByRole('textbox').element()
-        await expect(input).toBeVisible()
+        const input = getByRole('textbox')
+        expect(input).toBeVisible()
         await expect(input).toMatchScreenshot()
       })
     }
@@ -263,7 +259,7 @@ describe('Input CT', () => {
 
   describe('Complex Combinations', () => {
     it('matches snapshot for complex input with all features', async () => {
-      const screen = await render(
+      const { getByRole, getByTestId } = render(
         <Input
           startAdornment={<Icon icon='plus' data-testid='start-icon' />}
           endAdornment={<Icon icon='minus' data-testid='end-icon' />}
@@ -277,15 +273,15 @@ describe('Input CT', () => {
         />,
       )
 
-      const input = screen.getByRole('textbox').element()
-      const startIcon = screen.getByTestId('start-icon').element()
-      const endIcon = screen.getByTestId('end-icon').element()
-      const clearButton = screen.getByTestId('input-clear-button').element()
+      const input = getByRole('textbox')
+      const startIcon = getByTestId('start-icon')
+      const endIcon = getByTestId('end-icon')
+      const clearButton = getByTestId('input-clear-button')
 
-      await expect(input).toBeVisible()
-      await expect(startIcon).toBeVisible()
-      await expect(endIcon).toBeVisible()
-      await expect(clearButton).toBeVisible()
+      expect(input).toBeVisible()
+      expect(startIcon).toBeVisible()
+      expect(endIcon).toBeVisible()
+      expect(clearButton).toBeVisible()
       await expect(input).toMatchScreenshot()
     })
   })

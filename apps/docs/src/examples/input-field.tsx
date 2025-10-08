@@ -13,6 +13,10 @@ import {
   Radio,
   RadioGroup,
   Select,
+  SelectButton,
+  Selected,
+  SelectOption,
+  SelectOptions,
   Switch,
   Textarea,
   ToggleGroup,
@@ -51,11 +55,16 @@ const DynamicInput = ({ inputType, border, background }: DynamicInputProps) => {
     case 'select':
       return (
         <Select>
-          {fruit.map(option => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
+          <SelectButton className='w-full'>
+            <Selected placeholder='Select option' />
+          </SelectButton>
+          <SelectOptions>
+            {fruit.map(option => (
+              <SelectOption key={option} value={option}>
+                {option}
+              </SelectOption>
+            ))}
+          </SelectOptions>
         </Select>
       )
     case 'checkbox':
@@ -156,8 +165,8 @@ export const InputFieldPlayground = () => {
             'toggle',
           ],
         },
-        {...inputBackgroundControl, name: 'inputBackground'},
-        {...inputBorderControl, name: 'inputBorder'},
+        { ...inputBackgroundControl, name: 'inputBackground' },
+        { ...inputBorderControl, name: 'inputBorder' },
       ]}
       component={InputField}
       code={`

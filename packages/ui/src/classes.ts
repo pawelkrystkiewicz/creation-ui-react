@@ -1,4 +1,4 @@
-import { cva } from 'class-variance-authority'
+import { cva, VariantProps } from 'class-variance-authority'
 
 export const inputContainer = ({ size, animations, disabled, error }: any) =>
   cva(['border-border', animations.microInteractionsAll, 'flex'], {
@@ -167,3 +167,22 @@ export const selectOptionClasses = cva(
     },
   },
 )
+
+export const zIndexStyles = cva([], {
+  variants: {
+    zIndex: {
+      dropdown: 'z-(--ui-z-dropdowns)',
+      tooltip: 'z-(--ui-z-tooltips)',
+      overlay: 'z-(--ui-z-overlays)',
+      drawer: 'z-(--ui-z-drawers)',
+      modal: 'z-(--ui-z-modals)',
+      notification: 'z-(--ui-z-notifications)',
+      default: 'z-auto',
+    },
+  },
+  defaultVariants: {
+    zIndex: 'default',
+  },
+})
+
+export type ZIndex = VariantProps<typeof zIndexStyles>['zIndex']

@@ -1,22 +1,22 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'vitest-browser-react'
+import { render } from '@testing-library/react'
 import { Show } from '../show'
 
 describe('Show Visual Tests', () => {
   it('default component renders correctly when condition is true', async () => {
-    const screen = await render(
+    const { getByText } = render(
       <Show when={true}>
         <div style={{ padding: '16px', backgroundColor: '#f0f0f0', borderRadius: '4px' }}>
           Content is visible
         </div>
       </Show>
     )
-    const element = screen.getByText('Content is visible').element()
+    const element = getByText('Content is visible')
     await expect(element).toMatchScreenshot()
   })
 
   it('renders fallback correctly when condition is false', async () => {
-    const screen = await render(
+    const { getByText } = render(
       <Show 
         when={false} 
         fallback={
@@ -28,24 +28,24 @@ describe('Show Visual Tests', () => {
         <div>This content is hidden</div>
       </Show>
     )
-    const element = screen.getByText('Fallback content displayed').element()
+    const element = getByText('Fallback content displayed')
     await expect(element).toMatchScreenshot()
   })
 
   it('renders nothing when condition is false and no fallback', async () => {
-    const screen = await render(
+    const { getByTestId } = render(
       <div data-testid="empty-container" style={{ padding: '16px', border: '1px solid #ccc', minHeight: '50px' }}>
         <Show when={false}>
           <div>Hidden content</div>
         </Show>
       </div>
     )
-    const container = screen.getByTestId('empty-container').element()
+    const container = getByTestId('empty-container')
     await expect(container).toMatchScreenshot()
   })
 
   it('renders complex children with styling', async () => {
-    const screen = await render(
+    const { getByText } = render(
       <Show when={true}>
         <div style={{ 
           padding: '20px', 
@@ -68,12 +68,12 @@ describe('Show Visual Tests', () => {
         </div>
       </Show>
     )
-    const element = screen.getByText('Header Content').element().parentElement!
+    const element = getByText('Header Content').parentElement!
     await expect(element).toMatchScreenshot()
   })
 
   it('renders complex fallback with styling', async () => {
-    const screen = await render(
+    const { getByText } = render(
       <Show 
         when={false}
         fallback={
@@ -101,7 +101,7 @@ describe('Show Visual Tests', () => {
         <div>This content should not be visible</div>
       </Show>
     )
-    const element = screen.getByText('Warning: No Content').element().parentElement!
+    const element = getByText('Warning: No Content').parentElement!
     await expect(element).toMatchScreenshot()
   })
 
@@ -112,7 +112,7 @@ describe('Show Visual Tests', () => {
       { id: 3, name: 'Visible Item 2', show: true }
     ]
 
-    const screen = await render(
+    const { getByText } = render(
       <div style={{ padding: '16px' }}>
         {items.map(item => (
           <Show key={item.id} when={item.show}>
@@ -129,12 +129,12 @@ describe('Show Visual Tests', () => {
         ))}
       </div>
     )
-    const container = screen.getByText('Visible Item 1').element().parentElement!
+    const container = getByText('Visible Item 1').parentElement!
     await expect(container).toMatchScreenshot()
   })
 
   it('renders nested Show components', async () => {
-    const screen = await render(
+    const { getByText } = render(
       <Show when={true}>
         <div style={{ padding: '16px', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
           <h3 style={{ margin: '0 0 10px 0' }}>Outer Content</h3>
@@ -144,7 +144,7 @@ describe('Show Visual Tests', () => {
         </div>
       </Show>
     )
-    const element = screen.getByText('Outer Content').element().parentElement!
+    const element = getByText('Outer Content').parentElement!
     await expect(element).toMatchScreenshot()
   })
 })

@@ -3,23 +3,60 @@ import { Playground } from '@/components/playground'
 import type { DocumentedProperty } from '@/models/system'
 import {
   disabledControl,
+  inputBackgroundControl,
+  inputBorderControl,
+  labelControl,
   loadingControl,
-  variantControl,
 } from './shared-playground-controls'
 
 import { PlaygroundInputField } from '@/components/playground/playground.input-field'
-import { Select, type SelectProps } from '@creation-ui/react'
+import {
+  Field,
+  Label,
+  Select,
+  SelectButton,
+  Selected,
+  SelectOptions,
+  SelectOption,
+  type SelectProps,
+} from '@creation-ui/react'
+import { useState } from 'react'
 import { iconProp } from './shared-props'
 
-export const SelectExample = (props: SelectProps) => {
+export const SelectExample = (
+  props: SelectProps & {
+    required?: boolean
+    label?: string
+  },
+) => {
+  const options = ['USD', 'EUR', 'GBP', 'CAD', 'PLN']
+  const [selected, setSelected] = useState<string | null>(options[0])
+
+  const onClear = () => {
+    setSelected(null)
+  }
+
   return (
-    <Select name='currency' {...props}>
-      <option value='USD'>USD</option>
-      <option value='EUR'>EUR</option>
-      <option value='GBP'>GBP</option>
-      <option value='CAD'>CAD</option>
-      <option value='PLN'>PLN</option>
-    </Select>
+    <Field disabled={props.disabled}>
+      <Label required={props.required}>{props.label}</Label>
+      <Select
+        {...props}
+        value={selected}
+        onChange={setSelected}
+        onClear={onClear}
+      >
+        <SelectButton className={'w-[180px]'}>
+          <Selected placeholder='Currency' />
+        </SelectButton>
+        <SelectOptions>
+          {options.map(option => (
+            <SelectOption key={option} value={option}>
+              {option}
+            </SelectOption>
+          ))}
+        </SelectOptions>
+      </Select>
+    </Field>
   )
 }
 
@@ -40,29 +77,51 @@ export const SelectPlayground = () => (
     <Playground
       component={SelectExample}
       controls={[
-        variantControl,
         loadingControl,
         disabledControl,
-        {
-          name: 'multiple',
-          type: 'boolean',
-        },
+        labelControl,
+        inputBorderControl,
+        inputBackgroundControl,
       ]}
       code={`
-import { Select, type SelectProps } from '@creation-ui/react'
+        import { useState } from 'react'
+        import {
+          Select,
+          SelectButton,
+          Selected,
+          SelectOptions,
+          SelectOption,
+          type SelectProps
+        } from '@creation-ui/react'
 
-export const SelectExample = (props: SelectProps) => {
-  return (
-    <Select name='currency' {{props}}>
-      <option value='USD'>USD</option>
-      <option value='EUR'>EUR</option>
-      <option value='GBP'>GBP</option>
-      <option value='CAD'>CAD</option>
-      <option value='PLN'>PLN</option>
-    </Select>
-  )
-}
-  `}
+        export const SelectExample = (props: SelectProps) => {
+          const [selected, setSelected] = useState<string | null>('USD')
+
+          const onClear = () => {
+            setSelected(null)
+          }
+
+          return (
+            <Select
+              {{props}}
+              value={selected}
+              onChange={setSelected}
+              onClear={onClear}
+            >
+              <SelectButton className="w-[180px]">
+                <Selected placeholder="Currency" />
+              </SelectButton>
+              <SelectOptions>
+                <SelectOption value="USD">USD</SelectOption>
+                <SelectOption value="EUR">EUR</SelectOption>
+                <SelectOption value="GBP">GBP</SelectOption>
+                <SelectOption value="CAD">CAD</SelectOption>
+                <SelectOption value="PLN">PLN</SelectOption>
+              </SelectOptions>
+            </Select>
+          )
+        }
+          `}
     />
   </>
 )
@@ -75,7 +134,7 @@ export const properties: DocumentedProperty[] = [
   },
   {
     ...iconProp,
-    name: 'starAdornment',
+    name: 'startAdornment',
     description: "E.g. icon on the left side of the component's children",
   },
   {
