@@ -3,7 +3,7 @@ import { PopoverContextType } from './use-popover'
 
 export const PopoverContext = createContext<PopoverContextType>(null)
 
-export const usePopoverContext = () => {
+export const usePopoverContext = (): NonNullable<PopoverContextType> => {
   const context = useContext(PopoverContext)
 
   if (context == null) {

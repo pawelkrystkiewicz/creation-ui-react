@@ -8,6 +8,8 @@ import {
   useFloating,
   useInteractions,
   useRole,
+  type UseFloatingReturn,
+  type UseInteractionsReturn,
 } from '@floating-ui/react'
 import { useMemo, useState } from 'react'
 import { PopoverOptions } from './types'
@@ -20,7 +22,15 @@ export function usePopover({
   modal,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-}: PopoverOptions = {}) {
+}: PopoverOptions = {}): UseFloatingReturn & UseInteractionsReturn & {
+  open: boolean
+  setOpen: (open: boolean) => void
+  modal?: boolean
+  labelId?: string
+  descriptionId?: string
+  setLabelId: (id: string | undefined) => void
+  setDescriptionId: (id: string | undefined) => void
+} {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
   const [labelId, setLabelId] = useState<string | undefined>()
   const [descriptionId, setDescriptionId] = useState<string | undefined>()
