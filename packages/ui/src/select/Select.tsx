@@ -50,6 +50,7 @@ export const Select = forwardRef(
           invalid={invalid}
           name={name}
           refName={refName}
+          className='relative'
         >
           {({ open, disabled, invalid, value }) => {
             const contextValue = {

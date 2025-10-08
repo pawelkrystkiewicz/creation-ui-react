@@ -1,10 +1,7 @@
-import { cva } from 'class-variance-authority'
+import { cva, VariantProps } from 'class-variance-authority'
 import { forwardRef } from 'react'
-
-export interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
-  open?: boolean
-  placement?: 'top' | 'bottom'
-}
+import { ZIndex, zIndexStyles } from '../classes'
+import { twMerge } from 'tailwind-merge'
 
 export const dropdownMenuClasses = cva(
   [
@@ -20,7 +17,7 @@ export const dropdownMenuClasses = cva(
     'text-left',
     'gap-1',
     'p-1',
-    'z-(--ui-z-dropdowns)',
+
     'outline-transparent',
   ],
   {
@@ -34,13 +31,27 @@ export const dropdownMenuClasses = cva(
   },
 )
 
+type DropdownMenudStyles = VariantProps<typeof dropdownMenuClasses>
+
+export interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
+  open?: boolean
+  placement?: DropdownMenudStyles['placement']
+  zIndex?: ZIndex
+}
+
 export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
-  ({ children, open, className, placement, ...props }, ref) => {
+  (
+    { children, open, className, placement, zIndex = 'dropdown', ...props },
+    ref,
+  ) => {
     return (
       <ul
         ref={ref}
         {...props}
-        className={dropdownMenuClasses({ open, className, placement })}
+        className={twMerge(
+          zIndexStyles({ zIndex }),
+          dropdownMenuClasses({ open, className, placement }),
+        )}
       >
         {children}
       </ul>
