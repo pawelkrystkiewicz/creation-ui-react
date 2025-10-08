@@ -93,7 +93,7 @@ export const SelectPlayground = () => (
           type SelectProps
         } from '@creation-ui/react'
 
-        export const SelectElegantExample = (props: SelectProps) => {
+        export const SelectExample = (props: SelectProps) => {
           return (
             <Select {{props}}>
               <SelectButton className="w-[180px]">
