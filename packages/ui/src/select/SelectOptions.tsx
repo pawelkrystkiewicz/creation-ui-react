@@ -25,7 +25,7 @@ interface SelectOptionsProps {
   zIndex?: ZIndex
 }
 
-export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
+export const SelectOptions = forwardRef<HTMLUListElement, SelectOptionsProps>(
   ({ children, className, zIndex = 'dropdown' }, ref) => {
     const { open, disabled } = useSelectContext()
 

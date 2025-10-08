@@ -84,6 +84,7 @@ export const SelectPlayground = () => (
         inputBackgroundControl,
       ]}
       code={`
+        import { useState } from 'react'
         import {
           Select,
           SelectButton,
@@ -94,8 +95,19 @@ export const SelectPlayground = () => (
         } from '@creation-ui/react'
 
         export const SelectExample = (props: SelectProps) => {
+          const [selected, setSelected] = useState<string | null>('USD')
+
+          const onClear = () => {
+            setSelected(null)
+          }
+
           return (
-            <Select {{props}}>
+            <Select
+              {{props}}
+              value={selected}
+              onChange={setSelected}
+              onClear={onClear}
+            >
               <SelectButton className="w-[180px]">
                 <Selected placeholder="Currency" />
               </SelectButton>

@@ -1,6 +1,7 @@
 import { Listbox } from '@headlessui/react'
 import React, { forwardRef, ReactNode } from 'react'
 import { InputContainer } from '../input-container/InputContainer'
+import { isNonNulish } from '../utils'
 import { SelectContext } from './SelectContext'
 import { SelectProps } from './types'
 
@@ -23,22 +24,29 @@ export const Select = forwardRef(
       children,
       cx,
       onClear,
-      ...props
+      horizontal,
+      invalid,
+      name,
+      refName,
+      ...listboxProps
     }: SelectComponentProps<T>,
     ref: React.Ref<HTMLDivElement>,
   ) => {
-    const { value, onChange, disabled, horizontal, invalid, name, refName } =
-      props
+    const { value, onChange, disabled } = listboxProps
     return (
       <InputContainer
         className={cx?.container}
         endAdornment={endAdornment}
         startAdornment={startAdornment}
-        hasValue={!!props?.value}
-        disabled={props?.disabled}
-        readOnly={props?.readOnly}
-        border={props?.border}
-        background={props?.background}
+        hasValue={isNonNulish(listboxProps?.value)}
+        disabled={listboxProps?.disabled}
+        readOnly={listboxProps?.readOnly}
+        border={listboxProps?.border}
+        background={listboxProps?.background}
+        data-horizontal={horizontal}
+        data-invalid={invalid}
+        data-name={name}
+        data-ref-name={refName}
       >
         <Listbox
           ref={ref}
@@ -46,13 +54,9 @@ export const Select = forwardRef(
           value={value ?? undefined}
           onChange={onChange}
           disabled={disabled}
-          horizontal={horizontal}
-          invalid={invalid}
-          name={name}
-          refName={refName}
           className='relative'
         >
-          {({ open, disabled, invalid, value }) => {
+          {({ open, disabled, value }) => {
             const contextValue = {
               open,
               disabled: disabled || false,

@@ -4,6 +4,7 @@ import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { ClearButton } from '../clear-button'
 import { DropdownChevron } from '../dropdown-chevron'
+import { isNonNulish } from '../utils'
 import { useSelectContext } from './SelectContext'
 
 const buttonClasses = cva(
@@ -27,10 +28,10 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
     const { open, disabled, value, onClear } = useSelectContext()
 
     const isClearable = Boolean(
-      !disabled && typeof onClear === 'function' && !!value,
+      !disabled && typeof onClear === 'function' && isNonNulish(value),
     )
 
-    const handleClear = (e: React.MouseEvent<SVGSVGElement>) => {
+    const handleClear = (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation()
       e.preventDefault()
       onClear?.()
@@ -43,7 +44,7 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
       >
         {children}
         <div className='flex items-center gap-1'>
-          {isClearable && <ClearButton onClick={handleClear} role='button' />}
+          {isClearable && <ClearButton onClick={handleClear} asDiv />}
           <DropdownChevron open={open} disabled={disabled} />
         </div>
       </ListboxButton>

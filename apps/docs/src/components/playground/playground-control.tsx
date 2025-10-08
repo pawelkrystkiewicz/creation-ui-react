@@ -20,7 +20,7 @@ import { usePlayground } from './context/context'
 import { PlaygroundInputField } from './playground.input-field'
 import type { PlaygroundControl, PlaygroundSelectValue } from './types'
 
-const PLAIN_SELECT_VALUE = ['string', 'number', 'boolean']
+const PLAIN_SELECT_VALUE = ['string', 'number']
 type SelectComplexOption = { label: ReactNode; value: PlaygroundSelectValue }
 type SelectOptionType = PlaygroundSelectValue | SelectComplexOption
 

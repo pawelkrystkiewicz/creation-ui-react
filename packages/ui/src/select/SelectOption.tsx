@@ -13,7 +13,7 @@ interface SelectOptionProps extends Omit<ListboxOptionProps, 'selected'> {
   showCheckIcon?: boolean
 }
 
-export const SelectOption = forwardRef<HTMLDivElement, SelectOptionProps>(
+export const SelectOption = forwardRef<HTMLLIElement, SelectOptionProps>(
   (
     {
       children,

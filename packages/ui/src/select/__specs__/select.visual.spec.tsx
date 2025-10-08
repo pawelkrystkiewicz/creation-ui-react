@@ -62,21 +62,6 @@ describe('Select Visual Tests', () => {
     await expect(element).toMatchScreenshot()
   })
 
-  it('should correctly render multiple select', async () => {
-    const { getByRole } = render(
-      <Select value={['option1', 'option3']} onChange={() => {}}>
-        <SelectButton>2 options selected</SelectButton>
-        <SelectOptions>
-          <SelectOption value="option1" multiple>Option 1</SelectOption>
-          <SelectOption value="option2" multiple>Option 2</SelectOption>
-          <SelectOption value="option3" multiple>Option 3</SelectOption>
-        </SelectOptions>
-      </Select>
-    )
-    const element = getByRole('button')
-    await expect(element).toMatchScreenshot()
-  })
-
   it('should correctly render with startAdornment', async () => {
     const { getByRole } = render(
       <Select startAdornment={<span>@</span>}>

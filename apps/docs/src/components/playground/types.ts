@@ -41,7 +41,7 @@ export interface PlaygroundProps<T = Record<string, unknown>> {
 }
 
 export interface PlaygroundState {
-  [key: string]: PlaygroundValues
+  [key: string]: PlaygroundValues | PlaygroundState | null
 }
 
 export interface PlaygroundContextValue extends PlaygroundProps {
