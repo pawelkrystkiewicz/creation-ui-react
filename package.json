@@ -23,13 +23,13 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.1",
-    "@changesets/cli": "^2.29.5",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
-    "knip": "^5.62.0",
+    "@changesets/cli": "^2.29.7",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "knip": "^5.64.2",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.5",
-    "typescript": "^5.9.2"
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3"
   },
   "packageManager": "bun@1.1.29",
   "workspaces": [
