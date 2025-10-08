@@ -16,6 +16,7 @@ export const toggleGroupButtonStyles = cva(
     'z-0',
     'h-(--ui-height)',
     'min-w-(--ui-height)',
+    'micro-interactions',
   ],
   {
     variants: {
@@ -24,6 +25,37 @@ export const toggleGroupButtonStyles = cva(
         true: ['bg-primary', 'hover:bg-primary/75', 'text-white', 'font-bold'],
         false: ['hover:bg-primary/20', 'text-text-primary'],
       },
+      disabled: {
+        true: disabled,
+        false: [],
+      },
+      // not used but available in healdessui API
+      autofocus: {
+        true: [],
+        false: [],
+      },
+      focus: {
+        true: [],
+        false: [],
+      },
+      hover: {
+        true: [],
+        false: [],
+      },
+    },
+  },
+)
+
+export const toggleGroupContainerStyles = cva(
+  [
+    'relative',
+    'inline-flex',
+    'rounded-md',
+    'h-[var(--ui-height)]',
+    'max-h-[var(--ui-height)]',
+  ],
+  {
+    variants: {
       disabled: {
         true: disabled,
       },

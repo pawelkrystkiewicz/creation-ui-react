@@ -82,13 +82,7 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
           helperText={helperText}
           value={selectLabel(value as SelectOptionType)}
         >
-          <Select
-            value={value as string}
-            onChange={handlePlainChange}
-            cx={{
-              container: 'w-full',
-            }}
-          >
+          <Select value={value as string} onChange={handlePlainChange}>
             <SelectButton className='w-full'>
               <Selected placeholder='Select option' />
             </SelectButton>
@@ -174,6 +168,9 @@ export const PlaygroundControlComponent: FC<PlaygroundControlProps> = ({
             type={'text'}
             value={value as string}
             onClear={onClear}
+            // cx={{
+            //   container: 'w-full',
+            // }}
           />
         </PlaygroundInputField>
       )

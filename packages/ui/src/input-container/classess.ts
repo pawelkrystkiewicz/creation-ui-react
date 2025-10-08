@@ -6,7 +6,7 @@ export const cuiInputContainer = cva(
     'relative',
     'group',
     'block',
-    'w-fit',
+    'w-auto',
     // Border
     'border-border',
     'group-hover:border-primary',

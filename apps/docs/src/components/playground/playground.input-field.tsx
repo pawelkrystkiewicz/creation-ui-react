@@ -1,5 +1,6 @@
 'use client'
 import { Field, Label, Description, type FieldProps } from '@creation-ui/react'
+import clsx from 'clsx'
 import type { FC, ReactNode } from 'react'
 
 interface PlaygroundInputFieldProps {
