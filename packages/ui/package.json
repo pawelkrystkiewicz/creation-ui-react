@@ -92,7 +92,8 @@
     "tailwindcss": "^4.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "keywords": [
     "javascript",
