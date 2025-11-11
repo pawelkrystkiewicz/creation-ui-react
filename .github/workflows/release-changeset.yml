@@ -11,8 +11,11 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
     env:
-      NPM_TOKEN_AUTOMATION: ${{ secrets.NPM_TOKEN_AUTOMATION }}
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Checkout Repo
@@ -27,9 +30,6 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-
-      - name: Verify NPM Authentication
-        run: npm whoami
 
       - name: Install Dependencies
         run: bun i
@@ -70,13 +70,13 @@ jobs:
             # Calculate next version for changeset
             CURRENT_VERSION=$(cat packages/ui/package.json | grep '"version":' | sed 's/.*"version": *"\([^"]*\)".*/\1/')
             echo "Current version: $CURRENT_VERSION"
-            
+
             # Calculate next version based on bump type
             IFS='.' read -r -a version_parts <<< "$CURRENT_VERSION"
             major=${version_parts[0]}
             minor=${version_parts[1]}
             patch=${version_parts[2]}
-            
+
             case $BUMP_TYPE in
               "major")
                 NEXT_VERSION="$((major + 1)).0.0"
@@ -88,7 +88,7 @@ jobs:
                 NEXT_VERSION="$major.$minor.$((patch + 1))"
                 ;;
             esac
-            
+
             echo "Next version will be: $NEXT_VERSION"
 
             # Generate changeset file
@@ -114,7 +114,7 @@ jobs:
           if [ -f packages/ui/package.json ]; then
             CURRENT_VERSION=$(cat packages/ui/package.json | grep '"version":' | sed 's/.*"version": *"\([^"]*\)".*/\1/')
             echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-            
+
             # Check if there are any changesets to determine if this will create a new version
             if [ "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
               echo "has_changesets=true" >> $GITHUB_OUTPUT
@@ -138,7 +138,7 @@ jobs:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           slack-message: |
             🚀 New package version published successfully: ${{ steps.changesets.outputs.publishedPackages }}
-            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -149,7 +149,7 @@ jobs:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
           slack-message: |
             📝 Release PR created with changelog updates
-            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -160,6 +160,6 @@ jobs:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
           slack-message: |
             ❌ Release workflow failed
-            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
