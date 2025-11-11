@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.8
+
+### Patch Changes
+
+- 🚀 Release v15.2.8
+
+  ### Changes in this release:
+
+  chore: Update release workflow to enable NPM provenance tracking
+
 ## 15.2.7
 
 ### Patch Changes
