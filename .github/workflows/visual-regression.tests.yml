@@ -31,7 +31,7 @@ jobs:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
           slack-message: |
             ✅ Visual Regression Tests passed on master branch
-            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -42,6 +42,6 @@ jobs:
           channel-id: '${{ secrets.SLACK_CHANNEL_ID }}'
           slack-message: |
             ❌ Visual Regression Tests failed on master branch
-            🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
