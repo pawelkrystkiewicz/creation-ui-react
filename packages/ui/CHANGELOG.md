@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.5
+
+### Patch Changes
+
+- 🚀 Release v15.2.5
+
+  ### Changes in this release:
+
+  chore: Remove debug NPM token workflow and update permissions in release workflow (#140)
+
 ## 15.2.4
 
 ### Patch Changes
