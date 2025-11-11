@@ -85,7 +85,7 @@
     "@floating-ui/react": "^0.27.16",
     "@floating-ui/react-dom": "^2.1.6",
     "@headlessui/react": "^2.2.9",
-    "clsx": "^2",
+    "clsx": "^2.1.1",
     "react": "^16 | ^17 | ^18 | ^19",
     "react-dom": "^16 | ^17 | ^18 | ^19",
     "tailwind-merge": "^3.3.1",
