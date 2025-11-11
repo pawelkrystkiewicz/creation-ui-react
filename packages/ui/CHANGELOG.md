@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.7
+
+### Patch Changes
+
+- 🚀 Release v15.2.7
+
+  ### Changes in this release:
+
+  ⬆️ Update iconoir-react to 7.11.0 (#137)
+
 ## 15.2.6
 
 ### Patch Changes
