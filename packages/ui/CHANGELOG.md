@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.10
+
+### Patch Changes
+
+- Release v15.2.10
+
+  ### Changes in this release:
+
+  Merge branch 'master' of https://github.com/pawelkrystkiewicz/creation-ui-react
+
 ## 15.2.9
 
 ### Patch Changes
