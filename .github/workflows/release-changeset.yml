@@ -51,23 +51,23 @@ jobs:
         id: generate_changeset
         run: |
           if [ "${{ steps.version.outputs.has_changesets }}" != "true" ]; then
-            echo "No changeset files found, checking for new commits..."
+            echo "No changeset files found, checking for new commits in packages/ui..."
 
-            # Get commit messages since last release, excluding release commits
+            # Get commit messages since last release, only for packages/ui changes
             LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
             if [ -z "$LAST_TAG" ]; then
-              COMMITS=$(git log --pretty=format:"%s" --since="1 day ago" | grep -v "^Version Packages" | grep -v "^Release:" | grep -v "^chore: release" | grep -v "^chore(release)" || true)
+              COMMITS=$(git log --pretty=format:"%s" --since="1 day ago" -- packages/ui | grep -v "^Version Packages" | grep -v "^Release:" | grep -v "^chore: release" | grep -v "^chore(release)" || true)
             else
-              COMMITS=$(git log --pretty=format:"%s" $LAST_TAG..HEAD | grep -v "^Version Packages" | grep -v "^Release:" | grep -v "^chore: release" | grep -v "^chore(release)" || true)
+              COMMITS=$(git log --pretty=format:"%s" $LAST_TAG..HEAD -- packages/ui | grep -v "^Version Packages" | grep -v "^Release:" | grep -v "^chore: release" | grep -v "^chore(release)" || true)
             fi
 
-            # Check if we have any non-release commits
+            # Check if we have any non-release commits in packages/ui
             if [ -z "$COMMITS" ]; then
-              echo "No non-release commits found, skipping changeset generation"
+              echo "No non-release commits found in packages/ui, skipping changeset generation"
               exit 0
             fi
 
-            echo "Found commits for release:"
+            echo "Found commits in packages/ui for release:"
             echo "$COMMITS"
 
             # Determine version bump based on conventional commits
