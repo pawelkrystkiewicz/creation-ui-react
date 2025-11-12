@@ -80,7 +80,17 @@ jobs:
               fi
             done <<< "$COMMITS"
 
-            NEXT_VERSION="${{ steps.version.outputs.next_version }}"
+            CURRENT_VERSION="${{ steps.version.outputs.current_version }}"
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+            MAJOR=$((10#$MAJOR))
+            MINOR=$((10#$MINOR))
+            PATCH=$((10#$PATCH))
+            case "$BUMP_TYPE" in
+              major) NEXT_VERSION="$((MAJOR + 1)).0.0" ;;
+              minor) NEXT_VERSION="$MAJOR.$((MINOR + 1)).0" ;;
+              patch) NEXT_VERSION="$MAJOR.$MINOR.$((PATCH + 1))" ;;
+              *) NEXT_VERSION="$CURRENT_VERSION" ;;
+            esac
             echo "Next version will be: $NEXT_VERSION"
 
             # Generate changeset file
