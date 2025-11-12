@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.9
+
+### Patch Changes
+
+- 🚀 Release v15.2.9
+
+  ### Changes in this release:
+
+  fix: Add repository metadata to package.json for NPM provenance (#146)
+
 ## 15.2.8
 
 ### Patch Changes
