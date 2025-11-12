@@ -52,8 +52,6 @@
     "@types/pixelmatch": "^5.2.6",
     "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^5.1.0",
-    "@vitest/browser": "4.0.8",
-    "@vitest/coverage-v8": "4.0.8",
     "chromium-bidi": "^9.2.1",
     "eslint": "^9.39.1",
     "jest-axe": "^10.0.0",
@@ -64,7 +62,9 @@
     "typescript": "5.9.3",
     "vite": "^7.2.2",
     "vitest": "4.0.8",
-    "@vitest/browser-playwright": "4.0.8"
+    "@vitest/browser": "4.0.8",
+    "@vitest/browser-playwright": "4.0.8",
+    "@vitest/coverage-v8": "4.0.8"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",

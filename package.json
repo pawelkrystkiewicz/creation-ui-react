@@ -10,14 +10,17 @@
     "release": "turbo run build --filter=@creation-ui/react && changeset publish",
     "changeset": "changeset",
     "version-packages": "changeset version",
+    "version:next": "bun run ./scripts/calculate-next-version.ts",
     "pre:enter": "changeset pre enter next",
     "pre:exit": "changeset pre exit next",
     "version:dev": "changeset version --snapshot dev",
     "release:dev": "turbo run build --filter=@creation-ui/react && changeset publish --tag dev",
+    "test": "vitest",
     "test:unit": "cd packages/ui && bun run test:unit",
     "test:unit:coverage": "cd packages/ui && bun run test:unit:coverage",
     "test:visual": "cd packages/ui && bun run test:visual",
     "test:visual:update": "cd packages/ui && bun run test:visual:update",
+    "test:scripts": "bun test scripts/",
     "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i",
     "update-screenshots": "./scripts/update-screenshots.sh"
   },
@@ -29,7 +32,8 @@
     "knip": "^5.69.0",
     "prettier": "^3.6.2",
     "turbo": "^2.6.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "4.0.8"
   },
   "packageManager": "bun@1.1.29",
   "workspaces": [

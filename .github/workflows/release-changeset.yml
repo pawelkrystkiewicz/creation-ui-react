@@ -39,9 +39,17 @@ jobs:
       - name: Install Dependencies
         run: bun i
 
+      - name: Calculate next version
+        id: version
+        run: |
+          # Use the dedicated TypeScript script to calculate version
+          VERSION_OUTPUT=$(bun run ./scripts/calculate-next-version.ts github)
+          echo "$VERSION_OUTPUT"
+          echo "$VERSION_OUTPUT" >> $GITHUB_OUTPUT
+
       - name: Generate changeset if none exists
         run: |
-          if [ ! "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
+          if [ "${{ steps.version.outputs.has_changesets }}" != "true" ]; then
             echo "No changeset files found, checking for new commits..."
 
             # Get commit messages since last release, excluding release commits
@@ -72,28 +80,7 @@ jobs:
               fi
             done <<< "$COMMITS"
 
-            # Calculate next version for changeset
-            CURRENT_VERSION=$(cat packages/ui/package.json | grep '"version":' | sed 's/.*"version": *"\([^"]*\)".*/\1/')
-            echo "Current version: $CURRENT_VERSION"
-
-            # Calculate next version based on bump type
-            IFS='.' read -r -a version_parts <<< "$CURRENT_VERSION"
-            major=${version_parts[0]}
-            minor=${version_parts[1]}
-            patch=${version_parts[2]}
-
-            case $BUMP_TYPE in
-              "major")
-                NEXT_VERSION="$((major + 1)).0.0"
-                ;;
-              "minor")
-                NEXT_VERSION="$major.$((minor + 1)).0"
-                ;;
-              "patch")
-                NEXT_VERSION="$major.$minor.$((patch + 1))"
-                ;;
-            esac
-
+            NEXT_VERSION="${{ steps.version.outputs.next_version }}"
             echo "Next version will be: $NEXT_VERSION"
 
             # Generate changeset file
@@ -113,56 +100,6 @@ jobs:
             echo "Changeset files already exist, skipping generation"
           fi
 
-      - name: Get next version for PR title
-        id: version
-        run: |
-          if [ -f packages/ui/package.json ]; then
-            CURRENT_VERSION=$(cat packages/ui/package.json | grep '"version":' | sed 's/.*"version": *"\([^"]*\)".*/\1/')
-            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-
-            # Check if there are any changesets to determine if this will create a new version
-            if [ "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
-              echo "has_changesets=true" >> $GITHUB_OUTPUT
-
-              # Determine the highest bump type from all changesets
-              BUMP_TYPE="patch"
-              for changeset in .changeset/*.md; do
-                if [ "$changeset" != ".changeset/README.md" ]; then
-                  if grep -q "major" "$changeset"; then
-                    BUMP_TYPE="major"
-                    break
-                  elif grep -q "minor" "$changeset"; then
-                    BUMP_TYPE="minor"
-                  fi
-                fi
-              done
-
-              # Calculate next version based on bump type
-              IFS='.' read -r -a version_parts <<< "$CURRENT_VERSION"
-              major=${version_parts[0]}
-              minor=${version_parts[1]}
-              patch=${version_parts[2]}
-
-              case $BUMP_TYPE in
-                "major")
-                  NEXT_VERSION="$((major + 1)).0.0"
-                  ;;
-                "minor")
-                  NEXT_VERSION="$major.$((minor + 1)).0"
-                  ;;
-                "patch")
-                  NEXT_VERSION="$major.$minor.$((patch + 1))"
-                  ;;
-              esac
-
-              echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
-              echo "Next version will be: $NEXT_VERSION"
-            else
-              echo "has_changesets=false" >> $GITHUB_OUTPUT
-              echo "next_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-            fi
-          fi
-
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
@@ -177,7 +114,7 @@ jobs:
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           slack-message: |
-            🚀 New package version published successfully: ${{ steps.changesets.outputs.publishedPackages }}
+            Successfully published ${{ steps.changesets.outputs.publishedPackages[0].name }}@${{ steps.changesets.outputs.publishedPackages[0].version }} to npm
             <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
