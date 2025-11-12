@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 15.2.11
+
+### Patch Changes
+
+- Release v15.2.11
+
+  ### Changes in this release:
+
+  chore: Refine changeset generation in release workflow for packages/ui
+
 ## 15.2.10
 
 ### Patch Changes
