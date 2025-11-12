@@ -102,7 +102,7 @@ jobs:
             echo "\"@creation-ui/react\": $BUMP_TYPE" >> "$CHANGESET_FILE"
             echo "---" >> "$CHANGESET_FILE"
             echo "" >> "$CHANGESET_FILE"
-            echo "🚀 Release v$NEXT_VERSION" >> "$CHANGESET_FILE"
+            echo "Release v$NEXT_VERSION" >> "$CHANGESET_FILE"
             echo "" >> "$CHANGESET_FILE"
             echo "### Changes in this release:" >> "$CHANGESET_FILE"
             echo "" >> "$CHANGESET_FILE"
@@ -123,8 +123,43 @@ jobs:
             # Check if there are any changesets to determine if this will create a new version
             if [ "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
               echo "has_changesets=true" >> $GITHUB_OUTPUT
+
+              # Determine the highest bump type from all changesets
+              BUMP_TYPE="patch"
+              for changeset in .changeset/*.md; do
+                if [ "$changeset" != ".changeset/README.md" ]; then
+                  if grep -q "major" "$changeset"; then
+                    BUMP_TYPE="major"
+                    break
+                  elif grep -q "minor" "$changeset"; then
+                    BUMP_TYPE="minor"
+                  fi
+                fi
+              done
+
+              # Calculate next version based on bump type
+              IFS='.' read -r -a version_parts <<< "$CURRENT_VERSION"
+              major=${version_parts[0]}
+              minor=${version_parts[1]}
+              patch=${version_parts[2]}
+
+              case $BUMP_TYPE in
+                "major")
+                  NEXT_VERSION="$((major + 1)).0.0"
+                  ;;
+                "minor")
+                  NEXT_VERSION="$major.$((minor + 1)).0"
+                  ;;
+                "patch")
+                  NEXT_VERSION="$major.$minor.$((patch + 1))"
+                  ;;
+              esac
+
+              echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+              echo "Next version will be: $NEXT_VERSION"
             else
               echo "has_changesets=false" >> $GITHUB_OUTPUT
+              echo "next_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
             fi
           fi
 
@@ -133,7 +168,7 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: bun run release
-          title: '🚀 Release: @creation-ui/react packages'
+          title: 'Release: @creation-ui/react v${{ steps.version.outputs.next_version }}'
           createGithubReleases: true
 
       - name: Notify Slack on Release Success
