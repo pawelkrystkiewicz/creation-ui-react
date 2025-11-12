@@ -40,6 +40,7 @@ jobs:
         run: bun i
 
       - name: Generate changeset if none exists
+        id: generate_changeset
         run: |
           if [ ! "$(ls -A .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
             echo "No changeset files found, checking for new commits..."
@@ -95,6 +96,7 @@ jobs:
             esac
 
             echo "Next version will be: $NEXT_VERSION"
+            echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
 
             # Generate changeset file
             CHANGESET_FILE=".changeset/auto-generated-$(date +%s).md"
@@ -111,6 +113,7 @@ jobs:
             echo "Generated changeset with $BUMP_TYPE version bump (v$NEXT_VERSION)"
           else
             echo "Changeset files already exist, skipping generation"
+            echo "next_version=${{ steps.version.outputs.next_version }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Get next version for PR title
@@ -133,9 +136,8 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: bun run release
-          title: '🚀 Release: @creation-ui/react packages'
+          title: 'Release v${{ steps.generate_changeset.outputs.next_version || steps.version.outputs.next_version }}'
           createGithubReleases: true
-
       - name: Notify Slack on Release Success
         if: steps.changesets.outputs.published == 'true'
         uses: slackapi/slack-github-action@v1.27.1
