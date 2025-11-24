@@ -35,7 +35,7 @@
   "devDependencies": {
     "pagefind": "^1.4.0",
     "@types/bun": "latest",
-    "@types/lodash": "^4.17.20"
+    "@types/lodash": "^4.17.21"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
