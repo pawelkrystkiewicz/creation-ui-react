@@ -47,8 +47,8 @@
     "@turbo/gen": "^2.6.1",
     "esbuild-plugin-copy": "^2.1.1",
     "plop": "^4.0.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "publishConfig": {
     "access": "public",
