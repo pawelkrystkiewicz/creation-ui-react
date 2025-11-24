@@ -13,9 +13,20 @@ export const cuiInputContainer = cva(
     'group-active:border-primary',
     'group-focus:border-primary',
     'group-focus-within:border-primary',
+    // Ring focus state for modern look
+    'focus-within:ring-2',
+    'focus-within:ring-primary',
+    'focus-within:ring-offset-0',
+    // Shadows for subtle depth
+    'shadow-[var(--shadow-sm)]',
+    'focus-within:shadow-[var(--shadow-md)]',
+    // Smooth transitions
+    'transition-all',
+    'duration-200',
     // Invalid state
     'invalid:border-error',
     'invalid:hover:border-error/80',
+    'invalid:ring-error',
     // Disabled state
     'disabled:border-border/20',
   ],

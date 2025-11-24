@@ -17,6 +17,13 @@ const cardClasses = twix(
   'text-text-primary',
   'bg-background-primary',
   'border-border',
+  // Add shadow for elevation
+  'shadow-[var(--shadow-md)]',
+  // Hover effect for interactive feel
+  'hover:shadow-[var(--shadow-lg)]',
+  // Smooth transition
+  'transition-shadow',
+  'duration-200',
 )
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(

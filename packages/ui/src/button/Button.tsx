@@ -28,12 +28,22 @@ const styles = cva(
     'py-[calc(theme(spacing[2.5])-1px)]',
     'sm:px-[calc(theme(spacing.3)-1px)]',
     'sm:py-[calc(theme(spacing[1.5])-1px)]',
-    // Focus
+    // Shadows for depth
+    'shadow-[var(--shadow-sm)]',
+    'hover:shadow-[var(--shadow-md)]',
+    'active:shadow-[var(--shadow-sm)]',
+    // Focus with ring instead of outline
     'focus:outline-none',
-    'data-focus:outline',
-    'data-focus:outline-2',
-    'data-focus:outline-offset-2',
-    'data-focus:outline-primary',
+    'focus-visible:outline-none',
+    'focus-visible:ring-2',
+    'focus-visible:ring-primary',
+    'focus-visible:ring-offset-2',
+    'data-focus:ring-2',
+    'data-focus:ring-primary',
+    'data-focus:ring-offset-2',
+    // Smooth transitions
+    'transition-all',
+    'duration-200',
     // Disabled
     'data-disabled:opacity-50',
     'data-disabled:pointer-events-none',

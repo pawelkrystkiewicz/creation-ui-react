@@ -51,3 +51,16 @@
 .micro-interactions {
   @apply transition-all duration-300 ease-in-out;
 }
+
+/* Premium visual helpers */
+.shadow-hover {
+  @apply transition-shadow duration-200 shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)];
+}
+
+.ring-focus {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+}
+
+.elevated {
+  @apply shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-lg)] transition-shadow duration-300;
+}
