@@ -43,7 +43,7 @@
   ],
   "dependencies": {
     "@creation-ui/react": "workspace:*",
-    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.1.17",
     "@turbo/gen": "^2.6.1",
     "esbuild-plugin-copy": "^2.1.1",
     "plop": "^4.0.4",
