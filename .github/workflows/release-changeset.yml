@@ -16,7 +16,7 @@ jobs:
       id-token: write
       pull-requests: write
     env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
     steps:
       - name: Checkout Repo
