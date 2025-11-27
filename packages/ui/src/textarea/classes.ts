@@ -21,7 +21,7 @@ export const containerClasses = [
   'after:ring-transparent',
   'after:ring-inset',
   'sm:focus-within:after:ring-2',
-  'sm:focus-within:after:ring-primary',
+  'sm:focus-within:after:ring-ring',
   // Disabled state
   'has-data-disabled:opacity-50',
   'has-data-disabled:before:bg-zinc-950/5',

@@ -8,7 +8,7 @@ export const cuiInputContainer = cva(
     'block',
     'w-auto',
     // Border
-    'border-border',
+    'border-input',
     'group-hover:border-primary',
     'group-active:border-primary',
     'group-focus:border-primary',

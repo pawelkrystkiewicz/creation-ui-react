@@ -34,7 +34,7 @@ export const calendarDayCellClasses = cva(
     'micro-interactions',
     // focusable,
     'focus-visible:outline-2',
-    'focus-visible:outline-primary',
+    'focus-visible:outline-ring',
     // focusable
     'cursor-pointer',
     'select-none',

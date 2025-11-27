@@ -60,7 +60,7 @@ export const switchClasses = cva(
     'data-focus:outline',
     'data-focus:outline-2',
     'data-focus:outline-offset-2',
-    'data-focus:outline-blue-500',
+    'data-focus:outline-ring',
     // Hover
     'data-hover:ring-black/15',
     'data-hover:data-checked:ring-(--switch-bg-ring)',

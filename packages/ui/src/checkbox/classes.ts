@@ -50,7 +50,7 @@ export const checkboxStyles = cva(
     'group-data-focus:outline',
     'group-data-focus:outline-2',
     'group-data-focus:outline-offset-2',
-    'group-data-focus:outline-primary',
+    'group-data-focus:outline-ring',
 
     // 'group-data-disabled:before:bg-transparent',
     'dark:group-data-checked:group-data-disabled:after:hidden',

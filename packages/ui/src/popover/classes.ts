@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 
 export const popoverContentClasses = clsx(
-  'bg-background',
+  'bg-popover',
+  'text-popover-foreground',
   '!shadow-lg',
   'rounded-md',
   'py-2',
@@ -11,7 +12,7 @@ export const popoverContentClasses = clsx(
   'z-(--ui-z-dropdowns)',
 )
 export const popoverDescriptionClasses = clsx(
-  'text-foreground/75',
+  'text-popover-foreground/75',
   'text-sm',
   'leading-5',
 )

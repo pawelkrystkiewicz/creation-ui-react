@@ -5,7 +5,8 @@ import { twMerge } from 'tailwind-merge'
 
 export const dropdownMenuClasses = cva(
   [
-    'bg-background',
+    'bg-popover',
+    'text-popover-foreground',
     'border-border',
     'border',
     'shadow-md',
