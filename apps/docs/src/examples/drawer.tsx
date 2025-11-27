@@ -100,7 +100,7 @@ export const DrawerCustomizedExample = (props: DrawerProps) => {
             <Button
               onClick={handleClose}
               variant={'outlined'}
-              color={'error'}
+              color={'destructive'}
               className='min-w-[100px]'
             >
               Cancel

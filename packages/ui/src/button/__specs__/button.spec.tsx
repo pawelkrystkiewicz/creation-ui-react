@@ -18,7 +18,7 @@ describe('Button', () => {
 
   ;[
     ...ELEMENT_COLOR.map(color => ({
-      description: `applies correct --triger-color var for [${color}] color`,
+      description: `applies correct --trigger-color var for [${color}] color`,
       color,
       expected: color === 'mono'
         ? ['--trigger-color:var(--color-black)', '--trigger-color-contrast:var(--color-white)']
