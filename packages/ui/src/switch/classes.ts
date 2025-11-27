@@ -75,12 +75,12 @@ export const switchClasses = cva(
     'dark:data-disabled:data-checked:bg-white/15',
     'dark:data-disabled:data-checked:ring-white/15',
     // Color specific styles
-    '[--switch-bg-ring:theme(colors.primary)]/90',
-    '[--switch-bg:theme(colors.primary)]',
+    '[--switch-bg-ring:var(--color-primary)]/90',
+    '[--switch-bg:var(--color-primary)]',
     'dark:[--switch-bg-ring:transparent]',
     '[--switch:white]',
-    '[--switch-ring:theme(colors.primary)]/90',
-    '[--switch-shadow:theme(colors.primary)]/20',
+    '[--switch-ring:var(--color-primary)]/90',
+    '[--switch-shadow:var(--color-primary)]/20',
   ],
   {
     variants: {},

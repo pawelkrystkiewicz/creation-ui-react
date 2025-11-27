@@ -45,7 +45,7 @@ export const CookieSettings = ({ className }: ShowcaseCardProps) => {
           <Flex key={option.name} className='items-center justify-between'>
             <Flex className='flex-col gap-0.5 w-2/3'>
               <h4 className='font-medium text-base'>{option.name}</h4>
-              <p className='text-xs text-text-secondary'>
+              <p className='text-xs text-muted-foreground'>
                 {option.description}
               </p>
             </Flex>
@@ -55,7 +55,7 @@ export const CookieSettings = ({ className }: ShowcaseCardProps) => {
       </CardContent>
       <CardFooter className='h-fit flex-row-reverse'>
         <Button variant='outlined' color="mono">Save</Button>
-        <Button variant='outlined' color="error">Discard changes</Button>
+        <Button variant='outlined' color="destructive">Discard changes</Button>
       </CardFooter>
     </Card>
   )

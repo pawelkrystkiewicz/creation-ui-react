@@ -15,7 +15,7 @@ export const DashboardStatsCard = ({ className }: ShowcaseCardProps) => {
     <Card className={clsx('h-36 flex-grow-0', className)}>
       <CardHeader className='flex items-center justify-between'>
         <CardTitle>Site visits</CardTitle>
-        <Globe className='text-text-primary' data-slot='icon' />
+        <Globe className='text-foreground' data-slot='icon' />
       </CardHeader>
       <CardContent>
         <div className='text-4xl font-bold'>1,314,688</div>

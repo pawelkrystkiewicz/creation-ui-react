@@ -21,7 +21,7 @@ export const drawerChildClasses = [
   'overflow-hidden',
   'text-left',
   'shadow-xl',
-  'bg-(--background-primary)',
+  'bg-background',
 ]
 
 export const drawerStyles = cva(

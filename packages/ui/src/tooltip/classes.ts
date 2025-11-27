@@ -19,7 +19,7 @@ export const tooltipStyles = cva(
     'py-1',
     'px-2',
     'border-border',
-    'bg-background-secondary',
+    'bg-muted',
     'z-(--ui-z-tooltips)',
     'text-sm',
   ],

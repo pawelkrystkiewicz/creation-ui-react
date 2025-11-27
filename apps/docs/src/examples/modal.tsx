@@ -98,7 +98,7 @@ export const ModalExample = () => {
             onClick={toggleOpen}
             disabled={loading}
             variant={'text'}
-            color='error'
+            color='destructive'
           >
             Cancel
           </Button>
@@ -172,7 +172,7 @@ export const ModalExample = () => {
             onClick={toggleOpen}
             disabled={loading}
             variant={'text'}
-            color='error'
+            color='destructive'
           >
             Cancel
           </Button>

@@ -74,7 +74,7 @@ export const Modal: FC<ModalProps> = ({ className, children, ...props }) => {
               'data-enter:ease-out',
               'data-closed:data-enter:scale-95',
               'data-leave:ease-in',
-              'bg-background-primary',
+              'bg-background',
             ])}
           >
             {children}

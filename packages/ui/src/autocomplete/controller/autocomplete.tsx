@@ -500,7 +500,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 }
 
 const EmptyState: FC<ComponentPropsWithoutRef<'span'>> = ({ children }) => (
-  <span className='text-center text-text-secondary text-sm mx-auto'>
+  <span className='text-center text-muted-foreground text-sm mx-auto'>
     {children}
   </span>
 )

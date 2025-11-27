@@ -101,7 +101,7 @@ export const TeamMembers = ({ className }: ShowcaseCardProps) => {
               </p>
               <p
                 title={member.email}
-                className='text-sm text-text-secondary truncate cursor-default'
+                className='text-sm text-muted-foreground truncate cursor-default'
               >
                 {member.email}
               </p>

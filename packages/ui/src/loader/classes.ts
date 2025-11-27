@@ -17,7 +17,7 @@ export const loaderIconClasses = cva(
   {
     variants: {
       color: {
-        error: 'fill-error',
+        destructive: 'fill-destructive',
         primary: 'fill-primary',
         success: 'fill-success',
         warning: 'fill-warning',

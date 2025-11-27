@@ -12,7 +12,7 @@ export const calendarHeaderClasses = cva(['font-semibold', 'mb-4'], {
 export const calendarContainerClasses = cva(
   [
     'relative',
-    'bg-background-primary',
+    'bg-background',
     'border',
     'border-border',
     'p-4',
@@ -78,7 +78,7 @@ export const calendarDayCellClasses = cva(
         false: ['text-opacity-75'],
       },
       isWeekend: {
-        true: ['text-error'],
+        true: ['text-destructive'],
         false: [],
       },
     },
@@ -96,7 +96,7 @@ export const calendarDaysViewTitleClasses = {
   day: cva(['select-none', 'items-center'], {
     variants: {
       isWeekend: {
-        true: 'text-error',
+        true: 'text-destructive',
         false: '',
       },
     },

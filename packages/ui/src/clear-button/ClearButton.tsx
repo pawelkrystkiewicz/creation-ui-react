@@ -4,8 +4,8 @@ import { twMerge } from 'tailwind-merge'
 import { Icon } from '../icon'
 
 const classes = cva([
-  'hover:fill-error',
-  'dark:hover:fill-error',
+  'hover:fill-destructive',
+  'dark:hover:fill-destructive',
   'cursor-pointer',
   'select-none',
   'size-[var(--ui-icon-height)]',

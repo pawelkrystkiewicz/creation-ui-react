@@ -19,7 +19,7 @@ export const BlogCard = ({ className }: ShowcaseCardProps) => {
         height={300}
         className='rounded-sm w-auto h-2/3 object-cover'
       />
-      <div className='text-sm text-text-secondary flex justify-between '>
+      <div className='text-sm text-muted-foreground flex justify-between '>
         <span>{date.toLocaleDateString()}</span>
         <span>4 min read</span>
       </div>
@@ -29,7 +29,7 @@ export const BlogCard = ({ className }: ShowcaseCardProps) => {
       >
         <h3 className='text-lg font-bold'>Dlaczego robisz to co robisz</h3>
       </Link>
-      <p className='text-ellipsis text-sm text-text-primary leading-relaxed line-clamp-4 text-justify'>
+      <p className='text-ellipsis text-sm text-foreground leading-relaxed line-clamp-4 text-justify'>
         "Co najbardziej lubisz w programowaniu?" Tego pytania o dziwno nie zadał
         mi żaden rekruter, ale moja siostra, kilka godzin po tym, jak wcześniej
         wysłałem jej zdjęcie mojego biurka. Było na nim widać komputer z

@@ -14,8 +14,8 @@ const cardClasses = twix(
   'border',
   'rounded-lg',
   'p-5',
-  'text-text-primary',
-  'bg-background-primary',
+  'text-card-foreground',
+  'bg-card',
   'border-border',
 )
 
@@ -43,7 +43,7 @@ export const CardContent = forwardRef<
   <div ref={ref} className={clsx(className)} {...props} />
 ))
 
-const cardDescriptionClasses = twix('text-sm text-text-secondary')
+const cardDescriptionClasses = twix('text-sm text-muted-foreground')
 
 export const CardDescription = forwardRef<
   HTMLParagraphElement,

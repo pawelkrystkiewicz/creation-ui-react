@@ -14,8 +14,8 @@ export const cuiInputContainer = cva(
     'group-focus:border-primary',
     'group-focus-within:border-primary',
     // Invalid state
-    'invalid:border-error',
-    'invalid:hover:border-error/80',
+    'invalid:border-destructive',
+    'invalid:hover:border-destructive/80',
     // Disabled state
     'disabled:border-border/20',
   ],
@@ -89,7 +89,7 @@ export const cuiInputContainer = cva(
         none: ['border-none'],
       },
       background: {
-        true: ['bg-background-secondary/50', 'dark:bg-background-secondary/20'],
+        true: ['bg-muted/50', 'dark:bg-muted/20'],
         false: ['bg-transparent'],
       },
     },

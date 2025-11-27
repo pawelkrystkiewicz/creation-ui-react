@@ -45,7 +45,7 @@ export const Textarea = forwardRef(function Textarea(
           // Invalid state
           'data-invalid:border-red-500',
           'data-invalid:data-hover:border-red-500',
-          'dark:data-invalid:border-error dark:data-invalid:data-hover:border-error',
+          'dark:data-invalid:border-destructive dark:data-invalid:data-hover:border-destructive',
           // Disabled state
           'disabled:border-neutral-950/20',
           'dark:disabled:border-white/15',

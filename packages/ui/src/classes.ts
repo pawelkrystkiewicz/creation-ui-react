@@ -22,7 +22,7 @@ export const inputContainer = ({ size, animations, disabled, error }: any) =>
 
 export const optionListClasses = cva(
   [
-    'bg-background-secondary',
+    'bg-muted',
     'shadow-md',
     'w-fit',
     'border',
@@ -66,64 +66,63 @@ export const triggerVariants = {
   variant: {
     contained: [
       // Optical border, implemented as the button background to avoid corner artifacts
-      'text-[var(--trigger-color-contrast)]',
-      'bg-[var(--trigger-color)]',
-      'data-active:bg-[var(--trigger-color)]/[85%]',
-      'data-hover:bg-[var(--trigger-color)]/90',
+      'text-(--trigger-color-contrast)',
+      'bg-(--trigger-color)',
+      'data-active:bg-(--trigger-color)/80',
+      'data-hover:bg-(--trigger-color)/90',
       'cursor-pointer',
       'data-disabled:cursor-not-allowed',
     ],
     outlined: [
       // Base
       'border',
-      '!border-[var(--trigger-color)]',
-      'text-[var(--trigger-color)]',
+      '!border-(--trigger-color)',
+      'text-(--trigger-color)',
       'bg-transparent',
-      'data-active:bg-[var(--trigger-color)]/20',
-      'data-hover:bg-[var(--trigger-color)]/10',
+      'data-active:bg-(--trigger-color)/20',
+      'data-hover:bg-(--trigger-color)/10',
       // Dark mode
-      'dark:data-active:bg-[var(--trigger-color)]/30',
-      'dark:data-hover:bg-[var(--trigger-color)]/25',
+      'dark:data-active:bg-(--trigger-color)/30',
+      'dark:data-hover:bg-(--trigger-color)/25',
       'cursor-pointer',
       'data-disabled:cursor-not-allowed',
     ],
     text: [
       // Base
       'border-transparent',
-      'text-[var(--trigger-color)]',
+      'text-(--trigger-color)',
       'bg-transparent',
-      'data-active:bg-[var(--trigger-color)]/20',
-      'data-hover:bg-[var(--trigger-color)]/10',
+      'data-active:bg-(--trigger-color)/20',
+      'data-hover:bg-(--trigger-color)/10',
       // Dark mode
-      'dark:data-active:bg-[var(--trigger-color)]/30',
-      'dark:data-hover:bg-[var(--trigger-color)]/25',
+      'dark:data-active:bg-(--trigger-color)/30',
+      'dark:data-hover:bg-(--trigger-color)/25',
       'cursor-pointer',
       'data-disabled:cursor-not-allowed',
     ],
   },
   color: {
     primary: [
-      '[--trigger-color:theme(colors.primary)]',
-      '[--trigger-color-contrast:theme(colors.white)]',
+      '[--trigger-color:var(--color-primary)]',
+      '[--trigger-color-contrast:var(--color-white)]',
     ],
     success: [
-      '[--trigger-color:theme(colors.success)]',
-      '[--trigger-color-contrast:theme(colors.white)]',
+      '[--trigger-color:var(--color-success)]',
+      '[--trigger-color-contrast:var(--color-white)]',
     ],
     warning: [
-      '[--trigger-color:theme(colors.warning)]',
-      '[--trigger-color-contrast:theme(colors.black)]',
+      '[--trigger-color:var(--color-warning)]',
+      '[--trigger-color-contrast:var(--color-black)]',
     ],
-    error: [
-      '[--trigger-color:theme(colors.error)]',
-      '[--trigger-color-contrast:theme(colors.white)]',
+    destructive: [
+      '[--trigger-color:var(--color-destructive)]',
+      '[--trigger-color-contrast:var(--color-white)]',
     ],
     mono: [
-      //
-      '[--trigger-color:theme(colors.black)]',
-      '[--trigger-color-contrast:theme(colors.white)]',
-      'dark:[--trigger-color:theme(colors.white)]',
-      'dark:[--trigger-color-contrast:theme(colors.black)]',
+      '[--trigger-color:var(--color-black)]',
+      '[--trigger-color-contrast:var(--color-white)]',
+      'dark:[--trigger-color:var(--color-white)]',
+      'dark:[--trigger-color-contrast:var(--color-black)]',
     ],
     unstyled: [],
   },
@@ -148,7 +147,7 @@ export const selectOptionClasses = cva(
     'px-2',
     'py-0.5',
     'micro-interactions',
-    'text-text-primary',
+    'text-foreground',
     'hover:bg-primary/20',
     'inline-flex',
     'justify-between',

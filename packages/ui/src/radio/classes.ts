@@ -50,7 +50,7 @@ export const radioStyles = cva(
     'after:absolute',
     'after:inset-0',
     'after:rounded-full',
-    'after:shadow-[inset_0_1px_--theme(--color-white/15%)]',
+    'after:shadow-[inset_0_1px_var(--color-white)/15%]',
     'dark:after:-inset-px',
     'dark:after:hidden',
     'dark:after:rounded-full',
