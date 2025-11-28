@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render } from '@testing-library/react'
-import Calendar from '..'
+import { Calendar } from '..'
 
 describe('Calendar Visual Tests', () => {
   it('renders default calendar (days view)', async () => {

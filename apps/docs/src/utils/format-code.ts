@@ -1,16 +1,15 @@
-import * as prettier from 'prettier/standalone'
-import * as prettierPluginEstree from 'prettier/plugins/estree'
-import * as parserBabel from 'prettier/parser-babel'
-
 export const formatCode = async (code: string) => {
   try {
-    return await prettier.format(code.trim(), {
+    const [{ format }, prettierPluginBabel, prettierPluginEstree] =
+      await Promise.all([
+        import('prettier/standalone'),
+        import('prettier/plugins/babel'),
+        import('prettier/plugins/estree'),
+      ])
+
+    return await format(code.trim(), {
       parser: 'babel',
-      plugins: [
-        parserBabel,
-        // @ts-expect-error
-        prettierPluginEstree,
-      ],
+      plugins: [prettierPluginBabel.default, prettierPluginEstree.default],
       semi: false,
       arrowParens: 'avoid',
       printWidth: 40,

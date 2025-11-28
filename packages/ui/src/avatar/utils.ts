@@ -10,7 +10,17 @@ export const getDetails = (
 ) => {
   const count = Children.count(children)
 
-  const surplus = total ? total - count : limit ? count - limit : total - count
+  // When total is provided with limit, surplus = total - limit (remaining users not shown)
+  // When only limit is provided, surplus = count - limit (children exceeding limit)
+  // When only total is provided, surplus = total - count
+  const surplus =
+    total && limit
+      ? total - limit
+      : limit
+        ? count - limit
+        : total
+          ? total - count
+          : 0
 
   return {
     surplusCount: Number(surplus),

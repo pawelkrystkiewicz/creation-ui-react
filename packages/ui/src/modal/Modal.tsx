@@ -14,11 +14,19 @@ import {
   ModalFooterProps,
 } from './types'
 
-export const Modal: FC<ModalProps> = ({ className, children, ...props }) => {
+export const Modal: FC<ModalProps> = ({
+  className,
+  children,
+  static: isStatic,
+  ...props
+}) => {
+  // transition prop is incompatible with static prop in Headless UI v2
+  const useTransition = !isStatic
+
   return (
-    <Dialog {...props}>
+    <Dialog static={isStatic} {...props}>
       <DialogBackdrop
-        transition
+        transition={useTransition}
         className={clsx(
           'fixed',
           'inset-0',
@@ -57,7 +65,7 @@ export const Modal: FC<ModalProps> = ({ className, children, ...props }) => {
           ])}
         >
           <DialogPanel
-            transition
+            transition={useTransition}
             className={clsx(className, [
               'row-start-2',
               'w-full',

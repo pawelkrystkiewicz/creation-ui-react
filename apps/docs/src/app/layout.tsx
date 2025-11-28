@@ -2,7 +2,7 @@
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { Footer, Layout, Navbar } from 'nextra-theme-docs'
 import 'nextra-theme-docs/style.css'
-import { Banner } from 'nextra/components'
+import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import '../index.css'
 import Error from './error'
@@ -65,14 +65,14 @@ export default async function RootLayout({ children }: any) {
       suppressHydrationWarning
       className={clsx(manrope.variable, firaCode.variable)}
     >
-      <head>
+      <Head>
         <script
           defer
           id='umami'
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
         />
-      </head>
+      </Head>
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Layout
