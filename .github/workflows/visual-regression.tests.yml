@@ -4,6 +4,9 @@ on:
     branches:
       - master
   pull_request:
+env:
+  LANG: en_US.UTF-8
+  LC_ALL: en_US.UTF-8
 jobs:
   visual-regression-test:
     timeout-minutes: 60
