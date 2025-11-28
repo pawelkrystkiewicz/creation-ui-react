@@ -31,6 +31,7 @@ export const Drawer = ({
         <Transition
           show={open}
           as={Fragment}
+          unmount={false}
           enter={clsx(drawerAnimation.animation)}
           leave={clsx(drawerAnimation.animation)}
           enterFrom={clsx(drawerAnimation.enter[position])}
