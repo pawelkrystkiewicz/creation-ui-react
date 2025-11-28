@@ -1,22 +1,181 @@
 # Theme
 
 TailwindCSS 4 allows for configuring theme by setting CSS variables, which makes it easy to customize it to match your needs.
-Below are the default values import using in your .css file.
+Below are the default values import using in your `.css` file.
 
-```css
+```css copy
 @import '@creation-ui/react/theme.css';
 ```
 
-```css
-@theme {
-  --color-primary: oklch(60.48% 0.2165 257.21);
-  --color-warning: oklch(77.97% 0.1665 72.45);
-  --color-error: oklch(66.16% 0.2249 25.88);
-  --color-success: oklch(75.14% 0.1514 166.5);
+or just copy default values from `theme.css` file. This way you can easily extend it with your own values.
 
-  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
-  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+```css copy
+:root {
+  --radius: 0.625rem;
+
+/_ Core colors _/
+--background: oklch(1 0 0);
+--foreground: oklch(0.145 0 0);
+--card: oklch(1 0 0);
+--card-foreground: oklch(0.145 0 0);
+--popover: oklch(1 0 0);
+--popover-foreground: oklch(0.145 0 0);
+
+/_ Primary = your blue _/
+--primary: oklch(60.48% 0.2165 257.21);
+--primary-foreground: oklch(0.985 0 0);
+
+--secondary: oklch(0.97 0 0);
+--secondary-foreground: oklch(0.205 0 0);
+--muted: oklch(0.97 0 0);
+--muted-foreground: oklch(0.556 0 0);
+--accent: oklch(0.97 0 0);
+--accent-foreground: oklch(0.205 0 0);
+
+/_ Destructive _/
+--destructive: oklch(66.16% 0.2249 25.88);
+--destructive-foreground: oklch(0.985 0 0);
+
+--border: oklch(0.922 0 0);
+--input: oklch(0.922 0 0);
+--ring: oklch(0.708 0 0);
+
+/_ Chart colors _/
+--chart-1: oklch(0.646 0.222 41.116);
+--chart-2: oklch(0.6 0.118 184.704);
+--chart-3: oklch(0.398 0.07 227.392);
+--chart-4: oklch(0.828 0.189 84.429);
+--chart-5: oklch(0.769 0.188 70.08);
+
+/_ Sidebar _/
+--sidebar: oklch(0.985 0 0);
+--sidebar-foreground: oklch(0.145 0 0);
+--sidebar-primary: oklch(0.205 0 0);
+--sidebar-primary-foreground: oklch(0.985 0 0);
+--sidebar-accent: oklch(0.97 0 0);
+--sidebar-accent-foreground: oklch(0.205 0 0);
+--sidebar-border: oklch(0.922 0 0);
+--sidebar-ring: oklch(0.708 0 0);
+
+/_ CUSTOM creation-ui additions _/
+--warning: oklch(77.97% 0.1665 72.45);
+--warning-foreground: oklch(0.145 0 0);
+
+--success: oklch(75.14% 0.1514 166.5);
+--success-foreground: oklch(0.985 0 0);
 }
+
+.dark {
+--background: oklch(0.145 0 0);
+--foreground: oklch(0.985 0 0);
+--card: oklch(0.205 0 0);
+--card-foreground: oklch(0.985 0 0);
+--popover: oklch(0.269 0 0);
+--popover-foreground: oklch(0.985 0 0);
+
+/_ Primary = your blue _/
+--primary: oklch(60.48% 0.2165 257.21);
+--primary-foreground: oklch(0.985 0 0);
+
+--secondary: oklch(0.269 0 0);
+--secondary-foreground: oklch(0.985 0 0);
+--muted: oklch(0.269 0 0);
+--muted-foreground: oklch(0.708 0 0);
+--accent: oklch(0.371 0 0);
+--accent-foreground: oklch(0.985 0 0);
+
+--border: oklch(1 0 0 / 10%);
+--input: oklch(1 0 0 / 15%);
+--ring: oklch(0.556 0 0);
+
+/_ Chart colors _/
+--chart-1: oklch(0.488 0.243 264.376);
+--chart-2: oklch(0.696 0.17 162.48);
+--chart-3: oklch(0.769 0.188 70.08);
+--chart-4: oklch(0.627 0.265 303.9);
+--chart-5: oklch(0.645 0.246 16.439);
+
+/_ Sidebar _/
+--sidebar: oklch(0.205 0 0);
+--sidebar-foreground: oklch(0.985 0 0);
+--sidebar-primary: oklch(0.488 0.243 264.376);
+--sidebar-primary-foreground: oklch(0.985 0 0);
+--sidebar-accent: oklch(0.269 0 0);
+--sidebar-accent-foreground: oklch(0.985 0 0);
+--sidebar-border: oklch(1 0 0 / 10%);
+--sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+
+--color-background: var(--background);
+--color-foreground: var(--foreground);
+--color-card: var(--card);
+--color-card-foreground: var(--card-foreground);
+--color-popover: var(--popover);
+--color-popover-foreground: var(--popover-foreground);
+--color-primary: var(--primary);
+--color-primary-foreground: var(--primary-foreground);
+--color-secondary: var(--secondary);
+--color-secondary-foreground: var(--secondary-foreground);
+--color-muted: var(--muted);
+--color-muted-foreground: var(--muted-foreground);
+--color-accent: var(--accent);
+--color-accent-foreground: var(--accent-foreground);
+--color-destructive: var(--destructive);
+--color-destructive-foreground: var(--destructive-foreground);
+--color-border: var(--border);
+--color-input: var(--input);
+--color-ring: var(--ring);
+--color-chart-1: var(--chart-1);
+--color-chart-2: var(--chart-2);
+--color-chart-3: var(--chart-3);
+--color-chart-4: var(--chart-4);
+--color-chart-5: var(--chart-5);
+--color-sidebar: var(--sidebar);
+--color-sidebar-foreground: var(--sidebar-foreground);
+--color-sidebar-primary: var(--sidebar-primary);
+--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+--color-sidebar-accent: var(--sidebar-accent);
+--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+--color-sidebar-border: var(--sidebar-border);
+--color-sidebar-ring: var(--sidebar-ring);
+
+/_ Custom colors _/
+--color-warning: var(--warning);
+--color-warning-foreground: var(--warning-foreground);
+
+--color-success: var(--success);
+--color-success-foreground: var(--success-foreground);
+
+/_ FONTS _/
+--font-sans: 'Manrope', 'sans-serif';
+--font-mono: 'Fira Code', 'monospace';
+
+/_ ANIMATIONS _/
+--ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+--ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+/_ SIZES _/
+--ui-height: 35px;
+--ui-icon-height: calc(var(--ui-height) \* 0.5);
+
+/_ Z-INDEX _/
+--ui-z-base: 0;
+--ui-z-dropdowns: 200;
+--ui-z-tooltips: 400;
+--ui-z-overlays: 500;
+--ui-z-drawers: 600;
+--ui-z-modals: 700;
+--ui-z-notifications: 800;
+
+/_ RADIUS _/
+--radius-sm: calc(var(--radius) - 4px);
+--radius-md: calc(var(--radius) - 2px);
+--radius-lg: var(--radius);
+--radius-xl: calc(var(--radius) + 4px);
+}
+
 ```
 
 Recommended font used by Creation UI is [Manrope](https://fonts.google.com/specimen/Manrope) for sans-serif and [Fira Code](https://fonts.google.com/specimen/Fira+Code) for monospace.
@@ -37,13 +196,13 @@ The caveat is that you need to set it yourself in your project.
 
 This is the content of `index.css` imported to your project as
 
-```css
+```css copy
 @import '@creation-ui/react/index.css';
 ```
 
 This allows to reset input styles and use some helper classes like `micro-interactions`
 
-```css
+```css copy
 .reset-input,
 .reset-input:focus-visible {
   -webkit-appearance: none;
