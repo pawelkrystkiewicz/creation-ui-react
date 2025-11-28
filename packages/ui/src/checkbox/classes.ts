@@ -41,7 +41,7 @@ export const checkboxStyles = cva(
     'after:absolute',
     'after:inset-0',
     'after:rounded-[calc(0.2rem-1px)]',
-    'after:shadow-[inset_0_1px_--theme(--color-white/15%)]',
+    'after:shadow-[inset_0_1px_var(--color-white)/15%]',
     'dark:after:-inset-px',
     'dark:after:hidden',
     'dark:after:rounded-[0.2rem]',
@@ -50,7 +50,7 @@ export const checkboxStyles = cva(
     'group-data-focus:outline',
     'group-data-focus:outline-2',
     'group-data-focus:outline-offset-2',
-    'group-data-focus:outline-primary',
+    'group-data-focus:outline-ring',
 
     // 'group-data-disabled:before:bg-transparent',
     'dark:group-data-checked:group-data-disabled:after:hidden',

@@ -50,7 +50,7 @@ export const radioStyles = cva(
     'after:absolute',
     'after:inset-0',
     'after:rounded-full',
-    'after:shadow-[inset_0_1px_--theme(--color-white/15%)]',
+    'after:shadow-[inset_0_1px_var(--color-white)/15%]',
     'dark:after:-inset-px',
     'dark:after:hidden',
     'dark:after:rounded-full',
@@ -67,7 +67,7 @@ export const radioStyles = cva(
     'group-data-focus:outline',
     'group-data-focus:outline-2',
     'group-data-focus:outline-offset-2',
-    'group-data-focus:outline-blue-500',
+    'group-data-focus:outline-ring',
     // Disabled state
     'group-data-disabled:opacity-50',
     'group-data-disabled:border-neutral-950/25',

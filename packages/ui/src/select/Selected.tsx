@@ -10,8 +10,8 @@ const classes = cva([], {
       false: [],
     },
     text: {
-      placeholder: ['text-text-secondary'],
-      value: ['text-text-primary'],
+      placeholder: ['text-muted-foreground'],
+      value: ['text-foreground'],
     },
   },
 })

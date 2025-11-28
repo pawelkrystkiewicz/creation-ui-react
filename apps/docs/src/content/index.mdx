@@ -1,4 +1,4 @@
-import { Tabs } from 'nextra/components'
+import { Tabs, Callout } from 'nextra/components'
 import { SingleButtonExample } from '@/examples/button'
 
 # Creation UI
@@ -53,14 +53,15 @@ To install Creation UI, run command below:
 
 ## Configuration
 
-1. In your main .css file where you import tailwindcss v4, also import the creation ui css file.
-Don't forget to add `@source` to the path of the Creation UI package to let tailwindcss know where to also look for it's classes there.
+1. In your main .css file where you import tailwindcss v4, also import the Creation UI's CSS file.
+   Don't forget to add `@source` to the path of the Creation UI package to let tailwindcss know where to also look for it's classes there.
 
 ```css copy
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 @import '@creation-ui/react/index.css';
+
 @import '@creation-ui/react/theme.css';
 
 @source "../node_modules/@creation-ui/react/dist";
@@ -80,8 +81,10 @@ Don't forget to add `@source` to the path of the Creation UI package to let tail
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 
-
-
+<Callout type='info'>
+  Instead of importing fonts and theme separately, you can import whole theme
+  into your CSS like shown in [theme](/docs/theme) page
+</Callout>
 3. Start using it!
 
 ```jsx copy
@@ -94,4 +97,4 @@ export default function App() {
 
 4. Rendered button
 
-<SingleButtonExample/>
+<SingleButtonExample />

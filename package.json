@@ -20,7 +20,7 @@
     "test:unit:coverage": "cd packages/ui && bun run test:unit:coverage",
     "test:visual": "cd packages/ui && bun run test:visual",
     "test:visual:update": "cd packages/ui && bun run test:visual:update",
-    "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i",
+    "nuke": "rm -rf ./node_modules ./apps/*/node_modules ./packages/*/node_modules ./apps/*/.next ./apps/*/dist ./packages/*/dist ./.turbo ./apps/*/.turbo ./packages/*/.turbo ./apps/*/tsconfig.tsbuildinfo ./packages/*/tsconfig.tsbuildinfo ./playwright-report ./apps/*/playwright-report ./packages/*/playwright-report ./packages/*/test-results && bun i --ignore-scripts",
     "update-screenshots": "./scripts/update-screenshots.sh"
   },
   "devDependencies": {
@@ -46,6 +46,7 @@
     "@tailwindcss/postcss": "^4.1.17",
     "@turbo/gen": "^2.6.1",
     "esbuild-plugin-copy": "^2.1.1",
+    "next": "^16.0.5",
     "plop": "^4.0.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
@@ -53,5 +54,17 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
-  }
+  },
+  "overrides": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "resolutions": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "trustedDependencies": [
+    "core-js-pure",
+    "unrs-resolver"
+  ]
 }

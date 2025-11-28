@@ -43,13 +43,13 @@ export const FlexExample = (props: FlexProps) => {
       {items.map(({ id, ...style }) => (
         <div
           key={id}
-          className='group bg-background-primary border border-border rounded-md font-medium flex items-center justify-center relative'
+          className='group bg-background border border-border rounded-md font-medium flex items-center justify-center relative'
           style={{ ...style }}
         >
           <span className='text-xs'>{id}</span>
           <TouchTarget>
             <Trash
-              className='group-hover:opacity-100 opacity-0 micro-interactions text-error absolute top-2 right-2 cursor-pointer'
+              className='group-hover:opacity-100 opacity-0 micro-interactions text-destructive absolute top-2 right-2 cursor-pointer'
               onClick={removeItem(id)}
             />
           </TouchTarget>
@@ -57,7 +57,7 @@ export const FlexExample = (props: FlexProps) => {
       ))}
       <div
         onClick={addItem}
-        className='cursor-pointer group bg-background-primary/50 hover:bg-background-primary rounded-md font-medium flex items-center justify-center micro-interactions'
+        className='cursor-pointer group bg-background/50 hover:bg-background rounded-md font-medium flex items-center justify-center micro-interactions'
         style={{
           minWidth: 50,
         }}

@@ -23,7 +23,7 @@ export const toggleGroupButtonStyles = cva(
       element: groupPositionClasses,
       checked: {
         true: ['bg-primary', 'hover:bg-primary/75', 'text-white', 'font-bold'],
-        false: ['hover:bg-primary/20', 'text-text-primary'],
+        false: ['hover:bg-primary/20', 'text-foreground'],
       },
       disabled: {
         true: disabled,

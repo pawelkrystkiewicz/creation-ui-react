@@ -1,35 +1,40 @@
 'use client'
 import { Container } from '@/components/container'
 import type { DocumentedProperty } from '@/models/system'
-import { DatePicker } from '@creation-ui/react'
+import { DatePicker, Field, Label } from '@creation-ui/react'
 import { useState, type FC } from 'react'
 
 const CurrentDate: FC<any> = ({ date }) => {
-  if (!date) return null
+  if (!date)
+    return (
+      <div className='text-sm max-w-sm flex flex-col gap-2'>
+        <div className='text-muted-foreground'>No date selected</div>
+      </div>
+    )
 
   const formatted = date.toISOString()
   const local = date.toLocaleString()
   return (
-    <div className='text-sm max-w-sm'>
-      <div className='grid grid-cols-2 gap-3'>
-        <div className='font-medium'>Selected</div>
+    <div className='text-sm max-w-sm flex flex-col gap-2'>
+      <>
+        <div className='text-muted-foreground'>Selected</div>
         <pre suppressHydrationWarning>{JSON.stringify(date)}</pre>
-      </div>
-      <div className='grid grid-cols-2 gap-3'>
-        <div className='font-medium'>ISO Date with time set</div>
+      </>
+      <>
+        <div className='text-muted-foreground'>ISO Date with time set</div>
         <pre suppressHydrationWarning>{formatted}</pre>
-      </div>
-      <div className='grid grid-cols-2 gap-3'>
-        <div className='font-medium'>Local date with time set</div>
+      </>
+      <>
+        <div className='text-muted-foreground'>Local date with time set</div>
         <pre suppressHydrationWarning>{local}</pre>
-      </div>
-      <div className='grid grid-cols-2 gap-3'>
-        <div className='font-medium'>Timezone</div>
+      </>
+      <>
+        <div className='text-muted-foreground'>Timezone</div>
         <pre suppressHydrationWarning>
           UTC {date.getTimezoneOffset()} minutes in&nbsp;
           {Intl.DateTimeFormat().resolvedOptions().timeZone}
         </pre>
-      </div>
+      </>
     </div>
   )
 }
@@ -43,7 +48,14 @@ export const DatePickerExample = () => {
 
   return (
     <Container variant='column'>
-      <DatePicker value={selectedDate} onChange={handleDateChange} />
+      <Field>
+        <Label>Date</Label>
+        <DatePicker
+          placeholder='Select a date'
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </Field>
       <CurrentDate date={selectedDate} />
     </Container>
   )

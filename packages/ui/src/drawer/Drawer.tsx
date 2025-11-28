@@ -26,35 +26,40 @@ export const Drawer = ({
 
   return (
     <>
-      <Overlay className={'!fixed'} active={open} onClick={onOverlayClick} />
-      <Transition
-        show={open}
-        as={Fragment}
-        unmount={false}
-        enter={clsx(drawerAnimation.animation)}
-        leave={clsx(drawerAnimation.animation)}
-        enterFrom={clsx(drawerAnimation.enter[position])}
-        enterTo={clsx(drawerAnimation.leave[position])}
-        leaveFrom={clsx(drawerAnimation.leave[position])}
-        leaveTo={clsx(drawerAnimation.enter[position])}
-      >
-        <Dialog
+      <Overlay className={'fixed'} active={open} onClick={onOverlayClick} />
+      <>
+        <Transition
+          show={open}
+          as={Fragment}
           unmount={false}
-          onClose={onClose}
-          className={twMerge(
-            drawerStyles({
-              className: [finalSize, cx?.container?.outer],
-              position,
-            }),
-          )}
+          enter={clsx(drawerAnimation.animation)}
+          leave={clsx(drawerAnimation.animation)}
+          enterFrom={clsx(drawerAnimation.enter[position])}
+          enterTo={clsx(drawerAnimation.leave[position])}
+          leaveFrom={clsx(drawerAnimation.leave[position])}
+          leaveTo={clsx(drawerAnimation.enter[position])}
         >
-          <div
-            className={clsx(drawerChildClasses, 'h-full', cx?.container?.inner)}
+          <Dialog
+            onClose={onClose}
+            className={twMerge(
+              drawerStyles({
+                className: [finalSize, cx?.container?.outer],
+                position,
+              }),
+            )}
           >
-            {children}
-          </div>
-        </Dialog>
-      </Transition>
+            <div
+              className={clsx(
+                drawerChildClasses,
+                'h-full',
+                cx?.container?.inner,
+              )}
+            >
+              {children}
+            </div>
+          </Dialog>
+        </Transition>
+      </>
     </>
   )
 }

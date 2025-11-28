@@ -26,7 +26,7 @@ export const Checkbox: FC<CheckboxProps> = ({
           className={clsx(
             //
             'size-4',
-            'stroke-[var(--checkbox-check)]',
+            'stroke-(--checkbox-check)',
             'opacity-0',
             'group-data-checked:opacity-100',
             'micro-interaction',

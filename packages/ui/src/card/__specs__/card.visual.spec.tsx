@@ -36,7 +36,7 @@ describe('Card CT', () => {
     await verifyComputedStyles(
       card,
       {
-        'border-radius': '8px',
+        'border-radius': '10px',
         'border-width': '1px',
         'padding-top': '20px',
         'padding-right': '20px',

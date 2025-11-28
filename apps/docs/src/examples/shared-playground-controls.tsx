@@ -48,7 +48,7 @@ const COLORS: GenericColorDefinition[] = [
   { value: 'primary', label: 'Primary', className: 'bg-primary' },
   { value: 'success', label: 'Success', className: 'bg-success' },
   { value: 'warning', label: 'Warning', className: 'bg-warning' },
-  { value: 'error', label: 'Error', className: 'bg-error' },
+  { value: 'destructive', label: 'Destructive', className: 'bg-destructive' },
   {
     value: 'mono',
     label: 'Monochromatic',

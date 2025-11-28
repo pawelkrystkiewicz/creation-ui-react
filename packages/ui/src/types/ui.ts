@@ -1,6 +1,6 @@
 export const ELEMENT_COLOR = [
   'primary',
-  'error',
+  'destructive',
   'warning',
   'success',
   'mono',

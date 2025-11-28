@@ -6,7 +6,7 @@ export const Loader = (props: LoaderProps) => {
   const { color = 'primary', cx } = props
 
   const isDefinedColor = [
-    'error',
+    'destructive',
     'primary',
     'success',
     'warning',

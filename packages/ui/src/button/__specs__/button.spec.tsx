@@ -18,11 +18,11 @@ describe('Button', () => {
 
   ;[
     ...ELEMENT_COLOR.map(color => ({
-      description: `applies correct --triger-color var for [${color}] color`,
+      description: `applies correct --trigger-color var for [${color}] color`,
       color,
       expected: color === 'mono'
-        ? ['--trigger-color:theme(colors.black)', '--trigger-color-contrast:theme(colors.white)']
-        : [`--trigger-color:theme(colors.${color})`],
+        ? ['--trigger-color:var(--color-black)', '--trigger-color-contrast:var(--color-white)']
+        : [`--trigger-color:var(--color-${color})`],
     })),
   ].forEach(({ description, color, expected }) => {
     it(description, async () => {

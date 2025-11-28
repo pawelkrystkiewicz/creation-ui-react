@@ -41,7 +41,7 @@ export const RegisterForm = ({ className }: ShowcaseCardProps) => {
         <Button className='rounded' variant='contained'>
           Register
         </Button>
-        <p className='text-sm text-text-secondary text-center'>
+        <p className='text-sm text-muted-foreground text-center'>
           Already have an account?{' '}
           <Link href='/login' className='link'>
             Login

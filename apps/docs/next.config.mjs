@@ -13,6 +13,7 @@ const withNextra = nextra({
 
 export default withNextra({
   reactStrictMode: true,
+  productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [
       {
@@ -21,6 +22,7 @@ export default withNextra({
       },
     ],
   },
+  transpilePackages: ['react-code-blocks'],
   experimental: {
     optimizePackageImports: ['@creation-ui/react'],
   },

@@ -1,8 +1,5 @@
-import { FC } from 'react'
-
 import { Transition } from '@headlessui/react'
-
-import { Fragment } from 'react'
+import { type FC, Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { overlay } from './classes'
 import type { OverlayProps } from './types'
