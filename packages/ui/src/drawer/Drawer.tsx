@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import { Activity, Fragment } from 'react'
+import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Overlay } from '../overlay'
 import { drawerAnimation, drawerChildClasses, drawerStyles } from './classes'
@@ -26,8 +26,8 @@ export const Drawer = ({
 
   return (
     <>
-      <Overlay className={'!fixed'} active={open} onClick={onOverlayClick} />
-      <Activity mode={open ? 'visible' : 'hidden'}>
+      <Overlay className={'fixed'} active={open} onClick={onOverlayClick} />
+      <>
         <Transition
           show={open}
           as={Fragment}
@@ -58,7 +58,7 @@ export const Drawer = ({
             </div>
           </Dialog>
         </Transition>
-      </Activity>
+      </>
     </>
   )
 }
