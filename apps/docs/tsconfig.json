@@ -8,7 +8,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleDetection": "force",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "allowJs": true,
     // Bundler mode
     "moduleResolution": "bundler",
@@ -46,7 +46,8 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/content/docs/components/loader.mdx"
+    "src/content/docs/components/loader.mdx",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
