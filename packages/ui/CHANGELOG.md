@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 16.0.0
+
+### Major Changes
+
+- Release v16.0.0
+
+  ### Changes in this release:
+
+  feat:! breaking change - release 16.0.0
+
 ## 15.2.11
 
 ### Patch Changes
