@@ -63,7 +63,7 @@ const data = [
 ]
 export const DashboardChartCard = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className={clsx('h-96 flex-grow-0', className)}>
+    <Card className={clsx('h-96', className)}>
       <CardHeader className='flex items-center justify-between'>
         <CardTitle>Site visits by device</CardTitle>
         <Computer className='text-foreground' data-slot='icon' />

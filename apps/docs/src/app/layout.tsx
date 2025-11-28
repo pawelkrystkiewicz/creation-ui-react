@@ -44,7 +44,7 @@ const firaCode = Fira_Code({
 
 export default async function RootLayout({ children }: any) {
   const banner = (
-    <Banner storageKey='cui-banner'>Creation UI 15.0 is released 🎉</Banner>
+    <Banner storageKey='cui-banner'>Creation UI 16.0 is released 🎉</Banner>
   )
 
   const navbar = (

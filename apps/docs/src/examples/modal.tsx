@@ -4,7 +4,6 @@ import { Playground } from '@/components/playground'
 import {
   Button,
   Field,
-  Flex,
   Input,
   Label,
   Modal,
@@ -17,42 +16,35 @@ import { useToggle } from 'react-use'
 
 export const CreditCardFormExample = () => {
   return (
-    <form className='w-full flex flex-col gap-5 mt-5'>
-      <Field>
+    <form className='w-full grid grid-cols-6 gap-4'>
+      <Field className='col-span-6'>
         <Label required>Name on card</Label>
         <Input
           type='text'
           placeholder='Olivia Rhye'
-          cx={{
-            container: 'flex-grow',
-            input: 'w-64',
-          }}
+          cx={{ container: 'w-full' }}
         />
       </Field>
-      <Field>
+      <Field className='col-span-6'>
         <Label required>Card number</Label>
         <Input
           type='text'
           placeholder='1234 1234 1234 1234'
-          cx={{
-            container: 'flex-grow',
-            input: 'w-64',
-          }}
+          cx={{ container: 'w-full' }}
         />
       </Field>
-      <Flex items={'center'} gapX={5}>
-        <Field>
-          <Label required>Expires</Label>
-          <Input
-            type='text'
-            placeholder={`12/${new Date().getFullYear().toString().slice(-2)}`}
-          />
-        </Field>
-        <Field>
-          <Label required>CVV</Label>
-          <Input type='text' placeholder='•••' endAdornment={''} />
-        </Field>
-      </Flex>
+
+      <Field className='col-span-4'>
+        <Label required>Expires</Label>
+        <Input
+          type='text'
+          placeholder={`12/${new Date().getFullYear().toString().slice(-2)}`}
+        />
+      </Field>
+      <Field className='col-span-2'>
+        <Label required>CVV</Label>
+        <Input type='text' placeholder='•••' />
+      </Field>
     </form>
   )
 }

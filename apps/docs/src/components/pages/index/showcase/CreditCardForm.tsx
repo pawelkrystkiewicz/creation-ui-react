@@ -17,19 +17,14 @@ import { ShowcaseCardProps } from './types'
 
 export const CreditCardForm = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card
-      className={clsx(
-        'w-fit h-fit flex-shrink-1 flex flex-col gap-4',
-        className,
-      )}
-    >
+    <Card className={clsx('w-fit h-fit shrink flex flex-col gap-4', className)}>
       <CardHeader>
         <CardTitle>Credit Card</CardTitle>
       </CardHeader>
-      <CardContent className='gap-3 flex flex-col w-64'>
+      <CardContent className='gap-3 flex flex-col'>
         <CreditCardFormExample />
       </CardContent>
-      <CardFooter className='h-fit flex-row-reverse'>
+      <CardFooter className='h-fit flex-row-reverse mt-2'>
         <Button variant='contained' color='primary'>
           Next
         </Button>
