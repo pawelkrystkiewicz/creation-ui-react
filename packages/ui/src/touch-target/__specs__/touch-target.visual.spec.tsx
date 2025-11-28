@@ -1,22 +1,28 @@
 import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/react'
 import { TouchTarget } from '..'
+import { ReactNode } from 'react'
 
-describe('TouchTarget Visual Tests', () => {
-  it('default touch target renders correctly', async () => {
-    const { container } = render(
+interface TestCase {
+  name: string
+  content: ReactNode
+  screenshotTarget?: 'container' | 'firstChild'
+}
+
+const testCases: TestCase[] = [
+  {
+    name: 'default touch target renders correctly',
+    content: (
       <div className="relative inline-block">
         <TouchTarget>
           <button className="p-2 border rounded">Click me</button>
         </TouchTarget>
       </div>
-    )
-    expect(container).toBeVisible()
-    await expect(container.firstChild).toMatchScreenshot()
-  })
-
-  it('renders touch target with disabled state', async () => {
-    const { container } = render(
+    ),
+  },
+  {
+    name: 'renders touch target with disabled state',
+    content: (
       <div className="relative inline-block">
         <TouchTarget disabled>
           <button className="p-2 border rounded" disabled>
@@ -24,13 +30,11 @@ describe('TouchTarget Visual Tests', () => {
           </button>
         </TouchTarget>
       </div>
-    )
-    expect(container).toBeVisible()
-    await expect(container.firstChild).toMatchScreenshot()
-  })
-
-  it('renders touch target with icon button', async () => {
-    const { container } = render(
+    ),
+  },
+  {
+    name: 'renders touch target with icon button',
+    content: (
       <div className="relative inline-block">
         <TouchTarget>
           <button className="p-1 border rounded">
@@ -45,27 +49,23 @@ describe('TouchTarget Visual Tests', () => {
           </button>
         </TouchTarget>
       </div>
-    )
-    expect(container).toBeVisible()
-    await expect(container.firstChild).toMatchScreenshot()
-  })
-
-  it('renders touch target with small element', async () => {
-    const { container } = render(
+    ),
+  },
+  {
+    name: 'renders touch target with small element',
+    content: (
       <div className="relative inline-block">
         <TouchTarget>
           <span className="inline-block size-4 bg-primary rounded-full" />
         </TouchTarget>
       </div>
-    )
-    expect(container).toBeVisible()
-    await expect(container.firstChild).toMatchScreenshot()
-  })
-
-  it('renders touch target in context of list', async () => {
-    const { container } = render(
+    ),
+  },
+  {
+    name: 'renders touch target in context of list',
+    content: (
       <ul className="space-y-2">
-        {['Item 1', 'Item 2', 'Item 3'].map((item) => (
+        {['Item 1', 'Item 2', 'Item 3'].map(item => (
           <li key={item} className="relative">
             <TouchTarget>
               <button className="p-2 w-full text-left border rounded hover:bg-gray-100">
@@ -75,8 +75,19 @@ describe('TouchTarget Visual Tests', () => {
           </li>
         ))}
       </ul>
-    )
-    expect(container).toBeVisible()
-    await expect(container).toMatchScreenshot()
+    ),
+    screenshotTarget: 'container',
+  },
+]
+
+describe('TouchTarget Visual Tests', () => {
+  testCases.forEach(({ name, content, screenshotTarget = 'firstChild' }) => {
+    it(name, async () => {
+      const { container } = render(content)
+      expect(container).toBeVisible()
+      const target =
+        screenshotTarget === 'container' ? container : container.firstChild
+      await expect(target).toMatchScreenshot()
+    })
   })
 })

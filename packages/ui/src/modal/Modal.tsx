@@ -21,12 +21,12 @@ export const Modal: FC<ModalProps> = ({
   ...props
 }) => {
   // transition prop is incompatible with static prop in Headless UI v2
-  const useTransition = !isStatic
+  const shouldTransition = !isStatic
 
   return (
     <Dialog static={isStatic} {...props}>
       <DialogBackdrop
-        transition={useTransition}
+        transition={shouldTransition}
         className={clsx(
           'fixed',
           'inset-0',
@@ -65,7 +65,7 @@ export const Modal: FC<ModalProps> = ({
           ])}
         >
           <DialogPanel
-            transition={useTransition}
+            transition={shouldTransition}
             className={clsx(className, [
               'row-start-2',
               'w-full',
