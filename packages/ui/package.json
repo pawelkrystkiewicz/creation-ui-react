@@ -38,8 +38,8 @@
     "nuke": "rm -rf node_modules && rm -rf dist && rm -rf bun.lockb"
   },
   "devDependencies": {
-    "@playwright/experimental-ct-react": "1.56.1",
-    "@playwright/test": "1.56.1",
+    "@playwright/experimental-ct-react": "1.57.0",
+    "@playwright/test": "1.57.0",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@tailwindcss/vite": "^4.1.17",
@@ -57,14 +57,14 @@
     "jest-axe": "^10.0.0",
     "jsdom": "^27.2.0",
     "lightningcss": "1.30.2",
-    "playwright": "1.56.1",
+    "playwright": "1.57.0",
     "tsup": "^8.5.1",
     "typescript": "5.9.3",
-    "vite": "^7.2.4",
-    "vitest": "4.0.13",
-    "@vitest/browser": "4.0.13",
-    "@vitest/browser-playwright": "4.0.13",
-    "@vitest/coverage-v8": "4.0.13"
+    "vite": "^7.2.6",
+    "vitest": "4.0.14",
+    "@vitest/browser": "4.0.14",
+    "@vitest/browser-playwright": "4.0.14",
+    "@vitest/coverage-v8": "4.0.14"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
