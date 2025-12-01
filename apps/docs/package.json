@@ -27,7 +27,7 @@
     "prettier": "^3.6.2",
     "react-code-blocks": "^0.1.6",
     "react-use": "^17.6.0",
-    "recharts": "^3.5.0",
+    "recharts": "^3.5.1",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.17",
     "vitest": "^4.0.13"
