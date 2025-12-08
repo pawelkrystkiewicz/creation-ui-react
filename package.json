@@ -30,11 +30,11 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "js-yaml": "^4.1.1",
-    "knip": "^5.71.0",
-    "prettier": "^3.7.3",
-    "turbo": "^2.6.1",
+    "knip": "^5.72.0",
+    "prettier": "^3.7.4",
+    "turbo": "^2.6.3",
     "typescript": "^5.9.3",
-    "vitest": "4.0.14"
+    "vitest": "4.0.15"
   },
   "packageManager": "bun@1.1.29",
   "workspaces": [
