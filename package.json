@@ -30,7 +30,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "js-yaml": "^4.1.1",
-    "knip": "^5.76.2",
+    "knip": "^5.76.3",
     "prettier": "^3.7.4",
     "turbo": "^2.7.1",
     "typescript": "^5.9.3",
