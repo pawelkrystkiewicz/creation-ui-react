@@ -44,7 +44,7 @@
     "@repo/typescript-config": "*",
     "@tailwindcss/vite": "^4.1.18",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",
     "@types/bun": "latest",
     "@types/jest-axe": "^3.5.9",
@@ -61,10 +61,10 @@
     "tsup": "^8.5.1",
     "typescript": "5.9.3",
     "vite": "^7.3.0",
-    "vitest": "4.0.15",
-    "@vitest/browser": "4.0.15",
-    "@vitest/browser-playwright": "4.0.15",
-    "@vitest/coverage-v8": "4.0.15"
+    "vitest": "4.0.16",
+    "@vitest/browser": "4.0.16",
+    "@vitest/browser-playwright": "4.0.16",
+    "@vitest/coverage-v8": "4.0.16"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
