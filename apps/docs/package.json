@@ -30,7 +30,7 @@
     "recharts": "^3.6.0",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.18"
   },
   "devDependencies": {
     "pagefind": "^1.4.0",
