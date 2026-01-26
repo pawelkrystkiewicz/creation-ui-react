@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 16.0.1
+
+### Patch Changes
+
+- Release v16.0.1
+
+  ### Changes in this release:
+
+  ⬆️ Update prettier to 3.8.1 (#205)
+
 ## 16.0.0
 
 ### Major Changes
