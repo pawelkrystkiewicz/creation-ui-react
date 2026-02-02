@@ -67,7 +67,7 @@
     "@vitest/coverage-v8": "4.0.17"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.16",
+    "@floating-ui/react": "^0.27.17",
     "@floating-ui/react-dom": "^2.1.6",
     "@headlessui/react": "^2.2.9",
     "@mona-health/react-input-mask": "^3.0.3",
@@ -82,7 +82,7 @@
   "peerDependencies": {
     "@mona-health/react-input-mask": "^3.0.3",
     "class-variance-authority": "^0.7.1",
-    "@floating-ui/react": "^0.27.16",
+    "@floating-ui/react": "^0.27.17",
     "@floating-ui/react-dom": "^2.1.6",
     "@headlessui/react": "^2.2.9",
     "clsx": "^2.1.1",
