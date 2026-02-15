@@ -52,7 +52,7 @@
     "@types/pixelmatch": "^5.2.6",
     "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^5.1.2",
-    "chromium-bidi": "^9.2.1",
+    "chromium-bidi": "^15.0.0",
     "eslint": "^10.0.0",
     "jest-axe": "^10.0.0",
     "jsdom": "^27.4.0",
