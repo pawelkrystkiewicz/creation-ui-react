@@ -61,7 +61,8 @@
   },
   "resolutions": {
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "@types/minimatch": "5.1.2"
   },
   "trustedDependencies": [
     "core-js-pure",
