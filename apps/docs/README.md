@@ -1,15 +1,29 @@
-# @creation-ui/react
+# @creation-ui/docs
 
-To install dependencies:
+Documentation site for Creation UI, built with [Next.js](https://nextjs.org/) and [Nextra](https://nextra.site/).
 
-```bash
-bun install
-```
-
-To run:
+## Development
 
 ```bash
-bun run index.ts
+# From the monorepo root
+bun dev
+
+# Or directly
+cd apps/docs
+bun dev
 ```
 
-This project was created using `bun init` in bun v1.1.29. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Build
+
+```bash
+bun run build
+```
+
+The build includes a post-build step that generates a [Pagefind](https://pagefind.app/) search index.
+
+## Tech Stack
+
+- Next.js 16 with Turbopack
+- Nextra 4 for docs theming
+- Recharts for chart examples
+- Pagefind for full-text search

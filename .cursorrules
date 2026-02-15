@@ -52,7 +52,6 @@ You are working on "@creation-ui/react", a modern React TypeScript components li
 ```typescript
 import { useState, useEffect } from 'react'
 import { Button, Input } from '@creation-ui/react'
-import { useQuery } from '@apollo/client'
 import { ComponentProps } from '@/types'
 ```
 
@@ -163,13 +162,6 @@ describe('isEmpty', () => {
 })
 ```
 
-### GraphQL Patterns
-
-- Use **Apollo Client** for GraphQL operations
-- Use **code generation** for TypeScript types from GraphQL schema
-- Use **fragments** for reusable query parts
-- Handle **loading** and **error** states appropriately
-
 ### Performance Considerations
 
 - Use **React.memo** for expensive components
@@ -193,20 +185,6 @@ describe('isEmpty', () => {
 - Follow **authentication best practices**
 
 ## Specific Libraries & Patterns
-
-### TanStack Router
-
-- Use **file-based routing** with route files
-- Use **route loaders** for data fetching
-- Use **search params** for URL state
-- Use **navigate** function for programmatic navigation
-
-### Apollo Client
-
-- Use **useQuery**, **useMutation**, **useSubscription** hooks
-- Handle **loading**, **error**, and **data** states
-- Use **optimistic updates** where appropriate
-- Use **cache policies** effectively
 
 ### Tailwind CSS
 

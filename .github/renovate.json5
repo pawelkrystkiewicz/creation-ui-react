@@ -6,8 +6,8 @@
   assignees: ["pawelkrystkiewicz"],
   dependencyDashboard: true,
   prHourlyLimit: 3,
-  prConcurrentLimit: 5,
-  branchConcurrentLimit: 10,
+  prConcurrentLimit: 20,
+  branchConcurrentLimit: 20,
   rangeStrategy: "bump",
   lockFileMaintenance: {
     enabled: true,
@@ -25,46 +25,6 @@
   ignoreDeps: [],
   packageRules: [
     {
-      groupName: "React ecosystem",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^react/", "/^@types/react/"],
-    },
-    {
-      groupName: "Next.js ecosystem",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^next/", "/^@next//"],
-    },
-    {
-      groupName: "Testing tools",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^vitest/", "/^@vitest//"],
-    },
-    {
-      groupName: "Sentry",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^@sentry//"],
-    },
-    {
-      groupName: "Vercel",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^@vercel//"],
-    },
-    {
-      groupName: "Auth (Kinde)",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^@kinde-oss//"],
-    },
-    {
-      groupName: "TailwindCSS",
-      schedule: ["before 10am on monday"],
-      matchPackageNames: ["/^@tailwindcss//", "/^tailwindcss$/"],
-    },
-    {
-      groupName: "Dev dependencies",
-      matchDepTypes: ["devDependencies"],
-      schedule: ["before 10am on monday"],
-    },
-    {
       matchUpdateTypes: ["patch"],
       automerge: true,
       platformAutomerge: true,
@@ -76,7 +36,6 @@
       platformAutomerge: true,
     },
     {
-      groupName: "Major updates",
       matchUpdateTypes: ["major"],
       minimumReleaseAge: "3 days",
       dependencyDashboardApproval: true,
