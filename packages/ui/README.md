@@ -1,20 +1,20 @@
 # Creation UI
 
-Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project
-Also @creation-ui/react package is required for the React packages to work. It contains sharable theme config, styles and utilities.
+Creation UI is working with your app's Tailwind CSS and you need to have Tailwind CSS installed in your project.
+Also `@creation-ui/react` package is required for the React packages to work. It contains sharable theme config, styles and utilities.
 
 ```json
   "peerDependencies": {
-    "@floating-ui/react": "^0.27.12",
-    "@floating-ui/react-dom": "^2.1.3",
-    "@headlessui/react": "^2.2",
+    "@floating-ui/react": "^0.27.17",
+    "@floating-ui/react-dom": "^2.1.7",
+    "@headlessui/react": "^2.2.9",
     "@mona-health/react-input-mask": "^3.0.3",
     "class-variance-authority": "^0.7.1",
-    "clsx": "^2",
+    "clsx": "^2.1.1",
     "react": "^16 | ^17 | ^18 | ^19",
     "react-dom": "^16 | ^17 | ^18 | ^19",
-    "tailwind-merge": "^2.6",
-    "tailwindcss": "^4.1"
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18"
   },
 ```
 
@@ -44,7 +44,7 @@ To install Creation UI, run command below:
 
 @source "../node_modules/@creation-ui/react/dist";
 
-/* you can extend tour theme config as needed */
+/* you can extend your theme config as needed */
 @theme {
   --font-sans: 'Manrope', 'sans-serif';
   --font-mono: 'Fira Code', 'monospace';
@@ -59,7 +59,7 @@ To install Creation UI, run command below:
 
 You can extend all properties [as usual](https://tailwindcss.com/docs/configuration).
 
-3. Start using it!
+2. Start using it!
 
 ```jsx copy
 import { Button } from '@creation-ui/react'

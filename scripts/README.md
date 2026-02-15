@@ -20,8 +20,8 @@ Output:
 
 ```json
 {
-  "currentVersion": "15.2.9",
-  "nextVersion": "15.3.0",
+  "currentVersion": "16.0.0",
+  "nextVersion": "16.1.0",
   "bumpType": "minor",
   "hasChangesets": true
 }
@@ -36,8 +36,8 @@ bun run ./scripts/calculate-next-version.ts github
 Output:
 
 ```
-current_version=15.2.9
-next_version=15.3.0
+current_version=16.0.0
+next_version=16.1.0
 bump_type=minor
 has_changesets=true
 ```
@@ -57,7 +57,8 @@ has_changesets=true
 Run the test suite:
 
 ```bash
-bun run test:scripts
+# From the monorepo root:
+bun run test
 # or directly:
 bun test scripts/calculate-next-version.test.ts
 ```

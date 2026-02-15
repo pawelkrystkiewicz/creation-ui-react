@@ -4,7 +4,7 @@ A modern, accessible, and customizable React component library built with Tailwi
 
 [![npm version](https://img.shields.io/npm/v/@creation-ui/react.svg)](https://www.npmjs.com/package/@creation-ui/react)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![React](https://img.shields.io/badge/React-19.2+-61DAFB)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-16--19-61DAFB)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-38B2AC)](https://tailwindcss.com/)
 
@@ -19,7 +19,7 @@ A modern, accessible, and customizable React component library built with Tailwi
 - **Customizable Theming** - Easy to customize with CSS variables and Tailwind
 - **Responsive Design** - Mobile-first approach
 - **TypeScript Support** - Full type safety out of the box
-- **React 19.2+ Support** - Built for the latest React features
+- **React 16-19 Support** - Compatible with React 16, 17, 18, and 19
 - **Dark Mode** - Native dark mode support
 - **Tree Shakeable** - Only import what you need
 - **Micro-interactions** - Built-in transitions and animations
@@ -41,7 +41,7 @@ A modern, accessible, and customizable React component library built with Tailwi
 
 | Category | Technology |
 |----------|------------|
-| Framework | React 19.2+ |
+| Framework | React 16-19 |
 | Language | TypeScript 5.9 |
 | Styling | Tailwind CSS v4 |
 | Build | tsup (ESM + CJS) |
@@ -74,16 +74,16 @@ Creation UI requires the following peer dependencies:
 
 ```json
 {
-  "@floating-ui/react": "^0.27.16",
-  "@floating-ui/react-dom": "^2.1.6",
+  "@floating-ui/react": "^0.27.17",
+  "@floating-ui/react-dom": "^2.1.7",
   "@headlessui/react": "^2.2.9",
   "@mona-health/react-input-mask": "^3.0.3",
   "class-variance-authority": "^0.7.1",
   "clsx": "^2.1.1",
-  "react": "^19.2",
-  "react-dom": "^19.2",
+  "react": "^16 | ^17 | ^18 | ^19",
+  "react-dom": "^16 | ^17 | ^18 | ^19",
   "tailwind-merge": "^3.4.0",
-  "tailwindcss": "^4.1.17"
+  "tailwindcss": "^4.1.18"
 }
 ```
 
@@ -251,8 +251,9 @@ bun run pre:exit     # Exit pre-release mode
 |----------|---------|
 | Unit Tests | Run on every push and PR |
 | Visual Regression | Validates UI components visually |
-| Automated Releases | Creates release PRs, auto-publishes to npm |
-| Slack Notifications | Test failures and release notifications |
+| Visual Regression Update | Updates visual snapshots on demand |
+| Update Screenshots | Generates valid screenshots via CI |
+| Automated Releases | Creates release PRs via Changesets, auto-publishes to npm |
 
 ## Contributing
 
