@@ -23,6 +23,9 @@ Audit project dependencies for updates and security issues.
 
    # pnpm
    pnpm outdated --format json
+
+   # bun
+   bun outdated
    ```
 
 3. **Check for vulnerabilities**
@@ -36,6 +39,9 @@ Audit project dependencies for updates and security issues.
 
    # pnpm
    pnpm audit --json
+
+   # bun
+   bun pm audit
    ```
 
 4. **Analyze and prioritize**
