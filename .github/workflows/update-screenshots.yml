@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout selected branch
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.ref_name }}
           # use PAT if triggering other workflows
