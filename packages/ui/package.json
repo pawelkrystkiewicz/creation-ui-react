@@ -48,7 +48,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/bun": "latest",
     "@types/jest-axe": "^3.5.9",
-    "@types/node": "^22.19.7",
+    "@types/node": "^22.19.11",
     "@types/pixelmatch": "^5.2.6",
     "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^5.1.2",
