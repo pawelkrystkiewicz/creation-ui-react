@@ -28,7 +28,7 @@
     "@changesets/cli": "^2.29.8",
     "@types/js-yaml": "^4.0.9",
     "@types/minimatch": "6.0.0",
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "js-yaml": "^4.1.1",
     "knip": "^5.82.0",
