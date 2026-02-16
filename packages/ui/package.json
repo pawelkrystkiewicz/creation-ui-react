@@ -76,7 +76,7 @@
     "keyboard-key": "^1.1.0",
     "react-spring": "^10.0.3",
     "resize-observer-polyfill": "^1.5.1",
-    "tailwind-merge": "^3.4.0",
+    "tailwind-merge": "^3.4.1",
     "tailwindcss": "^4.1.18"
   },
   "peerDependencies": {
@@ -88,7 +88,7 @@
     "clsx": "^2.1.1",
     "react": "^17 | ^18 | ^19",
     "react-dom": "^17 | ^18 | ^19",
-    "tailwind-merge": "^3.4.0",
+    "tailwind-merge": "^3.4.1",
     "tailwindcss": "^4.1.18"
   },
   "repository": {
