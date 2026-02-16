@@ -1,6 +1,6 @@
 {
   "name": "@creation-ui/react",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "sideEffects": false,
   "license": "MIT",
   "exports": {

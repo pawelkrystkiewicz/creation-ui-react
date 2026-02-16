@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 16.0.1
+
+### Patch Changes
+
+- Release v16.0.1
+
+  ### Changes in this release:
+
+  ⬆️ Update tailwind-merge to 3.4.1 (#230)
+
 ## 16.0.0
 
 ### Major Changes
