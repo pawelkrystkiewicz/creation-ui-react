@@ -61,10 +61,10 @@
     "tsup": "^8.5.1",
     "typescript": "5.9.3",
     "vite": "^7.3.1",
-    "vitest": "4.0.17",
-    "@vitest/browser": "4.0.17",
-    "@vitest/browser-playwright": "4.0.17",
-    "@vitest/coverage-v8": "4.0.17"
+    "vitest": "4.0.18",
+    "@vitest/browser": "4.0.18",
+    "@vitest/browser-playwright": "4.0.18",
+    "@vitest/coverage-v8": "4.0.18"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.18",
