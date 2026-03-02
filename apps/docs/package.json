@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/lodash": "^4.17.23",
+    "@types/lodash": "^4.17.24",
     "baseline-browser-mapping": "^2.10.0",
     "pagefind": "^1.4.0"
   },
