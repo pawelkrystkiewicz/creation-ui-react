@@ -212,7 +212,7 @@ describe('Autocomplete Visual Tests', () => {
             onChange={onChange}
             getOptionLabel={o => o.label}
             placeholder="No border"
-            border={false}
+            border="none"
           />
         </div>
       )

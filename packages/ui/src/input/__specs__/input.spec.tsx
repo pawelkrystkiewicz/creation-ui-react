@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { createRef } from 'react'
 import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { Input } from '..'
@@ -177,18 +178,11 @@ describe('Input', () => {
   })
 
   it('forwards ref correctly', async () => {
-    let inputRef: HTMLInputElement | null = null
+    const inputRef = createRef<HTMLInputElement>()
 
-    await render(
-      <Input
-        ref={ref => {
-          inputRef = ref
-        }}
-        placeholder='Ref test'
-      />,
-    )
+    await render(<Input ref={inputRef} placeholder='Ref test' />)
 
-    expect(inputRef).not.toBeNull()
-    expect(inputRef?.tagName).toBe('INPUT')
+    expect(inputRef.current).not.toBeNull()
+    expect(inputRef.current?.tagName).toBe('INPUT')
   })
 })

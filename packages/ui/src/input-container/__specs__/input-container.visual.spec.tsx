@@ -104,7 +104,7 @@ describe('InputContainer Visual Tests', () => {
   })
 
   describe('Background variants', () => {
-    const backgroundOptions = ['none', 'bottom', 'full'] as const
+    const backgroundOptions = [true, false] as const
 
     for (const background of backgroundOptions) {
       it(`renders with background=${background}`, async () => {
@@ -179,7 +179,7 @@ describe('InputContainer Visual Tests', () => {
   describe('Date input type', () => {
     it('renders as date type', async () => {
       const { container } = render(
-        <InputContainer isDateType inputType="date">
+        <InputContainer isDateType inputType="default">
           <input type="date" className="w-full outline-none" />
         </InputContainer>
       )

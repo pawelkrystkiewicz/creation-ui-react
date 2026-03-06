@@ -1,8 +1,8 @@
-import type { StandardLonghandPropertiesHyphen } from 'csstype'
+import type { StandardPropertiesHyphen } from 'csstype'
 
 export const verifyComputedStyles = async (
   element: Element,
-  rules: StandardLonghandPropertiesHyphen,
+  rules: StandardPropertiesHyphen,
   debugMessage?: string,
 ) => {
   debugMessage && console.log(debugMessage)

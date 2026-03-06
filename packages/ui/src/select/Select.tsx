@@ -1,24 +1,29 @@
 import { Select as BaseSelect } from '@base-ui/react/select'
-import React, { forwardRef, ReactNode, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { InputContainer } from '../input-container/InputContainer'
 import { isNonNulish } from '../utils'
 import { SelectContext } from './SelectContext'
 import { SelectProps } from './types'
 
 interface SelectComponentProps<T = string> extends SelectProps<T> {
-  /**
-   * Children to render
-   */
   children: ReactNode
-  /**
-   * Callback when clear button is clicked
-   */
   onClear?: () => void
+  ref?: React.Ref<HTMLDivElement>
 }
 
-export const Select = <T = string,>(
-    { ref, startAdornment, endAdornment, children, cx, onClear, horizontal, invalid, name, refName, ...selectProps },
-  ) => {
+export const Select = <T = string,>({
+  ref,
+  startAdornment,
+  endAdornment,
+  children,
+  cx,
+  onClear,
+  horizontal,
+  invalid,
+  name,
+  refName,
+  ...selectProps
+}: SelectComponentProps<T>) => {
     const { value, onChange, disabled } = selectProps
     const [isOpen, setIsOpen] = useState(false)
 

@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { createRef } from 'react'
 import { axe } from 'jest-axe'
 import { describe, expect, it } from 'vitest'
 import { Textarea } from '..'
@@ -68,19 +69,12 @@ describe('Textarea', () => {
   })
 
   it('forwards ref correctly', async () => {
-    let textareaRef: HTMLTextAreaElement | null = null
+    const textareaRef = createRef<HTMLTextAreaElement>()
 
-    await render(
-      <Textarea
-        ref={ref => {
-          textareaRef = ref
-        }}
-        placeholder='Ref test'
-      />,
-    )
+    await render(<Textarea ref={textareaRef} placeholder='Ref test' />)
 
-    expect(textareaRef).not.toBeNull()
-    expect(textareaRef?.tagName).toBe('TEXTAREA')
+    expect(textareaRef.current).not.toBeNull()
+    expect(textareaRef.current?.tagName).toBe('TEXTAREA')
   })
 
   it('has no accessibility violations', async () => {
