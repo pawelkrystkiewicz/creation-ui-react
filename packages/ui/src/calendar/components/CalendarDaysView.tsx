@@ -82,6 +82,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
 
   while (date <= endDate) {
     const days = []
+    const weekKey = date.toISOString()
 
     for (let i = 0; i < 7; i++) {
       const cellDate = date.toDateString()
@@ -120,7 +121,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     }
 
     rows.push(
-      <div key={`week-${days[0]}`} className={dayRowClasses}>
+      <div key={`week-${weekKey}`} className={dayRowClasses}>
         {days}
       </div>,
     )
