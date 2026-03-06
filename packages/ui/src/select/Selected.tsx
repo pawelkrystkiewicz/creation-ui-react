@@ -30,7 +30,7 @@ export const Selected = forwardRef<HTMLSpanElement, SelectedProps>(
   ) => {
     const { value, disabled } = useSelectContext()
 
-    const type = !!children ? 'value' : !value ? 'placeholder' : 'value'
+    const type = children ? 'value' : !value ? 'placeholder' : 'value'
     const className = useMemo(
       () =>
         twMerge(

@@ -27,11 +27,11 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
   ) => {
     const adornments = useMemo(
       () =>
-        Boolean(startAdornment && endAdornment)
+        startAdornment && endAdornment
           ? 'both'
-          : !!startAdornment
+          : startAdornment
             ? 'start'
-            : !!endAdornment
+            : endAdornment
               ? 'end'
               : false,
       [startAdornment, endAdornment],
