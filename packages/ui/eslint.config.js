@@ -1,7 +1,6 @@
 import js from '@eslint/js'
-import importPlugin from 'eslint-plugin-import'
-import reactPlugin from 'eslint-plugin-react'
-import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import eslintReact from '@eslint-react/eslint-plugin'
+import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -10,23 +9,14 @@ export default tseslint.config(
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  importPlugin.flatConfigs.typescript,
-  reactPlugin.configs.flat.recommended,
-  reactPlugin.configs.flat['jsx-runtime'],
-  reactHooksPlugin.configs['recommended-latest'],
+  eslintReact.configs['recommended-typescript'],
+  reactHooks.configs.flat['recommended-latest'],
   {
-    settings: {
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.json',
-        },
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
-      react: {
-        version: 'detect',
-      },
-    },
-    rules: {
-      'import/no-default-export': 'off',
     },
   },
 )
