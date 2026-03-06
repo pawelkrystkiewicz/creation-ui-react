@@ -1,4 +1,4 @@
-import * as Headless from '@headlessui/react'
+import clsx from 'clsx'
 import { type FC } from 'react'
 import { fieldStyles } from './classes'
 import type { FieldProps } from './types'
@@ -6,9 +6,14 @@ import type { FieldProps } from './types'
 export const Field: FC<FieldProps> = ({
   className,
   layout = 'column',
+  disabled,
   ...props
 }) => {
   return (
-    <Headless.Field {...props} className={fieldStyles({ className, layout })} />
+    <div
+      {...props}
+      data-disabled={disabled || undefined}
+      className={fieldStyles({ className: clsx('group', className), layout })}
+    />
   )
 }

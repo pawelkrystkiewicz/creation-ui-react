@@ -1,7 +1,6 @@
-import type { TextareaProps as HeadlessTextareaProps } from '@headlessui/react'
-
 export interface TextareaProps
-  extends Omit<HeadlessTextareaProps, 'as' | 'className'> {
+  extends Omit<React.ComponentPropsWithoutRef<'textarea'>, 'className'> {
   className?: string
+  invalid?: boolean
   resizable?: boolean
 }
