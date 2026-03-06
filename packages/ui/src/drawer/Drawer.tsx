@@ -41,8 +41,9 @@ export const Drawer = ({
             'bg-black/50',
             'transition-opacity',
             'micro-interactions',
-            'opacity-0',
-            'data-open:opacity-100',
+            'opacity-100',
+            'data-starting-style:opacity-0',
+            'data-ending-style:opacity-0',
           )}
         />
         <Dialog.Popup

@@ -11,8 +11,7 @@ interface SelectOptionsProps {
   zIndex?: ZIndex
 }
 
-export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
-  ({ children, className, zIndex = 'dropdown' }, ref) => {
+export const SelectOptions = ({ ref, children, className, zIndex = 'dropdown' }: SelectOptionsProps & { ref?: React.RefObject<HTMLDivElement | null> }) => {
     const { open, disabled } = useSelectContext()
 
     if (disabled) {
@@ -41,5 +40,4 @@ export const SelectOptions = forwardRef<HTMLDivElement, SelectOptionsProps>(
         </BaseSelect.Positioner>
       </BaseSelect.Portal>
     )
-  },
-)
+  }

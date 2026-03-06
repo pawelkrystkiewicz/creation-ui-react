@@ -25,6 +25,11 @@ export const toggleGroupButtonStyles = cva(
     // Unchecked state
     'data-unchecked:hover:bg-primary/20',
     'data-unchecked:text-foreground',
+    // Focus ring
+    'data-[focused]:outline',
+    'data-[focused]:outline-2',
+    'data-[focused]:outline-offset-2',
+    'data-[focused]:outline-ring',
     // Disabled state
     'data-disabled:opacity-50',
     'data-disabled:pointer-events-none',

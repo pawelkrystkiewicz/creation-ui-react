@@ -23,14 +23,12 @@ interface SelectedProps {
   className?: string
 }
 
-export const Selected = forwardRef<HTMLSpanElement, SelectedProps>(
-  (
-    { placeholder = 'Select an option', formatter, children, ...props },
-    ref,
+export const Selected = (
+    { ref, placeholder = 'Select an option', formatter, children, ...props }: SelectedProps & { ref?: React.RefObject<HTMLSpanElement | null> },
   ) => {
     const { value, disabled } = useSelectContext()
 
-    const type = !!children ? 'value' : !value ? 'placeholder' : 'value'
+    const type = children ? 'value' : !value ? 'placeholder' : 'value'
     const className = useMemo(
       () =>
         twMerge(
@@ -63,5 +61,4 @@ export const Selected = forwardRef<HTMLSpanElement, SelectedProps>(
           </span>
         )
     }
-  },
-)
+  }

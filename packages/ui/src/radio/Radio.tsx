@@ -12,6 +12,7 @@ export const Radio: FC<RadioProps> = ({ className, ...props }) => {
       className={clsx(className, 'group inline-flex focus:outline-hidden')}
     >
       <BaseRadio.Indicator
+        keepMounted
         className={radioStyles()}
       >
         <span

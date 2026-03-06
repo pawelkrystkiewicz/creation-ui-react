@@ -45,8 +45,8 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
       <Description>{description}</Description>
       <RadioGroup value={selected} onChange={setSelected} disabled={disabled} readOnly={readOnly}>
         {options.map(option => (
-          <Field key={option.value} layout='row'>
-            <Radio value={option.value} />
+          <Field key={option.value} layout='row' disabled={option.disabled}>
+            <Radio value={option.value} disabled={option.disabled} />
             <Label key={option.value}>{option.label}</Label>
           </Field>
         ))}
@@ -91,8 +91,8 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
       <Description>{{description}}</Description>
       <RadioGroup value={selected} onChange={setSelected} disabled={{disabled}} readOnly={{readOnly}}>
         {options.map(option => (
-          <Field key={option.value} layout='row'>
-            <Radio value={option.value} />
+          <Field key={option.value} layout='row' disabled={option.disabled}>
+            <Radio value={option.value} disabled={option.disabled} />
             <Label key={option.value}>{option.label}</Label>
           </Field>
         ))}

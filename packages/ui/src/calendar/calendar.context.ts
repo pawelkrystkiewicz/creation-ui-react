@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 import {
   CalendarDateValue,
   CalendarMode,
@@ -23,7 +23,7 @@ export interface CalendarContextValue {
 export const CalendarContext = createContext<CalendarContextValue>({} as any)
 
 export const useCalendar = () => {
-  const context = useContext(CalendarContext)
+  const context = use(CalendarContext)
 
   if (!context) {
     throw new Error(`"CalendarProvider" must be present in React DOM tree`)

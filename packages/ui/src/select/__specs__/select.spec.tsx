@@ -14,7 +14,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDefined()
   })
 
@@ -29,7 +29,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select.classList).toContain('custom-select-class')
   })
 
@@ -55,7 +55,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDisabled()
   })
 
@@ -68,7 +68,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDefined()
   })
 
@@ -82,7 +82,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDefined()
   })
 
@@ -299,7 +299,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select.className).toContain('cursor-pointer')
   })
 

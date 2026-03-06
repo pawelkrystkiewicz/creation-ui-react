@@ -4,7 +4,7 @@ import type { RadioGroupProps } from '../radio'
 export type ToggleGroupValue = string
 
 export type ToggleGroupOption = {
-  label: string | ReactNode
+  label: ReactNode
   value: ToggleGroupValue
   disabled?: boolean
 }
