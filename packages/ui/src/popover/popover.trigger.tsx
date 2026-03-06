@@ -10,10 +10,8 @@ interface PopoverTriggerProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
   asChild?: boolean
 }
 
-export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
-  function PopoverTrigger(
-    { children, asChild = false, className, ...props },
-    propRef,
+export const PopoverTrigger = function PopoverTrigger(
+    { ref: propRef, children, asChild = false, className, ...props }: PopoverTriggerProps & { ref?: React.RefObject<HTMLElement | null> },
   ) {
     const ctx = usePopoverContext()
     const childrenRef = (children as any).ref
@@ -42,5 +40,4 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
         {children}
       </div>
     )
-  },
-)
+  }

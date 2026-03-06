@@ -1,24 +1,11 @@
-import { Input as HeadlessInput } from '@headlessui/react'
 import React, { forwardRef, memo, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { InputContainer } from '../input-container'
 import { DATE_TYPES } from '../types'
 import type { InputProps } from './types'
 
-const _Input = forwardRef(function Input(
-  {
-    onClear,
-    startAdornment,
-    endAdornment,
-    cx,
-    border,
-    background,
-    children,
-    as,
-    containerHeight,
-    ...props
-  }: InputProps,
-  ref: React.ForwardedRef<HTMLInputElement>,
+const _Input = function Input(
+  { ref, onClear, startAdornment, endAdornment, cx, border, background, children, as: Component = 'input', containerHeight, ...props },
 ) {
   const isDateType = useMemo(
     () => Boolean(props?.type && DATE_TYPES.includes(props?.type as any)),
@@ -45,15 +32,14 @@ const _Input = forwardRef(function Input(
       inputType={isTypeStyle ? (props?.type as any) : 'default'}
       isDateType={isDateType}
     >
-      <HeadlessInput
+      <Component
         ref={ref}
-        as={as}
         {...props}
         className={twMerge('appearance-none focus:outline-none', cx?.input)}
       />
     </InputContainer>
   )
-})
+}
 
 _Input.displayName = 'Input'
 

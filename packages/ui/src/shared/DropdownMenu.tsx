@@ -40,10 +40,8 @@ export interface DropdownMenuProps extends React.HTMLProps<HTMLUListElement> {
   zIndex?: ZIndex
 }
 
-export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
-  (
-    { children, open, className, placement, zIndex = 'dropdown', ...props },
-    ref,
+export const DropdownMenu = (
+    { ref, children, open, className, placement, zIndex = 'dropdown', ...props }: DropdownMenuProps & { ref?: React.RefObject<HTMLUListElement | null> },
   ) => {
     return (
       <ul
@@ -57,5 +55,4 @@ export const DropdownMenu = forwardRef<HTMLUListElement, DropdownMenuProps>(
         {children}
       </ul>
     )
-  },
-)
+  }

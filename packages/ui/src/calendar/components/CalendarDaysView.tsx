@@ -77,7 +77,7 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
     setSelectedDates(clickedDate)
   }
 
-  let date = startDate
+  const date = startDate
   const rows: ReactNode[] = []
 
   while (date <= endDate) {

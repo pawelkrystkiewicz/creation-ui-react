@@ -3,16 +3,15 @@ import { render } from '@testing-library/react'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '..'
 import { Button } from '../../button'
 
-// Note: Modal visual tests are skipped because Headless UI Dialog component
-// uses internal state management that prevents stable screenshots in vitest browser mode.
-// The Dialog constantly updates DOM even with static prop, causing screenshot comparison to fail.
+// Note: Modal visual tests are skipped because Base UI Dialog component
+// uses portal rendering that prevents stable screenshots in vitest browser mode.
 // TODO: Investigate alternative testing approaches for Modal component.
 
 describe.skip('Modal Visual Tests', () => {
   it('renders open modal with all sections', async () => {
     const onClose = vi.fn()
     const { container } = render(
-      <Modal open={true} onClose={onClose} static>
+      <Modal open={true} onClose={onClose}>
         <ModalHeader>Modal Title</ModalHeader>
         <ModalBody>
           <p>This is the modal content. It can contain any React elements.</p>
@@ -33,7 +32,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders header without border', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalHeader>Header without border</ModalHeader>
           <ModalBody>Content</ModalBody>
         </Modal>
@@ -44,7 +43,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders header with border', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalHeader border>Header with border</ModalHeader>
           <ModalBody>Content</ModalBody>
         </Modal>
@@ -55,7 +54,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders header with custom className', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalHeader className="bg-primary-100">Custom styled header</ModalHeader>
           <ModalBody>Content</ModalBody>
         </Modal>
@@ -68,7 +67,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders body with short content', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalBody>Short content</ModalBody>
         </Modal>
       )
@@ -78,7 +77,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders body with long content', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalBody>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -101,7 +100,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders body with form elements', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalHeader>Form Modal</ModalHeader>
           <ModalBody>
             <form className="space-y-4">
@@ -136,7 +135,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders footer without border', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalBody>Content</ModalBody>
           <ModalFooter>
             <Button>Action</Button>
@@ -149,7 +148,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders footer with border', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalBody>Content</ModalBody>
           <ModalFooter border>
             <Button>Action</Button>
@@ -162,7 +161,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders footer with multiple buttons', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalBody>Content</ModalBody>
           <ModalFooter>
             <Button variant="text">Skip</Button>
@@ -179,7 +178,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders modal with custom className', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static className="max-w-lg">
+        <Modal open={true} onClose={onClose} className="max-w-lg">
           <ModalHeader>Custom Width Modal</ModalHeader>
           <ModalBody>This modal has a custom max-width</ModalBody>
           <ModalFooter>
@@ -195,7 +194,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders confirmation modal', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalHeader>Confirm Delete</ModalHeader>
           <ModalBody>
             <p>Are you sure you want to delete this item? This action cannot be undone.</p>
@@ -214,7 +213,7 @@ describe.skip('Modal Visual Tests', () => {
     it('renders success modal', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static>
+        <Modal open={true} onClose={onClose}>
           <ModalHeader className="text-success">Success!</ModalHeader>
           <ModalBody>
             <p>Your changes have been saved successfully.</p>

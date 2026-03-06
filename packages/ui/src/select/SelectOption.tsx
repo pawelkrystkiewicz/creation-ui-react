@@ -1,37 +1,28 @@
-import { ListboxOption, ListboxOptionProps } from '@headlessui/react'
-import { ForwardedRef, forwardRef, ReactNode } from 'react'
+import { Select as BaseSelect } from '@base-ui/react/select'
+import { forwardRef, ReactNode } from 'react'
 import { Icon } from '../icon'
 import { twMerge } from 'tailwind-merge'
 import { selectOptionClasses } from '../classes'
 import { useSelectContext } from './SelectContext'
 
-interface SelectOptionProps extends Omit<ListboxOptionProps, 'selected'> {
+interface SelectOptionProps {
   children?: ReactNode
   className?: string
+  disabled?: boolean
   multiple?: boolean
   truncate?: boolean
   showCheckIcon?: boolean
+  value?: unknown
 }
 
-export const SelectOption = forwardRef<HTMLLIElement, SelectOptionProps>(
-  (
-    {
-      children,
-      className,
-      disabled,
-      multiple,
-      truncate,
-      showCheckIcon = true,
-      value,
-      ...props
-    },
-    ref,
+export const SelectOption = (
+    { ref, children, className, disabled, multiple, truncate, showCheckIcon = true, value, ...props }: SelectOptionProps & { ref?: React.RefObject<HTMLElement | null> },
   ) => {
     const { value: selectedValue } = useSelectContext()
     const isSelected = value === selectedValue
 
     return (
-      <ListboxOption
+      <BaseSelect.Item
         ref={ref}
         value={value}
         disabled={disabled}
@@ -57,7 +48,6 @@ export const SelectOption = forwardRef<HTMLLIElement, SelectOptionProps>(
             )}
           />
         )}
-      </ListboxOption>
+      </BaseSelect.Item>
     )
-  },
-)
+  }

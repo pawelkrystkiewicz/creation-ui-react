@@ -1,5 +1,5 @@
-import { Radio } from '@headlessui/react'
-import { FC, useCallback, useMemo } from 'react'
+import { Radio } from '@base-ui/react/radio'
+import { type FC, useMemo } from 'react'
 import { getElementPosition } from '../utils/get-element-position'
 import { toggleGroupButtonStyles } from './classes'
 import type { ToggleGroupOption } from './types'
@@ -8,14 +8,6 @@ interface ToggleOptionProps {
   option: ToggleGroupOption
   array: ToggleGroupOption[]
   index: number
-}
-
-type RadioOptionClassArgs = {
-  checked: boolean
-  disabled: boolean
-  autofocus: boolean
-  focus: boolean
-  hover: boolean
 }
 
 export const ToggleOption: FC<ToggleOptionProps> = ({
@@ -28,14 +20,9 @@ export const ToggleOption: FC<ToggleOptionProps> = ({
     [array, index],
   )
 
-  const optionClasses = useCallback(
-    ({ checked, disabled, autofocus, focus, hover }: RadioOptionClassArgs) =>
+  const classes = useMemo(
+    () =>
       toggleGroupButtonStyles({
-        disabled,
-        checked,
-        autofocus,
-        focus,
-        hover,
         element: elementPosition,
       }),
     [elementPosition],
@@ -47,13 +34,13 @@ export const ToggleOption: FC<ToggleOptionProps> = ({
   )
 
   return (
-    <Radio
+    <Radio.Root
       value={value}
       title={title}
       disabled={disabled}
-      className={optionClasses}
+      className={classes}
     >
       <span>{label}</span>
-    </Radio>
+    </Radio.Root>
   )
 }

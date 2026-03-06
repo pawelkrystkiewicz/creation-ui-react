@@ -57,15 +57,15 @@ export const switchClasses = cva(
     'data-checked:ring-(--switch-bg-ring)',
     // Focus
     'focus:outline-hidden',
-    'data-focus:outline',
-    'data-focus:outline-2',
-    'data-focus:outline-offset-2',
-    'data-focus:outline-ring',
+    'focus-visible:outline',
+    'focus-visible:outline-2',
+    'focus-visible:outline-offset-2',
+    'focus-visible:outline-ring',
     // Hover
-    'data-hover:ring-black/15',
-    'data-hover:data-checked:ring-(--switch-bg-ring)',
-    'dark:data-hover:ring-white/25',
-    'dark:data-hover:data-checked:ring-(--switch-bg-ring)',
+    'hover:ring-black/15',
+    'hover:data-checked:ring-(--switch-bg-ring)',
+    'dark:hover:ring-white/25',
+    'dark:hover:data-checked:ring-(--switch-bg-ring)',
     // Disabled
     'data-disabled:bg-neutral-200',
     'data-disabled:opacity-50',

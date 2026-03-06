@@ -3,12 +3,9 @@ import { twix } from '../utils'
 
 const titleClasses = twix('leading-none tracking-tight text-lg font-medium')
 
-export const CardTitle = forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+export const CardTitle = ({ ref, className, ...props }: React.HTMLAttributes<HTMLHeadingElement> & { ref?: React.RefObject<HTMLHeadingElement | null> }) => (
   <h3 ref={ref} className={titleClasses(className)} {...props} />
-))
+)
 
 const cardClasses = twix(
   'border',
@@ -19,8 +16,7 @@ const cardClasses = twix(
   'border-border',
 )
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, href, children, ...props }, ref) => (
+export const Card = ({ ref, className, href, children, ...props }: CardProps & { ref?: React.RefObject<HTMLDivElement | null> }) => (
     <div ref={ref} className={cardClasses(className)} {...props}>
       {href ? (
         <a href={href} className='block'>
@@ -30,45 +26,32 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         children
       )}
     </div>
-  ),
-)
+  )
 
 import clsx from 'clsx'
 import { CardProps } from './types'
 
-export const CardContent = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+export const CardContent = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.RefObject<HTMLDivElement | null> }) => (
   <div ref={ref} className={clsx(className)} {...props} />
-))
+)
 
 const cardDescriptionClasses = twix('text-sm text-muted-foreground')
 
-export const CardDescription = forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
+export const CardDescription = ({ ref, className, ...props }: React.HTMLAttributes<HTMLParagraphElement> & { ref?: React.RefObject<HTMLParagraphElement | null> }) => (
   <p ref={ref} className={cardDescriptionClasses(className)} {...props} />
-))
+)
 
 const cardFooterClasses = twix('flex items-center gap-2')
 
-export const CardFooter = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+export const CardFooter = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.RefObject<HTMLDivElement | null> }) => (
   <div ref={ref} className={cardFooterClasses(className)} {...props} />
-))
+)
 
 const cardHeaderClasses = twix('w-full')
 
-export const CardHeader = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+export const CardHeader = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.RefObject<HTMLDivElement | null> }) => (
   <div ref={ref} className={cardHeaderClasses(className)} {...props} />
-))
+)
 
 const cardStatsClasses = twix(
   'text-2xl',
@@ -80,9 +63,6 @@ const cardStatsClasses = twix(
   'my-1.5',
 )
 
-export const CardStats = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+export const CardStats = ({ ref, className, ...props }: React.HTMLAttributes<HTMLDivElement> & { ref?: React.RefObject<HTMLDivElement | null> }) => (
   <div ref={ref} className={cardStatsClasses(className)} {...props} />
-))
+)

@@ -1,4 +1,4 @@
-import * as Headless from '@headlessui/react'
+import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox'
 import clsx from 'clsx'
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -10,15 +10,19 @@ export const Checkbox: FC<CheckboxProps> = ({
   disabled,
   loading,
   readOnly,
+  onChange,
   ...props
 }) => {
   const isDisabled = loading || disabled || readOnly
 
   return (
-    <Headless.Checkbox
+    <BaseCheckbox.Root
       data-slot='control'
       disabled={isDisabled}
       {...props}
+      onCheckedChange={
+        onChange ? (checked) => onChange(checked as boolean) : undefined
+      }
       className={twMerge(className, 'group inline-flex focus:outline-hidden')}
     >
       <span className={checkboxStyles({ className, readOnly })}>
@@ -54,6 +58,6 @@ export const Checkbox: FC<CheckboxProps> = ({
           />
         </svg>
       </span>
-    </Headless.Checkbox>
+    </BaseCheckbox.Root>
   )
 }

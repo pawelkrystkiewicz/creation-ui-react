@@ -8,10 +8,7 @@ import { usePopoverContext } from './context'
 export interface PopoverDescriptionProps
   extends Omit<HTMLProps<HTMLParagraphElement>, 'size'> {}
 
-export const PopoverDescription = forwardRef<
-  HTMLParagraphElement,
-  HTMLProps<HTMLParagraphElement>
->(function PopoverDescription({ children, size, className, ...props }, ref) {
+export const PopoverDescription = function PopoverDescription({ ref, children, size, className, ...props }: HTMLProps<HTMLParagraphElement> & { ref?: React.RefObject<HTMLParagraphElement | null> }) {
   const { setDescriptionId,  } = usePopoverContext()
   const id = useId()
 
@@ -33,4 +30,4 @@ export const PopoverDescription = forwardRef<
       {children}
     </p>
   )
-})
+}

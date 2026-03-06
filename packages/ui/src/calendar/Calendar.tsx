@@ -107,7 +107,7 @@ const Calendar: FC<CalendarProps> = props => {
   )
 
   return (
-    <CalendarContext.Provider value={context}>
+    <CalendarContext value={context}>
       <CalendarView
         className={className}
         hasSecondView={hasSecondView}
@@ -119,7 +119,7 @@ const Calendar: FC<CalendarProps> = props => {
         onTodayClick={onTodayClick}
         viewIs={viewIs}
       />
-    </CalendarContext.Provider>
+    </CalendarContext>
   )
 }
 

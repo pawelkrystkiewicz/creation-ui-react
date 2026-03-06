@@ -1,4 +1,3 @@
-import * as Headless from '@headlessui/react'
 import { cva } from 'class-variance-authority'
 import React, { forwardRef, type ReactNode } from 'react'
 import { Link } from '../link'
@@ -30,14 +29,14 @@ const styles = cva(
     'sm:py-[calc(theme(spacing[1.5])-1px)]',
     // Focus
     'focus:outline-none',
-    'data-focus:outline',
-    'data-focus:outline-2',
-    'data-focus:outline-offset-2',
-    'data-focus:outline-primary',
+    'focus-visible:outline',
+    'focus-visible:outline-2',
+    'focus-visible:outline-offset-2',
+    'focus-visible:outline-primary',
     // Disabled
-    'data-disabled:opacity-50',
-    'data-disabled:pointer-events-none',
-    'data-active:scale-95',
+    'disabled:opacity-50',
+    'disabled:cursor-not-allowed',
+    'active:scale-95',
     'h-[var(--ui-height)]',
   ],
   {
@@ -74,27 +73,12 @@ export type ButtonProps = {
   spinnerPosition?: ElementPlacementHorizontal
   loaderColor?: string
 } & (
-  | Omit<Headless.ButtonProps, 'className'>
+  | Omit<React.ComponentPropsWithoutRef<'button'>, 'className'>
   | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
 )
 
-export const Button = forwardRef(function (
-  {
-    color,
-    variant,
-    className,
-    children,
-    loading,
-    fullWidth,
-    disabled,
-    startAdornment,
-    endAdornment,
-    uppercase,
-    spinnerPosition = 'left',
-    loaderColor,
-    ...props
-  }: ButtonProps,
-  ref: React.ForwardedRef<HTMLElement>,
+export const Button = function (
+  { ref, color, variant, className, children, loading, fullWidth, disabled, startAdornment, endAdornment, uppercase, spinnerPosition = 'left', loaderColor, ...props },
 ) {
   const isDisabled = Boolean(disabled || loading)
   const classes = styles({
@@ -129,13 +113,14 @@ export const Button = forwardRef(function (
       {inner}
     </Link>
   ) : (
-    <Headless.Button
-      {...props}
+    <button
+      type='button'
+      {...(props as React.ComponentPropsWithoutRef<'button'>)}
       className={classes}
-      ref={ref}
+      ref={ref as React.ForwardedRef<HTMLButtonElement>}
       disabled={isDisabled}
     >
       {inner}
-    </Headless.Button>
+    </button>
   )
-})
+}

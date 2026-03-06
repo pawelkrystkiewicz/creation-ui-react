@@ -42,10 +42,10 @@ export const radioStyles = cva(
     'border',
     'border-neutral-950/15',
     'group-data-checked:border-transparent',
-    'group-data-hover:group-data-checked:border-transparent',
-    'group-data-hover:border-neutral-950/30',
+    'group-hover:group-data-checked:border-transparent',
+    'group-hover:border-neutral-950/30',
     'group-data-checked:bg-(--radio-checked-border)',
-    'dark:border-white/15 dark:group-data-checked:border-white/5 dark:group-data-hover:group-data-checked:border-white/5 dark:group-data-hover:border-white/30',
+    'dark:border-white/15 dark:group-data-checked:border-white/5 dark:group-hover:group-data-checked:border-white/5 dark:group-hover:border-white/30',
     // Inner highlight shadow
     'after:absolute',
     'after:inset-0',
@@ -58,16 +58,16 @@ export const radioStyles = cva(
     // Indicator color (light mode)
     '[--radio-indicator:transparent]',
     'group-data-checked:[--radio-indicator:var(--radio-checked-indicator)]',
-    'group-data-hover:group-data-checked:[--radio-indicator:var(--radio-checked-indicator)]',
-    'group-data-hover:[--radio-indicator:var(--color-neutral-900)]/10',
+    'group-hover:group-data-checked:[--radio-indicator:var(--radio-checked-indicator)]',
+    'group-hover:[--radio-indicator:var(--color-neutral-900)]/10',
     // Indicator color (dark mode)
-    'dark:group-data-hover:group-data-checked:[--radio-indicator:var(--radio-checked-indicator)]',
-    'dark:group-data-hover:[--radio-indicator:var(--color-neutral-700)]',
+    'dark:group-hover:group-data-checked:[--radio-indicator:var(--radio-checked-indicator)]',
+    'dark:group-hover:[--radio-indicator:var(--color-neutral-700)]',
     // Focus ring
-    'group-data-focus:outline',
-    'group-data-focus:outline-2',
-    'group-data-focus:outline-offset-2',
-    'group-data-focus:outline-ring',
+    'group-data-[focused]:outline',
+    'group-data-[focused]:outline-2',
+    'group-data-[focused]:outline-offset-2',
+    'group-data-[focused]:outline-ring',
     // Disabled state
     'group-data-disabled:opacity-50',
     'group-data-disabled:border-neutral-950/25',
