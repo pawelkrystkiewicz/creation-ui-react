@@ -1,4 +1,3 @@
-import { Input as HeadlessInput } from '@headlessui/react'
 import React, { forwardRef, memo, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { InputContainer } from '../input-container'
@@ -14,7 +13,7 @@ const _Input = forwardRef(function Input(
     border,
     background,
     children,
-    as,
+    as: Component = 'input',
     containerHeight,
     ...props
   }: InputProps,
@@ -45,9 +44,8 @@ const _Input = forwardRef(function Input(
       inputType={isTypeStyle ? (props?.type as any) : 'default'}
       isDateType={isDateType}
     >
-      <HeadlessInput
+      <Component
         ref={ref}
-        as={as}
         {...props}
         className={twMerge('appearance-none focus:outline-none', cx?.input)}
       />

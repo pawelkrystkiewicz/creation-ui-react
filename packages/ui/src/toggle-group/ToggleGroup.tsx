@@ -1,4 +1,4 @@
-import { RadioGroup } from '@headlessui/react'
+import { RadioGroup } from '@base-ui/react/radio-group'
 import { useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { toggleGroupContainerStyles } from './classes'
@@ -34,7 +34,7 @@ export const ToggleGroup = ({
       className={containerClasses}
       disabled={disabled}
       value={value}
-      onChange={onChange}
+      onValueChange={onChange}
     >
       {options?.map((option, index, array) => (
         <ToggleOption

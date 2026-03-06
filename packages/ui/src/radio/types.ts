@@ -1,12 +1,18 @@
-import * as Headless from '@headlessui/react'
+import type { ReactNode } from 'react'
 
-export interface RadioProps
-  extends Omit<Headless.RadioProps, 'as' | 'className' | 'children'> {
+export interface RadioProps {
+  value: string
+  disabled?: boolean
   className?: string
 }
 
-export interface RadioGroupProps
-  extends Omit<Headless.RadioGroupProps, 'as' | 'className'> {
-  className?: string
+export interface RadioGroupProps {
+  value?: string
+  onChange?: (value: string) => void
+  defaultValue?: string
+  disabled?: boolean
   readOnly?: boolean
+  name?: string
+  className?: string
+  children?: ReactNode
 }

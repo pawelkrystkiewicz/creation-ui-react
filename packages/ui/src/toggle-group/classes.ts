@@ -17,31 +17,21 @@ export const toggleGroupButtonStyles = cva(
     'h-(--ui-height)',
     'min-w-(--ui-height)',
     'micro-interactions',
+    // Checked state (via Base UI data attributes)
+    'data-checked:bg-primary',
+    'data-checked:hover:bg-primary/75',
+    'data-checked:text-white',
+    'data-checked:font-bold',
+    // Unchecked state
+    'data-unchecked:hover:bg-primary/20',
+    'data-unchecked:text-foreground',
+    // Disabled state
+    'data-disabled:opacity-50',
+    'data-disabled:pointer-events-none',
   ],
   {
     variants: {
       element: groupPositionClasses,
-      checked: {
-        true: ['bg-primary', 'hover:bg-primary/75', 'text-white', 'font-bold'],
-        false: ['hover:bg-primary/20', 'text-foreground'],
-      },
-      disabled: {
-        true: disabled,
-        false: [],
-      },
-      // not used but available in healdessui API
-      autofocus: {
-        true: [],
-        false: [],
-      },
-      focus: {
-        true: [],
-        false: [],
-      },
-      hover: {
-        true: [],
-        false: [],
-      },
     },
   },
 )

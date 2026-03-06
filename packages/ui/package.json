@@ -67,6 +67,7 @@
     "@vitest/coverage-v8": "4.0.17"
   },
   "dependencies": {
+    "@base-ui/react": "^1.2.0",
     "@floating-ui/react": "^0.27.17",
     "@floating-ui/react-dom": "^2.1.7",
     "@headlessui/react": "^2.2.9",

@@ -1,9 +1,8 @@
-import type { InputProps as HeadlessInputProps } from '@headlessui/react'
-import { ElementType, ReactNode } from 'react'
-import { HTMLInputType, InputVariant } from '../types'
-import { InputContainerProps } from '../input-container'
+import type { ElementType, ReactNode } from 'react'
+import type { HTMLInputType } from '../types'
+import type { InputContainerProps } from '../input-container'
 
-export type InputProps = Omit<HeadlessInputProps, 'as'> & {
+export type InputProps = React.ComponentPropsWithoutRef<'input'> & {
   as?: ElementType
   endAdornment?: ReactNode
   startAdornment?: ReactNode

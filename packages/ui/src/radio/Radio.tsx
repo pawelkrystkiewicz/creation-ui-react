@@ -1,4 +1,4 @@
-import * as Headless from '@headlessui/react'
+import { Radio as BaseRadio } from '@base-ui/react/radio'
 import clsx from 'clsx'
 import type { FC } from 'react'
 import type { RadioProps } from './types'
@@ -6,12 +6,14 @@ import { radioStyles } from './classes'
 
 export const Radio: FC<RadioProps> = ({ className, ...props }) => {
   return (
-    <Headless.Radio
+    <BaseRadio.Root
       data-slot='control'
       {...props}
       className={clsx(className, 'group inline-flex focus:outline-hidden')}
     >
-      <span className={radioStyles()}>
+      <BaseRadio.Indicator
+        className={radioStyles()}
+      >
         <span
           className={clsx(
             'size-full',
@@ -25,7 +27,7 @@ export const Radio: FC<RadioProps> = ({ className, ...props }) => {
             'forced-colors:group-data-checked:border-[Highlight]',
           )}
         />
-      </span>
-    </Headless.Radio>
+      </BaseRadio.Indicator>
+    </BaseRadio.Root>
   )
 }
