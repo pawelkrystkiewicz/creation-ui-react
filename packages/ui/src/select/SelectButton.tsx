@@ -1,4 +1,4 @@
-import { ListboxButton } from '@headlessui/react'
+import { Select as BaseSelect } from '@base-ui/react/select'
 import { forwardRef, ReactNode } from 'react'
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
@@ -38,7 +38,7 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
     }
 
     return (
-      <ListboxButton
+      <BaseSelect.Trigger
         ref={ref}
         className={twMerge(buttonClasses({ disabled }), className)}
         disabled={disabled}
@@ -48,7 +48,7 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
           {isClearable && <ClearButton onClick={handleClear} />}
           <DropdownChevron open={open} disabled={disabled} />
         </div>
-      </ListboxButton>
+      </BaseSelect.Trigger>
     )
   },
 )

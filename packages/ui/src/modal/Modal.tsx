@@ -1,11 +1,6 @@
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react'
+import { Dialog } from '@base-ui/react/dialog'
 import clsx from 'clsx'
-import React, { FC } from 'react'
+import type { FC } from 'react'
 import {
   //
   ModalHeaderProps,
@@ -14,82 +9,80 @@ import {
   ModalFooterProps,
 } from './types'
 
-export const Modal: FC<ModalProps> = ({
-  className,
-  children,
-  static: isStatic,
-  ...props
-}) => {
-  // transition prop is incompatible with static prop in Headless UI v2
-  const shouldTransition = !isStatic
-
+export const Modal: FC<ModalProps> = ({ className, children, open, onClose }) => {
   return (
-    <Dialog static={isStatic} {...props}>
-      <DialogBackdrop
-        transition={shouldTransition}
-        className={clsx(
-          'fixed',
-          'inset-0',
-          'flex',
-          'w-screen',
-          'justify-center',
-          'overflow-y-auto',
-          'transition',
-          'micro-interactions',
-          'focus:outline-0',
-          'data-closed:opacity-0',
-          'data-enter:ease-out',
-          'data-leave:ease-in',
-          'bg-black/50',
-          'z-(--ui-z-overlays)',
-        )}
-      />
+    <Dialog.Root
+      open={open}
+      onOpenChange={(newOpen) => {
+        if (!newOpen) onClose?.()
+      }}
+    >
+      <Dialog.Portal>
+        <Dialog.Backdrop
+          className={clsx(
+            'fixed',
+            'inset-0',
+            'flex',
+            'w-screen',
+            'justify-center',
+            'overflow-y-auto',
+            'transition',
+            'micro-interactions',
+            'focus:outline-0',
+            'opacity-0',
+            'data-open:opacity-100',
+            'bg-black/50',
+            'z-(--ui-z-overlays)',
+          )}
+        />
 
-      <div
-        className={clsx([
-          'z-(--ui-z-modals)',
-          'fixed',
-          'inset-0',
-          'w-screen',
-          'overflow-y-auto',
-        ])}
-      >
         <div
           className={clsx([
-            'grid',
-            'min-h-full',
-            'grid-rows-[1fr_auto_1fr]',
-            'justify-items-center',
-            'sm:grid-rows-[1fr_auto_3fr]',
-            'sm:p-4',
+            'z-(--ui-z-modals)',
+            'fixed',
+            'inset-0',
+            'w-screen',
+            'overflow-y-auto',
+            'pointer-events-none',
           ])}
         >
-          <DialogPanel
-            transition={shouldTransition}
-            className={clsx(className, [
-              'row-start-2',
-              'w-full',
-              'rounded-md',
-              'ring-1',
-              'shadow-xl',
-              'ring-zinc-950/10',
-              'dark:ring-white/10',
-              'forced-colors:outline',
-              'transition',
-              'duration-100',
-              'will-change-transform',
-              'data-closed:opacity-0',
-              'data-enter:ease-out',
-              'data-closed:data-enter:scale-95',
-              'data-leave:ease-in',
-              'bg-background',
+          <div
+            className={clsx([
+              'grid',
+              'min-h-full',
+              'grid-rows-[1fr_auto_1fr]',
+              'justify-items-center',
+              'sm:grid-rows-[1fr_auto_3fr]',
+              'sm:p-4',
             ])}
           >
-            {children}
-          </DialogPanel>
+            <Dialog.Popup
+              className={clsx(className, [
+                'pointer-events-auto',
+                'row-start-2',
+                'w-full',
+                'rounded-md',
+                'ring-1',
+                'shadow-xl',
+                'ring-zinc-950/10',
+                'dark:ring-white/10',
+                'forced-colors:outline',
+                'transition',
+                'duration-100',
+                'will-change-transform',
+                'opacity-0',
+                'scale-95',
+                'data-open:opacity-100',
+                'data-open:scale-100',
+                'bg-background',
+              ])}
+            >
+              {children}
+            </Dialog.Popup>
+          </div>
         </div>
-      </div>
-    </Dialog>
+      </Dialog.Portal>
+    </Dialog.Root>
   )
 }
 
@@ -99,7 +92,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   ...props
 }) => {
   return (
-    <DialogTitle
+    <Dialog.Title
       {...props}
       className={clsx(
         className,

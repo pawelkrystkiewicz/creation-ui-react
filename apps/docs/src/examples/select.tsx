@@ -24,7 +24,7 @@ import { useState } from 'react'
 import { iconProp } from './shared-props'
 
 export const SelectExample = (
-  props: SelectProps & {
+  props: SelectProps<string> & {
     required?: boolean
     label?: string
   },
@@ -42,7 +42,7 @@ export const SelectExample = (
       <Select
         {...props}
         value={selected}
-        onChange={setSelected}
+        onChange={(v) => setSelected(v as string)}
         onClear={onClear}
       >
         <SelectButton className={'w-[180px]'}>

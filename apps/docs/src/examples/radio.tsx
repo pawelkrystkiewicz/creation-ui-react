@@ -39,18 +39,14 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
     { label: 'Disabled option', value: 'option-32', disabled: true },
   ]
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setSelected(e.currentTarget.value)
-  }
-
   return (
     <Field disabled={disabled}>
       <Label required={required}>{label}</Label>
       <Description>{description}</Description>
-      <RadioGroup value={selected} disabled={disabled} readOnly={readOnly}>
+      <RadioGroup value={selected} onChange={setSelected} disabled={disabled} readOnly={readOnly}>
         {options.map(option => (
           <Field key={option.value} layout='row'>
-            <Radio onClick={handleClick} value={option.value} />
+            <Radio value={option.value} />
             <Label key={option.value}>{option.label}</Label>
           </Field>
         ))}
@@ -89,18 +85,14 @@ export const RadioGroupExample: FC<RadioGroupExampleProps> = ({
 
 
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setSelected(e.currentTarget.value)
-  }
-
   return (
     <Field disabled={{disabled}}>
       <Label required={{required}}>{{label}}</Label>
       <Description>{{description}}</Description>
-      <RadioGroup value={selected} disabled={{disabled}} readOnly={{readOnly}}>
+      <RadioGroup value={selected} onChange={setSelected} disabled={{disabled}} readOnly={{readOnly}}>
         {options.map(option => (
-          <Field key={option.value} type='row'>
-            <Radio onClick={handleClick} value={option.value} />
+          <Field key={option.value} layout='row'>
+            <Radio value={option.value} />
             <Label key={option.value}>{option.label}</Label>
           </Field>
         ))}

@@ -70,7 +70,6 @@
     "@base-ui/react": "^1.2.0",
     "@floating-ui/react": "^0.27.18",
     "@floating-ui/react-dom": "^2.1.7",
-    "@headlessui/react": "^2.2.9",
     "@mona-health/react-input-mask": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
@@ -81,11 +80,11 @@
     "tailwindcss": "^4.1.18"
   },
   "peerDependencies": {
+    "@base-ui/react": "^1.2.0",
     "@mona-health/react-input-mask": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "@floating-ui/react": "^0.27.18",
     "@floating-ui/react-dom": "^2.1.7",
-    "@headlessui/react": "^2.2.9",
     "clsx": "^2.1.1",
     "react": "^17 | ^18 | ^19",
     "react-dom": "^17 | ^18 | ^19",
