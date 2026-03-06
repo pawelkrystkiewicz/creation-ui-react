@@ -12,7 +12,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
     <BaseRadioGroup
       data-slot='control'
       {...props}
-      onValueChange={onChange}
+      onValueChange={onChange ? (value) => onChange(value) : undefined}
       className={radioGroupStyles({ className })}
     />
   )

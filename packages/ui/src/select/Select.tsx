@@ -70,7 +70,7 @@ export const Select = forwardRef(
               open: isOpen,
               disabled: disabled || false,
               invalid: invalid || false,
-              value: value as unknown as string,
+              value,
               onClear,
             }}
           >

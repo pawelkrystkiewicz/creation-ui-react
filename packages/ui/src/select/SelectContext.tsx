@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react'
 
-export interface SelectContextValue<T = string> {
+export interface SelectContextValue {
   open: boolean
   disabled: boolean
   invalid: boolean
-  value: T
+  value: unknown
   onClear?: () => void
 }
 

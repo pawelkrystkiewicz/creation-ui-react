@@ -2,7 +2,9 @@ import type { ElementType, ReactNode } from 'react'
 import type { HTMLInputType } from '../types'
 import type { InputContainerProps } from '../input-container'
 
-export type InputProps = React.ComponentPropsWithoutRef<'input'> & {
+export interface InputProps
+  extends React.ComponentPropsWithoutRef<'input'>,
+    Omit<InputContainerProps, 'className' | 'clearable'> {
   as?: ElementType
   endAdornment?: ReactNode
   startAdornment?: ReactNode
@@ -12,4 +14,4 @@ export type InputProps = React.ComponentPropsWithoutRef<'input'> & {
     container?: string
     input?: string
   }
-} & Omit<InputContainerProps, 'className' | 'clearable'>
+}
