@@ -56,7 +56,7 @@ describe('Select', () => {
       </Select>,
     )
     const select = getByRole('combobox')
-    expect(select).toHaveAttribute('aria-disabled', 'true')
+    expect(select).toBeDisabled()
   })
 
   it('handles readOnly state', async () => {

@@ -29,7 +29,7 @@ describe('Select Visual Tests', () => {
       </Select>
     )
     const element = getByRole('combobox')
-    expect(element).toHaveAttribute('aria-disabled', 'true')
+    expect(element).toBeDisabled()
     await expect(element).toMatchScreenshot()
   })
 
