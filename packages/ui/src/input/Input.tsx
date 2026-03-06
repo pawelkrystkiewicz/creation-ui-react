@@ -4,20 +4,8 @@ import { InputContainer } from '../input-container'
 import { DATE_TYPES } from '../types'
 import type { InputProps } from './types'
 
-const _Input = forwardRef(function Input(
-  {
-    onClear,
-    startAdornment,
-    endAdornment,
-    cx,
-    border,
-    background,
-    children,
-    as: Component = 'input',
-    containerHeight,
-    ...props
-  }: InputProps,
-  ref: React.ForwardedRef<HTMLInputElement>,
+const _Input = function Input(
+  { ref, onClear, startAdornment, endAdornment, cx, border, background, children, as: Component = 'input', containerHeight, ...props },
 ) {
   const isDateType = useMemo(
     () => Boolean(props?.type && DATE_TYPES.includes(props?.type as any)),
@@ -51,7 +39,7 @@ const _Input = forwardRef(function Input(
       />
     </InputContainer>
   )
-})
+}
 
 _Input.displayName = 'Input'
 

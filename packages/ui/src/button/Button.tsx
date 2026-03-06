@@ -77,23 +77,8 @@ export type ButtonProps = {
   | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
 )
 
-export const Button = forwardRef(function (
-  {
-    color,
-    variant,
-    className,
-    children,
-    loading,
-    fullWidth,
-    disabled,
-    startAdornment,
-    endAdornment,
-    uppercase,
-    spinnerPosition = 'left',
-    loaderColor,
-    ...props
-  }: ButtonProps,
-  ref: React.ForwardedRef<HTMLElement>,
+export const Button = function (
+  { ref, color, variant, className, children, loading, fullWidth, disabled, startAdornment, endAdornment, uppercase, spinnerPosition = 'left', loaderColor, ...props },
 ) {
   const isDisabled = Boolean(disabled || loading)
   const classes = styles({
@@ -138,4 +123,4 @@ export const Button = forwardRef(function (
       {inner}
     </button>
   )
-})
+}

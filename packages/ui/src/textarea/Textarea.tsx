@@ -3,9 +3,8 @@ import React, { forwardRef } from 'react'
 import type { TextareaProps } from './types'
 import { containerClasses } from './classes'
 
-export const Textarea = forwardRef(function Textarea(
-  { className, resizable = true, invalid, ...props }: TextareaProps,
-  ref: React.ForwardedRef<HTMLTextAreaElement>,
+export const Textarea = function Textarea(
+  { ref, className, resizable = true, invalid, ...props },
 ) {
   return (
     <span data-slot='control' className={clsx([className, containerClasses])}>
@@ -58,4 +57,4 @@ export const Textarea = forwardRef(function Textarea(
       />
     </span>
   )
-})
+}

@@ -5,8 +5,7 @@ import { usePopoverContext } from './context'
 
 interface PopoverCloseProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(
-  function PopoverClose({ className, ...props }, ref) {
+export const PopoverClose = function PopoverClose({ ref, className, ...props }: PopoverCloseProps & { ref?: React.RefObject<HTMLButtonElement | null> }) {
     const { setOpen } = usePopoverContext()
 
     return (
@@ -22,4 +21,3 @@ export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(
       />
     )
   }
-)

@@ -8,10 +8,7 @@ import { usePopoverContext } from './context'
 interface PopoverHeadingProps
   extends Omit<HTMLProps<HTMLHeadingElement>, 'size'> {}
 
-export const PopoverHeading = forwardRef<
-  HTMLHeadingElement,
-  PopoverHeadingProps
->(function PopoverHeading({ children, className, ...props }, ref) {
+export const PopoverHeading = function PopoverHeading({ ref, children, className, ...props }: PopoverHeadingProps & { ref?: React.RefObject<HTMLHeadingElement | null> }) {
   const { setLabelId } = usePopoverContext()
   const id = useId()
 
@@ -32,4 +29,4 @@ export const PopoverHeading = forwardRef<
       {children}
     </h2>
   )
-})
+}

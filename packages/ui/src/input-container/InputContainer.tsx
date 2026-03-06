@@ -7,23 +7,8 @@ import { EndAdornment } from './EndAdornment'
 import { StartAdornment } from './StartAdornment'
 import { InputContainerProps } from './types'
 
-const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
-  (
-    {
-      children,
-      className,
-      isDateType,
-      inputType,
-      border,
-      background,
-      containerHeight,
-      hasValue,
-      endAdornment,
-      startAdornment,
-      onClear,
-      ...props
-    },
-    ref,
+const _InputContainer = (
+    { ref, children, className, isDateType, inputType, border, background, containerHeight, hasValue, endAdornment, startAdornment, onClear, ...props }: InputContainerProps & { ref?: React.RefObject<HTMLDivElement | null> },
   ) => {
     const adornments = useMemo(
       () =>
@@ -92,7 +77,6 @@ const _InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
         {endAdornment && <EndAdornment>{endAdornment}</EndAdornment>}
       </div>
     )
-  },
-)
+  }
 
 export const InputContainer = memo(_InputContainer)

@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 export interface SelectContextValue<T = string> {
   open: boolean
@@ -11,7 +11,7 @@ export interface SelectContextValue<T = string> {
 const SelectContext = createContext<SelectContextValue | null>(null)
 
 export const useSelectContext = () => {
-  const context = useContext(SelectContext)
+  const context = use(SelectContext)
   if (!context) {
     throw new Error(
       'CUI: useSelectContext must be used within a Select component',

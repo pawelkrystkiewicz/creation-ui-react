@@ -23,8 +23,7 @@ export interface ClearButtonProps {
   className?: string
 }
 
-export const ClearButton = forwardRef<HTMLElement, ClearButtonProps>(
-  ({ onClick, className, ...props }, ref) => {
+export const ClearButton = ({ ref, onClick, className, ...props }: ClearButtonProps & { ref?: React.RefObject<HTMLElement | null> }) => {
     return (
       <button
         ref={ref as React.Ref<HTMLButtonElement>}
@@ -38,5 +37,4 @@ export const ClearButton = forwardRef<HTMLElement, ClearButtonProps>(
         <Icon icon='close' aria-hidden='true' />
       </button>
     )
-  },
-)
+  }

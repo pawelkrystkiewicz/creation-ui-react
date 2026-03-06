@@ -13,8 +13,7 @@ interface PopoverContentProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   zIndex?: number
 }
 
-export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
-  function PopoverContent({ className, zIndex, ...props }, propRef) {
+export const PopoverContent = function PopoverContent({ ref: propRef, className, zIndex, ...props }: PopoverContentProps & { ref?: React.RefObject<HTMLDivElement | null> }) {
     const { context: floatingContext, ...ctx } = usePopoverContext()
     const ref = useMergeRefs([ctx.refs.setFloating, propRef])
 
@@ -43,5 +42,4 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
         </FloatingFocusManager>
       </FloatingPortal>
     )
-  },
-)
+  }

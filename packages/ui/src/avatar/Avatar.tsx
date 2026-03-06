@@ -4,7 +4,7 @@ import { avatarStyles } from './classes'
 import { AVATAR_CONTAINER_PROPS } from './constants'
 import type AvatarProps from './types'
 
-export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+export const Avatar = ({ ref, ...props }: AvatarProps & { ref?: React.RefObject<HTMLDivElement | null> }) => {
   const { variant = 'circle', children, className, size = 40, ...rest } = props
 
   const style = useMemo(() => {
@@ -34,4 +34,4 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
       )}
     </div>
   )
-})
+}
