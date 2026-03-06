@@ -15,19 +15,8 @@ interface SelectOptionProps {
   value?: unknown
 }
 
-export const SelectOption = forwardRef<HTMLElement, SelectOptionProps>(
-  (
-    {
-      children,
-      className,
-      disabled,
-      multiple,
-      truncate,
-      showCheckIcon = true,
-      value,
-      ...props
-    },
-    ref,
+export const SelectOption = (
+    { ref, children, className, disabled, multiple, truncate, showCheckIcon = true, value, ...props }: SelectOptionProps & { ref?: React.RefObject<HTMLElement | null> },
   ) => {
     const { value: selectedValue } = useSelectContext()
     const isSelected = value === selectedValue
@@ -61,5 +50,4 @@ export const SelectOption = forwardRef<HTMLElement, SelectOptionProps>(
         )}
       </BaseSelect.Item>
     )
-  },
-)
+  }

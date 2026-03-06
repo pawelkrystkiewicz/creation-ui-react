@@ -16,21 +16,8 @@ interface SelectComponentProps<T = string> extends SelectProps<T> {
   onClear?: () => void
 }
 
-export const Select = forwardRef(
-  <T = string,>(
-    {
-      startAdornment,
-      endAdornment,
-      children,
-      cx,
-      onClear,
-      horizontal,
-      invalid,
-      name,
-      refName,
-      ...selectProps
-    }: SelectComponentProps<T>,
-    ref: React.Ref<HTMLDivElement>,
+export const Select = <T = string,>(
+    { ref, startAdornment, endAdornment, children, cx, onClear, horizontal, invalid, name, refName, ...selectProps },
   ) => {
     const { value, onChange, disabled } = selectProps
     const [isOpen, setIsOpen] = useState(false)
@@ -65,7 +52,7 @@ export const Select = forwardRef(
           data-name={name}
           data-ref-name={refName}
         >
-          <SelectContext.Provider
+          <SelectContext
             value={{
               open: isOpen,
               disabled: disabled || false,
@@ -77,9 +64,8 @@ export const Select = forwardRef(
             <div ref={ref} className='relative'>
               {children}
             </div>
-          </SelectContext.Provider>
+          </SelectContext>
         </InputContainer>
       </BaseSelect.Root>
     )
-  },
-)
+  }
