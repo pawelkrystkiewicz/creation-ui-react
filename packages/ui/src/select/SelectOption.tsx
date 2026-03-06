@@ -12,7 +12,7 @@ interface SelectOptionProps {
   multiple?: boolean
   truncate?: boolean
   showCheckIcon?: boolean
-  value?: any
+  value?: unknown
 }
 
 export const SelectOption = forwardRef<HTMLElement, SelectOptionProps>(
