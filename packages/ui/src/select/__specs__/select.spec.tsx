@@ -14,7 +14,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDefined()
   })
 
@@ -29,7 +29,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select.classList).toContain('custom-select-class')
   })
 
@@ -55,8 +55,8 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
-    expect(select).toBeDisabled()
+    const select = getByRole('combobox')
+    expect(select).toHaveAttribute('aria-disabled', 'true')
   })
 
   it('handles readOnly state', async () => {
@@ -68,7 +68,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDefined()
   })
 
@@ -82,7 +82,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select).toBeDefined()
   })
 
@@ -299,7 +299,7 @@ describe('Select', () => {
         </SelectOptions>
       </Select>,
     )
-    const select = getByRole('button')
+    const select = getByRole('combobox')
     expect(select.className).toContain('cursor-pointer')
   })
 

@@ -35,7 +35,7 @@ const styles = cva(
     'focus-visible:outline-primary',
     // Disabled
     'disabled:opacity-50',
-    'disabled:pointer-events-none',
+    'disabled:cursor-not-allowed',
     'active:scale-95',
     'h-[var(--ui-height)]',
   ],
@@ -129,6 +129,7 @@ export const Button = forwardRef(function (
     </Link>
   ) : (
     <button
+      type='button'
       {...(props as React.ComponentPropsWithoutRef<'button'>)}
       className={classes}
       ref={ref as React.ForwardedRef<HTMLButtonElement>}

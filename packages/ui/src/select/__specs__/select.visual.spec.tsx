@@ -14,7 +14,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 
@@ -28,8 +28,8 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
-    expect(element).toBeDisabled()
+    const element = getByRole('combobox')
+    expect(element).toHaveAttribute('aria-disabled', 'true')
     await expect(element).toMatchScreenshot()
   })
 
@@ -43,7 +43,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 
@@ -58,7 +58,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 
@@ -72,7 +72,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 
@@ -86,7 +86,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 
@@ -103,7 +103,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 
@@ -121,7 +121,7 @@ describe('Select Visual Tests', () => {
         </SelectOptions>
       </Select>
     )
-    const element = getByRole('button')
+    const element = getByRole('combobox')
     await expect(element).toMatchScreenshot()
   })
 })
