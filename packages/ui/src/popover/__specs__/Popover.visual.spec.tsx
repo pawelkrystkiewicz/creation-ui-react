@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/react'
-import { Popover } from '../popover.provider'
-import { PopoverTrigger } from '../popover.trigger'
-import { PopoverContent } from '../popover.content'
-import { PopoverHeading } from '../popover.heading'
-import { PopoverDescription } from '../popover.description'
-import { PopoverClose } from '../popover.close'
+import { Popover } from '../PopoverProvider'
+import { PopoverTrigger } from '../PopoverTrigger'
+import { PopoverContent } from '../PopoverContent'
+import { PopoverHeading } from '../PopoverHeading'
+import { PopoverDescription } from '../PopoverDescription'
+import { PopoverClose } from '../PopoverClose'
 import { Button } from '../../button'
 
 describe('Popover Visual Tests', () => {

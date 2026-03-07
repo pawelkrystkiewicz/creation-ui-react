@@ -34,4 +34,4 @@ export type CalendarProps = Omit<
 export type DateRange = [CalendarDateValue, CalendarDateValue]
 export type CalendarViewMode = 'days' | 'months' | 'years'
 
-export type WeekDayIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7
+export type WeekDayIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6

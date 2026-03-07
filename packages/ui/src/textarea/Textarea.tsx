@@ -1,11 +1,15 @@
 import clsx from 'clsx'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import type { TextareaProps } from './types'
 import { containerClasses } from './classes'
 
-export const Textarea = function Textarea(
-  { ref, className, resizable = true, invalid, ...props },
-) {
+export const Textarea = function Textarea({
+  ref,
+  className,
+  resizable = true,
+  invalid,
+  ...props
+}: TextareaProps & { ref?: React.Ref<HTMLTextAreaElement> }) {
   return (
     <span data-slot='control' className={clsx([className, containerClasses])}>
       <textarea

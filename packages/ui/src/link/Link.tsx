@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 
-export const Link = function Link(
-  { ref, ...props },
-) {
+type LinkProps = React.ComponentPropsWithRef<'a'>
+
+export const Link = function Link({ ref, ...props }: LinkProps) {
   return <a {...props} ref={ref} />
 }

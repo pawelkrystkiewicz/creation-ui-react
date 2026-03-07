@@ -4,7 +4,7 @@ import type { InputContainerProps } from '../input-container'
 
 export interface InputProps
   extends React.ComponentPropsWithoutRef<'input'>,
-    Omit<InputContainerProps, 'className' | 'clearable'> {
+    Omit<InputContainerProps, 'className' | 'clearable' | 'onClick' | 'children' | 'style'> {
   as?: ElementType
   endAdornment?: ReactNode
   startAdornment?: ReactNode

@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority'
-import React, { forwardRef, type ReactNode } from 'react'
+import React, { type ReactNode } from 'react'
 import { Link } from '../link'
 import { Loader } from '../loader'
 import { TouchTarget } from '../touch-target'
@@ -77,9 +77,22 @@ export type ButtonProps = {
   | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
 )
 
-export const Button = function (
-  { ref, color, variant, className, children, loading, fullWidth, disabled, startAdornment, endAdornment, uppercase, spinnerPosition = 'left', loaderColor, ...props },
-) {
+export const Button = function ({
+  ref,
+  color,
+  variant,
+  className,
+  children,
+  loading,
+  fullWidth,
+  disabled,
+  startAdornment,
+  endAdornment,
+  uppercase,
+  spinnerPosition = 'left',
+  loaderColor,
+  ...props
+}: ButtonProps & { ref?: React.Ref<HTMLButtonElement | HTMLAnchorElement> }) {
   const isDisabled = Boolean(disabled || loading)
   const classes = styles({
     color,

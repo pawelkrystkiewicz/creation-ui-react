@@ -1,12 +1,23 @@
-import React, { forwardRef, memo, useMemo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { InputContainer } from '../input-container'
 import { DATE_TYPES } from '../types'
 import type { InputProps } from './types'
 
-const _Input = function Input(
-  { ref, onClear, startAdornment, endAdornment, cx, border, background, children, as: Component = 'input', containerHeight, ...props },
-) {
+const _Input = function Input({
+  ref,
+  onClear,
+  startAdornment,
+  endAdornment,
+  cx,
+  border,
+  background,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  children,
+  as: Component = 'input',
+  containerHeight,
+  ...props
+}: InputProps & { ref?: React.Ref<HTMLInputElement> }) {
   const isDateType = useMemo(
     () => Boolean(props?.type && DATE_TYPES.includes(props?.type as any)),
     [props?.type],
