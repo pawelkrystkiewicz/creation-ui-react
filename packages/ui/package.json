@@ -53,7 +53,7 @@
     "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^5.1.4",
     "chromium-bidi": "^15.0.0",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "jest-axe": "^10.0.0",
     "jsdom": "^27.4.0",
     "lightningcss": "1.30.2",
