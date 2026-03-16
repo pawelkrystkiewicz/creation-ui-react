@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 16.0.1
+
+### Patch Changes
+
+- Release v16.0.1
+
+  ### Changes in this release:
+
+  ⬆️ Update @vitejs/plugin-react to 5.2.0 (#257)
+
 ## 16.0.0
 
 ### Major Changes
