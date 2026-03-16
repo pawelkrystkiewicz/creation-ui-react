@@ -24,7 +24,7 @@
     "update-screenshots": "./scripts/update-screenshots.sh"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/changelog-github": "^0.6.0",
     "@changesets/cli": "^2.30.0",
     "@types/js-yaml": "^4.0.9",
     "@types/minimatch": "6.0.0",
