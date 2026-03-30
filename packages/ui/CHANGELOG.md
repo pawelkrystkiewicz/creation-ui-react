@@ -1,5 +1,15 @@
 # @creation-ui/react
 
+## 16.0.1
+
+### Patch Changes
+
+- Release v16.0.1
+
+  ### Changes in this release:
+
+  chore: format files ([#273](https://github.com/pawelkrystkiewicz/creation-ui-react/issues/273))
+
 ## 16.0.0
 
 ### Major Changes
