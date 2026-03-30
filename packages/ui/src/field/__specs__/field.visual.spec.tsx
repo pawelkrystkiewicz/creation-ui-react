@@ -11,8 +11,8 @@ describe('Field Visual Tests', () => {
     const { container } = render(
       <Field>
         <Label>Username</Label>
-        <Input placeholder="Enter username" />
-      </Field>
+        <Input placeholder='Enter username' />
+      </Field>,
     )
     expect(container).toBeVisible()
     await expect(container.firstChild).toMatchScreenshot()
@@ -21,20 +21,20 @@ describe('Field Visual Tests', () => {
   describe('Layout', () => {
     it('renders field with column layout (default)', async () => {
       const { container } = render(
-        <Field layout="column">
+        <Field layout='column'>
           <Label>Email</Label>
-          <Input type="email" placeholder="Enter email" />
-        </Field>
+          <Input type='email' placeholder='Enter email' />
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
 
     it('renders field with row layout', async () => {
       const { container } = render(
-        <Field layout="row">
+        <Field layout='row'>
           <Label>Email</Label>
-          <Input type="email" placeholder="Enter email" />
-        </Field>
+          <Input type='email' placeholder='Enter email' />
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -46,8 +46,8 @@ describe('Field Visual Tests', () => {
         <Field>
           <Label>Password</Label>
           <Description>Must be at least 8 characters</Description>
-          <Input type="password" placeholder="Enter password" />
-        </Field>
+          <Input type='password' placeholder='Enter password' />
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -58,9 +58,9 @@ describe('Field Visual Tests', () => {
       const { container } = render(
         <Field>
           <Label>Email</Label>
-          <Input type="email" placeholder="Enter email" data-invalid />
+          <Input type='email' placeholder='Enter email' data-invalid />
           <Error>Please enter a valid email address</Error>
-        </Field>
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -70,9 +70,9 @@ describe('Field Visual Tests', () => {
         <Field>
           <Label>Password</Label>
           <Description>Must be at least 8 characters</Description>
-          <Input type="password" placeholder="Enter password" data-invalid />
+          <Input type='password' placeholder='Enter password' data-invalid />
           <Error>Password is too short</Error>
-        </Field>
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -83,8 +83,8 @@ describe('Field Visual Tests', () => {
       const { container } = render(
         <Field>
           <Label required>Email</Label>
-          <Input type="email" placeholder="Enter email" required />
-        </Field>
+          <Input type='email' placeholder='Enter email' required />
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -96,8 +96,8 @@ describe('Field Visual Tests', () => {
         <Field disabled>
           <Label>Username</Label>
           <Description>This field is disabled</Description>
-          <Input placeholder="Enter username" disabled />
-        </Field>
+          <Input placeholder='Enter username' disabled />
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -109,29 +109,29 @@ describe('Field Visual Tests', () => {
         <Field>
           <Label required>Full Name</Label>
           <Description>Enter your first and last name</Description>
-          <Input placeholder="John Doe" />
-        </Field>
+          <Input placeholder='John Doe' />
+        </Field>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
 
     it('renders multiple fields', async () => {
       const { container } = render(
-        <div className="space-y-4">
+        <div className='space-y-4'>
           <Field>
             <Label required>First Name</Label>
-            <Input placeholder="John" />
+            <Input placeholder='John' />
           </Field>
           <Field>
             <Label required>Last Name</Label>
-            <Input placeholder="Doe" />
+            <Input placeholder='Doe' />
           </Field>
           <Field>
             <Label>Email</Label>
             <Description>We will never share your email</Description>
-            <Input type="email" placeholder="john@example.com" />
+            <Input type='email' placeholder='john@example.com' />
           </Field>
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })

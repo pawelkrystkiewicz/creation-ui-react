@@ -398,8 +398,9 @@ To run non-components tests use:
 > bun test:unit
 
 To run component tests locally (do not commit images):
+
 > bun test:visual (they will most likely fail)
-To avoid failing locally:
+> To avoid failing locally:
 > bun test:visual:update
 
 To generate commitable and valid test renderings (images) you need to trigger a Github action on your commnad. You can do this by calling this command and following the steps in CLI prompts:

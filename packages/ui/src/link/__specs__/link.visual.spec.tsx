@@ -4,7 +4,7 @@ import { Link } from '..'
 
 describe('Link Visual Tests', () => {
   it('default link renders correctly', async () => {
-    const { getByRole } = render(<Link href="/home">Home</Link>)
+    const { getByRole } = render(<Link href='/home'>Home</Link>)
     const element = getByRole('link')
     expect(element).toBeVisible()
     expect(element).toHaveAttribute('href', '/home')
@@ -13,7 +13,7 @@ describe('Link Visual Tests', () => {
 
   it('renders link with external href', async () => {
     const { getByRole } = render(
-      <Link href="https://example.com">External Link</Link>
+      <Link href='https://example.com'>External Link</Link>,
     )
     const element = getByRole('link')
     expect(element).toBeVisible()
@@ -23,9 +23,9 @@ describe('Link Visual Tests', () => {
 
   it('renders link with custom className', async () => {
     const { getByRole } = render(
-      <Link href="/styled" className="text-primary underline font-bold">
+      <Link href='/styled' className='text-primary underline font-bold'>
         Styled Link
-      </Link>
+      </Link>,
     )
     const element = getByRole('link')
     expect(element).toBeVisible()
@@ -34,9 +34,9 @@ describe('Link Visual Tests', () => {
 
   it('renders link with target blank', async () => {
     const { getByRole } = render(
-      <Link href="/new-tab" target="_blank" rel="noopener noreferrer">
+      <Link href='/new-tab' target='_blank' rel='noopener noreferrer'>
         Open in new tab
-      </Link>
+      </Link>,
     )
     const element = getByRole('link')
     expect(element).toBeVisible()
@@ -46,9 +46,9 @@ describe('Link Visual Tests', () => {
 
   it('renders link with data-hover attribute', async () => {
     const { getByRole } = render(
-      <Link href="/hover" data-hover="true">
+      <Link href='/hover' data-hover='true'>
         Hovered Link
-      </Link>
+      </Link>,
     )
     const element = getByRole('link')
     expect(element).toBeVisible()
@@ -58,9 +58,9 @@ describe('Link Visual Tests', () => {
 
   it('renders link with data-focus attribute', async () => {
     const { getByRole } = render(
-      <Link href="/focus" data-focus="true">
+      <Link href='/focus' data-focus='true'>
         Focused Link
-      </Link>
+      </Link>,
     )
     const element = getByRole('link')
     expect(element).toBeVisible()

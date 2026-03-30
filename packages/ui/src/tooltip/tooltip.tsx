@@ -17,4 +17,3 @@ export const Tooltip = (props: TooltipProps) => {
     </div>
   )
 }
-

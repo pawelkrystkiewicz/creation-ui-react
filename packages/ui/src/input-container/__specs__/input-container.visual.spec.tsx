@@ -7,22 +7,22 @@ describe('InputContainer Visual Tests', () => {
   it('default input container renders correctly', async () => {
     const { container } = render(
       <InputContainer>
-        <input className="w-full outline-none" placeholder="Enter text" />
-      </InputContainer>
+        <input className='w-full outline-none' placeholder='Enter text' />
+      </InputContainer>,
     )
     expect(container).toBeVisible()
     await expect(container.firstChild).toMatchScreenshot()
   })
 
   describe('Adornments', () => {
-    const startAdornment = <Icon icon="home" data-testid="start-icon" />
-    const endAdornment = <Icon icon="check" data-testid="end-icon" />
+    const startAdornment = <Icon icon='home' data-testid='start-icon' />
+    const endAdornment = <Icon icon='check' data-testid='end-icon' />
 
     it('renders with startAdornment', async () => {
       const { container, getByTestId } = render(
         <InputContainer startAdornment={startAdornment}>
-          <input className="w-full outline-none" placeholder="Enter text" />
-        </InputContainer>
+          <input className='w-full outline-none' placeholder='Enter text' />
+        </InputContainer>,
       )
       expect(getByTestId('start-icon')).toBeVisible()
       await expect(container.firstChild).toMatchScreenshot()
@@ -31,8 +31,8 @@ describe('InputContainer Visual Tests', () => {
     it('renders with endAdornment', async () => {
       const { container, getByTestId } = render(
         <InputContainer endAdornment={endAdornment}>
-          <input className="w-full outline-none" placeholder="Enter text" />
-        </InputContainer>
+          <input className='w-full outline-none' placeholder='Enter text' />
+        </InputContainer>,
       )
       expect(getByTestId('end-icon')).toBeVisible()
       await expect(container.firstChild).toMatchScreenshot()
@@ -40,9 +40,12 @@ describe('InputContainer Visual Tests', () => {
 
     it('renders with both adornments', async () => {
       const { container, getByTestId } = render(
-        <InputContainer startAdornment={startAdornment} endAdornment={endAdornment}>
-          <input className="w-full outline-none" placeholder="Enter text" />
-        </InputContainer>
+        <InputContainer
+          startAdornment={startAdornment}
+          endAdornment={endAdornment}
+        >
+          <input className='w-full outline-none' placeholder='Enter text' />
+        </InputContainer>,
       )
       expect(getByTestId('start-icon')).toBeVisible()
       expect(getByTestId('end-icon')).toBeVisible()
@@ -55,8 +58,8 @@ describe('InputContainer Visual Tests', () => {
       const onClear = vi.fn()
       const { container, getByTestId } = render(
         <InputContainer hasValue onClear={onClear}>
-          <input className="w-full outline-none" defaultValue="Some text" />
-        </InputContainer>
+          <input className='w-full outline-none' defaultValue='Some text' />
+        </InputContainer>,
       )
       expect(getByTestId('input-clear-button')).toBeVisible()
       await expect(container.firstChild).toMatchScreenshot()
@@ -66,8 +69,8 @@ describe('InputContainer Visual Tests', () => {
       const onClear = vi.fn()
       const { container, queryByTestId } = render(
         <InputContainer hasValue={false} onClear={onClear}>
-          <input className="w-full outline-none" placeholder="Enter text" />
-        </InputContainer>
+          <input className='w-full outline-none' placeholder='Enter text' />
+        </InputContainer>,
       )
       expect(queryByTestId('input-clear-button')).not.toBeInTheDocument()
       await expect(container.firstChild).toMatchScreenshot()
@@ -79,10 +82,10 @@ describe('InputContainer Visual Tests', () => {
         <InputContainer
           hasValue
           onClear={onClear}
-          endAdornment={<Icon icon="check" />}
+          endAdornment={<Icon icon='check' />}
         >
-          <input className="w-full outline-none" defaultValue="Some text" />
-        </InputContainer>
+          <input className='w-full outline-none' defaultValue='Some text' />
+        </InputContainer>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -95,8 +98,8 @@ describe('InputContainer Visual Tests', () => {
       it(`renders with border=${border}`, async () => {
         const { container } = render(
           <InputContainer border={border}>
-            <input className="w-full outline-none" placeholder="Enter text" />
-          </InputContainer>
+            <input className='w-full outline-none' placeholder='Enter text' />
+          </InputContainer>,
         )
         await expect(container.firstChild).toMatchScreenshot()
       })
@@ -110,8 +113,8 @@ describe('InputContainer Visual Tests', () => {
       it(`renders with background=${background}`, async () => {
         const { container } = render(
           <InputContainer background={background}>
-            <input className="w-full outline-none" placeholder="Enter text" />
-          </InputContainer>
+            <input className='w-full outline-none' placeholder='Enter text' />
+          </InputContainer>,
         )
         await expect(container.firstChild).toMatchScreenshot()
       })
@@ -125,8 +128,8 @@ describe('InputContainer Visual Tests', () => {
       it(`renders with containerHeight=${containerHeight}`, async () => {
         const { container } = render(
           <InputContainer containerHeight={containerHeight}>
-            <input className="w-full outline-none" placeholder="Enter text" />
-          </InputContainer>
+            <input className='w-full outline-none' placeholder='Enter text' />
+          </InputContainer>,
         )
         await expect(container.firstChild).toMatchScreenshot()
       })
@@ -138,11 +141,11 @@ describe('InputContainer Visual Tests', () => {
       const { container } = render(
         <InputContainer disabled>
           <input
-            className="w-full outline-none"
-            placeholder="Disabled input"
+            className='w-full outline-none'
+            placeholder='Disabled input'
             disabled
           />
-        </InputContainer>
+        </InputContainer>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -151,11 +154,11 @@ describe('InputContainer Visual Tests', () => {
       const { container } = render(
         <InputContainer readOnly>
           <input
-            className="w-full outline-none"
-            defaultValue="Read only value"
+            className='w-full outline-none'
+            defaultValue='Read only value'
             readOnly
           />
-        </InputContainer>
+        </InputContainer>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -165,11 +168,11 @@ describe('InputContainer Visual Tests', () => {
       const { container, queryByTestId } = render(
         <InputContainer disabled hasValue onClear={onClear}>
           <input
-            className="w-full outline-none"
-            defaultValue="Disabled"
+            className='w-full outline-none'
+            defaultValue='Disabled'
             disabled
           />
-        </InputContainer>
+        </InputContainer>,
       )
       expect(queryByTestId('input-clear-button')).not.toBeInTheDocument()
       await expect(container.firstChild).toMatchScreenshot()
@@ -179,9 +182,9 @@ describe('InputContainer Visual Tests', () => {
   describe('Date input type', () => {
     it('renders as date type', async () => {
       const { container } = render(
-        <InputContainer isDateType inputType="date">
-          <input type="date" className="w-full outline-none" />
-        </InputContainer>
+        <InputContainer isDateType inputType='date'>
+          <input type='date' className='w-full outline-none' />
+        </InputContainer>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -190,9 +193,9 @@ describe('InputContainer Visual Tests', () => {
   describe('Custom styling', () => {
     it('renders with custom className', async () => {
       const { container } = render(
-        <InputContainer className="bg-blue-50 border-blue-300">
-          <input className="w-full outline-none" placeholder="Custom styled" />
-        </InputContainer>
+        <InputContainer className='bg-blue-50 border-blue-300'>
+          <input className='w-full outline-none' placeholder='Custom styled' />
+        </InputContainer>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })

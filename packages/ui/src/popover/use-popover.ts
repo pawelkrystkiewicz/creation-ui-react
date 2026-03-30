@@ -22,15 +22,16 @@ export function usePopover({
   modal,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-}: PopoverOptions = {}): UseFloatingReturn & UseInteractionsReturn & {
-  open: boolean
-  setOpen: (open: boolean) => void
-  modal?: boolean
-  labelId?: string
-  descriptionId?: string
-  setLabelId: (id: string | undefined) => void
-  setDescriptionId: (id: string | undefined) => void
-} {
+}: PopoverOptions = {}): UseFloatingReturn &
+  UseInteractionsReturn & {
+    open: boolean
+    setOpen: (open: boolean) => void
+    modal?: boolean
+    labelId?: string
+    descriptionId?: string
+    setLabelId: (id: string | undefined) => void
+    setDescriptionId: (id: string | undefined) => void
+  } {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
   const [labelId, setLabelId] = useState<string | undefined>()
   const [descriptionId, setDescriptionId] = useState<string | undefined>()

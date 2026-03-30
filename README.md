@@ -30,29 +30,29 @@ A modern, accessible, and customizable React component library built with Tailwi
 
 ## Available Components
 
-| Category | Components |
-|----------|------------|
-| **Inputs** | Autocomplete, Checkbox, DatePicker, Input, Radio, Select, Switch, Textarea, ToggleGroup |
-| **Buttons** | Button, ClearButton, DarkModeToggle, TouchTarget |
-| **Display** | Avatar, Calendar, Card, Chip, Icon, Loader, LoadingOverlay |
-| **Feedback** | Description, Error, Label, Tooltip |
-| **Overlays** | Drawer, Modal, Overlay, Popover |
-| **Layout** | Field, Flex, InputContainer |
-| **Navigation** | Link, DropdownChevron |
-| **Utilities** | For, Show, Highlighter |
+| Category       | Components                                                                              |
+| -------------- | --------------------------------------------------------------------------------------- |
+| **Inputs**     | Autocomplete, Checkbox, DatePicker, Input, Radio, Select, Switch, Textarea, ToggleGroup |
+| **Buttons**    | Button, ClearButton, DarkModeToggle, TouchTarget                                        |
+| **Display**    | Avatar, Calendar, Card, Chip, Icon, Loader, LoadingOverlay                              |
+| **Feedback**   | Description, Error, Label, Tooltip                                                      |
+| **Overlays**   | Drawer, Modal, Overlay, Popover                                                         |
+| **Layout**     | Field, Flex, InputContainer                                                             |
+| **Navigation** | Link, DropdownChevron                                                                   |
+| **Utilities**  | For, Show, Highlighter                                                                  |
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Framework | React 17-19 |
-| Language | TypeScript 5.9 |
-| Styling | Tailwind CSS v4 |
-| Build | tsup (ESM + CJS) |
-| Testing | Vitest + Playwright CT |
-| Animations | react-spring |
-| Positioning | @floating-ui/react |
-| Accessibility | @headlessui/react |
+| Category      | Technology             |
+| ------------- | ---------------------- |
+| Framework     | React 17-19            |
+| Language      | TypeScript 5.9         |
+| Styling       | Tailwind CSS v4        |
+| Build         | tsup (ESM + CJS)       |
+| Testing       | Vitest + Playwright CT |
+| Animations    | react-spring           |
+| Positioning   | @floating-ui/react     |
+| Accessibility | @headlessui/react      |
 
 ## Installation
 
@@ -131,20 +131,16 @@ import { Button, Input, Card } from '@creation-ui/react'
 
 export default function App() {
   return (
-    <Card className="p-6 max-w-md mx-auto">
-      <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
-      <div className="space-y-4">
+    <Card className='p-6 max-w-md mx-auto'>
+      <h2 className='text-xl font-semibold mb-4'>Sign Up</h2>
+      <div className='space-y-4'>
+        <Input label='Email' type='email' placeholder='Enter your email' />
         <Input
-          label="Email"
-          type="email"
-          placeholder="Enter your email"
+          label='Password'
+          type='password'
+          placeholder='Enter your password'
         />
-        <Input
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-        />
-        <Button variant="contained" size="lg" className="w-full">
+        <Button variant='contained' size='lg' className='w-full'>
           Get Started
         </Button>
       </div>
@@ -255,13 +251,13 @@ bun run pre:exit     # Exit pre-release mode
 
 ## CI/CD
 
-| Workflow | Purpose |
-|----------|---------|
-| Unit Tests | Run on every push and PR |
-| Visual Regression | Validates UI components visually |
-| Visual Regression Update | Updates visual snapshots on demand |
-| Update Screenshots | Generates valid screenshots via CI |
-| Automated Releases | Creates release PRs via Changesets, auto-publishes to npm |
+| Workflow                 | Purpose                                                   |
+| ------------------------ | --------------------------------------------------------- |
+| Unit Tests               | Run on every push and PR                                  |
+| Visual Regression        | Validates UI components visually                          |
+| Visual Regression Update | Updates visual snapshots on demand                        |
+| Update Screenshots       | Generates valid screenshots via CI                        |
+| Automated Releases       | Creates release PRs via Changesets, auto-publishes to npm |
 
 ## Contributing
 

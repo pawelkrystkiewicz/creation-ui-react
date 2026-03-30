@@ -8,7 +8,7 @@ describe('Label Visual Tests', () => {
     const { getByText } = render(
       <Field>
         <Label>Default Label</Label>
-      </Field>
+      </Field>,
     )
     const element = getByText('Default Label')
     expect(element).toBeVisible()
@@ -19,7 +19,7 @@ describe('Label Visual Tests', () => {
     const { getByText } = render(
       <Field>
         <Label required>Required Label</Label>
-      </Field>
+      </Field>,
     )
     const element = getByText('Required Label')
     expect(element).toBeVisible()
@@ -29,8 +29,8 @@ describe('Label Visual Tests', () => {
   it('renders label with custom className', async () => {
     const { getByText } = render(
       <Field>
-        <Label className="text-lg font-bold">Custom Styled Label</Label>
-      </Field>
+        <Label className='text-lg font-bold'>Custom Styled Label</Label>
+      </Field>,
     )
     const element = getByText('Custom Styled Label')
     expect(element).toBeVisible()
@@ -41,7 +41,7 @@ describe('Label Visual Tests', () => {
     const { getByText } = render(
       <Field disabled>
         <Label>Disabled Label</Label>
-      </Field>
+      </Field>,
     )
     const element = getByText('Disabled Label')
     expect(element).toBeVisible()
@@ -55,7 +55,7 @@ describe('Label Visual Tests', () => {
           This is a very long label text that might wrap to multiple lines
           depending on the container width
         </Label>
-      </Field>
+      </Field>,
     )
     const element = getByText(/This is a very long label/)
     expect(element).toBeVisible()

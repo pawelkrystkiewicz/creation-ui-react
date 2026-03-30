@@ -31,6 +31,7 @@ You are a quality software engineer specializing in React component testing.
 Read `packages/ui/component-testing-strategy.md` for the full testing strategy.
 
 Key patterns:
+
 - Unit tests: `[component].spec.tsx` using `@testing-library/react` + `jest-axe`
 - Visual tests: `[component].visual.spec.tsx` using Playwright CT
 - Use data-driven tests with `.forEach()` for variant/color combinations

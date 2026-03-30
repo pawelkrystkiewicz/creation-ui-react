@@ -158,13 +158,13 @@ describe('parseColorString', () => {
 
     it('should throw error for invalid color type', () => {
       expect(() => parseColorString('hsl(360 100% 50%)')).toThrow(
-        'Invalid color type: hsl'
+        'Invalid color type: hsl',
       )
     })
 
     it('should throw error for invalid color type - hex', () => {
       expect(() => parseColorString('#ff0000')).toThrow(
-        'Invalid color type: #ff0000'
+        'Invalid color type: #ff0000',
       )
     })
 
@@ -174,7 +174,7 @@ describe('parseColorString', () => {
 
     it('should throw error for color type not in parentheses', () => {
       expect(() => parseColorString('rgb255 128 0')).toThrow(
-        'Invalid color type: rgb255 128 0'
+        'Invalid color type: rgb255 128 0',
       )
     })
 

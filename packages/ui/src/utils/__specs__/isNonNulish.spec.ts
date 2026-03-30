@@ -128,7 +128,8 @@ describe('isNonNulish', () => {
 
   describe('type guard functionality', () => {
     it('should act as a type guard to narrow types', () => {
-      const value: string | null | undefined = Math.random() > 0.5 ? 'test' : null
+      const value: string | null | undefined =
+        Math.random() > 0.5 ? 'test' : null
 
       if (isNonNulish(value)) {
         // TypeScript should now know that value is string, not string | null | undefined

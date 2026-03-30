@@ -14,13 +14,13 @@ const LOADER_COLORS = [
 describe('LoadingOverlay Visual Tests', () => {
   it('renders active loading overlay', async () => {
     const { container } = render(
-      <div className="relative h-32 w-64">
-        <div className="p-4">
-          <h3 className="font-bold">Content</h3>
+      <div className='relative h-32 w-64'>
+        <div className='p-4'>
+          <h3 className='font-bold'>Content</h3>
           <p>Some content that is loading</p>
         </div>
         <LoadingOverlay active />
-      </div>
+      </div>,
     )
     expect(container).toBeVisible()
     await expect(container.firstChild).toMatchScreenshot()
@@ -28,13 +28,13 @@ describe('LoadingOverlay Visual Tests', () => {
 
   it('renders inactive loading overlay (should not be visible)', async () => {
     const { container } = render(
-      <div className="relative h-32 w-64">
-        <div className="p-4">
-          <h3 className="font-bold">Content</h3>
+      <div className='relative h-32 w-64'>
+        <div className='p-4'>
+          <h3 className='font-bold'>Content</h3>
           <p>Content is loaded</p>
         </div>
         <LoadingOverlay active={false} />
-      </div>
+      </div>,
     )
     await expect(container.firstChild).toMatchScreenshot()
   })
@@ -43,10 +43,10 @@ describe('LoadingOverlay Visual Tests', () => {
     for (const color of LOADER_COLORS) {
       it(`renders with loaderColor=[${color}]`, async () => {
         const { container } = render(
-          <div className="relative h-32 w-64">
-            <div className="p-4">Background content</div>
+          <div className='relative h-32 w-64'>
+            <div className='p-4'>Background content</div>
             <LoadingOverlay active loaderColor={color} />
-          </div>
+          </div>,
         )
         await expect(container.firstChild).toMatchScreenshot()
       })
@@ -56,37 +56,37 @@ describe('LoadingOverlay Visual Tests', () => {
   describe('Custom styling', () => {
     it('renders with custom overlay class', async () => {
       const { container } = render(
-        <div className="relative h-32 w-64">
-          <div className="p-4">Background content</div>
+        <div className='relative h-32 w-64'>
+          <div className='p-4'>Background content</div>
           <LoadingOverlay active cx={{ overlay: 'bg-blue-500/75' }} />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
 
     it('renders with custom loader class', async () => {
       const { container } = render(
-        <div className="relative h-32 w-64">
-          <div className="p-4">Background content</div>
+        <div className='relative h-32 w-64'>
+          <div className='p-4'>Background content</div>
           <LoadingOverlay
             active
             cx={{ loader: { outer: 'p-4 bg-white rounded-lg' } }}
           />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
 
     it('renders with dark overlay', async () => {
       const { container } = render(
-        <div className="relative h-32 w-64">
-          <div className="p-4">Background content</div>
+        <div className='relative h-32 w-64'>
+          <div className='p-4'>Background content</div>
           <LoadingOverlay
             active
-            loaderColor="white"
+            loaderColor='white'
             cx={{ overlay: 'bg-black/80' }}
           />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -96,10 +96,10 @@ describe('LoadingOverlay Visual Tests', () => {
     it('renders with onClick handler', async () => {
       const onClick = vi.fn()
       const { container } = render(
-        <div className="relative h-32 w-64">
-          <div className="p-4">Background content</div>
+        <div className='relative h-32 w-64'>
+          <div className='p-4'>Background content</div>
           <LoadingOverlay active onClick={onClick} />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -108,62 +108,62 @@ describe('LoadingOverlay Visual Tests', () => {
   describe('In context', () => {
     it('renders loading overlay over card', async () => {
       const { container } = render(
-        <div className="relative p-4 border rounded-lg shadow">
-          <h3 className="font-bold">Card Title</h3>
-          <p className="text-gray-600">Card content that is loading</p>
+        <div className='relative p-4 border rounded-lg shadow'>
+          <h3 className='font-bold'>Card Title</h3>
+          <p className='text-gray-600'>Card content that is loading</p>
           <LoadingOverlay active cx={{ overlay: 'rounded-lg' }} />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
 
     it('renders loading overlay over form', async () => {
       const { container } = render(
-        <div className="relative p-4 border rounded-lg">
-          <form className="space-y-4">
+        <div className='relative p-4 border rounded-lg'>
+          <form className='space-y-4'>
             <input
-              type="text"
-              placeholder="Username"
-              className="w-full p-2 border rounded"
+              type='text'
+              placeholder='Username'
+              className='w-full p-2 border rounded'
             />
             <input
-              type="password"
-              placeholder="Password"
-              className="w-full p-2 border rounded"
+              type='password'
+              placeholder='Password'
+              className='w-full p-2 border rounded'
             />
-            <button className="w-full p-2 bg-primary text-white rounded">
+            <button className='w-full p-2 bg-primary text-white rounded'>
               Submit
             </button>
           </form>
           <LoadingOverlay active cx={{ overlay: 'rounded-lg' }} />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
 
     it('renders loading overlay over table', async () => {
       const { container } = render(
-        <div className="relative border rounded-lg overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-gray-100">
+        <div className='relative border rounded-lg overflow-hidden'>
+          <table className='w-full'>
+            <thead className='bg-gray-100'>
               <tr>
-                <th className="p-2 text-left">Name</th>
-                <th className="p-2 text-left">Email</th>
+                <th className='p-2 text-left'>Name</th>
+                <th className='p-2 text-left'>Email</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="p-2 border-t">John Doe</td>
-                <td className="p-2 border-t">john@example.com</td>
+                <td className='p-2 border-t'>John Doe</td>
+                <td className='p-2 border-t'>john@example.com</td>
               </tr>
               <tr>
-                <td className="p-2 border-t">Jane Smith</td>
-                <td className="p-2 border-t">jane@example.com</td>
+                <td className='p-2 border-t'>Jane Smith</td>
+                <td className='p-2 border-t'>jane@example.com</td>
               </tr>
             </tbody>
           </table>
           <LoadingOverlay active />
-        </div>
+        </div>,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })

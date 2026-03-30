@@ -22,7 +22,7 @@ describe('ClearButton Visual Tests', () => {
 
   it('renders clear button with custom className', async () => {
     const { getByTestId } = render(
-      <ClearButton className="text-destructive size-8" />
+      <ClearButton className='text-destructive size-8' />,
     )
     const element = getByTestId('cui-clear-button')
     expect(element).toBeVisible()
@@ -30,7 +30,7 @@ describe('ClearButton Visual Tests', () => {
   })
 
   it('renders clear button with data-hover attribute', async () => {
-    const { getByTestId } = render(<ClearButton data-hover="true" />)
+    const { getByTestId } = render(<ClearButton data-hover='true' />)
     const element = getByTestId('cui-clear-button')
     expect(element).toBeVisible()
     expect(element).toHaveAttribute('data-hover', 'true')
@@ -39,10 +39,10 @@ describe('ClearButton Visual Tests', () => {
 
   it('renders clear button in context', async () => {
     const { container } = render(
-      <div className="flex items-center gap-2 p-2 border rounded">
+      <div className='flex items-center gap-2 p-2 border rounded'>
         <span>Selected item</span>
         <ClearButton />
-      </div>
+      </div>,
     )
     expect(container).toBeVisible()
     await expect(container).toMatchScreenshot()

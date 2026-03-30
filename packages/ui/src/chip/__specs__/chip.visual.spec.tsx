@@ -6,7 +6,7 @@ import { Icon } from '../../icon'
 
 describe('Chip Visual Tests', () => {
   it('default chip renders correctly', async () => {
-    const { getByText } = render(<Chip label="Default Chip" />)
+    const { getByText } = render(<Chip label='Default Chip' />)
     const element = getByText('Default Chip')
     expect(element).toBeVisible()
     await expect(element.parentElement).toMatchScreenshot()
@@ -17,7 +17,11 @@ describe('Chip Visual Tests', () => {
       for (const variant of ELEMENT_BASE_VARIANTS) {
         it(`renders [${color}] color with [${variant}] variant`, async () => {
           const { getByText } = render(
-            <Chip label={`${color} ${variant}`} color={color} variant={variant} />
+            <Chip
+              label={`${color} ${variant}`}
+              color={color}
+              variant={variant}
+            />,
           )
           const element = getByText(`${color} ${variant}`)
           expect(element).toBeVisible()
@@ -29,7 +33,7 @@ describe('Chip Visual Tests', () => {
 
   describe('Uppercase', () => {
     it('renders with uppercase text', async () => {
-      const { getByText } = render(<Chip label="uppercase chip" uppercase />)
+      const { getByText } = render(<Chip label='uppercase chip' uppercase />)
       const element = getByText('uppercase chip')
       expect(element).toBeVisible()
       await expect(element.parentElement).toMatchScreenshot()
@@ -39,7 +43,7 @@ describe('Chip Visual Tests', () => {
   describe('Interactive states', () => {
     it('renders interactive chip with onClick', async () => {
       const onClick = vi.fn()
-      const { getByText } = render(<Chip label="Clickable" onClick={onClick} />)
+      const { getByText } = render(<Chip label='Clickable' onClick={onClick} />)
       const element = getByText('Clickable')
       expect(element).toBeVisible()
       await expect(element.parentElement).toMatchScreenshot()
@@ -47,7 +51,9 @@ describe('Chip Visual Tests', () => {
 
     it('renders removable chip with onDelete', async () => {
       const onDelete = vi.fn()
-      const { getByText } = render(<Chip label="Removable" onDelete={onDelete} />)
+      const { getByText } = render(
+        <Chip label='Removable' onDelete={onDelete} />,
+      )
       const element = getByText('Removable')
       expect(element).toBeVisible()
       await expect(element.parentElement).toMatchScreenshot()
@@ -57,7 +63,11 @@ describe('Chip Visual Tests', () => {
       const onClick = vi.fn()
       const onDelete = vi.fn()
       const { getByText } = render(
-        <Chip label="Interactive & Removable" onClick={onClick} onDelete={onDelete} />
+        <Chip
+          label='Interactive & Removable'
+          onClick={onClick}
+          onDelete={onDelete}
+        />,
       )
       const element = getByText('Interactive & Removable')
       expect(element).toBeVisible()
@@ -66,12 +76,12 @@ describe('Chip Visual Tests', () => {
   })
 
   describe('Adornments', () => {
-    const startAdornment = <Icon icon="plus" data-testid="icon-start" />
-    const endAdornment = <Icon icon="minus" data-testid="icon-end" />
+    const startAdornment = <Icon icon='plus' data-testid='icon-start' />
+    const endAdornment = <Icon icon='minus' data-testid='icon-end' />
 
     it('renders chip with startAdornment', async () => {
       const { getByText, getByTestId } = render(
-        <Chip label="With Start Icon" startAdornment={startAdornment} />
+        <Chip label='With Start Icon' startAdornment={startAdornment} />,
       )
       const element = getByText('With Start Icon')
       expect(element).toBeVisible()
@@ -81,7 +91,7 @@ describe('Chip Visual Tests', () => {
 
     it('renders chip with endAdornment', async () => {
       const { getByText, getByTestId } = render(
-        <Chip label="With End Icon" endAdornment={endAdornment} />
+        <Chip label='With End Icon' endAdornment={endAdornment} />,
       )
       const element = getByText('With End Icon')
       expect(element).toBeVisible()
@@ -92,10 +102,10 @@ describe('Chip Visual Tests', () => {
     it('renders chip with both adornments', async () => {
       const { getByText, getByTestId } = render(
         <Chip
-          label="Both Icons"
+          label='Both Icons'
           startAdornment={startAdornment}
           endAdornment={endAdornment}
-        />
+        />,
       )
       const element = getByText('Both Icons')
       expect(element).toBeVisible()
@@ -108,11 +118,11 @@ describe('Chip Visual Tests', () => {
       const onDelete = vi.fn()
       const { getByText, getByTestId } = render(
         <Chip
-          label="Icons + Delete"
+          label='Icons + Delete'
           startAdornment={startAdornment}
           endAdornment={endAdornment}
           onDelete={onDelete}
-        />
+        />,
       )
       const element = getByText('Icons + Delete')
       expect(element).toBeVisible()
@@ -126,9 +136,9 @@ describe('Chip Visual Tests', () => {
     it('renders chip with custom style prop', async () => {
       const { getByText } = render(
         <Chip
-          label="Custom Style"
+          label='Custom Style'
           style={{ backgroundColor: '#9333ea', color: 'white' }}
-        />
+        />,
       )
       const element = getByText('Custom Style')
       expect(element).toBeVisible()
@@ -138,9 +148,9 @@ describe('Chip Visual Tests', () => {
     it('renders chip with custom cx classes', async () => {
       const { getByText } = render(
         <Chip
-          label="Custom Classes"
+          label='Custom Classes'
           cx={{ container: { outer: 'shadow-lg', inner: 'font-bold' } }}
-        />
+        />,
       )
       const element = getByText('Custom Classes')
       expect(element).toBeVisible()

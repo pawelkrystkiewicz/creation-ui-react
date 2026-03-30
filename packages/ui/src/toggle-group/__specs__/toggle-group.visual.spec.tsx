@@ -12,7 +12,7 @@ describe('ToggleGroup Visual Tests', () => {
   it('default toggle group renders correctly', async () => {
     const onChange = vi.fn()
     const { container } = render(
-      <ToggleGroup options={defaultOptions} onChange={onChange} />
+      <ToggleGroup options={defaultOptions} onChange={onChange} />,
     )
     expect(container).toBeVisible()
     await expect(container.firstChild).toMatchScreenshot()
@@ -24,9 +24,9 @@ describe('ToggleGroup Visual Tests', () => {
       const { container } = render(
         <ToggleGroup
           options={defaultOptions}
-          value="opt1"
+          value='opt1'
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -36,9 +36,9 @@ describe('ToggleGroup Visual Tests', () => {
       const { container } = render(
         <ToggleGroup
           options={defaultOptions}
-          value="opt2"
+          value='opt2'
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -48,9 +48,9 @@ describe('ToggleGroup Visual Tests', () => {
       const { container } = render(
         <ToggleGroup
           options={defaultOptions}
-          value="opt3"
+          value='opt3'
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -60,7 +60,7 @@ describe('ToggleGroup Visual Tests', () => {
     it('renders disabled toggle group', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <ToggleGroup options={defaultOptions} disabled onChange={onChange} />
+        <ToggleGroup options={defaultOptions} disabled onChange={onChange} />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -70,10 +70,10 @@ describe('ToggleGroup Visual Tests', () => {
       const { container } = render(
         <ToggleGroup
           options={defaultOptions}
-          value="opt2"
+          value='opt2'
           disabled
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -89,7 +89,7 @@ describe('ToggleGroup Visual Tests', () => {
             { label: 'No', value: 'no' },
           ]}
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -105,7 +105,7 @@ describe('ToggleGroup Visual Tests', () => {
             { label: 'XL', value: 'xl' },
           ]}
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -124,7 +124,7 @@ describe('ToggleGroup Visual Tests', () => {
             { label: 'Sun', value: 'sun' },
           ]}
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -141,7 +141,7 @@ describe('ToggleGroup Visual Tests', () => {
             { label: 'C', value: 'c' },
           ]}
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -156,7 +156,7 @@ describe('ToggleGroup Visual Tests', () => {
             { label: 'Third Option', value: 'third' },
           ]}
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -168,9 +168,9 @@ describe('ToggleGroup Visual Tests', () => {
       const { container } = render(
         <ToggleGroup
           options={defaultOptions}
-          className="shadow-lg"
+          className='shadow-lg'
           onChange={onChange}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })

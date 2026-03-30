@@ -1,6 +1,9 @@
 import { merge, pickBy } from 'lodash'
 
-export function propsGuard<T extends Record<string, any>>(propsList: string[], props: T): T {
+export function propsGuard<T extends Record<string, any>>(
+  propsList: string[],
+  props: T,
+): T {
   if (!props) return {} as T
 
   const keys = Object.keys(props)

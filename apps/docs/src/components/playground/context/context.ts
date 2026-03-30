@@ -1,7 +1,9 @@
 import { createContext, useContext } from 'react'
 import { type PlaygroundContextValue } from '../types'
 
-export const PlaygroundContext = createContext<PlaygroundContextValue>({} as any)
+export const PlaygroundContext = createContext<PlaygroundContextValue>(
+  {} as any,
+)
 
 export const usePlayground = () => {
   const context = useContext(PlaygroundContext)

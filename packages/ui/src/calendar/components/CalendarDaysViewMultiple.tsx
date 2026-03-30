@@ -3,8 +3,10 @@ import { FC } from 'react'
 import { CalendarProps } from '../calendar.types'
 import { CalendarDaysView } from './CalendarDaysView'
 
-interface CalendarDaysViewMultipleProps
-  extends Pick<CalendarProps, 'numberOfMonths'> {}
+interface CalendarDaysViewMultipleProps extends Pick<
+  CalendarProps,
+  'numberOfMonths'
+> {}
 
 export const CalendarDaysViewMultiple: FC<CalendarDaysViewMultipleProps> = ({
   numberOfMonths = 1,

@@ -26,8 +26,10 @@ type AvatarProps = Omit<React.ComponentProps<'img'>, 'size'> & {
 
 export default AvatarProps
 
-export interface AvatarGroupProps
-  extends Pick<AvatarProps, 'size' | 'variant'> {
+export interface AvatarGroupProps extends Pick<
+  AvatarProps,
+  'size' | 'variant'
+> {
   /**
    * Total number of avatars to show in counter
    */

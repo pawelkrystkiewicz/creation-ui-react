@@ -9,7 +9,8 @@ export default function Providers({ children }: { children: ReactNode }) {
         strokeWidth: 1,
         width: '1em',
         height: '1em',
-      }}>
+      }}
+    >
       {children}
     </IconoirProvider>
   )

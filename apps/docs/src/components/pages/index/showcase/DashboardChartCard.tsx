@@ -1,9 +1,5 @@
 'use client'
-import {
-  Card,
-  CardHeader,
-  CardTitle
-} from '@creation-ui/react'
+import { Card, CardHeader, CardTitle } from '@creation-ui/react'
 import { Computer } from 'iconoir-react'
 import {
   CartesianGrid,

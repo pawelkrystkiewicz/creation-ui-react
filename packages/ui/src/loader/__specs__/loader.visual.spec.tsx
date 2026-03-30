@@ -29,7 +29,7 @@ describe('Loader Visual Tests', () => {
   }
 
   it('renders with custom color class', async () => {
-    const { getByTestId } = render(<Loader color="text-purple-500" />)
+    const { getByTestId } = render(<Loader color='text-purple-500' />)
     const element = getByTestId('cui-loader')
     expect(element).toBeVisible()
     await expect(element).toMatchScreenshot()

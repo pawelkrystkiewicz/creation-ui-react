@@ -15,8 +15,8 @@ export const CalendarDaysNames: FC<CalendarDaysNamesProps> = ({
 
   const dayNames = Array.from({ length: 7 }, (_, i) =>
     new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(
-      new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1))
-    )
+      new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 1)),
+    ),
   )
 
   return (

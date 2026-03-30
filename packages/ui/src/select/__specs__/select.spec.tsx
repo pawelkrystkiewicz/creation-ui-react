@@ -86,8 +86,6 @@ describe('Select', () => {
     expect(select).toBeDefined()
   })
 
-
-
   it('renders with startAdornment', async () => {
     const { getByTestId } = render(
       <Select startAdornment={<span data-testid='start-adornment'>@</span>}>

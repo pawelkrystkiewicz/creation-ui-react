@@ -4,7 +4,11 @@ interface CreateDocsLinkArgs {
   parent?: string
 }
 
-export const createDocsLink = ({ parent, component, label }: CreateDocsLinkArgs) => {
+export const createDocsLink = ({
+  parent,
+  component,
+  label,
+}: CreateDocsLinkArgs) => {
   const base = '/docs/components'
   const link = [base, parent, component].filter(Boolean).join('/')
 

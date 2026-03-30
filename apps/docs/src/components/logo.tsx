@@ -27,5 +27,11 @@ const url = {
 }
 
 export const Logo = ({ size = 'sm', className }: LogoProps) => {
-  return <img src={url.light} alt='Logo' className={clsx('rounded-full dark:invert', className, sizeMap[size])} />
+  return (
+    <img
+      src={url.light}
+      alt='Logo'
+      className={clsx('rounded-full dark:invert', className, sizeMap[size])}
+    />
+  )
 }
