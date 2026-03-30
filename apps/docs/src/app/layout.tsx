@@ -12,7 +12,7 @@ import clsx from 'clsx'
 import { Logo } from '@/components/logo'
 
 export const metadata = {
-  metadataBase: new URL('https://creation-ui.com'),
+  metadataBase: new URL('https://creation-ui.chunk-creations.com'),
   title: {
     absolute: 'Creation UI',
     template: '%s - CUI',
@@ -28,7 +28,7 @@ export const metadata = {
     'msapplication-TileColor': '#fff',
   },
   twitter: {
-    site: 'https://creation-ui.com',
+    site: 'https://creation-ui.chunk-creations.com',
   },
 }
 
