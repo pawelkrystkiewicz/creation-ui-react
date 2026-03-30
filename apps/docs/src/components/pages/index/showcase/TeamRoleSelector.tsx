@@ -8,8 +8,6 @@ import {
 } from '@creation-ui/react'
 import { roles, type Role } from './TeamMembers'
 
-
-
 interface RoleSelectorProps {
   value: Role
   disabled?: boolean
@@ -25,7 +23,11 @@ export const RoleSelector = ({
 }: RoleSelectorProps) => {
   return (
     <>
-      <Select value={value} onChange={(value) => onChange?.(value as Role)} disabled={disabled}>
+      <Select
+        value={value}
+        onChange={value => onChange?.(value as Role)}
+        disabled={disabled}
+      >
         <SelectButton className='w-28'>
           <Selected placeholder='Select role' />
         </SelectButton>

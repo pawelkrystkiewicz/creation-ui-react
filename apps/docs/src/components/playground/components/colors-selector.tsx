@@ -1,7 +1,7 @@
 'use client'
 
 import { capitalize } from '@/utils/list-or-types'
-import type { BaseComponentProps, } from '@creation-ui/react'
+import type { BaseComponentProps } from '@creation-ui/react'
 import { cva } from 'class-variance-authority'
 import clsx from 'clsx'
 import { Xmark } from 'iconoir-react'

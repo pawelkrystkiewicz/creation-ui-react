@@ -1,3 +1,3 @@
-export * from './Chip';
-export * from './types';
-export * from './classes';
+export * from './Chip'
+export * from './types'
+export * from './classes'

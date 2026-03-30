@@ -7,10 +7,7 @@ import { PlaygroundCode } from './playground.code'
 import { PlaygroundComponent } from './playground.component'
 import { PlaygroundControls } from './playground.controls'
 import { PlaygroundView } from './playground.view'
-import type {
-  PlaygroundProps,
-  PlaygroundState
-} from './types'
+import type { PlaygroundProps, PlaygroundState } from './types'
 import { prepareInitialState } from './utils/prepare-initial-state'
 
 export function Playground<T>(props: PlaygroundProps<T>) {

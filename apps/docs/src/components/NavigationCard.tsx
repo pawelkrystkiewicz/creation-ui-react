@@ -1,9 +1,5 @@
 'use client'
-import {
-  Card,
-  CardContent,
-  CardDescription
-} from '@creation-ui/react'
+import { Card, CardContent, CardDescription } from '@creation-ui/react'
 import NextLink from 'next/link'
 import type { FC, ReactNode } from 'react'
 

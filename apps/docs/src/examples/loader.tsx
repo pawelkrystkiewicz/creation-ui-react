@@ -29,7 +29,4 @@ export const LoaderExample = (props: LoaderProps) => (
   />
 )
 
-export const properties: DocumentedProperty[] = [
-  colorProp,
-  classNameProps,
-]
+export const properties: DocumentedProperty[] = [colorProp, classNameProps]

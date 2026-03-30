@@ -5,8 +5,10 @@ import { forwardRef, useLayoutEffect } from 'react'
 import { popoverHeadingClasses } from './classes'
 import { usePopoverContext } from './context'
 
-interface PopoverHeadingProps
-  extends Omit<HTMLProps<HTMLHeadingElement>, 'size'> {}
+interface PopoverHeadingProps extends Omit<
+  HTMLProps<HTMLHeadingElement>,
+  'size'
+> {}
 
 export const PopoverHeading = forwardRef<
   HTMLHeadingElement,

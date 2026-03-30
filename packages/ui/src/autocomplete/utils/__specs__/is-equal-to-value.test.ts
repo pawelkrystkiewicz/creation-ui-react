@@ -52,7 +52,8 @@ describe('_isOptionEqualToValue', () => {
       expected: false,
     },
     {
-      description: 'should return true if object is in value array by reference',
+      description:
+        'should return true if object is in value array by reference',
       input: (() => {
         const obj = { id: 1 }
         return [obj, [{ id: 1 }, obj]]

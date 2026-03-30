@@ -27,7 +27,7 @@ function parseVersion(version: string): [number, number, number] {
  */
 function calculateNextVersion(
   currentVersion: string,
-  bumpType: 'major' | 'minor' | 'patch'
+  bumpType: 'major' | 'minor' | 'patch',
 ): string {
   const [major, minor, patch] = parseVersion(currentVersion)
 
@@ -44,7 +44,9 @@ function calculateNextVersion(
 /**
  * Extracts and parses YAML front matter from a changeset file
  */
-function parseChangesetFrontMatter(content: string): 'major' | 'minor' | 'patch' | null {
+function parseChangesetFrontMatter(
+  content: string,
+): 'major' | 'minor' | 'patch' | null {
   // Find the front matter delimiters
   const frontMatterStart = content.indexOf('---')
   if (frontMatterStart !== 0) {
@@ -69,7 +71,11 @@ function parseChangesetFrontMatter(content: string): 'major' | 'minor' | 'patch'
     // Changeset format: "package-name": "major" | "minor" | "patch"
     const bumpValue = Object.values(parsed)[0]?.toLowerCase()
 
-    if (bumpValue === 'major' || bumpValue === 'minor' || bumpValue === 'patch') {
+    if (
+      bumpValue === 'major' ||
+      bumpValue === 'minor' ||
+      bumpValue === 'patch'
+    ) {
       return bumpValue
     }
 
@@ -131,7 +137,7 @@ function getCurrentVersion(packagePath: string): string {
  */
 function calculateVersionInfo(
   packagePath: string,
-  changesetDir: string
+  changesetDir: string,
 ): VersionInfo {
   const currentVersion = getCurrentVersion(packagePath)
   const hasChanges = hasChangesets(changesetDir)
@@ -194,4 +200,4 @@ export {
   parseVersion,
   parseChangesetFrontMatter,
   getCurrentVersion,
-};
+}

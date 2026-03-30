@@ -33,6 +33,7 @@ Accessible React component library (35+ components) built with Tailwind CSS v4, 
 ## Verification
 
 Before completing work, run:
+
 1. `bun run lint` — ensure no lint errors
 2. `bun run test:unit` — ensure tests pass
 3. In `packages/ui`: `bun run typecheck` — ensure types are correct

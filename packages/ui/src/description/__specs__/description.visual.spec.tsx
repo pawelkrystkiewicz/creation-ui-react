@@ -8,7 +8,7 @@ describe('Description Visual Tests', () => {
     const { getByText } = render(
       <Field>
         <Description>This is a description text</Description>
-      </Field>
+      </Field>,
     )
     const element = getByText('This is a description text')
     expect(element).toBeVisible()
@@ -18,10 +18,10 @@ describe('Description Visual Tests', () => {
   it('renders description with custom className', async () => {
     const { getByText } = render(
       <Field>
-        <Description className="text-xs italic">
+        <Description className='text-xs italic'>
           Custom styled description
         </Description>
-      </Field>
+      </Field>,
     )
     const element = getByText('Custom styled description')
     expect(element).toBeVisible()
@@ -32,7 +32,7 @@ describe('Description Visual Tests', () => {
     const { getByText } = render(
       <Field disabled>
         <Description>Disabled description</Description>
-      </Field>
+      </Field>,
     )
     const element = getByText('Disabled description')
     expect(element).toBeVisible()
@@ -47,7 +47,7 @@ describe('Description Visual Tests', () => {
           and information to help users understand the purpose of the form field
           or component it is associated with.
         </Description>
-      </Field>
+      </Field>,
     )
     const element = getByText(/This is a very long description/)
     expect(element).toBeVisible()
@@ -60,7 +60,7 @@ describe('Description Visual Tests', () => {
         <Description>
           Description with <strong>bold</strong> and <em>italic</em> text
         </Description>
-      </Field>
+      </Field>,
     )
     const element = container.querySelector('[data-slot="description"]')
     expect(element).toBeVisible()

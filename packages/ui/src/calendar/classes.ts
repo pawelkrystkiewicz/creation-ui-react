@@ -10,14 +10,7 @@ export const calendarHeaderClasses = cva(['font-semibold', 'mb-4'], {
 })
 
 export const calendarContainerClasses = cva(
-  [
-    'relative',
-    'bg-background',
-    'border',
-    'border-border',
-    'p-4',
-    'rounded-md',
-  ],
+  ['relative', 'bg-background', 'border', 'border-border', 'p-4', 'rounded-md'],
   {
     variants: {
       hasSecondView: {
@@ -91,7 +84,8 @@ export const calendarDayCellClasses = cva(
   },
 )
 
-export const dayRowClasses = 'grid grid-cols-7 w-[calc(var(--ui-height)*7)] shrink max-h-fit whitespace-nowrap'
+export const dayRowClasses =
+  'grid grid-cols-7 w-[calc(var(--ui-height)*7)] shrink max-h-fit whitespace-nowrap'
 export const calendarDaysViewTitleClasses = {
   day: cva(['select-none', 'items-center'], {
     variants: {

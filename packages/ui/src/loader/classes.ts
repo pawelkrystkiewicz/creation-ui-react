@@ -9,11 +9,7 @@ export const loaderClasses = clsx(
 )
 
 export const loaderIconClasses = cva(
-  [
-    'animate-spin',
-    'text-info/25',
-    'size-[var(--ui-icon-height)]',
-  ],
+  ['animate-spin', 'text-info/25', 'size-[var(--ui-icon-height)]'],
   {
     variants: {
       color: {

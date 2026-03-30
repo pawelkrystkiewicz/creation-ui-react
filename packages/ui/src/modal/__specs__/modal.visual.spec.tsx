@@ -18,12 +18,12 @@ describe.skip('Modal Visual Tests', () => {
           <p>This is the modal content. It can contain any React elements.</p>
         </ModalBody>
         <ModalFooter>
-          <Button variant="outlined" onClick={onClose}>
+          <Button variant='outlined' onClick={onClose}>
             Cancel
           </Button>
           <Button>Confirm</Button>
         </ModalFooter>
-      </Modal>
+      </Modal>,
     )
     expect(container).toBeVisible()
     await expect(container).toMatchScreenshot()
@@ -36,7 +36,7 @@ describe.skip('Modal Visual Tests', () => {
         <Modal open={true} onClose={onClose} static>
           <ModalHeader>Header without border</ModalHeader>
           <ModalBody>Content</ModalBody>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -47,7 +47,7 @@ describe.skip('Modal Visual Tests', () => {
         <Modal open={true} onClose={onClose} static>
           <ModalHeader border>Header with border</ModalHeader>
           <ModalBody>Content</ModalBody>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -56,9 +56,11 @@ describe.skip('Modal Visual Tests', () => {
       const onClose = vi.fn()
       const { container } = render(
         <Modal open={true} onClose={onClose} static>
-          <ModalHeader className="bg-primary-100">Custom styled header</ModalHeader>
+          <ModalHeader className='bg-primary-100'>
+            Custom styled header
+          </ModalHeader>
           <ModalBody>Content</ModalBody>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -70,7 +72,7 @@ describe.skip('Modal Visual Tests', () => {
       const { container } = render(
         <Modal open={true} onClose={onClose} static>
           <ModalBody>Short content</ModalBody>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -82,18 +84,18 @@ describe.skip('Modal Visual Tests', () => {
           <ModalBody>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
             </p>
-            <p className="mt-4">
+            <p className='mt-4'>
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident, sunt in culpa qui officia deserunt mollit
               anim id est laborum.
             </p>
           </ModalBody>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -104,21 +106,21 @@ describe.skip('Modal Visual Tests', () => {
         <Modal open={true} onClose={onClose} static>
           <ModalHeader>Form Modal</ModalHeader>
           <ModalBody>
-            <form className="space-y-4">
+            <form className='space-y-4'>
               <div>
-                <label className="block text-sm font-medium mb-1">Name</label>
+                <label className='block text-sm font-medium mb-1'>Name</label>
                 <input
-                  type="text"
-                  className="w-full p-2 border rounded"
-                  placeholder="Enter name"
+                  type='text'
+                  className='w-full p-2 border rounded'
+                  placeholder='Enter name'
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
+                <label className='block text-sm font-medium mb-1'>Email</label>
                 <input
-                  type="email"
-                  className="w-full p-2 border rounded"
-                  placeholder="Enter email"
+                  type='email'
+                  className='w-full p-2 border rounded'
+                  placeholder='Enter email'
                 />
               </div>
             </form>
@@ -126,7 +128,7 @@ describe.skip('Modal Visual Tests', () => {
           <ModalFooter>
             <Button>Submit</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -141,7 +143,7 @@ describe.skip('Modal Visual Tests', () => {
           <ModalFooter>
             <Button>Action</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -154,7 +156,7 @@ describe.skip('Modal Visual Tests', () => {
           <ModalFooter border>
             <Button>Action</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -165,11 +167,11 @@ describe.skip('Modal Visual Tests', () => {
         <Modal open={true} onClose={onClose} static>
           <ModalBody>Content</ModalBody>
           <ModalFooter>
-            <Button variant="text">Skip</Button>
-            <Button variant="outlined">Cancel</Button>
+            <Button variant='text'>Skip</Button>
+            <Button variant='outlined'>Cancel</Button>
             <Button>Confirm</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -179,13 +181,13 @@ describe.skip('Modal Visual Tests', () => {
     it('renders modal with custom className', async () => {
       const onClose = vi.fn()
       const { container } = render(
-        <Modal open={true} onClose={onClose} static className="max-w-lg">
+        <Modal open={true} onClose={onClose} static className='max-w-lg'>
           <ModalHeader>Custom Width Modal</ModalHeader>
           <ModalBody>This modal has a custom max-width</ModalBody>
           <ModalFooter>
             <Button>OK</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -198,15 +200,18 @@ describe.skip('Modal Visual Tests', () => {
         <Modal open={true} onClose={onClose} static>
           <ModalHeader>Confirm Delete</ModalHeader>
           <ModalBody>
-            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+            <p>
+              Are you sure you want to delete this item? This action cannot be
+              undone.
+            </p>
           </ModalBody>
           <ModalFooter>
-            <Button variant="outlined" onClick={onClose}>
+            <Button variant='outlined' onClick={onClose}>
               Cancel
             </Button>
-            <Button color="destructive">Delete</Button>
+            <Button color='destructive'>Delete</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -215,16 +220,16 @@ describe.skip('Modal Visual Tests', () => {
       const onClose = vi.fn()
       const { container } = render(
         <Modal open={true} onClose={onClose} static>
-          <ModalHeader className="text-success">Success!</ModalHeader>
+          <ModalHeader className='text-success'>Success!</ModalHeader>
           <ModalBody>
             <p>Your changes have been saved successfully.</p>
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={onClose}>
+            <Button color='success' onClick={onClose}>
               OK
             </Button>
           </ModalFooter>
-        </Modal>
+        </Modal>,
       )
       await expect(container).toMatchScreenshot()
     })

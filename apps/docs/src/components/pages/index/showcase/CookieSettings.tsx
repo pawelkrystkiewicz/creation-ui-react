@@ -35,7 +35,12 @@ const options = [
 
 export const CookieSettings = ({ className }: ShowcaseCardProps) => {
   return (
-    <Card className={clsx('max-w-sm flex flex-col gap-4 justify-between', className)}>
+    <Card
+      className={clsx(
+        'max-w-sm flex flex-col gap-4 justify-between',
+        className,
+      )}
+    >
       <CardHeader className='flex flex-col gap-1 items-start'>
         <CardTitle>Cookie Settings</CardTitle>
         <CardDescription>Manage your cookie settings here.</CardDescription>
@@ -54,8 +59,12 @@ export const CookieSettings = ({ className }: ShowcaseCardProps) => {
         ))}
       </CardContent>
       <CardFooter className='h-fit flex-row-reverse'>
-        <Button variant='outlined' color="mono">Save</Button>
-        <Button variant='outlined' color="destructive">Discard changes</Button>
+        <Button variant='outlined' color='mono'>
+          Save
+        </Button>
+        <Button variant='outlined' color='destructive'>
+          Discard changes
+        </Button>
       </CardFooter>
     </Card>
   )

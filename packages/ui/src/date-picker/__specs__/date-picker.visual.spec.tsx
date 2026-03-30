@@ -6,9 +6,9 @@ describe('DatePicker Visual Tests', () => {
   it('renders date picker in closed state', async () => {
     const onChange = vi.fn()
     const { container } = render(
-      <div className="p-4">
-        <DatePicker onChange={onChange} placeholder="Select a date" />
-      </div>
+      <div className='p-4'>
+        <DatePicker onChange={onChange} placeholder='Select a date' />
+      </div>,
     )
     expect(container).toBeVisible()
     await expect(container).toMatchScreenshot()
@@ -17,13 +17,13 @@ describe('DatePicker Visual Tests', () => {
   it('renders date picker with selected date', async () => {
     const onChange = vi.fn()
     const { container } = render(
-      <div className="p-4">
+      <div className='p-4'>
         <DatePicker
           value={new Date(2024, 0, 15)}
           onChange={onChange}
-          placeholder="Select a date"
+          placeholder='Select a date'
         />
-      </div>
+      </div>,
     )
     await expect(container).toMatchScreenshot()
   })
@@ -32,13 +32,13 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with label', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            label="Birth Date"
+            label='Birth Date'
             onChange={onChange}
-            placeholder="Select birth date"
+            placeholder='Select birth date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -46,14 +46,14 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with helper text', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            label="Start Date"
-            helperText="Choose a date in the future"
+            label='Start Date'
+            helperText='Choose a date in the future'
             onChange={onChange}
-            placeholder="Select start date"
+            placeholder='Select start date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -61,14 +61,14 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with error', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            label="Due Date"
-            error="This field is required"
+            label='Due Date'
+            error='This field is required'
             onChange={onChange}
-            placeholder="Select due date"
+            placeholder='Select due date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -76,14 +76,14 @@ describe('DatePicker Visual Tests', () => {
     it('renders disabled date picker', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
             disabled
             value={new Date(2024, 0, 15)}
             onChange={onChange}
-            placeholder="Select a date"
+            placeholder='Select a date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -91,14 +91,14 @@ describe('DatePicker Visual Tests', () => {
     it('renders readOnly date picker', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
             readOnly
             value={new Date(2024, 0, 15)}
             onChange={onChange}
-            placeholder="Select a date"
+            placeholder='Select a date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -106,14 +106,14 @@ describe('DatePicker Visual Tests', () => {
     it('renders required date picker', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            label="Required Date"
+            label='Required Date'
             required
             onChange={onChange}
-            placeholder="Select a date"
+            placeholder='Select a date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -123,13 +123,13 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with clear button when has value', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
             value={new Date(2024, 0, 15)}
             onChange={onChange}
-            placeholder="Select a date"
+            placeholder='Select a date'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -139,13 +139,13 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with contained variant', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            variant="contained"
+            variant='contained'
             onChange={onChange}
-            placeholder="Contained variant"
+            placeholder='Contained variant'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -153,13 +153,13 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with outlined variant', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            variant="outlined"
+            variant='outlined'
             onChange={onChange}
-            placeholder="Outlined variant"
+            placeholder='Outlined variant'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -167,13 +167,13 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker with underline variant', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4">
+        <div className='p-4'>
           <DatePicker
-            variant="underline"
+            variant='underline'
             onChange={onChange}
-            placeholder="Underline variant"
+            placeholder='Underline variant'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -183,29 +183,31 @@ describe('DatePicker Visual Tests', () => {
     it('renders date picker in form context', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4 space-y-4 max-w-md">
+        <div className='p-4 space-y-4 max-w-md'>
           <div>
-            <label className="block text-sm font-medium mb-1">Event Name</label>
+            <label className='block text-sm font-medium mb-1'>Event Name</label>
             <input
-              type="text"
-              className="w-full p-2 border rounded"
-              placeholder="Enter event name"
+              type='text'
+              className='w-full p-2 border rounded'
+              placeholder='Enter event name'
             />
           </div>
           <DatePicker
-            label="Event Date"
+            label='Event Date'
             onChange={onChange}
-            placeholder="Select event date"
+            placeholder='Select event date'
           />
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className='block text-sm font-medium mb-1'>
+              Description
+            </label>
             <textarea
-              className="w-full p-2 border rounded"
-              placeholder="Enter description"
+              className='w-full p-2 border rounded'
+              placeholder='Enter description'
               rows={3}
             />
           </div>
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })
@@ -213,20 +215,20 @@ describe('DatePicker Visual Tests', () => {
     it('renders multiple date pickers (date range)', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <div className="p-4 flex gap-4">
+        <div className='p-4 flex gap-4'>
           <DatePicker
-            label="Start Date"
+            label='Start Date'
             value={new Date(2024, 0, 10)}
             onChange={onChange}
-            placeholder="From"
+            placeholder='From'
           />
           <DatePicker
-            label="End Date"
+            label='End Date'
             value={new Date(2024, 0, 20)}
             onChange={onChange}
-            placeholder="To"
+            placeholder='To'
           />
-        </div>
+        </div>,
       )
       await expect(container).toMatchScreenshot()
     })

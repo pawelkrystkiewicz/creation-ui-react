@@ -13,7 +13,8 @@ const PROPS = {
 describe('[propsGuard]', () => {
   ;[
     {
-      description: 'should filter out undefined, null and empty values while keeping allowed props',
+      description:
+        'should filter out undefined, null and empty values while keeping allowed props',
       input: { propsList: ['loading', 'disabled', 'title'], props: PROPS },
       expected: {
         //
@@ -26,7 +27,10 @@ describe('[propsGuard]', () => {
     },
     {
       description: 'should ignore props not in propsList',
-      input: { propsList: ['title'], props: { title: 'Test Title', label: 'value' } },
+      input: {
+        propsList: ['title'],
+        props: { title: 'Test Title', label: 'value' },
+      },
       expected: { title: 'Test Title', label: 'value' },
     },
     {
@@ -35,7 +39,8 @@ describe('[propsGuard]', () => {
       expected: { extra: true },
     },
     {
-      description: 'should return an empty object when no valid props are provided',
+      description:
+        'should return an empty object when no valid props are provided',
       input: { propsList: ['loading'], props: { extra: 'not allowed' } },
       expected: { extra: 'not allowed' },
     },
@@ -64,7 +69,15 @@ describe('[propsGuard]', () => {
     {
       description: 'button example 1',
       input: {
-        propsList: ['variant', 'color', 'loading', 'disabled', 'uppercase', 'fullWidth', 'loaderColor'],
+        propsList: [
+          'variant',
+          'color',
+          'loading',
+          'disabled',
+          'uppercase',
+          'fullWidth',
+          'loaderColor',
+        ],
         props: {
           children: {
             type: 'string',

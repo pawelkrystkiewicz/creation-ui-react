@@ -128,8 +128,8 @@ export const CalendarDaysView: FC<CalendarDaysViewProps> = ({
 
   return (
     <div
-    className='grid grid-rows-6 w-full gap-1 w-[245px] h-[230px] max-h-fit'
-    onClick={handleRowClick}
+      className='grid grid-rows-6 w-full gap-1 w-[245px] h-[230px] max-h-fit'
+      onClick={handleRowClick}
     >
       {rows}
     </div>

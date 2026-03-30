@@ -1,3 +1,3 @@
-export * from './Label';
-export * from './types';
-export * from './classes';
+export * from './Label'
+export * from './types'
+export * from './classes'

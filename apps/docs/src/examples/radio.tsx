@@ -120,7 +120,4 @@ export const RadioGroupPlayground = () => (
   />
 )
 
-export const properties: DocumentedProperty[] = [
-  labelProp,
-  childrenProp,
-]
+export const properties: DocumentedProperty[] = [labelProp, childrenProp]

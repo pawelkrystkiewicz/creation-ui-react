@@ -21,7 +21,9 @@ describe('parseVersion', () => {
 
   it('should throw error for invalid version formats', () => {
     expect(() => parseVersion('1.2')).toThrow('Invalid version format: 1.2')
-    expect(() => parseVersion('1.2.3.4')).toThrow('Invalid version format: 1.2.3.4')
+    expect(() => parseVersion('1.2.3.4')).toThrow(
+      'Invalid version format: 1.2.3.4',
+    )
     expect(() => parseVersion('a.b.c')).toThrow('Invalid version format: a.b.c')
     expect(() => parseVersion('1.2.x')).toThrow('Invalid version format: 1.2.x')
     expect(() => parseVersion('')).toThrow('Invalid version format: ')
@@ -154,21 +156,21 @@ describe('determineBumpType', () => {
       `---
 "@creation-ui/react": patch
 ---
-Patch change`
+Patch change`,
     )
     writeFileSync(
       join(testDir, 'change2.md'),
       `---
 "@creation-ui/react": major
 ---
-Major change`
+Major change`,
     )
     writeFileSync(
       join(testDir, 'change3.md'),
       `---
 "@creation-ui/react": minor
 ---
-Minor change`
+Minor change`,
     )
 
     expect(determineBumpType(testDir)).toBe('major')
@@ -180,14 +182,14 @@ Minor change`
       `---
 "@creation-ui/react": patch
 ---
-Patch change`
+Patch change`,
     )
     writeFileSync(
       join(testDir, 'change2.md'),
       `---
 "@creation-ui/react": minor
 ---
-Minor change`
+Minor change`,
     )
 
     expect(determineBumpType(testDir)).toBe('minor')
@@ -199,14 +201,14 @@ Minor change`
       `---
 "@creation-ui/react": patch
 ---
-Patch change 1`
+Patch change 1`,
     )
     writeFileSync(
       join(testDir, 'change2.md'),
       `---
 "@creation-ui/react": patch
 ---
-Patch change 2`
+Patch change 2`,
     )
 
     expect(determineBumpType(testDir)).toBe('patch')
@@ -226,7 +228,7 @@ Patch change 2`
       `---
 "@creation-ui/react": minor
 ---
-Minor change`
+Minor change`,
     )
 
     expect(determineBumpType(testDir)).toBe('minor')
@@ -239,7 +241,7 @@ Minor change`
       `---
 "@creation-ui/react": major
 ---
-Major change`
+Major change`,
     )
 
     expect(determineBumpType(testDir)).toBe('major')
@@ -252,7 +254,7 @@ Major change`
       `---
 "@creation-ui/react": minor
 ---
-Valid change`
+Valid change`,
     )
 
     expect(determineBumpType(testDir)).toBe('minor')
@@ -328,7 +330,7 @@ describe('getCurrentVersion', () => {
       JSON.stringify({
         name: 'test-package',
         version: '1.2.3',
-      })
+      }),
     )
 
     expect(getCurrentVersion(packageJsonPath)).toBe('1.2.3')
@@ -340,7 +342,7 @@ describe('getCurrentVersion', () => {
       JSON.stringify({
         name: 'test-package',
         version: '0.0.1',
-      })
+      }),
     )
 
     expect(getCurrentVersion(packageJsonPath)).toBe('0.0.1')
@@ -356,7 +358,7 @@ describe('getCurrentVersion', () => {
         dependencies: {
           react: '^18.0.0',
         },
-      })
+      }),
     )
 
     expect(getCurrentVersion(packageJsonPath)).toBe('10.20.30')
@@ -380,7 +382,7 @@ describe('calculateVersionInfo', () => {
       JSON.stringify({
         name: 'test-package',
         version: '1.2.3',
-      })
+      }),
     )
   })
 
@@ -407,7 +409,7 @@ describe('calculateVersionInfo', () => {
       `---
 "test-package": patch
 ---
-Bug fix`
+Bug fix`,
     )
 
     const result = calculateVersionInfo(packageJsonPath, changesetDir)
@@ -426,7 +428,7 @@ Bug fix`
       `---
 "test-package": minor
 ---
-New feature`
+New feature`,
     )
 
     const result = calculateVersionInfo(packageJsonPath, changesetDir)
@@ -445,7 +447,7 @@ New feature`
       `---
 "test-package": major
 ---
-Breaking change`
+Breaking change`,
     )
 
     const result = calculateVersionInfo(packageJsonPath, changesetDir)
@@ -464,21 +466,21 @@ Breaking change`
       `---
 "test-package": patch
 ---
-Bug fix`
+Bug fix`,
     )
     writeFileSync(
       join(changesetDir, 'minor.md'),
       `---
 "test-package": minor
 ---
-New feature`
+New feature`,
     )
     writeFileSync(
       join(changesetDir, 'major.md'),
       `---
 "test-package": major
 ---
-Breaking change`
+Breaking change`,
     )
 
     const result = calculateVersionInfo(packageJsonPath, changesetDir)

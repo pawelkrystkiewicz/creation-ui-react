@@ -8,7 +8,7 @@ describe('Error Visual Tests', () => {
     const { getByText } = render(
       <Field>
         <Error>This field is required</Error>
-      </Field>
+      </Field>,
     )
     const element = getByText('This field is required')
     expect(element).toBeVisible()
@@ -18,8 +18,8 @@ describe('Error Visual Tests', () => {
   it('renders error with custom className', async () => {
     const { getByText } = render(
       <Field>
-        <Error className="text-xs font-bold">Custom styled error</Error>
-      </Field>
+        <Error className='text-xs font-bold'>Custom styled error</Error>
+      </Field>,
     )
     const element = getByText('Custom styled error')
     expect(element).toBeVisible()
@@ -30,7 +30,7 @@ describe('Error Visual Tests', () => {
     const { getByText } = render(
       <Field disabled>
         <Error>Disabled error</Error>
-      </Field>
+      </Field>,
     )
     const element = getByText('Disabled error')
     expect(element).toBeVisible()
@@ -45,7 +45,7 @@ describe('Error Visual Tests', () => {
           wrong and how the user can fix the issue. Please check your input and
           try again.
         </Error>
-      </Field>
+      </Field>,
     )
     const element = getByText(/This is a very long error message/)
     expect(element).toBeVisible()
@@ -61,7 +61,7 @@ describe('Error Visual Tests', () => {
         <Field>
           <Error>Password must be at least 8 characters</Error>
         </Field>
-      </div>
+      </div>,
     )
     expect(container).toBeVisible()
     await expect(container).toMatchScreenshot()

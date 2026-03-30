@@ -33,7 +33,11 @@ export const UnfoldVariants = ({
   </Container>
 )
 
-const getName = (variant: string, nameProp: string, componentProps?: Record<string, any>) => {
+const getName = (
+  variant: string,
+  nameProp: string,
+  componentProps?: Record<string, any>,
+) => {
   const nameInProps = componentProps?.[nameProp]
   if (nameInProps) {
     return `${nameInProps} ${variant.toLocaleUpperCase()}`

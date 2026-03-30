@@ -4,7 +4,6 @@ import { Button } from '@creation-ui/react'
 import { Link } from 'iconoir-react'
 import { ErrorProps } from './global-error'
 
-
 export default function Error({ error, reset }: ErrorProps) {
   return (
     <div className='flex flex-col items-center justify-center'>

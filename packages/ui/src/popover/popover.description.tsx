@@ -5,16 +5,17 @@ import { forwardRef, useLayoutEffect } from 'react'
 import { popoverDescriptionClasses } from './classes'
 import { usePopoverContext } from './context'
 
-export interface PopoverDescriptionProps
-  extends Omit<HTMLProps<HTMLParagraphElement>, 'size'> {}
+export interface PopoverDescriptionProps extends Omit<
+  HTMLProps<HTMLParagraphElement>,
+  'size'
+> {}
 
 export const PopoverDescription = forwardRef<
   HTMLParagraphElement,
   HTMLProps<HTMLParagraphElement>
 >(function PopoverDescription({ children, size, className, ...props }, ref) {
-  const { setDescriptionId,  } = usePopoverContext()
+  const { setDescriptionId } = usePopoverContext()
   const id = useId()
-
 
   // Only sets `aria-describedby` on the Popover root element
   // if this component is mounted inside it.

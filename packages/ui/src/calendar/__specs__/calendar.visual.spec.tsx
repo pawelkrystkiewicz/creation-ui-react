@@ -6,7 +6,7 @@ describe('Calendar Visual Tests', () => {
   it('renders default calendar (days view)', async () => {
     const onChange = vi.fn()
     const { container } = render(
-      <Calendar onChange={onChange} startOn={new Date(2024, 0, 15)} />
+      <Calendar onChange={onChange} startOn={new Date(2024, 0, 15)} />,
     )
     expect(container).toBeVisible()
     await expect(container.firstChild).toMatchScreenshot()
@@ -16,7 +16,11 @@ describe('Calendar Visual Tests', () => {
     it('renders calendar in date mode', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <Calendar mode="date" onChange={onChange} startOn={new Date(2024, 0, 15)} />
+        <Calendar
+          mode='date'
+          onChange={onChange}
+          startOn={new Date(2024, 0, 15)}
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -24,7 +28,11 @@ describe('Calendar Visual Tests', () => {
     it('renders calendar in range mode', async () => {
       const onChange = vi.fn()
       const { container } = render(
-        <Calendar mode="range" onChange={onChange} startOn={new Date(2024, 0, 15)} />
+        <Calendar
+          mode='range'
+          onChange={onChange}
+          startOn={new Date(2024, 0, 15)}
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -35,11 +43,11 @@ describe('Calendar Visual Tests', () => {
       const onChange = vi.fn()
       const { container } = render(
         <Calendar
-          mode="date"
+          mode='date'
           value={new Date(2024, 0, 20)}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -48,11 +56,11 @@ describe('Calendar Visual Tests', () => {
       const onChange = vi.fn()
       const { container } = render(
         <Calendar
-          mode="range"
+          mode='range'
           value={[new Date(2024, 0, 10), new Date(2024, 0, 20)]}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -66,7 +74,7 @@ describe('Calendar Visual Tests', () => {
           weekStartsOn={0}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -78,7 +86,7 @@ describe('Calendar Visual Tests', () => {
           weekStartsOn={1}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -92,7 +100,7 @@ describe('Calendar Visual Tests', () => {
           numberOfMonths={1}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -104,7 +112,7 @@ describe('Calendar Visual Tests', () => {
           numberOfMonths={2}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -118,7 +126,7 @@ describe('Calendar Visual Tests', () => {
           showTodaySelector
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -130,7 +138,7 @@ describe('Calendar Visual Tests', () => {
           showTodaySelector={false}
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -140,10 +148,10 @@ describe('Calendar Visual Tests', () => {
       const { container } = render(
         <Calendar
           showTodaySelector
-          todayText="Dzisiaj"
+          todayText='Dzisiaj'
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -154,10 +162,10 @@ describe('Calendar Visual Tests', () => {
       const onChange = vi.fn()
       const { container } = render(
         <Calendar
-          className="shadow-lg border rounded-lg"
+          className='shadow-lg border rounded-lg'
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -174,7 +182,7 @@ describe('Calendar Visual Tests', () => {
       it(`renders calendar for ${name}`, async () => {
         const onChange = vi.fn()
         const { container } = render(
-          <Calendar onChange={onChange} startOn={new Date(2024, month, 15)} />
+          <Calendar onChange={onChange} startOn={new Date(2024, month, 15)} />,
         )
         await expect(container.firstChild).toMatchScreenshot()
       })
@@ -186,10 +194,10 @@ describe('Calendar Visual Tests', () => {
       const onChange = vi.fn()
       const { container } = render(
         <Calendar
-          locale="en-US"
+          locale='en-US'
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })
@@ -198,10 +206,10 @@ describe('Calendar Visual Tests', () => {
       const onChange = vi.fn()
       const { container } = render(
         <Calendar
-          locale="pl-PL"
+          locale='pl-PL'
           onChange={onChange}
           startOn={new Date(2024, 0, 15)}
-        />
+        />,
       )
       await expect(container.firstChild).toMatchScreenshot()
     })

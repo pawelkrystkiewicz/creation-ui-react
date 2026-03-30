@@ -41,5 +41,5 @@ export const properties: DocumentedProperty[] = [
     type: 'boolean',
     description: 'Whether the textarea is resizable',
   },
-  classNameProps
+  classNameProps,
 ]

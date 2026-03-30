@@ -17,8 +17,10 @@ export const icons = [
 ]
 export type IconType = (typeof icons)[number]
 
-export interface IconProps
-  extends Omit<SVGProps<SVGSVGElement>, 'className' | 'children'> {
+export interface IconProps extends Omit<
+  SVGProps<SVGSVGElement>,
+  'className' | 'children'
+> {
   /**
    * Icon name from Material Icons collection
    */

@@ -71,7 +71,6 @@ export const AvatarWithNumberSize = () => {
   )
 }
 
-
 export const AvatarGroupExample = (props: AvatarGroupProps) => {
   return (
     <Container>

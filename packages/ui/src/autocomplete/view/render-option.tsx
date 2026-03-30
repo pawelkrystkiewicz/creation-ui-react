@@ -33,7 +33,10 @@ export const _renderOption = <T,>({
       ) : (
         label
       )}
-      <Icon icon='check' className='[li[aria-selected="true"]_&]:block hidden text-primary' />
+      <Icon
+        icon='check'
+        className='[li[aria-selected="true"]_&]:block hidden text-primary'
+      />
     </li>
   )
 }

@@ -5,7 +5,7 @@ import { Hero } from './hero'
 import { Showcase } from './showcase'
 
 export const Index = () => (
-  <div className="flex flex-col">
+  <div className='flex flex-col'>
     <Hero />
     <Features />
     <Showcase />

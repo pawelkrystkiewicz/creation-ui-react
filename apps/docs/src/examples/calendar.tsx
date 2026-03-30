@@ -89,5 +89,4 @@ export const properties: DocumentedProperty[] = [
     type: 'string',
     defaultValue: '"Today"',
   },
-
 ]

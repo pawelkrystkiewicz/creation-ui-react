@@ -17,7 +17,9 @@ describe('Checkbox Visual Tests', () => {
   })
 
   it('should correctly render unchecked state', async () => {
-    const { getByRole } = render(<Checkbox checked={false} onChange={() => {}} />)
+    const { getByRole } = render(
+      <Checkbox checked={false} onChange={() => {}} />,
+    )
     const element = getByRole('checkbox')
     expect(element).not.toBeChecked()
     await expect(element).toMatchScreenshot()
@@ -31,7 +33,9 @@ describe('Checkbox Visual Tests', () => {
   })
 
   it('should correctly render disabled checked state', async () => {
-    const { getByRole } = render(<Checkbox disabled checked onChange={() => {}} />)
+    const { getByRole } = render(
+      <Checkbox disabled checked onChange={() => {}} />,
+    )
     const element = getByRole('checkbox')
     expect(element).toHaveAttribute('aria-disabled', 'true')
     expect(element).toBeChecked()
@@ -59,7 +63,9 @@ describe('Checkbox Visual Tests', () => {
   })
 
   it('should correctly render with children', async () => {
-    const { getByRole } = render(<Checkbox>Accept terms and conditions</Checkbox>)
+    const { getByRole } = render(
+      <Checkbox>Accept terms and conditions</Checkbox>,
+    )
     const element = getByRole('checkbox')
     await expect(element).toMatchScreenshot()
   })
@@ -68,7 +74,7 @@ describe('Checkbox Visual Tests', () => {
     const { getByRole } = render(
       <Checkbox checked onChange={() => {}}>
         Accept terms and conditions
-      </Checkbox>
+      </Checkbox>,
     )
     const element = getByRole('checkbox')
     await expect(element).toMatchScreenshot()
@@ -78,7 +84,7 @@ describe('Checkbox Visual Tests', () => {
     const { getByRole } = render(
       <Checkbox indeterminate onChange={() => {}}>
         Select all items
-      </Checkbox>
+      </Checkbox>,
     )
     const element = getByRole('checkbox')
     await expect(element).toMatchScreenshot()

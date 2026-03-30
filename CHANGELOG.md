@@ -2,90 +2,79 @@
 
 ## [14.2.0](https://github.com/creation-ui/react/compare/v14.1.4...v14.2.0) (2024-10-15)
 
-
 ### Features
 
-* enhance Autocomplete behaviour ([d32b1fa](https://github.com/creation-ui/react/commit/d32b1fa5b86e4d531fe83c5e6ce2e087b2bd5d8f))
-
+- enhance Autocomplete behaviour ([d32b1fa](https://github.com/creation-ui/react/commit/d32b1fa5b86e4d531fe83c5e6ce2e087b2bd5d8f))
 
 ### Bug Fixes
 
-* allow query to always filter options in dropdown ([57b7eb1](https://github.com/creation-ui/react/commit/57b7eb18a0bdf023caaea5ff596fa549a89bb724))
-* on next ShowFirstMatching seems broken ([7588742](https://github.com/creation-ui/react/commit/758874228c931731dff3a247a9e23606eb689b00))
+- allow query to always filter options in dropdown ([57b7eb1](https://github.com/creation-ui/react/commit/57b7eb18a0bdf023caaea5ff596fa549a89bb724))
+- on next ShowFirstMatching seems broken ([7588742](https://github.com/creation-ui/react/commit/758874228c931731dff3a247a9e23606eb689b00))
 
 ## [14.1.4](https://github.com/creation-ui/react/compare/v14.1.3...v14.1.4) (2024-06-08)
 
-
 ### Bug Fixes
 
-* export hooks ([2132a1e](https://github.com/creation-ui/react/commit/2132a1e4a2762577299d3c5b0b19b20b79c0562d))
-* update peerDeps ([d105a35](https://github.com/creation-ui/react/commit/d105a35dd3d9046848ade1849b81470c021b6eea))
+- export hooks ([2132a1e](https://github.com/creation-ui/react/commit/2132a1e4a2762577299d3c5b0b19b20b79c0562d))
+- update peerDeps ([d105a35](https://github.com/creation-ui/react/commit/d105a35dd3d9046848ade1849b81470c021b6eea))
 
 ## [14.1.3](https://github.com/creation-ui/react/compare/v14.1.2...v14.1.3) (2024-05-01)
 
-
 ### Bug Fixes
 
-* export useDetectDarkMode ([a24ce9d](https://github.com/creation-ui/react/commit/a24ce9d7fb5f1991e8a5ee1544d6bd33427cd959))
+- export useDetectDarkMode ([a24ce9d](https://github.com/creation-ui/react/commit/a24ce9d7fb5f1991e8a5ee1544d6bd33427cd959))
 
 ## [14.1.2](https://github.com/creation-ui/react/compare/v14.1.1...v14.1.2) (2024-05-01)
 
-
 ### Bug Fixes
 
-* update node version in publish job ([01694ae](https://github.com/creation-ui/react/commit/01694aebedf8d6de02f6fecd71eee426863f04ed))
+- update node version in publish job ([01694ae](https://github.com/creation-ui/react/commit/01694aebedf8d6de02f6fecd71eee426863f04ed))
 
 ## [14.1.1](https://github.com/creation-ui/react/compare/v14.1.0...v14.1.1) (2024-05-01)
 
-
 ### Bug Fixes
 
-* build errors, add playground for Loader with colorsBlackAndWhite ([f7f5a4d](https://github.com/creation-ui/react/commit/f7f5a4d314b839ae451b1187d4a2f8fd388ec912))
-* Loader type errors ([7e286eb](https://github.com/creation-ui/react/commit/7e286eb60bebe1901d0bee30d34ecd0271ea021d))
+- build errors, add playground for Loader with colorsBlackAndWhite ([f7f5a4d](https://github.com/creation-ui/react/commit/f7f5a4d314b839ae451b1187d4a2f8fd388ec912))
+- Loader type errors ([7e286eb](https://github.com/creation-ui/react/commit/7e286eb60bebe1901d0bee30d34ecd0271ea021d))
 
 ## [14.1.0](https://github.com/creation-ui/react/compare/v14.0.0...v14.1.0) (2024-05-01)
 
-
 ### Features
 
-* add "mono" ElementStatus, rename ElementStatus to ElementColor ([19b089d](https://github.com/creation-ui/react/commit/19b089d85d6345a6e9b221f01e2175b162187d76))
-* rename status to color ([7c0859a](https://github.com/creation-ui/react/commit/7c0859aced95f77576f2831aeb784d8994d835b4))
-
+- add "mono" ElementStatus, rename ElementStatus to ElementColor ([19b089d](https://github.com/creation-ui/react/commit/19b089d85d6345a6e9b221f01e2175b162187d76))
+- rename status to color ([7c0859a](https://github.com/creation-ui/react/commit/7c0859aced95f77576f2831aeb784d8994d835b4))
 
 ### Bug Fixes
 
-* rename ElementStatus ([93ec595](https://github.com/creation-ui/react/commit/93ec595f056dab15ce4499905d79d46eb904ec14))
-* tsc errors ([ebc586b](https://github.com/creation-ui/react/commit/ebc586bae284345cf6a4fe804c0526839fe23fa8))
+- rename ElementStatus ([93ec595](https://github.com/creation-ui/react/commit/93ec595f056dab15ce4499905d79d46eb904ec14))
+- tsc errors ([ebc586b](https://github.com/creation-ui/react/commit/ebc586bae284345cf6a4fe804c0526839fe23fa8))
 
 ## [14.0.0](https://github.com/creation-ui/react/compare/v13.8.0...v14.0.0) (2024-04-25)
 
-
 ### Features
 
-* add build:watch to cui ([f039def](https://github.com/creation-ui/react/commit/f039defcfe72af75994fc01f8f14f847ca32419e))
-* add focusable classes to theme, apply focusable to inputs, buttons etc.; fix textarea outline ([dd42744](https://github.com/creation-ui/react/commit/dd427441b77972ebc3b92773d4b988caf42d944c))
-* add robust .cui-element classes for elements ([e166e68](https://github.com/creation-ui/react/commit/e166e684f2cc2963add5d98e39ffb318838748f3))
-* init monorepo ([2d24f5a](https://github.com/creation-ui/react/commit/2d24f5af6db7359226caf6eff6541570e613bee0))
-* introduce background-portal color ([66920a1](https://github.com/creation-ui/react/commit/66920a105e2d2c98f3478f97c116f06a6c27a8fe))
-* rename all color classes ([44996c3](https://github.com/creation-ui/react/commit/44996c37f1c89761a150af82e069735f9d75eecd))
-* size for tooltip ([9f54ba2](https://github.com/creation-ui/react/commit/9f54ba2047b141a29aaede9a65e80724abe70a30))
-
+- add build:watch to cui ([f039def](https://github.com/creation-ui/react/commit/f039defcfe72af75994fc01f8f14f847ca32419e))
+- add focusable classes to theme, apply focusable to inputs, buttons etc.; fix textarea outline ([dd42744](https://github.com/creation-ui/react/commit/dd427441b77972ebc3b92773d4b988caf42d944c))
+- add robust .cui-element classes for elements ([e166e68](https://github.com/creation-ui/react/commit/e166e684f2cc2963add5d98e39ffb318838748f3))
+- init monorepo ([2d24f5a](https://github.com/creation-ui/react/commit/2d24f5af6db7359226caf6eff6541570e613bee0))
+- introduce background-portal color ([66920a1](https://github.com/creation-ui/react/commit/66920a105e2d2c98f3478f97c116f06a6c27a8fe))
+- rename all color classes ([44996c3](https://github.com/creation-ui/react/commit/44996c37f1c89761a150af82e069735f9d75eecd))
+- size for tooltip ([9f54ba2](https://github.com/creation-ui/react/commit/9f54ba2047b141a29aaede9a65e80724abe70a30))
 
 ### Bug Fixes
 
-* autocomplete not passing renderTags ([bb958aa](https://github.com/creation-ui/react/commit/bb958aab3fbdc090243989b86210b34049830ce9))
-* autocomplete renderSelection with null ([5fe6e9d](https://github.com/creation-ui/react/commit/5fe6e9d71ab55360f8bcb374f9a6c5c5558dc6bd))
-* build failing ([81e9362](https://github.com/creation-ui/react/commit/81e9362773180226dbc53388a9d6c52e1cee177b))
-* label wrong text size when LG ([b113d07](https://github.com/creation-ui/react/commit/b113d0782af803301e4fcd52867ae74c97d74671))
-* lp button ([fb746f0](https://github.com/creation-ui/react/commit/fb746f02dc27dd001fd8bfb6e4baa67373429650))
-* prepare page build ([3538131](https://github.com/creation-ui/react/commit/35381314a3e392c7950c24fba3b0bc29e992b83a))
-* remove console.logs from packages ([73d3bd7](https://github.com/creation-ui/react/commit/73d3bd7875d1e253a2a03a80d0c9978de007df30))
-* tailwind.con ([b9557e4](https://github.com/creation-ui/react/commit/b9557e416aa78d78b022c3b67334f8552e96fd27))
-
+- autocomplete not passing renderTags ([bb958aa](https://github.com/creation-ui/react/commit/bb958aab3fbdc090243989b86210b34049830ce9))
+- autocomplete renderSelection with null ([5fe6e9d](https://github.com/creation-ui/react/commit/5fe6e9d71ab55360f8bcb374f9a6c5c5558dc6bd))
+- build failing ([81e9362](https://github.com/creation-ui/react/commit/81e9362773180226dbc53388a9d6c52e1cee177b))
+- label wrong text size when LG ([b113d07](https://github.com/creation-ui/react/commit/b113d0782af803301e4fcd52867ae74c97d74671))
+- lp button ([fb746f0](https://github.com/creation-ui/react/commit/fb746f02dc27dd001fd8bfb6e4baa67373429650))
+- prepare page build ([3538131](https://github.com/creation-ui/react/commit/35381314a3e392c7950c24fba3b0bc29e992b83a))
+- remove console.logs from packages ([73d3bd7](https://github.com/creation-ui/react/commit/73d3bd7875d1e253a2a03a80d0c9978de007df30))
+- tailwind.con ([b9557e4](https://github.com/creation-ui/react/commit/b9557e416aa78d78b022c3b67334f8552e96fd27))
 
 ### Miscellaneous Chores
 
-* release 14.0.0 ([c25fde3](https://github.com/creation-ui/react/commit/c25fde3fa5c4c02045128c86a1a286a9d1da5571))
+- release 14.0.0 ([c25fde3](https://github.com/creation-ui/react/commit/c25fde3fa5c4c02045128c86a1a286a9d1da5571))
 
 ## [13.8.0](https://github.com/creation-ui/react/compare/v13.7.1...v13.8.0) (2024-03-20)
 
