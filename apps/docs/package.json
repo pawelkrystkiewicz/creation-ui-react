@@ -4,9 +4,9 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "next --turbo",
+    "dev": "next --turbo -p 3005",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3005",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "types": "tsc --noEmit",

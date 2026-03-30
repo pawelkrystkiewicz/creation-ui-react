@@ -44,7 +44,12 @@ const firaCode = Fira_Code({
 
 export default async function RootLayout({ children }: any) {
   const banner = (
-    <Banner storageKey='cui-banner'>Creation UI 16.0 is released 🎉</Banner>
+    <Banner dismissible={false} storageKey='cui-deprecation'>
+      This package is deprecated. Check out the successor:{' '}
+      <a href='https://ui-kit.chunk-creations.com/' className='underline'>
+        Chunk UI Kit
+      </a>
+    </Banner>
   )
 
   const navbar = (
