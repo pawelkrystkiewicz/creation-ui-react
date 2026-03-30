@@ -39,8 +39,8 @@
     "nuke": "rm -rf node_modules && rm -rf dist && rm -rf bun.lockb"
   },
   "devDependencies": {
-    "@playwright/experimental-ct-react": "1.57.0",
-    "@playwright/test": "1.57.0",
+    "@playwright/experimental-ct-react": "1.58.2",
+    "@playwright/test": "1.58.2",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@tailwindcss/vite": "^4.2.2",
@@ -58,7 +58,7 @@
     "jest-axe": "^10.0.0",
     "jsdom": "^27.4.0",
     "lightningcss": "1.32.0",
-    "playwright": "1.57.0",
+    "playwright": "1.58.2",
     "tsup": "^8.5.1",
     "typescript": "5.9.3",
     "vite": "^7.3.1",
