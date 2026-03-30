@@ -8,6 +8,7 @@
 
   ### Changes in this release:
 
+  chore: format files ([#273](https://github.com/pawelkrystkiewicz/creation-ui-react/issues/273))
   ⬆️ Update dependencies and fix URLs in documentation
 
 ## 16.0.0
