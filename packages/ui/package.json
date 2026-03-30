@@ -1,6 +1,6 @@
 {
   "name": "@creation-ui/react",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "deprecated": "This package is no longer maintained. Migrate to Chunk UI Kit: https://ui-kit.chunk-creations.com/",
   "sideEffects": false,
   "license": "MIT",
