@@ -1,5 +1,9 @@
 # Creation UI React
 
+> **⚠️ DEPRECATED:** This package is no longer maintained. Please use [Chunk UI Kit](https://ui-kit.chunk-creations.com/) instead.
+>
+> **Note:** The documentation at `creation-ui.com` will be moved to [creation-ui.chunk-creations.com](https://creation-ui.chunk-creations.com) as the original domain is being retired. If `creation-ui.com` is no longer available, use the new URL.
+
 A modern, accessible, and customizable React component library built with Tailwind CSS v4. Creation UI provides a comprehensive set of 20+ components designed for building beautiful user interfaces with ease.
 
 [![npm version](https://img.shields.io/npm/v/@creation-ui/react.svg)](https://www.npmjs.com/package/@creation-ui/react)
@@ -285,7 +289,8 @@ Creation UI supports all modern browsers:
 
 ## Links
 
-- [Documentation](https://creation-ui.com)
+- [Chunk UI Kit (successor)](https://ui-kit.chunk-creations.com/)
+- [Documentation (legacy)](https://creation-ui.chunk-creations.com)
 - [npm Package](https://www.npmjs.com/package/@creation-ui/react)
 - [GitHub Repository](https://github.com/pawelkrystkiewicz/creation-ui-react)
 - [Changelog](./CHANGELOG.md)
